@@ -1,0 +1,12 @@
+{
+  "tokenizer_id": "cross-encoder/ms-marco-MiniLM-L6-v2",
+  "tokenizer_revision": "233902d25c440f23af6f7d6e94d2946bac0bee0a",
+  "vocab_size": 30522,
+  "pad_token_id": 0,
+  "max_length": 128,
+  "num_layers": 4,
+  "hidden_size": 128,
+  "num_attention_heads": 4,
+  "feed_forward_size": 512,
+  "dropout": 0.1
+}
