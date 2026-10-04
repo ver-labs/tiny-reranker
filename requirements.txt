@@ -1,0 +1,6 @@
+torch==2.14.1
+transformers==5.18.0
+sentence-transformers==6.1.0
+datasets==5.0.1
+numpy==2.5.3
+pytest==9.1.1
