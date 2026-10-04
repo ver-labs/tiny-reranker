@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+.pytest_cache/
+checkpoints/*.pt
+checkpoints/*.tmp
+dump/checkpoints/*.pt
+data/processed/
