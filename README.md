@@ -130,6 +130,8 @@ values, prints representative gradient norms, and performs one AdamW update
 at learning rate `3e-4`. Numeric inputs and labels move to
 the selected device while string IDs stay in Python.
 After the successful update it logs `step=1` and that batch's BCE loss.
+It prints every pair's label, raw score, and sigmoid probability so the
+forward output can be inspected alongside the backward gradient norms.
 The script calls `optimizer.zero_grad(set_to_none=True)` before the forward pass,
 so no old parameter gradients carry into this backward pass.
 The logit-shape check accepts one score per label and verifies that a

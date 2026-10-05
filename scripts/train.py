@@ -179,7 +179,14 @@ def main() -> None:
     print(f"IDs aligned: {len(batch['pair_ids'])} pair IDs; DataLoader workers: {loader.num_workers}")
     print(f"Model inputs and labels on: {device}; string IDs remain in Python")
     print("Old gradients cleared: all parameter gradients are None")
-    print(f"Forward output: {tuple(logits.shape)} finite raw scores; first four: {logits.detach().cpu().tolist()[:4]}")
+    print(f"Forward output: {tuple(logits.shape)} finite raw scores")
+    print("Pair  Label  Raw score  Probability")
+    for index, (label, raw_score, probability) in enumerate(zip(
+        labels.detach().cpu().tolist(),
+        logits.detach().cpu().tolist(),
+        torch.sigmoid(logits.detach()).cpu().tolist(),
+    ), start=1):
+        print(f"{index:>4}  {label:>5.0f}  {raw_score:>9.4f}  {probability:>11.4f}")
     print(f"One-item output keeps batch dimension: {tuple(one_item_logits.shape)}")
     print(f"step={step} bce_loss={loss_value:.6f}")
     if validation_loss is not None:
