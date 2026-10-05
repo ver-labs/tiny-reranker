@@ -37,24 +37,43 @@ def split_manifest_record() -> dict[str, str]:
     }
 
 
-def epoch_boundary_sampler_state() -> dict[str, int | str | bool]:
+def epoch_boundary_sampler_state(completed_epochs: int = 1) -> dict[str, int | str | bool]:
     """Record the completed sequential pass and where the next epoch starts."""
     return {
         "order": "sequential_selected_pair_ids",
         "selected_examples": TRAIN_COUNT,
         "consumed_in_completed_epoch": TRAIN_COUNT,
-        "next_epoch_index_zero_based": 1,
+        "next_epoch_index_zero_based": completed_epochs,
         "next_sample_index": 0,
         "mid_epoch_resume_supported": False,
     }
 
 
-def load_resume_state(*, scheduler_factory=None, scaler_factory=None):
+def capture_rng_state(device: torch.device) -> dict:
+    """Capture all RNG streams used by this training environment."""
+    numpy_state = np.random.get_state()
+    return {
+        "python": random.getstate(),
+        "numpy": {
+            "algorithm": numpy_state[0],
+            "keys": numpy_state[1].tolist(),
+            "position": numpy_state[2],
+            "has_gauss": numpy_state[3],
+            "cached_gaussian": numpy_state[4],
+        },
+        "torch_cpu": torch.get_rng_state(),
+        "torch_mps": torch.mps.get_rng_state() if device.type == "mps" else None,
+    }
+
+
+def load_resume_state(checkpoint_path: Path = RESUME_CHECKPOINT,
+                      *, scheduler_factory=None, scaler_factory=None):
     """Restore model, optimizer, optional components, counters, and RNG state."""
-    manifest = json.loads(RESUME_MANIFEST.read_text(encoding="utf-8"))
-    if hashlib.sha256(RESUME_CHECKPOINT.read_bytes()).hexdigest() != manifest["sha256"]:
+    manifest_path = checkpoint_path.with_suffix(".json")
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    if hashlib.sha256(checkpoint_path.read_bytes()).hexdigest() != manifest["sha256"]:
         raise RuntimeError("Resume checkpoint differs from its manifest")
-    saved = torch.load(RESUME_CHECKPOINT, map_location="cpu", weights_only=True)
+    saved = torch.load(checkpoint_path, map_location="cpu", weights_only=True)
     settings = saved["configuration"]
     source_config = json.loads((ROOT / "configs" / "scratch.json").read_text(encoding="utf-8"))
     if (settings["tokenizer_id"], settings["tokenizer_revision"]) != \
@@ -74,7 +93,7 @@ def load_resume_state(*, scheduler_factory=None, scaler_factory=None):
     if saved["data_split_manifest"] != split_manifest_record() or \
             manifest["data_split_manifest"] != split_manifest_record():
         raise RuntimeError("Data split manifest differs from the resume checkpoint")
-    if saved["sampler_state"] != epoch_boundary_sampler_state() or \
+    if saved["sampler_state"] != epoch_boundary_sampler_state(saved["completed_epochs"]) or \
             manifest["sampler_state"] != saved["sampler_state"]:
         raise RuntimeError("Resume sampler position is not the expected epoch boundary")
     config = ScratchConfig(**settings["model"])
@@ -159,7 +178,6 @@ def save_resume_sidecar(model, optimizer, device, step, train_rows, validation_r
             report["validation_pair_ids_sha256"] != ids_hash(validation_rows):
         raise RuntimeError("Prepared samples differ from the evaluated run")
     source_config = json.loads((ROOT / "configs" / "scratch.json").read_text(encoding="utf-8"))
-    numpy_state = np.random.get_state()
     scaler_enabled = scaler is not None and (not hasattr(scaler, "is_enabled") or scaler.is_enabled())
     payload = {
         "model_state_dict": weights,
@@ -187,18 +205,7 @@ def save_resume_sidecar(model, optimizer, device, step, train_rows, validation_r
             "validation_pair_ids_sha256": ids_hash(validation_rows),
             "shuffle": False,
         },
-        "rng_state": {
-            "python": random.getstate(),
-            "numpy": {
-                "algorithm": numpy_state[0],
-                "keys": numpy_state[1].tolist(),
-                "position": numpy_state[2],
-                "has_gauss": numpy_state[3],
-                "cached_gaussian": numpy_state[4],
-            },
-            "torch_cpu": torch.get_rng_state(),
-            "torch_mps": torch.mps.get_rng_state() if device.type == "mps" else None,
-        },
+        "rng_state": capture_rng_state(device),
     }
     temporary = RESUME_CHECKPOINT.with_suffix(".tmp")
     torch.save(payload, temporary)
@@ -238,6 +245,10 @@ def main() -> None:
     parser.add_argument("--save-resume", action="store_true",
                         help="Repeat the short epoch and save a separate resume-ready checkpoint")
     args = parser.parse_args()
+    if args.save_resume and RESUME_CHECKPOINT.exists():
+        parser.error("resume checkpoint already exists; continue with scripts.continue_epochs")
+    if not args.save_resume and CHECKPOINT.exists():
+        parser.error("trial checkpoint already exists; continue with scripts.continue_epochs")
     torch.manual_seed(123)
     random.seed(123)
     np.random.seed(123)

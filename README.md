@@ -223,3 +223,17 @@ and records the sequential sampler at an epoch boundary: all 1,024 selected
 pairs consumed, with the next epoch starting at index zero. Mid-epoch resume
 is not implemented; a future shuffled or interruptible loop would need to
 save its actual order and next index at each checkpoint.
+
+Run `python -m scripts.continue_epochs --epochs 1` to continue from the latest
+resume checkpoint on the same fixed 1,024-pair training sample. The script
+checks that every selected pair was used once, evaluates the fixed 128-pair
+validation sample, then saves a new numbered checkpoint only at the epoch
+boundary. It records the parent checkpoint, cumulative update count, split
+manifest hash, and sampler position. Repeating the command continues from
+the latest saved epoch. It does not implement mid-epoch checkpoints.
+The demonstration continued the separate resume-ready run through epoch 2:
+128 cumulative updates, with the new checkpoint at
+`checkpoints/short_epoch_1024_epoch_0002.pt`. It reloaded on MPS with all 57
+optimizer parameter states. Its 128-pair validation loss rose from 0.6863 to
+0.7426 and accuracy changed from 56.2% to 55.5%, so it is a resume example,
+not an improved model or a replacement for the earlier full-validation result.

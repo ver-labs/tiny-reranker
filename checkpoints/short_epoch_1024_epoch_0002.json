@@ -1,0 +1,24 @@
+{
+  "checkpoint": "short_epoch_1024_epoch_0002.pt",
+  "sha256": "76b812982517f36e0f2774b0e410c4c2d9e570ba2d185e7a36af9da1a311dc31",
+  "parent_checkpoint": "short_epoch_1024_resume.pt",
+  "parent_checkpoint_sha256": "589a6160bde5e6dd4bd40546caa9afc4d4d576ddccd5088585400a969a194c08",
+  "completed_epochs": 2,
+  "update_count": 128,
+  "data_split_manifest": {
+    "path": "data/manifests/query_split.json",
+    "sha256": "eda20769a9242e26b6fa53cee4e5a606a310fbf66d40c3991c7b2e158ffa6b5e"
+  },
+  "sampler_state": {
+    "order": "sequential_selected_pair_ids",
+    "selected_examples": 1024,
+    "consumed_in_completed_epoch": 1024,
+    "next_epoch_index_zero_based": 2,
+    "next_sample_index": 0,
+    "mid_epoch_resume_supported": false
+  },
+  "scheduler_enabled": false,
+  "gradient_scaler_enabled": false,
+  "validation_pair_bce_loss": 0.7425775825977325,
+  "validation_pair_accuracy": 0.5546875
+}
