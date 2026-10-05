@@ -118,3 +118,8 @@ ranked; they are excluded from the metric denominator and reported explicitly.
 Any nonempty candidate list with no relevant document remains in evaluation
 and receives zero for both metrics; there were none in this dataset. The test
 split has not been scored.
+
+Run `python -m scripts.train` for the first training-loop check. It restores
+the saved initial random weights, selects MPS when available, and calls
+`model.train()` to enable training behavior such as dropout. This check does
+not read a batch, calculate gradients, or update weights.
