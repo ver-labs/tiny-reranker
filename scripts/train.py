@@ -75,6 +75,8 @@ def main() -> None:
     assert all(tensor.device == device for tensor in inputs.values())
     assert labels.device == device
     assert next(model.parameters()).device == device
+    model.zero_grad(set_to_none=True)
+    assert all(parameter.grad is None for parameter in model.parameters())
     print(f"Device: {device}")
     print(f"Training mode enabled: {model.training}")
     print(f"Training pairs available: {len(loader.dataset):,}")
@@ -82,6 +84,7 @@ def main() -> None:
     print(f"Labels: {labels.cpu().tolist()}")
     print(f"IDs aligned: {len(batch['pair_ids'])} pair IDs; DataLoader workers: {loader.num_workers}")
     print(f"Model inputs and labels on: {device}; string IDs remain in Python")
+    print("Old gradients cleared: all parameter gradients are None")
     print("No forward pass or optimizer step run")
 
 
