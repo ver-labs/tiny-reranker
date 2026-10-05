@@ -60,3 +60,56 @@ training, validation, or test by a stable query hash (80/10/10 buckets). The
 split rule is recorded in `data/manifests/query_split.json`. It assigns every
 triplet for the same normalized query to one group. The previously run training
 scripts, trained checkpoints, and run results are archived in `../dump/`.
+
+Run `python -m scripts.clean_pairs` to turn the pinned triplets into labeled
+query-document pairs. It checks exact source query and document text, writes
+each consistently labeled pair once to `data/processed/clean_pairs.jsonl`, and
+flags pairs seen with both labels in `data/processed/conflicting_pairs.jsonl`.
+Conflicting pairs are excluded from the clean file. The audit found 918,054
+clean pairs and 43,904 conflicting pairs; `results/pair_cleaning.json` records
+the counts. The processed JSONL files are excluded from Git.
+
+`CleanPairDataset("train")` in `scripts/data.py` indexes the cleaned file by
+split and returns one query, document, integer label, query ID, document ID,
+and pair ID per item. Use `"validation"` or `"test"` for those groups. It
+indexes file offsets, so passage text is read only when an item is requested.
+`iter_clean_pairs("train")` is a generator that reads that same file one line
+at a time; use `"validation"` or `"test"` to stream those groups. It returns
+the same example fields without building an index.
+`PairCollator` in `scripts/collate.py` tokenizes a batch from that dataset,
+pads only to the longest pair in the batch (up to the configured maximum),
+and retains labels and IDs. Run `python -m scripts.collate` for a two-pair
+padding and alignment check. `make_pair_loader(...)` uses `num_workers=0`
+while debugging the data pipeline.
+Run `python -m scripts.print_batch` to print every field of a small batch
+made from real cleaned training pairs.
+
+Run `python -m scripts.build_eval_candidates` to create fixed validation and
+test candidate lists from the clean pairs. The script hashes each passage into
+a document ID, keeps one copy per query, and includes queries with both a
+positive and a negative candidate. Both models should read these same saved
+lists. The build produced 45,709 validation queries and 45,665 test queries;
+`results/evaluation_candidates.json` records counts and file hashes. This is a
+constructed MS MARCO triplet evaluation, not a published leaderboard workload.
+The external baseline was previously trained on MS MARCO, so these queries are
+not established as unseen for it. The scratch model must train only on training
+queries; the archived all-data checkpoint is not suitable for held-out testing.
+
+Run `python -m scripts.evaluate_initial` for the first validation comparison.
+It saves 128 fixed validation query IDs, per-query rankings, MRR@10 and
+nDCG@10, plus warm-up and repeated whole-rerank timing in
+`results/initial_validation/`. MiniLM scored 0.8906 MRR@10 and 0.9193
+nDCG@10; the untrained scratch model scored 0.7891 and 0.8443. Both used
+MPS, float32, a 128-token maximum, and pair batches of 2. The random model
+is a pipeline sanity check, not a competitive baseline. These sampled,
+constructed-list scores are not comparable to published leaderboard results;
+the test split remains reserved for the final comparison.
+
+Run `python -m scripts.evaluate_validation` to score every saved validation
+candidate list with both models. It saves one ranked list and MRR@10/nDCG@10
+values per query in `results/full_validation/`, sorting tied scores by
+document ID. Across all 45,709 evaluable validation queries, MiniLM scored
+0.8599 MRR@10 and 0.8966 nDCG@10; the random scratch reference scored
+0.7576 and 0.8210. Queries with no relevant candidate would receive zero
+for both metrics; there were none in these constructed lists. The test split
+has not been scored.
