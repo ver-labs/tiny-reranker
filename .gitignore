@@ -5,3 +5,4 @@ checkpoints/*.pt
 checkpoints/*.tmp
 dump/checkpoints/*.pt
 data/processed/
+artifacts/*/model.pt

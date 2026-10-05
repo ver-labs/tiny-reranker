@@ -192,3 +192,10 @@ MS MARCO mined-triplet lists, so the result is a local learning check rather
 than a leaderboard score. The saved checkpoint is
 `checkpoints/short_epoch_1024.pt`; its hash is recorded in both the training
 report and the full-validation summary.
+
+Run `python -m scripts.inference_bundle` to export the short-epoch model to
+`artifacts/short_epoch_1024/`. The directory holds the model weights, scratch
+architecture config, local tokenizer assets, and a manifest with file hashes.
+The exporter reloads only those local files and checks that token IDs and
+inference scores match the source checkpoint. The binary weight file is kept
+locally and excluded from Git, like the training checkpoints.
