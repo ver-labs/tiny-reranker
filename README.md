@@ -134,5 +134,9 @@ The script calls `optimizer.zero_grad(set_to_none=True)` before the forward pass
 so no old parameter gradients carry into this backward pass.
 The logit-shape check accepts one score per label and verifies that a
 one-item batch retains shape `(1,)` rather than becoming a scalar.
-This one-batch update is only a loop check; it is not saved as a trained
-checkpoint or evaluated as a trained model.
+After the update, the script checks a fixed batch of 16 validation pairs in
+evaluation mode with gradient tracking disabled, logs its BCE loss, then
+restores training mode. `EVAL_EVERY_STEPS` is 1 for this one-step smoke check;
+a longer training loop can increase the interval. This batch loss is a pipeline
+check, not a full validation metric. The update is not saved as a trained
+checkpoint, and the test split remains untouched.

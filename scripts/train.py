@@ -3,12 +3,13 @@
 import hashlib
 import json
 from dataclasses import asdict
+from itertools import islice
 from pathlib import Path
 
 import torch
 
 from .collate import make_pair_loader
-from .data import CleanPairDataset
+from .data import CleanPairDataset, iter_clean_pairs
 from .model import ScratchConfig, ScratchReranker
 from .scratch_tokenizer import load_scratch_tokenizer
 
@@ -18,6 +19,8 @@ INITIAL_CHECKPOINT = ROOT / "checkpoints" / "initial_seed42.pt"
 INITIAL_MANIFEST = INITIAL_CHECKPOINT.with_suffix(".json")
 TRAIN_BATCH_SIZE = 16
 LEARNING_RATE = 3e-4
+EVAL_EVERY_STEPS = 1  # One update in this smoke check; increase for a longer run.
+VALIDATION_BATCH_SIZE = 16
 
 
 def load_training_model() -> tuple[ScratchReranker, torch.device]:
@@ -41,10 +44,9 @@ def load_training_model() -> tuple[ScratchReranker, torch.device]:
     return model, device
 
 
-def make_training_loader(config: ScratchConfig):
+def make_training_loader(config: ScratchConfig, tokenizer):
     """Read only cleaned training pairs; keep loading in the main process."""
     dataset = CleanPairDataset("train")
-    tokenizer = load_scratch_tokenizer()
     return make_pair_loader(
         dataset, tokenizer, batch_size=TRAIN_BATCH_SIZE,
         max_length=config.max_length, shuffle=False,
@@ -94,11 +96,36 @@ def inspect_gradients(model: ScratchReranker) -> tuple[int, dict[str, float]]:
     return trainable, norms
 
 
+def evaluate_validation_batch(model: ScratchReranker, tokenizer,
+                              device: torch.device) -> float:
+    """Check a fixed validation batch without tracking gradients or changing mode."""
+    rows = list(islice(iter_clean_pairs("validation"), VALIDATION_BATCH_SIZE))
+    if len(rows) != VALIDATION_BATCH_SIZE:
+        raise RuntimeError("Not enough cleaned validation pairs for the smoke check")
+    batch = next(iter(make_pair_loader(
+        rows, tokenizer, batch_size=VALIDATION_BATCH_SIZE,
+        max_length=model.config.max_length,
+    )))
+    inputs, labels = move_batch_to_device(batch, device)
+    was_training = model.training
+    model.eval()
+    try:
+        with torch.inference_mode():
+            logits = one_logit_per_label(model(**inputs), labels)
+            loss = torch.nn.BCEWithLogitsLoss()(logits, labels)
+            if not bool(torch.isfinite(loss)) or logits.requires_grad:
+                raise RuntimeError("Invalid validation result or gradient tracking enabled")
+            return float(loss.item())
+    finally:
+        model.train(was_training)
+
+
 def main() -> None:
     step = 0
     model, device = load_training_model()
     assert model.training and all(module.training for module in model.modules())
-    loader = make_training_loader(model.config)
+    tokenizer = load_scratch_tokenizer()
+    loader = make_training_loader(model.config, tokenizer)
     batch = next(iter(loader))
     inputs = batch["inputs"]
     assert loader.num_workers == 0
@@ -140,6 +167,10 @@ def main() -> None:
     head_change = float((model.scoring_head.weight.detach() - initial_head).abs().max().item())
     assert head_change > 0
     assert bool(torch.isfinite(model.scoring_head.weight).all())
+    validation_loss = None
+    if step % EVAL_EVERY_STEPS == 0:
+        validation_loss = evaluate_validation_batch(model, tokenizer, device)
+        assert model.training and all(module.training for module in model.modules())
     print(f"Device: {device}")
     print(f"Training mode enabled: {model.training}")
     print(f"Training pairs available: {len(loader.dataset):,}")
@@ -151,6 +182,9 @@ def main() -> None:
     print(f"Forward output: {tuple(logits.shape)} finite raw scores; first four: {logits.detach().cpu().tolist()[:4]}")
     print(f"One-item output keeps batch dimension: {tuple(one_item_logits.shape)}")
     print(f"step={step} bce_loss={loss_value:.6f}")
+    if validation_loss is not None:
+        print(f"validation_step={step} batch_bce_loss={validation_loss:.6f} "
+              f"pairs={VALIDATION_BATCH_SIZE}; training_mode_restored={model.training}")
     print(f"Backward pass completed; {gradient_count} trainable parameter tensors have finite gradients")
     print(f"Representative gradient norms: {gradient_norms}")
     print(f"AdamW step completed at learning rate {LEARNING_RATE:g}; scoring-head max weight change: {head_change:.6g}")
