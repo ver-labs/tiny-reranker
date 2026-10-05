@@ -160,3 +160,8 @@ Dodd-Frank Act for a query asking which act requires conflict-mineral
 disclosure; the passage itself appears relevant despite its negative label.
 This suggests a label-quality issue in that example, not evidence that the
 learning rate needs changing. Hyperparameters were left unchanged.
+The tiny-fit weights existed only in that process. For the real experiment,
+`load_training_model()` reloads `checkpoints/initial_seed42.pt`. After the
+diagnostic, all 57 loaded state tensors were checked on MPS and exactly
+matched the saved random initialization; the checkpoint hash remained
+`a8f10b4e4ae63ef1a4b796ab4122575c5f72afbb2a7a7a51ef49a7548c3602ee`.
