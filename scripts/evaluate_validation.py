@@ -76,7 +76,8 @@ def evaluate_buffer(reranker, rows: list[dict], output) -> tuple[int, float, flo
 
 
 def evaluate_model(name: str, reranker, expected: dict,
-                   candidate_hash: str, training_history: str) -> dict:
+                   candidate_hash: str, training_history: str,
+                   extra_metadata: dict | None = None) -> dict:
     expected_queries = expected["evaluable_queries"]
     RESULT_DIR.mkdir(parents=True, exist_ok=True)
     rankings = RESULT_DIR / f"{name}_rankings.jsonl"
@@ -135,6 +136,8 @@ def evaluate_model(name: str, reranker, expected: dict,
             "[CLS] query [SEP] document [SEP] with token-type IDs and attention mask"
         ),
     }
+    if extra_metadata:
+        summary.update(extra_metadata)
     (RESULT_DIR / f"{name}_summary.json").write_text(
         json.dumps(summary, indent=2) + "\n", encoding="utf-8"
     )

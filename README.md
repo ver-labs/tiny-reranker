@@ -178,3 +178,17 @@ BCE loss changed from 0.7057 to 0.6863 and binary accuracy from 50.0% to
 56.2%. All 1,024 selected pair IDs were used exactly once. The checkpoint
 hash was verified after saving, and all 57 model state tensors differed from
 the initial random state.
+
+Run `python -m scripts.evaluate_short_epoch` to evaluate that saved trial
+checkpoint on every fixed validation candidate list using the same 128-token
+limit, 64-pair scoring batches, document-ID tie-break, MRR@10, and nDCG@10 as
+the earlier full validation comparison. It checks the checkpoint and candidate
+file hashes, saves per-query rankings and a summary in `results/full_validation/`,
+and does not score the test split.
+On all 45,709 evaluable validation queries, the short-epoch model scored
+0.8109 MRR@10 and 0.8604 nDCG@10. The untrained scratch reference scored
+0.7576 and 0.8210 on the identical candidate lists. These are constructed
+MS MARCO mined-triplet lists, so the result is a local learning check rather
+than a leaderboard score. The saved checkpoint is
+`checkpoints/short_epoch_1024.pt`; its hash is recorded in both the training
+report and the full-validation summary.
