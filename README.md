@@ -218,3 +218,8 @@ When a scheduler or gradient scaler is added to training later, pass it to
 state. `load_resume_state(...)` requires a factory for each saved optional
 component and restores its state. Neither component is enabled in the current
 run.
+The resume checkpoint also pins `data/manifests/query_split.json` by SHA-256
+and records the sequential sampler at an epoch boundary: all 1,024 selected
+pairs consumed, with the next epoch starting at index zero. Mid-epoch resume
+is not implemented; a future shuffled or interruptible loop would need to
+save its actual order and next index at each checkpoint.

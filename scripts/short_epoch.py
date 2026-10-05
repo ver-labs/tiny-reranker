@@ -26,6 +26,27 @@ CHECKPOINT = ROOT / "checkpoints" / "short_epoch_1024.pt"
 REPORT = ROOT / "results" / "short_epoch_1024.json"
 RESUME_CHECKPOINT = ROOT / "checkpoints" / "short_epoch_1024_resume.pt"
 RESUME_MANIFEST = RESUME_CHECKPOINT.with_suffix(".json")
+SPLIT_MANIFEST = ROOT / "data" / "manifests" / "query_split.json"
+
+
+def split_manifest_record() -> dict[str, str]:
+    """Identify the exact query-to-split rule used for this run."""
+    return {
+        "path": str(SPLIT_MANIFEST.relative_to(ROOT)),
+        "sha256": hashlib.sha256(SPLIT_MANIFEST.read_bytes()).hexdigest(),
+    }
+
+
+def epoch_boundary_sampler_state() -> dict[str, int | str | bool]:
+    """Record the completed sequential pass and where the next epoch starts."""
+    return {
+        "order": "sequential_selected_pair_ids",
+        "selected_examples": TRAIN_COUNT,
+        "consumed_in_completed_epoch": TRAIN_COUNT,
+        "next_epoch_index_zero_based": 1,
+        "next_sample_index": 0,
+        "mid_epoch_resume_supported": False,
+    }
 
 
 def load_resume_state(*, scheduler_factory=None, scaler_factory=None):
@@ -50,6 +71,12 @@ def load_resume_state(*, scheduler_factory=None, scaler_factory=None):
     if saved["completed_epochs"] != manifest["completed_epochs"] or \
             saved["update_count"] != manifest["update_count"]:
         raise RuntimeError("Resume counters differ from the manifest")
+    if saved["data_split_manifest"] != split_manifest_record() or \
+            manifest["data_split_manifest"] != split_manifest_record():
+        raise RuntimeError("Data split manifest differs from the resume checkpoint")
+    if saved["sampler_state"] != epoch_boundary_sampler_state() or \
+            manifest["sampler_state"] != saved["sampler_state"]:
+        raise RuntimeError("Resume sampler position is not the expected epoch boundary")
     config = ScratchConfig(**settings["model"])
     device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
     if saved["rng_state"]["torch_mps"] is not None and device.type != "mps":
@@ -141,6 +168,8 @@ def save_resume_sidecar(model, optimizer, device, step, train_rows, validation_r
         "gradient_scaler_state_dict": scaler.state_dict() if scaler_enabled else None,
         "completed_epochs": 1,
         "update_count": step,
+        "data_split_manifest": split_manifest_record(),
+        "sampler_state": epoch_boundary_sampler_state(),
         "configuration": {
             "model": asdict(model.config),
             "tokenizer_id": source_config["tokenizer_id"],
@@ -190,6 +219,8 @@ def save_resume_sidecar(model, optimizer, device, step, train_rows, validation_r
         "max_model_weight_difference": max_weight_difference,
         "completed_epochs": 1,
         "update_count": step,
+        "data_split_manifest": payload["data_split_manifest"],
+        "sampler_state": payload["sampler_state"],
         "scheduler_enabled": scheduler is not None,
         "gradient_scaler_enabled": scaler_enabled,
         "rng_backends": ["python", "numpy", "torch_cpu"] +
