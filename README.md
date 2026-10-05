@@ -151,3 +151,12 @@ gradients disabled. It stops early once accuracy is 100% and loss is below
 not a measure of performance on new queries. On MPS, the fixed sample went
 from 50% accuracy and 0.7091 loss to 100% accuracy and 0.0091 loss after
 50 steps. No diagnostic weights are saved.
+The script also checks every training score, loss, and gradient for finite
+values, counts mistaken predictions at each report, and prints up to two
+examples so errors can be inspected before changing hyperparameters.
+On the MPS run, all checked values were finite and mistakes fell from 16 to
+zero by step 50. One interim mistake was a mined negative passage about the
+Dodd-Frank Act for a query asking which act requires conflict-mineral
+disclosure; the passage itself appears relevant despite its negative label.
+This suggests a label-quality issue in that example, not evidence that the
+learning rate needs changing. Hyperparameters were left unchanged.

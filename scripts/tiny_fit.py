@@ -21,13 +21,19 @@ def measure(model, batches, loss_fn):
     model.eval()
     try:
         total_loss = 0.0
-        correct = 0
+        mistakes = []
         with torch.inference_mode():
-            for inputs, labels in batches:
+            for batch_index, (inputs, labels) in enumerate(batches):
                 logits = one_logit_per_label(model(**inputs), labels)
-                total_loss += float(loss_fn(logits, labels).item()) * len(labels)
-                correct += int(((logits >= 0) == (labels == 1)).sum().item())
-        return total_loss / SAMPLE_SIZE, correct / SAMPLE_SIZE
+                loss = loss_fn(logits, labels)
+                if not bool(torch.isfinite(logits).all()) or not bool(torch.isfinite(loss)):
+                    raise RuntimeError("Nonfinite validation score or loss on the tiny sample")
+                total_loss += float(loss.item()) * len(labels)
+                wrong = ((logits >= 0) != (labels == 1)).nonzero().flatten().tolist()
+                mistakes.extend((batch_index * BATCH_SIZE + index,
+                                 float(torch.sigmoid(logits[index]).item()))
+                                for index in wrong)
+        return total_loss / SAMPLE_SIZE, 1 - len(mistakes) / SAMPLE_SIZE, mistakes
     finally:
         model.train(was_training)
 
@@ -51,10 +57,11 @@ def main() -> None:
     loss_fn = torch.nn.BCEWithLogitsLoss()
     optimizer = torch.optim.AdamW(model.parameters(), lr=LEARNING_RATE)
 
-    initial_loss, initial_accuracy = measure(model, batches, loss_fn)
+    initial_loss, initial_accuracy, mistakes = measure(model, batches, loss_fn)
     print(f"Device: {device}; fixed training pairs: {SAMPLE_SIZE}; "
           f"batch size: {BATCH_SIZE}; max steps: {args.max_steps}", flush=True)
     print(f"step=0 sample_loss={initial_loss:.4f} sample_accuracy={initial_accuracy:.1%}", flush=True)
+    print(f"step=0 mistakes={len(mistakes)}", flush=True)
     final_loss, final_accuracy = initial_loss, initial_accuracy
     for step in range(1, args.max_steps + 1):
         model.train()
@@ -62,14 +69,23 @@ def main() -> None:
         optimizer.zero_grad(set_to_none=True)
         logits = one_logit_per_label(model(**inputs), labels)
         loss = loss_fn(logits, labels)
-        if not bool(torch.isfinite(loss)):
-            raise RuntimeError(f"Nonfinite training loss at step {step}")
+        if not bool(torch.isfinite(logits).all()) or not bool(torch.isfinite(loss)):
+            raise RuntimeError(f"Nonfinite training score or loss at step {step}")
         loss.backward()
+        if any(parameter.grad is not None and not bool(torch.isfinite(parameter.grad).all())
+               for parameter in model.parameters()):
+            raise RuntimeError(f"Nonfinite gradient at step {step}")
         optimizer.step()
         if step % 10 == 0 or step == args.max_steps:
-            final_loss, final_accuracy = measure(model, batches, loss_fn)
+            final_loss, final_accuracy, mistakes = measure(model, batches, loss_fn)
             print(f"step={step} sample_loss={final_loss:.4f} "
-                  f"sample_accuracy={final_accuracy:.1%}", flush=True)
+                  f"sample_accuracy={final_accuracy:.1%} mistakes={len(mistakes)}", flush=True)
+            for index, probability in mistakes[:2]:
+                row = rows[index]
+                print(f"  wrong pair {index + 1}: label={row['label']} "
+                      f"probability={probability:.4f} "
+                      f"query={row['query'][:80]!r} "
+                      f"document={row['document'][:100]!r}", flush=True)
             if final_loss < 0.1 and final_accuracy == 1.0:
                 print("Tiny-sample fit confirmed; stopping early.", flush=True)
                 break
