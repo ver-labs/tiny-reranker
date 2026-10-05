@@ -124,9 +124,9 @@ the saved initial random weights, selects MPS when available, and calls
 `model.train()` to enable training behavior such as dropout. This check does
 read one dynamically padded batch of 16 cleaned training pairs with
 `num_workers=0`; it runs a full-batch forward pass and a one-item shape check,
-but does not calculate a loss,
-backpropagate, or update weights. It moves the numeric inputs and labels to the selected device
-while leaving string IDs in Python.
+then calculates `BCEWithLogitsLoss` on the raw scores and float labels. It
+does not backpropagate or update weights. Numeric inputs and labels move to
+the selected device while string IDs stay in Python.
 The script calls `model.zero_grad(set_to_none=True)` before the forward pass,
 so no old parameter gradients carry into a future backward pass.
 The logit-shape check accepts one score per label and verifies that a
