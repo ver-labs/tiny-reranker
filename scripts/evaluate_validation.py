@@ -75,8 +75,9 @@ def evaluate_buffer(reranker, rows: list[dict], output) -> tuple[int, float, flo
     return len(rows), mrr_total, ndcg_total, no_relevant
 
 
-def evaluate_model(name: str, reranker, expected_queries: int,
+def evaluate_model(name: str, reranker, expected: dict,
                    candidate_hash: str, training_history: str) -> dict:
+    expected_queries = expected["evaluable_queries"]
     RESULT_DIR.mkdir(parents=True, exist_ok=True)
     rankings = RESULT_DIR / f"{name}_rankings.jsonl"
     temporary = rankings.with_suffix(".jsonl.tmp")
@@ -114,8 +115,13 @@ def evaluate_model(name: str, reranker, expected_queries: int,
         "candidate_sha256": candidate_hash,
         "rankings_file": str(rankings.relative_to(ROOT)),
         "queries": count,
+        "source_query_ids": expected["source_query_ids"],
+        "metric_denominator": count,
+        "queries_excluded_no_clean_pairs": expected["queries_with_no_clean_pairs"],
+        "queries_excluded_empty_after_document_dedup": expected["queries_empty_after_document_dedup"],
+        "zero_candidate_policy": "Cannot rank an empty list; exclude from metric denominator and report the count.",
         "queries_without_relevant_candidate": no_relevant,
-        "no_relevant_policy": "MRR@10 and nDCG@10 are zero",
+        "no_relevant_policy": "Include nonempty candidate lists; MRR@10 and nDCG@10 are zero when no candidate is relevant.",
         "mrr_at_10": mrr_total / count,
         "ndcg_at_10": ndcg_total / count,
         "tie_break": "document ID ascending when scores tie",
@@ -144,13 +150,13 @@ def main() -> None:
     if sha256_file(CANDIDATES) != expected["sha256"]:
         raise RuntimeError("Validation candidate file differs from its manifest")
     baseline = BaselineReranker(max_length=MAX_LENGTH, batch_size=PAIR_BATCH_SIZE)
-    evaluate_model("minilm", baseline, expected["evaluable_queries"], expected["sha256"],
+    evaluate_model("minilm", baseline, expected, expected["sha256"],
                    "Pretrained on MS MARCO; validation queries may have been seen.")
     del baseline
     if torch.backends.mps.is_available():
         torch.mps.empty_cache()
     random_model = RandomReranker()
-    evaluate_model("random_scratch", random_model, expected["evaluable_queries"],
+    evaluate_model("random_scratch", random_model, expected,
                    expected["sha256"],
                    "Saved random initial weights; no training. Sanity-check reference only.")
 
