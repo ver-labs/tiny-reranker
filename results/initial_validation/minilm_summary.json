@@ -1,0 +1,54 @@
+{
+  "model": "minilm",
+  "model_id": "cross-encoder/ms-marco-MiniLM-L6-v2",
+  "revision": "233902d25c440f23af6f7d6e94d2946bac0bee0a",
+  "input_format": "Tokenizer query/document pair with pair special tokens and attention mask; sequence-classification logit.",
+  "training_history": "Pretrained on MS MARCO; these validation queries are not established as unseen.",
+  "evaluation": "constructed validation candidate lists; sampled, not leaderboard comparable",
+  "candidate_sha256": "6b71ca5ff41401142e0726755b278a67b797516b246f605bfbbb9242840fe1db",
+  "sample_manifest": "results/initial_validation_sample.json",
+  "rankings_file": "results/initial_validation/minilm_rankings.jsonl",
+  "queries": 128,
+  "queries_without_relevant_candidate": 0,
+  "no_relevant_policy": "MRR@10 and nDCG@10 are zero",
+  "mrr_at_10": 0.890625,
+  "ndcg_at_10": 0.9192658835937564,
+  "backend": "mps",
+  "precision": "torch.float32",
+  "truncation_max_tokens": 128,
+  "pair_batch_size": 2,
+  "parameter_count": 22713601,
+  "timing": {
+    "scope": "whole rerank call including tokenization, scoring, sorting, and CPU results",
+    "warmup_calls": 10,
+    "queries_per_repeat": 16,
+    "repeat_seconds": [
+      0.1522514580283314,
+      0.12609979207627475,
+      0.17893866589292884
+    ],
+    "median_seconds": 0.1522514580283314,
+    "range_seconds": [
+      0.12609979207627475,
+      0.17893866589292884
+    ],
+    "memory_snapshots": [
+      {
+        "measurement": "MPS current allocation snapshot after timed call, bytes",
+        "tensor_allocated": 91166976,
+        "driver_allocated": 1099628544
+      },
+      {
+        "measurement": "MPS current allocation snapshot after timed call, bytes",
+        "tensor_allocated": 91166976,
+        "driver_allocated": 1099628544
+      },
+      {
+        "measurement": "MPS current allocation snapshot after timed call, bytes",
+        "tensor_allocated": 91166976,
+        "driver_allocated": 1099628544
+      }
+    ],
+    "memory_note": "Snapshots after each run, not peak usage; driver allocation includes context and cache."
+  }
+}
