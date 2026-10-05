@@ -165,3 +165,16 @@ The tiny-fit weights existed only in that process. For the real experiment,
 diagnostic, all 57 loaded state tensors were checked on MPS and exactly
 matched the saved random initialization; the checkpoint hash remained
 `a8f10b4e4ae63ef1a4b796ab4122575c5f72afbb2a7a7a51ef49a7548c3602ee`.
+
+Run `python -m scripts.short_epoch` for one bounded epoch over the first
+1,024 cleaned training pairs. Each pair is used once in a batch of 16, giving
+64 optimizer steps. The script compares binary loss and accuracy on 128 fixed
+validation pairs before and after, checks finite scores, losses, and gradients,
+and saves a trial checkpoint and `results/short_epoch_1024.json` with sample
+ID hashes. It never reads the test split. These pair-level diagnostics are
+not the query-ranking metrics used for the final comparison.
+On MPS, the completed run had a mean training loss of 0.6951. Validation
+BCE loss changed from 0.7057 to 0.6863 and binary accuracy from 50.0% to
+56.2%. All 1,024 selected pair IDs were used exactly once. The checkpoint
+hash was verified after saving, and all 57 model state tensors differed from
+the initial random state.
