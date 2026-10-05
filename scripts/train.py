@@ -71,6 +71,28 @@ def one_logit_per_label(raw_logits: torch.Tensor,
     return logits
 
 
+def inspect_gradients(model: ScratchReranker) -> tuple[int, dict[str, float]]:
+    """Require finite gradients and report representative gradient norms."""
+    named = dict(model.named_parameters())
+    trainable = 0
+    for name, parameter in named.items():
+        if not parameter.requires_grad:
+            continue
+        trainable += 1
+        if parameter.grad is None:
+            raise RuntimeError(f"Missing gradient: {name}")
+        if not bool(torch.isfinite(parameter.grad).all()):
+            raise RuntimeError(f"Nonfinite gradient: {name}")
+    selected = (
+        "token_embeddings.weight",
+        "encoder_layers.0.self_attn.in_proj_weight",
+        "scoring_head.weight",
+    )
+    norms = {name: float(torch.linalg.vector_norm(named[name].grad).item())
+             for name in selected}
+    return trainable, norms
+
+
 def main() -> None:
     model, device = load_training_model()
     assert model.training and all(module.training for module in model.modules())
@@ -107,6 +129,7 @@ def main() -> None:
     assert loss.ndim == 0 and bool(torch.isfinite(loss)) and loss.requires_grad
     loss.backward()
     assert model.scoring_head.weight.grad is not None
+    gradient_count, gradient_norms = inspect_gradients(model)
     assert torch.equal(model.scoring_head.weight.detach(), initial_head)
     print(f"Device: {device}")
     print(f"Training mode enabled: {model.training}")
@@ -119,7 +142,8 @@ def main() -> None:
     print(f"Forward output: {tuple(logits.shape)} finite raw scores; first four: {logits.detach().cpu().tolist()[:4]}")
     print(f"One-item output keeps batch dimension: {tuple(one_item_logits.shape)}")
     print(f"Binary cross-entropy loss: {loss.item():.6f}")
-    print("Backward pass completed; scoring head received a gradient")
+    print(f"Backward pass completed; {gradient_count} trainable parameter tensors have finite gradients")
+    print(f"Representative gradient norms: {gradient_norms}")
     print("Weights unchanged; no optimizer step run")
 
 

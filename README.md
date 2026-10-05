@@ -125,7 +125,8 @@ the saved initial random weights, selects MPS when available, and calls
 read one dynamically padded batch of 16 cleaned training pairs with
 `num_workers=0`; it runs a full-batch forward pass and a one-item shape check,
 then calculates `BCEWithLogitsLoss` on the raw scores and float labels. It
-calls `loss.backward()` and checks that the scoring head receives a gradient,
+calls `loss.backward()`, checks every trainable parameter gradient for finite
+values, and prints representative gradient norms,
 but does not update weights. Numeric inputs and labels move to
 the selected device while string IDs stay in Python.
 The script calls `model.zero_grad(set_to_none=True)` before the forward pass,
