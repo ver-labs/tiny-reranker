@@ -1,0 +1,20 @@
+{
+  "dataset_id": "sentence-transformers/msmarco-bm25",
+  "subset": "triplet",
+  "revision": "ce8a493a65af5e872c3c92f72a89e2e99e175f02",
+  "pair_key": "SHA-256 of exact source query and document strings as a JSON array",
+  "source_triplets": 502931,
+  "valid_triplets": 502931,
+  "pair_occurrences": 1005862,
+  "same_label_duplicate_occurrences_removed": 0,
+  "conflicting_pairs_flagged_and_excluded": 43904,
+  "opposite_label_occurrences": 43904,
+  "clean_pairs": 918054,
+  "clean_pairs_by_split": {
+    "train": 735276,
+    "validation": 91432,
+    "test": 91346
+  },
+  "clean_file": "data/processed/clean_pairs.jsonl",
+  "conflict_file": "data/processed/conflicting_pairs.jsonl"
+}
