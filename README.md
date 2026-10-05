@@ -237,6 +237,13 @@ The demonstration continued the separate resume-ready run through epoch 2:
 optimizer parameter states. Its 128-pair validation loss rose from 0.6863 to
 0.7426 and accuracy changed from 56.2% to 55.5%, so it is a resume example,
 not an improved model or a replacement for the earlier full-validation result.
+To verify stop and resume, a later process loaded the epoch-2 checkpoint and
+confirmed AdamW already held 57 parameter states at step 128, with nonzero
+scoring-head momentum. It trained one more complete epoch and saved epoch 3
+at update 192. Reloading that checkpoint confirmed AdamW step 192, so the
+optimizer and counters continued instead of resetting. Its 128-pair
+validation loss was 0.6200 with 61.7% binary accuracy; this is a small
+pair-level check, not a full ranking evaluation of the epoch-3 model.
 Checkpoint writes now use a temporary file in the destination directory.
 The temporary file is loaded successfully before it is renamed to the final
 checkpoint path; reports and manifests are written atomically too. Existing

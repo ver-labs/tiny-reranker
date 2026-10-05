@@ -25,9 +25,24 @@ def latest_checkpoint() -> Path:
     return later[-1] if later else RESUME_CHECKPOINT
 
 
+def optimizer_progress(model, optimizer) -> tuple[int, int, float]:
+    """Read AdamW step counters and scoring-head momentum without changing them."""
+    states = optimizer.state_dict()["state"]
+    if len(states) != len(list(model.parameters())):
+        raise RuntimeError("Optimizer is missing parameter states")
+    steps = {int(state["step"].item()) for state in states.values()}
+    if len(steps) != 1:
+        raise RuntimeError(f"Optimizer parameters have inconsistent step counts: {steps}")
+    head_state = optimizer.state[model.scoring_head.weight]
+    momentum_norm = float(torch.linalg.vector_norm(head_state["exp_avg"]).item())
+    if not torch.isfinite(torch.tensor(momentum_norm)) or momentum_norm <= 0:
+        raise RuntimeError("Scoring-head optimizer momentum is missing or invalid")
+    return steps.pop(), len(states), momentum_norm
+
+
 def save_epoch(checkpoint: Path, parent: Path, model, optimizer, device,
                epoch: int, updates: int, validation_loss: float,
-               validation_accuracy: float) -> None:
+               validation_accuracy: float, resume_check: dict) -> None:
     """Write one immutable resume checkpoint only after the full epoch."""
     if checkpoint.exists() or checkpoint.with_suffix(".json").exists():
         raise FileExistsError(f"Epoch checkpoint already exists: {checkpoint}")
@@ -59,6 +74,7 @@ def save_epoch(checkpoint: Path, parent: Path, model, optimizer, device,
         "gradient_scaler_enabled": False,
         "validation_pair_bce_loss": validation_loss,
         "validation_pair_accuracy": validation_accuracy,
+        "resume_verification": resume_check,
     }
     atomic_write_text(json.dumps(manifest, indent=2) + "\n",
                       checkpoint.with_suffix(".json"))
@@ -91,7 +107,14 @@ def main() -> None:
     loss_fn = torch.nn.BCEWithLogitsLoss()
     print(f"Continuing from {parent.name} on {device}: {completed} completed epochs, "
           f"{updates} updates", flush=True)
+    restored_steps, parameter_states, momentum_before = optimizer_progress(model, optimizer)
+    if restored_steps != updates:
+        raise RuntimeError("Optimizer step count reset or differs from saved update count")
+    print(f"Restored AdamW: {parameter_states} parameter states, step={restored_steps}, "
+          f"scoring-head momentum norm={momentum_before:.6g}", flush=True)
     for epoch in range(completed + 1, completed + args.epochs + 1):
+        updates_before = updates
+        momentum_at_start = momentum_before
         model.train()
         seen_ids = set()
         seen = 0
@@ -114,15 +137,29 @@ def main() -> None:
             loss_total += float(loss.detach().item()) * len(labels)
         if seen != TRAIN_COUNT or len(seen_ids) != TRAIN_COUNT:
             raise RuntimeError("Epoch did not use every selected pair exactly once")
+        optimizer_steps, parameter_states, momentum_after = optimizer_progress(model, optimizer)
+        if optimizer_steps != updates or updates - updates_before != len(train_loader):
+            raise RuntimeError("Optimizer steps did not continue through the full epoch")
+        resume_check = {
+            "update_count_before_epoch": updates_before,
+            "optimizer_step_before_epoch": restored_steps,
+            "optimizer_step_after_epoch": optimizer_steps,
+            "optimizer_parameter_states": parameter_states,
+            "scoring_head_momentum_norm_before": momentum_at_start,
+            "scoring_head_momentum_norm_after": momentum_after,
+        }
         validation_loss, validation_accuracy = measure(model, validation_loader, device, loss_fn)
         checkpoint = ROOT / "checkpoints" / f"short_epoch_1024_epoch_{epoch:04d}.pt"
         save_epoch(checkpoint, parent, model, optimizer, device, epoch, updates,
-                   validation_loss, validation_accuracy)
+                   validation_loss, validation_accuracy, resume_check)
         print(f"epoch={epoch} updates={updates} train_loss={loss_total / seen:.4f} "
               f"validation_loss={validation_loss:.4f} "
               f"validation_accuracy={validation_accuracy:.1%} "
+              f"optimizer_step={optimizer_steps} "
               f"saved={checkpoint.name}", flush=True)
         parent = checkpoint
+        restored_steps = optimizer_steps
+        momentum_before = momentum_after
 
 
 if __name__ == "__main__":
