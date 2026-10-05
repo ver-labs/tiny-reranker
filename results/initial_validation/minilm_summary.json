@@ -9,8 +9,9 @@
   "sample_manifest": "results/initial_validation_sample.json",
   "rankings_file": "results/initial_validation/minilm_rankings.jsonl",
   "queries": 128,
+  "sample_drawn_from_evaluable_query_ids": true,
   "queries_without_relevant_candidate": 0,
-  "no_relevant_policy": "MRR@10 and nDCG@10 are zero",
+  "no_relevant_policy": "Include nonempty candidate lists; MRR@10 and nDCG@10 are zero when no candidate is relevant.",
   "mrr_at_10": 0.890625,
   "ndcg_at_10": 0.9192658835937564,
   "backend": "mps",
@@ -18,37 +19,65 @@
   "truncation_max_tokens": 128,
   "pair_batch_size": 2,
   "parameter_count": 22713601,
+  "startup": {
+    "model_and_tokenizer_load_seconds": 1.18501454195939,
+    "excluded_from_rerank_timing": true,
+    "note": "Measured in this run with the current file cache; not a cold-start benchmark."
+  },
   "timing": {
     "scope": "whole rerank call including tokenization, scoring, sorting, and CPU results",
     "warmup_calls": 10,
     "queries_per_repeat": 16,
     "repeat_seconds": [
-      0.1522514580283314,
-      0.12609979207627475,
-      0.17893866589292884
+      0.1412144999485463,
+      0.16860004095360637,
+      0.09479154110886157
     ],
-    "median_seconds": 0.1522514580283314,
+    "median_seconds": 0.1412144999485463,
     "range_seconds": [
-      0.12609979207627475,
-      0.17893866589292884
+      0.09479154110886157,
+      0.16860004095360637
     ],
     "memory_snapshots": [
       {
         "measurement": "MPS current allocation snapshot after timed call, bytes",
         "tensor_allocated": 91166976,
-        "driver_allocated": 1099628544
+        "driver_allocated": 1099628544,
+        "tensor_allocated_label": "torch.mps.current_allocated_memory(): current tensor allocation, bytes",
+        "driver_allocated_label": "torch.mps.driver_allocated_memory(): current driver allocation including cache, bytes"
       },
       {
         "measurement": "MPS current allocation snapshot after timed call, bytes",
         "tensor_allocated": 91166976,
-        "driver_allocated": 1099628544
+        "driver_allocated": 1099628544,
+        "tensor_allocated_label": "torch.mps.current_allocated_memory(): current tensor allocation, bytes",
+        "driver_allocated_label": "torch.mps.driver_allocated_memory(): current driver allocation including cache, bytes"
       },
       {
         "measurement": "MPS current allocation snapshot after timed call, bytes",
         "tensor_allocated": 91166976,
-        "driver_allocated": 1099628544
+        "driver_allocated": 1099628544,
+        "tensor_allocated_label": "torch.mps.current_allocated_memory(): current tensor allocation, bytes",
+        "driver_allocated_label": "torch.mps.driver_allocated_memory(): current driver allocation including cache, bytes"
       }
     ],
     "memory_note": "Snapshots after each run, not peak usage; driver allocation includes context and cache."
+  },
+  "model_only_timing": {
+    "scope": "forward passes only on pretokenized device inputs; excludes tokenization, CPU transfer, and sorting",
+    "warmup_calls": 10,
+    "queries_per_repeat": 16,
+    "pairs_per_repeat": 32,
+    "forward_calls_per_repeat": 16,
+    "repeat_seconds": [
+      0.07947570807300508,
+      0.07930133305490017,
+      0.11280366708524525
+    ],
+    "median_seconds": 0.07947570807300508,
+    "range_seconds": [
+      0.07930133305490017,
+      0.11280366708524525
+    ]
   }
 }
