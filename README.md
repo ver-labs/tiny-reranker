@@ -124,4 +124,5 @@ the saved initial random weights, selects MPS when available, and calls
 `model.train()` to enable training behavior such as dropout. This check does
 read one dynamically padded batch of 16 cleaned training pairs with
 `num_workers=0`; it does not run a forward pass, calculate gradients, or
-update weights.
+update weights. It moves the numeric inputs and labels to the selected device
+while leaving string IDs in Python.

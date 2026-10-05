@@ -33,8 +33,9 @@ def load_training_model() -> tuple[ScratchReranker, torch.device]:
     model = ScratchReranker(config)
     model.load_state_dict(saved["model_state_dict"], strict=True)
 
-    device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
-    model = model.to(device)
+    requested_device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
+    model = model.to(requested_device)
+    device = next(model.parameters()).device
     model.train()
     return model, device
 
@@ -47,6 +48,13 @@ def make_training_loader(config: ScratchConfig):
         dataset, tokenizer, batch_size=TRAIN_BATCH_SIZE,
         max_length=config.max_length, shuffle=False,
     )
+
+
+def move_batch_to_device(batch: dict, device: torch.device):
+    """Move model inputs and numeric labels; keep string IDs on the CPU."""
+    inputs = batch["inputs"].to(device)
+    labels = batch["labels"].to(device)
+    return inputs, labels
 
 
 def main() -> None:
@@ -63,12 +71,17 @@ def main() -> None:
     assert batch["labels"].shape == (TRAIN_BATCH_SIZE,)
     assert batch["labels"].dtype == torch.float32
     assert len(batch["query_ids"]) == len(batch["document_ids"]) == len(batch["pair_ids"]) == TRAIN_BATCH_SIZE
+    inputs, labels = move_batch_to_device(batch, device)
+    assert all(tensor.device == device for tensor in inputs.values())
+    assert labels.device == device
+    assert next(model.parameters()).device == device
     print(f"Device: {device}")
     print(f"Training mode enabled: {model.training}")
     print(f"Training pairs available: {len(loader.dataset):,}")
     print(f"Read one batch: {TRAIN_BATCH_SIZE} pairs, token shape {tuple(inputs['input_ids'].shape)}")
-    print(f"Labels: {batch['labels'].tolist()}")
+    print(f"Labels: {labels.cpu().tolist()}")
     print(f"IDs aligned: {len(batch['pair_ids'])} pair IDs; DataLoader workers: {loader.num_workers}")
+    print(f"Model inputs and labels on: {device}; string IDs remain in Python")
     print("No forward pass or optimizer step run")
 
 
