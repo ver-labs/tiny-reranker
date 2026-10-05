@@ -57,6 +57,20 @@ def move_batch_to_device(batch: dict, device: torch.device):
     return inputs, labels
 
 
+def one_logit_per_label(raw_logits: torch.Tensor,
+                        labels: torch.Tensor) -> torch.Tensor:
+    """Remove only a trailing score dimension, preserving batch size one."""
+    if raw_logits.ndim == 2 and raw_logits.shape[1] == 1:
+        logits = raw_logits.squeeze(-1)
+    elif raw_logits.ndim == 1:
+        logits = raw_logits
+    else:
+        raise ValueError(f"Expected [batch] or [batch, 1] logits, got {tuple(raw_logits.shape)}")
+    if logits.shape != labels.shape:
+        raise ValueError(f"Logit shape {tuple(logits.shape)} differs from labels {tuple(labels.shape)}")
+    return logits
+
+
 def main() -> None:
     model, device = load_training_model()
     assert model.training and all(module.training for module in model.modules())
@@ -78,10 +92,17 @@ def main() -> None:
     model.zero_grad(set_to_none=True)
     assert all(parameter.grad is None for parameter in model.parameters())
     initial_head = model.scoring_head.weight.detach().clone()
-    logits = model(**inputs)
+    logits = one_logit_per_label(model(**inputs), labels)
     assert logits.shape == (TRAIN_BATCH_SIZE,)
     assert bool(torch.isfinite(logits).all())
     assert logits.requires_grad
+    one_item_inputs = {name: tensor[:1] for name, tensor in inputs.items()}
+    # Keep training-mode gradient tracking; MPS cannot run attention dropout
+    # through its no_grad scaled-dot-product-attention path.
+    one_item_raw = model(**one_item_inputs)
+    assert one_item_raw.shape == (1,)
+    one_item_logits = one_logit_per_label(one_item_raw, labels[:1])
+    assert one_item_logits.shape == (1,)
     assert torch.equal(model.scoring_head.weight.detach(), initial_head)
     print(f"Device: {device}")
     print(f"Training mode enabled: {model.training}")
@@ -92,6 +113,7 @@ def main() -> None:
     print(f"Model inputs and labels on: {device}; string IDs remain in Python")
     print("Old gradients cleared: all parameter gradients are None")
     print(f"Forward output: {tuple(logits.shape)} finite raw scores; first four: {logits.detach().cpu().tolist()[:4]}")
+    print(f"One-item output keeps batch dimension: {tuple(one_item_logits.shape)}")
     print("Weights unchanged; no backward pass or optimizer step run")
 
 
