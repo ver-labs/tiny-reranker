@@ -77,6 +77,12 @@ def main() -> None:
     assert next(model.parameters()).device == device
     model.zero_grad(set_to_none=True)
     assert all(parameter.grad is None for parameter in model.parameters())
+    initial_head = model.scoring_head.weight.detach().clone()
+    logits = model(**inputs)
+    assert logits.shape == (TRAIN_BATCH_SIZE,)
+    assert bool(torch.isfinite(logits).all())
+    assert logits.requires_grad
+    assert torch.equal(model.scoring_head.weight.detach(), initial_head)
     print(f"Device: {device}")
     print(f"Training mode enabled: {model.training}")
     print(f"Training pairs available: {len(loader.dataset):,}")
@@ -85,7 +91,8 @@ def main() -> None:
     print(f"IDs aligned: {len(batch['pair_ids'])} pair IDs; DataLoader workers: {loader.num_workers}")
     print(f"Model inputs and labels on: {device}; string IDs remain in Python")
     print("Old gradients cleared: all parameter gradients are None")
-    print("No forward pass or optimizer step run")
+    print(f"Forward output: {tuple(logits.shape)} finite raw scores; first four: {logits.detach().cpu().tolist()[:4]}")
+    print("Weights unchanged; no backward pass or optimizer step run")
 
 
 if __name__ == "__main__":
