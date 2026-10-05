@@ -2,17 +2,19 @@
 
 import hashlib
 import json
+import os
 from pathlib import Path
-from typing import Iterator
+from typing import BinaryIO, Iterator
 
 import torch
 from datasets import load_dataset
-from torch.utils.data import IterableDataset
+from torch.utils.data import Dataset, IterableDataset
 
 from .scratch_tokenizer import encode_pairs
 
 
 MANIFEST = Path(__file__).resolve().parent.parent / "data" / "manifests" / "msmarco_bm25_triplet.json"
+CLEAN_PAIRS = Path(__file__).resolve().parent.parent / "data" / "processed" / "clean_pairs.jsonl"
 
 
 def normalized_query(query: str) -> str:
@@ -23,9 +25,86 @@ def query_id(query: str) -> str:
     return hashlib.sha256(normalized_query(query).encode("utf-8")).hexdigest()
 
 
+def document_id(document: str) -> str:
+    return hashlib.sha256(document.encode("utf-8")).hexdigest()
+
+
 def split_for_query(query: str) -> str:
     bucket = int(query_id(query)[:16], 16) % 10
     return "train" if bucket < 8 else "validation" if bucket == 8 else "test"
+
+
+def clean_pair_example(row: dict) -> dict[str, str | int]:
+    return {
+        "query": row["query"],
+        "document": row["document"],
+        "label": row["label"],
+        "query_id": row["query_id"],
+        "document_id": document_id(row["document"]),
+        "pair_id": row["pair_id"],
+    }
+
+
+def iter_clean_pairs(split: str, path: Path = CLEAN_PAIRS) -> Iterator[dict[str, str | int]]:
+    """Yield cleaned examples for one split, reading one JSONL row at a time."""
+    if split not in {"train", "validation", "test"}:
+        raise ValueError("split must be train, validation, or test")
+    with Path(path).open(encoding="utf-8") as source:
+        for line in source:
+            row = json.loads(line)
+            if row["split"] == split:
+                yield clean_pair_example(row)
+
+
+class CleanPairDataset(Dataset):
+    """Index cleaned pairs by split without loading all passage text into memory."""
+
+    def __init__(self, split: str, path: Path = CLEAN_PAIRS) -> None:
+        if split not in {"train", "validation", "test"}:
+            raise ValueError("split must be train, validation, or test")
+        self.split = split
+        self.path = Path(path)
+        if not self.path.is_file():
+            raise FileNotFoundError(f"Clean pair file not found: {self.path}")
+        self.offsets: list[int] = []
+        with self.path.open("rb") as source:
+            while True:
+                offset = source.tell()
+                line = source.readline()
+                if not line:
+                    break
+                if json.loads(line)["split"] == split:
+                    self.offsets.append(offset)
+        self._reader: BinaryIO | None = None
+        self._reader_pid: int | None = None
+
+    def __len__(self) -> int:
+        return len(self.offsets)
+
+    def __getitem__(self, index: int) -> dict[str, str | int]:
+        offset = self.offsets[index]
+        pid = os.getpid()
+        if self._reader is None or self._reader_pid != pid:
+            if self._reader is not None:
+                self._reader.close()
+            self._reader = self.path.open("rb")
+            self._reader_pid = pid
+        self._reader.seek(offset)
+        row = json.loads(self._reader.readline())
+        if row["split"] != self.split:
+            raise RuntimeError("Indexed pair belongs to a different split")
+        return clean_pair_example(row)
+
+    def __getstate__(self) -> dict:
+        state = self.__dict__.copy()
+        state["_reader"] = None
+        state["_reader_pid"] = None
+        return state
+
+    def __del__(self) -> None:
+        reader = getattr(self, "_reader", None)
+        if reader is not None:
+            reader.close()
 
 
 class TripletStream(IterableDataset):
