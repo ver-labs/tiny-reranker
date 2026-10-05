@@ -122,4 +122,6 @@ split has not been scored.
 Run `python -m scripts.train` for the first training-loop check. It restores
 the saved initial random weights, selects MPS when available, and calls
 `model.train()` to enable training behavior such as dropout. This check does
-not read a batch, calculate gradients, or update weights.
+read one dynamically padded batch of 16 cleaned training pairs with
+`num_workers=0`; it does not run a forward pass, calculate gradients, or
+update weights.

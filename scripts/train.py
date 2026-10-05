@@ -7,12 +7,16 @@ from pathlib import Path
 
 import torch
 
+from .collate import make_pair_loader
+from .data import CleanPairDataset
 from .model import ScratchConfig, ScratchReranker
+from .scratch_tokenizer import load_scratch_tokenizer
 
 
 ROOT = Path(__file__).resolve().parent.parent
 INITIAL_CHECKPOINT = ROOT / "checkpoints" / "initial_seed42.pt"
 INITIAL_MANIFEST = INITIAL_CHECKPOINT.with_suffix(".json")
+TRAIN_BATCH_SIZE = 16
 
 
 def load_training_model() -> tuple[ScratchReranker, torch.device]:
@@ -35,12 +39,37 @@ def load_training_model() -> tuple[ScratchReranker, torch.device]:
     return model, device
 
 
+def make_training_loader(config: ScratchConfig):
+    """Read only cleaned training pairs; keep loading in the main process."""
+    dataset = CleanPairDataset("train")
+    tokenizer = load_scratch_tokenizer()
+    return make_pair_loader(
+        dataset, tokenizer, batch_size=TRAIN_BATCH_SIZE,
+        max_length=config.max_length, shuffle=False,
+    )
+
+
 def main() -> None:
     model, device = load_training_model()
     assert model.training and all(module.training for module in model.modules())
+    loader = make_training_loader(model.config)
+    batch = next(iter(loader))
+    inputs = batch["inputs"]
+    assert loader.num_workers == 0
+    assert inputs["input_ids"].shape[0] == TRAIN_BATCH_SIZE
+    assert inputs["attention_mask"].shape == inputs["input_ids"].shape
+    assert inputs["token_type_ids"].shape == inputs["input_ids"].shape
+    assert inputs["input_ids"].dtype == torch.long
+    assert batch["labels"].shape == (TRAIN_BATCH_SIZE,)
+    assert batch["labels"].dtype == torch.float32
+    assert len(batch["query_ids"]) == len(batch["document_ids"]) == len(batch["pair_ids"]) == TRAIN_BATCH_SIZE
     print(f"Device: {device}")
     print(f"Training mode enabled: {model.training}")
-    print("Initial random weights restored; no batch or optimizer step run")
+    print(f"Training pairs available: {len(loader.dataset):,}")
+    print(f"Read one batch: {TRAIN_BATCH_SIZE} pairs, token shape {tuple(inputs['input_ids'].shape)}")
+    print(f"Labels: {batch['labels'].tolist()}")
+    print(f"IDs aligned: {len(batch['pair_ids'])} pair IDs; DataLoader workers: {loader.num_workers}")
+    print("No forward pass or optimizer step run")
 
 
 if __name__ == "__main__":
