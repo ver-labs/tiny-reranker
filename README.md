@@ -98,7 +98,9 @@ queries; the archived all-data checkpoint is not suitable for held-out testing.
 Run `python -m scripts.evaluate_initial` for the first validation comparison.
 It saves 128 fixed validation query IDs, per-query rankings, MRR@10 and
 nDCG@10, plus warm-up and repeated whole-rerank timing in
-`results/initial_validation/`. MiniLM scored 0.8906 MRR@10 and 0.9193
+`results/initial_validation/`. It records model and tokenizer loading as
+startup time outside the timed rerank calls, plus a separate forward-pass
+measurement on pretokenized inputs. MiniLM scored 0.8906 MRR@10 and 0.9193
 nDCG@10; the untrained scratch model scored 0.7891 and 0.8443. Both used
 MPS, float32, a 128-token maximum, and pair batches of 2. The random model
 is a pipeline sanity check, not a competitive baseline. These sampled,
@@ -110,6 +112,9 @@ candidate list with both models. It saves one ranked list and MRR@10/nDCG@10
 values per query in `results/full_validation/`, sorting tied scores by
 document ID. Across all 45,709 evaluable validation queries, MiniLM scored
 0.8599 MRR@10 and 0.8966 nDCG@10; the random scratch reference scored
-0.7576 and 0.8210. Queries with no relevant candidate would receive zero
-for both metrics; there were none in these constructed lists. The test split
-has not been scored.
+0.7576 and 0.8210. Of 50,189 source validation query IDs, 4,480 had no
+clean candidates after conflicting labels were removed and could not be
+ranked; they are excluded from the metric denominator and reported explicitly.
+Any nonempty candidate list with no relevant document remains in evaluation
+and receives zero for both metrics; there were none in this dataset. The test
+split has not been scored.
