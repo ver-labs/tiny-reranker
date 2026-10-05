@@ -126,10 +126,12 @@ read one dynamically padded batch of 16 cleaned training pairs with
 `num_workers=0`; it runs a full-batch forward pass and a one-item shape check,
 then calculates `BCEWithLogitsLoss` on the raw scores and float labels. It
 calls `loss.backward()`, checks every trainable parameter gradient for finite
-values, and prints representative gradient norms,
-but does not update weights. Numeric inputs and labels move to
+values, prints representative gradient norms, and performs one AdamW update
+at learning rate `3e-4`. Numeric inputs and labels move to
 the selected device while string IDs stay in Python.
-The script calls `model.zero_grad(set_to_none=True)` before the forward pass,
+The script calls `optimizer.zero_grad(set_to_none=True)` before the forward pass,
 so no old parameter gradients carry into this backward pass.
 The logit-shape check accepts one score per label and verifies that a
 one-item batch retains shape `(1,)` rather than becoming a scalar.
+This one-batch update is only a loop check; it is not saved as a trained
+checkpoint or evaluated as a trained model.

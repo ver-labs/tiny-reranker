@@ -17,6 +17,7 @@ ROOT = Path(__file__).resolve().parent.parent
 INITIAL_CHECKPOINT = ROOT / "checkpoints" / "initial_seed42.pt"
 INITIAL_MANIFEST = INITIAL_CHECKPOINT.with_suffix(".json")
 TRAIN_BATCH_SIZE = 16
+LEARNING_RATE = 3e-4
 
 
 def load_training_model() -> tuple[ScratchReranker, torch.device]:
@@ -111,7 +112,8 @@ def main() -> None:
     assert all(tensor.device == device for tensor in inputs.values())
     assert labels.device == device
     assert next(model.parameters()).device == device
-    model.zero_grad(set_to_none=True)
+    optimizer = torch.optim.AdamW(model.parameters(), lr=LEARNING_RATE)
+    optimizer.zero_grad(set_to_none=True)
     assert all(parameter.grad is None for parameter in model.parameters())
     initial_head = model.scoring_head.weight.detach().clone()
     logits = one_logit_per_label(model(**inputs), labels)
@@ -131,6 +133,10 @@ def main() -> None:
     assert model.scoring_head.weight.grad is not None
     gradient_count, gradient_norms = inspect_gradients(model)
     assert torch.equal(model.scoring_head.weight.detach(), initial_head)
+    optimizer.step()
+    head_change = float((model.scoring_head.weight.detach() - initial_head).abs().max().item())
+    assert head_change > 0
+    assert bool(torch.isfinite(model.scoring_head.weight).all())
     print(f"Device: {device}")
     print(f"Training mode enabled: {model.training}")
     print(f"Training pairs available: {len(loader.dataset):,}")
@@ -144,7 +150,8 @@ def main() -> None:
     print(f"Binary cross-entropy loss: {loss.item():.6f}")
     print(f"Backward pass completed; {gradient_count} trainable parameter tensors have finite gradients")
     print(f"Representative gradient norms: {gradient_norms}")
-    print("Weights unchanged; no optimizer step run")
+    print(f"AdamW step completed at learning rate {LEARNING_RATE:g}; scoring-head max weight change: {head_change:.6g}")
+    print("One batch updated in memory; no trained checkpoint saved")
 
 
 if __name__ == "__main__":
