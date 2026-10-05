@@ -1,0 +1,39 @@
+{
+  "evaluation_kind": "constructed MS MARCO mined-triplet candidate lists",
+  "dataset_revision": "ce8a493a65af5e872c3c92f72a89e2e99e175f02",
+  "input": "data/processed/clean_pairs.jsonl",
+  "input_sha256": "88383010f0f3dc755bbe975c2616ec6d7eee5e5e38285e6f9f6f949145f579a7",
+  "document_id": "SHA-256 of exact UTF-8 document text",
+  "candidate_order": "ascending document ID",
+  "use_same_saved_files_for_all_models": true,
+  "scope": "validation and test queries with at least one positive and one negative candidate",
+  "baseline_training_history": "External baseline was already trained on MS MARCO; unseen queries are not established for it.",
+  "scratch_training_rule": "Do not train on validation or test query IDs.",
+  "archived_checkpoint_limit": "The archived all-data scratch checkpoint saw held-out queries and is not eligible for held-out evaluation.",
+  "comparison_limit": "These constructed-list results are not directly comparable to published leaderboard scores.",
+  "clean_pairs_read": 918054,
+  "duplicate_document_id_occurrences": 17,
+  "ambiguous_document_ids_excluded": 0,
+  "splits": {
+    "validation": {
+      "candidate_file": "data/processed/eval_validation_candidates.jsonl",
+      "sha256": "6b71ca5ff41401142e0726755b278a67b797516b246f605bfbbb9242840fe1db",
+      "source_query_ids": 50189,
+      "queries_with_clean_pairs": 45709,
+      "queries_with_no_clean_pairs": 4480,
+      "single_label_queries_skipped": 0,
+      "evaluable_queries": 45709,
+      "candidates": 91424
+    },
+    "test": {
+      "candidate_file": "data/processed/eval_test_candidates.jsonl",
+      "sha256": "123d3d3380fdb9c3b6168467ada7b90aff45f236b70222f1da68f900ae8d0f8b",
+      "source_query_ids": 50112,
+      "queries_with_clean_pairs": 45665,
+      "queries_with_no_clean_pairs": 4447,
+      "single_label_queries_skipped": 0,
+      "evaluable_queries": 45665,
+      "candidates": 91337
+    }
+  }
+}
