@@ -213,3 +213,8 @@ checkpoint and inference bundle. `load_resume_state()` checks the sidecar hash
 and restores its model, optimizer, counters, and RNG states. A dry reload on
 MPS recovered 57 optimizer parameter states. The inference bundle does not
 contain optimizer or RNG state.
+When a scheduler or gradient scaler is added to training later, pass it to
+`save_resume_sidecar(...)`; its state will be saved with the other training
+state. `load_resume_state(...)` requires a factory for each saved optional
+component and restores its state. Neither component is enabled in the current
+run.

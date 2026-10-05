@@ -7,6 +7,8 @@
   "max_model_weight_difference": 0.00014388705312740058,
   "completed_epochs": 1,
   "update_count": 64,
+  "scheduler_enabled": false,
+  "gradient_scaler_enabled": false,
   "rng_backends": [
     "python",
     "numpy",

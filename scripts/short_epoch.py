@@ -28,8 +28,8 @@ RESUME_CHECKPOINT = ROOT / "checkpoints" / "short_epoch_1024_resume.pt"
 RESUME_MANIFEST = RESUME_CHECKPOINT.with_suffix(".json")
 
 
-def load_resume_state():
-    """Restore the separate run's model, optimizer, counters, and RNG state."""
+def load_resume_state(*, scheduler_factory=None, scaler_factory=None):
+    """Restore model, optimizer, optional components, counters, and RNG state."""
     manifest = json.loads(RESUME_MANIFEST.read_text(encoding="utf-8"))
     if hashlib.sha256(RESUME_CHECKPOINT.read_bytes()).hexdigest() != manifest["sha256"]:
         raise RuntimeError("Resume checkpoint differs from its manifest")
@@ -60,6 +60,18 @@ def load_resume_state():
                                   betas=tuple(settings["betas"]), eps=settings["eps"],
                                   weight_decay=settings["weight_decay"])
     optimizer.load_state_dict(saved["optimizer_state_dict"])
+    scheduler_state = saved.get("scheduler_state_dict")
+    scaler_state = saved.get("gradient_scaler_state_dict")
+    if scheduler_state is not None and scheduler_factory is None:
+        raise RuntimeError("A scheduler factory is required to restore its saved state")
+    if scaler_state is not None and scaler_factory is None:
+        raise RuntimeError("A gradient-scaler factory is required to restore its saved state")
+    scheduler = scheduler_factory(optimizer) if scheduler_state is not None else None
+    scaler = scaler_factory() if scaler_state is not None else None
+    if scheduler is not None:
+        scheduler.load_state_dict(scheduler_state)
+    if scaler is not None:
+        scaler.load_state_dict(scaler_state)
     rng = saved["rng_state"]
     random.setstate(rng["python"])
     numpy_rng = rng["numpy"]
@@ -71,7 +83,8 @@ def load_resume_state():
     if device.type == "mps":
         torch.mps.set_rng_state(rng["torch_mps"])
     model.train()
-    return model, optimizer, saved["completed_epochs"], saved["update_count"], device
+    return (model, optimizer, saved["completed_epochs"], saved["update_count"],
+            device, scheduler, scaler)
 
 
 def ids_hash(rows: list[dict]) -> str:
@@ -101,7 +114,8 @@ def measure(model, loader, device, loss_fn) -> tuple[float, float]:
         model.train(was_training)
 
 
-def save_resume_sidecar(model, optimizer, device, step, train_rows, validation_rows) -> None:
+def save_resume_sidecar(model, optimizer, device, step, train_rows, validation_rows,
+                        *, scheduler=None, scaler=None) -> None:
     """Save a separate run with all state needed to continue it."""
     report = json.loads(REPORT.read_text(encoding="utf-8"))
     if hashlib.sha256(CHECKPOINT.read_bytes()).hexdigest() != report["checkpoint_sha256"]:
@@ -119,9 +133,12 @@ def save_resume_sidecar(model, optimizer, device, step, train_rows, validation_r
         raise RuntimeError("Prepared samples differ from the evaluated run")
     source_config = json.loads((ROOT / "configs" / "scratch.json").read_text(encoding="utf-8"))
     numpy_state = np.random.get_state()
+    scaler_enabled = scaler is not None and (not hasattr(scaler, "is_enabled") or scaler.is_enabled())
     payload = {
         "model_state_dict": weights,
         "optimizer_state_dict": optimizer.state_dict(),
+        "scheduler_state_dict": scheduler.state_dict() if scheduler is not None else None,
+        "gradient_scaler_state_dict": scaler.state_dict() if scaler_enabled else None,
         "completed_epochs": 1,
         "update_count": step,
         "configuration": {
@@ -129,6 +146,8 @@ def save_resume_sidecar(model, optimizer, device, step, train_rows, validation_r
             "tokenizer_id": source_config["tokenizer_id"],
             "tokenizer_revision": source_config["tokenizer_revision"],
             "optimizer": "AdamW",
+            "scheduler": type(scheduler).__name__ if scheduler is not None else None,
+            "gradient_scaler": type(scaler).__name__ if scaler_enabled else None,
             "learning_rate": LEARNING_RATE,
             "betas": list(optimizer.defaults["betas"]),
             "eps": optimizer.defaults["eps"],
@@ -159,6 +178,9 @@ def save_resume_sidecar(model, optimizer, device, step, train_rows, validation_r
     if loaded["completed_epochs"] != 1 or loaded["update_count"] != step or \
             len(loaded["optimizer_state_dict"]["state"]) != len(list(model.parameters())):
         raise RuntimeError("Resume checkpoint lost epoch, step, or optimizer state")
+    if (scheduler is not None and loaded["scheduler_state_dict"] is None) or \
+            (scaler_enabled and loaded["gradient_scaler_state_dict"] is None):
+        raise RuntimeError("Resume checkpoint lost an enabled component's state")
     manifest = {
         "checkpoint": RESUME_CHECKPOINT.name,
         "sha256": hashlib.sha256(RESUME_CHECKPOINT.read_bytes()).hexdigest(),
@@ -168,6 +190,8 @@ def save_resume_sidecar(model, optimizer, device, step, train_rows, validation_r
         "max_model_weight_difference": max_weight_difference,
         "completed_epochs": 1,
         "update_count": step,
+        "scheduler_enabled": scheduler is not None,
+        "gradient_scaler_enabled": scaler_enabled,
         "rng_backends": ["python", "numpy", "torch_cpu"] +
                         (["torch_mps"] if device.type == "mps" else []),
     }
