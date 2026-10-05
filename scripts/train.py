@@ -95,6 +95,7 @@ def inspect_gradients(model: ScratchReranker) -> tuple[int, dict[str, float]]:
 
 
 def main() -> None:
+    step = 0
     model, device = load_training_model()
     assert model.training and all(module.training for module in model.modules())
     loader = make_training_loader(model.config)
@@ -134,6 +135,8 @@ def main() -> None:
     gradient_count, gradient_norms = inspect_gradients(model)
     assert torch.equal(model.scoring_head.weight.detach(), initial_head)
     optimizer.step()
+    step += 1
+    loss_value = float(loss.detach().item())
     head_change = float((model.scoring_head.weight.detach() - initial_head).abs().max().item())
     assert head_change > 0
     assert bool(torch.isfinite(model.scoring_head.weight).all())
@@ -147,7 +150,7 @@ def main() -> None:
     print("Old gradients cleared: all parameter gradients are None")
     print(f"Forward output: {tuple(logits.shape)} finite raw scores; first four: {logits.detach().cpu().tolist()[:4]}")
     print(f"One-item output keeps batch dimension: {tuple(one_item_logits.shape)}")
-    print(f"Binary cross-entropy loss: {loss.item():.6f}")
+    print(f"step={step} bce_loss={loss_value:.6f}")
     print(f"Backward pass completed; {gradient_count} trainable parameter tensors have finite gradients")
     print(f"Representative gradient norms: {gradient_norms}")
     print(f"AdamW step completed at learning rate {LEARNING_RATE:g}; scoring-head max weight change: {head_change:.6g}")

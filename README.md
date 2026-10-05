@@ -129,6 +129,7 @@ calls `loss.backward()`, checks every trainable parameter gradient for finite
 values, prints representative gradient norms, and performs one AdamW update
 at learning rate `3e-4`. Numeric inputs and labels move to
 the selected device while string IDs stay in Python.
+After the successful update it logs `step=1` and that batch's BCE loss.
 The script calls `optimizer.zero_grad(set_to_none=True)` before the forward pass,
 so no old parameter gradients carry into this backward pass.
 The logit-shape check accepts one score per label and verifies that a
