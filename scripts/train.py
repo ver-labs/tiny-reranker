@@ -105,6 +105,8 @@ def main() -> None:
     assert one_item_logits.shape == (1,)
     loss = torch.nn.BCEWithLogitsLoss()(logits, labels)
     assert loss.ndim == 0 and bool(torch.isfinite(loss)) and loss.requires_grad
+    loss.backward()
+    assert model.scoring_head.weight.grad is not None
     assert torch.equal(model.scoring_head.weight.detach(), initial_head)
     print(f"Device: {device}")
     print(f"Training mode enabled: {model.training}")
@@ -117,7 +119,8 @@ def main() -> None:
     print(f"Forward output: {tuple(logits.shape)} finite raw scores; first four: {logits.detach().cpu().tolist()[:4]}")
     print(f"One-item output keeps batch dimension: {tuple(one_item_logits.shape)}")
     print(f"Binary cross-entropy loss: {loss.item():.6f}")
-    print("Weights unchanged; no backward pass or optimizer step run")
+    print("Backward pass completed; scoring head received a gradient")
+    print("Weights unchanged; no optimizer step run")
 
 
 if __name__ == "__main__":
