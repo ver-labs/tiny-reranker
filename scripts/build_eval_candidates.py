@@ -74,7 +74,7 @@ def main() -> None:
         "document_id": "SHA-256 of exact UTF-8 document text",
         "candidate_order": "ascending document ID",
         "use_same_saved_files_for_all_models": True,
-        "scope": "validation and test queries with at least one positive and one negative candidate",
+        "scope": "validation and test queries with at least one unambiguous clean candidate; zero-relevant lists are included",
         "baseline_training_history": "External baseline was already trained on MS MARCO; unseen queries are not established for it.",
         "scratch_training_rule": "Do not train on validation or test query IDs.",
         "archived_checkpoint_limit": "The archived all-data scratch checkpoint saw held-out queries and is not eligible for held-out evaluation.",
@@ -88,7 +88,8 @@ def main() -> None:
     for split in EVAL_SPLITS:
         path = OUTPUT_DIR / f"eval_{split}_candidates.jsonl"
         temporary = path.with_suffix(".jsonl.tmp")
-        query_count = candidate_count = skipped_single_label = 0
+        query_count = candidate_count = empty_after_dedup = 0
+        single_label_queries = no_relevant_queries = 0
         with temporary.open("w", encoding="utf-8") as output:
             for qid in sorted(groups[split]):
                 group = groups[split][qid]
@@ -100,9 +101,11 @@ def main() -> None:
                 ]
                 positive_count = sum(item["label"] == 1 for item in candidates)
                 negative_count = len(candidates) - positive_count
-                if positive_count == 0 or negative_count == 0:
-                    skipped_single_label += 1
+                if not candidates:
+                    empty_after_dedup += 1
                     continue
+                single_label_queries += positive_count == 0 or negative_count == 0
+                no_relevant_queries += positive_count == 0
                 output.write(json.dumps({
                     "query_id": qid,
                     "query": group["query"],
@@ -120,11 +123,13 @@ def main() -> None:
             "source_query_ids": source_queries,
             "queries_with_clean_pairs": len(groups[split]),
             "queries_with_no_clean_pairs": source_queries - len(groups[split]),
-            "single_label_queries_skipped": skipped_single_label,
+            "queries_empty_after_document_dedup": empty_after_dedup,
+            "single_label_queries_included": single_label_queries,
+            "queries_without_relevant_candidate_included": no_relevant_queries,
             "evaluable_queries": query_count,
             "candidates": candidate_count,
         }
-        if source_queries != query_count + skipped_single_label + report["splits"][split]["queries_with_no_clean_pairs"]:
+        if source_queries != query_count + empty_after_dedup + report["splits"][split]["queries_with_no_clean_pairs"]:
             raise RuntimeError("Evaluation query counts do not reconcile")
 
     REPORT.parent.mkdir(parents=True, exist_ok=True)
