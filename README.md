@@ -199,3 +199,17 @@ architecture config, local tokenizer assets, and a manifest with file hashes.
 The exporter reloads only those local files and checks that token IDs and
 inference scores match the source checkpoint. The binary weight file is kept
 locally and excluded from Git, like the training checkpoints.
+
+For training continuation, run `python -m scripts.short_epoch --save-resume`.
+This repeats the one-epoch run and saves a separate
+`checkpoints/short_epoch_1024_resume.pt` with
+optimizer moments, completed epoch and update counts, model and training
+configuration, and Python, NumPy, CPU PyTorch, and MPS RNG states. The
+manifest records whether its model weights exactly match the earlier evaluated
+checkpoint. This MPS reproduction had the same displayed pair-level metrics
+but its weights differed by up to 0.0001439, so the resume checkpoint is a
+distinct run. The full validation ranking scores above belong to the earlier
+checkpoint and inference bundle. `load_resume_state()` checks the sidecar hash
+and restores its model, optimizer, counters, and RNG states. A dry reload on
+MPS recovered 57 optimizer parameter states. The inference bundle does not
+contain optimizer or RNG state.

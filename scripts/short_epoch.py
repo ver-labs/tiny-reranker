@@ -1,14 +1,19 @@
 """Train once over 1,024 fixed pairs, then check a held-out validation sample."""
 
+import argparse
 import hashlib
 import json
+import random
+from dataclasses import asdict
 from itertools import islice
 from pathlib import Path
 
+import numpy as np
 import torch
 
 from .collate import make_pair_loader
 from .data import iter_clean_pairs
+from .model import ScratchConfig, ScratchReranker
 from .scratch_tokenizer import load_scratch_tokenizer
 from .train import LEARNING_RATE, load_training_model, move_batch_to_device, one_logit_per_label
 
@@ -19,6 +24,54 @@ VALIDATION_COUNT = 128
 BATCH_SIZE = 16
 CHECKPOINT = ROOT / "checkpoints" / "short_epoch_1024.pt"
 REPORT = ROOT / "results" / "short_epoch_1024.json"
+RESUME_CHECKPOINT = ROOT / "checkpoints" / "short_epoch_1024_resume.pt"
+RESUME_MANIFEST = RESUME_CHECKPOINT.with_suffix(".json")
+
+
+def load_resume_state():
+    """Restore the separate run's model, optimizer, counters, and RNG state."""
+    manifest = json.loads(RESUME_MANIFEST.read_text(encoding="utf-8"))
+    if hashlib.sha256(RESUME_CHECKPOINT.read_bytes()).hexdigest() != manifest["sha256"]:
+        raise RuntimeError("Resume checkpoint differs from its manifest")
+    saved = torch.load(RESUME_CHECKPOINT, map_location="cpu", weights_only=True)
+    settings = saved["configuration"]
+    source_config = json.loads((ROOT / "configs" / "scratch.json").read_text(encoding="utf-8"))
+    if (settings["tokenizer_id"], settings["tokenizer_revision"]) != \
+            (source_config["tokenizer_id"], source_config["tokenizer_revision"]):
+        raise RuntimeError("Tokenizer selection differs from the resume checkpoint")
+    if settings["train_pairs"] != TRAIN_COUNT or settings["batch_size"] != BATCH_SIZE:
+        raise RuntimeError("Resume checkpoint training settings differ from this script")
+    if settings["train_pair_ids_sha256"] != ids_hash(
+            list(islice(iter_clean_pairs("train"), TRAIN_COUNT))):
+        raise RuntimeError("Prepared training sample differs from the resume checkpoint")
+    if settings["validation_pair_ids_sha256"] != ids_hash(
+            list(islice(iter_clean_pairs("validation"), VALIDATION_COUNT))):
+        raise RuntimeError("Validation sample differs from the resume checkpoint")
+    if saved["completed_epochs"] != manifest["completed_epochs"] or \
+            saved["update_count"] != manifest["update_count"]:
+        raise RuntimeError("Resume counters differ from the manifest")
+    config = ScratchConfig(**settings["model"])
+    device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
+    if saved["rng_state"]["torch_mps"] is not None and device.type != "mps":
+        raise RuntimeError("MPS is required to restore this run's RNG state")
+    model = ScratchReranker(config).to(device)
+    model.load_state_dict(saved["model_state_dict"], strict=True)
+    optimizer = torch.optim.AdamW(model.parameters(), lr=settings["learning_rate"],
+                                  betas=tuple(settings["betas"]), eps=settings["eps"],
+                                  weight_decay=settings["weight_decay"])
+    optimizer.load_state_dict(saved["optimizer_state_dict"])
+    rng = saved["rng_state"]
+    random.setstate(rng["python"])
+    numpy_rng = rng["numpy"]
+    np.random.set_state((numpy_rng["algorithm"],
+                         np.array(numpy_rng["keys"], dtype=np.uint32),
+                         numpy_rng["position"], numpy_rng["has_gauss"],
+                         numpy_rng["cached_gaussian"]))
+    torch.set_rng_state(rng["torch_cpu"])
+    if device.type == "mps":
+        torch.mps.set_rng_state(rng["torch_mps"])
+    model.train()
+    return model, optimizer, saved["completed_epochs"], saved["update_count"], device
 
 
 def ids_hash(rows: list[dict]) -> str:
@@ -48,8 +101,91 @@ def measure(model, loader, device, loss_fn) -> tuple[float, float]:
         model.train(was_training)
 
 
+def save_resume_sidecar(model, optimizer, device, step, train_rows, validation_rows) -> None:
+    """Save a separate run with all state needed to continue it."""
+    report = json.loads(REPORT.read_text(encoding="utf-8"))
+    if hashlib.sha256(CHECKPOINT.read_bytes()).hexdigest() != report["checkpoint_sha256"]:
+        raise RuntimeError("Existing trial checkpoint differs from its report")
+    original = torch.load(CHECKPOINT, map_location="cpu", weights_only=True)
+    weights = {name: value.detach().cpu() for name, value in model.state_dict().items()}
+    exact_match = all(torch.equal(value, original["model_state_dict"][name])
+                      for name, value in weights.items())
+    max_weight_difference = max(
+        float((value - original["model_state_dict"][name]).abs().max().item())
+        for name, value in weights.items()
+    )
+    if report["train_pair_ids_sha256"] != ids_hash(train_rows) or \
+            report["validation_pair_ids_sha256"] != ids_hash(validation_rows):
+        raise RuntimeError("Prepared samples differ from the evaluated run")
+    source_config = json.loads((ROOT / "configs" / "scratch.json").read_text(encoding="utf-8"))
+    numpy_state = np.random.get_state()
+    payload = {
+        "model_state_dict": weights,
+        "optimizer_state_dict": optimizer.state_dict(),
+        "completed_epochs": 1,
+        "update_count": step,
+        "configuration": {
+            "model": asdict(model.config),
+            "tokenizer_id": source_config["tokenizer_id"],
+            "tokenizer_revision": source_config["tokenizer_revision"],
+            "optimizer": "AdamW",
+            "learning_rate": LEARNING_RATE,
+            "betas": list(optimizer.defaults["betas"]),
+            "eps": optimizer.defaults["eps"],
+            "weight_decay": optimizer.defaults["weight_decay"],
+            "batch_size": BATCH_SIZE,
+            "train_pairs": TRAIN_COUNT,
+            "train_pair_ids_sha256": ids_hash(train_rows),
+            "validation_pair_ids_sha256": ids_hash(validation_rows),
+            "shuffle": False,
+        },
+        "rng_state": {
+            "python": random.getstate(),
+            "numpy": {
+                "algorithm": numpy_state[0],
+                "keys": numpy_state[1].tolist(),
+                "position": numpy_state[2],
+                "has_gauss": numpy_state[3],
+                "cached_gaussian": numpy_state[4],
+            },
+            "torch_cpu": torch.get_rng_state(),
+            "torch_mps": torch.mps.get_rng_state() if device.type == "mps" else None,
+        },
+    }
+    temporary = RESUME_CHECKPOINT.with_suffix(".tmp")
+    torch.save(payload, temporary)
+    temporary.replace(RESUME_CHECKPOINT)
+    loaded = torch.load(RESUME_CHECKPOINT, map_location="cpu", weights_only=True)
+    if loaded["completed_epochs"] != 1 or loaded["update_count"] != step or \
+            len(loaded["optimizer_state_dict"]["state"]) != len(list(model.parameters())):
+        raise RuntimeError("Resume checkpoint lost epoch, step, or optimizer state")
+    manifest = {
+        "checkpoint": RESUME_CHECKPOINT.name,
+        "sha256": hashlib.sha256(RESUME_CHECKPOINT.read_bytes()).hexdigest(),
+        "compared_with_evaluated_model_checkpoint": CHECKPOINT.name,
+        "evaluated_model_checkpoint_sha256": report["checkpoint_sha256"],
+        "matches_evaluated_model_weights_exactly": exact_match,
+        "max_model_weight_difference": max_weight_difference,
+        "completed_epochs": 1,
+        "update_count": step,
+        "rng_backends": ["python", "numpy", "torch_cpu"] +
+                        (["torch_mps"] if device.type == "mps" else []),
+    }
+    RESUME_MANIFEST.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
+    print(f"Saved and reloaded resume checkpoint: {RESUME_CHECKPOINT}", flush=True)
+    print(f"Exact match with earlier evaluated model: {exact_match}; "
+          f"max weight difference: {max_weight_difference:.9g}", flush=True)
+    print("Optimizer, configuration, epoch, update count, and RNG states are present.", flush=True)
+
+
 def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--save-resume", action="store_true",
+                        help="Repeat the short epoch and save a separate resume-ready checkpoint")
+    args = parser.parse_args()
     torch.manual_seed(123)
+    random.seed(123)
+    np.random.seed(123)
     model, device = load_training_model()
     tokenizer = load_scratch_tokenizer()
     train_rows = list(islice(iter_clean_pairs("train"), TRAIN_COUNT))
@@ -100,6 +236,10 @@ def main() -> None:
           f"validation_accuracy={after_accuracy:.1%}", flush=True)
     print(f"One epoch completed: {seen} unique pairs in {step} optimizer steps; "
           f"mean training loss={total_train_loss / seen:.4f}", flush=True)
+
+    if args.save_resume:
+        save_resume_sidecar(model, optimizer, device, step, train_rows, validation_rows)
+        return
 
     CHECKPOINT.parent.mkdir(exist_ok=True)
     temporary = CHECKPOINT.with_suffix(".tmp")

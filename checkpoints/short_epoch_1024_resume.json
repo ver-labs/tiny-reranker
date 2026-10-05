@@ -1,0 +1,16 @@
+{
+  "checkpoint": "short_epoch_1024_resume.pt",
+  "sha256": "90006bc7256b5f8666b85a66fe65b8fcc51d8f05aa913b710ebc97e6ca28fb61",
+  "compared_with_evaluated_model_checkpoint": "short_epoch_1024.pt",
+  "evaluated_model_checkpoint_sha256": "9133d9ee71803297b6ec4bf545b58f5b79d6b33866ed4732c2ced993cb1af101",
+  "matches_evaluated_model_weights_exactly": false,
+  "max_model_weight_difference": 0.00014388705312740058,
+  "completed_epochs": 1,
+  "update_count": 64,
+  "rng_backends": [
+    "python",
+    "numpy",
+    "torch_cpu",
+    "torch_mps"
+  ]
+}
