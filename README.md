@@ -142,3 +142,12 @@ restores training mode. `EVAL_EVERY_STEPS` is 1 for this one-step smoke check;
 a longer training loop can increase the interval. This batch loss is a pipeline
 check, not a full validation metric. The update is not saved as a trained
 checkpoint, and the test split remains untouched.
+
+Run `python -m scripts.tiny_fit` to repeat training on the same 32 cleaned
+training pairs, using alternating batches of 16. Every 10 optimizer steps it
+measures loss and binary accuracy on those 32 pairs with dropout off and
+gradients disabled. It stops early once accuracy is 100% and loss is below
+0.1, or after 100 steps. This is a memorization check of the training code,
+not a measure of performance on new queries. On MPS, the fixed sample went
+from 50% accuracy and 0.7091 loss to 100% accuracy and 0.0091 loss after
+50 steps. No diagnostic weights are saved.
