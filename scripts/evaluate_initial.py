@@ -136,7 +136,9 @@ def memory_snapshot(device: torch.device) -> dict:
         return {
             "measurement": "MPS current allocation snapshot after timed call, bytes",
             "tensor_allocated": torch.mps.current_allocated_memory(),
+            "tensor_allocated_label": "torch.mps.current_allocated_memory(): current tensor allocation, bytes",
             "driver_allocated": torch.mps.driver_allocated_memory(),
+            "driver_allocated_label": "torch.mps.driver_allocated_memory(): current driver allocation including cache, bytes",
         }
     return {
         "measurement": "process peak RSS as reported by macOS, bytes",
@@ -144,8 +146,52 @@ def memory_snapshot(device: torch.device) -> dict:
     }
 
 
+def model_only_timing(reranker, rows: list[dict]) -> dict:
+    """Time forward passes on inputs tokenized and transferred before the timer."""
+    prepared = []
+    pair_count = 0
+    for row in rows:
+        documents = [item["text"] for item in row["candidates"]]
+        for start in range(0, len(documents), PAIR_BATCH_SIZE):
+            chunk = documents[start:start + PAIR_BATCH_SIZE]
+            queries = [row["query"]] * len(chunk)
+            if isinstance(reranker, BaselineReranker):
+                inputs = reranker.tokenizer(
+                    queries, chunk, padding=True, truncation=True,
+                    max_length=MAX_LENGTH, return_tensors="pt",
+                )
+            else:
+                inputs = encode_pairs(reranker.tokenizer, queries, chunk,
+                                      max_length=MAX_LENGTH)
+            prepared.append(inputs.to(reranker.device))
+            pair_count += len(chunk)
+
+    with torch.inference_mode():
+        for _ in range(10):
+            reranker.model(**prepared[0])
+        seconds = []
+        for _ in range(3):
+            synchronize(reranker.device)
+            start = time.perf_counter()
+            for inputs in prepared:
+                reranker.model(**inputs)
+            synchronize(reranker.device)
+            seconds.append(time.perf_counter() - start)
+    return {
+        "scope": "forward passes only on pretokenized device inputs; excludes tokenization, CPU transfer, and sorting",
+        "warmup_calls": 10,
+        "queries_per_repeat": len(rows),
+        "pairs_per_repeat": pair_count,
+        "forward_calls_per_repeat": len(prepared),
+        "repeat_seconds": seconds,
+        "median_seconds": statistics.median(seconds),
+        "range_seconds": [min(seconds), max(seconds)],
+    }
+
+
 def evaluate(name: str, reranker, rows: list[dict], candidate_hash: str,
-             training_history: str, model_metadata: dict) -> dict:
+             training_history: str, model_metadata: dict,
+             model_load_seconds: float) -> dict:
     RESULT_DIR.mkdir(parents=True, exist_ok=True)
     ranking_path = RESULT_DIR / f"{name}_rankings.jsonl"
     mrr_values, ndcg_values = [], []
@@ -176,6 +222,7 @@ def evaluate(name: str, reranker, rows: list[dict], candidate_hash: str,
         synchronize(reranker.device)
         seconds.append(time.perf_counter() - start)
         memory.append(memory_snapshot(reranker.device))
+    forward_timing = model_only_timing(reranker, timing_rows)
 
     summary = {
         "model": name,
@@ -186,8 +233,9 @@ def evaluate(name: str, reranker, rows: list[dict], candidate_hash: str,
         "sample_manifest": str(SAMPLE.relative_to(ROOT)),
         "rankings_file": str(ranking_path.relative_to(ROOT)),
         "queries": len(rows),
+        "sample_drawn_from_evaluable_query_ids": True,
         "queries_without_relevant_candidate": no_relevant,
-        "no_relevant_policy": "MRR@10 and nDCG@10 are zero",
+        "no_relevant_policy": "Include nonempty candidate lists; MRR@10 and nDCG@10 are zero when no candidate is relevant.",
         "mrr_at_10": statistics.mean(mrr_values),
         "ndcg_at_10": statistics.mean(ndcg_values),
         "backend": reranker.device.type,
@@ -195,6 +243,11 @@ def evaluate(name: str, reranker, rows: list[dict], candidate_hash: str,
         "truncation_max_tokens": MAX_LENGTH,
         "pair_batch_size": PAIR_BATCH_SIZE,
         "parameter_count": sum(p.numel() for p in reranker.model.parameters()),
+        "startup": {
+            "model_and_tokenizer_load_seconds": model_load_seconds,
+            "excluded_from_rerank_timing": True,
+            "note": "Measured in this run with the current file cache; not a cold-start benchmark.",
+        },
         "timing": {
             "scope": "whole rerank call including tokenization, scoring, sorting, and CPU results",
             "warmup_calls": 10,
@@ -205,6 +258,7 @@ def evaluate(name: str, reranker, rows: list[dict], candidate_hash: str,
             "memory_snapshots": memory,
             "memory_note": "Snapshots after each run, not peak usage; driver allocation includes context and cache.",
         },
+        "model_only_timing": forward_timing,
     }
     (RESULT_DIR / f"{name}_summary.json").write_text(
         json.dumps(summary, indent=2) + "\n", encoding="utf-8"
@@ -218,22 +272,30 @@ def evaluate(name: str, reranker, rows: list[dict], candidate_hash: str,
 def main() -> None:
     check_metrics()
     rows, candidate_hash = load_sample()
+    load_start = time.perf_counter()
     baseline = BaselineReranker(max_length=MAX_LENGTH, batch_size=PAIR_BATCH_SIZE)
+    synchronize(baseline.device)
+    baseline_load_seconds = time.perf_counter() - load_start
     evaluate("minilm", baseline, rows, candidate_hash,
              "Pretrained on MS MARCO; these validation queries are not established as unseen.",
              {"model_id": MODEL_ID, "revision": MODEL_REVISION,
-              "input_format": "Tokenizer query/document pair with pair special tokens and attention mask; sequence-classification logit."})
+              "input_format": "Tokenizer query/document pair with pair special tokens and attention mask; sequence-classification logit."},
+             baseline_load_seconds)
     del baseline
     if torch.backends.mps.is_available():
         torch.mps.empty_cache()
+    load_start = time.perf_counter()
     random_model = RandomReranker()
+    synchronize(random_model.device)
+    random_load_seconds = time.perf_counter() - load_start
     evaluate("random_scratch", random_model, rows, candidate_hash,
              "Random initial seed-42 weights; no training. Sanity-check reference only.",
              {"model_id": "scratch_encoder_seed42",
               "checkpoint": str(INITIAL_CHECKPOINT.relative_to(ROOT)),
               "checkpoint_sha256": json.loads(INITIAL_MANIFEST.read_text(encoding="utf-8"))["sha256"],
               "tokenizer_id": MODEL_ID, "tokenizer_revision": MODEL_REVISION,
-              "input_format": "[CLS] query [SEP] document [SEP], token-type IDs 0/1, attention mask; raw scoring logit."})
+              "input_format": "[CLS] query [SEP] document [SEP], token-type IDs 0/1, attention mask; raw scoring logit."},
+             random_load_seconds)
 
 
 if __name__ == "__main__":
