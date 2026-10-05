@@ -12,6 +12,7 @@ import numpy as np
 import torch
 
 from .collate import make_pair_loader
+from .checkpoint_io import atomic_torch_save, atomic_write_text
 from .data import iter_clean_pairs
 from .model import ScratchConfig, ScratchReranker
 from .scratch_tokenizer import load_scratch_tokenizer
@@ -207,9 +208,7 @@ def save_resume_sidecar(model, optimizer, device, step, train_rows, validation_r
         },
         "rng_state": capture_rng_state(device),
     }
-    temporary = RESUME_CHECKPOINT.with_suffix(".tmp")
-    torch.save(payload, temporary)
-    temporary.replace(RESUME_CHECKPOINT)
+    atomic_torch_save(payload, RESUME_CHECKPOINT)
     loaded = torch.load(RESUME_CHECKPOINT, map_location="cpu", weights_only=True)
     if loaded["completed_epochs"] != 1 or loaded["update_count"] != step or \
             len(loaded["optimizer_state_dict"]["state"]) != len(list(model.parameters())):
@@ -233,7 +232,7 @@ def save_resume_sidecar(model, optimizer, device, step, train_rows, validation_r
         "rng_backends": ["python", "numpy", "torch_cpu"] +
                         (["torch_mps"] if device.type == "mps" else []),
     }
-    RESUME_MANIFEST.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
+    atomic_write_text(json.dumps(manifest, indent=2) + "\n", RESUME_MANIFEST)
     print(f"Saved and reloaded resume checkpoint: {RESUME_CHECKPOINT}", flush=True)
     print(f"Exact match with earlier evaluated model: {exact_match}; "
           f"max weight difference: {max_weight_difference:.9g}", flush=True)
@@ -308,9 +307,8 @@ def main() -> None:
         return
 
     CHECKPOINT.parent.mkdir(exist_ok=True)
-    temporary = CHECKPOINT.with_suffix(".tmp")
-    torch.save({"model_state_dict": model.cpu().state_dict(), "optimizer_steps": step}, temporary)
-    temporary.replace(CHECKPOINT)
+    atomic_torch_save({"model_state_dict": model.cpu().state_dict(), "optimizer_steps": step},
+                      CHECKPOINT)
     checkpoint_hash = hashlib.sha256(CHECKPOINT.read_bytes()).hexdigest()
     report = {
         "purpose": "one bounded training epoch; pair-level smoke check, not ranking evaluation",
@@ -329,7 +327,7 @@ def main() -> None:
         "checkpoint_sha256": checkpoint_hash,
     }
     REPORT.parent.mkdir(exist_ok=True)
-    REPORT.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+    atomic_write_text(json.dumps(report, indent=2) + "\n", REPORT)
     print(f"Saved trial checkpoint: {CHECKPOINT}", flush=True)
     print(f"Saved report: {REPORT}", flush=True)
 

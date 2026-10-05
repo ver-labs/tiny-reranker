@@ -237,3 +237,7 @@ The demonstration continued the separate resume-ready run through epoch 2:
 optimizer parameter states. Its 128-pair validation loss rose from 0.6863 to
 0.7426 and accuracy changed from 56.2% to 55.5%, so it is a resume example,
 not an improved model or a replacement for the earlier full-validation result.
+Checkpoint writes now use a temporary file in the destination directory.
+The temporary file is loaded successfully before it is renamed to the final
+checkpoint path; reports and manifests are written atomically too. Existing
+epoch files are never overwritten by the continuation script.

@@ -9,6 +9,7 @@ from pathlib import Path
 import torch
 
 from .collate import make_pair_loader
+from .checkpoint_io import atomic_torch_save, atomic_write_text
 from .data import iter_clean_pairs
 from .scratch_tokenizer import load_scratch_tokenizer
 from .short_epoch import (
@@ -43,9 +44,7 @@ def save_epoch(checkpoint: Path, parent: Path, model, optimizer, device,
     payload["update_count"] = updates
     payload["sampler_state"] = epoch_boundary_sampler_state(epoch)
     payload["rng_state"] = capture_rng_state(device)
-    temporary = checkpoint.with_suffix(".tmp")
-    torch.save(payload, temporary)
-    temporary.replace(checkpoint)
+    atomic_torch_save(payload, checkpoint)
     parent_manifest = json.loads(parent.with_suffix(".json").read_text(encoding="utf-8"))
     manifest = {
         "checkpoint": checkpoint.name,
@@ -61,9 +60,8 @@ def save_epoch(checkpoint: Path, parent: Path, model, optimizer, device,
         "validation_pair_bce_loss": validation_loss,
         "validation_pair_accuracy": validation_accuracy,
     }
-    checkpoint.with_suffix(".json").write_text(
-        json.dumps(manifest, indent=2) + "\n", encoding="utf-8"
-    )
+    atomic_write_text(json.dumps(manifest, indent=2) + "\n",
+                      checkpoint.with_suffix(".json"))
 
 
 def main() -> None:

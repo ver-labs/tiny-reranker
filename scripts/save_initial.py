@@ -7,6 +7,7 @@ from pathlib import Path
 
 import torch
 
+from .checkpoint_io import atomic_torch_save, atomic_write_text
 from .model import DEFAULT_CONFIG, ScratchConfig, ScratchReranker
 
 
@@ -31,8 +32,7 @@ def main() -> None:
 
     CHECKPOINT.parent.mkdir(exist_ok=True)
     if not CHECKPOINT.exists():
-        with CHECKPOINT.open("xb") as handle:
-            torch.save(checkpoint, handle)
+        atomic_torch_save(checkpoint, CHECKPOINT)
 
     restored = torch.load(CHECKPOINT, map_location="cpu", weights_only=True)
     for key in ("format_version", "seed", "config", "tokenizer_id", "tokenizer_revision"):
@@ -59,7 +59,7 @@ def main() -> None:
     if MANIFEST.exists() and MANIFEST.read_text(encoding="utf-8") != manifest_text:
         raise RuntimeError("Existing checkpoint manifest differs from the saved state")
     if not MANIFEST.exists():
-        MANIFEST.write_text(manifest_text, encoding="utf-8")
+        atomic_write_text(manifest_text, MANIFEST)
 
     print(f"Checkpoint: {CHECKPOINT}")
     print(f"SHA-256: {digest}")
