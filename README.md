@@ -381,3 +381,31 @@ sizes. The sampled MPS tensor allocations were 18,973,696, 18,982,912, and
 current allocations while input and score tensors are live, not peak memory.
 The third size-8 repeat was slower, so keep the variation visible. Results
 and the measurement definition are in `experiments/E4/comparison.json`.
+
+### E5: gradient accumulation
+
+The two E5 runs start from the same E1 4-layer random weights and use the same
+1,024 pairs in the same order with fixed 128-token padding. Both use an
+effective batch of 16 and make 64 AdamW updates. The direct case processes
+16 pairs per forward/backward pass; accumulation processes four pairs four
+times, weighting each microbatch loss by its share of the effective batch,
+then updates once. Dropout is set to zero in both runs to keep different
+microbatch shapes from changing the random masks. Run:
+
+```sh
+.venv/bin/python -m experiments.E5.train_variant --mode direct
+.venv/bin/python -m experiments.E5.train_variant --mode accumulate
+.venv/bin/python -m experiments.E5.compare
+```
+
+| Mode | Microsteps | Updates | Training time | Sampled MPS tensor allocation | Validation BCE |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Direct, batch 16 | 64 | 64 | 8.95 s | 154,512,384 bytes | 0.6840 |
+| Accumulate, 4 × 4 | 256 | 64 | 7.06 s | 99,791,616 bytes | 0.6840 |
+
+The saved model weights differed by at most 0.000158. The sampled tensor
+allocation fell about 35%; this is not a true memory peak. Each mode was run
+once, so its timing does not establish that accumulation is generally faster.
+The script also scales a smaller final group by its actual size; a separate
+six-example check confirmed that weighted 4+2 microbatch gradients match a
+direct batch of six. Details are in `experiments/E5/comparison.json`.
