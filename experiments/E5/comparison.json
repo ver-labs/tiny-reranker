@@ -41,5 +41,16 @@
   "sampled_tensor_memory_saved_fraction": 0.3541513410342565,
   "memory_label": "maximum sampled current MPS tensor allocation with activations live/after backward/after update; not true peak",
   "timing_note": "Single short run per mode; do not infer a general speed advantage from the observed times.",
-  "dropout_note": "Dropout set to zero in both training runs to isolate gradient accumulation; no weights changed before training"
+  "dropout_note": "Dropout set to zero in both training runs to isolate gradient accumulation; no weights changed before training",
+  "ranking_evaluation": {
+    "candidate_sha256": "6b71ca5ff41401142e0726755b278a67b797516b246f605bfbbb9242840fe1db",
+    "queries": 45709,
+    "direct_mrr_at_10": 0.8074558620840535,
+    "accumulate_mrr_at_10": 0.8074558620840535,
+    "direct_ndcg_at_10": 0.8578745970649746,
+    "accumulate_ndcg_at_10": 0.8578745970649746,
+    "changed_document_orders": 0,
+    "max_absolute_raw_score_difference": 4.76837158203125e-07,
+    "evaluation": "constructed MS MARCO mined-triplet validation candidate lists; not leaderboard comparable"
+  }
 }

@@ -409,3 +409,18 @@ once, so its timing does not establish that accumulation is generally faster.
 The script also scales a smaller final group by its actual size; a separate
 six-example check confirmed that weighted 4+2 microbatch gradients match a
 direct batch of six. Details are in `experiments/E5/comparison.json`.
+
+Both E5 checkpoints were also evaluated on the same 45,709 constructed
+validation candidate lists:
+
+| E5 mode | MRR@10 | nDCG@10 |
+| --- | ---: | ---: |
+| Direct batch of 16 | 0.8075 | 0.8579 |
+| Accumulate four microbatches of 4 | 0.8075 | 0.8579 |
+
+Every query had the same document order in both rankings; the largest raw
+score difference was 0.000000477. Run the full evaluations with
+`.venv/bin/python -m experiments.E5.evaluate_variant --mode direct` and the
+same command with `accumulate`. Their per-query rankings and summaries are in
+`experiments/E5/`. This constructed validation set is not comparable to a
+published leaderboard.

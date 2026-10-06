@@ -2,6 +2,7 @@
 
 import hashlib
 import json
+from itertools import zip_longest
 from pathlib import Path
 
 import torch
@@ -81,11 +82,60 @@ def main() -> None:
         "timing_note": "Single short run per mode; do not infer a general speed advantage from the observed times.",
         "dropout_note": direct["dropout_note"],
     }
-    atomic_write_text(json.dumps(comparison, indent=2) + "\n", HERE / "comparison.json")
+    summary_paths = [HERE / f"e5_{name}_summary.json" for name in ("direct", "accumulate")]
+    if all(path.exists() for path in summary_paths):
+        direct_summary, accumulated_summary = [
+            json.loads(path.read_text(encoding="utf-8")) for path in summary_paths
+        ]
+        if direct_summary["candidate_sha256"] != accumulated_summary["candidate_sha256"] or \
+                direct_summary["checkpoint_sha256"] != direct["checkpoint_sha256"] or \
+                accumulated_summary["checkpoint_sha256"] != accumulated["checkpoint_sha256"]:
+            raise RuntimeError("E5 ranking summaries differ from the compared checkpoints")
+        ranking_changes = count = 0
+        max_score_difference = 0.0
+        with (HERE / "e5_direct_rankings.jsonl").open() as left, \
+             (HERE / "e5_accumulate_rankings.jsonl").open() as right:
+            for a_line, b_line in zip_longest(left, right):
+                if a_line is None or b_line is None:
+                    raise RuntimeError("E5 ranking files have different query counts")
+                a, b = json.loads(a_line), json.loads(b_line)
+                if a["query_id"] != b["query_id"]:
+                    raise RuntimeError("E5 ranking query IDs differ")
+                a_ids = [item["document_id"] for item in a["ranking"]]
+                b_ids = [item["document_id"] for item in b["ranking"]]
+                if set(a_ids) != set(b_ids):
+                    raise RuntimeError("E5 candidate IDs differ")
+                ranking_changes += a_ids != b_ids
+                a_scores = {item["document_id"]: item["score"] for item in a["ranking"]}
+                b_scores = {item["document_id"]: item["score"] for item in b["ranking"]}
+                max_score_difference = max(max_score_difference, *(
+                    abs(a_scores[key] - b_scores[key]) for key in a_scores
+                ))
+                count += 1
+        if count != direct_summary["queries"] or count != accumulated_summary["queries"]:
+            raise RuntimeError("E5 ranked query count differs from the summaries")
+        comparison["ranking_evaluation"] = {
+            "candidate_sha256": direct_summary["candidate_sha256"],
+            "queries": count,
+            "direct_mrr_at_10": direct_summary["mrr_at_10"],
+            "accumulate_mrr_at_10": accumulated_summary["mrr_at_10"],
+            "direct_ndcg_at_10": direct_summary["ndcg_at_10"],
+            "accumulate_ndcg_at_10": accumulated_summary["ndcg_at_10"],
+            "changed_document_orders": ranking_changes,
+            "max_absolute_raw_score_difference": max_score_difference,
+            "evaluation": direct_summary["evaluation"],
+        }
+    atomic_write_text(json.dumps(comparison, indent=2) + "\n", HERE / "comparison.json",
+                      replace_existing=True)
     print(f"Same 1,024 pairs and 64 updates; max weight difference {max_difference:.3g}")
     print(f"MPS sampled tensor allocation: {direct_memory:,} -> {accumulated_memory:,} bytes")
     print(f"Training time: {comparison['direct']['training_seconds']:.2f}s -> "
           f"{comparison['accumulate']['training_seconds']:.2f}s")
+    if "ranking_evaluation" in comparison:
+        ranked = comparison["ranking_evaluation"]
+        print(f"MRR@10 {ranked['direct_mrr_at_10']:.4f} in both; "
+              f"nDCG@10 {ranked['direct_ndcg_at_10']:.4f} in both; "
+              f"{ranked['changed_document_orders']} changed rankings")
 
 
 if __name__ == "__main__":

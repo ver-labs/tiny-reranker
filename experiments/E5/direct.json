@@ -48,5 +48,7 @@
     "measurement": "maximum of MPS current allocation samples with activations live, after backward, and after each update; not a true peak"
   },
   "backend": "mps",
-  "precision": "float32"
+  "precision": "float32",
+  "full_ranking_evaluation_completed": true,
+  "full_ranking_summary": "experiments/E5/e5_direct_summary.json"
 }
