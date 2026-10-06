@@ -126,9 +126,11 @@ def run_once(reranker: TrainedVariant, rows: list[dict], pair_batch_size: int) -
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--pair-batch-size", type=int, choices=(1, 4, 8), required=True)
+    parser.add_argument("--overwrite", action="store_true",
+                        help="Replace an earlier benchmark after changing the method")
     args = parser.parse_args()
     report_path = HERE / f"batch_{args.pair_batch_size}.json"
-    if report_path.exists():
+    if report_path.exists() and not args.overwrite:
         parser.error(f"Batch-size {args.pair_batch_size} output already exists")
     if not torch.backends.mps.is_available():
         raise RuntimeError("E4 MPS comparison requires MPS")
@@ -148,9 +150,15 @@ def main() -> None:
         separators=(",", ":")
     ).encode()).hexdigest()
     # Model/tokenizer loading and warmups are outside every timed repetition.
-    example = rows[0]
+    warmup_pairs = [
+        (row["query"], candidate["text"])
+        for row in rows[:QUERY_GROUP_SIZE]
+        for candidate in row["candidates"]
+    ][:args.pair_batch_size]
     for _ in range(WARMUPS):
-        score_batch(reranker, [(example["query"], example["candidates"][0]["text"])])
+        score_batch(reranker, warmup_pairs)
+    # Warm every query and its actual token shape once before timed repetitions.
+    run_once(reranker, rows, args.pair_batch_size)
     torch.mps.synchronize()
     runs = []
     for repeat in range(1, REPEATS + 1):
@@ -190,6 +198,7 @@ def main() -> None:
         "query_latency_definition": "time from start of an eight-query group until that query has CPU-readable sorted results",
         "timing_scope": "query and document tokenization, device transfer, model scoring, CPU score transfer, sorting, returning results; excludes model loading",
         "warmup_calls": WARMUPS,
+        "untimed_full_sample_warmup_passes": 1,
         "repeats": REPEATS,
         "max_length": MAX_LENGTH,
         "precision": "float32",
@@ -212,7 +221,8 @@ def main() -> None:
         ),
         "rankings": first,
     }
-    atomic_write_text(json.dumps(report, indent=2) + "\n", report_path)
+    atomic_write_text(json.dumps(report, indent=2) + "\n", report_path,
+                      replace_existing=args.overwrite)
     print(f"Saved {report_path}", flush=True)
 
 
