@@ -6,3 +6,4 @@ checkpoints/*.tmp
 dump/checkpoints/*.pt
 data/processed/
 artifacts/*/model.pt
+experiments/E1/*/initial.pt

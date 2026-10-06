@@ -248,3 +248,10 @@ Checkpoint writes now use a temporary file in the destination directory.
 The temporary file is loaded successfully before it is renamed to the final
 checkpoint path; reports and manifests are written atomically too. Existing
 epoch files are never overwritten by the continuation script.
+
+E1 model-size setup lives in `experiments/E1/`. Run
+`python -m experiments.E1.setup_models` to prepare independently initialized
+2-layer and 4-layer scratch encoders. Their configuration files differ only in
+encoder depth. Each folder records the seed, parameter count, config and
+initial-weight hashes, and a finite dummy forward pass. No E1 training is
+performed by the setup command.
