@@ -1,0 +1,45 @@
+{
+  "variant": "four_layer",
+  "trained": true,
+  "initial_checkpoint_sha256": "452379b2eeaea4627640d7e079b319dd72c6b5408b431d2c1dccba916107ff22",
+  "checkpoint": "epoch1.pt",
+  "checkpoint_sha256": "b3be2720e2c9dbc64200e15270c448d1216b10515e59fd236a65a76eee54cfde",
+  "config_sha256": "1e5f7083cf72e9c16f76204b0ea560ef5d99d443cb13eee7b69ec26c198e7561",
+  "parameter_count": 4717185,
+  "training_seed": 123,
+  "training_pairs": 1024,
+  "training_pair_ids_sha256": "ef4a71b0aaf3e903827315767d2f110c2552b82d63fccaede738923226ae77b5",
+  "validation_pairs": 128,
+  "validation_pair_ids_sha256": "dcba8a44c8cb813dd4537a6fe72c610d0e450924aad1fad4ee2952b7e63588f9",
+  "split_manifest": {
+    "path": "data/manifests/query_split.json",
+    "sha256": "eda20769a9242e26b6fa53cee4e5a606a310fbf66d40c3991c7b2e158ffa6b5e"
+  },
+  "batch_size": 16,
+  "optimizer": "AdamW",
+  "learning_rate": 0.0003,
+  "optimizer_updates": 64,
+  "mean_training_bce_loss": 0.6950707882642746,
+  "validation_before": {
+    "bce_loss": 0.7057489976286888,
+    "binary_accuracy": 0.5
+  },
+  "validation_after": {
+    "bce_loss": 0.6863286718726158,
+    "binary_accuracy": 0.5625
+  },
+  "training_time": {
+    "seconds": 4.039356166962534,
+    "scope": "64 batches: tokenization, device transfer, forward, backward, optimizer; excludes model/tokenizer loading, data selection, validation, and checkpoint save",
+    "mps_synchronized_at_start_and_end": true
+  },
+  "memory": {
+    "measurement": "maximum of MPS current-allocation snapshots before and after each optimizer step; not a true peak",
+    "sampled_max_tensor_bytes": 75931392,
+    "sampled_max_driver_bytes": 1147715584
+  },
+  "backend": "mps",
+  "precision": "float32",
+  "full_ranking_evaluation_completed": true,
+  "full_ranking_summary": "experiments/E1/four_layer/four_layer_epoch1_summary.json"
+}

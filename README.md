@@ -269,4 +269,11 @@ The 2-layer run completed 64 optimizer updates on MPS in 2.69 seconds for the
 timed training loop. It scored 0.7978 MRR@10 and 0.8507 nDCG@10 on all
 45,709 fixed validation candidate lists; the whole validation evaluation took
 33.30 seconds after warm-up. Training memory is recorded as sampled MPS
-allocation, not a true peak. The 4-layer E1 run has not started.
+allocation, not a true peak.
+After training and evaluating both variants, run
+`python -m experiments.E1.compare` to check matched data and settings and
+write `experiments/E1/comparison.json`. On the first E1 run, the 4-layer
+model scored 0.8109 MRR@10 and 0.8604 nDCG@10 versus 0.7978 and 0.8507
+for 2 layers. Its timed training loop took 4.04 seconds versus 2.69 seconds;
+full validation took 44.58 versus 33.30 seconds. This is one seed and one
+small epoch, so the quality gap is an early observation, not a final finding.
