@@ -1,5 +1,5 @@
 {
-  "experiment": "fixed versus dynamic padding; stored in E4 as requested",
+  "experiment": "E3 fixed versus dynamic padding",
   "matched_fields": [
     "initial_checkpoint_sha256",
     "config_sha256",
@@ -20,15 +20,15 @@
   ],
   "single_run_only": true,
   "fixed": {
-    "experiment": "fixed versus dynamic padding, stored in E4",
+    "experiment": "fixed versus dynamic padding, stored in E3",
     "padding": "fixed",
     "initial_checkpoint_sha256": "452379b2eeaea4627640d7e079b319dd72c6b5408b431d2c1dccba916107ff22",
     "checkpoint": "fixed_padding.pt",
     "checkpoint_sha256": "19fa79a5c5ddd6a6ddbc490343ab3594dc72f97cd95d3ce58cc3d54c10afad4d",
     "config_sha256": "1e5f7083cf72e9c16f76204b0ea560ef5d99d443cb13eee7b69ec26c198e7561",
     "training_pair_ids_sha256": "ef4a71b0aaf3e903827315767d2f110c2552b82d63fccaede738923226ae77b5",
-    "validation_pair_ids_sha256": "dcba8a44c8cb813dd4537a6fe72c610d0e450924aad1fad4ee2952b7e63588f9",
-    "tokenized_unpadded_content_sha256": "28dbca81f004e40e2dec8b1bc52e3fff34bcaa879788d17f447a8d296f97ce2e",
+    "validation_pair_ids_sha256": "dcba8a44c8cb813dd4537a6fe72c610d0e350924aad1fad4ee2952b7e63588f9",
+    "tokenized_unpadded_content_sha256": "28dbca81f004e30e2dec8b1bc52e3fff34bcaa879788d17f447a8d296f97ce2e",
     "seed": 123,
     "train_pairs": 1024,
     "batch_size": 16,
@@ -65,18 +65,20 @@
       "binary_accuracy": 0.5703125
     },
     "backend": "mps",
-    "precision": "float32"
+    "precision": "float32",
+    "full_ranking_evaluation_completed": true,
+    "full_ranking_summary": "experiments/E3/fixed_padding_summary.json"
   },
   "dynamic": {
-    "experiment": "fixed versus dynamic padding, stored in E4",
+    "experiment": "fixed versus dynamic padding, stored in E3",
     "padding": "dynamic",
     "initial_checkpoint_sha256": "452379b2eeaea4627640d7e079b319dd72c6b5408b431d2c1dccba916107ff22",
     "checkpoint": "dynamic_padding.pt",
     "checkpoint_sha256": "3c5b24a124c4ab2b314cd25f73d5b053ec80cf6abddf801d2609d52d5e0bcd15",
     "config_sha256": "1e5f7083cf72e9c16f76204b0ea560ef5d99d443cb13eee7b69ec26c198e7561",
     "training_pair_ids_sha256": "ef4a71b0aaf3e903827315767d2f110c2552b82d63fccaede738923226ae77b5",
-    "validation_pair_ids_sha256": "dcba8a44c8cb813dd4537a6fe72c610d0e450924aad1fad4ee2952b7e63588f9",
-    "tokenized_unpadded_content_sha256": "28dbca81f004e40e2dec8b1bc52e3fff34bcaa879788d17f447a8d296f97ce2e",
+    "validation_pair_ids_sha256": "dcba8a44c8cb813dd4537a6fe72c610d0e350924aad1fad4ee2952b7e63588f9",
+    "tokenized_unpadded_content_sha256": "28dbca81f004e30e2dec8b1bc52e3fff34bcaa879788d17f447a8d296f97ce2e",
     "seed": 123,
     "train_pairs": 1024,
     "batch_size": 16,
@@ -113,7 +115,9 @@
       "binary_accuracy": 0.5625
     },
     "backend": "mps",
-    "precision": "float32"
+    "precision": "float32",
+    "full_ranking_evaluation_completed": true,
+    "full_ranking_summary": "experiments/E3/dynamic_padding_summary.json"
   },
   "comparison": {
     "padding_tokens_saved_by_dynamic": 1584,

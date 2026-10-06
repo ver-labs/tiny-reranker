@@ -144,7 +144,7 @@ def main() -> None:
         "seed": SEED,
     }, checkpoint)
     report = {
-        "experiment": "fixed versus dynamic padding, stored in E4",
+        "experiment": "E3 fixed versus dynamic padding",
         "padding": args.padding,
         "initial_checkpoint_sha256": sha256(initial_path),
         "checkpoint": checkpoint.name,

@@ -324,20 +324,30 @@ difference of 0.000107, and both had validation BCE 0.6863. The detailed
 comparison is in `experiments/E2/comparison.json`. Main-process RSS does not
 include worker memory, so it is not a total-memory comparison.
 
-### Padding comparison (E4 folder)
+### E3: fixed versus dynamic padding
 
 The fixed-padding run uses the 4-layer E1 random initialization, 1,024 pairs,
 batch size 16, `num_workers=0`, and MPS. Every pair is padded to 128 tokens.
-Run `.venv/bin/python -m experiments.E4.train_padding --padding fixed`.
+Run `.venv/bin/python -m experiments.E3.train_padding --padding fixed`.
 It used 46,022 padding tokens out of 131,072 token slots and took 3.12 seconds
 for the synchronized 64-batch training loop. Its report is
-`experiments/E4/fixed_padding.json`. Run the matching dynamic case with
-`.venv/bin/python -m experiments.E4.train_padding --padding dynamic`.
+`experiments/E3/fixed_padding.json`. Run the matching dynamic case with
+`.venv/bin/python -m experiments.E3.train_padding --padding dynamic`.
 
 Both runs used identical unpadded tokens and the same 128-token truncation
 limit. Fixed padding used 46,022 padding tokens and took 3.12 seconds; dynamic
 padding used 44,438 padding tokens and took 3.33 seconds. Dynamic padding saved
 1,584 token slots (1.2% of fixed slots) but was 0.21 seconds slower in this
-single short run. See `experiments/E4/comparison.json`. Training uses dropout,
+single short run. See `experiments/E3/comparison.json`. Training uses dropout,
 so different tensor shapes can change its random-mask use; the validation-loss
 difference is not a controlled test of model quality.
+
+Both saved checkpoints were also ranked on the same 45,709 constructed
+validation query candidate lists, using the same dynamic-padding inference
+routine. Fixed-padding training scored 0.8075 MRR@10 and 0.8579 nDCG@10;
+dynamic-padding training scored 0.8109 and 0.8604. Their full per-query
+rankings and summaries are saved in `experiments/E3/`. To reproduce them, run
+`.venv/bin/python -m experiments.E3.evaluate_padding --padding fixed` and then
+the same command with `dynamic`. The ranking difference
+can reflect changed dropout masks during training; it does not establish that
+one padding method trains a better model.

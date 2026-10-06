@@ -10,4 +10,4 @@ experiments/E1/*/initial.pt
 experiments/E1/*/epoch1.pt
 experiments/E1/*/head_only.pt
 experiments/E2/workers_*.pt
-experiments/E4/*_padding.pt
+experiments/E3/*_padding.pt

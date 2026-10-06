@@ -34,7 +34,7 @@ def main() -> None:
     if not dynamic["padding_tokens"] < fixed["padding_tokens"]:
         raise RuntimeError("Dynamic padding did not reduce padding tokens")
     result = {
-        "experiment": "fixed versus dynamic padding; stored in E4 as requested",
+        "experiment": "E3 fixed versus dynamic padding",
         "matched_fields": list(MATCHED),
         "single_run_only": True,
         "fixed": fixed,
@@ -52,7 +52,8 @@ def main() -> None:
             "quality_note": "Training uses dropout; changing tensor shapes changes random-mask use, so validation losses are not a controlled quality comparison.",
         },
     }
-    atomic_write_text(json.dumps(result, indent=2) + "\n", HERE / "comparison.json")
+    atomic_write_text(json.dumps(result, indent=2) + "\n", HERE / "comparison.json",
+                      replace_existing=True)
     print(f"Same unpadded tokens; dynamic saved {result['comparison']['padding_tokens_saved_by_dynamic']:,} token slots")
     print(f"Fixed {fixed['timing']['total_seconds']:.2f}s; "
           f"dynamic {dynamic['timing']['total_seconds']:.2f}s")
