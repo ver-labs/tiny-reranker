@@ -351,3 +351,33 @@ rankings and summaries are saved in `experiments/E3/`. To reproduce them, run
 the same command with `dynamic`. The ranking difference
 can reflect changed dropout masks during training; it does not establish that
 one padding method trains a better model.
+
+### E4: inference pair batching
+
+Use the trained E1 4-layer checkpoint and the first 128 fixed validation
+candidate lists (256 pairs). Each list has two candidates, so the benchmark
+groups eight queries and scores pairs across that group in batches of 1, 4,
+or 8. Query latency starts when its eight-query group starts and stops when
+that query's sorted ranking is CPU-readable. The model, token limit, input
+order, and candidates stay fixed. Each size gets ten matching-size warm-up
+calls, one untimed pass over the full sample, then three timed repeats:
+
+```sh
+.venv/bin/python -m experiments.E4.benchmark --pair-batch-size 1
+.venv/bin/python -m experiments.E4.benchmark --pair-batch-size 4
+.venv/bin/python -m experiments.E4.benchmark --pair-batch-size 8
+.venv/bin/python -m experiments.E4.compare
+```
+
+| Pair batch size | Median pairs/second | Median query latency | Timed repeats (seconds) |
+| --- | ---: | ---: | --- |
+| 1 | 275.5 | 32.00 ms | 1.031, 0.929, 0.927 |
+| 4 | 717.0 | 14.33 ms | 0.333, 0.357, 0.372 |
+| 8 | 1,500.6 | 7.75 ms | 0.156, 0.171, 0.294 |
+
+All 128 ranked document orders and CPU-readable scores matched exactly across
+sizes. The sampled MPS tensor allocations were 18,973,696, 18,982,912, and
+18,995,200 bytes for sizes 1, 4, and 8, respectively. These are sampled
+current allocations while input and score tensors are live, not peak memory.
+The third size-8 repeat was slower, so keep the variation visible. Results
+and the measurement definition are in `experiments/E4/comparison.json`.

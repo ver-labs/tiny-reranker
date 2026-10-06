@@ -1,0 +1,76 @@
+{
+  "experiment": "E4 inference pair batching",
+  "matched_fields": [
+    "checkpoint_sha256",
+    "candidate_file_sha256",
+    "selected_query_candidate_ids_sha256",
+    "sample_rule",
+    "query_count",
+    "pair_count",
+    "candidate_count_distribution",
+    "query_group_size",
+    "query_latency_definition",
+    "timing_scope",
+    "warmup_calls",
+    "untimed_full_sample_warmup_passes",
+    "repeats",
+    "max_length",
+    "precision",
+    "backend",
+    "memory_label"
+  ],
+  "query_count": 128,
+  "pair_count": 256,
+  "ranking_changes_against_batch_1": {
+    "4": 0,
+    "8": 0
+  },
+  "max_absolute_score_difference_against_batch_1": {
+    "4": 0.0,
+    "8": 0.0
+  },
+  "memory_label": "maximum sampled MPS current allocation while input and score tensors are live; not a true peak",
+  "results": {
+    "1": {
+      "repeat_seconds": [
+        1.031370708020404,
+        0.9291214579716325,
+        0.9272415000014007
+      ],
+      "median_total_seconds": 0.9291214579716325,
+      "median_pairs_per_second": 275.5291009626172,
+      "median_query_latency_ms": 32.00450004078448,
+      "median_query_p95_ms": 60.74933405034244,
+      "sampled_max_current_tensor_bytes": 18973696,
+      "sampled_max_current_driver_bytes": 1082867712
+    },
+    "4": {
+      "repeat_seconds": [
+        0.3332161661237478,
+        0.35703745810315013,
+        0.3720794999971986
+      ],
+      "median_total_seconds": 0.35703745810315013,
+      "median_pairs_per_second": 717.011602536225,
+      "median_query_latency_ms": 14.328937628306448,
+      "median_query_p95_ms": 23.981541860848665,
+      "sampled_max_current_tensor_bytes": 18982912,
+      "sampled_max_current_driver_bytes": 1093812224
+    },
+    "8": {
+      "repeat_seconds": [
+        0.15595595818012953,
+        0.17060012486763299,
+        0.29397066589444876
+      ],
+      "median_total_seconds": 0.17060012486763299,
+      "median_pairs_per_second": 1500.5850681447505,
+      "median_query_latency_ms": 7.754541584290564,
+      "median_query_p95_ms": 12.096000136807561,
+      "sampled_max_current_tensor_bytes": 18995200,
+      "sampled_max_current_driver_bytes": 1085079552
+    }
+  },
+  "scope_note": "Eight-query groups pool pairs across queries because the fixed validation lists each have two candidates.",
+  "single_benchmark_session": true
+}
