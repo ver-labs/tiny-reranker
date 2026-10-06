@@ -314,3 +314,12 @@ batches took 0.21 seconds total; loader startup took less than 0.01 seconds.
 Validation BCE was 0.7057 before training and 0.6863 after. E2 synchronizes
 MPS after each update so batch-wait and compute times can be separated. The
 two-worker run must use that same timing method before comparing throughput.
+
+The matching two-worker run used the same starting checkpoint, pair IDs,
+settings, and 64 updates. It took 11.77 seconds (87.0 pairs/second), including
+6.49 seconds to start the workers and 0.26 seconds waiting for batches. The
+zero-worker run took 5.06 seconds; for this small epoch, extra workers slowed
+training. The two final checkpoints agreed within a maximum absolute weight
+difference of 0.000107, and both had validation BCE 0.6863. The detailed
+comparison is in `experiments/E2/comparison.json`. Main-process RSS does not
+include worker memory, so it is not a total-memory comparison.
