@@ -9,3 +9,4 @@ artifacts/*/model.pt
 experiments/E1/*/initial.pt
 experiments/E1/*/epoch1.pt
 experiments/E1/*/head_only.pt
+experiments/E2/workers_*.pt

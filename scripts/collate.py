@@ -35,16 +35,18 @@ class PairCollator:
 
 
 def make_pair_loader(dataset, tokenizer, *, batch_size: int, max_length: int,
-                     shuffle: bool = False) -> DataLoader:
-    """Start with data loading in the main process for straightforward debugging."""
+                     shuffle: bool = False, num_workers: int = 0) -> DataLoader:
+    """Build a pair loader; zero workers prepares batches in the main process."""
     if batch_size < 1:
         raise ValueError("batch_size must be positive")
+    if num_workers < 0:
+        raise ValueError("num_workers must be nonnegative")
     return DataLoader(
         dataset,
         batch_size=batch_size,
         shuffle=shuffle,
         collate_fn=PairCollator(tokenizer, max_length),
-        num_workers=0,
+        num_workers=num_workers,
     )
 
 

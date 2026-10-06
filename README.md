@@ -299,3 +299,18 @@ model changed from 0.8109 to 0.8115 MRR@10 and from 0.8604 to 0.8609
 nDCG@10. Both used the same additional 1,024 training pairs. These small
 single-run gains show what happened in this exercise, not a general advantage
 of head-only training.
+
+### E2: data loader workers
+
+The first E2 run uses the 4-layer model with `num_workers=0`: the main Python
+process tokenizes each batch. It starts from the saved E1 random initialization
+and uses the same 1,024 training pairs, batch size 16, seed 123, and MPS backend.
+Run it with `.venv/bin/python -m experiments.E2.train_workers --num-workers 0`.
+Its report is `experiments/E2/workers_0.json`; its separate checkpoint is
+`experiments/E2/workers_0.pt`.
+
+This run processed 1,024 pairs in 5.06 seconds (202.3 pairs/second). Fetching
+batches took 0.21 seconds total; loader startup took less than 0.01 seconds.
+Validation BCE was 0.7057 before training and 0.6863 after. E2 synchronizes
+MPS after each update so batch-wait and compute times can be separated. The
+two-worker run must use that same timing method before comparing throughput.
