@@ -323,3 +323,12 @@ training. The two final checkpoints agreed within a maximum absolute weight
 difference of 0.000107, and both had validation BCE 0.6863. The detailed
 comparison is in `experiments/E2/comparison.json`. Main-process RSS does not
 include worker memory, so it is not a total-memory comparison.
+
+### Padding comparison (E4 folder)
+
+The fixed-padding run uses the 4-layer E1 random initialization, 1,024 pairs,
+batch size 16, `num_workers=0`, and MPS. Every pair is padded to 128 tokens.
+Run `.venv/bin/python -m experiments.E4.train_padding --padding fixed`.
+It used 46,022 padding tokens out of 131,072 token slots and took 3.12 seconds
+for the synchronized 64-batch training loop. Its report is
+`experiments/E4/fixed_padding.json`. The matching dynamic-padding run follows.

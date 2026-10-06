@@ -8,11 +8,14 @@ from .scratch_tokenizer import encode_pairs, load_scratch_tokenizer
 
 
 class PairCollator:
-    def __init__(self, tokenizer, max_length: int) -> None:
+    def __init__(self, tokenizer, max_length: int, padding: bool | str = True) -> None:
         if max_length < 3:
             raise ValueError("max_length must allow the pair's special tokens")
         self.tokenizer = tokenizer
         self.max_length = max_length
+        if padding not in (True, "max_length"):
+            raise ValueError("padding must be dynamic (True) or fixed ('max_length')")
+        self.padding = padding
 
     def __call__(self, rows: list[dict]) -> dict:
         if not rows:
@@ -26,6 +29,7 @@ class PairCollator:
                 [row["query"] for row in rows],
                 [row["document"] for row in rows],
                 max_length=self.max_length,
+                padding=self.padding,
             ),
             "labels": torch.tensor(labels, dtype=torch.float32),
             "query_ids": [row["query_id"] for row in rows],
@@ -35,7 +39,8 @@ class PairCollator:
 
 
 def make_pair_loader(dataset, tokenizer, *, batch_size: int, max_length: int,
-                     shuffle: bool = False, num_workers: int = 0) -> DataLoader:
+                     shuffle: bool = False, num_workers: int = 0,
+                     padding: bool | str = True) -> DataLoader:
     """Build a pair loader; zero workers prepares batches in the main process."""
     if batch_size < 1:
         raise ValueError("batch_size must be positive")
@@ -45,7 +50,7 @@ def make_pair_loader(dataset, tokenizer, *, batch_size: int, max_length: int,
         dataset,
         batch_size=batch_size,
         shuffle=shuffle,
-        collate_fn=PairCollator(tokenizer, max_length),
+        collate_fn=PairCollator(tokenizer, max_length, padding),
         num_workers=num_workers,
     )
 

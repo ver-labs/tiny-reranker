@@ -1,0 +1,48 @@
+{
+  "experiment": "fixed versus dynamic padding, stored in E4",
+  "padding": "fixed",
+  "initial_checkpoint_sha256": "452379b2eeaea4627640d7e079b319dd72c6b5408b431d2c1dccba916107ff22",
+  "checkpoint": "fixed_padding.pt",
+  "checkpoint_sha256": "19fa79a5c5ddd6a6ddbc490343ab3594dc72f97cd95d3ce58cc3d54c10afad4d",
+  "config_sha256": "1e5f7083cf72e9c16f76204b0ea560ef5d99d443cb13eee7b69ec26c198e7561",
+  "training_pair_ids_sha256": "ef4a71b0aaf3e903827315767d2f110c2552b82d63fccaede738923226ae77b5",
+  "validation_pair_ids_sha256": "dcba8a44c8cb813dd4537a6fe72c610d0e450924aad1fad4ee2952b7e63588f9",
+  "tokenized_unpadded_content_sha256": "28dbca81f004e40e2dec8b1bc52e3fff34bcaa879788d17f447a8d296f97ce2e",
+  "seed": 123,
+  "train_pairs": 1024,
+  "batch_size": 16,
+  "max_length": 128,
+  "num_workers": 0,
+  "optimizer_updates": 64,
+  "optimizer": "AdamW",
+  "learning_rate": 0.0003,
+  "real_tokens": 85050,
+  "padding_tokens": 46022,
+  "total_tokens_processed": 131072,
+  "padding_fraction": 0.3511199951171875,
+  "timing": {
+    "scope": "64 training batches: tokenization, content verification, device transfer, forward, backward, optimizer; excludes loading, validation, save",
+    "loader_startup_seconds": 0.0004916249308735132,
+    "batch_fetch_seconds": 0.32694267434999347,
+    "model_compute_seconds": 2.706373666645959,
+    "total_seconds": 3.124253415968269,
+    "pairs_per_second": 327.75830371706314,
+    "mps_synchronized_after_each_update": true
+  },
+  "memory": {
+    "mps_sampled_max_tensor_bytes": 75931392,
+    "mps_sampled_max_driver_bytes": 1147994112,
+    "measurement": "sampled current MPS allocation; not true peak"
+  },
+  "mean_training_bce_loss": 0.6945372382178903,
+  "validation_before": {
+    "bce_loss": 0.7057489976286888,
+    "binary_accuracy": 0.5
+  },
+  "validation_after": {
+    "bce_loss": 0.6935708075761795,
+    "binary_accuracy": 0.5703125
+  },
+  "backend": "mps",
+  "precision": "float32"
+}

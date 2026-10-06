@@ -29,6 +29,7 @@ def encode_pairs(
     documents: Sequence[str],
     *,
     max_length: int,
+    padding: bool | str = True,
 ) -> BatchEncoding:
     """Encode [CLS] query [SEP] document [SEP] pairs as PyTorch tensors."""
     if not queries or len(queries) != len(documents):
@@ -37,7 +38,7 @@ def encode_pairs(
         list(queries),
         list(documents),
         add_special_tokens=True,
-        padding=True,
+        padding=padding,
         truncation="longest_first",
         max_length=max_length,
         return_attention_mask=True,
