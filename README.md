@@ -257,3 +257,16 @@ initial-weight hashes, and a finite dummy forward pass. No E1 training is
 performed by the setup command.
 The 2-layer model has 4,320,641 trainable parameters and the 4-layer model
 has 4,717,185; all parameters are trainable in both initial models.
+Run `python -m experiments.E1.train_variant --variant two_layer` to train only
+the 2-layer E1 model on the fixed 1,024 training pairs for one epoch. The
+script saves its checkpoint and a report with 128-pair validation loss,
+training time, and sampled MPS memory. The 4-layer E1 model remains at its
+saved random initialization until its separate run.
+Run `python -m experiments.E1.evaluate_variant --variant two_layer` to score
+that checkpoint on every fixed validation candidate list, saving per-query
+rankings, MRR@10, nDCG@10, and a whole-evaluation timing in its E1 folder.
+The 2-layer run completed 64 optimizer updates on MPS in 2.69 seconds for the
+timed training loop. It scored 0.7978 MRR@10 and 0.8507 nDCG@10 on all
+45,709 fixed validation candidate lists; the whole validation evaluation took
+33.30 seconds after warm-up. Training memory is recorded as sampled MPS
+allocation, not a true peak. The 4-layer E1 run has not started.

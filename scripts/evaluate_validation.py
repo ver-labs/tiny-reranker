@@ -77,10 +77,11 @@ def evaluate_buffer(reranker, rows: list[dict], output) -> tuple[int, float, flo
 
 def evaluate_model(name: str, reranker, expected: dict,
                    candidate_hash: str, training_history: str,
-                   extra_metadata: dict | None = None) -> dict:
+                   extra_metadata: dict | None = None,
+                   result_dir: Path = RESULT_DIR) -> dict:
     expected_queries = expected["evaluable_queries"]
-    RESULT_DIR.mkdir(parents=True, exist_ok=True)
-    rankings = RESULT_DIR / f"{name}_rankings.jsonl"
+    result_dir.mkdir(parents=True, exist_ok=True)
+    rankings = result_dir / f"{name}_rankings.jsonl"
     temporary = rankings.with_suffix(".jsonl.tmp")
     count = no_relevant = 0
     mrr_total = ndcg_total = 0.0
@@ -138,7 +139,7 @@ def evaluate_model(name: str, reranker, expected: dict,
     }
     if extra_metadata:
         summary.update(extra_metadata)
-    (RESULT_DIR / f"{name}_summary.json").write_text(
+    (result_dir / f"{name}_summary.json").write_text(
         json.dumps(summary, indent=2) + "\n", encoding="utf-8"
     )
     print(f"{name}: {count:,} queries; MRR@10={summary['mrr_at_10']:.4f}; "
