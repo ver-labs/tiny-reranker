@@ -331,4 +331,13 @@ batch size 16, `num_workers=0`, and MPS. Every pair is padded to 128 tokens.
 Run `.venv/bin/python -m experiments.E4.train_padding --padding fixed`.
 It used 46,022 padding tokens out of 131,072 token slots and took 3.12 seconds
 for the synchronized 64-batch training loop. Its report is
-`experiments/E4/fixed_padding.json`. The matching dynamic-padding run follows.
+`experiments/E4/fixed_padding.json`. Run the matching dynamic case with
+`.venv/bin/python -m experiments.E4.train_padding --padding dynamic`.
+
+Both runs used identical unpadded tokens and the same 128-token truncation
+limit. Fixed padding used 46,022 padding tokens and took 3.12 seconds; dynamic
+padding used 44,438 padding tokens and took 3.33 seconds. Dynamic padding saved
+1,584 token slots (1.2% of fixed slots) but was 0.21 seconds slower in this
+single short run. See `experiments/E4/comparison.json`. Training uses dropout,
+so different tensor shapes can change its random-mask use; the validation-loss
+difference is not a controlled test of model quality.
