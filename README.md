@@ -255,3 +255,5 @@ E1 model-size setup lives in `experiments/E1/`. Run
 encoder depth. Each folder records the seed, parameter count, config and
 initial-weight hashes, and a finite dummy forward pass. No E1 training is
 performed by the setup command.
+The 2-layer model has 4,320,641 trainable parameters and the 4-layer model
+has 4,717,185; all parameters are trainable in both initial models.

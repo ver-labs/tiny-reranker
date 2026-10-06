@@ -2,6 +2,7 @@
   "variant": "four_layer",
   "seed": 42,
   "parameter_count": 4717185,
+  "trainable_parameter_count": 4717185,
   "config_sha256": "1e5f7083cf72e9c16f76204b0ea560ef5d99d443cb13eee7b69ec26c198e7561",
   "initial_checkpoint": "initial.pt",
   "initial_checkpoint_sha256": "452379b2eeaea4627640d7e079b319dd72c6b5408b431d2c1dccba916107ff22",

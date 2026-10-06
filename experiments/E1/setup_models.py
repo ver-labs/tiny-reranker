@@ -69,6 +69,9 @@ def main() -> None:
             "variant": name,
             "seed": SEED,
             "parameter_count": sum(parameter.numel() for parameter in model.parameters()),
+            "trainable_parameter_count": sum(
+                parameter.numel() for parameter in model.parameters() if parameter.requires_grad
+            ),
             "config_sha256": sha256(config_path),
             "initial_checkpoint": checkpoint.name,
             "initial_checkpoint_sha256": sha256(checkpoint),
@@ -85,7 +88,7 @@ def main() -> None:
         else:
             atomic_write_text(content, manifest_path)
         print(f"{name}: {config.num_layers} layers, "
-              f"{manifest['parameter_count']:,} parameters, "
+              f"{manifest['trainable_parameter_count']:,} trainable parameters, "
               f"finite dummy score on {device}; no training", flush=True)
 
 

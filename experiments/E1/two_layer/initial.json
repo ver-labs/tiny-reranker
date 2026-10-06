@@ -2,6 +2,7 @@
   "variant": "two_layer",
   "seed": 42,
   "parameter_count": 4320641,
+  "trainable_parameter_count": 4320641,
   "config_sha256": "12d2901f4999d5e4b3d6668a187260d7cf55f580dfcf8e8a33059df481df5b57",
   "initial_checkpoint": "initial.pt",
   "initial_checkpoint_sha256": "4ec30d9333a9f07436b08443cd3a04ce92c35ac34fa1ce1dd65b9091e257bd3f",
