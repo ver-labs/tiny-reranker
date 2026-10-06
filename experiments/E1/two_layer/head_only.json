@@ -1,0 +1,36 @@
+{
+  "variant": "two_layer",
+  "exercise": "freeze trained backbone; update scoring head only",
+  "parent_checkpoint": "epoch1.pt",
+  "parent_checkpoint_sha256": "9fd9350e609ab2208f20b4cf2a9399221e60c855b1f9e1191ef932141a88e1f9",
+  "checkpoint": "head_only.pt",
+  "checkpoint_sha256": "6fa4e8fc974b7c2d0f94d5ee6aba00ff07635503ae3064ac6133dcb8a92d9f8f",
+  "config_sha256": "12d2901f4999d5e4b3d6668a187260d7cf55f580dfcf8e8a33059df481df5b57",
+  "frozen_backbone_unchanged": true,
+  "trainable_parameter_names": [
+    "scoring_head.weight",
+    "scoring_head.bias"
+  ],
+  "trainable_parameter_count": 129,
+  "original_training_pair_ids_sha256": "ef4a71b0aaf3e903827315767d2f110c2552b82d63fccaede738923226ae77b5",
+  "new_training_pair_ids_sha256": "232d4a0d9ffc6d5e61d795af94249411538794a2d2fdc36e1b9f2d5d8eac5fd6",
+  "query_overlap_with_original_training": 0,
+  "new_training_pairs": 1024,
+  "head_training_seed": 456,
+  "batch_size": 16,
+  "learning_rate": 0.0003,
+  "optimizer_updates": 64,
+  "mean_training_bce_loss": 0.6887152018025517,
+  "validation_before": {
+    "bce_loss": 0.6900750324130058,
+    "binary_accuracy": 0.5078125
+  },
+  "validation_after": {
+    "bce_loss": 0.6884804964065552,
+    "binary_accuracy": 0.59375
+  },
+  "head_only_training_seconds": 0.682673207949847,
+  "backend": "mps",
+  "full_ranking_evaluation_completed": true,
+  "full_ranking_summary": "experiments/E1/two_layer/two_layer_head_only_summary.json"
+}

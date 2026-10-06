@@ -277,3 +277,25 @@ model scored 0.8109 MRR@10 and 0.8604 nDCG@10 versus 0.7978 and 0.8507
 for 2 layers. Its timed training loop took 4.04 seconds versus 2.69 seconds;
 full validation took 44.58 versus 33.30 seconds. This is one seed and one
 small epoch, so the quality gap is an early observation, not a final finding.
+
+The separate head-freezing exercise starts from each trained E1 checkpoint,
+freezes the embeddings and encoder, and updates only the 129-parameter scoring
+head on 1,024 new training pairs whose queries were absent from the original
+E1 training sample. For each variant, run these commands (replace `two_layer`
+with `four_layer` for the other model):
+
+```sh
+.venv/bin/python -m experiments.E1.freeze_backbone --variant two_layer
+.venv/bin/python -m experiments.E1.evaluate_head_only --variant two_layer
+```
+
+Each run verifies that every backbone tensor stayed unchanged and saves a
+separate checkpoint and validation ranking; the original E1 checkpoints remain
+untouched.
+
+On the same 45,709 constructed validation queries, the 2-layer model changed
+from 0.7978 to 0.7993 MRR@10 and from 0.8507 to 0.8518 nDCG@10. The 4-layer
+model changed from 0.8109 to 0.8115 MRR@10 and from 0.8604 to 0.8609
+nDCG@10. Both used the same additional 1,024 training pairs. These small
+single-run gains show what happened in this exercise, not a general advantage
+of head-only training.
