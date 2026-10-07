@@ -38,20 +38,27 @@ class MatchedReranker:
         saved = torch.load(checkpoint, map_location="cpu", weights_only=True)
         if saved["config"] != vars(config) or \
                 saved["update_count"] != report["optimizer_updates"] or \
-                saved["precision"] != report["precision"]:
+                saved["precision"] != report["precision"] or \
+                saved.get("full_cast", False) != report.get("full_cast", False):
             raise RuntimeError("E6 checkpoint metadata differs from its report")
         self.model = ScratchReranker(config)
         self.model.load_state_dict(saved["model_state_dict"], strict=True)
-        self.model = self.model.to(self.device).eval()
+        dtype = torch.bfloat16 if report.get("full_cast", False) else torch.float32
+        self.model = self.model.to(device=self.device, dtype=dtype).eval()
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--precision", choices=PRECISIONS, required=True)
+    parser.add_argument("--full-cast", action="store_true",
+                        help="Evaluate the separate BF16 full-cast control in BF16")
     args = parser.parse_args()
-    report_path = HERE / f"matched_{args.precision}.json"
+    if args.full_cast and args.precision != "bf16":
+        parser.error("Only the BF16 full-cast control passed its one-step probe")
+    run_name = f"full_cast_{args.precision}" if args.full_cast else f"matched_{args.precision}"
+    report_path = HERE / f"{run_name}.json"
     report = json.loads(report_path.read_text(encoding="utf-8"))
-    if report["precision"] != args.precision:
+    if report["precision"] != args.precision or report.get("full_cast", False) != args.full_cast:
         raise RuntimeError("Precision report differs from requested run")
     check_metrics()
     manifest = json.loads(CANDIDATE_MANIFEST.read_text(encoding="utf-8"))
@@ -66,19 +73,27 @@ def main() -> None:
         score_pairs(reranker, [first["query"]], [first["candidates"][0]["text"]])
     torch.mps.synchronize()
     started = time.perf_counter()
-    name = f"matched_{args.precision}"
-    summary = evaluate_model(
-        name, reranker, expected, candidate_hash,
+    name = run_name
+    training_history = (
+        "E6 separate BF16 full-model-cast control, no autocast: 64 updates "
+        "on 1,024 pairs; BF16 model weights and BF16 inference."
+        if args.full_cast else
         f"E6 matched 4-layer scratch model trained for 64 updates on 1,024 "
         f"pairs with {args.precision} training compute; all three checkpoints "
-        "evaluated with FP32 model parameters and inference compute.",
+        "evaluated with FP32 model parameters and inference compute."
+    )
+    summary = evaluate_model(
+        name, reranker, expected, candidate_hash,
+        training_history,
         extra_metadata={
-            "model_id": f"scratch_encoder_e6_{args.precision}",
+            "model_id": f"scratch_encoder_e6_{run_name}",
             "checkpoint": str((HERE / report["checkpoint"]).relative_to(ROOT)),
             "checkpoint_sha256": report["checkpoint_sha256"],
             "training_pair_ids_sha256": report["training_pair_ids_sha256"],
             "training_precision": args.precision,
-            "evaluation_precision": "fp32",
+            "evaluation_precision": "bf16" if args.full_cast else "fp32",
+            "autocast_used_during_training": not args.full_cast and args.precision != "fp32",
+            "full_cast": args.full_cast,
             "optimizer_updates": report["optimizer_updates"],
         },
         result_dir=HERE,
@@ -86,7 +101,7 @@ def main() -> None:
     torch.mps.synchronize()
     summary["inference_timing"] = {
         "seconds": time.perf_counter() - started,
-        "scope": "full validation: tokenization, FP32 scoring, sorting, writing; excludes loading",
+        "scope": "full validation: tokenization, scoring, sorting, writing; excludes loading",
         "warmup_calls": 10,
         "mps_synchronized_at_start_and_end": True,
         "not_used_for_training_precision_speed_comparison": True,

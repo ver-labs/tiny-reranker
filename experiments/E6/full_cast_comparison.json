@@ -1,0 +1,39 @@
+{
+  "experiment": "E6 full-model cast without autocast, separate control",
+  "fp16_full_cast": {
+    "one_update_completed": false,
+    "failure": {
+      "type": "ValueError",
+      "message": "Attempting to unscale FP16 gradients."
+    },
+    "longer_run_started": false
+  },
+  "bf16_full_cast": {
+    "one_update_completed": true,
+    "training_pairs": 1024,
+    "optimizer_updates": 64,
+    "training_seconds": 3.257491874974221,
+    "sampled_max_current_tensor_bytes": 135084800,
+    "validation_bce_128_pairs": 0.6893470287322998,
+    "mrr_at_10": 0.8051477827123761,
+    "ndcg_at_10": 0.8561740338031355,
+    "training_precision": "bf16 model parameters and compute; no autocast",
+    "evaluation_precision": "bf16 model parameters and compute"
+  },
+  "bf16_autocast_reference": {
+    "training_seconds": 4.784503000089899,
+    "sampled_max_current_tensor_bytes": 168803840,
+    "validation_bce_128_pairs": 0.6862931102514267,
+    "mrr_at_10": 0.8109343892887615,
+    "ndcg_at_10": 0.8604453624333989,
+    "training_precision": "FP32 parameters, BF16 autocast compute",
+    "evaluation_precision": "fp32"
+  },
+  "same_candidate_queries": 45709,
+  "changed_document_orders_vs_bf16_autocast": 2453,
+  "max_absolute_raw_score_difference_vs_bf16_autocast": 0.27997368574142456,
+  "mrr_at_10_change_full_cast_minus_autocast": -0.005786606576385411,
+  "ndcg_at_10_change_full_cast_minus_autocast": -0.00427132863026336,
+  "interpretation_limit": "Full cast changes both training parameter precision and evaluation precision; one short run per mode cannot isolate their separate effects or establish a stable speed result.",
+  "evaluation": "constructed MS MARCO mined-triplet validation candidate lists; not leaderboard comparable"
+}

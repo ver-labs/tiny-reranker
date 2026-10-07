@@ -475,3 +475,28 @@ The lower-precision runs used about 45.5 million fewer sampled tensor bytes
 training-time observation, so the small speed differences are not a stable
 performance conclusion. The aggregates matched, though a few individual
 query rankings differed. See `experiments/E6/matched_comparison.json`.
+
+A separate E6 control casts **all** model weights to a lower precision and
+does not use autocast. Run the one-step check with
+`.venv/bin/python -m experiments.E6.probe_full_cast`. On this installation,
+FP16 full cast stopped because PyTorch's MPS GradScaler raised
+`ValueError: Attempting to unscale FP16 gradients.` No longer FP16 full-cast
+run was started. BF16 full cast completed the one-step check and a 1,024-pair
+epoch; all 64 updates completed. To reproduce training and full BF16 ranking:
+
+```sh
+.venv/bin/python -m experiments.E6.train_matched --precision bf16 --full-cast
+.venv/bin/python -m experiments.E6.evaluate_matched --precision bf16 --full-cast
+.venv/bin/python -m experiments.E6.compare_full_cast
+```
+
+| BF16 method | Model weights | Training time | Sampled MPS tensor allocation | MRR@10 | nDCG@10 |
+| --- | --- | ---: | ---: | ---: | ---: |
+| Autocast | FP32 | 4.78 s | 168,803,840 bytes | 0.8109 | 0.8604 |
+| Full cast, no autocast | BF16 | 3.26 s | 135,084,800 bytes | 0.8051 | 0.8562 |
+
+The full-cast control changed 2,453 of 45,709 query rankings relative to
+BF16 autocast. Autocast's checkpoint was evaluated in FP32, while the
+full-cast checkpoint was evaluated in BF16, so this comparison changes both
+training parameter precision and inference precision. The timing is one run
+per mode. See `experiments/E6/full_cast_comparison.json`.
