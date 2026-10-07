@@ -2,6 +2,7 @@
 
 import hashlib
 import json
+import os
 import time
 from dataclasses import asdict
 from itertools import islice
@@ -48,6 +49,8 @@ def main() -> None:
         raise RuntimeError("Local MPS FP16 autocast/scaler smoke check did not pass")
     if not torch.backends.mps.is_available():
         raise RuntimeError("MPS is required; no silent CPU substitution")
+    if os.environ.get("PYTORCH_ENABLE_MPS_FALLBACK") == "1":
+        raise RuntimeError("MPS CPU fallback is enabled; refusing to label this as an MPS run")
     device = torch.device("mps")
     config_path = E1 / "config.json"
     initial_path = E1 / "initial.pt"
@@ -180,6 +183,7 @@ def main() -> None:
         "validation_before": {"bce_loss": before_loss, "binary_accuracy": before_accuracy},
         "validation_after": {"bce_loss": after_loss, "binary_accuracy": after_accuracy},
         "backend": "mps",
+        "pytorch_enable_mps_fallback": os.environ.get("PYTORCH_ENABLE_MPS_FALLBACK", "unset"),
         "parameter_dtype": "float32",
         "autocast_dtype": "float16",
         "loss_dtype": "float32",
