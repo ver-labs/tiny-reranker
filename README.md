@@ -450,3 +450,28 @@ for E1 FP32. The 13.02-second FP16 loop samples memory and synchronizes MPS
 after every batch, so it is not directly comparable with E1's 4.04-second
 timing scope. Full ranking quality and a matched speed test remain separate
 steps.
+
+The matched E6 experiment then trains FP32, FP16 autocast with MPS GradScaler,
+and BF16 autocast without a scaler from the same saved random weights. All
+three use the same 1,024 pairs, batch size 16, 64 updates, dynamic padding,
+and timing/memory sampling method. Use
+`.venv/bin/python -m experiments.E6.train_matched --precision fp32`, replacing
+`fp32` with `fp16` or `bf16` for the other runs. Evaluate with
+`.venv/bin/python -m experiments.E6.evaluate_matched --precision fp32`
+(and the other precisions), then run
+`.venv/bin/python -m experiments.E6.compare_matched`.
+
+| Training compute | Epoch time | Sampled MPS tensor allocation | MRR@10 | nDCG@10 | Changed query rankings vs FP32 |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| FP32 | 4.40 s | 214,281,216 bytes | 0.8109 | 0.8604 | 0 |
+| FP16 autocast | 4.17 s | 168,804,352 bytes | 0.8109 | 0.8604 | 4 |
+| BF16 autocast | 4.78 s | 168,803,840 bytes | 0.8109 | 0.8604 | 26 |
+
+All modes completed 64 updates without skips or nonfinite values. Full
+ranking evaluation used FP32 inference for every checkpoint to isolate the
+training-precision change, on the same 45,709 constructed validation queries.
+The lower-precision runs used about 45.5 million fewer sampled tensor bytes
+(roughly 21%); these are not true memory peaks. Each mode has one short
+training-time observation, so the small speed differences are not a stable
+performance conclusion. The aggregates matched, though a few individual
+query rankings differed. See `experiments/E6/matched_comparison.json`.
