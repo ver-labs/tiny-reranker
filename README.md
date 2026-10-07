@@ -500,3 +500,10 @@ BF16 autocast. Autocast's checkpoint was evaluated in FP32, while the
 full-cast checkpoint was evaluated in BF16, so this comparison changes both
 training parameter precision and inference precision. The timing is one run
 per mode. See `experiments/E6/full_cast_comparison.json`.
+
+### E7: pairwise ranking loss (deferred)
+
+Deferred at the user's request on 2026-10-07. E7 would compare the current
+pointwise BCE objective with a pairwise ranking loss using positive and
+negative documents from the same query. No E7 training or evaluation has
+been run. Revisit it after the other planned experiments if desired.
