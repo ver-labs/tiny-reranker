@@ -1,0 +1,74 @@
+{
+  "purpose": "E6 local precision support check; one optimizer step per mode, not an E6 training comparison",
+  "python_version": "3.12.13",
+  "torch_version": "2.14.1",
+  "torch_git_version": "5c4886908584029761b579af026dcfb627c84070",
+  "macos_version": "26.5.2",
+  "backend": {
+    "mps_built": true,
+    "mps_available": true,
+    "device_selected": "mps",
+    "pytorch_enable_mps_fallback": "unset"
+  },
+  "model": "4-layer scratch reranker with saved random initial weights",
+  "initial_checkpoint_sha256": "452379b2eeaea4627640d7e079b319dd72c6b5408b431d2c1dccba916107ff22",
+  "config_sha256": "1e5f7083cf72e9c16f76204b0ea560ef5d99d443cb13eee7b69ec26c198e7561",
+  "sample_pair_ids": [
+    "94fe3be5b93cd2fcf12d03046253a8ea612a7f5fc5f7adb6902e9f71cf51d8ff",
+    "bb81dda30d4b33d41bd0ee8efa66bbf3bea7048602fce6be02e335d7aa9a81b4",
+    "751d9c4cc28276ca3a5756d271a2c361f36fd5555fe33cf8086af674da6b0377",
+    "8e09232015349387d6c34c77fc8fdc4fa8ec04709cae33cfd6f986822a6f560e"
+  ],
+  "sample_batch_size": 4,
+  "sample_padding": "fixed to 128 tokens",
+  "operations": "token embeddings, position/segment embeddings, bidirectional encoder self-attention, layer normalization, GELU feed-forward, scoring head, BCEWithLogitsLoss, backward, AdamW update",
+  "modes": [
+    {
+      "name": "fp32",
+      "autocast_dtype": null,
+      "supported_for_this_smoke_test": true,
+      "model_parameter_dtype": "torch.float32",
+      "logit_dtype": "torch.float32",
+      "loss_dtype": "torch.float32",
+      "gradient_dtype": "torch.float32",
+      "loss": 0.6667385697364807,
+      "finite_scores_loss_and_gradients": true,
+      "head_changed_after_optimizer_step": true,
+      "gradient_scaler": null,
+      "warnings": []
+    },
+    {
+      "name": "fp16_autocast",
+      "autocast_dtype": "torch.float16",
+      "supported_for_this_smoke_test": true,
+      "model_parameter_dtype": "torch.float32",
+      "logit_dtype": "torch.float16",
+      "loss_dtype": "torch.float32",
+      "gradient_dtype": "torch.float32",
+      "loss": 0.6666792631149292,
+      "finite_scores_loss_and_gradients": true,
+      "head_changed_after_optimizer_step": true,
+      "gradient_scaler": {
+        "class": "GradScaler",
+        "enabled": true,
+        "scale_before": 65536.0,
+        "scale_after": 65536.0
+      },
+      "warnings": []
+    },
+    {
+      "name": "bf16_autocast",
+      "autocast_dtype": "torch.bfloat16",
+      "supported_for_this_smoke_test": true,
+      "model_parameter_dtype": "torch.float32",
+      "logit_dtype": "torch.bfloat16",
+      "loss_dtype": "torch.float32",
+      "gradient_dtype": "torch.float32",
+      "loss": 0.6665948629379272,
+      "finite_scores_loss_and_gradients": true,
+      "head_changed_after_optimizer_step": true,
+      "gradient_scaler": null,
+      "warnings": []
+    }
+  ]
+}

@@ -424,3 +424,16 @@ score difference was 0.000000477. Run the full evaluations with
 same command with `accumulate`. Their per-query rankings and summaries are in
 `experiments/E5/`. This constructed validation set is not comparable to a
 published leaderboard.
+
+### E6: local precision support check
+
+Before a longer precision comparison, run
+`.venv/bin/python -m experiments.E6.check_support`. On this Mac, Python
+3.12.13, PyTorch 2.14.1, macOS 26.5.2, and MPS were detected; the MPS CPU
+fallback setting was unset. The 4-layer scratch model completed one real
+forward pass, BCE backward pass, and AdamW update with finite values in each
+of FP32, FP16 autocast, and BF16 autocast. FP16 used an enabled MPS GradScaler;
+BF16 did not use scaling. Model parameters and gradients stayed FP32 while
+autocast produced FP16 or BF16 logits. The exact local record is in
+`experiments/E6/support.json`. This is a four-example compatibility check,
+not a full precision training or quality comparison; FP32 remains the reference.
