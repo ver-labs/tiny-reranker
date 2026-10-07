@@ -41,9 +41,14 @@ def memory_sample() -> dict[str, int]:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--precision", choices=tuple(DTYPES), required=True)
+    parser.add_argument("--full-cast", action="store_true",
+                        help="BF16 control: cast all model weights and do not use autocast")
     args = parser.parse_args()
-    checkpoint = HERE / f"matched_{args.precision}.pt"
-    report_path = HERE / f"matched_{args.precision}.json"
+    if args.full_cast and args.precision != "bf16":
+        parser.error("Full-cast training is enabled only for BF16 after its support probe")
+    run_name = f"full_cast_{args.precision}" if args.full_cast else f"matched_{args.precision}"
+    checkpoint = HERE / f"{run_name}.pt"
+    report_path = HERE / f"{run_name}.json"
     if checkpoint.exists() or report_path.exists():
         parser.error(f"Matched {args.precision} output already exists")
     if not torch.backends.mps.is_available():
@@ -56,6 +61,12 @@ def main() -> None:
     mode_support = next(mode for mode in support["modes"] if mode["name"] == check_name)
     if not mode_support["supported_for_this_smoke_test"]:
         raise RuntimeError(f"Local {args.precision} model-operation check did not pass")
+    if args.full_cast:
+        probe = json.loads((HERE / "full_cast_probe.json").read_text(encoding="utf-8"))
+        full_cast_support = next(mode for mode in probe["modes"]
+                                 if mode["precision"] == args.precision)
+        if not full_cast_support["one_update_completed"]:
+            raise RuntimeError("BF16 full-cast model-operation check did not pass")
     config_path = E1 / "config.json"
     initial_path = E1 / "initial.pt"
     manifest = json.loads((E1 / "initial.json").read_text(encoding="utf-8"))
@@ -69,7 +80,7 @@ def main() -> None:
         raise RuntimeError("Saved initialization does not match config or seed")
     model = ScratchReranker(config)
     model.load_state_dict(initial["model_state_dict"], strict=True)
-    model = model.to(device).train()
+    model = model.to(device=device, dtype=torch.bfloat16 if args.full_cast else torch.float32).train()
     tokenizer = load_scratch_tokenizer(config_path)
     torch.manual_seed(SEED)
     train_rows = list(islice(iter_clean_pairs("train"), TRAIN_COUNT))
@@ -106,7 +117,8 @@ def main() -> None:
                 any(tensor.device.type != "mps" for tensor in inputs.values()):
             raise RuntimeError("A training batch left MPS")
         optimizer.zero_grad(set_to_none=True)
-        with torch.autocast(device_type="mps", dtype=dtype, enabled=dtype is not None):
+        with torch.autocast(device_type="mps", dtype=dtype,
+                            enabled=dtype is not None and not args.full_cast):
             logits = one_logit_per_label(model(**inputs), labels)
             loss = loss_fn(logits, labels)
         expected_logit_dtype = dtype if dtype is not None else torch.float32
@@ -157,9 +169,10 @@ def main() -> None:
     if seen != TRAIN_COUNT or len(seen_ids) != TRAIN_COUNT or \
             microsteps != TRAIN_COUNT // BATCH_SIZE or updates + skipped != microsteps:
         raise RuntimeError("Matched precision run has wrong sample or update counts")
-    if any(parameter.dtype != torch.float32 or parameter.device.type != "mps"
+    expected_parameter_dtype = torch.bfloat16 if args.full_cast else torch.float32
+    if any(parameter.dtype != expected_parameter_dtype or parameter.device.type != "mps"
            for parameter in model.parameters()):
-        raise RuntimeError("Autocast altered model parameter dtype or device")
+        raise RuntimeError("Model parameter dtype or device differs from requested mode")
     after_loss, after_accuracy = measure(model, validation_loader, device, loss_fn)
     atomic_torch_save({
         "model_state_dict": {name: value.detach().cpu() for name, value in model.state_dict().items()},
@@ -172,13 +185,17 @@ def main() -> None:
         "microstep_count": microsteps,
         "skipped_update_count": skipped,
         "precision": args.precision,
+        "full_cast": args.full_cast,
         "training_seed": SEED,
         "rng_state": capture_rng_state(device),
         "data_split_manifest": split_manifest_record(),
     }, checkpoint)
     report = {
-        "experiment": "E6 matched precision training",
+        "experiment": "E6 BF16 full-model cast without autocast" if args.full_cast else
+                      "E6 matched precision training",
         "precision": args.precision,
+        "autocast_used": dtype is not None and not args.full_cast,
+        "full_cast": args.full_cast,
         "checkpoint": checkpoint.name,
         "checkpoint_sha256": sha256(checkpoint),
         "initial_checkpoint_sha256": sha256(initial_path),
@@ -198,13 +215,13 @@ def main() -> None:
         "optimizer_updates": updates,
         "skipped_optimizer_updates": skipped,
         "mean_training_bce_loss": loss_sum / seen,
-        "validation_inference_precision": "fp32",
+        "validation_inference_precision": "bf16 full-model cast" if args.full_cast else "fp32",
         "validation_before": {"bce_loss": before_loss, "binary_accuracy": before_accuracy},
         "validation_after": {"bce_loss": after_loss, "binary_accuracy": after_accuracy},
         "backend": "mps",
         "pytorch_enable_mps_fallback": os.environ.get("PYTORCH_ENABLE_MPS_FALLBACK", "unset"),
-        "parameter_dtype": "float32",
-        "autocast_dtype": None if dtype is None else str(dtype),
+        "parameter_dtype": "bfloat16" if args.full_cast else "float32",
+        "autocast_dtype": None if dtype is None or args.full_cast else str(dtype),
         "loss_dtype": "float32",
         "gradient_scaler": None if scaler is None else {
             "implementation": "torch.amp.GradScaler('mps')",
