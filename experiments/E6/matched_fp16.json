@@ -53,5 +53,6 @@
     "sampled_max_current_driver_bytes": 1156136960,
     "measurement": "maximum sampled MPS current allocation with activations live, after backward, after update; not true peak"
   },
-  "full_ranking_evaluation_completed": false
+  "full_ranking_evaluation_completed": true,
+  "full_ranking_summary": "experiments/E6/matched_fp16_summary.json"
 }
