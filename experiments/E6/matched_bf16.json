@@ -1,0 +1,49 @@
+{
+  "experiment": "E6 matched precision training",
+  "precision": "bf16",
+  "checkpoint": "matched_bf16.pt",
+  "checkpoint_sha256": "27f931a1722bac83a0840cf6a98b588bd0145e392a976fe304c869b0a9b7a9dc",
+  "initial_checkpoint_sha256": "452379b2eeaea4627640d7e079b319dd72c6b5408b431d2c1dccba916107ff22",
+  "config_sha256": "1e5f7083cf72e9c16f76204b0ea560ef5d99d443cb13eee7b69ec26c198e7561",
+  "support_report": "experiments/E6/support.json",
+  "training_seed": 123,
+  "training_pairs": 1024,
+  "training_pair_ids_sha256": "ef4a71b0aaf3e903827315767d2f110c2552b82d63fccaede738923226ae77b5",
+  "validation_pairs": 128,
+  "validation_pair_ids_sha256": "dcba8a44c8cb813dd4537a6fe72c610d0e450924aad1fad4ee2952b7e63588f9",
+  "batch_size": 16,
+  "max_length": 128,
+  "padding": "dynamic per batch",
+  "optimizer": "AdamW",
+  "learning_rate": 0.0003,
+  "microsteps": 64,
+  "optimizer_updates": 64,
+  "skipped_optimizer_updates": 0,
+  "mean_training_bce_loss": 0.6950265252962708,
+  "validation_inference_precision": "fp32",
+  "validation_before": {
+    "bce_loss": 0.7057489976286888,
+    "binary_accuracy": 0.5
+  },
+  "validation_after": {
+    "bce_loss": 0.6862931102514267,
+    "binary_accuracy": 0.5625
+  },
+  "backend": "mps",
+  "pytorch_enable_mps_fallback": "unset",
+  "parameter_dtype": "float32",
+  "autocast_dtype": "torch.bfloat16",
+  "loss_dtype": "float32",
+  "gradient_scaler": null,
+  "training_time": {
+    "seconds": 4.784503000089899,
+    "scope": "64 training batches: tokenization, device transfer, forward, backward, gradient finite check, optimizer/scaler update; excludes loading, validation, save",
+    "mps_synchronized_after_each_batch": true
+  },
+  "memory": {
+    "sampled_max_current_tensor_bytes": 168803840,
+    "sampled_max_current_driver_bytes": 1155743744,
+    "measurement": "maximum sampled MPS current allocation with activations live, after backward, after update; not true peak"
+  },
+  "full_ranking_evaluation_completed": false
+}
