@@ -1,0 +1,41 @@
+{
+  "experiment": "E6 full model cast without autocast; separate control from autocast comparison",
+  "torch_version": "2.14.1",
+  "macos_version": "26.5.2",
+  "backend": "mps",
+  "pytorch_enable_mps_fallback": "unset",
+  "initial_checkpoint_sha256": "452379b2eeaea4627640d7e079b319dd72c6b5408b431d2c1dccba916107ff22",
+  "sample_pair_ids": [
+    "94fe3be5b93cd2fcf12d03046253a8ea612a7f5fc5f7adb6902e9f71cf51d8ff",
+    "bb81dda30d4b33d41bd0ee8efa66bbf3bea7048602fce6be02e335d7aa9a81b4",
+    "751d9c4cc28276ca3a5756d271a2c361f36fd5555fe33cf8086af674da6b0377",
+    "8e09232015349387d6c34c77fc8fdc4fa8ec04709cae33cfd6f986822a6f560e"
+  ],
+  "sample_batch_size": 4,
+  "modes": [
+    {
+      "precision": "fp16",
+      "autocast_used": false,
+      "model_weight_dtype": "torch.float16",
+      "one_update_completed": false,
+      "logit_dtype": "torch.float16",
+      "loss_dtype": "torch.float32",
+      "loss": 0.70587158203125,
+      "gradient_scaler": "torch.amp.GradScaler('mps')",
+      "failure": {
+        "type": "ValueError",
+        "message": "Attempting to unscale FP16 gradients."
+      }
+    },
+    {
+      "precision": "bf16",
+      "autocast_used": false,
+      "model_weight_dtype": "torch.bfloat16",
+      "one_update_completed": true,
+      "logit_dtype": "torch.bfloat16",
+      "loss_dtype": "torch.float32",
+      "loss": 0.705078125,
+      "gradient_scaler": null
+    }
+  ]
+}
