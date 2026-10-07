@@ -437,3 +437,16 @@ BF16 did not use scaling. Model parameters and gradients stayed FP32 while
 autocast produced FP16 or BF16 logits. The exact local record is in
 `experiments/E6/support.json`. This is a four-example compatibility check,
 not a full precision training or quality comparison; FP32 remains the reference.
+
+The bounded FP16 training run uses `torch.autocast("mps", dtype=torch.float16)`
+with the supported `torch.amp.GradScaler("mps")`. It starts from the same saved
+random weights and 1,024 training pairs as the E1 four-layer FP32 run. Run
+`.venv/bin/python -m experiments.E6.train_fp16`. In each batch it scales the
+loss, backpropagates, unscales gradients, lets the scaler step or skip AdamW,
+then updates the scale. It completed 64 of 64 optimizer updates with zero
+skips; the scale remained 65,536. The checkpoint saves model, optimizer, and
+scaler states. FP32 validation BCE after training was 0.68634 versus 0.68633
+for E1 FP32. The 13.02-second FP16 loop samples memory and synchronizes MPS
+after every batch, so it is not directly comparable with E1's 4.04-second
+timing scope. Full ranking quality and a matched speed test remain separate
+steps.
