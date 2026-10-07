@@ -6,6 +6,7 @@ from pathlib import Path
 
 import torch
 from torch import Tensor, nn
+from torch.utils.checkpoint import checkpoint
 
 
 DEFAULT_CONFIG = Path(__file__).resolve().parent.parent / "configs" / "scratch.json"
@@ -68,6 +69,7 @@ class ScratchReranker(nn.Module):
         )
         self.final_norm = nn.LayerNorm(config.hidden_size)
         self.scoring_head = nn.Linear(config.hidden_size, 1)
+        self.activation_checkpointing = False
 
     def forward(
         self, input_ids: Tensor, attention_mask: Tensor, token_type_ids: Tensor
@@ -89,7 +91,13 @@ class ScratchReranker(nn.Module):
         hidden = self.embedding_dropout(self.embedding_norm(hidden))
         padding_mask = attention_mask == 0
         for layer in self.encoder_layers:
-            hidden = layer(hidden, src_key_padding_mask=padding_mask, is_causal=False)
+            if self.activation_checkpointing and self.training:
+                hidden = checkpoint(
+                    layer, hidden, src_key_padding_mask=padding_mask,
+                    is_causal=False, use_reentrant=False, preserve_rng_state=True,
+                )
+            else:
+                hidden = layer(hidden, src_key_padding_mask=padding_mask, is_causal=False)
         hidden = self.final_norm(hidden)
         return self.scoring_head(hidden[:, 0, :]).squeeze(-1)
 
