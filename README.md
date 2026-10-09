@@ -841,3 +841,50 @@ Reports: `experiments/S1/comparison.json`, `quality.json`, `parity.json`,
 `conversion.json`, and the direct/serving benchmark JSON files. Converted MLX
 weights and server logs stay local outside Git. S1's queue, timeout, cancellation,
 validation, and worker-recovery tests pass (three tests).
+
+#### Batch-size and concurrency sweeps
+
+Run `.venv/bin/python -m experiments.S1.sweep` to reproduce the epoch-3 sweeps.
+They use the first 128 fixed **validation** queries (256 pairs), not the test
+dataset. Direct scoring measures batches 1, 2, 4, 8, 16, 32, 64, and 128. HTTP
+serving measures concurrency 1, 2, 4, 8, 16, and 32 with two documents per request,
+one model worker, and no cross-request batching. Each point uses six repeats,
+split into two rounds with reversed backend order. Direct batch order reverses
+in the second round; HTTP concurrency order alternates between repeats. Backends
+run in isolated processes, sequentially. The client connection limit accommodates
+the largest concurrency, avoiding an unintended 16-connection ceiling.
+
+`experiments/S1/sweep_results.json` stores medians, raw values, and quartiles.
+Raw direct round reports and `sweep_http_raw.json` retain timing details.
+`sweep_batch.png/svg` plot complete-scoring throughput and median batch latency;
+`sweep_concurrency.png/svg` plot HTTP throughput, median request latency, and p95.
+Shaded areas are interquartile ranges across repeats, not confidence intervals.
+
+| Pair batch | PyTorch scoring pairs/s | MLX scoring pairs/s |
+| --- | ---: | ---: |
+| 1 | 256 | 352 |
+| 2 | 392 | 533 |
+| 4 | 651 | 783 |
+| 8 | 1,087 | 1,021 |
+| 16 | 1,275 | 945 |
+| 32 | 1,633 | 1,382 |
+| 64 | 1,924 | 1,212 |
+| 128 | 1,506 | 1,188 |
+
+| HTTP concurrency | PyTorch requests/s | MLX requests/s | PyTorch median latency | MLX median latency |
+| --- | ---: | ---: | ---: | ---: |
+| 1 | 119 | 149 | 8.37 ms | 6.64 ms |
+| 2 | 149 | 202 | 12.32 ms | 8.74 ms |
+| 4 | 151 | 253 | 26.31 ms | 15.36 ms |
+| 8 | 146 | 238 | 49.24 ms | 30.14 ms |
+| 16 | 152 | 213 | 98.37 ms | 65.51 ms |
+| 32 | 116 | 180 | 218.14 ms | 119.10 ms |
+
+All 9,216 timed HTTP requests succeeded with the expected rankings; all four
+benchmark servers shut down cleanly. MLX led at direct batches 1–4; PyTorch led
+at batches 8–128, with its highest measured median throughput at 64. MLX led HTTP
+throughput at every tested concurrency. Higher concurrency increased queueing
+and latency rather than increasing model batch size. Timing varied substantially
+between repeats, particularly at high concurrency and batch 128; these are local
+measurements, not a precise universal crossover. Large-document HTTP reranking
+remains a separate workload from this two-document concurrency test.
