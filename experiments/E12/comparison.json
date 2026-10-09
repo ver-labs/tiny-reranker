@@ -1,0 +1,200 @@
+{
+  "experiment": "E12: Rust vs Python HTTP coordinators; identical child-worker protocol",
+  "checkpoint": "runs/full_train/epoch_0003.pt",
+  "checkpoint_sha256": "2ea2608a9ec98083b89606d13bed1d7c6e7a90dc6160bbe44732166137538d52",
+  "rust_binary_sha256": "4a80da1641b3f4fb70b8edecec1890fbde4504562875f4948449a6e93538b366",
+  "cargo_lock_sha256": "07b15e1e2cc281045188febbc9e2c26cff4e3b38dc6035b90214d82ca79ec8d3",
+  "code_sha256": {
+    "rust-server/src/main.rs": "14b7bb2dded999b6b1bac0dfd3d7cdead132f9c7bb86b30160c51575f676eee8",
+    "rust-server/src/protocol.rs": "1a77bf088e65d4d4a067f4dd13d5f97d51a1883e33564d9f20e093e82044fe21",
+    "rust-server/src/worker.rs": "6e86f7769bab6e1f37a0c063ecad50c4c0c43046eb25bbe481d83be489a99300",
+    "experiments/E12/worker.py": "1476669e8e9fa2bf6004396ab7e31affa96fbf36a8b5f48c72c6041c75541b32",
+    "experiments/E12/python_server.py": "19e6e2cba7721fe45edbe7dc05b5ff1aa124b7830b4383450dfa2030aa98fe2f",
+    "experiments/E12/benchmark.py": "0c83e5aac74f29cfb21cff9fad31a7ccd4fcbc60c3be878d684415c92b62c996"
+  },
+  "dataset_split": "validation",
+  "candidate_sha256": "6b71ca5ff41401142e0726755b278a67b797516b246f605bfbbb9242840fe1db",
+  "test_split_touched": false,
+  "requests_per_repeat": 128,
+  "documents_per_request": 2,
+  "repeats_per_configuration": 10,
+  "precision": "FP32; MLX_ENABLE_TF32=0; Apple M5 GPU",
+  "pair_batch_size": 8,
+  "max_length": 128,
+  "queue_capacity": 32,
+  "model_workers": 1,
+  "cross_request_batching": false,
+  "scope": "loopback HTTP, queueing, JSON pipe round trip, CPU tokenization, GPU scoring, sorting and JSON response",
+  "fairness": "Both coordinators launch experiments.E12.worker; model loads once; same pipe protocol, weights, batching and workloads.",
+  "ordering": "Two sequential isolated rounds; reverse coordinator/backend order in round two.",
+  "limitations": [
+    "Short local two-document workload; variation is retained, not a universal speed ranking.",
+    "New Python reference includes IPC; comparison with S1 would combine coordinator and worker-transport changes.",
+    "HTTP timeouts discard responses but do not cancel already running GPU inference.",
+    "Worker failures make service unavailable; automatic restart is not implemented."
+  ],
+  "results": [
+    {
+      "backend": "mlx",
+      "concurrency": 1,
+      "python": {
+        "requests_per_second": 230.75661757444658,
+        "median_ms": 4.0578439948149025,
+        "p95_ms": 6.865520961582661,
+        "median_queue_ms": 0.026187452021986246,
+        "median_processing_ms": 2.478020964190364,
+        "throughput_min": 132.28957205717379,
+        "throughput_max": 287.9948338228343,
+        "successful_requests": 1280,
+        "failures": 0
+      },
+      "rust": {
+        "requests_per_second": 230.93935015930793,
+        "median_ms": 3.7649062578566372,
+        "p95_ms": 6.74216658808291,
+        "median_queue_ms": 0.0039059999999999997,
+        "median_processing_ms": 2.33640625,
+        "throughput_min": 203.61494731820903,
+        "throughput_max": 348.76889263522247,
+        "successful_requests": 1280,
+        "failures": 0
+      },
+      "rust_throughput_speedup": 1.0007918844832366
+    },
+    {
+      "backend": "mlx",
+      "concurrency": 4,
+      "python": {
+        "requests_per_second": 306.6252053321903,
+        "median_ms": 12.684843502938747,
+        "p95_ms": 16.16468688007444,
+        "median_queue_ms": 7.858229335397482,
+        "median_processing_ms": 3.1045732321217656,
+        "throughput_min": 237.96810579001868,
+        "throughput_max": 468.03954159196235,
+        "successful_requests": 1280,
+        "failures": 0
+      },
+      "rust": {
+        "requests_per_second": 428.41365264896683,
+        "median_ms": 8.445521059911698,
+        "p95_ms": 14.188354020006955,
+        "median_queue_ms": 4.89201025,
+        "median_processing_ms": 2.0693645,
+        "throughput_min": 300.5749373712746,
+        "throughput_max": 552.228858174648,
+        "successful_requests": 1280,
+        "failures": 0
+      },
+      "rust_throughput_speedup": 1.3971899413319067
+    },
+    {
+      "backend": "mlx",
+      "concurrency": 8,
+      "python": {
+        "requests_per_second": 295.84677571851546,
+        "median_ms": 26.790541945956647,
+        "p95_ms": 30.987916514277458,
+        "median_queue_ms": 21.960364712867886,
+        "median_processing_ms": 3.206405963283032,
+        "throughput_min": 239.0305629728548,
+        "throughput_max": 408.82040631174135,
+        "successful_requests": 1280,
+        "failures": 0
+      },
+      "rust": {
+        "requests_per_second": 379.03961011105304,
+        "median_ms": 17.756281013134867,
+        "p95_ms": 28.78439554478973,
+        "median_queue_ms": 14.096646,
+        "median_processing_ms": 2.16809375,
+        "throughput_min": 276.2824720516989,
+        "throughput_max": 488.0828825237535,
+        "successful_requests": 1280,
+        "failures": 0
+      },
+      "rust_throughput_speedup": 1.2812024372768278
+    },
+    {
+      "backend": "pytorch",
+      "concurrency": 1,
+      "python": {
+        "requests_per_second": 145.3217757068478,
+        "median_ms": 6.571500329300761,
+        "p95_ms": 9.855228941887617,
+        "median_queue_ms": 0.028406211640685797,
+        "median_processing_ms": 4.900708387140185,
+        "throughput_min": 118.95399940097542,
+        "throughput_max": 165.23372661960732,
+        "successful_requests": 1280,
+        "failures": 0
+      },
+      "rust": {
+        "requests_per_second": 129.837521807897,
+        "median_ms": 7.294614508282393,
+        "p95_ms": 10.745478910394013,
+        "median_queue_ms": 0.0058435,
+        "median_processing_ms": 5.5407395,
+        "throughput_min": 77.25556835296614,
+        "throughput_max": 169.1447958796297,
+        "successful_requests": 1280,
+        "failures": 0
+      },
+      "rust_throughput_speedup": 0.8934484950817927
+    },
+    {
+      "backend": "pytorch",
+      "concurrency": 4,
+      "python": {
+        "requests_per_second": 198.90450723690074,
+        "median_ms": 19.294395751785487,
+        "p95_ms": 25.55591706186533,
+        "median_queue_ms": 12.810020765755326,
+        "median_processing_ms": 4.6791667700745165,
+        "throughput_min": 138.9208014831746,
+        "throughput_max": 233.9387564982627,
+        "successful_requests": 1280,
+        "failures": 0
+      },
+      "rust": {
+        "requests_per_second": 180.46981622159785,
+        "median_ms": 21.376937453169376,
+        "p95_ms": 31.14368743263185,
+        "median_queue_ms": 14.48282325,
+        "median_processing_ms": 5.123249749999999,
+        "throughput_min": 142.09448859338778,
+        "throughput_max": 257.8108417255917,
+        "successful_requests": 1280,
+        "failures": 0
+      },
+      "rust_throughput_speedup": 0.9073188874832954
+    },
+    {
+      "backend": "pytorch",
+      "concurrency": 8,
+      "python": {
+        "requests_per_second": 187.52018573199052,
+        "median_ms": 40.705052320845425,
+        "p95_ms": 48.348625539802015,
+        "median_queue_ms": 33.94665592350066,
+        "median_processing_ms": 4.999042022973299,
+        "throughput_min": 157.1662836304924,
+        "throughput_max": 203.4848368323151,
+        "successful_requests": 1280,
+        "failures": 0
+      },
+      "rust": {
+        "requests_per_second": 190.46673028417763,
+        "median_ms": 40.037031343672425,
+        "p95_ms": 47.8166249813512,
+        "median_queue_ms": 33.8277085,
+        "median_processing_ms": 4.892042,
+        "throughput_min": 157.51576298166864,
+        "throughput_max": 259.6466068798252,
+        "successful_requests": 1280,
+        "failures": 0
+      },
+      "rust_throughput_speedup": 1.0157132126372699
+    }
+  ]
+}

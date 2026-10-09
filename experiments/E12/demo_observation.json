@@ -1,0 +1,26 @@
+{
+  "request": {
+    "request_id": "demo",
+    "query": "How do I save a PyTorch model?",
+    "documents": [
+      {
+        "document_id": "a",
+        "text": "Save the model weights using torch.save(model.state_dict(), path)."
+      },
+      {
+        "document_id": "b",
+        "text": "Plant tomatoes in a sunny garden and water them regularly."
+      }
+    ],
+    "top_k": 2
+  },
+  "pytorch_scores": {
+    "a": 0.4414686858654022,
+    "b": 2.4036059379577637
+  },
+  "mlx_http_scores": {
+    "b": 2.4036073684692383,
+    "a": 0.4414687156677246
+  },
+  "observation": "Both backends rank irrelevant gardening document above relevant model-saving document; this is a model-quality failure on a qualitative handwritten example, not a benchmark ranking-parity failure."
+}

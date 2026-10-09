@@ -24,3 +24,9 @@ experiments/P1/cpu_trace.json
 runs/full_train*/
 experiments/S1/*.safetensors
 experiments/S1/*_server.log
+rust-server/target/
+experiments/E12/*_server.log
+experiments/E12/*_rankings.jsonl
+experiments/E12/*_rankings.jsonl.tmp
+experiments/E11/*.gputrace/
+experiments/E11/*.prof
