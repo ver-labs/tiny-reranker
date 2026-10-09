@@ -1,0 +1,485 @@
+{
+  "checkpoint": "runs/full_train/epoch_0003.pt",
+  "checkpoint_sha256": "2ea2608a9ec98083b89606d13bed1d7c6e7a90dc6160bbe44732166137538d52",
+  "config_sha256": "1e5f7083cf72e9c16f76204b0ea560ef5d99d443cb13eee7b69ec26c198e7561",
+  "weights_sha256": "262d90da7f1e9d1b6825f77762ec56ab9ebe4371c44c67abe003d762e03bea59",
+  "precision": "float32",
+  "mapping": [
+    {
+      "source": "token_embeddings.weight",
+      "target": "token_embeddings.weight",
+      "shape": [
+        30522,
+        128
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "position_embeddings.weight",
+      "target": "position_embeddings.weight",
+      "shape": [
+        128,
+        128
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "segment_embeddings.weight",
+      "target": "segment_embeddings.weight",
+      "shape": [
+        2,
+        128
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "embedding_norm.weight",
+      "target": "embedding_norm.weight",
+      "shape": [
+        128
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "embedding_norm.bias",
+      "target": "embedding_norm.bias",
+      "shape": [
+        128
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "encoder_layers.0.self_attn.in_proj_weight",
+      "target": "encoder_layers.0.self_attn.in_proj.weight",
+      "shape": [
+        384,
+        128
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "encoder_layers.0.self_attn.in_proj_bias",
+      "target": "encoder_layers.0.self_attn.in_proj.bias",
+      "shape": [
+        384
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "encoder_layers.0.self_attn.out_proj.weight",
+      "target": "encoder_layers.0.self_attn.out_proj.weight",
+      "shape": [
+        128,
+        128
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "encoder_layers.0.self_attn.out_proj.bias",
+      "target": "encoder_layers.0.self_attn.out_proj.bias",
+      "shape": [
+        128
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "encoder_layers.0.linear1.weight",
+      "target": "encoder_layers.0.linear1.weight",
+      "shape": [
+        512,
+        128
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "encoder_layers.0.linear1.bias",
+      "target": "encoder_layers.0.linear1.bias",
+      "shape": [
+        512
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "encoder_layers.0.linear2.weight",
+      "target": "encoder_layers.0.linear2.weight",
+      "shape": [
+        128,
+        512
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "encoder_layers.0.linear2.bias",
+      "target": "encoder_layers.0.linear2.bias",
+      "shape": [
+        128
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "encoder_layers.0.norm1.weight",
+      "target": "encoder_layers.0.norm1.weight",
+      "shape": [
+        128
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "encoder_layers.0.norm1.bias",
+      "target": "encoder_layers.0.norm1.bias",
+      "shape": [
+        128
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "encoder_layers.0.norm2.weight",
+      "target": "encoder_layers.0.norm2.weight",
+      "shape": [
+        128
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "encoder_layers.0.norm2.bias",
+      "target": "encoder_layers.0.norm2.bias",
+      "shape": [
+        128
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "encoder_layers.1.self_attn.in_proj_weight",
+      "target": "encoder_layers.1.self_attn.in_proj.weight",
+      "shape": [
+        384,
+        128
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "encoder_layers.1.self_attn.in_proj_bias",
+      "target": "encoder_layers.1.self_attn.in_proj.bias",
+      "shape": [
+        384
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "encoder_layers.1.self_attn.out_proj.weight",
+      "target": "encoder_layers.1.self_attn.out_proj.weight",
+      "shape": [
+        128,
+        128
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "encoder_layers.1.self_attn.out_proj.bias",
+      "target": "encoder_layers.1.self_attn.out_proj.bias",
+      "shape": [
+        128
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "encoder_layers.1.linear1.weight",
+      "target": "encoder_layers.1.linear1.weight",
+      "shape": [
+        512,
+        128
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "encoder_layers.1.linear1.bias",
+      "target": "encoder_layers.1.linear1.bias",
+      "shape": [
+        512
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "encoder_layers.1.linear2.weight",
+      "target": "encoder_layers.1.linear2.weight",
+      "shape": [
+        128,
+        512
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "encoder_layers.1.linear2.bias",
+      "target": "encoder_layers.1.linear2.bias",
+      "shape": [
+        128
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "encoder_layers.1.norm1.weight",
+      "target": "encoder_layers.1.norm1.weight",
+      "shape": [
+        128
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "encoder_layers.1.norm1.bias",
+      "target": "encoder_layers.1.norm1.bias",
+      "shape": [
+        128
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "encoder_layers.1.norm2.weight",
+      "target": "encoder_layers.1.norm2.weight",
+      "shape": [
+        128
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "encoder_layers.1.norm2.bias",
+      "target": "encoder_layers.1.norm2.bias",
+      "shape": [
+        128
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "encoder_layers.2.self_attn.in_proj_weight",
+      "target": "encoder_layers.2.self_attn.in_proj.weight",
+      "shape": [
+        384,
+        128
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "encoder_layers.2.self_attn.in_proj_bias",
+      "target": "encoder_layers.2.self_attn.in_proj.bias",
+      "shape": [
+        384
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "encoder_layers.2.self_attn.out_proj.weight",
+      "target": "encoder_layers.2.self_attn.out_proj.weight",
+      "shape": [
+        128,
+        128
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "encoder_layers.2.self_attn.out_proj.bias",
+      "target": "encoder_layers.2.self_attn.out_proj.bias",
+      "shape": [
+        128
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "encoder_layers.2.linear1.weight",
+      "target": "encoder_layers.2.linear1.weight",
+      "shape": [
+        512,
+        128
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "encoder_layers.2.linear1.bias",
+      "target": "encoder_layers.2.linear1.bias",
+      "shape": [
+        512
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "encoder_layers.2.linear2.weight",
+      "target": "encoder_layers.2.linear2.weight",
+      "shape": [
+        128,
+        512
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "encoder_layers.2.linear2.bias",
+      "target": "encoder_layers.2.linear2.bias",
+      "shape": [
+        128
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "encoder_layers.2.norm1.weight",
+      "target": "encoder_layers.2.norm1.weight",
+      "shape": [
+        128
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "encoder_layers.2.norm1.bias",
+      "target": "encoder_layers.2.norm1.bias",
+      "shape": [
+        128
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "encoder_layers.2.norm2.weight",
+      "target": "encoder_layers.2.norm2.weight",
+      "shape": [
+        128
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "encoder_layers.2.norm2.bias",
+      "target": "encoder_layers.2.norm2.bias",
+      "shape": [
+        128
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "encoder_layers.3.self_attn.in_proj_weight",
+      "target": "encoder_layers.3.self_attn.in_proj.weight",
+      "shape": [
+        384,
+        128
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "encoder_layers.3.self_attn.in_proj_bias",
+      "target": "encoder_layers.3.self_attn.in_proj.bias",
+      "shape": [
+        384
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "encoder_layers.3.self_attn.out_proj.weight",
+      "target": "encoder_layers.3.self_attn.out_proj.weight",
+      "shape": [
+        128,
+        128
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "encoder_layers.3.self_attn.out_proj.bias",
+      "target": "encoder_layers.3.self_attn.out_proj.bias",
+      "shape": [
+        128
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "encoder_layers.3.linear1.weight",
+      "target": "encoder_layers.3.linear1.weight",
+      "shape": [
+        512,
+        128
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "encoder_layers.3.linear1.bias",
+      "target": "encoder_layers.3.linear1.bias",
+      "shape": [
+        512
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "encoder_layers.3.linear2.weight",
+      "target": "encoder_layers.3.linear2.weight",
+      "shape": [
+        128,
+        512
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "encoder_layers.3.linear2.bias",
+      "target": "encoder_layers.3.linear2.bias",
+      "shape": [
+        128
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "encoder_layers.3.norm1.weight",
+      "target": "encoder_layers.3.norm1.weight",
+      "shape": [
+        128
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "encoder_layers.3.norm1.bias",
+      "target": "encoder_layers.3.norm1.bias",
+      "shape": [
+        128
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "encoder_layers.3.norm2.weight",
+      "target": "encoder_layers.3.norm2.weight",
+      "shape": [
+        128
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "encoder_layers.3.norm2.bias",
+      "target": "encoder_layers.3.norm2.bias",
+      "shape": [
+        128
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "final_norm.weight",
+      "target": "final_norm.weight",
+      "shape": [
+        128
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "final_norm.bias",
+      "target": "final_norm.bias",
+      "shape": [
+        128
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "scoring_head.weight",
+      "target": "scoring_head.weight",
+      "shape": [
+        1,
+        128
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    },
+    {
+      "source": "scoring_head.bias",
+      "target": "scoring_head.bias",
+      "shape": [
+        1
+      ],
+      "transform": "identity; both Linear weights are [out, in]"
+    }
+  ]
+}

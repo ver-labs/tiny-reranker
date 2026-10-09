@@ -779,3 +779,65 @@ to the epoch with the highest validation nDCG@10. The test split remains reserve
 Full-run outputs and checkpoints stay local under `runs/full_train/`, outside Git.
 The compact `results/full_training.json` records all three completed epochs,
 their validation/profiling results, provenance, and checkpoint hashes in Git.
+
+### S1: epoch-3 PyTorch/MPS versus MLX serving
+
+The selected full-data model is `runs/full_train/epoch_0003.pt`, checkpoint SHA-256
+`2ea2608a9ec98083b89606d13bed1d7c6e7a90dc6160bbe44732166137538d52`.
+`experiments/S1/` preserves E9's benchmark protocol in a separate package, leaving
+the earlier head-only measurements intact. Both backends run FP32 inference on
+the Apple M5 GPU; MLX uses `MLX_ENABLE_TF32=0`. Tokenization and HTTP handling use
+the CPU. No quantization or cross-request batching is applied.
+
+Conversion checks parameter names/shapes, checkpoint and configuration hashes,
+and saved training provenance. Numerical probes check identical tokenization,
+padding invariance, singleton batches, long-input truncation, hidden layers, and
+scores. The trained model needs hidden-state tolerance `atol=2e-4, rtol=1e-4`
+(rather than E9's `atol=1e-4`); score tolerance remains `atol=1e-5, rtol=1e-4`.
+All 45,709 fixed validation query rankings matched the PyTorch reference, with
+maximum score difference 0.000005484. Both achieved nDCG@10 0.957608 and MRR@10
+0.942571. The test split was not evaluated.
+
+| Concurrent HTTP requests | PyTorch requests/s | MLX requests/s | PyTorch median latency | MLX median latency |
+| --- | ---: | ---: | ---: | ---: |
+| 1 | 116.6 | 187.9 | 7.83 ms | 5.25 ms |
+| 4 | 159.6 | 268.1 | 23.79 ms | 14.43 ms |
+| 8 | 148.8 | 246.1 | 49.17 ms | 29.31 ms |
+
+These are medians across ten repeated workloads per backend/concurrency: five
+repeats in each of two rounds with reversed backend order. Each repeat contains
+128 fixed validation queries, with two candidate documents per request. The
+loopback HTTP measurement includes queueing, tokenization, scoring, sorting, and
+JSON responses. Each server has one model worker and a bounded queue; benchmark
+servers run sequentially and stop afterward. All 7,680 timed requests succeeded
+and returned the expected rankings. Throughput varied between repeats, so these
+numbers describe this local workload rather than a universal backend ranking.
+
+| Direct pair batch | PyTorch complete scoring pairs/s | MLX complete scoring pairs/s |
+| --- | ---: | ---: |
+| 1 | 202 | 345 |
+| 4 | 710 | 646 |
+| 8 | 855 | 1,278 |
+| 16 | 1,081 | 1,289 |
+| 64 | 2,073 | 1,161 |
+
+Direct scoring includes tokenization and input transfer, measured over 256 pairs
+with five repetitions per batch size. For this run, MLX is the better choice for
+the measured small-request HTTP workload, while PyTorch is faster for large
+direct batches. Requests with many candidate documents need their own serving
+measurement before applying the HTTP conclusion to that workload.
+
+```bash
+.venv/bin/python -m experiments.S1.validate
+.venv/bin/python -m experiments.S1.benchmark --backend pytorch
+.venv/bin/python -m experiments.S1.benchmark --backend mlx
+.venv/bin/python -m experiments.S1.benchmark_serving
+.venv/bin/python -m experiments.S1.compare
+# Start the selected model as a local HTTP service when needed:
+.venv/bin/python -m experiments.S1.serve --backend mlx --port 8099
+```
+
+Reports: `experiments/S1/comparison.json`, `quality.json`, `parity.json`,
+`conversion.json`, and the direct/serving benchmark JSON files. Converted MLX
+weights and server logs stay local outside Git. S1's queue, timeout, cancellation,
+validation, and worker-recovery tests pass (three tests).

@@ -1,0 +1,29 @@
+{
+  "probe_batch_sizes": [
+    2,
+    1,
+    8,
+    64
+  ],
+  "max_score_absolute_error": 2.384185791015625e-06,
+  "layer_max_absolute_errors": {
+    "embedding_norm": 4.76837158203125e-07,
+    "encoder_layers.0": 1.049041748046875e-05,
+    "encoder_layers.1": 1.9073486328125e-05,
+    "encoder_layers.2": 6.151199340820312e-05,
+    "encoder_layers.3": 0.0002498626708984375,
+    "final_norm": 2.8908252716064453e-05
+  },
+  "layer_tolerance": {
+    "atol": 0.0002,
+    "rtol": 0.0001
+  },
+  "score_tolerance": {
+    "atol": 1e-05,
+    "rtol": 0.0001
+  },
+  "identical_tokenization": true,
+  "padding_ignored": true,
+  "mlx_enable_tf32": "0",
+  "singleton_and_max_length_truncation_checked": true
+}

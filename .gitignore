@@ -22,3 +22,5 @@ experiments/P1/*.pt
 experiments/P1/cpu_trace.json
 
 runs/full_train*/
+experiments/S1/*.safetensors
+experiments/S1/*_server.log

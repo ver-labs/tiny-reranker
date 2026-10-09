@@ -1,0 +1,690 @@
+{
+  "rounds": [
+    {
+      "backend": "pytorch",
+      "server_ready_seconds": 6.163775207940489,
+      "pair_batch_size": 8,
+      "warmup_requests": 16,
+      "requests_per_repeat": 128,
+      "repeats": 5,
+      "queue_capacity": 32,
+      "model_workers": 1,
+      "scope": "loopback HTTP with persistent client connections; tokenization, queue, model, sorting, JSON included",
+      "concurrency_method": "closed loop, bounded in-flight requests; latency begins after acquiring client slot",
+      "top_k_and_invalid_request_checks": true,
+      "results": {
+        "1": [
+          {
+            "seconds": 1.1669809999875724,
+            "requests_per_second": 109.68473351439579,
+            "median_ms": 8.90247942879796,
+            "p95_ms": 13.89366714283824,
+            "median_queue_ms": 0.03529200330376625,
+            "median_processing_ms": 6.6858334466814995,
+            "successful_requests": 128,
+            "failures": 0
+          },
+          {
+            "seconds": 0.9562664169352502,
+            "requests_per_second": 133.85391114144608,
+            "median_ms": 7.327104452997446,
+            "p95_ms": 9.749416960403323,
+            "median_queue_ms": 0.033791991882026196,
+            "median_processing_ms": 5.314166541211307,
+            "successful_requests": 128,
+            "failures": 0
+          },
+          {
+            "seconds": 1.0121530001051724,
+            "requests_per_second": 126.46309400525372,
+            "median_ms": 7.372374529950321,
+            "p95_ms": 10.5789580848068,
+            "median_queue_ms": 0.03433297388255596,
+            "median_processing_ms": 5.4393335012719035,
+            "successful_requests": 128,
+            "failures": 0
+          },
+          {
+            "seconds": 1.0527357498649508,
+            "requests_per_second": 121.58796736637885,
+            "median_ms": 7.447958458214998,
+            "p95_ms": 12.482916936278343,
+            "median_queue_ms": 0.03352097701281309,
+            "median_processing_ms": 5.441104527562857,
+            "successful_requests": 128,
+            "failures": 0
+          },
+          {
+            "seconds": 0.9524378331843764,
+            "requests_per_second": 134.39197346040464,
+            "median_ms": 7.246062625199556,
+            "p95_ms": 9.788958122953773,
+            "median_queue_ms": 0.03404100425541401,
+            "median_processing_ms": 5.2259169751778245,
+            "successful_requests": 128,
+            "failures": 0
+          }
+        ],
+        "4": [
+          {
+            "seconds": 0.7799079590477049,
+            "requests_per_second": 164.12193069076062,
+            "median_ms": 23.311853990890086,
+            "p95_ms": 32.41833299398422,
+            "median_queue_ms": 15.077313059009612,
+            "median_processing_ms": 5.730561912059784,
+            "successful_requests": 128,
+            "failures": 0
+          },
+          {
+            "seconds": 0.6874162501189858,
+            "requests_per_second": 186.20450124337955,
+            "median_ms": 21.65316604077816,
+            "p95_ms": 24.68370902352035,
+            "median_queue_ms": 14.326208154670894,
+            "median_processing_ms": 5.407687043771148,
+            "successful_requests": 128,
+            "failures": 0
+          },
+          {
+            "seconds": 0.7400403749197721,
+            "requests_per_second": 172.96353596096225,
+            "median_ms": 22.08202099427581,
+            "p95_ms": 31.722875079140067,
+            "median_queue_ms": 14.440187602303922,
+            "median_processing_ms": 5.608146428130567,
+            "successful_requests": 128,
+            "failures": 0
+          },
+          {
+            "seconds": 0.7552803750149906,
+            "requests_per_second": 169.4734885670232,
+            "median_ms": 22.323916433379054,
+            "p95_ms": 32.51687507145107,
+            "median_queue_ms": 14.616541448049247,
+            "median_processing_ms": 5.701603950001299,
+            "successful_requests": 128,
+            "failures": 0
+          },
+          {
+            "seconds": 0.7678344580344856,
+            "requests_per_second": 166.70259931763985,
+            "median_ms": 23.42683356255293,
+            "p95_ms": 30.650457832962275,
+            "median_queue_ms": 15.337791526690125,
+            "median_processing_ms": 5.941895535215735,
+            "successful_requests": 128,
+            "failures": 0
+          }
+        ],
+        "8": [
+          {
+            "seconds": 0.7610333750490099,
+            "requests_per_second": 168.19236080383058,
+            "median_ms": 46.076791477389634,
+            "p95_ms": 56.00795918144286,
+            "median_queue_ms": 38.58779149595648,
+            "median_processing_ms": 5.835541523993015,
+            "successful_requests": 128,
+            "failures": 0
+          },
+          {
+            "seconds": 0.789752917131409,
+            "requests_per_second": 162.07600785436762,
+            "median_ms": 45.69460405036807,
+            "p95_ms": 81.91875019110739,
+            "median_queue_ms": 37.83487458713353,
+            "median_processing_ms": 5.654999520629644,
+            "successful_requests": 128,
+            "failures": 0
+          },
+          {
+            "seconds": 0.9216200420632958,
+            "requests_per_second": 138.8858685336718,
+            "median_ms": 51.46106251049787,
+            "p95_ms": 140.1772079989314,
+            "median_queue_ms": 42.936353944242,
+            "median_processing_ms": 6.561229005455971,
+            "successful_requests": 128,
+            "failures": 0
+          },
+          {
+            "seconds": 0.7314402079209685,
+            "requests_per_second": 174.99721592257652,
+            "median_ms": 44.451646506786346,
+            "p95_ms": 57.88083397783339,
+            "median_queue_ms": 36.72829153947532,
+            "median_processing_ms": 5.521583138033748,
+            "successful_requests": 128,
+            "failures": 0
+          },
+          {
+            "seconds": 0.8882617917843163,
+            "requests_per_second": 144.10166145149287,
+            "median_ms": 52.51260451041162,
+            "p95_ms": 88.22054113261402,
+            "median_queue_ms": 43.64806250669062,
+            "median_processing_ms": 6.455666618421674,
+            "successful_requests": 128,
+            "failures": 0
+          }
+        ]
+      }
+    },
+    {
+      "backend": "mlx",
+      "server_ready_seconds": 3.580810165964067,
+      "pair_batch_size": 8,
+      "warmup_requests": 16,
+      "requests_per_repeat": 128,
+      "repeats": 5,
+      "queue_capacity": 32,
+      "model_workers": 1,
+      "scope": "loopback HTTP with persistent client connections; tokenization, queue, model, sorting, JSON included",
+      "concurrency_method": "closed loop, bounded in-flight requests; latency begins after acquiring client slot",
+      "top_k_and_invalid_request_checks": true,
+      "results": {
+        "1": [
+          {
+            "seconds": 0.6409787910524756,
+            "requests_per_second": 199.69459487080113,
+            "median_ms": 5.068479105830193,
+            "p95_ms": 6.524874828755856,
+            "median_queue_ms": 0.033624935895204544,
+            "median_processing_ms": 3.360313014127314,
+            "successful_requests": 128,
+            "failures": 0
+          },
+          {
+            "seconds": 0.6260665829759091,
+            "requests_per_second": 204.45109750399408,
+            "median_ms": 4.954917007125914,
+            "p95_ms": 6.364250089973211,
+            "median_queue_ms": 0.03131246194243431,
+            "median_processing_ms": 3.045875462703407,
+            "successful_requests": 128,
+            "failures": 0
+          },
+          {
+            "seconds": 0.658139375038445,
+            "requests_per_second": 194.48767974492168,
+            "median_ms": 5.30385400634259,
+            "p95_ms": 6.652583135291934,
+            "median_queue_ms": 0.03183353692293167,
+            "median_processing_ms": 3.3162919571623206,
+            "successful_requests": 128,
+            "failures": 0
+          },
+          {
+            "seconds": 0.6532170418649912,
+            "requests_per_second": 195.95324646544574,
+            "median_ms": 5.114104016683996,
+            "p95_ms": 6.551709026098251,
+            "median_queue_ms": 0.03156240563839674,
+            "median_processing_ms": 3.179104416631162,
+            "successful_requests": 128,
+            "failures": 0
+          },
+          {
+            "seconds": 0.7057597080711275,
+            "requests_per_second": 181.36484491276735,
+            "median_ms": 5.189438001252711,
+            "p95_ms": 8.37099994532764,
+            "median_queue_ms": 0.032145995646715164,
+            "median_processing_ms": 3.3564380137249827,
+            "successful_requests": 128,
+            "failures": 0
+          }
+        ],
+        "4": [
+          {
+            "seconds": 0.42404962494038045,
+            "requests_per_second": 301.8514637714778,
+            "median_ms": 13.653375557623804,
+            "p95_ms": 15.79987513832748,
+            "median_queue_ms": 8.449500077404082,
+            "median_processing_ms": 3.381646005436778,
+            "successful_requests": 128,
+            "failures": 0
+          },
+          {
+            "seconds": 0.4509358750656247,
+            "requests_per_second": 283.8541067094565,
+            "median_ms": 13.802250497974455,
+            "p95_ms": 15.759500209242105,
+            "median_queue_ms": 8.351458120159805,
+            "median_processing_ms": 3.4611044684424996,
+            "successful_requests": 128,
+            "failures": 0
+          },
+          {
+            "seconds": 0.43258583289571106,
+            "requests_per_second": 295.89503461815536,
+            "median_ms": 13.513770420104265,
+            "p95_ms": 15.321334125474095,
+            "median_queue_ms": 8.049749420024455,
+            "median_processing_ms": 3.357021603733301,
+            "successful_requests": 128,
+            "failures": 0
+          },
+          {
+            "seconds": 0.46190516697242856,
+            "requests_per_second": 277.11315904729946,
+            "median_ms": 14.05983348377049,
+            "p95_ms": 16.609915997833014,
+            "median_queue_ms": 8.383478969335556,
+            "median_processing_ms": 3.521187463775277,
+            "successful_requests": 128,
+            "failures": 0
+          },
+          {
+            "seconds": 0.43138941703364253,
+            "requests_per_second": 296.7156702177924,
+            "median_ms": 13.463021023198962,
+            "p95_ms": 17.50037493184209,
+            "median_queue_ms": 8.092312375083566,
+            "median_processing_ms": 3.3628749661147594,
+            "successful_requests": 128,
+            "failures": 0
+          }
+        ],
+        "8": [
+          {
+            "seconds": 0.47666670894250274,
+            "requests_per_second": 268.5314447152629,
+            "median_ms": 29.046624549664557,
+            "p95_ms": 32.142250100150704,
+            "median_queue_ms": 23.280812078155577,
+            "median_processing_ms": 3.648103913292289,
+            "successful_requests": 128,
+            "failures": 0
+          },
+          {
+            "seconds": 0.5230753330979496,
+            "requests_per_second": 244.70662617927556,
+            "median_ms": 28.461333480663598,
+            "p95_ms": 62.541999854147434,
+            "median_queue_ms": 23.04797957185656,
+            "median_processing_ms": 3.674833569675684,
+            "successful_requests": 128,
+            "failures": 0
+          },
+          {
+            "seconds": 0.4462857919279486,
+            "requests_per_second": 286.81172987166303,
+            "median_ms": 27.168666943907738,
+            "p95_ms": 29.852750012651086,
+            "median_queue_ms": 21.90464548766613,
+            "median_processing_ms": 3.410104662179947,
+            "successful_requests": 128,
+            "failures": 0
+          },
+          {
+            "seconds": 0.5034148329868913,
+            "requests_per_second": 254.26346546156114,
+            "median_ms": 29.565333505161107,
+            "p95_ms": 43.447457952424884,
+            "median_queue_ms": 23.96581240464002,
+            "median_processing_ms": 3.6632290575653315,
+            "successful_requests": 128,
+            "failures": 0
+          },
+          {
+            "seconds": 0.517142083030194,
+            "requests_per_second": 247.51418265940376,
+            "median_ms": 31.473999959416687,
+            "p95_ms": 35.28387495316565,
+            "median_queue_ms": 25.193312554620206,
+            "median_processing_ms": 4.006354603916407,
+            "successful_requests": 128,
+            "failures": 0
+          }
+        ]
+      }
+    },
+    {
+      "backend": "mlx",
+      "server_ready_seconds": 3.192884124815464,
+      "pair_batch_size": 8,
+      "warmup_requests": 16,
+      "requests_per_repeat": 128,
+      "repeats": 5,
+      "queue_capacity": 32,
+      "model_workers": 1,
+      "scope": "loopback HTTP with persistent client connections; tokenization, queue, model, sorting, JSON included",
+      "concurrency_method": "closed loop, bounded in-flight requests; latency begins after acquiring client slot",
+      "top_k_and_invalid_request_checks": true,
+      "results": {
+        "1": [
+          {
+            "seconds": 0.6357971250545233,
+            "requests_per_second": 201.32208051274728,
+            "median_ms": 4.8352505546063185,
+            "p95_ms": 6.986958906054497,
+            "median_queue_ms": 0.03197905607521534,
+            "median_processing_ms": 3.2879795180633664,
+            "successful_requests": 128,
+            "failures": 0
+          },
+          {
+            "seconds": 0.7769753749016672,
+            "requests_per_second": 164.7413858080116,
+            "median_ms": 5.639979033730924,
+            "p95_ms": 10.00779215246439,
+            "median_queue_ms": 0.03395811654627323,
+            "median_processing_ms": 3.424937021918595,
+            "successful_requests": 128,
+            "failures": 0
+          },
+          {
+            "seconds": 0.854821874992922,
+            "requests_per_second": 149.73879792332158,
+            "median_ms": 6.454562651924789,
+            "p95_ms": 9.343875106424093,
+            "median_queue_ms": 0.03899994771927595,
+            "median_processing_ms": 3.899354487657547,
+            "successful_requests": 128,
+            "failures": 0
+          },
+          {
+            "seconds": 1.1731740420218557,
+            "requests_per_second": 109.10572124439778,
+            "median_ms": 8.358312421478331,
+            "p95_ms": 14.051625039428473,
+            "median_queue_ms": 0.05268747918307781,
+            "median_processing_ms": 4.73504199180752,
+            "successful_requests": 128,
+            "failures": 0
+          },
+          {
+            "seconds": 0.8047471249010414,
+            "requests_per_second": 159.05617558526845,
+            "median_ms": 5.615437519736588,
+            "p95_ms": 10.89624990709126,
+            "median_queue_ms": 0.03456254489719868,
+            "median_processing_ms": 3.4085619263350964,
+            "successful_requests": 128,
+            "failures": 0
+          }
+        ],
+        "4": [
+          {
+            "seconds": 0.6640922501683235,
+            "requests_per_second": 192.74430618269767,
+            "median_ms": 17.206770949997008,
+            "p95_ms": 42.038667015731335,
+            "median_queue_ms": 10.46374998986721,
+            "median_processing_ms": 4.371812450699508,
+            "successful_requests": 128,
+            "failures": 0
+          },
+          {
+            "seconds": 0.5227140421047807,
+            "requests_per_second": 244.87576320810174,
+            "median_ms": 16.044749994762242,
+            "p95_ms": 20.027791149914265,
+            "median_queue_ms": 9.188457974232733,
+            "median_processing_ms": 3.9968335768207908,
+            "successful_requests": 128,
+            "failures": 0
+          },
+          {
+            "seconds": 0.6969390839803964,
+            "requests_per_second": 183.66024081898155,
+            "median_ms": 15.164937474764884,
+            "p95_ms": 18.324957927688956,
+            "median_queue_ms": 8.74616636428982,
+            "median_processing_ms": 3.6960210418328643,
+            "successful_requests": 128,
+            "failures": 0
+          },
+          {
+            "seconds": 0.4941352081950754,
+            "requests_per_second": 259.03841272016376,
+            "median_ms": 14.794708578847349,
+            "p95_ms": 17.963582882657647,
+            "median_queue_ms": 8.870603982359171,
+            "median_processing_ms": 3.8213744992390275,
+            "successful_requests": 128,
+            "failures": 0
+          },
+          {
+            "seconds": 0.5148538330104202,
+            "requests_per_second": 248.61425086721533,
+            "median_ms": 16.04004204273224,
+            "p95_ms": 19.024834036827087,
+            "median_queue_ms": 9.188562398776412,
+            "median_processing_ms": 3.936125081963837,
+            "successful_requests": 128,
+            "failures": 0
+          }
+        ],
+        "8": [
+          {
+            "seconds": 0.5263679998461157,
+            "requests_per_second": 243.175877024099,
+            "median_ms": 28.455750085413456,
+            "p95_ms": 44.96983392164111,
+            "median_queue_ms": 22.866500075906515,
+            "median_processing_ms": 3.8621871499344707,
+            "successful_requests": 128,
+            "failures": 0
+          },
+          {
+            "seconds": 0.4829293747898191,
+            "requests_per_second": 265.04910796885827,
+            "median_ms": 28.04850006941706,
+            "p95_ms": 35.33620806410909,
+            "median_queue_ms": 22.7982085198164,
+            "median_processing_ms": 3.596249967813492,
+            "successful_requests": 128,
+            "failures": 0
+          },
+          {
+            "seconds": 0.5510436249896884,
+            "requests_per_second": 232.2865090806472,
+            "median_ms": 30.906229512766004,
+            "p95_ms": 64.7484171204269,
+            "median_queue_ms": 25.128062930889428,
+            "median_processing_ms": 3.846625448204577,
+            "successful_requests": 128,
+            "failures": 0
+          },
+          {
+            "seconds": 0.5497447079978883,
+            "requests_per_second": 232.83534727630644,
+            "median_ms": 32.22714609000832,
+            "p95_ms": 63.187082996591926,
+            "median_queue_ms": 25.547208031639457,
+            "median_processing_ms": 4.036249942146242,
+            "successful_requests": 128,
+            "failures": 0
+          },
+          {
+            "seconds": 0.594720708206296,
+            "requests_per_second": 215.22707757403248,
+            "median_ms": 35.465250024572015,
+            "p95_ms": 48.27287490479648,
+            "median_queue_ms": 28.040645411238074,
+            "median_processing_ms": 4.357832949608564,
+            "successful_requests": 128,
+            "failures": 0
+          }
+        ]
+      }
+    },
+    {
+      "backend": "pytorch",
+      "server_ready_seconds": 5.1382560830097646,
+      "pair_batch_size": 8,
+      "warmup_requests": 16,
+      "requests_per_repeat": 128,
+      "repeats": 5,
+      "queue_capacity": 32,
+      "model_workers": 1,
+      "scope": "loopback HTTP with persistent client connections; tokenization, queue, model, sorting, JSON included",
+      "concurrency_method": "closed loop, bounded in-flight requests; latency begins after acquiring client slot",
+      "top_k_and_invalid_request_checks": true,
+      "results": {
+        "1": [
+          {
+            "seconds": 1.3771403338760138,
+            "requests_per_second": 92.94622839180023,
+            "median_ms": 9.965582867152989,
+            "p95_ms": 16.93079201504588,
+            "median_queue_ms": 0.04104152321815491,
+            "median_processing_ms": 7.31356255710125,
+            "successful_requests": 128,
+            "failures": 0
+          },
+          {
+            "seconds": 1.1289475420489907,
+            "requests_per_second": 113.37993594253774,
+            "median_ms": 7.812145515345037,
+            "p95_ms": 12.126124929636717,
+            "median_queue_ms": 0.03504147753119469,
+            "median_processing_ms": 5.656645982526243,
+            "successful_requests": 128,
+            "failures": 0
+          },
+          {
+            "seconds": 1.615577582968399,
+            "requests_per_second": 79.22863089299483,
+            "median_ms": 12.118562473915517,
+            "p95_ms": 18.705999944359064,
+            "median_queue_ms": 0.0499580055475235,
+            "median_processing_ms": 8.488791529089212,
+            "successful_requests": 128,
+            "failures": 0
+          },
+          {
+            "seconds": 1.0676016660872847,
+            "requests_per_second": 119.89490468773305,
+            "median_ms": 7.854353985749185,
+            "p95_ms": 12.675584061071277,
+            "median_queue_ms": 0.03483355976641178,
+            "median_processing_ms": 5.739916930906475,
+            "successful_requests": 128,
+            "failures": 0
+          },
+          {
+            "seconds": 1.2772126658819616,
+            "requests_per_second": 100.21823570909498,
+            "median_ms": 8.53108346927911,
+            "p95_ms": 17.600916791707277,
+            "median_queue_ms": 0.03868748899549246,
+            "median_processing_ms": 6.225562538020313,
+            "successful_requests": 128,
+            "failures": 0
+          }
+        ],
+        "4": [
+          {
+            "seconds": 1.3636627078521997,
+            "requests_per_second": 93.86485328296685,
+            "median_ms": 41.60614591091871,
+            "p95_ms": 97.0828749705106,
+            "median_queue_ms": 27.080125059001148,
+            "median_processing_ms": 10.256499517709017,
+            "successful_requests": 128,
+            "failures": 0
+          },
+          {
+            "seconds": 0.8892078751232475,
+            "requests_per_second": 143.94834276772315,
+            "median_ms": 24.276749580167234,
+            "p95_ms": 40.312791941687465,
+            "median_queue_ms": 15.667479485273361,
+            "median_processing_ms": 6.256520980969071,
+            "successful_requests": 128,
+            "failures": 0
+          },
+          {
+            "seconds": 0.8255396250169724,
+            "requests_per_second": 155.05009828858115,
+            "median_ms": 24.15293687954545,
+            "p95_ms": 36.1391669139266,
+            "median_queue_ms": 15.902958461083472,
+            "median_processing_ms": 6.0950834304094315,
+            "successful_requests": 128,
+            "failures": 0
+          },
+          {
+            "seconds": 0.8396853338927031,
+            "requests_per_second": 152.4380560591715,
+            "median_ms": 24.90849990863353,
+            "p95_ms": 36.020249826833606,
+            "median_queue_ms": 16.520333010703325,
+            "median_processing_ms": 6.378645543009043,
+            "successful_requests": 128,
+            "failures": 0
+          },
+          {
+            "seconds": 0.9833614169619977,
+            "requests_per_second": 130.16577404007157,
+            "median_ms": 29.154437012039125,
+            "p95_ms": 52.3718751501292,
+            "median_queue_ms": 18.701646011322737,
+            "median_processing_ms": 7.134207873605192,
+            "successful_requests": 128,
+            "failures": 0
+          }
+        ],
+        "8": [
+          {
+            "seconds": 1.6015769161749631,
+            "requests_per_second": 79.92123182300958,
+            "median_ms": 81.22064603958279,
+            "p95_ms": 248.63070785067976,
+            "median_queue_ms": 66.57268689014018,
+            "median_processing_ms": 9.991103899665177,
+            "successful_requests": 128,
+            "failures": 0
+          },
+          {
+            "seconds": 0.9634092920459807,
+            "requests_per_second": 132.8614962060081,
+            "median_ms": 60.903937672264874,
+            "p95_ms": 71.29812496714294,
+            "median_queue_ms": 49.72983349580318,
+            "median_processing_ms": 7.394999964162707,
+            "successful_requests": 128,
+            "failures": 0
+          },
+          {
+            "seconds": 0.9550634999759495,
+            "requests_per_second": 134.02250217207893,
+            "median_ms": 59.44597895722836,
+            "p95_ms": 86.71154105104506,
+            "median_queue_ms": 48.67862502578646,
+            "median_processing_ms": 7.209395989775658,
+            "successful_requests": 128,
+            "failures": 0
+          },
+          {
+            "seconds": 0.7034316251520067,
+            "requests_per_second": 181.96509145055865,
+            "median_ms": 42.82608302310109,
+            "p95_ms": 51.80595791898668,
+            "median_queue_ms": 35.38585396017879,
+            "median_processing_ms": 5.524999927729368,
+            "successful_requests": 128,
+            "failures": 0
+          },
+          {
+            "seconds": 0.8338529588654637,
+            "requests_per_second": 153.50428230674646,
+            "median_ms": 46.87085445038974,
+            "p95_ms": 94.81137502007186,
+            "median_queue_ms": 38.82081247866154,
+            "median_processing_ms": 6.038833525963128,
+            "successful_requests": 128,
+            "failures": 0
+          }
+        ]
+      }
+    }
+  ],
+  "sample": "first 128 fixed validation queries; two candidate documents per query",
+  "test_split_touched": false
+}

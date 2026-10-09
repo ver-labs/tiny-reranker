@@ -1,0 +1,187 @@
+{
+  "selected_checkpoint": "runs/full_train/epoch_0003.pt",
+  "execution": {
+    "hardware": "Apple M5 GPU; same Mac for both backends",
+    "pytorch": "GPU inference via MPS/Metal",
+    "mlx": "GPU inference via MLX/Metal",
+    "shared_cpu_work": "tokenization and HTTP handling"
+  },
+  "precision": "FP32; MLX_ENABLE_TF32=0",
+  "quality": {
+    "queries": 45709,
+    "candidate_sha256": "6b71ca5ff41401142e0726755b278a67b797516b246f605bfbbb9242840fe1db",
+    "checkpoint_sha256": "2ea2608a9ec98083b89606d13bed1d7c6e7a90dc6160bbe44732166137538d52",
+    "precision": "float32",
+    "pair_batch_size": 64,
+    "pytorch_mrr_at_10": 0.9425714848279332,
+    "pytorch_ndcg_at_10": 0.9576079311960256,
+    "mlx_mrr_at_10": 0.9425714848279332,
+    "mlx_ndcg_at_10": 0.9576079311959301,
+    "changed_query_rankings": 0,
+    "max_score_absolute_error": 5.4836273193359375e-06,
+    "test_split_touched": false
+  },
+  "direct": [
+    {
+      "pair_batch_size": 1,
+      "forward": {
+        "pytorch_pairs_per_second": 351.4599488926316,
+        "mlx_pairs_per_second": 451.9684566710905,
+        "mlx_speedup": 1.2859742855342062,
+        "pytorch_batch_median_ms": 2.866708440706134,
+        "mlx_batch_median_ms": 2.178188064135611
+      },
+      "scoring": {
+        "pytorch_pairs_per_second": 202.03580000500273,
+        "mlx_pairs_per_second": 344.9112123563139,
+        "mlx_speedup": 1.7071786898548345,
+        "pytorch_batch_median_ms": 4.460228490643203,
+        "mlx_batch_median_ms": 2.6154796360060573
+      }
+    },
+    {
+      "pair_batch_size": 4,
+      "forward": {
+        "pytorch_pairs_per_second": 932.6401247479453,
+        "mlx_pairs_per_second": 1040.1060419190069,
+        "mlx_speedup": 1.1152276363834392,
+        "pytorch_batch_median_ms": 3.979791421443224,
+        "mlx_batch_median_ms": 4.071041475981474
+      },
+      "scoring": {
+        "pytorch_pairs_per_second": 710.4277350577162,
+        "mlx_pairs_per_second": 646.111337783676,
+        "mlx_speedup": 0.9094680653637277,
+        "pytorch_batch_median_ms": 5.247041932307184,
+        "mlx_batch_median_ms": 6.1818534741178155
+      }
+    },
+    {
+      "pair_batch_size": 8,
+      "forward": {
+        "pytorch_pairs_per_second": 1579.2789517113715,
+        "mlx_pairs_per_second": 1571.6839053209503,
+        "mlx_speedup": 0.9951908138950432,
+        "pytorch_batch_median_ms": 4.980458063073456,
+        "mlx_batch_median_ms": 4.896353930234909
+      },
+      "scoring": {
+        "pytorch_pairs_per_second": 855.453074422966,
+        "mlx_pairs_per_second": 1277.8035122248202,
+        "mlx_speedup": 1.4937154946654962,
+        "pytorch_batch_median_ms": 9.613083093427122,
+        "mlx_batch_median_ms": 5.667499965056777
+      }
+    },
+    {
+      "pair_batch_size": 16,
+      "forward": {
+        "pytorch_pairs_per_second": 2008.8193265719924,
+        "mlx_pairs_per_second": 1563.3715063610796,
+        "mlx_speedup": 0.7782539154623427,
+        "pytorch_batch_median_ms": 7.628062507137656,
+        "mlx_batch_median_ms": 10.315562481991947
+      },
+      "scoring": {
+        "pytorch_pairs_per_second": 1080.6944952532576,
+        "mlx_pairs_per_second": 1289.376448753328,
+        "mlx_speedup": 1.1930998579308636,
+        "pytorch_batch_median_ms": 13.476187479682267,
+        "mlx_batch_median_ms": 12.250271043740213
+      }
+    },
+    {
+      "pair_batch_size": 64,
+      "forward": {
+        "pytorch_pairs_per_second": 2444.075444447863,
+        "mlx_pairs_per_second": 1348.7431880568852,
+        "mlx_speedup": 0.5518418799717443,
+        "pytorch_batch_median_ms": 25.978312478400767,
+        "mlx_batch_median_ms": 39.038520539179444
+      },
+      "scoring": {
+        "pytorch_pairs_per_second": 2073.432723443052,
+        "mlx_pairs_per_second": 1161.4373303468433,
+        "mlx_speedup": 0.5601519244946666,
+        "pytorch_batch_median_ms": 31.431374954991043,
+        "mlx_batch_median_ms": 51.8948333337903
+      }
+    }
+  ],
+  "serving": [
+    {
+      "concurrent_requests": 1,
+      "pytorch": {
+        "requests_per_second": 116.63742031513539,
+        "median_ms": 7.833249750547111,
+        "p95_ms": 12.57925049867481,
+        "median_queue_ms": 0.034937518648803234,
+        "median_processing_ms": 5.698281456716359,
+        "successful_requests": 1280,
+        "failures": 0
+      },
+      "mlx": {
+        "requests_per_second": 187.92626232884453,
+        "median_ms": 5.24664600379765,
+        "p95_ms": 7.678979425691068,
+        "median_queue_ms": 0.032885465770959854,
+        "median_processing_ms": 3.3583755139261484,
+        "successful_requests": 1280,
+        "failures": 0
+      },
+      "mlx_throughput_speedup": 1.61120043482699
+    },
+    {
+      "concurrent_requests": 4,
+      "pytorch": {
+        "requests_per_second": 159.5860144896709,
+        "median_ms": 23.78988522104919,
+        "p95_ms": 34.26856244914234,
+        "median_queue_ms": 15.502635505981743,
+        "median_processing_ms": 6.0184894828125834,
+        "successful_requests": 1280,
+        "failures": 0
+      },
+      "mlx": {
+        "requests_per_second": 268.0757858837316,
+        "median_ms": 14.42727103130892,
+        "p95_ms": 17.731978907249868,
+        "median_queue_ms": 8.597833220846951,
+        "median_processing_ms": 3.6086042528040707,
+        "successful_requests": 1280,
+        "failures": 0
+      },
+      "mlx_throughput_speedup": 1.679820044011956
+    },
+    {
+      "concurrent_requests": 8,
+      "pytorch": {
+        "requests_per_second": 148.80297187911967,
+        "median_ms": 49.165958480443805,
+        "p95_ms": 84.31514562107623,
+        "median_queue_ms": 40.87858321145177,
+        "median_processing_ms": 6.247250072192401,
+        "successful_requests": 1280,
+        "failures": 0
+      },
+      "mlx": {
+        "requests_per_second": 246.11040441933966,
+        "median_ms": 29.305979027412832,
+        "p95_ms": 44.208645937033,
+        "median_queue_ms": 23.623312241397798,
+        "median_processing_ms": 3.7607295089401305,
+        "successful_requests": 1280,
+        "failures": 0
+      },
+      "mlx_throughput_speedup": 1.653934738744787
+    }
+  ],
+  "limitations": [
+    "Constructed MS MARCO validation, not leaderboard results.",
+    "Direct: 128 queries/256 pairs, five timed repetitions per size, one process per backend.",
+    "Serving: 128 queries with two documents each, five repeats in each of two rounds with reversed backend order.",
+    "One worker per server; concurrent requests queue; no cross-request batching.",
+    "Memory counters measure different framework allocators and are not comparable process peaks.",
+    "No test split evaluation; results are local workload measurements, not a general backend ranking."
+  ]
+}
