@@ -7,7 +7,7 @@ import platform
 import statistics
 import time
 
-from scripts.evaluate_initial import CANDIDATES
+from scripts.evaluate_initial import CANDIDATES, CANDIDATE_MANIFEST
 from .backend import Backend, HERE, CHECKPOINT, sha256, write_json
 
 
@@ -23,11 +23,16 @@ def main():
     parser.add_argument('--repeats', type=int, default=5)
     parser.add_argument('--output-name')
     parser.add_argument('--reverse', action='store_true')
+    parser.add_argument('--split', choices=['validation','test'], default='validation')
     args = parser.parse_args()
     if args.repeats < 1 or any(s < 1 for s in args.batch_sizes):
         parser.error('sizes and repeats must be positive')
     backend = Backend(args.backend)
-    with CANDIDATES.open() as source:
+    candidates = CANDIDATES if args.split=='validation' else CANDIDATES.with_name('eval_test_candidates.jsonl')
+    expected = json.loads(CANDIDATE_MANIFEST.read_text())['splits'][args.split]
+    if sha256(candidates)!=expected['sha256']:
+        raise RuntimeError('Candidate data differs from its manifest')
+    with candidates.open() as source:
         rows = [json.loads(s) for s in itertools.islice(source, 128)]
     flat = [(r['query'], c['text']) for r in rows for c in r['candidates']]
     sample_hash = __import__('hashlib').sha256(json.dumps(flat).encode()).hexdigest()
@@ -73,6 +78,7 @@ def main():
         print(args.backend, size, results[-1]['scoring']['median_pairs_per_second'], flush=True)
     write_json(HERE / (args.output_name or f'{args.backend}_benchmark.json'), {
         'backend': args.backend, 'loading_seconds': backend.loading_seconds,
+        'dataset_split': args.split, 'candidate_sha256': expected['sha256'],
         'checkpoint_sha256': sha256(CHECKPOINT),
         'sample_sha256': sample_hash, 'queries': len(rows), 'repeats': args.repeats, 'warmups': 10,
         'precision': 'float32', 'max_length': 128, 'python': platform.python_version(),

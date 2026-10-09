@@ -1,0 +1,330 @@
+{
+  "backend": "pytorch",
+  "loading_seconds": 0.29986562486737967,
+  "dataset_split": "test",
+  "candidate_sha256": "123d3d3380fdb9c3b6168467ada7b90aff45f236b70222f1da68f900ae8d0f8b",
+  "checkpoint_sha256": "2ea2608a9ec98083b89606d13bed1d7c6e7a90dc6160bbe44732166137538d52",
+  "sample_sha256": "66f2fd927be9c5c766808703ffb711170ad608145ee528a97bc1e4e4cc53ba10",
+  "queries": 128,
+  "repeats": 3,
+  "warmups": 10,
+  "precision": "float32",
+  "max_length": 128,
+  "python": "3.12.13",
+  "platform": "macOS-26.5.2-arm64-arm-64bit",
+  "versions": {
+    "torch": "2.14.1",
+    "mlx": "0.32.3",
+    "transformers": "5.18.0"
+  },
+  "forward_scope": "pretokenized resident device inputs through CPU-readable scores",
+  "scoring_scope": "tokenization, input conversion/transfer, forward, CPU-readable scores",
+  "latency_unit": "pair batch; not an individual query",
+  "memory_scope": "sampled current allocation after scoring; includes retained input batches; framework counters differ, not process memory",
+  "results": [
+    {
+      "pair_batch_size": 128,
+      "pairs": 256,
+      "forward": {
+        "median_ms": 25.278020999394357,
+        "p95_ms": 26.745709124952555,
+        "repeat_seconds": [
+          0.04648833302780986,
+          0.050574665889143944,
+          0.052980124950408936
+        ],
+        "repeat_median_ms": [
+          23.23454199358821,
+          25.278020999394357,
+          26.480791973881423
+        ],
+        "median_pairs_per_second": 5061.822861294501
+      },
+      "scoring": {
+        "median_ms": 37.888416554778814,
+        "p95_ms": 43.926834128797054,
+        "repeat_seconds": [
+          0.07570654107257724,
+          0.07506933296099305,
+          0.08583724987693131
+        ],
+        "repeat_median_ms": [
+          37.84593753516674,
+          37.527875043451786,
+          42.91062511038035
+        ],
+        "median_pairs_per_second": 3381.477959144662
+      },
+      "sampled_memory": {
+        "current_tensor_bytes": 19756800,
+        "current_driver_bytes": 1082867712
+      }
+    },
+    {
+      "pair_batch_size": 64,
+      "pairs": 256,
+      "forward": {
+        "median_ms": 20.540478988550603,
+        "p95_ms": 26.425084099173546,
+        "repeat_seconds": [
+          0.08276454103179276,
+          0.08898729085922241,
+          0.08439074992202222
+        ],
+        "repeat_median_ms": [
+          20.11325058992952,
+          21.220958442427218,
+          20.864395541138947
+        ],
+        "median_pairs_per_second": 3033.5078220841287
+      },
+      "scoring": {
+        "median_ms": 32.87558304145932,
+        "p95_ms": 38.524708012118936,
+        "repeat_seconds": [
+          0.13532799994572997,
+          0.1399024159181863,
+          0.12865462503395975
+        ],
+        "repeat_median_ms": [
+          32.87558304145932,
+          35.7775209704414,
+          31.488291453570127
+        ],
+        "median_pairs_per_second": 1891.7001662823852
+      },
+      "sampled_memory": {
+        "current_tensor_bytes": 19756800,
+        "current_driver_bytes": 1082851328
+      }
+    },
+    {
+      "pair_batch_size": 32,
+      "pairs": 256,
+      "forward": {
+        "median_ms": 12.54654151853174,
+        "p95_ms": 18.24237499386072,
+        "repeat_seconds": [
+          0.1271491670049727,
+          0.10774479201063514,
+          0.09368841699324548
+        ],
+        "repeat_median_ms": [
+          16.72320906072855,
+          11.904895887710154,
+          11.50981243699789
+        ],
+        "median_pairs_per_second": 2375.9849104793025
+      },
+      "scoring": {
+        "median_ms": 19.27997951861471,
+        "p95_ms": 26.268916903063655,
+        "repeat_seconds": [
+          0.201825083931908,
+          0.15671466710045934,
+          0.14764404203742743
+        ],
+        "repeat_median_ms": [
+          25.004583061672747,
+          19.047270994633436,
+          18.794333445839584
+        ],
+        "median_pairs_per_second": 1633.5420591864286
+      },
+      "sampled_memory": {
+        "current_tensor_bytes": 19756800,
+        "current_driver_bytes": 1089159168
+      }
+    },
+    {
+      "pair_batch_size": 16,
+      "pairs": 256,
+      "forward": {
+        "median_ms": 4.4858125038445,
+        "p95_ms": 4.821333801373839,
+        "repeat_seconds": [
+          0.07230949983932078,
+          0.06973483297042549,
+          0.07345304102636874
+        ],
+        "repeat_median_ms": [
+          4.4858125038445,
+          4.357520956546068,
+          4.615749465301633
+        ],
+        "median_pairs_per_second": 3540.337031356303
+      },
+      "scoring": {
+        "median_ms": 7.542271050624549,
+        "p95_ms": 8.516917005181313,
+        "repeat_seconds": [
+          0.12436487502418458,
+          0.119665791047737,
+          0.12003049999475479
+        ],
+        "repeat_median_ms": [
+          7.812708499841392,
+          7.542271050624549,
+          7.3371874168515205
+        ],
+        "median_pairs_per_second": 2132.791248984108
+      },
+      "sampled_memory": {
+        "current_tensor_bytes": 19748352,
+        "current_driver_bytes": 1095483392
+      }
+    },
+    {
+      "pair_batch_size": 8,
+      "pairs": 256,
+      "forward": {
+        "median_ms": 4.7612295020371675,
+        "p95_ms": 7.048500003293157,
+        "repeat_seconds": [
+          0.09723324980586767,
+          0.1513678750488907,
+          0.20070449984632432
+        ],
+        "repeat_median_ms": [
+          3.004416939802468,
+          4.7612295020371675,
+          6.37029146309942
+        ],
+        "median_pairs_per_second": 1691.2439308361427
+      },
+      "scoring": {
+        "median_ms": 5.121041438542306,
+        "p95_ms": 10.63279202207923,
+        "repeat_seconds": [
+          0.15630695782601833,
+          0.16138558299280703,
+          0.2787975410465151
+        ],
+        "repeat_median_ms": [
+          4.806791432201862,
+          4.958875477313995,
+          8.45343736000359
+        ],
+        "median_pairs_per_second": 1586.263129906777
+      },
+      "sampled_memory": {
+        "current_tensor_bytes": 19715328,
+        "current_driver_bytes": 1093550080
+      }
+    },
+    {
+      "pair_batch_size": 4,
+      "pairs": 256,
+      "forward": {
+        "median_ms": 2.6195835089311004,
+        "p95_ms": 6.701665930449963,
+        "repeat_seconds": [
+          0.17994504212401807,
+          0.29078958416357636,
+          0.17988658300600946
+        ],
+        "repeat_median_ms": [
+          2.514250110834837,
+          4.470416461117566,
+          2.544583403505385
+        ],
+        "median_pairs_per_second": 1422.6565899135185
+      },
+      "scoring": {
+        "median_ms": 4.147417028434575,
+        "p95_ms": 6.987208034843206,
+        "repeat_seconds": [
+          0.2703510830178857,
+          0.3476877498906106,
+          0.2907444159500301
+        ],
+        "repeat_median_ms": [
+          3.9812710601836443,
+          5.7923124404624104,
+          4.119749995879829
+        ],
+        "median_pairs_per_second": 880.4984238940583
+      },
+      "sampled_memory": {
+        "current_tensor_bytes": 19670016,
+        "current_driver_bytes": 1102381056
+      }
+    },
+    {
+      "pair_batch_size": 2,
+      "pairs": 256,
+      "forward": {
+        "median_ms": 1.9936665194109082,
+        "p95_ms": 3.40541685000062,
+        "repeat_seconds": [
+          0.34209345909766853,
+          0.2608537911437452,
+          0.27607845794409513
+        ],
+        "repeat_median_ms": [
+          2.781666466034949,
+          1.8576249713078141,
+          1.9528961274772882
+        ],
+        "median_pairs_per_second": 927.2726380261043
+      },
+      "scoring": {
+        "median_ms": 3.0681665521115065,
+        "p95_ms": 5.22166583687067,
+        "repeat_seconds": [
+          0.41524216695688665,
+          0.4031481670681387,
+          0.5100054158829153
+        ],
+        "repeat_median_ms": [
+          2.9177494579926133,
+          2.9066039714962244,
+          3.703146008774638
+        ],
+        "median_pairs_per_second": 616.5077161505607
+      },
+      "sampled_memory": {
+        "current_tensor_bytes": 19595520,
+        "current_driver_bytes": 1103233024
+      }
+    },
+    {
+      "pair_batch_size": 1,
+      "pairs": 256,
+      "forward": {
+        "median_ms": 2.1576250437647104,
+        "p95_ms": 3.10329208150506,
+        "repeat_seconds": [
+          0.5909402079414576,
+          0.5668583340011537,
+          0.476348124910146
+        ],
+        "repeat_median_ms": [
+          2.3456254275515676,
+          2.208833582699299,
+          1.6494790324941278
+        ],
+        "median_pairs_per_second": 451.6119542479532
+      },
+      "scoring": {
+        "median_ms": 2.3574995575472713,
+        "p95_ms": 3.9942499715834856,
+        "repeat_seconds": [
+          0.8066804590635002,
+          0.6132485000416636,
+          0.6536291660740972
+        ],
+        "repeat_median_ms": [
+          3.17491649184376,
+          2.2537914337590337,
+          2.3306255461648107
+        ],
+        "median_pairs_per_second": 391.65938927972985
+      },
+      "sampled_memory": {
+        "current_tensor_bytes": 19566336,
+        "current_driver_bytes": 1103233024
+      }
+    }
+  ]
+}

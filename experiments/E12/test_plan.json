@@ -1,0 +1,45 @@
+{
+  "checkpoint": "runs/full_train/epoch_0003.pt",
+  "checkpoint_sha256": "2ea2608a9ec98083b89606d13bed1d7c6e7a90dc6160bbe44732166137538d52",
+  "dataset_split": "test",
+  "test_manifest": {
+    "candidate_file": "data/processed/eval_test_candidates.jsonl",
+    "sha256": "123d3d3380fdb9c3b6168467ada7b90aff45f236b70222f1da68f900ae8d0f8b",
+    "source_query_ids": 50112,
+    "queries_with_clean_pairs": 45665,
+    "queries_with_no_clean_pairs": 4447,
+    "queries_empty_after_document_dedup": 0,
+    "single_label_queries_included": 0,
+    "queries_without_relevant_candidate_included": 0,
+    "evaluable_queries": 45665,
+    "candidates": 91337
+  },
+  "pair_batch_sizes": [
+    1,
+    2,
+    4,
+    8,
+    16,
+    32,
+    64,
+    128
+  ],
+  "documents_per_query": {
+    "2": 45658,
+    "3": 7
+  },
+  "direct_timing_sample": "first 128 fixed test queries; same sample in every direct round",
+  "direct_repeats_per_point": 6,
+  "http_full_quality_concurrency": 4,
+  "model_selection": "epoch 3 selected from validation before viewing test results; no test-driven tuning",
+  "rust_binary_sha256": "4a80da1641b3f4fb70b8edecec1890fbde4504562875f4948449a6e93538b366",
+  "code_sha256": {
+    "experiments/E12/test_compare.py": "ffe39f8eb2f944aaa6670506d76220172190ec0765e365c9bd2f6415b526afa6",
+    "experiments/S1/benchmark.py": "f823a24b0410502e2a6e338610fa8ddd780b62b4ef2dbfdede7e559ae364a7d0",
+    "experiments/E12/worker.py": "1476669e8e9fa2bf6004396ab7e31affa96fbf36a8b5f48c72c6041c75541b32",
+    "experiments/E12/python_server.py": "19e6e2cba7721fe45edbe7dc05b5ff1aa124b7830b4383450dfa2030aa98fe2f",
+    "rust-server/src/main.rs": "14b7bb2dded999b6b1bac0dfd3d7cdead132f9c7bb86b30160c51575f676eee8",
+    "rust-server/src/protocol.rs": "1a77bf088e65d4d4a067f4dd13d5f97d51a1883e33564d9f20e093e82044fe21",
+    "rust-server/src/worker.rs": "6e86f7769bab6e1f37a0c063ecad50c4c0c43046eb25bbe481d83be489a99300"
+  }
+}
