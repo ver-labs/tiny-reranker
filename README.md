@@ -727,3 +727,55 @@ started by P1. The duration extrapolation is preliminary: the longer workload
 may have a different token-length distribution or thermal behavior. See
 `experiments/P1/report.json`, `training.json`, `profiling.json`, and
 `checkpoint_audit.json` for the recorded measurements and checks.
+
+### Full-data training with bounded profiling
+
+`scripts/full_train.py` trains all 735,276 cleaned training pairs once per epoch,
+starting from the saved E1 random initialization. It uses P1's four-layer model,
+all 4,717,185 trainable parameters, FP16 autocast with MPS GradScaler, FP32
+parameters and BCE loss, AdamW at 3e-4, dropout 0.1, dynamic padding to at most
+128 tokens, and direct batches of 16. There are 45,955 batches per epoch; the
+last contains 12 pairs. Query splits are checked while reading training pairs.
+
+```bash
+.venv/bin/python -m scripts.full_train --preflight --profile
+.venv/bin/python -m scripts.full_train --epochs 1 --profile --launch
+```
+
+The detached launcher records its PID in `runs/full_train/launch.json`, writes
+`training.log`, and uses `caffeinate` when available to prevent idle sleep during
+training. `progress.json` contains the latest progress and throughput estimate;
+`progress.jsonl` keeps the history. The pilot suggests roughly 51 minutes per
+epoch before validation and checkpoint costs; actual sustained throughput can
+differ.
+
+Profiling runs on the actual training trajectory. Early, middle, and late
+windows each measure 50 batches with GPU synchronization around stages, followed
+by 10 batches with CPU operator tracing. Only 180 of 45,955 batches receive this
+extra instrumentation. `epoch_0001_profiling.json` records the stage table and
+trace paths. CPU traces describe CPU operations and waits, not GPU kernel
+durations. Epoch wall time includes profiling, logging, and periodic checkpoints.
+
+Every 1,000 attempted batches, the trainer saves model weights, AdamW state,
+GradScaler, CPU/MPS RNG, sampler order, and consumed offset. Two alternating
+checkpoint slots preserve the previous checkpoint until a new save and read-back
+verification succeed; `latest.json` points to the current slot. An interrupted
+run can resume with the same configuration and profiling flag:
+
+```bash
+.venv/bin/python -m scripts.full_train --epochs 1 --profile --resume --launch
+```
+
+SIGINT or SIGTERM requests a save after the current batch. Resume restores the
+remaining sampler order rather than restarting the epoch. Code, data,
+initialization, and tokenizer hashes are checked; changing them requires a new
+run directory. `--epochs` is the total desired epoch count, including completed
+epochs when resuming.
+
+After each epoch, the saved model is evaluated in FP32 on all 45,709 fixed
+validation candidate lists. `epoch_0001_training.json` and
+`epoch_0001_summary.json` record training and ranking metrics; `best.json` points
+to the epoch with the highest validation nDCG@10. The test split remains reserved.
+Full-run outputs and checkpoints stay local under `runs/full_train/`, outside Git.
+The compact `results/full_training.json` records all three completed epochs,
+their validation/profiling results, provenance, and checkpoint hashes in Git.

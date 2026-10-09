@@ -20,3 +20,5 @@ experiments/E9/*_server.log
 
 experiments/P1/*.pt
 experiments/P1/cpu_trace.json
+
+runs/full_train*/

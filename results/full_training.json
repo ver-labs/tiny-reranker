@@ -1,0 +1,926 @@
+{
+  "selected_epoch": 3,
+  "test_split_scored": false,
+  "checkpoint_storage": "Local runs/full_train; weights excluded from Git",
+  "epochs": [
+    {
+      "training": {
+        "epoch": 1,
+        "training_seconds": 2718.482911542058,
+        "training_pairs": 735276,
+        "mean_bce": 0.5462032752608934,
+        "optimizer_updates_total": 45934,
+        "skipped_updates_total": 21,
+        "ndcg_at_10": 0.9361947676280498,
+        "mrr_at_10": 0.9135618805924435,
+        "checkpoint": "runs/full_train/epoch_0001.pt",
+        "checkpoint_sha256": "deba719c93a9d589988b11e8c5a8560bbd35fffa798681c2a3f273689d5b3219",
+        "memory": {
+          "mps_current_tensor_bytes": 168804352,
+          "mps_current_driver_bytes": 1186611200,
+          "process_peak_rss_bytes": 1365180416
+        },
+        "bounded_profiling_enabled": true,
+        "timing_note": "includes periodic checkpoints, logging, and bounded profiling if enabled; excludes validation"
+      },
+      "validation": {
+        "model": "epoch_0001",
+        "model_id": "scratch_encoder_full_train",
+        "revision": null,
+        "training_history": "Four-layer scratch model; all parameters trained from E1 seed-42 random initialization on the complete cleaned training split; completed epoch 1; FP16 autocast training.",
+        "evaluation": "constructed MS MARCO mined-triplet validation candidate lists; not leaderboard comparable",
+        "candidate_sha256": "6b71ca5ff41401142e0726755b278a67b797516b246f605bfbbb9242840fe1db",
+        "rankings_file": "runs/full_train/epoch_0001_rankings.jsonl",
+        "queries": 45709,
+        "source_query_ids": 50189,
+        "metric_denominator": 45709,
+        "queries_excluded_no_clean_pairs": 4480,
+        "queries_excluded_empty_after_document_dedup": 0,
+        "zero_candidate_policy": "Cannot rank an empty list; exclude from metric denominator and report the count.",
+        "queries_without_relevant_candidate": 0,
+        "no_relevant_policy": "Include nonempty candidate lists; MRR@10 and nDCG@10 are zero when no candidate is relevant.",
+        "mrr_at_10": 0.9135618805924435,
+        "ndcg_at_10": 0.9361947676280498,
+        "tie_break": "document ID ascending when scores tie",
+        "backend": "mps",
+        "precision": "torch.float32",
+        "truncation_max_tokens": 128,
+        "pair_batch_size": 64,
+        "input_format": "[CLS] query [SEP] document [SEP] with token-type IDs and attention mask",
+        "checkpoint": "runs/full_train/epoch_0001.pt",
+        "checkpoint_sha256": "deba719c93a9d589988b11e8c5a8560bbd35fffa798681c2a3f273689d5b3219",
+        "test_split_scored": false,
+        "evaluation_seconds": 55.362668541958556
+      },
+      "profiling": {
+        "scope": "Actual full-data training; 50 synchronized batches plus 10 CPU-traced batches at each early/middle/late window",
+        "timing_label": "stage wall time includes GPU dispatch and synchronization overhead",
+        "epoch_timing_includes_bounded_profiling_overhead": true,
+        "windows": {
+          "early": {
+            "start_batch": 33,
+            "synchronized_batches_measured": 50,
+            "stages": {
+              "data_reading": {
+                "total_seconds": 0.03847091645002365,
+                "median_batch_ms": 0.5129999481141567,
+                "percent_of_measured_stage_time": 0.7819799770914373,
+                "batches": 50
+              },
+              "tokenization_and_collation": {
+                "total_seconds": 0.30831778864376247,
+                "median_batch_ms": 4.459582967683673,
+                "percent_of_measured_stage_time": 6.267028694617535,
+                "batches": 50
+              },
+              "input_transfer": {
+                "total_seconds": 0.17610754328779876,
+                "median_batch_ms": 2.2761665750294924,
+                "percent_of_measured_stage_time": 3.579654070490372,
+                "batches": 50
+              },
+              "zero_grad": {
+                "total_seconds": 0.018864661222323775,
+                "median_batch_ms": 0.27706241235136986,
+                "percent_of_measured_stage_time": 0.3834529746551281,
+                "batches": 50
+              },
+              "forward_and_loss": {
+                "total_seconds": 1.1597039585467428,
+                "median_batch_ms": 16.208457993343472,
+                "percent_of_measured_stage_time": 23.57274945907023,
+                "batches": 50
+              },
+              "forward_checks": {
+                "total_seconds": 0.05105112912133336,
+                "median_batch_ms": 0.8014790946617723,
+                "percent_of_measured_stage_time": 1.0376919622554956,
+                "batches": 50
+              },
+              "backward_and_unscale": {
+                "total_seconds": 1.9032917495351285,
+                "median_batch_ms": 29.05600005760789,
+                "percent_of_measured_stage_time": 38.68730396982488,
+                "batches": 50
+              },
+              "gradient_checks": {
+                "total_seconds": 0.3122873306274414,
+                "median_batch_ms": 5.810791510157287,
+                "percent_of_measured_stage_time": 6.347715681980916,
+                "batches": 50
+              },
+              "optimizer_and_scaler": {
+                "total_seconds": 0.9064312123227865,
+                "median_batch_ms": 15.687520965002477,
+                "percent_of_measured_stage_time": 18.424595098167995,
+                "batches": 50
+              },
+              "logging_values": {
+                "total_seconds": 0.04515421064570546,
+                "median_batch_ms": 0.45462511479854584,
+                "percent_of_measured_stage_time": 0.9178281118460068,
+                "batches": 50
+              }
+            },
+            "cpu_traces": [
+              {
+                "first_batch": 83,
+                "last_batch": 92,
+                "trace_file": "epoch_0001_early_from_batch_00083_cpu_trace.json",
+                "operator_file": "epoch_0001_early_from_batch_00083_cpu_operators.txt",
+                "activity": "CPU only; no GPU kernel timing claimed"
+              }
+            ]
+          },
+          "middle": {
+            "start_batch": 22977,
+            "synchronized_batches_measured": 50,
+            "stages": {
+              "data_reading": {
+                "total_seconds": 0.19128383486531675,
+                "median_batch_ms": 2.5861664908006787,
+                "percent_of_measured_stage_time": 6.740421916555378,
+                "batches": 50
+              },
+              "tokenization_and_collation": {
+                "total_seconds": 0.1721681640483439,
+                "median_batch_ms": 3.466958412900567,
+                "percent_of_measured_stage_time": 6.066827691433827,
+                "batches": 50
+              },
+              "input_transfer": {
+                "total_seconds": 0.08335104142315686,
+                "median_batch_ms": 1.712812460027635,
+                "percent_of_measured_stage_time": 2.9371075019064774,
+                "batches": 50
+              },
+              "zero_grad": {
+                "total_seconds": 0.009835208533331752,
+                "median_batch_ms": 0.18289603758603334,
+                "percent_of_measured_stage_time": 0.34657113183996513,
+                "batches": 50
+              },
+              "forward_and_loss": {
+                "total_seconds": 0.6008009642828256,
+                "median_batch_ms": 11.310729547403753,
+                "percent_of_measured_stage_time": 21.170905476622888,
+                "batches": 50
+              },
+              "forward_checks": {
+                "total_seconds": 0.025954707991331816,
+                "median_batch_ms": 0.49489596858620644,
+                "percent_of_measured_stage_time": 0.9145868635776123,
+                "batches": 50
+              },
+              "backward_and_unscale": {
+                "total_seconds": 0.9649345818907022,
+                "median_batch_ms": 18.463875050656497,
+                "percent_of_measured_stage_time": 34.0021738292617,
+                "batches": 50
+              },
+              "gradient_checks": {
+                "total_seconds": 0.24031270295381546,
+                "median_batch_ms": 4.72443806938827,
+                "percent_of_measured_stage_time": 8.468091467096894,
+                "batches": 50
+              },
+              "optimizer_and_scaler": {
+                "total_seconds": 0.5328593300655484,
+                "median_batch_ms": 10.502333519980311,
+                "percent_of_measured_stage_time": 18.776791616206136,
+                "batches": 50
+              },
+              "logging_values": {
+                "total_seconds": 0.01636090991087258,
+                "median_batch_ms": 0.32124947756528854,
+                "percent_of_measured_stage_time": 0.5765225054991268,
+                "batches": 50
+              }
+            },
+            "cpu_traces": [
+              {
+                "first_batch": 23027,
+                "last_batch": 23036,
+                "trace_file": "epoch_0001_middle_from_batch_23027_cpu_trace.json",
+                "operator_file": "epoch_0001_middle_from_batch_23027_cpu_operators.txt",
+                "activity": "CPU only; no GPU kernel timing claimed"
+              }
+            ]
+          },
+          "late": {
+            "start_batch": 45755,
+            "synchronized_batches_measured": 50,
+            "stages": {
+              "data_reading": {
+                "total_seconds": 0.1797975015360862,
+                "median_batch_ms": 2.3083544801920652,
+                "percent_of_measured_stage_time": 6.0453634756546295,
+                "batches": 50
+              },
+              "tokenization_and_collation": {
+                "total_seconds": 0.1741794180124998,
+                "median_batch_ms": 3.4862085012719035,
+                "percent_of_measured_stage_time": 5.856465650898985,
+                "batches": 50
+              },
+              "input_transfer": {
+                "total_seconds": 0.0882652522996068,
+                "median_batch_ms": 1.7989794723689556,
+                "percent_of_measured_stage_time": 2.9677583273557815,
+                "batches": 50
+              },
+              "zero_grad": {
+                "total_seconds": 0.010655875084921718,
+                "median_batch_ms": 0.19027094822376966,
+                "percent_of_measured_stage_time": 0.3582843893222554,
+                "batches": 50
+              },
+              "forward_and_loss": {
+                "total_seconds": 0.6636892128735781,
+                "median_batch_ms": 11.923499521799386,
+                "percent_of_measured_stage_time": 22.31534082739533,
+                "batches": 50
+              },
+              "forward_checks": {
+                "total_seconds": 0.03168446267955005,
+                "median_batch_ms": 0.5429374286904931,
+                "percent_of_measured_stage_time": 1.0653323421752348,
+                "batches": 50
+              },
+              "backward_and_unscale": {
+                "total_seconds": 1.0076177536975592,
+                "median_batch_ms": 19.59179202094674,
+                "percent_of_measured_stage_time": 33.87931152314601,
+                "batches": 50
+              },
+              "gradient_checks": {
+                "total_seconds": 0.24940792005509138,
+                "median_batch_ms": 4.885687492787838,
+                "percent_of_measured_stage_time": 8.385886998198496,
+                "batches": 50
+              },
+              "optimizer_and_scaler": {
+                "total_seconds": 0.5521337075624615,
+                "median_batch_ms": 10.792333981953561,
+                "percent_of_measured_stage_time": 18.564490167322802,
+                "batches": 50
+              },
+              "logging_values": {
+                "total_seconds": 0.016707709524780512,
+                "median_batch_ms": 0.3310621250420809,
+                "percent_of_measured_stage_time": 0.561766298530478,
+                "batches": 50
+              }
+            },
+            "cpu_traces": [
+              {
+                "first_batch": 45805,
+                "last_batch": 45814,
+                "trace_file": "epoch_0001_late_from_batch_45805_cpu_trace.json",
+                "operator_file": "epoch_0001_late_from_batch_45805_cpu_operators.txt",
+                "activity": "CPU only; no GPU kernel timing claimed"
+              }
+            ]
+          }
+        }
+      },
+      "checkpoint_manifest": {
+        "checkpoint": "epoch_0001.pt",
+        "sha256": "deba719c93a9d589988b11e8c5a8560bbd35fffa798681c2a3f273689d5b3219",
+        "provenance_sha256": "eb7d5ba6ab9328fa8613059d78e06337da8c4eed8d0a6dfe5bd76b9f2a6f8d7d",
+        "epoch_index": 0,
+        "next_sample_offset": 735276,
+        "optimizer_updates": 45934
+      }
+    },
+    {
+      "training": {
+        "epoch": 2,
+        "training_seconds": 2643.618856874993,
+        "training_pairs": 735276,
+        "mean_bce": 0.4979323654724382,
+        "optimizer_updates_total": 91867,
+        "skipped_updates_total": 43,
+        "ndcg_at_10": 0.9444225254243421,
+        "mrr_at_10": 0.9247084819182217,
+        "checkpoint": "runs/full_train/epoch_0002.pt",
+        "checkpoint_sha256": "dff1c6336f2664e3c1dc55f067af5bbdbc95a7a101f02340d26c07595e832073",
+        "memory": {
+          "mps_current_tensor_bytes": 168804352,
+          "mps_current_driver_bytes": 1178124288,
+          "process_peak_rss_bytes": 1363902464
+        },
+        "bounded_profiling_enabled": true,
+        "timing_note": "includes periodic checkpoints, logging, and bounded profiling if enabled; excludes validation"
+      },
+      "validation": {
+        "model": "epoch_0002",
+        "model_id": "scratch_encoder_full_train",
+        "revision": null,
+        "training_history": "Four-layer scratch model; all parameters trained from E1 seed-42 random initialization on the complete cleaned training split; completed epoch 2; FP16 autocast training.",
+        "evaluation": "constructed MS MARCO mined-triplet validation candidate lists; not leaderboard comparable",
+        "candidate_sha256": "6b71ca5ff41401142e0726755b278a67b797516b246f605bfbbb9242840fe1db",
+        "rankings_file": "runs/full_train/epoch_0002_rankings.jsonl",
+        "queries": 45709,
+        "source_query_ids": 50189,
+        "metric_denominator": 45709,
+        "queries_excluded_no_clean_pairs": 4480,
+        "queries_excluded_empty_after_document_dedup": 0,
+        "zero_candidate_policy": "Cannot rank an empty list; exclude from metric denominator and report the count.",
+        "queries_without_relevant_candidate": 0,
+        "no_relevant_policy": "Include nonempty candidate lists; MRR@10 and nDCG@10 are zero when no candidate is relevant.",
+        "mrr_at_10": 0.9247084819182217,
+        "ndcg_at_10": 0.9444225254243421,
+        "tie_break": "document ID ascending when scores tie",
+        "backend": "mps",
+        "precision": "torch.float32",
+        "truncation_max_tokens": 128,
+        "pair_batch_size": 64,
+        "input_format": "[CLS] query [SEP] document [SEP] with token-type IDs and attention mask",
+        "checkpoint": "runs/full_train/epoch_0002.pt",
+        "checkpoint_sha256": "dff1c6336f2664e3c1dc55f067af5bbdbc95a7a101f02340d26c07595e832073",
+        "test_split_scored": false,
+        "evaluation_seconds": 54.3157512920443
+      },
+      "profiling": {
+        "scope": "Actual full-data training; 50 synchronized batches plus 10 CPU-traced batches at each early/middle/late window",
+        "timing_label": "stage wall time includes GPU dispatch and synchronization overhead",
+        "epoch_timing_includes_bounded_profiling_overhead": true,
+        "windows": {
+          "early": {
+            "start_batch": 33,
+            "synchronized_batches_measured": 50,
+            "stages": {
+              "data_reading": {
+                "total_seconds": 0.026298212353140116,
+                "median_batch_ms": 0.4257295513525605,
+                "percent_of_measured_stage_time": 0.6718968993690193,
+                "batches": 50
+              },
+              "tokenization_and_collation": {
+                "total_seconds": 0.1921430474612862,
+                "median_batch_ms": 3.619083436205983,
+                "percent_of_measured_stage_time": 4.909091009341454,
+                "batches": 50
+              },
+              "input_transfer": {
+                "total_seconds": 0.09978437470272183,
+                "median_batch_ms": 1.9517914624884725,
+                "percent_of_measured_stage_time": 2.5494056808096985,
+                "batches": 50
+              },
+              "zero_grad": {
+                "total_seconds": 0.011641495628282428,
+                "median_batch_ms": 0.21254201419651508,
+                "percent_of_measured_stage_time": 0.29743028581663233,
+                "batches": 50
+              },
+              "forward_and_loss": {
+                "total_seconds": 1.005842373939231,
+                "median_batch_ms": 14.941729023121297,
+                "percent_of_measured_stage_time": 25.698414904731994,
+                "batches": 50
+              },
+              "forward_checks": {
+                "total_seconds": 0.037070040591061115,
+                "median_batch_ms": 0.6838119588792324,
+                "percent_of_measured_stage_time": 0.9471079249857689,
+                "batches": 50
+              },
+              "backward_and_unscale": {
+                "total_seconds": 1.5958623765036464,
+                "median_batch_ms": 23.737271083518863,
+                "percent_of_measured_stage_time": 40.77292282052939,
+                "batches": 50
+              },
+              "gradient_checks": {
+                "total_seconds": 0.26528370822779834,
+                "median_batch_ms": 5.13258355204016,
+                "percent_of_measured_stage_time": 6.777772519967134,
+                "batches": 50
+              },
+              "optimizer_and_scaler": {
+                "total_seconds": 0.6602861676365137,
+                "median_batch_ms": 12.2660209890455,
+                "percent_of_measured_stage_time": 16.869748512706533,
+                "batches": 50
+              },
+              "logging_values": {
+                "total_seconds": 0.019813163904473186,
+                "median_batch_ms": 0.3657705383375287,
+                "percent_of_measured_stage_time": 0.5062094417423832,
+                "batches": 50
+              }
+            },
+            "cpu_traces": [
+              {
+                "first_batch": 83,
+                "last_batch": 92,
+                "trace_file": "epoch_0002_early_from_batch_00083_cpu_trace.json",
+                "operator_file": "epoch_0002_early_from_batch_00083_cpu_operators.txt",
+                "activity": "CPU only; no GPU kernel timing claimed"
+              }
+            ]
+          },
+          "middle": {
+            "start_batch": 22977,
+            "synchronized_batches_measured": 50,
+            "stages": {
+              "data_reading": {
+                "total_seconds": 0.11776520917192101,
+                "median_batch_ms": 1.5534586273133755,
+                "percent_of_measured_stage_time": 4.535101303849182,
+                "batches": 50
+              },
+              "tokenization_and_collation": {
+                "total_seconds": 0.17374903918243945,
+                "median_batch_ms": 3.4089585533365607,
+                "percent_of_measured_stage_time": 6.691021055195484,
+                "batches": 50
+              },
+              "input_transfer": {
+                "total_seconds": 0.07878724858164787,
+                "median_batch_ms": 1.5796871157363057,
+                "percent_of_measured_stage_time": 3.034072255140312,
+                "batches": 50
+              },
+              "zero_grad": {
+                "total_seconds": 0.008345210924744606,
+                "median_batch_ms": 0.1527080312371254,
+                "percent_of_measured_stage_time": 0.321371457766064,
+                "batches": 50
+              },
+              "forward_and_loss": {
+                "total_seconds": 0.5550175008829683,
+                "median_batch_ms": 10.23485406767577,
+                "percent_of_measured_stage_time": 21.3735500459979,
+                "batches": 50
+              },
+              "forward_checks": {
+                "total_seconds": 0.023719376185908914,
+                "median_batch_ms": 0.44895848259329796,
+                "percent_of_measured_stage_time": 0.9134257445267022,
+                "batches": 50
+              },
+              "backward_and_unscale": {
+                "total_seconds": 0.9118525835219771,
+                "median_batch_ms": 18.0529379285872,
+                "percent_of_measured_stage_time": 35.1151572652644,
+                "batches": 50
+              },
+              "gradient_checks": {
+                "total_seconds": 0.22187195625156164,
+                "median_batch_ms": 4.3633123859763145,
+                "percent_of_measured_stage_time": 8.544219512361202,
+                "batches": 50
+              },
+              "optimizer_and_scaler": {
+                "total_seconds": 0.4907591687515378,
+                "median_batch_ms": 9.844083455391228,
+                "percent_of_measured_stage_time": 18.898981810764738,
+                "batches": 50
+              },
+              "logging_values": {
+                "total_seconds": 0.01488195825368166,
+                "median_batch_ms": 0.2901456318795681,
+                "percent_of_measured_stage_time": 0.5730995491340142,
+                "batches": 50
+              }
+            },
+            "cpu_traces": [
+              {
+                "first_batch": 23027,
+                "last_batch": 23036,
+                "trace_file": "epoch_0002_middle_from_batch_23027_cpu_trace.json",
+                "operator_file": "epoch_0002_middle_from_batch_23027_cpu_operators.txt",
+                "activity": "CPU only; no GPU kernel timing claimed"
+              }
+            ]
+          },
+          "late": {
+            "start_batch": 45755,
+            "synchronized_batches_measured": 50,
+            "stages": {
+              "data_reading": {
+                "total_seconds": 0.14586508111096919,
+                "median_batch_ms": 1.7124370206147432,
+                "percent_of_measured_stage_time": 4.53743487244283,
+                "batches": 50
+              },
+              "tokenization_and_collation": {
+                "total_seconds": 0.19101237109862268,
+                "median_batch_ms": 3.493500524200499,
+                "percent_of_measured_stage_time": 5.941834653569492,
+                "batches": 50
+              },
+              "input_transfer": {
+                "total_seconds": 0.10909358249045908,
+                "median_batch_ms": 1.7685418715700507,
+                "percent_of_measured_stage_time": 3.393581395778641,
+                "batches": 50
+              },
+              "zero_grad": {
+                "total_seconds": 0.011377211660146713,
+                "median_batch_ms": 0.21783343981951475,
+                "percent_of_measured_stage_time": 0.35391168705167747,
+                "batches": 50
+              },
+              "forward_and_loss": {
+                "total_seconds": 0.702507872832939,
+                "median_batch_ms": 12.045687530189753,
+                "percent_of_measured_stage_time": 21.85295957113139,
+                "batches": 50
+              },
+              "forward_checks": {
+                "total_seconds": 0.034185080556198955,
+                "median_batch_ms": 0.5046040751039982,
+                "percent_of_measured_stage_time": 1.0633975962688431,
+                "batches": 50
+              },
+              "backward_and_unscale": {
+                "total_seconds": 1.104202207410708,
+                "median_batch_ms": 19.564041635021567,
+                "percent_of_measured_stage_time": 34.34849220919483,
+                "batches": 50
+              },
+              "gradient_checks": {
+                "total_seconds": 0.2599313319660723,
+                "median_batch_ms": 4.776020417921245,
+                "percent_of_measured_stage_time": 8.085701396937534,
+                "batches": 50
+              },
+              "optimizer_and_scaler": {
+                "total_seconds": 0.6372897918336093,
+                "median_batch_ms": 11.34206261485815,
+                "percent_of_measured_stage_time": 19.82421634632194,
+                "batches": 50
+              },
+              "logging_values": {
+                "total_seconds": 0.019239045213907957,
+                "median_batch_ms": 0.3419789718464017,
+                "percent_of_measured_stage_time": 0.5984702713028249,
+                "batches": 50
+              }
+            },
+            "cpu_traces": [
+              {
+                "first_batch": 45805,
+                "last_batch": 45814,
+                "trace_file": "epoch_0002_late_from_batch_45805_cpu_trace.json",
+                "operator_file": "epoch_0002_late_from_batch_45805_cpu_operators.txt",
+                "activity": "CPU only; no GPU kernel timing claimed"
+              }
+            ]
+          }
+        }
+      },
+      "checkpoint_manifest": {
+        "checkpoint": "epoch_0002.pt",
+        "sha256": "dff1c6336f2664e3c1dc55f067af5bbdbc95a7a101f02340d26c07595e832073",
+        "provenance_sha256": "eb7d5ba6ab9328fa8613059d78e06337da8c4eed8d0a6dfe5bd76b9f2a6f8d7d",
+        "epoch_index": 1,
+        "next_sample_offset": 735276,
+        "optimizer_updates": 91867
+      }
+    },
+    {
+      "training": {
+        "epoch": 3,
+        "training_seconds": 2363.1047589580994,
+        "training_pairs": 735276,
+        "mean_bce": 0.46799069444169866,
+        "optimizer_updates_total": 137802,
+        "skipped_updates_total": 63,
+        "ndcg_at_10": 0.9576079311960256,
+        "mrr_at_10": 0.9425714848279332,
+        "checkpoint": "runs/full_train/epoch_0003.pt",
+        "checkpoint_sha256": "2ea2608a9ec98083b89606d13bed1d7c6e7a90dc6160bbe44732166137538d52",
+        "memory": {
+          "mps_current_tensor_bytes": 168804352,
+          "mps_current_driver_bytes": 1178124288,
+          "process_peak_rss_bytes": 1516322816
+        },
+        "bounded_profiling_enabled": true,
+        "timing_note": "includes periodic checkpoints, logging, and bounded profiling if enabled; excludes validation"
+      },
+      "validation": {
+        "model": "epoch_0003",
+        "model_id": "scratch_encoder_full_train",
+        "revision": null,
+        "training_history": "Four-layer scratch model; all parameters trained from E1 seed-42 random initialization on the complete cleaned training split; completed epoch 3; FP16 autocast training.",
+        "evaluation": "constructed MS MARCO mined-triplet validation candidate lists; not leaderboard comparable",
+        "candidate_sha256": "6b71ca5ff41401142e0726755b278a67b797516b246f605bfbbb9242840fe1db",
+        "rankings_file": "runs/full_train/epoch_0003_rankings.jsonl",
+        "queries": 45709,
+        "source_query_ids": 50189,
+        "metric_denominator": 45709,
+        "queries_excluded_no_clean_pairs": 4480,
+        "queries_excluded_empty_after_document_dedup": 0,
+        "zero_candidate_policy": "Cannot rank an empty list; exclude from metric denominator and report the count.",
+        "queries_without_relevant_candidate": 0,
+        "no_relevant_policy": "Include nonempty candidate lists; MRR@10 and nDCG@10 are zero when no candidate is relevant.",
+        "mrr_at_10": 0.9425714848279332,
+        "ndcg_at_10": 0.9576079311960256,
+        "tie_break": "document ID ascending when scores tie",
+        "backend": "mps",
+        "precision": "torch.float32",
+        "truncation_max_tokens": 128,
+        "pair_batch_size": 64,
+        "input_format": "[CLS] query [SEP] document [SEP] with token-type IDs and attention mask",
+        "checkpoint": "runs/full_train/epoch_0003.pt",
+        "checkpoint_sha256": "2ea2608a9ec98083b89606d13bed1d7c6e7a90dc6160bbe44732166137538d52",
+        "test_split_scored": false,
+        "evaluation_seconds": 52.562931291991845
+      },
+      "profiling": {
+        "scope": "Actual full-data training; 50 synchronized batches plus 10 CPU-traced batches at each early/middle/late window",
+        "timing_label": "stage wall time includes GPU dispatch and synchronization overhead",
+        "epoch_timing_includes_bounded_profiling_overhead": true,
+        "windows": {
+          "early": {
+            "start_batch": 33,
+            "synchronized_batches_measured": 50,
+            "stages": {
+              "data_reading": {
+                "total_seconds": 0.019478000700473785,
+                "median_batch_ms": 0.38883346132934093,
+                "percent_of_measured_stage_time": 0.6371632959324166,
+                "batches": 50
+              },
+              "tokenization_and_collation": {
+                "total_seconds": 0.16322370315901935,
+                "median_batch_ms": 3.3199999015778303,
+                "percent_of_measured_stage_time": 5.339364870059043,
+                "batches": 50
+              },
+              "input_transfer": {
+                "total_seconds": 0.08289783634245396,
+                "median_batch_ms": 1.711103948764503,
+                "percent_of_measured_stage_time": 2.711749498414344,
+                "batches": 50
+              },
+              "zero_grad": {
+                "total_seconds": 0.008576753316447139,
+                "median_batch_ms": 0.16264605801552534,
+                "percent_of_measured_stage_time": 0.2805622864246954,
+                "batches": 50
+              },
+              "forward_and_loss": {
+                "total_seconds": 0.6839161706157029,
+                "median_batch_ms": 11.73766702413559,
+                "percent_of_measured_stage_time": 22.372228449523497,
+                "batches": 50
+              },
+              "forward_checks": {
+                "total_seconds": 0.039479163242504,
+                "median_batch_ms": 0.5185414338484406,
+                "percent_of_measured_stage_time": 1.2914402334750863,
+                "batches": 50
+              },
+              "backward_and_unscale": {
+                "total_seconds": 1.237559005850926,
+                "median_batch_ms": 19.306812551803887,
+                "percent_of_measured_stage_time": 40.482962661544654,
+                "batches": 50
+              },
+              "gradient_checks": {
+                "total_seconds": 0.24270320171490312,
+                "median_batch_ms": 4.628957947716117,
+                "percent_of_measured_stage_time": 7.9392938893495515,
+                "batches": 50
+              },
+              "optimizer_and_scaler": {
+                "total_seconds": 0.5621141216251999,
+                "median_batch_ms": 11.034687864594162,
+                "percent_of_measured_stage_time": 18.387846470102847,
+                "batches": 50
+              },
+              "logging_values": {
+                "total_seconds": 0.017039290629327297,
+                "median_batch_ms": 0.331375515088439,
+                "percent_of_measured_stage_time": 0.5573883451738678,
+                "batches": 50
+              }
+            },
+            "cpu_traces": [
+              {
+                "first_batch": 83,
+                "last_batch": 92,
+                "trace_file": "epoch_0003_early_from_batch_00083_cpu_trace.json",
+                "operator_file": "epoch_0003_early_from_batch_00083_cpu_operators.txt",
+                "activity": "CPU only; no GPU kernel timing claimed"
+              }
+            ]
+          },
+          "middle": {
+            "start_batch": 22977,
+            "synchronized_batches_measured": 50,
+            "stages": {
+              "data_reading": {
+                "total_seconds": 0.05619712010957301,
+                "median_batch_ms": 0.9051039814949036,
+                "percent_of_measured_stage_time": 2.354730704475614,
+                "batches": 50
+              },
+              "tokenization_and_collation": {
+                "total_seconds": 0.15533575392328203,
+                "median_batch_ms": 3.117728978395462,
+                "percent_of_measured_stage_time": 6.508765370055182,
+                "batches": 50
+              },
+              "input_transfer": {
+                "total_seconds": 0.07506420952267945,
+                "median_batch_ms": 1.6203748527914286,
+                "percent_of_measured_stage_time": 3.145285712606013,
+                "batches": 50
+              },
+              "zero_grad": {
+                "total_seconds": 0.0076732507441192865,
+                "median_batch_ms": 0.14270853716880083,
+                "percent_of_measured_stage_time": 0.32151895141758574,
+                "batches": 50
+              },
+              "forward_and_loss": {
+                "total_seconds": 0.5355897471308708,
+                "median_batch_ms": 10.043374495580792,
+                "percent_of_measured_stage_time": 22.44189061845813,
+                "batches": 50
+              },
+              "forward_checks": {
+                "total_seconds": 0.02112079202197492,
+                "median_batch_ms": 0.40277105290442705,
+                "percent_of_measured_stage_time": 0.8849880097061403,
+                "batches": 50
+              },
+              "backward_and_unscale": {
+                "total_seconds": 0.8457517104689032,
+                "median_batch_ms": 16.571895452216268,
+                "percent_of_measured_stage_time": 35.43807079652551,
+                "batches": 50
+              },
+              "gradient_checks": {
+                "total_seconds": 0.21186171285808086,
+                "median_batch_ms": 4.207103978842497,
+                "percent_of_measured_stage_time": 8.877274838942089,
+                "batches": 50
+              },
+              "optimizer_and_scaler": {
+                "total_seconds": 0.46316620730794966,
+                "median_batch_ms": 9.19420795980841,
+                "percent_of_measured_stage_time": 19.407252319994964,
+                "batches": 50
+              },
+              "logging_values": {
+                "total_seconds": 0.014802001882344484,
+                "median_batch_ms": 0.29952102340757847,
+                "percent_of_measured_stage_time": 0.6202226778187694,
+                "batches": 50
+              }
+            },
+            "cpu_traces": [
+              {
+                "first_batch": 23027,
+                "last_batch": 23036,
+                "trace_file": "epoch_0003_middle_from_batch_23027_cpu_trace.json",
+                "operator_file": "epoch_0003_middle_from_batch_23027_cpu_operators.txt",
+                "activity": "CPU only; no GPU kernel timing claimed"
+              }
+            ]
+          },
+          "late": {
+            "start_batch": 45755,
+            "synchronized_batches_measured": 50,
+            "stages": {
+              "data_reading": {
+                "total_seconds": 0.06225900095887482,
+                "median_batch_ms": 0.838312553241849,
+                "percent_of_measured_stage_time": 2.5458033189495035,
+                "batches": 50
+              },
+              "tokenization_and_collation": {
+                "total_seconds": 0.1535237105563283,
+                "median_batch_ms": 2.995375543832779,
+                "percent_of_measured_stage_time": 6.277665331152898,
+                "batches": 50
+              },
+              "input_transfer": {
+                "total_seconds": 0.07637270307168365,
+                "median_batch_ms": 1.6618958907201886,
+                "percent_of_measured_stage_time": 3.1229200270249726,
+                "batches": 50
+              },
+              "zero_grad": {
+                "total_seconds": 0.007587294327095151,
+                "median_batch_ms": 0.13910408597439528,
+                "percent_of_measured_stage_time": 0.31024845857267447,
+                "batches": 50
+              },
+              "forward_and_loss": {
+                "total_seconds": 0.5499588707461953,
+                "median_batch_ms": 10.475666378624737,
+                "percent_of_measured_stage_time": 22.48810769315448,
+                "batches": 50
+              },
+              "forward_checks": {
+                "total_seconds": 0.02259716554544866,
+                "median_batch_ms": 0.42891642078757286,
+                "percent_of_measured_stage_time": 0.924009993068386,
+                "batches": 50
+              },
+              "backward_and_unscale": {
+                "total_seconds": 0.8792494919616729,
+                "median_batch_ms": 17.338416539132595,
+                "percent_of_measured_stage_time": 35.95297451527152,
+                "batches": 50
+              },
+              "gradient_checks": {
+                "total_seconds": 0.213918452616781,
+                "median_batch_ms": 4.165478982031345,
+                "percent_of_measured_stage_time": 8.747238122501754,
+                "batches": 50
+              },
+              "optimizer_and_scaler": {
+                "total_seconds": 0.464971839915961,
+                "median_batch_ms": 8.576125605031848,
+                "percent_of_measured_stage_time": 19.012943269970258,
+                "batches": 50
+              },
+              "logging_values": {
+                "total_seconds": 0.015115708345547318,
+                "median_batch_ms": 0.3065204946324229,
+                "percent_of_measured_stage_time": 0.6180892703335555,
+                "batches": 50
+              }
+            },
+            "cpu_traces": [
+              {
+                "first_batch": 45805,
+                "last_batch": 45814,
+                "trace_file": "epoch_0003_late_from_batch_45805_cpu_trace.json",
+                "operator_file": "epoch_0003_late_from_batch_45805_cpu_operators.txt",
+                "activity": "CPU only; no GPU kernel timing claimed"
+              }
+            ]
+          }
+        }
+      },
+      "checkpoint_manifest": {
+        "checkpoint": "epoch_0003.pt",
+        "sha256": "2ea2608a9ec98083b89606d13bed1d7c6e7a90dc6160bbe44732166137538d52",
+        "provenance_sha256": "eb7d5ba6ab9328fa8613059d78e06337da8c4eed8d0a6dfe5bd76b9f2a6f8d7d",
+        "epoch_index": 2,
+        "next_sample_offset": 735276,
+        "optimizer_updates": 137802
+      }
+    }
+  ],
+  "provenance": {
+    "settings": {
+      "model": "four-layer scratch encoder; all parameters trainable",
+      "initialization": "saved E1 seed-42 random weights; not the 10K checkpoint",
+      "batch_size": 16,
+      "max_length": 128,
+      "padding": "dynamic",
+      "precision": "FP16 autocast with GradScaler; FP32 parameters",
+      "optimizer": "AdamW",
+      "learning_rate": 0.0003,
+      "dropout": 0.1,
+      "loss": "BCEWithLogits",
+      "training_seed": 123,
+      "gradient_accumulation": false,
+      "activation_checkpointing": false,
+      "num_workers": 0,
+      "test_split_scored": false,
+      "order": "NumPy permutation of every training index; seed = 123 + epoch index"
+    },
+    "model_config": {
+      "vocab_size": 30522,
+      "pad_token_id": 0,
+      "max_length": 128,
+      "num_layers": 4,
+      "hidden_size": 128,
+      "num_attention_heads": 4,
+      "feed_forward_size": 512,
+      "dropout": 0.1
+    },
+    "training_pairs": 735276,
+    "initial_checkpoint_sha256": "452379b2eeaea4627640d7e079b319dd72c6b5408b431d2c1dccba916107ff22",
+    "config_sha256": "1e5f7083cf72e9c16f76204b0ea560ef5d99d443cb13eee7b69ec26c198e7561",
+    "clean_file_sha256": "88383010f0f3dc755bbe975c2616ec6d7eee5e5e38285e6f9f6f949145f579a7",
+    "split_manifest": {
+      "path": "data/manifests/query_split.json",
+      "sha256": "eda20769a9242e26b6fa53cee4e5a606a310fbf66d40c3991c7b2e158ffa6b5e"
+    },
+    "validation_candidate_sha256": "6b71ca5ff41401142e0726755b278a67b797516b246f605bfbbb9242840fe1db",
+    "torch_version": "2.14.1",
+    "numpy_version": "2.5.3",
+    "code_sha256": {
+      "scripts/full_train.py": "6d047ee284e6ad39ed28fd08ec7f01d78564fe7365c2a8b410b0e5b532e9c133",
+      "experiments/P1/run.py": "8c993bafbfed9589f7d9ebf8abcfcf74cc1eb342ce04cb56289b2fb20d1ee63d",
+      "scripts/model.py": "32770432d752def2c0eb1fbfd6a92e2bcd457d6ecd5d5a5b4fcb3ad68b0f579a",
+      "scripts/data.py": "9eb7050b653e573f88fd8d600cce0643a7f578e42ac9ed5591bde1949e7d0b91",
+      "scripts/collate.py": "302e08a5a41425c41f8e9fce21fb4490f998dba117b9668e1a99b3cee3d87add",
+      "scripts/checkpoint_io.py": "f8899ad6d0da85e7d7c838926f16cb24e048024b54dce41358331117e87d6f75"
+    }
+  }
+}
