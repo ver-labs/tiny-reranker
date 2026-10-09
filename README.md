@@ -888,3 +888,10 @@ and latency rather than increasing model batch size. Timing varied substantially
 between repeats, particularly at high concurrency and batch 128; these are local
 measurements, not a precise universal crossover. Large-document HTTP reranking
 remains a separate workload from this two-document concurrency test.
+
+#### Interactive Plotly charts
+
+Run `.venv/bin/python -m experiments.S1.plotly_sweep` to render the saved sweep
+results without rerunning GPU benchmarks. Open `experiments/S1/sweep_interactive.html`
+for interactive batch-size and concurrency charts, with throughput, latency,
+hover values, zoom, and repeat variability. The HTML embeds Plotly for offline use.
