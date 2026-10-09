@@ -895,3 +895,256 @@ Run `.venv/bin/python -m experiments.S1.plotly_sweep` to render the saved sweep
 results without rerunning GPU benchmarks. Open `experiments/S1/sweep_interactive.html`
 for interactive batch-size and concurrency charts, with throughput, latency,
 hover values, zoom, and repeat variability. The HTML embeds Plotly for offline use.
+
+### E12: Rust serving for inference
+
+`rust-server/` implements the HTTP coordinator using [Axum](https://docs.rs/axum/0.8.9/axum/)
+and [Tokio bounded channels](https://docs.rs/tokio/1.53.2/tokio/sync/mpsc/index.html).
+This serves inference from the selected epoch-3 model; training remains in PyTorch.
+Rust owns the child process, request validation, bounded queue, response matching,
+timeouts, readiness, and shutdown. `experiments/E12/worker.py` loads the existing
+S1 backend once and performs CPU tokenization and GPU scoring in a persistent
+Python process. Both MLX/Metal and PyTorch/MPS are selectable.
+
+To isolate the coordinator change, `experiments/E12/python_server.py` is a matched
+Python reference using exactly the same child worker and JSON-lines protocol.
+Comparing Rust against S1's earlier worker-thread server would also change the
+transport/process architecture, so E12 reports against this new reference.
+
+```bash
+cargo build --release --locked --manifest-path rust-server/Cargo.toml
+# Run one coordinator at a time for measurement:
+rust-server/target/release/tiny-reranker-server --backend mlx --port 8100
+.venv/bin/python -m experiments.E12.python_server --backend mlx --port 8101
+# Automatically start, measure, and stop isolated servers:
+.venv/bin/python -m experiments.E12.benchmark
+```
+
+Both coordinators accept S1's request schema on `POST /rerank` and expose
+`GET /health`. Defaults: one model worker, 32 queued requests, pair batch size 8,
+30-second HTTP deadline, and 60-second worker execution deadline. There is no
+cross-request batching. CLI flags `--pair-batch-size`, `--queue-size`, `--timeout`,
+and `--worker-timeout` control these settings. The HTTP request body is limited
+to 8 MiB minus 1 KiB to leave protocol overhead; each JSON-lines frame is limited
+to 8 MiB. Requests allow at most 256 documents, 2,000 query characters, 20,000
+characters per document, and 256 characters per ID. The model tokenizer truncates
+pairs to 128 tokens. Duplicate document IDs and invalid top-k are rejected.
+
+The readiness handshake declares protocol version, backend, batch size, token
+limit, and checkpoint hash. Every worker response must match both an internal
+sequence number and request ID. Results are checked for finite scores, valid
+unique document IDs, output length, and score/document-ID sorting. Worker logs
+go to stderr; stdout carries protocol frames only. One manager owns both pipes,
+so HTTP handlers cannot race over the response stream.
+
+Queue saturation returns 503; HTTP deadline expiry returns 504. Expired queued
+requests are skipped. An in-flight request continues until its response is read
+or the worker execution deadline is reached, even if its HTTP client timed out.
+This preserves stream alignment. An ordinary inference error returns 500 and
+allows subsequent requests. Child crashes, malformed/oversized output, or
+protocol mismatches return 502 for the affected request and make readiness false;
+subsequent requests receive 503. Automatic worker restart is not implemented.
+SIGINT/SIGTERM closes admission, drains accepted work, closes the worker's stdin,
+and reaps the process, with a kill fallback if it does not exit within five seconds.
+
+Verification commands:
+
+```bash
+cargo build --locked --manifest-path rust-server/Cargo.toml
+cargo test --locked --manifest-path rust-server/Cargo.toml
+cargo clippy --locked --manifest-path rust-server/Cargo.toml -- -D warnings
+.venv/bin/python -m pytest tests/test_e12_service.py -q
+```
+
+Sixteen real-HTTP/process tests cover both coordinators with a GPU-free fixture:
+request validation and body limits, queue-full responses, expired queued requests,
+safe handling of a timed-out in-flight response, inference-error recovery, child
+crashes, mismatched sequence numbers, malformed and oversized frames, invalid
+ranking IDs, idle child death, and child cleanup. The Rust unit test additionally
+checks nonfinite scores. Tests that bind loopback sockets require permission to
+use local network ports. Build outputs and server logs remain outside Git;
+`Cargo.lock` records the resolved Rust dependencies.
+
+Completed E12 results (median of ten repeated workloads per point, two isolated
+rounds in reversed coordinator/backend order; 128 two-document validation
+requests per repeat):
+
+| GPU backend | Concurrent requests | Python requests/s | Rust requests/s | Python median latency | Rust median latency |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| MLX | 1 | 230.8 | 230.9 | 4.06 ms | 3.76 ms |
+| MLX | 4 | 306.6 | 428.4 | 12.68 ms | 8.45 ms |
+| MLX | 8 | 295.8 | 379.0 | 26.79 ms | 17.76 ms |
+| PyTorch/MPS | 1 | 145.3 | 129.8 | 6.57 ms | 7.29 ms |
+| PyTorch/MPS | 4 | 198.9 | 180.5 | 19.29 ms | 21.38 ms |
+| PyTorch/MPS | 8 | 187.5 | 190.5 | 40.71 ms | 40.04 ms |
+
+All 15,360 timed requests returned expected rankings with no failures. Startup
+also checked invalid-input/top-k semantics and scores against the saved PyTorch
+validation reference on 16 warm-up queries per server. All benchmark servers
+stopped and reaped their workers. That validation benchmark left the test dataset untouched. The
+comparison and full repeat timings are in `experiments/E12/comparison.json` and
+`benchmark_raw.json`.
+
+Rust + MLX showed higher median throughput at concurrency 4 and 8 in this run,
+while the PyTorch results did not show a consistent Rust advantage. Throughput
+ranges overlap substantially; this short local workload does not establish a
+universal coordinator speedup. Model weights and computation are unchanged, and
+Rust does not replace the GPU inference implementation.
+
+A qualitative demo also exposed a ranking failure: for “How do I save a PyTorch
+model?”, the epoch-3 model ranked a gardening passage above a model-saving
+passage. Direct PyTorch reproduced the MLX HTTP scores within 0.000002, so this
+is model behavior rather than a Rust/MLX conversion discrepancy. The exact
+request and scores are recorded in `experiments/E12/demo_observation.json`.
+High metrics on the constructed validation lists do not establish general
+ranking quality; broader realistic evaluation remains pending.
+
+#### Fixed test evaluation and batch-size comparison
+
+`experiments/E12/test_compare.py` evaluates the epoch-3 checkpoint selected from
+validation on the untouched constructed test split. The fixed test manifest has
+45,665 evaluable queries and 91,337 candidate pairs. It excludes 4,447 source
+queries with no clean candidate pairs; the denominator is declared explicitly.
+There are 45,658 two-document lists and seven three-document lists.
+
+The full test is served once through each Python/Rust × PyTorch/MLX combination
+at concurrency 4, worker batch limit 8, FP32, and a 128-token limit. Per-query
+rankings are preserved and compared against the Python/PyTorch reference. These
+full-pass timings include HTTP, metric calculation, and JSONL writes; they are
+one observation per configuration, not a repeated coordinator-speed experiment.
+
+The separate direct-scoring sweep uses the first 128 fixed test queries, batches
+1/2/4/8/16/32/64/128, and six timed repeats per point in two reversed-order rounds.
+These batches combine pairs from different queries. An HTTP batch limit of 64
+would still execute only two or three pairs for this candidate fixture because
+the servers do not batch across requests. Direct-batch and HTTP timing scopes
+must therefore remain separate.
+
+```bash
+.venv/bin/python -m experiments.E12.test_compare
+.venv/bin/python -m experiments.E12.plot_test
+```
+
+The frozen `test_plan.json` records model/data/code hashes and the grid before
+test evaluation. No new weights, hyperparameters, or batch grid are selected
+using test metrics. Results are in `experiments/E12/test_comparison.json`, the
+four `test_*_summary.json` and `test_*_rankings.jsonl` files, and S1's
+`test_direct_round_*.json` files. `test_progress.json` records current progress.
+`test_interactive.html` renders the saved batch results and full-test quality
+table without rerunning inference. These constructed lists still do not replace
+a realistic retrieval evaluation.
+
+Completed fixed test evaluation (2026-10-09), same epoch-3 weights throughout:
+
+| HTTP coordinator | GPU backend | Test nDCG@10 | Test MRR@10 | Median request latency | Full-pass seconds |
+| --- | --- | ---: | ---: | ---: | ---: |
+| Python | PyTorch / MPS | 0.958466 | 0.943732 | 20.51 ms | 246.97 |
+| Rust | PyTorch / MPS | 0.958466 | 0.943732 | 18.81 ms | 226.40 |
+| Python | MLX / Metal | 0.958466 | 0.943732 | 12.49 ms | 141.01 |
+| Rust | MLX / Metal | 0.958466 | 0.943732 | 9.56 ms | 120.97 |
+
+All 182,660 scored HTTP requests succeeded. Every configuration produced the
+same document order on all 45,665 queries. Maximum MLX score difference from
+PyTorch was 0.000005723; Rust/PyTorch's difference was below 0.000000000000001.
+The test split has now been viewed and must not become a tuning set. Request
+latencies and pass times above are single-pass observations at concurrency 4;
+use the repeated validation serving experiment for coordinator speed comparisons.
+Per-query ranking files are kept locally outside Git; their hashes are retained
+in the compact summary reports.
+
+Fixed test-sample direct scoring (tokenization, transfer/conversion, GPU forward,
+and CPU-readable scores), median of six timed repeats per point:
+
+| Pairs per batch | PyTorch pairs/s | MLX pairs/s | PyTorch batch ms | MLX batch ms |
+| ---: | ---: | ---: | ---: | ---: |
+| 1 | 332.7 | 707.3 | 2.87 | 1.35 |
+| 2 | 563.4 | 885.2 | 3.27 | 1.94 |
+| 4 | 867.5 | 1230.4 | 4.43 | 3.19 |
+| 8 | 1569.4 | 1797.1 | 4.99 | 4.47 |
+| 16 | 1901.3 | 1636.3 | 8.43 | 9.47 |
+| 32 | 1652.9 | 1774.6 | 19.18 | 17.98 |
+| 64 | 2206.2 | 1548.7 | 28.81 | 41.10 |
+| 128 | 2692.4 | 1638.2 | 48.09 | 78.09 |
+
+MLX was faster at batches 1–8 and 32; PyTorch was faster at 16, 64, and
+128. The crossover is not monotonic. These results depend on the fixed sample
+and its padded sequence shapes, and have repeat-to-repeat variation shown as
+IQR bands in `experiments/E12/test_interactive.html`. Both coordinators use the
+same worker; direct inference measures the backend rather than HTTP overhead.
+
+### E11 — epoch-3 MLX inference profiling
+
+Completed operation-level inference profiling on 2026-10-09, using the existing
+epoch-3 checkpoint, FP32 with TF32 disabled, and fixed validation inputs. No
+weights changed and no additional test-set selection occurred. The first 128
+validation queries supply pair prefixes for batches 1/2/8/16/64/128; batch 1 has
+37 padded tokens and the remaining batches have 128. Each mode has 30 repeats,
+with instrumented scoring, normal scoring, and resident-input forward interleaved
+in rotating order. Model loading and HTTP serving are excluded from steady-state
+timings. The serving process was paused to isolate GPU use.
+
+| Pairs per batch | Padded tokens | Normal scoring ms | Resident-input forward ms | Tokenization ms | Input preparation ms |
+| ---: | ---: | ---: | ---: | ---: | ---: |
+| 1 | 37 | 1.416 | 1.289 | 0.189 | 0.061 |
+| 2 | 128 | 3.536 | 2.857 | 0.674 | 0.065 |
+| 8 | 128 | 9.400 | 6.373 | 1.908 | 0.223 |
+| 16 | 128 | 14.690 | 11.328 | 2.853 | 0.220 |
+| 64 | 128 | 56.044 | 30.681 | 29.798 | 0.436 |
+| 128 | 128 | 156.686 | 69.105 | 102.470 | 0.555 |
+
+Tokenization and preparation come from the instrumented mode; medians in this
+table are not additive. Preparation includes materializing input arrays and
+synchronizing. Resident forward includes CPU-readable scores. This fixture uses
+one padded batch of a sample prefix, unlike S1's throughput sweep over all sample
+pairs split into batches; do not substitute these latencies for the previous
+throughput results. Sequence shapes and raw text lengths influence the results.
+
+The profiler reconstructs all 44 model stages, checks final scores against the
+unchanged MLX model, then replays each operation on resident inputs with explicit
+materialization and synchronization. All six fixtures had zero score difference
+and identical score order. The category breakdown below sums isolated operation
+medians, including dispatch and per-operation synchronization; it is **not** a
+percentage of uninterrupted model GPU time. Ten normalization calls, eight
+residual additions, and the other repeated operations are grouped by category.
+
+| Category | Batch 2 isolated sum ms | Batch 128 isolated sum ms |
+| --- | ---: | ---: |
+| layer norm | 2.591 | 18.046 |
+| residual add | 1.942 | 10.085 |
+| attention projections | 2.258 | 14.546 |
+| attention core | 1.301 | 18.416 |
+| feed forward linear | 2.241 | 19.305 |
+| gelu | 1.196 | 21.829 |
+| embedding | 0.302 | 1.601 |
+| scoring head | 0.279 | 0.635 |
+
+For small requests, the provisional E11 learning candidate is fused residual
+addition plus LayerNorm. In this pre-norm model the residual sum is also needed
+by the following branch, so a fused implementation may need to return both the
+sum and normalized values; silently discarding the sum would change the model.
+Normalization and residual additions have appreciable isolated overhead, while
+GELU and dense feed-forward layers become more prominent at large batches. A
+kernel's end-to-end benefit remains unmeasured; no custom kernel is enabled.
+
+Reproduction and offline plot:
+
+```bash
+MTL_CAPTURE_ENABLED=1 .venv/bin/python -u -m experiments.E11.profile_mlx --capture
+.venv/bin/python -m experiments.E11.plot_profile
+```
+
+Results and all repeat samples are in `experiments/E11/profiling.json`; the
+initial, non-interleaved pass is preserved in `profiling_initial.json`. CPU call
+attribution is in `cpu_dispatch.txt` and the local `cpu_dispatch.prof`; cumulative
+CPU timings include GPU waits and must not be presented as GPU-kernel durations.
+`profiling_interactive.html` shows phase timings, repeat IQR, and isolated category
+times offline. This profile does not directly compare PyTorch and MLX.
+
+Two local Metal captures preserve three unchanged forward passes each at batches
+2 and 64 (`epoch3_batch_2.gputrace` and `epoch3_batch_64.gputrace`). Capture was
+separate from timing runs. Xcode/xctrace are not installed on this Mac, so GPU
+timelines, per-kernel timestamps, occupancy and bandwidth have not been inspected.
+The trace bundles and binary CPU profile are excluded from Git. MLX's
+[official capture documentation](https://ml-explore.github.io/mlx/build/html/dev/metal_debugger.html)
+describes the capture environment and opening traces in Xcode. Existing captures
+are preserved on rerun.
