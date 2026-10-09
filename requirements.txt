@@ -4,3 +4,8 @@ sentence-transformers==6.1.0
 datasets==5.0.1
 numpy==2.5.3
 pytest==9.1.1
+
+mlx==0.32.3
+fastapi==0.142.4
+uvicorn==0.54.0
+httpx==0.28.1

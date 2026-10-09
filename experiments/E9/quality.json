@@ -1,0 +1,14 @@
+{
+  "queries": 45709,
+  "candidate_sha256": "6b71ca5ff41401142e0726755b278a67b797516b246f605bfbbb9242840fe1db",
+  "checkpoint_sha256": "53feb7351a3f6c0f22da8831168b7d583edf4670fb5515626cab24ea1d10b172",
+  "precision": "float32",
+  "pair_batch_size": 64,
+  "pytorch_mrr_at_10": 0.8115250825876742,
+  "pytorch_ndcg_at_10": 0.8608813770761863,
+  "mlx_mrr_at_10": 0.8115250825876742,
+  "mlx_ndcg_at_10": 0.8608813770758876,
+  "changed_query_rankings": 0,
+  "max_score_absolute_error": 5.960464477539062e-07,
+  "test_split_touched": false
+}

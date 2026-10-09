@@ -507,3 +507,110 @@ Deferred at the user's request on 2026-10-07. E7 would compare the current
 pointwise BCE objective with a pairwise ranking loss using positive and
 negative documents from the same query. No E7 training or evaluation has
 been run. Revisit it after the other planned experiments if desired.
+
+### E9: selected checkpoint in PyTorch/MPS and MLX
+
+E9 uses `experiments/E1/four_layer/head_only.pt`, the scratch checkpoint with
+highest saved full-validation nDCG@10 (0.860881). MiniLM remains the external
+pretrained reference. E7 and the remaining E8 evaluation can be revisited later.
+
+Both backends run model inference on the same Apple M5 GPU: PyTorch uses
+MPS/Metal, and MLX uses its Metal GPU backend. Tokenization and HTTP handling
+run on the CPU for both. This experiment compares two GPU execution frameworks
+using the same trained weights and full FP32 precision on the same Mac.
+
+The MLX implementation preserves token/position/segment embeddings, pre-norm
+encoder layers, padding masks, exact GELU, normalization epsilon, CLS pooling,
+and the scoring head. Conversion explicitly checks every weight name and shape;
+Linear weights keep their `[out, in]` layout. Source and converted hashes are
+recorded in `experiments/E9/conversion.json`. The local exported tokenizer is
+shared by both backends, and parity checks verify identical tokenized inputs.
+
+E9 sets `MLX_ENABLE_TF32=0` before importing MLX. MLX's default matrix path can
+use reduced precision despite FP32 arrays; this caused a first-layer error of
+about 0.0028 in the diagnostic. Disabling it brought layer errors below
+0.000002. See the [MLX numerical precision guide](https://ml-explore.github.io/mlx/build/html/usage/precision.html).
+Both the API and benchmarks use this full-FP32 setting.
+
+```sh
+# Convert the selected PyTorch checkpoint to local MLX weights.
+.venv/bin/python -m experiments.E9.backend
+# Check layer outputs, padding, truncation, and all validation rankings.
+.venv/bin/python -m experiments.E9.validate
+# Run sequentially so the two backends do not compete for the GPU.
+.venv/bin/python -m experiments.E9.benchmark --backend pytorch
+.venv/bin/python -m experiments.E9.benchmark --backend mlx
+# Start, benchmark, and stop isolated local servers automatically.
+.venv/bin/python -m experiments.E9.benchmark_serving
+.venv/bin/python -m experiments.E9.compare
+.venv/bin/python -m pytest experiments/E9/test_serving.py -q
+```
+
+GPU commands require access to the Mac's Metal device. The converted
+`head_only_mlx.safetensors` stays local and is excluded from Git. Full validation
+matched all 45,709 query rankings with a maximum score difference of
+0.000000596; PyTorch and MLX both achieved 0.811525 MRR@10 and 0.860881 nDCG@10.
+The test split remains reserved. Results are constructed MS MARCO triplet
+validation metrics, not leaderboard results.
+
+Direct benchmarking records pretokenized resident-input forward time separately
+from complete scoring including tokenization and device-input preparation. It
+uses 128 fixed validation queries (256 pairs), batch sizes 1/4/8/16/64, warm-up,
+and five timed repetitions. Timing ends only after scores are CPU-readable,
+including MLX execution rather than graph construction. Batch latency is not
+individual-query latency. Memory counters are sampled framework allocations;
+the frameworks expose different counters, so these are not comparable process
+memory peaks.
+
+The HTTP API loads one persistent model on a dedicated worker thread and uses a
+bounded queue of 32 waiting requests. GPU work stays off the event loop. Both
+backends expose the same request and response schema, sort score ties by document
+ID, reject invalid inputs, and handle queue saturation (503) and deadlines (504).
+Cancelled pending jobs are skipped; running GPU work finishes before the worker
+moves on. Tests cover queue bounds, response matching, deadlines, cancellation,
+and recovery after an inference exception.
+
+To run either server (one at a time):
+
+```sh
+.venv/bin/python -m experiments.E9.serve --backend mlx --port 8099
+# Or use --backend pytorch with the same arguments.
+curl -sS http://127.0.0.1:8099/health
+curl -sS http://127.0.0.1:8099/rerank -H 'Content-Type: application/json' \
+  -d '{"request_id":"demo","query":"saving a model","documents":[{"document_id":"a","text":"Save the model state dictionary."},{"document_id":"b","text":"Growing tomatoes in a garden."}],"top_k":2}'
+```
+
+Serving benchmarking uses real loopback HTTP and persistent client connections,
+with 1/4/8 requests in flight, 128 requests per repetition, and five repetitions
+in each of two rounds. Backend order is reversed in round two. The workload has
+two candidate documents per request; no batching across requests is implemented.
+Reported latency begins after acquiring a client slot and includes HTTP,
+server queueing, tokenization, GPU execution, sorting, and JSON. Warm-up and
+startup are recorded separately. Every response is checked for request matching
+and expected document order; invalid-input and top-k checks hit the real API.
+See `experiments/E9/comparison.json` for the resulting comparison and limitations.
+
+On this M5 Mac, the completed E9 full-FP32 run produced:
+
+| Pair batch | PyTorch complete scoring (pairs/s) | MLX complete scoring (pairs/s) |
+| --- | ---: | ---: |
+| 1 | 360 | 517 |
+| 4 | 825 | 993 |
+| 8 | 1,199 | 1,077 |
+| 16 | 1,733 | 1,319 |
+| 64 | 2,210 | 1,573 |
+
+| Concurrent HTTP requests | PyTorch requests/s | MLX requests/s | PyTorch median latency | MLX median latency |
+| --- | ---: | ---: | ---: | ---: |
+| 1 | 168 | 241 | 5.45 ms | 4.03 ms |
+| 4 | 207 | 331 | 18.82 ms | 12.38 ms |
+| 8 | 190 | 291 | 39.17 ms | 26.16 ms |
+
+Serving values are medians across ten repeated observations per concurrency
+level. All 7,680 measured HTTP requests completed with expected rankings and no
+failures. MLX was faster for this two-document serving workload; PyTorch had
+higher direct throughput at larger pair batches. Concurrency increases queue
+latency because there is one worker and no cross-request batching. These results
+do not establish a universal winner for other candidate counts or precision
+settings. Full repeat timings, p95 latency, loading time, queue/processing time,
+and memory samples are retained in the JSON reports.

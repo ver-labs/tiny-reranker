@@ -14,3 +14,6 @@ experiments/E3/*_padding.pt
 experiments/E5/*.pt
 experiments/E6/*.pt
 experiments/E8/*.pt
+
+experiments/E9/*.safetensors
+experiments/E9/*_server.log

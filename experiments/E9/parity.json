@@ -1,0 +1,34 @@
+{
+  "probe_batch_sizes": [
+    2,
+    1,
+    8,
+    64
+  ],
+  "max_score_absolute_error": 3.2782554626464844e-07,
+  "layer_max_absolute_errors": {
+    "embedding_norm": 7.152557373046875e-07,
+    "encoder_layers.0": 1.1920928955078125e-06,
+    "encoder_layers.1": 1.430511474609375e-06,
+    "encoder_layers.2": 1.430511474609375e-06,
+    "encoder_layers.3": 1.9073486328125e-06,
+    "final_norm": 1.6689300537109375e-06
+  },
+  "layer_tolerance": {
+    "atol": 0.0001,
+    "rtol": 0.0001
+  },
+  "score_tolerance": {
+    "atol": 1e-05,
+    "rtol": 0.0001
+  },
+  "identical_tokenization": true,
+  "padding_ignored": true,
+  "mlx_enable_tf32": "0",
+  "reduced_precision_diagnostic": {
+    "default_mlx_first_layer_max_error": 0.0027843713760375977,
+    "default_mlx_qkv_max_error": 0.0023739338,
+    "source": "https://ml-explore.github.io/mlx/build/html/usage/precision.html"
+  },
+  "singleton_and_max_length_truncation_checked": true
+}
