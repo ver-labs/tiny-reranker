@@ -614,3 +614,116 @@ latency because there is one worker and no cross-request batching. These results
 do not establish a universal winner for other candidate counts or precision
 settings. Full repeat timings, p95 latency, loading time, queue/processing time,
 and memory samples are retained in the JSON reports.
+
+### P1: 10K training and profiling before full-data training
+
+P1 trains all 4,717,185 parameters of the four-layer model from the saved E1
+seed-42 random initialization. It selects 10,000 cleaned training pairs without
+replacement using seed 123 and uses that reproducibly shuffled order for one
+epoch. The sample indices, pair IDs, cleaned-file hash, and query-split manifest
+are saved in `experiments/P1/sample.json`. Every selected pair is checked to
+belong to a training query; validation and test examples are excluded from the
+training sample.
+
+The fixed configuration uses PyTorch/MPS on the Apple GPU, direct batches of 16,
+dynamic padding up to 128 tokens, pointwise BCE, AdamW at `3e-4`, and dropout 0.1.
+FP16 autocast uses MPS GradScaler, while parameters, their stored gradients, and
+BCE loss stay FP32. There is no gradient accumulation, activation checkpointing,
+backbone freezing, or new loss objective. E6 supported the precision choice with
+matching aggregate ranking metrics and about 21% lower sampled tensor memory;
+its small timing lead was a single-run observation. E1 favored four layers for
+quality. E2 favored zero loader workers for the short workload. E3 supported
+saving padding slots, without establishing a dynamic-padding speed advantage.
+These choices are combined for this run; their combination is not a proven
+optimum. Data preparation runs in the main process.
+
+```sh
+.venv/bin/python -m experiments.P1.run
+# Recover evaluation after an interrupted post-training step without retraining:
+.venv/bin/python -m experiments.P1.run --evaluate-only
+```
+
+The main training pass records whole-epoch throughput and five 2,000-pair window
+times. It has no operator profiler or per-stage GPU synchronization, but still
+includes finite-value checks, scaler checks, scalar loss reads, CPU stage timers,
+and memory snapshots. Its saved checkpoint contains model, optimizer, scaler,
+RNG, configuration, and epoch-boundary sampler state. Saving reloads the temporary
+checkpoint and verifies the final weights, scaler state, and optimizer counters.
+The run refuses to overwrite existing training output. Mid-epoch resume and a
+full-data training continuation command are not implemented by P1.
+
+After training, a separate fresh diagnostic model warms up for five batches and
+replays 50 batches (800 pairs) with MPS synchronization around each stage:
+data reading, tokenization/collation, input transfer, gradient clearing,
+forward/loss, forward checks, backward/unscale, gradient checks, optimizer/scaler,
+and scalar logging. Its breakdown is synchronized wall time, including dispatch
+and synchronization overhead, not pure GPU kernel time. It represents an early
+training replay from the same sample, not every batch in the full epoch. A
+separate ten-batch CPU operator trace identifies CPU-side operations; it does not
+claim GPU kernel profiling. Traced and synchronized timing are excluded from
+full-training duration estimates. Diagnostic weights are discarded.
+
+The checkpoint from the main pass is reloaded and evaluated using FP32 inference
+on all 45,709 fixed constructed validation candidate lists, with the same MRR@10,
+nDCG@10, 128-token limit, and 64-pair evaluation batches as earlier runs. The test
+split is not scored. Startup, validation, and checkpoint costs are recorded
+separately. Full-data epoch estimates scale the normal throughput to 735,276
+training pairs, with a range from the five timing windows. Token distributions,
+background load, and sustained thermal behavior can change a longer run's speed.
+
+P1 reports live-forward MPS tensor and driver allocations as sampled values,
+and process RSS as a separate high-water mark. These counters overlap on unified
+memory and should not be added together. The checkpoint and large CPU trace stay
+local and are excluded from Git. The stage breakdown, CPU operator table,
+training curves, validation rankings, and final estimate are in `experiments/P1/`.
+
+Completed P1 results (Apple M5 GPU via PyTorch/MPS):
+
+| Measurement | Result |
+| --- | ---: |
+| Training pairs / batches | 10,000 / 625 |
+| Completed optimizer updates / scaler skips | 624 / 1 |
+| Normal training loop | 41.73 s; 239.65 pairs/s |
+| Setup / checkpoint save and reload | 5.06 s / 0.40 s |
+| Full validation queries | 45,709 |
+| Validation nDCG@10 / MRR@10 | 0.897533 / 0.861187 |
+| Sampled live-forward MPS tensor allocation | 168,804,352 bytes |
+| Sampled MPS driver allocation | 1,155,891,200 bytes |
+| Process peak RSS | 432,881,664 bytes |
+| Estimated full-training epoch, excluding validation/save | 51.1 minutes; window-based range 47.2–57.1 minutes |
+
+The final scaler value was 32,768 after one skipped update. Every selected pair
+was processed once; the skipped batch did not change model parameters. The
+checkpoint audit found all 57 state tensors changed from the random initial
+weights and all 57 AdamW parameter states at step 624.
+
+| Synchronized replay stage | Share of measured stage time |
+| --- | ---: |
+| Backward and unscale | 36.1% |
+| Forward and BCE loss | 23.0% |
+| Optimizer and scaler update | 21.1% |
+| Gradient checks | 6.8% |
+| Tokenization and collation | 6.1% |
+| Input transfer | 2.8% |
+| Data reading | 1.5% |
+| Forward checks, gradient clearing, scalar logging | 2.5% |
+
+Forward/backward and optimizer work dominate this synchronized replay; data
+loading and tokenization are smaller contributors. The separate CPU trace also
+shows substantial scalar-read/CPU-wait activity (`aten::_local_scalar_dense`,
+24.3% of self CPU time). CPU trace percentages and synchronized wall-time stage
+percentages have different denominators and must not be combined.
+
+For context, the prior four-layer head-tuned scratch checkpoint had 0.860881
+nDCG@10, and MiniLM had 0.896600 on the same constructed validation set. P1's
+0.897533 is a local single-run observation on two-candidate lists; it is not a
+claim of superiority on a realistic retrieval benchmark. Compared with E1,
+P1 changes data exposure, sample/order, and training precision together.
+
+The full-data configuration supported by this run is the same four-layer,
+FP16-autocast, direct-batch-16 setup with zero loader workers. No new method sweep
+is needed before scaling the training sample. Full training has not been
+started by P1. The duration extrapolation is preliminary: the longer workload
+may have a different token-length distribution or thermal behavior. See
+`experiments/P1/report.json`, `training.json`, `profiling.json`, and
+`checkpoint_audit.json` for the recorded measurements and checks.

@@ -1,0 +1,77 @@
+{
+  "profile_batches": 50,
+  "profile_pairs": 800,
+  "warmup_batches": 5,
+  "synchronized_replay_seconds": 4.367853417061269,
+  "timing_label": "wall time with GPU synchronization around every stage; includes dispatch and synchronization overhead, not GPU kernel time",
+  "stages": {
+    "data_reading": {
+      "total_seconds": 0.06672136927954853,
+      "median_batch_ms": 0.5186459748074412,
+      "percent_of_measured_stage_time": 1.5365078111747723,
+      "batches": 50
+    },
+    "tokenization_and_collation": {
+      "total_seconds": 0.2663455803412944,
+      "median_batch_ms": 3.8632911164313555,
+      "percent_of_measured_stage_time": 6.133598112347461,
+      "batches": 50
+    },
+    "input_transfer": {
+      "total_seconds": 0.12059687334112823,
+      "median_batch_ms": 2.0654790569096804,
+      "percent_of_measured_stage_time": 2.7771917736810576,
+      "batches": 50
+    },
+    "zero_grad": {
+      "total_seconds": 0.013314333511516452,
+      "median_batch_ms": 0.22983306553214788,
+      "percent_of_measured_stage_time": 0.306612074391311,
+      "batches": 50
+    },
+    "forward_and_loss": {
+      "total_seconds": 0.9969962029717863,
+      "median_batch_ms": 13.780146022327244,
+      "percent_of_measured_stage_time": 22.959547595005592,
+      "batches": 50
+    },
+    "forward_checks": {
+      "total_seconds": 0.06793395918793976,
+      "median_batch_ms": 0.7629995234310627,
+      "percent_of_measured_stage_time": 1.5644322061042082,
+      "batches": 50
+    },
+    "backward_and_unscale": {
+      "total_seconds": 1.569752701325342,
+      "median_batch_ms": 23.030270473100245,
+      "percent_of_measured_stage_time": 36.14939731068133,
+      "batches": 50
+    },
+    "gradient_checks": {
+      "total_seconds": 0.2944095015991479,
+      "median_batch_ms": 5.243938066996634,
+      "percent_of_measured_stage_time": 6.779874330753893,
+      "batches": 50
+    },
+    "optimizer_and_scaler": {
+      "total_seconds": 0.9181084984447807,
+      "median_batch_ms": 13.296395540237427,
+      "percent_of_measured_stage_time": 21.14286464139982,
+      "batches": 50
+    },
+    "logging_values": {
+      "total_seconds": 0.028224500128999352,
+      "median_batch_ms": 0.354124465957284,
+      "percent_of_measured_stage_time": 0.6499741444605485,
+      "batches": 50
+    }
+  },
+  "replay_weights_discarded": true,
+  "cpu_trace": {
+    "batches": 10,
+    "activity": "CPU only; no GPU kernel trace claimed",
+    "file": "cpu_trace.json",
+    "operators_file": "cpu_operators.txt"
+  },
+  "sample_scope": "early training replay, 50 batches following five warmup batches from the 10K sample"
+}

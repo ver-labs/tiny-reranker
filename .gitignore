@@ -17,3 +17,6 @@ experiments/E8/*.pt
 
 experiments/E9/*.safetensors
 experiments/E9/*_server.log
+
+experiments/P1/*.pt
+experiments/P1/cpu_trace.json
