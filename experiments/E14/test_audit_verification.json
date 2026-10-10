@@ -1,0 +1,31 @@
+{
+  "status": "verified",
+  "queries": 45665,
+  "pairs": 91337,
+  "audit_sha256": "fef2da589c48dbefdf80a4372ecdc9bdc54ea849320d2da4e9e353dafb776f43",
+  "test_quality_sha256": "93c043f60a8cae3caf288b34b6a81b0eb68838e2988a4691e6f425d3873d9161",
+  "verifier_sha256": "140bda34fbf3eb8ff5f064d8fd2d1df86f299499514af5e0401e7be4d585230e",
+  "recomputed_totals": {
+    "original": {
+      "mrr": 43095.5,
+      "ndcg": 43768.348003599276,
+      "changed": 0,
+      "max_error": 0.0,
+      "outside_tolerance": 0
+    },
+    "cuda": {
+      "mrr": 43095.5,
+      "ndcg": 43768.348003599276,
+      "changed": 0,
+      "max_error": 1.9073486328125e-06,
+      "outside_tolerance": 0
+    },
+    "triton": {
+      "mrr": 43095.5,
+      "ndcg": 43768.348003599276,
+      "changed": 0,
+      "max_error": 1.6689300537109375e-06,
+      "outside_tolerance": 0
+    }
+  }
+}

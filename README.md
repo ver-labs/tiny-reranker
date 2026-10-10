@@ -1341,8 +1341,8 @@ while a fourth `optimized` path enables the stock fused encoder. Compare the mat
 kernel's isolated effect, and the stock model for practical deployment performance.
 The benchmark records GPU/driver/runtime versions, hashes and raw samples in
 `experiments/E13/benchmark.json` only after an actual GPU run. Its 128-query parity
-fixture is not a full validation/test evaluation. Full ranking validation remains
-pending. NVIDIA kernel correctness and measured latency are recorded below;
+fixture is not a full validation/test evaluation. The subsequent full test
+ranking evaluation is recorded under E14 below. NVIDIA kernel correctness and measured latency are recorded below;
 ordinary PyTorch remains the default.
 
 On 2026-10-10, the borrowed Georgia Tech Rogues Gallery account authenticated
@@ -1538,5 +1538,61 @@ same-GPU model comparison, prepared-input forward medians are:
 Decision: keep normal PyTorch for the measured small-batch NVIDIA workload. The
 custom CUDA port beats Triton there but does not beat the normal reference. Large
 batches are close; lower isolated GPU time alone does not establish lower model
-latency. Next, complete full held-out CUDA ranking evaluation before choosing any
-new optimization.
+latency. The full held-out CUDA ranking evaluation below now confirms quality
+parity for the fixed implementations.
+
+
+### E14 — full held-out test ranking quality
+
+Completed 2026-10-10 on L40S node `dash2`, Slurm job 172835. Epoch 3 was
+fixed from validation before test evaluation; no training, checkpoint selection
+or launch tuning used these test results. Normal PyTorch, handwritten CUDA and
+Triton all evaluated every one of the 45,665 evaluable test queries and 91,337
+candidate pairs. Every query's normalized hash was verified against its stored ID
+and test bucket 9, using the split manifest pinned by training. Candidate text
+hashes, query uniqueness, labels, counts and the saved candidate-file hash were
+checked. The 4,447 source test queries with no clean pairs remain excluded under
+the existing manifest; this run did not create new candidate lists.
+
+Pair batch size was 128, maximum sequence length 128, dynamic padding, FP32,
+TF32 disabled, Triton four warps. PyTorch MHA fast paths were disabled across all
+three paths to isolate the residual + LayerNorm changes. Each batch was tokenized
+once and the same resident inputs were supplied to each path in rotating order.
+The optimized stock PyTorch fast path was not part of this quality comparison.
+
+| Implementation | MRR@10 | nDCG@10 | Changed query rankings vs PyTorch | Maximum score error |
+|---|---:|---:|---:|---:|
+| Normal PyTorch | 0.943731523048 | 0.958465958690 | 0 | 0 |
+| Custom CUDA port | 0.943731523048 | 0.958465958690 | 0 | 1.90734863e-06 |
+| Custom Triton | 0.943731523048 | 0.958465958690 | 0 | 1.66893005e-06 |
+
+All 91,337 scores in each custom path passed atol=1e-5, rtol=1e-4 versus
+normal PyTorch. Rankings were exactly unchanged for every test query. Both
+quality metrics match the earlier E12 held-out evaluation. These constructed
+MS MARCO mined-triplet lists mostly contain two documents; this does not establish
+quality on realistic retrieval pools or equivalence with published leaderboards.
+
+The evaluation loop took 33.992 seconds including warm-up, tokenization, all
+three inference paths, audit writing and checks. Single-pass durations in the
+report are diagnostic, not a new latency benchmark. The previous repeated warm
+latency conclusions and ordinary-framework default remain unchanged.
+
+Results are in `experiments/E14/test_quality.json`, fixed settings and source
+hashes in `test_plan.json`, and successful logs in `e14_test_172835.log`.
+The ignored local `full_test_scores.jsonl.gz` contains every candidate score,
+label, ranking and per-query metric for all paths, with its checksum in the
+summary. After download, `verify_test.py` checked source/artifact hashes, matched
+every record to the original saved test candidates, and recomputed all ranking
+metrics, ranking changes and maximum score differences. Verification succeeded
+for the full dataset; its record is `test_audit_verification.json`.
+
+```bash
+# Existing isolated E13/E14 Linux environment and compiled CUDA library:
+sbatch experiments/E14/evaluate_test.sbatch
+# After downloading results and the gzip audit:
+.venv/bin/python -m experiments.E14.verify_test
+```
+
+Conclusion: both custom kernels preserve epoch-3 ranking quality on the complete
+saved test set. They remain learning/benchmark paths; quality parity alone does
+not justify changing the default execution path.

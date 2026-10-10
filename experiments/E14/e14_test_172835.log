@@ -1,0 +1,48 @@
+dash2.crnch.gatech.edu
+name, driver_version, memory.total [MiB]
+NVIDIA L40S, 610.43.02, 46068 MiB
+Test: 4,096/45,665 queries; 8,193 pairs; CUDA/Triton changed rankings=0/0
+Test: 8,192/45,665 queries; 16,385 pairs; CUDA/Triton changed rankings=0/0
+Test: 12,288/45,665 queries; 24,578 pairs; CUDA/Triton changed rankings=0/0
+Test: 16,384/45,665 queries; 32,770 pairs; CUDA/Triton changed rankings=0/0
+Test: 20,480/45,665 queries; 40,962 pairs; CUDA/Triton changed rankings=0/0
+Test: 24,576/45,665 queries; 49,154 pairs; CUDA/Triton changed rankings=0/0
+Test: 28,672/45,665 queries; 57,348 pairs; CUDA/Triton changed rankings=0/0
+Test: 32,768/45,665 queries; 65,541 pairs; CUDA/Triton changed rankings=0/0
+Test: 36,864/45,665 queries; 73,734 pairs; CUDA/Triton changed rankings=0/0
+Test: 40,960/45,665 queries; 81,927 pairs; CUDA/Triton changed rankings=0/0
+Test: 45,056/45,665 queries; 90,119 pairs; CUDA/Triton changed rankings=0/0
+Test: 45,665/45,665 queries; 91,337 pairs; CUDA/Triton changed rankings=0/0
+{
+  "metrics": {
+    "original": {
+      "mrr_at_10": 0.9437315230482864,
+      "ndcg_at_10": 0.9584659586904473,
+      "changed_rankings_vs_pytorch": 0,
+      "max_score_error_vs_pytorch": 0.0,
+      "mean_absolute_score_error_vs_pytorch": 0.0,
+      "pairs_outside_score_tolerance": 0,
+      "forward_wall_seconds_single_pass": 2.0757382102310658
+    },
+    "cuda": {
+      "mrr_at_10": 0.9437315230482864,
+      "ndcg_at_10": 0.9584659586904473,
+      "changed_rankings_vs_pytorch": 0,
+      "max_score_error_vs_pytorch": 1.9073486328125e-06,
+      "mean_absolute_score_error_vs_pytorch": 1.7797406973499152e-07,
+      "pairs_outside_score_tolerance": 0,
+      "forward_wall_seconds_single_pass": 2.0534450663253665
+    },
+    "triton": {
+      "mrr_at_10": 0.9437315230482864,
+      "ndcg_at_10": 0.9584659586904473,
+      "changed_rankings_vs_pytorch": 0,
+      "max_score_error_vs_pytorch": 1.6689300537109375e-06,
+      "mean_absolute_score_error_vs_pytorch": 1.4923493684546089e-07,
+      "pairs_outside_score_tolerance": 0,
+      "forward_wall_seconds_single_pass": 2.048903491348028
+    }
+  },
+  "score_parity_verified": true,
+  "ranking_parity_verified": true
+}

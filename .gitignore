@@ -34,3 +34,5 @@ experiments/E11/*.prof
 experiments/E11/*_rankings.jsonl
 experiments/E11/*_rankings.jsonl.tmp
 experiments/E14/*.so
+experiments/E14/full_test_scores.jsonl.gz
+experiments/E14/full_test_scores.jsonl.gz.tmp

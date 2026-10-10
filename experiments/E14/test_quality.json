@@ -1,0 +1,107 @@
+{
+  "status": "complete",
+  "plan": {
+    "checkpoint_sha256": "2ea2608a9ec98083b89606d13bed1d7c6e7a90dc6160bbe44732166137538d52",
+    "candidate_sha256": "123d3d3380fdb9c3b6168467ada7b90aff45f236b70222f1da68f900ae8d0f8b",
+    "dataset_split": "test",
+    "test_manifest": {
+      "candidate_file": "data/processed/eval_test_candidates.jsonl",
+      "sha256": "123d3d3380fdb9c3b6168467ada7b90aff45f236b70222f1da68f900ae8d0f8b",
+      "source_query_ids": 50112,
+      "queries_with_clean_pairs": 45665,
+      "queries_with_no_clean_pairs": 4447,
+      "queries_empty_after_document_dedup": 0,
+      "single_label_queries_included": 0,
+      "queries_without_relevant_candidate_included": 0,
+      "evaluable_queries": 45665,
+      "candidates": 91337
+    },
+    "pair_batch_size": 128,
+    "max_length": 128,
+    "precision": "FP32; TF32 disabled",
+    "attention_fastpath": false,
+    "triton_num_warps": 4,
+    "paths": {
+      "original": "normal PyTorch encoder, fused fast path disabled",
+      "cuda": "handwritten CUDA C++ port of E11 Metal algorithm",
+      "triton": "custom Triton residual + LayerNorm"
+    },
+    "selection_rule": "Epoch 3 and implementation settings fixed before this evaluation; no test-driven tuning",
+    "environment": {
+      "platform": "Linux-5.15.0-173-generic-x86_64-with-glibc2.35",
+      "torch": "2.14.1+cu130",
+      "cuda_runtime": "13.0",
+      "cuda_available": true,
+      "triton_installed": true,
+      "gpu": "NVIDIA L40S",
+      "compute_capability": [
+        8,
+        9
+      ],
+      "nvidia_driver": "610.43.02",
+      "triton": "3.8.0"
+    },
+    "split_manifest_sha256": "eda20769a9242e26b6fa53cee4e5a606a310fbf66d40c3991c7b2e158ffa6b5e",
+    "code_sha256": {
+      "experiments/E14/evaluate_test.py": "f51491f1ce08aec87bac0165ea0627186a5312311598e3e6c28ef91906f08a1c",
+      "experiments/E14/model.py": "b5a54832bc266ce9ed3d0055b0dccd1c33d73640f9d612b91a4c66484f1f8d59",
+      "experiments/E14/kernel.py": "fa2f724a85d3799d81f1a7d1b71363c126c583b9ec4953306cb89c20a3084129",
+      "experiments/E14/residual_layer_norm.cu": "6cee9e55cab3e5470cbf33a530c1e4601c5ab45c7986cdf1f62dcf7acafe95e5",
+      "experiments/E14/residual_layer_norm.so": "c3b0c446bc66ecae80637724f70cc5692576e08f1aed6ef8b9275d3a82dbd97a",
+      "experiments/E13/kernel.py": "ec42815b10b7d17e79c1f255bb1eebf563d64064d82b8947f4f068779732c6ea",
+      "experiments/E13/triton_impl.py": "483b2c357dbfe4a0b47582869496286cfbe0205e3a5fe7c062454d6e1d54f82f",
+      "scripts/model.py": "32770432d752def2c0eb1fbfd6a92e2bcd457d6ecd5d5a5b4fcb3ad68b0f579a",
+      "scripts/evaluate_initial.py": "6e2d7f86abc1210d1c16e8557c94cf9180cf6a319bb1b3e3c3d5e23712e08ad7",
+      "experiments/E14/benchmark.py": "6a45866db4cde0bb96262f8cefac0248f55bef76a688cbf7d50bd6abb7b4a29b"
+    }
+  },
+  "plan_sha256": "129c8d8920d04d1055004f8eac678bd338ec302855dfe701551b955913e398c6",
+  "queries": 45665,
+  "pairs": 91337,
+  "queries_without_relevant_candidate": 0,
+  "metrics": {
+    "original": {
+      "mrr_at_10": 0.9437315230482864,
+      "ndcg_at_10": 0.9584659586904473,
+      "changed_rankings_vs_pytorch": 0,
+      "max_score_error_vs_pytorch": 0.0,
+      "mean_absolute_score_error_vs_pytorch": 0.0,
+      "pairs_outside_score_tolerance": 0,
+      "forward_wall_seconds_single_pass": 2.0757382102310658
+    },
+    "cuda": {
+      "mrr_at_10": 0.9437315230482864,
+      "ndcg_at_10": 0.9584659586904473,
+      "changed_rankings_vs_pytorch": 0,
+      "max_score_error_vs_pytorch": 1.9073486328125e-06,
+      "mean_absolute_score_error_vs_pytorch": 1.7797406973499152e-07,
+      "pairs_outside_score_tolerance": 0,
+      "forward_wall_seconds_single_pass": 2.0534450663253665
+    },
+    "triton": {
+      "mrr_at_10": 0.9437315230482864,
+      "ndcg_at_10": 0.9584659586904473,
+      "changed_rankings_vs_pytorch": 0,
+      "max_score_error_vs_pytorch": 1.6689300537109375e-06,
+      "mean_absolute_score_error_vs_pytorch": 1.4923493684546089e-07,
+      "pairs_outside_score_tolerance": 0,
+      "forward_wall_seconds_single_pass": 2.048903491348028
+    }
+  },
+  "score_parity_verified": true,
+  "ranking_parity_verified": true,
+  "changed_queries": [],
+  "score_tolerance": {
+    "atol": 1e-05,
+    "rtol": 0.0001
+  },
+  "audit_file": "full_test_scores.jsonl.gz",
+  "audit_sha256": "fef2da589c48dbefdf80a4372ecdc9bdc54ea849320d2da4e9e353dafb776f43",
+  "elapsed_seconds": 33.99198030214757,
+  "limitations": [
+    "Constructed MS MARCO mined-triplet candidate lists; not a retrieval leaderboard evaluation.",
+    "Normal PyTorch disables fused fast paths to isolate custom-kernel changes.",
+    "Single evaluation pass duration is not a latency benchmark; previous rotated benchmarks remain authoritative.",
+    "No training, checkpoint selection or tuning on test data."
+  ]
+}
