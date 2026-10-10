@@ -1,0 +1,47 @@
+{
+  "tf32": false,
+  "paths": {
+    "original_fastTrue": {
+      "max_score_error": 0.006659984588623047,
+      "mean_score_error": 0.0022051148116588593,
+      "changed_rankings": 0
+    },
+    "original_fastFalse": {
+      "max_score_error": 0.0,
+      "mean_score_error": 0.0,
+      "changed_rankings": 0
+    },
+    "reference_fastFalse": {
+      "max_score_error": 0.0,
+      "mean_score_error": 0.0,
+      "changed_rankings": 0
+    },
+    "triton_fastFalse": {
+      "max_score_error": 9.5367431640625e-07,
+      "mean_score_error": 1.3895623851567507e-07,
+      "changed_rankings": 0
+    }
+  },
+  "layers": [
+    {
+      "index": 0,
+      "max_error_all": 0.005549311637878418,
+      "max_error_cls": 0.0037546157836914062
+    },
+    {
+      "index": 1,
+      "max_error_all": 0.009609103202819824,
+      "max_error_cls": 0.005975246429443359
+    },
+    {
+      "index": 2,
+      "max_error_all": 0.010690689086914062,
+      "max_error_cls": 0.007733583450317383
+    },
+    {
+      "index": 3,
+      "max_error_all": 0.00839996337890625,
+      "max_error_cls": 0.00821685791015625
+    }
+  ]
+}

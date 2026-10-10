@@ -1,4 +1,5 @@
 .venv/
+.venv-triton-apple/
 __pycache__/
 .pytest_cache/
 checkpoints/*.pt

@@ -1269,3 +1269,174 @@ scoring results remain mixed, and ordinary MLX remains the default.
 
 The source measurements and all repeat samples remain in
 `experiments/E11/kernel_benchmark.json` under `operation_microbench`.
+
+### E13 — Triton kernel measured on NVIDIA L40S
+
+The inference-only FP32 residual addition + LayerNorm source is written in
+`experiments/E13/triton_impl.py`. It uses Triton's
+[official LayerNorm tutorial](https://triton-lang.org/main/getting-started/tutorials/05-layer-norm.html)
+as a reference for one-program-per-row reductions, adapting the forward algorithm
+to add the residual in registers and return both the sum and normalized values.
+The code uses masked loads/stores for non-power-of-two hidden dimensions, FP32
+two-pass population variance, model epsilon and learned scale/bias. No tutorial
+backward or training code was incorporated. GPU compilation and numerical
+correctness have now been verified on the L40S; the measured experiment is below.
+
+`experiments/E13/kernel.py` lazily imports Triton only for a supported NVIDIA
+launch. Its custom contract is contiguous, nonempty rank-2/3 FP32 arrays, matching
+residual/branch shapes and affine vectors on the same CUDA device, hidden size
+1..1024, and 1/2/4 warps. Other layouts/dtypes/devices fall back to ordinary
+PyTorch or raise under `fallback=False`. Invalid shape/epsilon/launch metadata
+raises. Custom calls reject gradient-enabled inputs requiring gradients; use
+`torch.inference_mode()`. Finite inputs must have representable sums and reduction
+intermediates. The Mac environment and its MLX dependencies are unchanged.
+
+`experiments/E13/model.py` preserves the original checkpoint's state-dict keys.
+Its `kernel_mode` switch selects `original`, matched explicit PyTorch `reference`,
+or `triton`. The two explicit paths share attention, feed-forward operations and contiguous
+packing of branch outputs, and differ in the eight residual-add/LayerNorm pairs.
+Packing is necessary because batch-first MHA can return transposed views; its
+cost is included in both matched timing paths. The stock original remains a
+separate practical baseline without this imposed packing. Returning the residual
+sum preserves the pre-norm architecture. Explicit paths reject training mode;
+Triton requires inference mode. Ordinary PyTorch remains the default.
+
+Local verification: 14 CPU tests passed and 72 NVIDIA tests were explicitly
+skipped. CPU tests check fallback/rejection, model-wiring parity at lengths
+1/3/37/128, inference guards and the missing-GPU benchmark status. The skipped
+suite covers hidden sizes 1/32/96/128/129/256/1024, odd row counts, three launch
+configurations, numerical edge cases, strides/dtype fallbacks, gradient rejection,
+and complete-model output checks. Python syntax checks passed; they do not compile
+Triton GPU code. Subsequent NVIDIA execution passed all 86 tests; the completed
+hardware report is now in `experiments/E13/hardware_status.json`.
+
+On an agreed compatible Linux/NVIDIA environment, run from the repository root:
+
+```bash
+python -m pytest tests/test_e13_triton.py -q -rs
+python -m experiments.E13.benchmark --require-gpu
+```
+
+Prepare a separate compatible PyTorch CUDA + Triton environment; the benchmark
+also uses NumPy, pytest and Transformers through the shared
+project evaluation helpers. Do not install the Mac `requirements.txt` wholesale
+on Linux: it includes MLX. The [current Triton compatibility requirements](https://github.com/triton-lang/triton#compatibility)
+list Linux and NVIDIA compute capability 8.0+. Confirm the chosen runtime versions
+and GPU before execution; no remote or paid GPU was provisioned for this task.
+
+The runner requires the epoch-3 checkpoint and its full-training summary/config,
+`experiments/E1/four_layer/config.json`, the pinned tokenizer bundle under
+`artifacts/short_epoch_1024`, and validation candidates plus their manifest. These
+large local assets are outside Git and must be copied to the chosen machine.
+It checks their hashes/provenance before loading weights or comparing outputs.
+Without compatible hardware it writes a pending status and produces no fabricated
+benchmark results; `--require-gpu` additionally exits with code 2.
+
+The prepared GPU benchmark measures first kernel use separately, checks 1/2/4-warp
+operation variants, checks score/ranking parity on the fixed first 128 validation
+queries, then sweeps batches 1/2/8/16/64/128 with 20 rotated-order repeats by default.
+It measures prepared-input forward and complete scoring with CPU-readable scores.
+It reports four PyTorch model paths: original, reference and Triton disable PyTorch MHA fast paths,
+while a fourth `optimized` path enables the stock fused encoder. Compare the matched paths for the
+kernel's isolated effect, and the stock model for practical deployment performance.
+The benchmark records GPU/driver/runtime versions, hashes and raw samples in
+`experiments/E13/benchmark.json` only after an actual GPU run. Its 128-query parity
+fixture is not a full validation/test evaluation. Full ranking validation remains
+pending. NVIDIA kernel correctness and measured latency are recorded below;
+ordinary PyTorch remains the default.
+
+On 2026-10-10, the borrowed Georgia Tech Rogues Gallery account authenticated
+through `rg-login` without VPN. Slurm job 172826 installed an isolated environment
+on CPU node `crush`. Job 172829 completed the GPU tests and benchmark on `dash2`:
+NVIDIA L40S, compute capability 8.9, driver 610.43.02, PyTorch 2.14.1+cu130,
+CUDA runtime 13.0, Triton 3.8.0. No credentials are saved in the project. Setup
+and benchmark batch scripts, exact installed packages, successful test logs and
+the CUDA dispatch diagnostic are retained in `experiments/E13/`.
+
+All 86 tests passed. On the fixed 128-query/256-pair validation fixture, Triton
+versus matched reference had maximum score error 9.5367431640625e-7 and zero
+changed rankings: MRR@10 0.953125, nDCG@10 0.9653996643973239. This is sample
+parity, not the full validation or test evaluation.
+
+The initial benchmark stopped because the trained checkpoint's stock fused
+PyTorch fast path differed from the explicit reference by up to 0.0066599846.
+Disabling that fast path made original/reference scores exactly equal on the
+fixture. The diagnostic isolates this difference to PyTorch dispatch, not Triton;
+the precise internal source of the fused-path difference was not established.
+The final runner keeps original/reference/Triton on matching dispatch, retains
+their strict parity checks, and reports the optimized stock path separately.
+The optimized path changed zero rankings on this small fixture, but that does not
+establish full ranking equivalence.
+
+Median complete scoring latency per pair batch (milliseconds; tokenization,
+GPU transfer, forward computation and CPU-readable scores; 20 rotated repeats):
+
+| Pair batch | Matched PyTorch CUDA reference | Custom Triton | Saved custom Metal on M5 |
+|---:|---:|---:|---:|
+| 1 | 1.311 | 1.683 | 2.307 |
+| 2 | 1.713 | 2.098 | 3.660 |
+| 8 | 3.040 | 3.415 | 9.025 |
+| 16 | 4.734 | 5.083 | 13.090 |
+| 64 | 14.921 | 14.987 | 45.023 |
+| 128 | 29.410 | 29.363 | 83.914 |
+
+The custom Triton path is slower at small batches and approximately tied at
+64/128. At batch 2, prepared-input forward latency was 0.947 ms reference versus
+1.305 ms Triton. With four warps, isolated synchronized operation wall latency
+was 0.031 ms reference versus 0.056 ms Triton at batch 2; at batch 128 it was
+0.042 versus 0.060 ms. These measurements include Python dispatch and GPU
+synchronization, so they do not establish the custom kernel's device execution
+time or identify the cause of the slowdown. One/two/four-warp samples and raw
+measurements are in `benchmark.json`.
+
+First kernel use in the benchmark process took 692.675 ms. The preceding test
+process used the same persistent Triton cache, so this is not a clean cold
+compilation measurement. Warm measurements exclude this first-use cost.
+
+`metal_triton_comparison.json` verifies matching checkpoint, candidate and sample
+hashes before combining the reports. Raw M5-versus-L40S times include hardware
+and framework differences; compare custom/reference speedups separately on each
+device when assessing the kernel implementation. No Triton speedup or deployment
+switch is justified by this run.
+
+### Experimental Triton on the Apple GPU
+
+An isolated `.venv-triton-apple` environment was installed on 2026-10-10 with
+Python 3.14.6, triton-msl 0.3.0, the backend author's documented Triton
+3.7.0+git4da2e268 macOS wheel, PyTorch 2.14.1 and MLX 0.32.3.
+The main `.venv` remains unchanged. Exact package pins are in
+`experiments/E13/apple_requirements.txt`.
+
+Setup is **blocked by the missing Metal compiler**, not by missing Python
+packages. Imports succeeded, but an actual compilation attempt failed while
+the backend established its Metal compiler/SDK identity. Even the MLX runtime
+route requires that toolchain; stopping compilation at emitted MSL did not avoid
+this prerequisite. The unmodified backend checks remain in place.
+`apple_setup_status.json` records the device, installed versions and blocker;
+GPU correctness and performance are explicitly false. No Apple Triton latency
+or epoch-3 model parity has been measured.
+
+The App Store refused the current Xcode because it requires macOS 26.6+;
+this Mac runs 26.5.2. Apple's [compatibility table](https://developer.apple.com/xcode/system-requirements)
+lists Xcode 26.6 as compatible with macOS 26.2–26.x. Download that version from
+[Apple Developer downloads](https://developer.apple.com/download/all/?q=Xcode%2026.6),
+install it, and complete Apple's first-launch setup. Then install the Metal
+Toolchain using Xcode Settings > Components, as documented by
+[the backend](https://github.com/bledden/triton-msl/blob/main/docs/USAGE.md#installation-details).
+Verify `xcrun --find metal` and `xcrun metal --version` with that Xcode selected.
+
+To reproduce the Python environment and resume the correctness check:
+
+```bash
+uv venv --python 3.14 .venv-triton-apple
+uv pip install --python .venv-triton-apple/bin/python -r experiments/E13/apple_requirements.txt
+.venv-triton-apple/bin/python -u -m experiments.E13.apple_smoke
+```
+
+The smoke runner uses the same `triton_impl.py` residual + LayerNorm source
+through triton-msl's documented `triton_call` MLX interface. It checks FP32
+hidden-size-128 tensors against a float64 oracle and requires exact residual
+sums before marking success. Its requested 1/2/4-warp values are API parameters;
+triton-msl's MLX route derives the actual threadgroup size from compiler metadata,
+so they must not be reported as three distinct GPU configurations without inspection.
+This experimental Apple route remains blocked and is separate from the completed NVIDIA E13 benchmark.

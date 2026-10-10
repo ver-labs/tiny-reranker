@@ -1,0 +1,20 @@
+{
+  "status": "gpu_benchmark_complete",
+  "environment": {
+    "platform": "Linux-5.15.0-173-generic-x86_64-with-glibc2.35",
+    "torch": "2.14.1+cu130",
+    "cuda_runtime": "13.0",
+    "cuda_available": true,
+    "triton_installed": true,
+    "gpu": "NVIDIA L40S",
+    "compute_capability": [
+      8,
+      9
+    ],
+    "nvidia_driver": "610.43.02",
+    "triton": "3.8.0"
+  },
+  "sample_parity_verified": true,
+  "full_quality_verified": false,
+  "performance_measured": true
+}
