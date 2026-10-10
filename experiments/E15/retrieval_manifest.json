@@ -1,0 +1,48 @@
+{
+  "retriever": "rank_bm25.BM25Okapi",
+  "k1": 1.5,
+  "b": 0.75,
+  "epsilon": 0.25,
+  "preprocessing": "casefold + ASCII alphanumeric tokens; no stemming or stopword removal",
+  "top_k": 100,
+  "candidate_policy": "full corpus; no relevance injection; exclude identical query/document IDs",
+  "versions": {
+    "rank-bm25": "0.2.2",
+    "numpy": "2.5.3",
+    "pytrec-eval-terrier": "0.5.10"
+  },
+  "code_sha256": {
+    "prepare.py": "7730996d0d0b2844ddcb70a164a4a661e697fabbe4a7eb2e23efd6a88caf866c",
+    "metrics.py": "d43dfa34ef0caa0d54c2718c4ac2a3fd3714cea5154279477d1103ccaf762f12"
+  },
+  "datasets": {
+    "scifact": {
+      "corpus_documents": 5183,
+      "test_queries": 300,
+      "candidate_pairs": 30000,
+      "candidate_file_sha256": "1952d95a43c5a9a0ab9ab116b25cd2ecc390a94ef6f87d386f3658477533b70b",
+      "queries_without_relevant_retrieved_candidate": 35,
+      "bm25_metrics": {
+        "ndcg_at_10": 0.6522849449944161,
+        "mrr_at_10": 0.6183650793650795,
+        "recall_at_10": 0.7756666666666666,
+        "recall_at_100": 0.8730555555555555
+      },
+      "trec_eval_parity_verified": true
+    },
+    "nfcorpus": {
+      "corpus_documents": 3633,
+      "test_queries": 323,
+      "candidate_pairs": 32300,
+      "candidate_file_sha256": "4467c544dad76b9264e342d7dc42c001c746cf510feb435862900d78884970dc",
+      "queries_without_relevant_retrieved_candidate": 74,
+      "bm25_metrics": {
+        "ndcg_at_10": 0.30641376492779704,
+        "mrr_at_10": 0.5084549609317411,
+        "recall_at_10": 0.152225226663538,
+        "recall_at_100": 0.233078293239573
+      },
+      "trec_eval_parity_verified": true
+    }
+  }
+}

@@ -1,0 +1,92 @@
+dash2.crnch.gatech.edu
+name, driver_version, memory.total [MiB]
+NVIDIA L40S, 610.43.02, 46068 MiB
+...                                                                      [100%]
+3 passed in 0.32s
+Loading weights:   0%|          | 0/41 [00:00<?, ?it/s]Loading weights: 100%|██████████| 41/41 [00:00<00:00, 25215.02it/s]
+Loading weights:   0%|          | 0/41 [00:00<?, ?it/s]Loading weights: 100%|██████████| 41/41 [00:00<00:00, 3959.08it/s]
+constructed_test scratch_128: 4,096/45,665 queries
+constructed_test scratch_128: 8,192/45,665 queries
+constructed_test scratch_128: 12,288/45,665 queries
+constructed_test scratch_128: 16,384/45,665 queries
+constructed_test scratch_128: 20,480/45,665 queries
+constructed_test scratch_128: 24,576/45,665 queries
+constructed_test scratch_128: 28,672/45,665 queries
+constructed_test scratch_128: 32,768/45,665 queries
+constructed_test scratch_128: 36,864/45,665 queries
+constructed_test scratch_128: 40,960/45,665 queries
+constructed_test scratch_128: 45,056/45,665 queries
+constructed_test scratch_128: 45,665/45,665 queries
+constructed_test scratch_128 {'ndcg_at_10': 0.9584659586904473, 'mrr_at_10': 0.9437315230482864, 'recall_at_10': 1.0, 'recall_at_100': 1.0}
+constructed_test tinybert_128: 4,096/45,665 queries
+constructed_test tinybert_128: 8,192/45,665 queries
+constructed_test tinybert_128: 12,288/45,665 queries
+constructed_test tinybert_128: 16,384/45,665 queries
+constructed_test tinybert_128: 20,480/45,665 queries
+constructed_test tinybert_128: 24,576/45,665 queries
+constructed_test tinybert_128: 28,672/45,665 queries
+constructed_test tinybert_128: 32,768/45,665 queries
+constructed_test tinybert_128: 36,864/45,665 queries
+constructed_test tinybert_128: 40,960/45,665 queries
+constructed_test tinybert_128: 45,056/45,665 queries
+constructed_test tinybert_128: 45,665/45,665 queries
+constructed_test tinybert_128 {'ndcg_at_10': 0.8390369846412352, 'mrr_at_10': 0.781933647213402, 'recall_at_10': 1.0, 'recall_at_100': 1.0}
+constructed_test minilm_128: 4,096/45,665 queries
+constructed_test minilm_128: 8,192/45,665 queries
+constructed_test minilm_128: 12,288/45,665 queries
+constructed_test minilm_128: 16,384/45,665 queries
+constructed_test minilm_128: 20,480/45,665 queries
+constructed_test minilm_128: 24,576/45,665 queries
+constructed_test minilm_128: 28,672/45,665 queries
+constructed_test minilm_128: 32,768/45,665 queries
+constructed_test minilm_128: 36,864/45,665 queries
+constructed_test minilm_128: 40,960/45,665 queries
+constructed_test minilm_128: 45,056/45,665 queries
+constructed_test minilm_128: 45,665/45,665 queries
+constructed_test minilm_128 {'ndcg_at_10': 0.8711086153659061, 'mrr_at_10': 0.8253804883389905, 'recall_at_10': 1.0, 'recall_at_100': 1.0}
+constructed_test tinybert_512: 4,096/45,665 queries
+constructed_test tinybert_512: 8,192/45,665 queries
+constructed_test tinybert_512: 12,288/45,665 queries
+constructed_test tinybert_512: 16,384/45,665 queries
+constructed_test tinybert_512: 20,480/45,665 queries
+constructed_test tinybert_512: 24,576/45,665 queries
+constructed_test tinybert_512: 28,672/45,665 queries
+constructed_test tinybert_512: 32,768/45,665 queries
+constructed_test tinybert_512: 36,864/45,665 queries
+constructed_test tinybert_512: 40,960/45,665 queries
+constructed_test tinybert_512: 45,056/45,665 queries
+constructed_test tinybert_512: 45,665/45,665 queries
+constructed_test tinybert_512 {'ndcg_at_10': 0.8387379460095062, 'mrr_at_10': 0.7815285229387934, 'recall_at_10': 1.0, 'recall_at_100': 1.0}
+constructed_test minilm_512: 4,096/45,665 queries
+constructed_test minilm_512: 8,192/45,665 queries
+constructed_test minilm_512: 12,288/45,665 queries
+constructed_test minilm_512: 16,384/45,665 queries
+constructed_test minilm_512: 20,480/45,665 queries
+constructed_test minilm_512: 24,576/45,665 queries
+constructed_test minilm_512: 28,672/45,665 queries
+constructed_test minilm_512: 32,768/45,665 queries
+constructed_test minilm_512: 36,864/45,665 queries
+constructed_test minilm_512: 40,960/45,665 queries
+constructed_test minilm_512: 45,056/45,665 queries
+constructed_test minilm_512: 45,665/45,665 queries
+constructed_test minilm_512 {'ndcg_at_10': 0.8710843689903601, 'mrr_at_10': 0.825347640424833, 'recall_at_10': 1.0, 'recall_at_100': 1.0}
+scifact scratch_128: 300/300 queries
+scifact scratch_128 {'ndcg_at_10': 0.013375328821900047, 'mrr_at_10': 0.009152116402116404, 'recall_at_10': 0.03, 'recall_at_100': 0.8730555555555555}
+scifact tinybert_128: 300/300 queries
+scifact tinybert_128 {'ndcg_at_10': 0.5703154525374805, 'mrr_at_10': 0.5365251322751321, 'recall_at_10': 0.6947777777777778, 'recall_at_100': 0.8730555555555555}
+scifact minilm_128: 300/300 queries
+scifact minilm_128 {'ndcg_at_10': 0.5748790194769833, 'mrr_at_10': 0.5409986772486771, 'recall_at_10': 0.7049444444444445, 'recall_at_100': 0.8730555555555555}
+scifact tinybert_512: 300/300 queries
+scifact tinybert_512 {'ndcg_at_10': 0.6606716642377447, 'mrr_at_10': 0.6383227513227513, 'recall_at_10': 0.7654444444444444, 'recall_at_100': 0.8730555555555555}
+scifact minilm_512: 300/300 queries
+scifact minilm_512 {'ndcg_at_10': 0.6015327863821064, 'mrr_at_10': 0.5683108465608464, 'recall_at_10': 0.7242777777777779, 'recall_at_100': 0.8730555555555555}
+nfcorpus scratch_128: 323/323 queries
+nfcorpus scratch_128 {'ndcg_at_10': 0.05362354030597277, 'mrr_at_10': 0.12208585188461349, 'recall_at_10': 0.016178619658182458, 'recall_at_100': 0.233078293239573}
+nfcorpus tinybert_128: 323/323 queries
+nfcorpus tinybert_128 {'ndcg_at_10': 0.3070801920238763, 'mrr_at_10': 0.5270406408177307, 'recall_at_10': 0.14555975091404377, 'recall_at_100': 0.233078293239573}
+nfcorpus minilm_128: 323/323 queries
+nfcorpus minilm_128 {'ndcg_at_10': 0.30945290121355407, 'mrr_at_10': 0.5209592608973412, 'recall_at_10': 0.14682551497088298, 'recall_at_100': 0.233078293239573}
+nfcorpus tinybert_512: 323/323 queries
+nfcorpus tinybert_512 {'ndcg_at_10': 0.3301016986904039, 'mrr_at_10': 0.5511769620128755, 'recall_at_10': 0.15767745359835525, 'recall_at_100': 0.233078293239573}
+nfcorpus minilm_512: 323/323 queries
+nfcorpus minilm_512 {'ndcg_at_10': 0.3202335346805276, 'mrr_at_10': 0.5329119367045065, 'recall_at_10': 0.14956823810459918, 'recall_at_100': 0.233078293239573}

@@ -1,0 +1,486 @@
+{
+  "status": "running",
+  "environment": {
+    "platform": "Linux-5.15.0-173-generic-x86_64-with-glibc2.35",
+    "torch": "2.14.1+cu130",
+    "cuda_runtime": "13.0",
+    "cuda_available": true,
+    "triton_installed": true,
+    "gpu": "NVIDIA L40S",
+    "compute_capability": [
+      8,
+      9
+    ],
+    "nvidia_driver": "610.43.02",
+    "triton": "3.8.0"
+  },
+  "checkpoint_sha256": "2ea2608a9ec98083b89606d13bed1d7c6e7a90dc6160bbe44732166137538d52",
+  "pair_batch_size": 128,
+  "precision": "FP32; TF32 disabled",
+  "attention_fastpath": false,
+  "parameters": {
+    "scratch": 4717185,
+    "tinybert": 4386049,
+    "minilm": 15615745
+  },
+  "models": {
+    "scratch": {
+      "checkpoint": "runs/full_train/epoch_0003.pt",
+      "max_length": 128
+    },
+    "tinybert": {
+      "model_id": "cross-encoder/ms-marco-TinyBERT-L2-v2",
+      "revision": "81d1926f67cb8eee2c2be17ca9f793c7c3bd20cc",
+      "file_sha256": {
+        "config.json": "2144195e107cd7ea61556478e7add12986ebfbc3085f924fc0b90c2410604879",
+        "model.safetensors": "a0e7364ddf91ff7028f1102e1b91ac7a72e3db4061241bd84efe45c72c9af03a",
+        "special_tokens_map.json": "3c3507f36dff57bce437223db3b3081d1e2b52ec3e56ee55438193ecb2c94dd6",
+        "tokenizer.json": "d241a60d5e8f04cc1b2b3e9ef7a4921b27bf526d9f6050ab90f9267a1f9e5c66",
+        "tokenizer_config.json": "a5c2e5a7b1a29a0702cd28c08a399b5ecc110c263009d17f7e3b415f25905fd8",
+        "vocab.txt": "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3"
+      },
+      "model_card": "https://huggingface.co/cross-encoder/ms-marco-TinyBERT-L2-v2",
+      "license": "apache-2.0"
+    },
+    "minilm": {
+      "model_id": "cross-encoder/ms-marco-MiniLM-L2-v2",
+      "revision": "1b5cd67b15209f24824c50370e0397743aa9b787",
+      "file_sha256": {
+        "config.json": "7868e36c3024c21f7a3ac64e058b36898a331035784cce7ec1496b434aa44c4f",
+        "model.safetensors": "88f11fa671e11c53b5cfe88bb6594139ec4991eaf8cf6a10bd61c9abbc4f691a",
+        "special_tokens_map.json": "3c3507f36dff57bce437223db3b3081d1e2b52ec3e56ee55438193ecb2c94dd6",
+        "tokenizer.json": "d241a60d5e8f04cc1b2b3e9ef7a4921b27bf526d9f6050ab90f9267a1f9e5c66",
+        "tokenizer_config.json": "a5c2e5a7b1a29a0702cd28c08a399b5ecc110c263009d17f7e3b415f25905fd8",
+        "vocab.txt": "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3"
+      },
+      "model_card": "https://huggingface.co/cross-encoder/ms-marco-MiniLM-L2-v2",
+      "license": "apache-2.0"
+    }
+  },
+  "retrieval_manifest": {
+    "retriever": "rank_bm25.BM25Okapi",
+    "k1": 1.5,
+    "b": 0.75,
+    "epsilon": 0.25,
+    "preprocessing": "casefold + ASCII alphanumeric tokens; no stemming or stopword removal",
+    "top_k": 100,
+    "candidate_policy": "full corpus; no relevance injection; exclude identical query/document IDs",
+    "versions": {
+      "rank-bm25": "0.2.2",
+      "numpy": "2.5.3",
+      "pytrec-eval-terrier": "0.5.10"
+    },
+    "code_sha256": {
+      "prepare.py": "7730996d0d0b2844ddcb70a164a4a661e697fabbe4a7eb2e23efd6a88caf866c",
+      "metrics.py": "d43dfa34ef0caa0d54c2718c4ac2a3fd3714cea5154279477d1103ccaf762f12"
+    },
+    "datasets": {
+      "scifact": {
+        "corpus_documents": 5183,
+        "test_queries": 300,
+        "candidate_pairs": 30000,
+        "candidate_file_sha256": "1952d95a43c5a9a0ab9ab116b25cd2ecc390a94ef6f87d386f3658477533b70b",
+        "queries_without_relevant_retrieved_candidate": 35,
+        "bm25_metrics": {
+          "ndcg_at_10": 0.6522849449944161,
+          "mrr_at_10": 0.6183650793650795,
+          "recall_at_10": 0.7756666666666666,
+          "recall_at_100": 0.8730555555555555
+        },
+        "trec_eval_parity_verified": true
+      },
+      "nfcorpus": {
+        "corpus_documents": 3633,
+        "test_queries": 323,
+        "candidate_pairs": 32300,
+        "candidate_file_sha256": "4467c544dad76b9264e342d7dc42c001c746cf510feb435862900d78884970dc",
+        "queries_without_relevant_retrieved_candidate": 74,
+        "bm25_metrics": {
+          "ndcg_at_10": 0.30641376492779704,
+          "mrr_at_10": 0.5084549609317411,
+          "recall_at_10": 0.152225226663538,
+          "recall_at_100": 0.233078293239573
+        },
+        "trec_eval_parity_verified": true
+      }
+    }
+  },
+  "datasets": {
+    "constructed_test": {
+      "manifest": {
+        "candidate_sha256": "123d3d3380fdb9c3b6168467ada7b90aff45f236b70222f1da68f900ae8d0f8b",
+        "queries": 45665,
+        "pairs": 91337,
+        "limitation": "Constructed mined-triplet lists; pretrained baselines trained on MS MARCO, unseen queries not established."
+      },
+      "paths": {
+        "scratch_128": {
+          "queries": 45665,
+          "pairs": 91337,
+          "max_length": 128,
+          "metrics": {
+            "ndcg_at_10": 0.9584659586904473,
+            "mrr_at_10": 0.9437315230482864,
+            "recall_at_10": 1.0,
+            "recall_at_100": 1.0
+          },
+          "quality_pass_scoring_seconds": 22.983489107340574,
+          "timing_limit": "Single quality pass; not a repeated latency benchmark.",
+          "rankings_file": "constructed_test_scratch_128_rankings.jsonl.gz",
+          "rankings_sha256": "0d34cc97f3b5a6495339db8b86e9a4405bf4ebb92bea1caa42b191066f971645",
+          "trec_eval_parity_verified": true
+        },
+        "tinybert_128": {
+          "queries": 45665,
+          "pairs": 91337,
+          "max_length": 128,
+          "metrics": {
+            "ndcg_at_10": 0.8390369846412352,
+            "mrr_at_10": 0.781933647213402,
+            "recall_at_10": 1.0,
+            "recall_at_100": 1.0
+          },
+          "quality_pass_scoring_seconds": 20.529202436096966,
+          "timing_limit": "Single quality pass; not a repeated latency benchmark.",
+          "rankings_file": "constructed_test_tinybert_128_rankings.jsonl.gz",
+          "rankings_sha256": "dc3018279747e1bcf477cc8083c019f9fcdfbf51ae4b61f546e5738e006857a3",
+          "trec_eval_parity_verified": true
+        },
+        "minilm_128": {
+          "queries": 45665,
+          "pairs": 91337,
+          "max_length": 128,
+          "metrics": {
+            "ndcg_at_10": 0.8711086153659061,
+            "mrr_at_10": 0.8253804883389905,
+            "recall_at_10": 1.0,
+            "recall_at_100": 1.0
+          },
+          "quality_pass_scoring_seconds": 23.387636940926313,
+          "timing_limit": "Single quality pass; not a repeated latency benchmark.",
+          "rankings_file": "constructed_test_minilm_128_rankings.jsonl.gz",
+          "rankings_sha256": "9eaa8a1ba8cb7d0ba48554a6bff99ed106de618de3a677f20244e0df196b95b4",
+          "trec_eval_parity_verified": true
+        },
+        "tinybert_512": {
+          "queries": 45665,
+          "pairs": 91337,
+          "max_length": 512,
+          "metrics": {
+            "ndcg_at_10": 0.8387379460095062,
+            "mrr_at_10": 0.7815285229387934,
+            "recall_at_10": 1.0,
+            "recall_at_100": 1.0
+          },
+          "quality_pass_scoring_seconds": 24.29548844974488,
+          "timing_limit": "Single quality pass; not a repeated latency benchmark.",
+          "rankings_file": "constructed_test_tinybert_512_rankings.jsonl.gz",
+          "rankings_sha256": "dd8b571ec56a19f0777bc76c2c842ed16574dca2a6fa57b600f0a2f6e3728d9d",
+          "trec_eval_parity_verified": true
+        },
+        "minilm_512": {
+          "queries": 45665,
+          "pairs": 91337,
+          "max_length": 512,
+          "metrics": {
+            "ndcg_at_10": 0.8710843689903601,
+            "mrr_at_10": 0.825347640424833,
+            "recall_at_10": 1.0,
+            "recall_at_100": 1.0
+          },
+          "quality_pass_scoring_seconds": 29.440678766928613,
+          "timing_limit": "Single quality pass; not a repeated latency benchmark.",
+          "rankings_file": "constructed_test_minilm_512_rankings.jsonl.gz",
+          "rankings_sha256": "6feccbce13f7608cbf9b891741b9f955c1fb70f3f2004b2a7ea8e20204513919",
+          "trec_eval_parity_verified": true
+        }
+      }
+    },
+    "scifact": {
+      "manifest": {
+        "queries": 300,
+        "pairs": 30000,
+        "candidate_sha256": "1952d95a43c5a9a0ab9ab116b25cd2ecc390a94ef6f87d386f3658477533b70b",
+        "dataset_files": {
+          "url": "https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets/scifact.zip",
+          "archive_sha256": "536e14446a0ba56ed1398ab1055f39fe852686ecad24a6306c80c490fa8e0165",
+          "file_sha256": {
+            "corpus.jsonl": "dec31c8182f3d744c7d2c09423756fd1d17cbef75808db13ba01cc0aab4d1ac6",
+            "queries.jsonl": "8ff84a7c903f722981cd8d595c022660140c51867b27608a6d4910db86080313",
+            "qrels/test.tsv": "0864bb985e0ca2367ba217977e72004d549054b2b06666ed9d4825ac7c21284c"
+          }
+        },
+        "retrieval": {
+          "corpus_documents": 5183,
+          "test_queries": 300,
+          "candidate_pairs": 30000,
+          "candidate_file_sha256": "1952d95a43c5a9a0ab9ab116b25cd2ecc390a94ef6f87d386f3658477533b70b",
+          "queries_without_relevant_retrieved_candidate": 35,
+          "bm25_metrics": {
+            "ndcg_at_10": 0.6522849449944161,
+            "mrr_at_10": 0.6183650793650795,
+            "recall_at_10": 0.7756666666666666,
+            "recall_at_100": 0.8730555555555555
+          },
+          "trec_eval_parity_verified": true
+        },
+        "limitation": "BM25 top-100; complete official qrels; no relevance injection; not the full BEIR suite."
+      },
+      "paths": {
+        "scratch_128": {
+          "queries": 300,
+          "pairs": 30000,
+          "max_length": 128,
+          "metrics": {
+            "ndcg_at_10": 0.013375328821900047,
+            "mrr_at_10": 0.009152116402116404,
+            "recall_at_10": 0.03,
+            "recall_at_100": 0.8730555555555555
+          },
+          "quality_pass_scoring_seconds": 21.395382477901876,
+          "timing_limit": "Single quality pass; not a repeated latency benchmark.",
+          "rankings_file": "scifact_scratch_128_rankings.jsonl.gz",
+          "rankings_sha256": "551a69e34bb5f4ff8da9905e6049a93bc21806fa737b60d1a34ec2839c41766f",
+          "trec_eval_parity_verified": true
+        },
+        "tinybert_128": {
+          "queries": 300,
+          "pairs": 30000,
+          "max_length": 128,
+          "metrics": {
+            "ndcg_at_10": 0.5703154525374805,
+            "mrr_at_10": 0.5365251322751321,
+            "recall_at_10": 0.6947777777777778,
+            "recall_at_100": 0.8730555555555555
+          },
+          "quality_pass_scoring_seconds": 21.02182092424482,
+          "timing_limit": "Single quality pass; not a repeated latency benchmark.",
+          "rankings_file": "scifact_tinybert_128_rankings.jsonl.gz",
+          "rankings_sha256": "d934c44dfca837bdc05474fca2a772ab2c46e7e2172ede98fdce414566a680c5",
+          "trec_eval_parity_verified": true
+        },
+        "minilm_128": {
+          "queries": 300,
+          "pairs": 30000,
+          "max_length": 128,
+          "metrics": {
+            "ndcg_at_10": 0.5748790194769833,
+            "mrr_at_10": 0.5409986772486771,
+            "recall_at_10": 0.7049444444444445,
+            "recall_at_100": 0.8730555555555555
+          },
+          "quality_pass_scoring_seconds": 21.894609753973782,
+          "timing_limit": "Single quality pass; not a repeated latency benchmark.",
+          "rankings_file": "scifact_minilm_128_rankings.jsonl.gz",
+          "rankings_sha256": "4131de91a8e10558fa854c49ab1208f5738f8d2ed4cd8f744302a20369511f03",
+          "trec_eval_parity_verified": true
+        },
+        "tinybert_512": {
+          "queries": 300,
+          "pairs": 30000,
+          "max_length": 512,
+          "metrics": {
+            "ndcg_at_10": 0.6606716642377447,
+            "mrr_at_10": 0.6383227513227513,
+            "recall_at_10": 0.7654444444444444,
+            "recall_at_100": 0.8730555555555555
+          },
+          "quality_pass_scoring_seconds": 26.159396758303046,
+          "timing_limit": "Single quality pass; not a repeated latency benchmark.",
+          "rankings_file": "scifact_tinybert_512_rankings.jsonl.gz",
+          "rankings_sha256": "67077868302b362a10006f48d1bf84205f3107b4a86217a0eff100053c7731c3",
+          "trec_eval_parity_verified": true
+        },
+        "minilm_512": {
+          "queries": 300,
+          "pairs": 30000,
+          "max_length": 512,
+          "metrics": {
+            "ndcg_at_10": 0.6015327863821064,
+            "mrr_at_10": 0.5683108465608464,
+            "recall_at_10": 0.7242777777777779,
+            "recall_at_100": 0.8730555555555555
+          },
+          "quality_pass_scoring_seconds": 30.889451834373176,
+          "timing_limit": "Single quality pass; not a repeated latency benchmark.",
+          "rankings_file": "scifact_minilm_512_rankings.jsonl.gz",
+          "rankings_sha256": "9ebb4dbff8e816602f823632780e7a198bcc338ab647947aa283b3fc8ab963f1",
+          "trec_eval_parity_verified": true
+        }
+      },
+      "paired_bootstrap_ndcg_difference_vs_scratch": {
+        "tinybert_128": {
+          "mean_difference": 0.5569401237155808,
+          "95_percent_interval": [
+            0.5070643177356224,
+            0.6048512952099243
+          ],
+          "resamples": 2000,
+          "seed": 42
+        },
+        "minilm_128": {
+          "mean_difference": 0.5615036906550838,
+          "95_percent_interval": [
+            0.5144091988192976,
+            0.6082614259751683
+          ],
+          "resamples": 2000,
+          "seed": 42
+        },
+        "tinybert_512": {
+          "mean_difference": 0.6472963354158449,
+          "95_percent_interval": [
+            0.596665535859251,
+            0.6932770858127727
+          ],
+          "resamples": 2000,
+          "seed": 42
+        },
+        "minilm_512": {
+          "mean_difference": 0.5881574575602067,
+          "95_percent_interval": [
+            0.5380089838910143,
+            0.6354825867748335
+          ],
+          "resamples": 2000,
+          "seed": 42
+        }
+      }
+    },
+    "nfcorpus": {
+      "manifest": {
+        "queries": 323,
+        "pairs": 32300,
+        "candidate_sha256": "4467c544dad76b9264e342d7dc42c001c746cf510feb435862900d78884970dc",
+        "dataset_files": {
+          "url": "https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets/nfcorpus.zip",
+          "archive_sha256": "efe5be03f8c5b86a5870102d0599d227c8c6e2484328e68c6522560385671b0b",
+          "file_sha256": {
+            "corpus.jsonl": "10cc83ef1826b1425e6a87090b5140b39b27755d5a27e48215a88611c899991f",
+            "queries.jsonl": "d024e6621b84925d485ae473d316a0c3af31c62c8068a59fb29d22f7613aef2a",
+            "qrels/test.tsv": "f8fba6ef3d4dd9c3a242a8ba4ae38276fc3622fce7dcbae764766d564542fd2a"
+          }
+        },
+        "retrieval": {
+          "corpus_documents": 3633,
+          "test_queries": 323,
+          "candidate_pairs": 32300,
+          "candidate_file_sha256": "4467c544dad76b9264e342d7dc42c001c746cf510feb435862900d78884970dc",
+          "queries_without_relevant_retrieved_candidate": 74,
+          "bm25_metrics": {
+            "ndcg_at_10": 0.30641376492779704,
+            "mrr_at_10": 0.5084549609317411,
+            "recall_at_10": 0.152225226663538,
+            "recall_at_100": 0.233078293239573
+          },
+          "trec_eval_parity_verified": true
+        },
+        "limitation": "BM25 top-100; complete official qrels; no relevance injection; not the full BEIR suite."
+      },
+      "paths": {
+        "scratch_128": {
+          "queries": 323,
+          "pairs": 32300,
+          "max_length": 128,
+          "metrics": {
+            "ndcg_at_10": 0.05362354030597277,
+            "mrr_at_10": 0.12208585188461349,
+            "recall_at_10": 0.016178619658182458,
+            "recall_at_100": 0.233078293239573
+          },
+          "quality_pass_scoring_seconds": 21.87896569352597,
+          "timing_limit": "Single quality pass; not a repeated latency benchmark.",
+          "rankings_file": "nfcorpus_scratch_128_rankings.jsonl.gz",
+          "rankings_sha256": "2fba23134dbe268050358d1e9f05ce081db55a3e9d8d2dcc0e81a0db5fd8536a",
+          "trec_eval_parity_verified": true
+        },
+        "tinybert_128": {
+          "queries": 323,
+          "pairs": 32300,
+          "max_length": 128,
+          "metrics": {
+            "ndcg_at_10": 0.3070801920238763,
+            "mrr_at_10": 0.5270406408177307,
+            "recall_at_10": 0.14555975091404377,
+            "recall_at_100": 0.233078293239573
+          },
+          "quality_pass_scoring_seconds": 21.509330110624433,
+          "timing_limit": "Single quality pass; not a repeated latency benchmark.",
+          "rankings_file": "nfcorpus_tinybert_128_rankings.jsonl.gz",
+          "rankings_sha256": "4954f4dbf3a7d0257873ecee0b98ceb3ffa451381e5a223ec31ac507a65801d4",
+          "trec_eval_parity_verified": true
+        },
+        "minilm_128": {
+          "queries": 323,
+          "pairs": 32300,
+          "max_length": 128,
+          "metrics": {
+            "ndcg_at_10": 0.30945290121355407,
+            "mrr_at_10": 0.5209592608973412,
+            "recall_at_10": 0.14682551497088298,
+            "recall_at_100": 0.233078293239573
+          },
+          "quality_pass_scoring_seconds": 22.519768447615206,
+          "timing_limit": "Single quality pass; not a repeated latency benchmark.",
+          "rankings_file": "nfcorpus_minilm_128_rankings.jsonl.gz",
+          "rankings_sha256": "becf0e9c88a06d26cfeff3fe94264e3aac7571f3d35d701d5b6a4408f99660c0",
+          "trec_eval_parity_verified": true
+        },
+        "tinybert_512": {
+          "queries": 323,
+          "pairs": 32300,
+          "max_length": 512,
+          "metrics": {
+            "ndcg_at_10": 0.3301016986904039,
+            "mrr_at_10": 0.5511769620128755,
+            "recall_at_10": 0.15767745359835525,
+            "recall_at_100": 0.233078293239573
+          },
+          "quality_pass_scoring_seconds": 27.186239913105965,
+          "timing_limit": "Single quality pass; not a repeated latency benchmark.",
+          "rankings_file": "nfcorpus_tinybert_512_rankings.jsonl.gz",
+          "rankings_sha256": "60868aa8c8b6a15c82a36ac342597b2d0810fc35bd9244a78dfd0be573947079",
+          "trec_eval_parity_verified": true
+        },
+        "minilm_512": {
+          "queries": 323,
+          "pairs": 32300,
+          "max_length": 512,
+          "metrics": {
+            "ndcg_at_10": 0.3202335346805276,
+            "mrr_at_10": 0.5329119367045065,
+            "recall_at_10": 0.14956823810459918,
+            "recall_at_100": 0.233078293239573
+          },
+          "quality_pass_scoring_seconds": 32.316692230291665,
+          "timing_limit": "Single quality pass; not a repeated latency benchmark.",
+          "rankings_file": "nfcorpus_minilm_512_rankings.jsonl.gz",
+          "rankings_sha256": "6ed4579a8356bb5249aa04df783a2cba684bcefb15bf42524bb7dacfc5798311",
+          "trec_eval_parity_verified": true
+        }
+      }
+    }
+  },
+  "code_sha256": {
+    "experiments/E15/evaluate.py": "c86550e3f3367538d3bfbb0ff39cf00d1c4b6080d421af847c1107919bda1d2a",
+    "experiments/E15/metrics.py": "d43dfa34ef0caa0d54c2718c4ac2a3fd3714cea5154279477d1103ccaf762f12",
+    "experiments/E15/prepare.py": "7730996d0d0b2844ddcb70a164a4a661e697fabbe4a7eb2e23efd6a88caf866c",
+    "experiments/E14/model.py": "b5a54832bc266ce9ed3d0055b0dccd1c33d73640f9d612b91a4c66484f1f8d59",
+    "experiments/E14/benchmark.py": "6a45866db4cde0bb96262f8cefac0248f55bef76a688cbf7d50bd6abb7b4a29b",
+    "scripts/model.py": "32770432d752def2c0eb1fbfd6a92e2bcd457d6ecd5d5a5b4fcb3ad68b0f579a"
+  },
+  "metric_definition": "trec_eval-compatible linear-gain graded nDCG@10; MRR@10 treats grade>0 as relevant; IDCG uses all qrels, including unretrieved positives.",
+  "versions": {
+    "numpy": "2.5.3",
+    "transformers": "5.18.0",
+    "rank-bm25": "0.2.2",
+    "pytrec-eval-terrier": "0.5.10"
+  },
+  "limitations": [
+    "TinyBERT is the direct-size comparison; MiniLM has substantially more parameters.",
+    "Main comparisons use 128 tokens; pretrained 512-token variants are separate longer-context results.",
+    "Both published baselines were trained on MS MARCO; our constructed test queries are not established as unseen for them.",
+    "Two full BEIR test datasets do not establish a globally best reranker.",
+    "No retraining, calibration, checkpoint selection or parameter tuning on test results."
+  ]
+}

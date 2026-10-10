@@ -36,3 +36,9 @@ experiments/E11/*_rankings.jsonl.tmp
 experiments/E14/*.so
 experiments/E14/full_test_scores.jsonl.gz
 experiments/E14/full_test_scores.jsonl.gz.tmp
+.venv-evaluation/
+data/beir/
+artifacts/e15_tinybert/
+artifacts/e15_minilm/
+experiments/E15/*_rankings.jsonl.gz
+experiments/E15/*_rankings.jsonl.gz.tmp

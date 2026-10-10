@@ -1639,3 +1639,91 @@ resource.
 ```bash
 sbatch experiments/E14/benchmark_full_test.sbatch
 ```
+
+### E15 — pretrained rerankers and full retrieval tests
+
+Completed on NVIDIA L40S, Slurm job 172839. Epoch 3 (4,717,185
+parameters) was compared with frozen pretrained
+[cross-encoder/ms-marco-TinyBERT-L2-v2](https://huggingface.co/cross-encoder/ms-marco-TinyBERT-L2-v2)
+(4,386,049 parameters) and
+[cross-encoder/ms-marco-MiniLM-L2-v2](https://huggingface.co/cross-encoder/ms-marco-MiniLM-L2-v2)
+(15,615,745 parameters). TinyBERT is the size-matched baseline; MiniLM is
+a larger reference. Revisions and asset hashes are pinned in the manifests.
+No weights were changed and no test-based tuning was performed.
+
+All three models use FP32, TF32 disabled, batch 128, dynamic padding and a
+128-token cap for the primary comparison. Each model keeps its own tokenizer.
+Normal PyTorch is used for the scratch model; this experiment compares model
+quality, not custom kernel performance.
+
+| Model / method | Constructed test nDCG@10 | SciFact nDCG@10 | NFCorpus nDCG@10 |
+|---|---:|---:|---:|
+| BM25 retrieval | — | 0.652285 | 0.306414 |
+| Ours, epoch 3, 128 tokens | 0.958466 | 0.013375 | 0.053624 |
+| TinyBERT-L2-v2, 128 tokens | 0.839037 | 0.570315 | 0.307080 |
+| MiniLM-L2-v2, 128 tokens | 0.871109 | 0.574879 | 0.309453 |
+| TinyBERT-L2-v2, 512 tokens | 0.838738 | 0.660672 | 0.330102 |
+| MiniLM-L2-v2, 512 tokens | 0.871084 | 0.601533 | 0.320234 |
+
+The 512-token rows are additional context comparisons, not matched against
+our model's 128-token capacity. These results do not identify a globally best
+reranker. At 128 tokens MiniLM's small nDCG advantage over TinyBERT has paired
+95% bootstrap intervals crossing zero on both retrieval datasets. TinyBERT at
+512 tokens improves over BM25 on NFCorpus (difference 0.023688, interval
+[0.012128, 0.036438]); its SciFact difference is inconclusive (0.008387,
+interval [-0.020530, 0.038282]). Bootstrap uses 2,000 query resamples, seed 42.
+
+**Our strong constructed-test score does not generalize to these two retrieval
+tests.** TinyBERT is slightly smaller and substantially stronger here. The
+constructed test has 45,665 queries / 91,337 pairs, mostly two documents per
+query. Its queries are held out from our training, but the pretrained models
+were already trained on MS MARCO; unseen queries for those models are not
+established. It is not evidence of general superiority over them.
+
+The additional tests use the complete official
+[BEIR](https://github.com/beir-cellar/beir) SciFact and NFCorpus test splits:
+300 and 323 queries respectively. Every reranker receives exactly the same
+BM25 top-100 candidates: 30,000 and 32,300 pairs. Retrieval uses rank-bm25
+0.2.2 BM25Okapi (k1=1.5, b=0.75, epsilon=0.25), lowercase ASCII alphanumeric
+tokens, title plus text, and no stemming or stopword removal. This is a defined
+local retrieval setup, not a reproduction of an Elasticsearch leaderboard run.
+No relevant documents were injected into candidate lists. Queries with no
+retrieved positive (35 SciFact, 74 NFCorpus) remain in the evaluation.
+
+Graded nDCG uses linear relevance gains and all official positive qrels for
+the ideal ranking. Unretrieved positives count against recall and nDCG.
+Recall@100 is identical across rerankers because candidates are fixed:
+0.873056 on SciFact and 0.233078 on NFCorpus. NFCorpus's retrieval ceiling
+therefore also limits every reranker. Per-query nDCG and recall agree with
+pytrec-eval-terrier 0.5.10 to 1e-12; MRR@10 and metric edge cases are tested.
+
+All 15 complete score audits were downloaded and independently verified
+against original queries, candidates and qrels, including hashes, finite scores,
+rankings, per-query metrics and macro averages. A separate CPU check reproduces
+the scratch model's GPU scores and exact rankings on two SciFact queries
+(maximum score difference 4.4e-6); this is a sample sanity check, not a full CPU
+evaluation. The quality gap's cause is not established by this experiment.
+
+Results: `experiments/E15/quality.json`, `comparison_summary.json`,
+`audit_verification.json`, `scratch_scifact_cpu_probe.json` and
+`quality_comparison.png`. Successful logs and source/data/model provenance
+are retained alongside them. Large per-query gzip audits, model weights and
+corpora are retained locally but excluded from Git. Scoring durations in the
+quality report are single-pass diagnostics, not a repeated latency benchmark.
+
+```bash
+# Download pinned baselines and official BEIR archives before preparation.
+.venv/bin/python -m experiments.E15.download_baseline --model tinybert
+.venv/bin/python -m experiments.E15.download_baseline --model minilm
+uv run --with rank-bm25==0.2.2 --with pytrec-eval-terrier==0.5.10 --with numpy==2.5.3 --python .venv/bin/python -m experiments.E15.prepare
+# Existing isolated Linux CUDA environment:
+sbatch experiments/E15/setup.sbatch
+sbatch experiments/E15/benchmark.sbatch
+# After downloading the complete results and all gzip audits:
+uv run --with rank-bm25==0.2.2 --with pytrec-eval-terrier==0.5.10 --with numpy==2.5.3 --python .venv/bin/python -m experiments.E15.verify
+.venv/bin/python -m experiments.E15.summarize
+```
+
+Next quality work should use separate development queries and realistic
+retrieval candidates before another final test. Preserve these test results;
+do not tune on them. E7 pairwise loss and E10 early exits remain deferred.
