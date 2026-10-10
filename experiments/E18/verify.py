@@ -147,6 +147,7 @@ def main():
         if r['device']=='mps':
             assert r['apple_forward_addendum_sha256']==sha(HERE/'apple_forward_addendum.json')
             if r['path'] in ('mlx','mlx_compiled','metal','metal_compiled'):
+                assert 'gpu' in r['dispatch']['execution_device'].lower()
                 assert len(r['async_checks'])==10 and {(v['k'],v['batch'],v['length'],v['group']) for v in r['async_checks']}==expected_cells
                 assert all(v['max_abs_error']==0 for v in r['async_checks'])
         for v in r['observations']:

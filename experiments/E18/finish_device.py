@@ -22,6 +22,7 @@ def main():
     primary=summary['direct'].get(a.device+"/('scoring', 100, 16, 512, 'primary')",{})
     if not primary:raise RuntimeError('Primary direct matrix missing')
     qualified={path:entry for path,entry in primary['distribution'].items() if entry['accuracy']=='VERIFIED' and entry['sessions']==plan['direct'][a.device+'_sessions'] and entry['repetitions']==3*plan['direct'][a.device+'_sessions']}
+    if 'stock' not in qualified:raise RuntimeError('Cannot finalize without the complete qualified stock primary matrix')
     candidates=[(p,r) for p,r in primary['comparisons'].items() if p.startswith('stock/') and 'ratio' in r and p.split('/')[1] in qualified and r['ci95'][0]>1.05]
     best=max(candidates,key=lambda pair:pair[1]['ratio'])[0].split('/')[1] if candidates else 'stock'
     selection={'device':a.device,'plan_sha256':sha(HERE/'plan.json'),'selected':best,'rule':'Qualified primary scoring ratio versus stock, lower unadjusted session CI >1.05; otherwise keep stock. Highest point ratio among eligible candidates; exploratory selection, not multiple-testing confirmation.','comparisons':primary['comparisons'],'reserve_ids':plan['reserve_ids']}
