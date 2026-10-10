@@ -155,6 +155,19 @@ def main():
             assert v['pairs']==v['queries']*v['k'] and v['seconds']>0 and abs(v['pairs_per_second']-v['pairs']/v['seconds'])<1e-8
         result['direct'][p.stem]={'status':'VERIFIED','observations':60}
     result['confirmation']={};result['context']={};result['operations']={}
+    result['startup']={}
+    for device in ('mps','cuda'):
+        reports={}
+        for path in ('stock','compiled'):
+            p=HERE/f'{device}_{path}_startup.json'
+            if not p.exists():continue
+            r=json.loads(p.read_text());assert r['status']=='COMPLETE' and r['plan_sha256']==sha(HERE/'plan.json')
+            assert len(r['scores'])==16 and np.isfinite(r['scores']).all()
+            assert all(math.isfinite(r[k]) and r[k]>0 for k in ('model_setup_seconds','first_score_seconds','second_score_seconds'))
+            reports[path]=r;result['startup'][p.stem]='VERIFIED'
+        if set(reports)=={'stock','compiled'}:
+            x=np.array(reports['stock']['scores']);y=np.array(reports['compiled']['scores'])
+            assert np.all(np.abs(x-y)<=2e-5+1e-4*np.abs(x))
     expected_reserve={(r['dataset'],r['query_id'],100) for r in fixtures(True)}
     for p in HERE.glob('*_reserve.json'):
         r=json.loads(p.read_text())
