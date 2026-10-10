@@ -2,10 +2,11 @@
 
 ## Experimental model release
 
-The original full-training epoch-3 weights-only Hugging Face package is prepared
-and passes isolated CPU parity checks. Publication is pending Hugging Face login.
-See [the release report](releases/hf-original-epoch3/RELEASE_REPORT.md) for checkpoint
-identity, file hashes, validation, licensing and publication status. This is an
+The original full-training epoch-3 weights are published as
+[ndileep/tiny-reranker-4.7m-experimental](https://huggingface.co/ndileep/tiny-reranker-4.7m-experimental).
+The exact remote revision `123070b853693f492ac0313e406fa1bbbbc42f52`
+passes isolated CPU parity and usage checks. See [the release report](releases/hf-original-epoch3/RELEASE_REPORT.md)
+for checkpoint identity, file hashes, validation and licensing. This is an
 educational/performance-research artifact with weak realistic retrieval quality.
 
 ## Initial comparison environment

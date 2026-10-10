@@ -1,6 +1,13 @@
 # Original epoch-3 Hugging Face release report
 
-Status (2026-10-10): **locally prepared and verified; publication blocked by missing Hugging Face authentication**. No remote repository has been created or modified. Public URL, authenticated account, repository-existence check, uploaded revision, remote file list and fresh remote smoke test are pending. Suggested personal-namespace name: `tiny-reranker-4.7m-experimental`.
+Status (2026-10-10): **published publicly and remote revision verified**. Authenticated personal account: ndileep (profile name Nandana Dileep). The intended model repository did not exist before this publication; no unrelated repository was overwritten.
+
+- Public model: [ndileep/tiny-reranker-4.7m-experimental](https://huggingface.co/ndileep/tiny-reranker-4.7m-experimental).
+- Final published revision: `123070b853693f492ac0313e406fa1bbbbc42f52`.
+- Immutable artifact revision pinned in the README: `96d872750fd1bc49395a6051078926ab783fbae3`. The final commit updates README/manifest; inference weights and implementation are identical to that artifact commit.
+- Publication identity, complete published file list and SHA-256 values: [publication.json](publication.json).
+- Downloaded final revision in a fresh directory: `/var/folders/9d/l9xvxbb94fs4fmj3wb0lw3100000gn/T/hf-downloaded-exact-revision-2wtgp28j`. Every release file hash matches the staged artifact; only Hub-maintained `.gitattributes` is additional.
+- Fresh-download CPU parity/inference: [remote_validation.json](remote_validation.json), passed. Preupload check: [preupload_validation.json](preupload_validation.json), passed. Public page HTTP and unauthenticated API checks passed; privacy=false, correct PyTorch/license metadata, expected file list. Both remote README code blocks and standalone example/verification commands passed using the cached pinned artifact snapshot.
 
 ## Artifact identity
 
@@ -52,7 +59,7 @@ Tokenizer source: [cross-encoder/ms-marco-MiniLM-L6-v2 revision 233902d25c440f23
 
 Training source: [sentence-transformers/msmarco-bm25, triplet/train, revision ce8a493a65af5e872c3c92f72a89e2e99e175f02](https://huggingface.co/datasets/sentence-transformers/msmarco-bm25/tree/ce8a493a65af5e872c3c92f72a89e2e99e175f02). Pinned dataset card has no license field. [MS MARCO upstream terms](https://github.com/microsoft/msmarco/blob/master/README.md#terms-and-conditions) specify non-commercial research without granting additional intellectual-property rights. Release is a non-commercial research artifact without redistributed training examples. Rights to third-party passages and commercial use are not granted by the weights license. No permission to distribute the original dataset is asserted.
 
-Configured Git remote `https://github.com/ver-labs/tiny-reranker.git` returned an unauthenticated API 404. No public GitHub/report URL is claimed. Sufficient local inference code and synthetic validation are included; full training and kernel/serving harnesses, raw score audits and datasets are unavailable through this release. Local source author is Nandana Dileep (Git authorship); Hugging Face profile identity remains pending login.
+Configured Git remote `https://github.com/ver-labs/tiny-reranker.git` returned an unauthenticated API 404. No public GitHub/report URL is claimed. Sufficient local inference code and synthetic validation are included; full training and kernel/serving harnesses, raw score audits and datasets are unavailable through this release. Local source author is Nandana Dileep (Git authorship); The authenticated Hugging Face profile confirms Nandana Dileep (ndileep).
 
 ## Quality limitations
 
@@ -64,15 +71,15 @@ Sampled original validation diagnostic: 512 queries; normal nDCG@10 0.9589121014
 
 Intended use: education, inference-performance research, numerical parity and ranking-sensitivity investigations. General retrieval usefulness is not demonstrated; small size alone does not guarantee device suitability or latency.
 
-## Pending publication and verification
+## Publication and verification commands
 
-Supported local login command (credentials entered in terminal only):
+Authentication used supported local OAuth device login (credentials were never included in script arguments, logs or release files):
 
 ```bash
 .venv/bin/hf auth login
 ```
 
-Then run the prepared publisher:
+Publication and full remote verification were executed with:
 
 ```bash
 .venv/bin/python -m scripts.hf_publish_release --stage /private/tmp/tiny-reranker-hf-original-e3-ready --report-dir releases/hf-original-epoch3 --python /private/tmp/tiny-reranker-hf-clean-env/bin/python
@@ -80,4 +87,10 @@ Then run the prepared publisher:
 
 It verifies the authenticated user, uses the personal namespace, checks existing-repository identity, revalidates locally, publishes only the allowlist, pins the immutable artifact commit in a second documentation commit, records revision/checksums, downloads that exact final revision to a fresh directory, verifies all files, runs offline CPU smoke/parity tests and the remote README download example, and checks unauthenticated public page/API visibility. A failure after upload retains publication.json with remote_verified=false; completion must not be claimed until verification succeeds.
 
-Local release-tooling commit: `b50c56a`. Release documentation is a separate logical commit; use `git log -- releases/hf-original-epoch3` for its hash. No Git push was performed. Preexisting README/.gitignore changes, E16/E18 files and parent-workspace changes were preserved.
+Local release-tooling commits: `b50c56a` and `9b31bcb` (virtualenv/snapshot path verification fixes). Initial preparation documentation commit: `302d283`. Final publication documentation is a separate logical commit; use `git log -- releases/hf-original-epoch3` for its hash. No Git push was performed. Preexisting README/.gitignore changes, E16/E18 files and parent-workspace changes were preserved.
+
+## Publication-path findings
+
+Preupload verification caught virtualenv interpreter symlink resolution selecting the base interpreter; the publisher now preserves the supplied environment path. Initial remote standalone-example testing caught Hugging Face cached script symlinks resolving to the blob directory, making sibling imports fail. The documented README import worked; standalone entry points were corrected to import from the supplied snapshot path. Both findings were investigated and corrected without widening numerical tolerance or changing model weights. Initial remote commits d830a61e960023e3e575009babd1dc3382ea693b and 80d6bd852f673c09caceab3c25d751967a77d922 are superseded and were not reported as fully verified. The final published revision and its pinned artifact revision both pass all checks.
+
+No remaining publication blockers. Code and tokenization remain CPU-portable; GPU device selection is explicit, but GPU behavior/performance is not validated by these release smoke tests. The release remains experimental with weak demonstrated retrieval quality.
