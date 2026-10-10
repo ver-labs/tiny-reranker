@@ -1,0 +1,150 @@
+{
+  "status": "binary_and_source_hashes_verified",
+  "supplement_sha256": "f6ccb792b7024c1dc45daddbda73b4263f8a9026f21d0781f707bc2ee04fbd81",
+  "gpu_execution": "Access verified, benchmark execution follows; no timings in this guard",
+  "files": {
+    "experiments/E14/residual_layer_norm.cu": "6cee9e55cab3e5470cbf33a530c1e4601c5ab45c7986cdf1f62dcf7acafe95e5",
+    "experiments/E14/residual_layer_norm.so": "c3b0c446bc66ecae80637724f70cc5692576e08f1aed6ef8b9275d3a82dbd97a"
+  },
+  "gpu": "NVIDIA L40S"
+}
+USDT:2026-10-10 07:06:24 601059:601059 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-10 07:06:24 601059:601059 SyncActivityProfilerHandler.cpp:46] profiler_stop
+{
+  "device": "cuda",
+  "backend": "inductor",
+  "fullgraph": true,
+  "dynamic": false,
+  "plan_sha256": "71e6c1d92703272a02f8a481bd67f2e720996ba186a66dbd33bf27036ca953fb",
+  "scope": "First invocation in a fresh process; disk cache state unknown, not a true cold compile.",
+  "status": "compatible",
+  "first_use_seconds": 46.05155566427857,
+  "generated_kernel_count": 3,
+  "scores": [
+    1.9254586696624756,
+    1.0741047859191895,
+    0.4236873686313629,
+    -0.1894126981496811,
+    0.16764414310455322,
+    1.6077384948730469,
+    0.9387209415435791,
+    1.2057470083236694,
+    1.1151946783065796,
+    -0.4966301918029785,
+    0.06386367231607437,
+    2.079070568084717,
+    0.1288248747587204,
+    1.3419305086135864,
+    1.997207760810852,
+    -0.24289995431900024,
+    0.10054461658000946,
+    1.5024733543395996,
+    -1.1459137201309204,
+    0.8976686596870422,
+    -0.4674323797225952,
+    0.5089548826217651,
+    0.7832784652709961,
+    -0.49721723794937134,
+    1.0825289487838745,
+    -0.11389722675085068,
+    1.1891798973083496,
+    0.24064978957176208,
+    1.2548884153366089,
+    0.7701883316040039,
+    1.324121117591858,
+    -0.3077479600906372
+  ],
+  "dispatch": {
+    "mha_fastpath_flag": true,
+    "operators": {
+      "triton_per_fused_add_arange_embedding_native_layer_norm_unsqueeze_0": 1,
+      "aten::_transformer_encoder_layer_fwd": 4,
+      "aten::layer_norm": 8,
+      "aten::native_layer_norm": 8,
+      "aten::_native_multi_head_attention": 4,
+      "triton_per_fused_native_layer_norm_2": 1
+    },
+    "fused_encoder_executed": true,
+    "fused_encoder_calls": 4,
+    "interpretation": "Fused stock encoder observed",
+    "custom_kernel": null,
+    "custom_fallback": null
+  }
+}
+USDT:2026-10-10 07:06:44 601121:601121 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-10 07:06:44 601121:601121 SyncActivityProfilerHandler.cpp:46] profiler_stop
+accuracy strict: 50/485 queries
+accuracy strict: 100/485 queries
+accuracy strict: 150/485 queries
+accuracy strict: 200/485 queries
+accuracy strict: 250/485 queries
+accuracy strict: 300/485 queries
+accuracy strict: 350/485 queries
+accuracy strict: 400/485 queries
+accuracy strict: 450/485 queries
+USDT:2026-10-10 07:07:43 601121:601121 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-10 07:07:43 601121:601121 SyncActivityProfilerHandler.cpp:46] profiler_stop
+accuracy stock: 50/485 queries
+accuracy stock: 100/485 queries
+accuracy stock: 150/485 queries
+accuracy stock: 200/485 queries
+accuracy stock: 250/485 queries
+accuracy stock: 300/485 queries
+accuracy stock: 350/485 queries
+accuracy stock: 400/485 queries
+accuracy stock: 450/485 queries
+USDT:2026-10-10 07:08:40 601121:601121 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-10 07:08:40 601121:601121 SyncActivityProfilerHandler.cpp:46] profiler_stop
+accuracy cuda: 50/485 queries
+accuracy cuda: 100/485 queries
+accuracy cuda: 150/485 queries
+accuracy cuda: 200/485 queries
+accuracy cuda: 250/485 queries
+accuracy cuda: 300/485 queries
+accuracy cuda: 350/485 queries
+accuracy cuda: 400/485 queries
+accuracy cuda: 450/485 queries
+USDT:2026-10-10 07:09:43 601121:601121 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-10 07:09:43 601121:601121 SyncActivityProfilerHandler.cpp:46] profiler_stop
+accuracy triton: 50/485 queries
+accuracy triton: 100/485 queries
+accuracy triton: 150/485 queries
+accuracy triton: 200/485 queries
+accuracy triton: 250/485 queries
+accuracy triton: 300/485 queries
+accuracy triton: 350/485 queries
+accuracy triton: 400/485 queries
+accuracy triton: 450/485 queries
+USDT:2026-10-10 07:10:57 601121:601121 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-10 07:10:57 601121:601121 SyncActivityProfilerHandler.cpp:46] profiler_stop
+accuracy compiled: 50/485 queries
+accuracy compiled: 100/485 queries
+accuracy compiled: 150/485 queries
+accuracy compiled: 200/485 queries
+accuracy compiled: 250/485 queries
+accuracy compiled: 300/485 queries
+accuracy compiled: 350/485 queries
+accuracy compiled: 400/485 queries
+accuracy compiled: 450/485 queries
+{
+  "strict": {
+    "accuracy_qualified": true,
+    "strict_numerical_equivalence": true
+  },
+  "stock": {
+    "accuracy_qualified": false,
+    "strict_numerical_equivalence": false
+  },
+  "cuda": {
+    "accuracy_qualified": true,
+    "strict_numerical_equivalence": true
+  },
+  "triton": {
+    "accuracy_qualified": true,
+    "strict_numerical_equivalence": true
+  },
+  "compiled": {
+    "accuracy_qualified": false,
+    "strict_numerical_equivalence": false
+  }
+}

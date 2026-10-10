@@ -1,0 +1,36 @@
+{
+  "jobs": {
+    "172869": {
+      "JobId": "172869",
+      "JobState": "COMPLETED",
+      "ExitCode": "0:0",
+      "StartTime": "2026-10-10T07:05:19",
+      "EndTime": "2026-10-10T07:17:41",
+      "NodeList": "(null)",
+      "RunTime": "00:12:22"
+    },
+    "172870": {
+      "JobId": "172870",
+      "JobState": "COMPLETED",
+      "ExitCode": "0:0",
+      "StartTime": "2026-10-10T07:17:41",
+      "EndTime": "2026-10-10T07:18:25",
+      "NodeList": "(null)",
+      "RunTime": "00:00:44"
+    },
+    "172871": {
+      "JobId": "172871",
+      "JobState": "COMPLETED",
+      "ExitCode": "0:0",
+      "StartTime": "2026-10-10T07:18:25",
+      "EndTime": "2026-10-10T07:19:45",
+      "NodeList": "(null)",
+      "RunTime": "00:01:20"
+    }
+  },
+  "tests": {
+    "passed": 136,
+    "seconds": 18.78
+  },
+  "launches_sequential": true
+}

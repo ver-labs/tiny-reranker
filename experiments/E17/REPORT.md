@@ -96,9 +96,9 @@ All sampled sessions ran on AC power without recorded thermal/performance warnin
 
 ## NVIDIA status and defensible conclusions
 
-NVIDIA execution is pending: a single non-interactive SSH check failed authentication; the user requested continuing on Apple. A subsequent user-run interactive attempt was also rejected. No more authentication attempts or Slurm jobs were launched. The reproducible CUDA harness retains strict PyTorch, optimized-stock, custom CUDA and custom Triton names, FP32/TF32-disabled settings, fallback=False and four Triton warps. Its GPU execution/accuracy cannot be verified on Apple.
+NVIDIA execution is complete on L40S (`dash2`): full accuracy audit, 15 paired repetitions across five balanced startup rotations, actual kernel dispatch evidence and 136 passing GPU tests. See [NVIDIA_REPORT.md](NVIDIA_REPORT.md) and [CUDA throughput plot](cuda_throughput.png). The unchanged original plan and the predeclared fifth-rotation supplement are retained.
 
-Whether custom CUDA/Triton beat accuracy-qualified optimized stock PyTorch remains **unmeasured**. The old L40S full-test median differences (~1%) had overlapping ranges and disabled stock attention fusion; they do not establish a reliable custom-kernel advantage. This experiment supplies no replacement NVIDIA numbers. Apple M5 and NVIDIA L40S results cannot be interpreted as language-level speedups.
+Custom CUDA/Triton pass numerical/application gates but establish no throughput advantage over the strict baseline. Several differences favor strict PyTorch; others remain inconclusive. Fused stock and compiled PyTorch execute their optimizations but fail the predeclared top-10 membership gate at K=100, so their timings are diagnostic only. There is no accuracy-qualified custom-versus-fused winner. Apple M5 and NVIDIA L40S results cannot be interpreted as language-level speedups.
 
 ## Reproduction and artifacts
 
@@ -114,4 +114,4 @@ For the full report including this post-collection interpretation, run `python -
 
 The existing CUDA source and shared-library bytes match their E14 hashes locally (`nvidia_provenance.json`); this is an asset guard, not GPU execution or accuracy validation. `nvidia_provenance_plan.json` supplements the unchanged Apple contract, and `nvidia.sbatch` checks its hashes and L40S access before execution.
 
-Once NVIDIA authentication is restored, copy the frozen E17 code/plan and all files named by the plan (including original checkpoint/tokenizer/development inputs) into `/nethome/sbagathi3/tiny-reranker-e13-20261010-Myeovg`; retain the existing E14 `.so`. Run `/opt/slurm/current/bin/sbatch experiments/E17/nvidia.sbatch` from that project. The harness checks every frozen hash and refuses CPU substitution. This launch has not been executed; do not overwrite the plan to accommodate a mismatch. CUDA results are summarized and audited separately by `nvidia_summary.py`.
+NVIDIA launch, fifth-rotation supplement, saved-result verification and post-timing GPU tests are documented in [NVIDIA_REPORT.md](NVIDIA_REPORT.md). All three Slurm jobs completed with exit code 0:0; no other person’s session or job was altered.

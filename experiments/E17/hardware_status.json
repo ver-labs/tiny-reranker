@@ -1,5 +1,5 @@
 {
-  "status": "Apple benchmarks complete and audited; NVIDIA pending authentication",
+  "status": "Apple and NVIDIA benchmarks complete and audited",
   "parameter_count": 4717185,
   "architecture": {
     "vocab_size": 30522,
@@ -20,7 +20,7 @@
     "fastapi": "0.142.4",
     "uvicorn": "0.54.0"
   },
-  "nvidia_access": "Single BatchMode SSH attempt returned Permission denied; user instructed Apple only; user interactive attempt also rejected. No additional attempts or jobs.",
+  "nvidia_access": "Authenticated shared socket restored; L40S jobs 172869, 172870, 172871 completed sequentially with exit code 0:0.",
   "checkpoint_sha256": "2ea2608a9ec98083b89606d13bed1d7c6e7a90dc6160bbe44732166137538d52",
   "mps_fallback_environment": "unset (no fallback enabled by harness)",
   "verification_tests": {
@@ -37,5 +37,14 @@
     "NVIDIA_provenance_guards": {
       "passed": 3
     }
+  },
+  "nvidia_verification_tests": {
+    "passed": 136,
+    "skipped": 0
+  },
+  "nvidia_timing": {
+    "sessions": 5,
+    "paired_repetitions": 15,
+    "startup_order_balanced": true
   }
 }

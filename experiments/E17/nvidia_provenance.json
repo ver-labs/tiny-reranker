@@ -1,9 +1,10 @@
 {
   "status": "binary_and_source_hashes_verified",
   "supplement_sha256": "f6ccb792b7024c1dc45daddbda73b4263f8a9026f21d0781f707bc2ee04fbd81",
-  "gpu_execution": "pending; asset checks are not kernel validation",
+  "gpu_execution": "Access verified, benchmark execution follows; no timings in this guard",
   "files": {
     "experiments/E14/residual_layer_norm.cu": "6cee9e55cab3e5470cbf33a530c1e4601c5ab45c7986cdf1f62dcf7acafe95e5",
     "experiments/E14/residual_layer_norm.so": "c3b0c446bc66ecae80637724f70cc5692576e08f1aed6ef8b9275d3a82dbd97a"
-  }
+  },
+  "gpu": "NVIDIA L40S"
 }

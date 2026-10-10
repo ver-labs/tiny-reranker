@@ -1746,8 +1746,13 @@ fast-path flag does not activate the fused encoder; a same-model diagnostic
 reversed its apparent timing advantage, so no gain is attributed to that flag.
 Compiled PyTorch was slower in complete scoring for the 50/100-document
 fixtures (paired ratios 0.900/0.859); prepared-forward gains are inconclusive.
-NVIDIA CUDA/Triton versus optimized-stock measurements remain pending because
-SSH authentication failed. No CPU or cross-hardware results substitute for them.
+NVIDIA L40S execution is also complete: 15 paired repetitions across five
+balanced process sessions, full accuracy audits, observed kernel dispatch and
+136 passing GPU tests. Custom CUDA/Triton pass accuracy but show no supported
+throughput advantage over strict PyTorch. Fused stock and compiled PyTorch fail
+the predeclared top-10 membership gate at K=100, so their timings are diagnostic.
+See the [NVIDIA report](experiments/E17/NVIDIA_REPORT.md) and
+[throughput variation plot](experiments/E17/cuda_throughput.png).
 
 See [E17 report and reproduction](experiments/E17/REPORT.md),
 [latency/throughput plots](experiments/E17/http_workloads.png), and

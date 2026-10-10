@@ -1,0 +1,1441 @@
+{
+  "comparisons_against_strict": [
+    {
+      "scope": "forward",
+      "documents": 10,
+      "path": "stock",
+      "diagnostic_only": true,
+      "ratio_geomean": 1.0994773577313224,
+      "ratio_ci95": [
+        0.7561657690146224,
+        1.5977526850980583
+      ],
+      "difference_right_minus_left": {
+        "mean": 1475.6722226979746,
+        "ci95": [
+          -4051.050205142783,
+          6866.810205345066
+        ],
+        "n": 5
+      },
+      "paired_repetitions": 15,
+      "independent_sessions": 5,
+      "session_log_ratios": [
+        0.7720655201417692,
+        -0.4334667545807707,
+        -0.38017820124907287,
+        0.28310518671311796,
+        0.23264893677223145
+      ],
+      "interpretation": "inconclusive"
+    },
+    {
+      "scope": "forward",
+      "documents": 10,
+      "path": "cuda",
+      "diagnostic_only": false,
+      "ratio_geomean": 0.77423178057866,
+      "ratio_ci95": [
+        0.7013198318234518,
+        0.8651766290280954
+      ],
+      "difference_right_minus_left": {
+        "mean": -3257.4475076754143,
+        "ci95": [
+          -4584.699154855623,
+          -1833.560400154944
+        ],
+        "n": 5
+      },
+      "paired_repetitions": 15,
+      "independent_sessions": 5,
+      "session_log_ratios": [
+        -0.06350368358145915,
+        -0.3643801883660313,
+        -0.16996858805990026,
+        -0.3179391519067742,
+        -0.3636283486312207
+      ],
+      "interpretation": "left advantage supported"
+    },
+    {
+      "scope": "forward",
+      "documents": 10,
+      "path": "triton",
+      "diagnostic_only": false,
+      "ratio_geomean": 0.6771431925439195,
+      "ratio_ci95": [
+        0.5206933378753588,
+        0.9201004570524683
+      ],
+      "difference_right_minus_left": {
+        "mean": -4604.865467023807,
+        "ci95": [
+          -7857.394150669333,
+          -1229.6354133051937
+        ],
+        "n": 5
+      },
+      "paired_repetitions": 15,
+      "independent_sessions": 5,
+      "session_log_ratios": [
+        0.10826515123545233,
+        -0.7962843016896582,
+        -0.5751077950686311,
+        -0.16604977089661263,
+        -0.5201858737326811
+      ],
+      "interpretation": "left advantage supported"
+    },
+    {
+      "scope": "forward",
+      "documents": 10,
+      "path": "compiled",
+      "diagnostic_only": true,
+      "ratio_geomean": 1.207725809744577,
+      "ratio_ci95": [
+        1.0013183994118646,
+        1.446948451424059
+      ],
+      "difference_right_minus_left": {
+        "mean": 2924.3922515348722,
+        "ci95": [
+          174.08011945581438,
+          5674.70438361393
+        ],
+        "n": 5
+      },
+      "paired_repetitions": 15,
+      "independent_sessions": 5,
+      "session_log_ratios": [
+        0.4164007720328464,
+        0.1481618423629992,
+        -0.09254309653766439,
+        0.02175600307235463,
+        0.44991995437345533
+      ],
+      "interpretation": "right advantage supported"
+    },
+    {
+      "scope": "forward",
+      "documents": 50,
+      "path": "stock",
+      "diagnostic_only": true,
+      "ratio_geomean": 1.1744133009860127,
+      "ratio_ci95": [
+        1.1125607542167908,
+        1.2325456671182173
+      ],
+      "difference_right_minus_left": {
+        "mean": 2798.8824113801775,
+        "ci95": [
+          1778.4725985603982,
+          3819.2922241999563
+        ],
+        "n": 5
+      },
+      "paired_repetitions": 15,
+      "independent_sessions": 5,
+      "session_log_ratios": [
+        0.20354965780591874,
+        0.12727534070289195,
+        0.23278946068293185,
+        0.17273015640658715,
+        0.06749890732890339
+      ],
+      "interpretation": "right advantage supported"
+    },
+    {
+      "scope": "forward",
+      "documents": 50,
+      "path": "cuda",
+      "diagnostic_only": false,
+      "ratio_geomean": 0.9689543891957502,
+      "ratio_ci95": [
+        0.8760996615421255,
+        1.0716504634747714
+      ],
+      "difference_right_minus_left": {
+        "mean": -705.5978455193201,
+        "ci95": [
+          -2185.6507928560486,
+          774.4551018174083
+        ],
+        "n": 5
+      },
+      "paired_repetitions": 15,
+      "independent_sessions": 5,
+      "session_log_ratios": [
+        -0.13004590595223098,
+        0.12299173988990068,
+        -0.1678962071005429,
+        0.08275458436035786,
+        -0.06549290206059878
+      ],
+      "interpretation": "inconclusive"
+    },
+    {
+      "scope": "forward",
+      "documents": 50,
+      "path": "triton",
+      "diagnostic_only": false,
+      "ratio_geomean": 0.7412357917110335,
+      "ratio_ci95": [
+        0.6750793841054189,
+        0.8186149917417218
+      ],
+      "difference_right_minus_left": {
+        "mean": -4288.495672027491,
+        "ci95": [
+          -5845.490638877933,
+          -2749.9076629776
+        ],
+        "n": 5
+      },
+      "paired_repetitions": 15,
+      "independent_sessions": 5,
+      "session_log_ratios": [
+        -0.46662511181710026,
+        -0.14084720404310033,
+        -0.324960559208344,
+        -0.3250787432700964,
+        -0.2396708659913939
+      ],
+      "interpretation": "left advantage supported"
+    },
+    {
+      "scope": "forward",
+      "documents": 50,
+      "path": "compiled",
+      "diagnostic_only": true,
+      "ratio_geomean": 1.2000168697557037,
+      "ratio_ci95": [
+        1.1316089588258853,
+        1.2541385191747052
+      ],
+      "difference_right_minus_left": {
+        "mean": 3201.4178697810717,
+        "ci95": [
+          2569.5576993170116,
+          3677.9546345369113
+        ],
+        "n": 5
+      },
+      "paired_repetitions": 15,
+      "independent_sessions": 5,
+      "session_log_ratios": [
+        0.06832932755332759,
+        0.22530647104808132,
+        0.1879079331348813,
+        0.23967669522580093,
+        0.1904576471623741
+      ],
+      "interpretation": "right advantage supported"
+    },
+    {
+      "scope": "forward",
+      "documents": 100,
+      "path": "stock",
+      "diagnostic_only": true,
+      "ratio_geomean": 1.226214190774957,
+      "ratio_ci95": [
+        1.1309097684809506,
+        1.3187730445194947
+      ],
+      "difference_right_minus_left": {
+        "mean": 3939.8987214680687,
+        "ci95": [
+          2336.5463241771663,
+          5437.608110227526
+        ],
+        "n": 5
+      },
+      "paired_repetitions": 15,
+      "independent_sessions": 5,
+      "session_log_ratios": [
+        0.2838435393912226,
+        0.15248497209032527,
+        0.23164734742270454,
+        0.05959451892546324,
+        0.29208726841421134
+      ],
+      "interpretation": "right advantage supported"
+    },
+    {
+      "scope": "forward",
+      "documents": 100,
+      "path": "cuda",
+      "diagnostic_only": false,
+      "ratio_geomean": 0.8923099595127241,
+      "ratio_ci95": [
+        0.8688192433210853,
+        0.9102191148767947
+      ],
+      "difference_right_minus_left": {
+        "mean": -1876.0742847366323,
+        "ci95": [
+          -2285.564956002331,
+          -1533.9383589888835
+        ],
+        "n": 5
+      },
+      "paired_repetitions": 15,
+      "independent_sessions": 5,
+      "session_log_ratios": [
+        -0.09609176622323028,
+        -0.11038921765627328,
+        -0.16488203911776986,
+        -0.1123630201090452,
+        -0.08598254948978368
+      ],
+      "interpretation": "left advantage supported"
+    },
+    {
+      "scope": "forward",
+      "documents": 100,
+      "path": "triton",
+      "diagnostic_only": false,
+      "ratio_geomean": 0.7491333589001578,
+      "ratio_ci95": [
+        0.7034456185421369,
+        0.7996648865300764
+      ],
+      "difference_right_minus_left": {
+        "mean": -4368.433077433763,
+        "ci95": [
+          -5269.7904071064095,
+          -3461.815870866806
+        ],
+        "n": 5
+      },
+      "paired_repetitions": 15,
+      "independent_sessions": 5,
+      "session_log_ratios": [
+        -0.3104352552332117,
+        -0.2439145344943472,
+        -0.16564738136337354,
+        -0.3875492029426033,
+        -0.3366449362060078
+      ],
+      "interpretation": "left advantage supported"
+    },
+    {
+      "scope": "forward",
+      "documents": 100,
+      "path": "compiled",
+      "diagnostic_only": true,
+      "ratio_geomean": 1.1658978652702938,
+      "ratio_ci95": [
+        1.0976869002802676,
+        1.2383475031857984
+      ],
+      "difference_right_minus_left": {
+        "mean": 2864.407467449735,
+        "ci95": [
+          1600.9585419065836,
+          4165.651047546285
+        ],
+        "n": 5
+      },
+      "paired_repetitions": 15,
+      "independent_sessions": 5,
+      "session_log_ratios": [
+        0.197710564184433,
+        0.15962944130188106,
+        0.09304265351605694,
+        0.06015549546134786,
+        0.25691929545579545
+      ],
+      "interpretation": "right advantage supported"
+    },
+    {
+      "scope": "direct",
+      "documents": 10,
+      "path": "stock",
+      "diagnostic_only": true,
+      "ratio_geomean": 1.0259594440081492,
+      "ratio_ci95": [
+        0.9869242361190498,
+        1.0621783785801144
+      ],
+      "difference_right_minus_left": {
+        "mean": 33.71094106575039,
+        "ci95": [
+          -16.98555631658881,
+          78.75061261460093
+        ],
+        "n": 5
+      },
+      "paired_repetitions": 15,
+      "independent_sessions": 5,
+      "session_log_ratios": [
+        0.060220975143170624,
+        -0.005515508581537852,
+        0.06755996580517269,
+        -0.04017182931910443,
+        0.04604748550305454
+      ],
+      "interpretation": "inconclusive"
+    },
+    {
+      "scope": "direct",
+      "documents": 10,
+      "path": "cuda",
+      "diagnostic_only": false,
+      "ratio_geomean": 0.9885485073452106,
+      "ratio_ci95": [
+        0.9377247234849471,
+        1.0332785596817513
+      ],
+      "difference_right_minus_left": {
+        "mean": -13.747250616926824,
+        "ci95": [
+          -80.22194566863531,
+          42.60742349878326
+        ],
+        "n": 5
+      },
+      "paired_repetitions": 15,
+      "independent_sessions": 5,
+      "session_log_ratios": [
+        0.02223369449439692,
+        -0.024938037822987685,
+        0.060924458542544004,
+        -0.10626329357651376,
+        -0.009544651167597677
+      ],
+      "interpretation": "inconclusive"
+    },
+    {
+      "scope": "direct",
+      "documents": 10,
+      "path": "triton",
+      "diagnostic_only": false,
+      "ratio_geomean": 0.9473030553572398,
+      "ratio_ci95": [
+        0.9016123121840924,
+        1.0007414354516777
+      ],
+      "difference_right_minus_left": {
+        "mean": -65.62413109106268,
+        "ci95": [
+          -125.15189289946902,
+          2.4178680146549736
+        ],
+        "n": 5
+      },
+      "paired_repetitions": 15,
+      "independent_sessions": 5,
+      "session_log_ratios": [
+        -0.06395516308982412,
+        -0.05630692741515225,
+        0.04277478810236335,
+        -0.0606633975962658,
+        -0.13253040386912265
+      ],
+      "interpretation": "inconclusive"
+    },
+    {
+      "scope": "direct",
+      "documents": 10,
+      "path": "compiled",
+      "diagnostic_only": true,
+      "ratio_geomean": 1.0014348979543877,
+      "ratio_ci95": [
+        0.9569134768954767,
+        1.051089332379887
+      ],
+      "difference_right_minus_left": {
+        "mean": 3.9111014548795224,
+        "ci95": [
+          -56.11834593794341,
+          70.03855504462297
+        ],
+        "n": 5
+      },
+      "paired_repetitions": 15,
+      "independent_sessions": 5,
+      "session_log_ratios": [
+        -0.017950028366779034,
+        -0.03426250650813439,
+        0.031373344146810304,
+        0.09487677335682883,
+        -0.06686823526850005
+      ],
+      "interpretation": "inconclusive"
+    },
+    {
+      "scope": "direct",
+      "documents": 50,
+      "path": "stock",
+      "diagnostic_only": true,
+      "ratio_geomean": 1.0221900435925604,
+      "ratio_ci95": [
+        1.0061251342978874,
+        1.043737701206242
+      ],
+      "difference_right_minus_left": {
+        "mean": 31.896647934091924,
+        "ci95": [
+          8.833387646078654,
+          62.16434327082946
+        ],
+        "n": 5
+      },
+      "paired_repetitions": 15,
+      "independent_sessions": 5,
+      "session_log_ratios": [
+        0.00470424663073215,
+        0.027497882584421623,
+        0.012469033192889292,
+        0.004327366553004337,
+        0.06073860668427172
+      ],
+      "interpretation": "right advantage supported"
+    },
+    {
+      "scope": "direct",
+      "documents": 50,
+      "path": "cuda",
+      "diagnostic_only": false,
+      "ratio_geomean": 0.9721432791652383,
+      "ratio_ci95": [
+        0.9591976493488257,
+        0.9860713019722492
+      ],
+      "difference_right_minus_left": {
+        "mean": -40.752892361542216,
+        "ci95": [
+          -60.18161489068909,
+          -20.593945543987502
+        ],
+        "n": 5
+      },
+      "paired_repetitions": 15,
+      "independent_sessions": 5,
+      "session_log_ratios": [
+        -0.04269900725523069,
+        -0.012398043722991412,
+        -0.03893119759824717,
+        -0.04198070871816146,
+        -0.005251436887252309
+      ],
+      "interpretation": "left advantage supported"
+    },
+    {
+      "scope": "direct",
+      "documents": 50,
+      "path": "triton",
+      "diagnostic_only": false,
+      "ratio_geomean": 0.9411718665685325,
+      "ratio_ci95": [
+        0.9289053568466699,
+        0.9485858982146109
+      ],
+      "difference_right_minus_left": {
+        "mean": -85.66603620592123,
+        "ci95": [
+          -105.2497054190897,
+          -73.46419106684411
+        ],
+        "n": 5
+      },
+      "paired_repetitions": 15,
+      "independent_sessions": 5,
+      "session_log_ratios": [
+        -0.08621464541123686,
+        -0.053417789045555684,
+        -0.05345713147761183,
+        -0.05824702799311432,
+        -0.05181097406915077
+      ],
+      "interpretation": "left advantage supported"
+    },
+    {
+      "scope": "direct",
+      "documents": 50,
+      "path": "compiled",
+      "diagnostic_only": true,
+      "ratio_geomean": 0.9386800634301131,
+      "ratio_ci95": [
+        0.8991541645751788,
+        0.9990649970518584
+      ],
+      "difference_right_minus_left": {
+        "mean": -87.8068966034842,
+        "ci95": [
+          -149.19861848374916,
+          0.21047659469865607
+        ],
+        "n": 5
+      },
+      "paired_repetitions": 15,
+      "independent_sessions": 5,
+      "session_log_ratios": [
+        -0.12222269320612146,
+        -0.07704726696751697,
+        -0.08825758462123645,
+        -0.08241789694466424,
+        0.053542549969486625
+      ],
+      "interpretation": "left advantage supported"
+    },
+    {
+      "scope": "direct",
+      "documents": 100,
+      "path": "stock",
+      "diagnostic_only": true,
+      "ratio_geomean": 1.0268179755762668,
+      "ratio_ci95": [
+        1.0165743989792833,
+        1.0371647722244373
+      ],
+      "difference_right_minus_left": {
+        "mean": 38.957726675956124,
+        "ci95": [
+          24.230164379439735,
+          53.68528897247252
+        ],
+        "n": 5
+      },
+      "paired_repetitions": 15,
+      "independent_sessions": 5,
+      "session_log_ratios": [
+        0.019249725020077754,
+        0.010849244503011701,
+        0.02199477460568464,
+        0.04111742047232995,
+        0.03911221673007472
+      ],
+      "interpretation": "right advantage supported"
+    },
+    {
+      "scope": "direct",
+      "documents": 100,
+      "path": "cuda",
+      "diagnostic_only": false,
+      "ratio_geomean": 0.9860822147057678,
+      "ratio_ci95": [
+        0.9760561607724806,
+        1.0013673207069946
+      ],
+      "difference_right_minus_left": {
+        "mean": -20.16621990389302,
+        "ci95": [
+          -34.60409780655397,
+          1.9296949045498715
+        ],
+        "n": 5
+      },
+      "paired_repetitions": 15,
+      "independent_sessions": 5,
+      "session_log_ratios": [
+        -0.02021655635449103,
+        -0.019242146590500827,
+        -0.016971952755106167,
+        -0.028320554300508383,
+        0.014673480995303384
+      ],
+      "interpretation": "inconclusive"
+    },
+    {
+      "scope": "direct",
+      "documents": 100,
+      "path": "triton",
+      "diagnostic_only": false,
+      "ratio_geomean": 0.9496092037544788,
+      "ratio_ci95": [
+        0.9401740973208861,
+        0.9575914083978733
+      ],
+      "difference_right_minus_left": {
+        "mean": -73.06256493458878,
+        "ci95": [
+          -87.33358242659757,
+          -61.49173691249136
+        ],
+        "n": 5
+      },
+      "paired_repetitions": 15,
+      "independent_sessions": 5,
+      "session_log_ratios": [
+        -0.04913615145010086,
+        -0.0700595839524165,
+        -0.03847856546281624,
+        -0.048750780452637095,
+        -0.052098636132501035
+      ],
+      "interpretation": "left advantage supported"
+    },
+    {
+      "scope": "direct",
+      "documents": 100,
+      "path": "compiled",
+      "diagnostic_only": true,
+      "ratio_geomean": 1.0372365122861453,
+      "ratio_ci95": [
+        1.0229577983940141,
+        1.055456331760152
+      ],
+      "difference_right_minus_left": {
+        "mean": 54.24037385209507,
+        "ci95": [
+          33.850386268019236,
+          79.92805633097984
+        ],
+        "n": 5
+      },
+      "paired_repetitions": 15,
+      "independent_sessions": 5,
+      "session_log_ratios": [
+        0.04009988912710394,
+        0.014658645678419761,
+        0.025042507803813247,
+        0.034757614799356525,
+        0.06824122662548844
+      ],
+      "interpretation": "right advantage supported"
+    }
+  ],
+  "diagnostic_comparisons_against_stock": [
+    {
+      "scope": "forward",
+      "documents": 10,
+      "path": "strict",
+      "diagnostic_only": true,
+      "ratio_geomean": 0.9095230501730518,
+      "ratio_ci95": [
+        0.6258790921316008,
+        1.3224613450872336
+      ],
+      "difference_right_minus_left": {
+        "mean": -1475.6722226979746,
+        "ci95": [
+          -6866.810205345066,
+          4051.050205142783
+        ],
+        "n": 5
+      },
+      "paired_repetitions": 15,
+      "independent_sessions": 5,
+      "session_log_ratios": [
+        -0.7720655201417692,
+        0.4334667545807707,
+        0.38017820124907287,
+        -0.28310518671311796,
+        -0.23264893677223145
+      ],
+      "interpretation": "inconclusive"
+    },
+    {
+      "scope": "forward",
+      "documents": 10,
+      "path": "cuda",
+      "diagnostic_only": true,
+      "ratio_geomean": 0.7041816506128159,
+      "ratio_ci95": [
+        0.499623295248789,
+        1.0199302202459977
+      ],
+      "difference_right_minus_left": {
+        "mean": -4733.119730373389,
+        "ci95": [
+          -9355.39195759768,
+          221.64055514805605
+        ],
+        "n": 5
+      },
+      "paired_repetitions": 15,
+      "independent_sessions": 5,
+      "session_log_ratios": [
+        -0.8355692037232284,
+        0.06908656621473958,
+        0.2102096131891725,
+        -0.6010443386198921,
+        -0.5962772854034523
+      ],
+      "interpretation": "inconclusive"
+    },
+    {
+      "scope": "forward",
+      "documents": 10,
+      "path": "triton",
+      "diagnostic_only": true,
+      "ratio_geomean": 0.6158773418864639,
+      "ratio_ci95": [
+        0.5183915317138699,
+        0.7313012130901538
+      ],
+      "difference_right_minus_left": {
+        "mean": -6080.537689721781,
+        "ci95": [
+          -8706.543563419935,
+          -3422.711996163882
+        ],
+        "n": 5
+      },
+      "paired_repetitions": 15,
+      "independent_sessions": 5,
+      "session_log_ratios": [
+        -0.6638003689063169,
+        -0.3628175471088874,
+        -0.19492959381955818,
+        -0.4491549576097305,
+        -0.7528348105049126
+      ],
+      "interpretation": "left advantage supported"
+    },
+    {
+      "scope": "forward",
+      "documents": 10,
+      "path": "compiled",
+      "diagnostic_only": true,
+      "ratio_geomean": 1.0984544622516068,
+      "ratio_ci95": [
+        0.8120919838350162,
+        1.4786946187025884
+      ],
+      "difference_right_minus_left": {
+        "mean": 1448.720028836898,
+        "ci95": [
+          -3380.952647868963,
+          6277.853987215617
+        ],
+        "n": 5
+      },
+      "paired_repetitions": 15,
+      "independent_sessions": 5,
+      "session_log_ratios": [
+        -0.3556647481089228,
+        0.5816285969437701,
+        0.28763510471140846,
+        -0.26134918364076326,
+        0.2172710176012238
+      ],
+      "interpretation": "inconclusive"
+    },
+    {
+      "scope": "forward",
+      "documents": 50,
+      "path": "strict",
+      "diagnostic_only": true,
+      "ratio_geomean": 0.8514889938324277,
+      "ratio_ci95": [
+        0.8113289646606554,
+        0.89882731905636
+      ],
+      "difference_right_minus_left": {
+        "mean": -2798.8824113801775,
+        "ci95": [
+          -3819.2922241999563,
+          -1778.4725985603982
+        ],
+        "n": 5
+      },
+      "paired_repetitions": 15,
+      "independent_sessions": 5,
+      "session_log_ratios": [
+        -0.2035496578059188,
+        -0.12727534070289193,
+        -0.23278946068293183,
+        -0.1727301564065872,
+        -0.06749890732890336
+      ],
+      "interpretation": "left advantage supported"
+    },
+    {
+      "scope": "forward",
+      "documents": 50,
+      "path": "cuda",
+      "diagnostic_only": true,
+      "ratio_geomean": 0.8250539979258038,
+      "ratio_ci95": [
+        0.7224365897991761,
+        0.9377217357018511
+      ],
+      "difference_right_minus_left": {
+        "mean": -3504.4802568994974,
+        "ci95": [
+          -5732.194960358033,
+          -1276.7655534409616
+        ],
+        "n": 5
+      },
+      "paired_repetitions": 15,
+      "independent_sessions": 5,
+      "session_log_ratios": [
+        -0.33359556375814986,
+        -0.004283600812991162,
+        -0.40068566778347475,
+        -0.08997557204622929,
+        -0.13299180938950209
+      ],
+      "interpretation": "left advantage supported"
+    },
+    {
+      "scope": "forward",
+      "documents": 50,
+      "path": "triton",
+      "diagnostic_only": true,
+      "ratio_geomean": 0.6311541184766108,
+      "ratio_ci95": [
+        0.5539218341724302,
+        0.7191547555895471
+      ],
+      "difference_right_minus_left": {
+        "mean": -7087.378083407668,
+        "ci95": [
+          -9439.465133216756,
+          -4810.862408006053
+        ],
+        "n": 5
+      },
+      "paired_repetitions": 15,
+      "independent_sessions": 5,
+      "session_log_ratios": [
+        -0.670174769623019,
+        -0.2681225447459922,
+        -0.5577500198912758,
+        -0.49780889967668357,
+        -0.3071697733202972
+      ],
+      "interpretation": "left advantage supported"
+    },
+    {
+      "scope": "forward",
+      "documents": 50,
+      "path": "compiled",
+      "diagnostic_only": true,
+      "ratio_geomean": 1.0218011570102234,
+      "ratio_ci95": [
+        0.931925616976935,
+        1.107145693121
+      ],
+      "difference_right_minus_left": {
+        "mean": 402.53545840089413,
+        "ci95": [
+          -1130.7662218350104,
+          1805.150547132696
+        ],
+        "n": 5
+      },
+      "paired_repetitions": 15,
+      "independent_sessions": 5,
+      "session_log_ratios": [
+        -0.13522033025259128,
+        0.09803113034518941,
+        -0.04488152754805055,
+        0.06694653881921377,
+        0.12295873983347079
+      ],
+      "interpretation": "inconclusive"
+    },
+    {
+      "scope": "forward",
+      "documents": 100,
+      "path": "strict",
+      "diagnostic_only": true,
+      "ratio_geomean": 0.8155182084200219,
+      "ratio_ci95": [
+        0.758280588275413,
+        0.8842438432052896
+      ],
+      "difference_right_minus_left": {
+        "mean": -3939.8987214680687,
+        "ci95": [
+          -5437.608110227526,
+          -2336.5463241771663
+        ],
+        "n": 5
+      },
+      "paired_repetitions": 15,
+      "independent_sessions": 5,
+      "session_log_ratios": [
+        -0.28384353939122264,
+        -0.15248497209032524,
+        -0.23164734742270457,
+        -0.059594518925463226,
+        -0.29208726841421134
+      ],
+      "interpretation": "left advantage supported"
+    },
+    {
+      "scope": "forward",
+      "documents": 100,
+      "path": "cuda",
+      "diagnostic_only": true,
+      "ratio_geomean": 0.727695019537159,
+      "ratio_ci95": [
+        0.6796346936103097,
+        0.793155153615751
+      ],
+      "difference_right_minus_left": {
+        "mean": -5815.973006204701,
+        "ci95": [
+          -7159.194309133466,
+          -4220.218244222685
+        ],
+        "n": 5
+      },
+      "paired_repetitions": 15,
+      "independent_sessions": 5,
+      "session_log_ratios": [
+        -0.3799353056144528,
+        -0.26287418974659854,
+        -0.39652938654047437,
+        -0.1719575390345085,
+        -0.37806981790399513
+      ],
+      "interpretation": "left advantage supported"
+    },
+    {
+      "scope": "forward",
+      "documents": 100,
+      "path": "triton",
+      "diagnostic_only": true,
+      "ratio_geomean": 0.6109318947179299,
+      "ratio_ci95": [
+        0.5606641902331917,
+        0.6657064718693778
+      ],
+      "difference_right_minus_left": {
+        "mean": -8308.331798901832,
+        "ci95": [
+          -9899.706391943339,
+          -6819.738859181474
+        ],
+        "n": 5
+      },
+      "paired_repetitions": 15,
+      "independent_sessions": 5,
+      "session_log_ratios": [
+        -0.5942787946244343,
+        -0.39639950658467243,
+        -0.39729472878607813,
+        -0.4471437218680665,
+        -0.6287322046202193
+      ],
+      "interpretation": "left advantage supported"
+    },
+    {
+      "scope": "forward",
+      "documents": 100,
+      "path": "compiled",
+      "diagnostic_only": true,
+      "ratio_geomean": 0.950810938285958,
+      "ratio_ci95": [
+        0.9045866173201521,
+        0.9960563802801032
+      ],
+      "difference_right_minus_left": {
+        "mean": -1075.491254018334,
+        "ci95": [
+          -2107.4799899637646,
+          -139.155009741039
+        ],
+        "n": 5
+      },
+      "paired_repetitions": 15,
+      "independent_sessions": 5,
+      "session_log_ratios": [
+        -0.08613297520678966,
+        0.0071444692115558385,
+        -0.13860469390664765,
+        0.000560976535884485,
+        -0.0351679729584159
+      ],
+      "interpretation": "left advantage supported"
+    },
+    {
+      "scope": "direct",
+      "documents": 10,
+      "path": "strict",
+      "diagnostic_only": true,
+      "ratio_geomean": 0.9746973974850969,
+      "ratio_ci95": [
+        0.9414614533358959,
+        1.0132490047385694
+      ],
+      "difference_right_minus_left": {
+        "mean": -33.71094106575039,
+        "ci95": [
+          -78.75061261460093,
+          16.98555631658881
+        ],
+        "n": 5
+      },
+      "paired_repetitions": 15,
+      "independent_sessions": 5,
+      "session_log_ratios": [
+        -0.06022097514317063,
+        0.005515508581537871,
+        -0.0675599658051727,
+        0.04017182931910446,
+        -0.046047485503054486
+      ],
+      "interpretation": "inconclusive"
+    },
+    {
+      "scope": "direct",
+      "documents": 10,
+      "path": "cuda",
+      "diagnostic_only": true,
+      "ratio_geomean": 0.963535657397154,
+      "ratio_ci95": [
+        0.9452830273379661,
+        0.98214073058125
+      ],
+      "difference_right_minus_left": {
+        "mean": -47.45819168267722,
+        "ci95": [
+          -70.98713589806269,
+          -23.92924746729174
+        ],
+        "n": 5
+      },
+      "paired_repetitions": 15,
+      "independent_sessions": 5,
+      "session_log_ratios": [
+        -0.03798728064877374,
+        -0.019422529241449743,
+        -0.006635507262628716,
+        -0.06609146425740935,
+        -0.055592136670652124
+      ],
+      "interpretation": "left advantage supported"
+    },
+    {
+      "scope": "direct",
+      "documents": 10,
+      "path": "triton",
+      "diagnostic_only": true,
+      "ratio_geomean": 0.9233338226863823,
+      "ratio_ci95": [
+        0.8720234207195845,
+        0.972126846852916
+      ],
+      "difference_right_minus_left": {
+        "mean": -99.33507215681307,
+        "ci95": [
+          -170.32936266100384,
+          -35.127982934315455
+        ],
+        "n": 5
+      },
+      "paired_repetitions": 15,
+      "independent_sessions": 5,
+      "session_log_ratios": [
+        -0.12417613823299474,
+        -0.05079141883361435,
+        -0.024785177702809375,
+        -0.020491568277161372,
+        -0.17857788937217714
+      ],
+      "interpretation": "left advantage supported"
+    },
+    {
+      "scope": "direct",
+      "documents": 10,
+      "path": "compiled",
+      "diagnostic_only": true,
+      "ratio_geomean": 0.9760959887868952,
+      "ratio_ci95": [
+        0.9147238772467308,
+        1.0614602572892422
+      ],
+      "difference_right_minus_left": {
+        "mean": -29.79983961087087,
+        "ci95": [
+          -114.63512744733175,
+          81.46661805081038
+        ],
+        "n": 5
+      },
+      "paired_repetitions": 15,
+      "independent_sessions": 5,
+      "session_log_ratios": [
+        -0.0781710035099497,
+        -0.028746997926596508,
+        -0.03618662165836243,
+        0.1350486026759333,
+        -0.11291572077155458
+      ],
+      "interpretation": "inconclusive"
+    },
+    {
+      "scope": "direct",
+      "documents": 50,
+      "path": "strict",
+      "diagnostic_only": true,
+      "ratio_geomean": 0.9782916653007381,
+      "ratio_ci95": [
+        0.9580951218340635,
+        0.993912154572938
+      ],
+      "difference_right_minus_left": {
+        "mean": -31.896647934091924,
+        "ci95": [
+          -62.16434327082946,
+          -8.833387646078654
+        ],
+        "n": 5
+      },
+      "paired_repetitions": 15,
+      "independent_sessions": 5,
+      "session_log_ratios": [
+        -0.004704246630732196,
+        -0.027497882584421592,
+        -0.012469033192889329,
+        -0.0043273665530043194,
+        -0.06073860668427176
+      ],
+      "interpretation": "left advantage supported"
+    },
+    {
+      "scope": "direct",
+      "documents": 50,
+      "path": "cuda",
+      "diagnostic_only": true,
+      "ratio_geomean": 0.9510396674854813,
+      "ratio_ci95": [
+        0.9431260579630626,
+        0.9572427592973172
+      ],
+      "difference_right_minus_left": {
+        "mean": -72.64954029563414,
+        "ci95": [
+          -85.71473400249855,
+          -62.82081921096005
+        ],
+        "n": 5
+      },
+      "paired_repetitions": 15,
+      "independent_sessions": 5,
+      "session_log_ratios": [
+        -0.047403253885962886,
+        -0.03989592630741301,
+        -0.0514002307911365,
+        -0.04630807527116579,
+        -0.0659900435715241
+      ],
+      "interpretation": "left advantage supported"
+    },
+    {
+      "scope": "direct",
+      "documents": 50,
+      "path": "triton",
+      "diagnostic_only": true,
+      "ratio_geomean": 0.9207405926795337,
+      "ratio_ci95": [
+        0.9058344102432934,
+        0.9346498068182891
+      ],
+      "difference_right_minus_left": {
+        "mean": -117.56268414001315,
+        "ci95": [
+          -140.8542370812272,
+          -96.1788923514759
+        ],
+        "n": 5
+      },
+      "paired_repetitions": 15,
+      "independent_sessions": 5,
+      "session_log_ratios": [
+        -0.09091889204196897,
+        -0.08091567162997725,
+        -0.06592616467050118,
+        -0.06257439454611864,
+        -0.11254958075342252
+      ],
+      "interpretation": "left advantage supported"
+    },
+    {
+      "scope": "direct",
+      "documents": 50,
+      "path": "compiled",
+      "diagnostic_only": true,
+      "ratio_geomean": 0.9183028824376478,
+      "ratio_ci95": [
+        0.8918884176815896,
+        0.9563720374184154
+      ],
+      "difference_right_minus_left": {
+        "mean": -119.70354453757614,
+        "ci95": [
+          -161.0472802790481,
+          -62.8120930831411
+        ],
+        "n": 5
+      },
+      "paired_repetitions": 15,
+      "independent_sessions": 5,
+      "session_log_ratios": [
+        -0.12692693983685363,
+        -0.10454514955193854,
+        -0.10072661781412579,
+        -0.08674526349766853,
+        -0.007196056714785098
+      ],
+      "interpretation": "left advantage supported"
+    },
+    {
+      "scope": "direct",
+      "documents": 100,
+      "path": "strict",
+      "diagnostic_only": true,
+      "ratio_geomean": 0.9738824443921368,
+      "ratio_ci95": [
+        0.9641669547407313,
+        0.9836958327930301
+      ],
+      "difference_right_minus_left": {
+        "mean": -38.957726675956124,
+        "ci95": [
+          -53.68528897247252,
+          -24.230164379439735
+        ],
+        "n": 5
+      },
+      "paired_repetitions": 15,
+      "independent_sessions": 5,
+      "session_log_ratios": [
+        -0.01924972502007772,
+        -0.010849244503011736,
+        -0.02199477460568461,
+        -0.041117420472329885,
+        -0.03911221673007473
+      ],
+      "interpretation": "left advantage supported"
+    },
+    {
+      "scope": "direct",
+      "documents": 100,
+      "path": "cuda",
+      "diagnostic_only": true,
+      "ratio_geomean": 0.960328157629265,
+      "ratio_ci95": [
+        0.9459417192773403,
+        0.9718296219609686
+      ],
+      "difference_right_minus_left": {
+        "mean": -59.12394657984915,
+        "ci95": [
+          -80.89415431910064,
+          -41.84593634350931
+        ],
+        "n": 5
+      },
+      "paired_repetitions": 15,
+      "independent_sessions": 5,
+      "session_log_ratios": [
+        -0.039466281374568764,
+        -0.030091391093512606,
+        -0.03896672736079083,
+        -0.06943797477283824,
+        -0.02443873573477141
+      ],
+      "interpretation": "left advantage supported"
+    },
+    {
+      "scope": "direct",
+      "documents": 100,
+      "path": "triton",
+      "diagnostic_only": true,
+      "ratio_geomean": 0.9248077325696825,
+      "ratio_ci95": [
+        0.9151993329571815,
+        0.9345170078491437
+      ],
+      "difference_right_minus_left": {
+        "mean": -112.02029161054489,
+        "ci95": [
+          -126.81676043056905,
+          -97.22382279052073
+        ],
+        "n": 5
+      },
+      "paired_repetitions": 15,
+      "independent_sessions": 5,
+      "session_log_ratios": [
+        -0.06838587647017853,
+        -0.08090882845542822,
+        -0.06047334006850088,
+        -0.089868200924967,
+        -0.0912108528625758
+      ],
+      "interpretation": "left advantage supported"
+    },
+    {
+      "scope": "direct",
+      "documents": 100,
+      "path": "compiled",
+      "diagnostic_only": true,
+      "ratio_geomean": 1.0101464299980059,
+      "ratio_ci95": [
+        0.9994372096710641,
+        1.0225065199546743
+      ],
+      "difference_right_minus_left": {
+        "mean": 15.28264717613894,
+        "ci95": [
+          -0.7308136750895295,
+          33.549824983259526
+        ],
+        "n": 5
+      },
+      "paired_repetitions": 15,
+      "independent_sessions": 5,
+      "session_log_ratios": [
+        0.02085016410702624,
+        0.0038094011754080254,
+        0.003047733198128625,
+        -0.006359805672973412,
+        0.029129009895413654
+      ],
+      "interpretation": "inconclusive"
+    }
+  ],
+  "timed_pair_executions": 384000,
+  "timed_runs": 450,
+  "report_source_sha256": "3096d4697f55ffd57e785d14e129622d1c99f7ad217d896cbde85f8bf76d5896",
+  "independent_checks": "Throughput, batch/count totals, session ratios and seeded bootstrap reconstructed from raw observations.",
+  "order": [
+    [
+      "strict",
+      "cuda",
+      "stock",
+      "compiled",
+      "triton"
+    ],
+    [
+      "cuda",
+      "stock",
+      "compiled",
+      "triton",
+      "strict"
+    ],
+    [
+      "stock",
+      "compiled",
+      "triton",
+      "strict",
+      "cuda"
+    ],
+    [
+      "compiled",
+      "triton",
+      "strict",
+      "cuda",
+      "stock"
+    ],
+    [
+      "triton",
+      "strict",
+      "cuda",
+      "stock",
+      "compiled"
+    ]
+  ],
+  "ordering": "Five cyclic rotations cover every startup position once per path. Original four-session results retained separately in cuda_summary.json.",
+  "supplement_plan_sha256": "0ac6ea49aa32566fdb6c22b8b6a21c2a4275da8389451d9edc93cf1024fa2f84"
+}
