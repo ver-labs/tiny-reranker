@@ -2,6 +2,8 @@
 import argparse
 import ast
 import json
+import os
+import time
 import subprocess
 import sys
 from .common import HERE,ROOT,save,verify_plan,sha
@@ -9,7 +11,13 @@ from .launch import run
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--device',required=True);a=p.parse_args();plan=verify_plan();run('summarize',[])
+    p=argparse.ArgumentParser();p.add_argument('--device',required=True);p.add_argument('--wait-pid',type=int);a=p.parse_args()
+    if a.wait_pid:
+        while True:
+            try:os.kill(a.wait_pid,0)
+            except ProcessLookupError:break
+            time.sleep(5)
+    plan=verify_plan();run('summarize',[])
     summary=json.loads((HERE/'summary.json').read_text())
     primary=summary['direct'].get(a.device+"/('scoring', 100, 16, 512, 'primary')",{})
     if not primary:raise RuntimeError('Primary direct matrix missing')

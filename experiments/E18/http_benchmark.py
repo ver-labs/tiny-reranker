@@ -77,7 +77,8 @@ def rss(pids):
 async def measure(session,coordinator,path,study='primary',primary_only=False):
     plan=verify_plan();prefix='http' if study=='primary' else study+'_http'
     dest=HERE/'raw'/f'{prefix}_s{session}_{coordinator}_{path}.json'
-    if dest.exists() and json.loads(dest.read_text()).get('status')=='COMPLETE':return
+    if dest.exists() and json.loads(dest.read_text()).get('status')=='COMPLETE':
+        assert json.loads(dest.read_text())['plan_sha256']==sha(HERE/'plan.json');return
     audit=json.loads((HERE/f'mps_{path}_accuracy.json').read_text());assert audit['status'] in ('VERIFIED','FAILED_ACCURACY') and audit['plan_sha256']==sha(HERE/'plan.json')
     assert sha(HERE/audit['artifact'])==audit['artifact_sha256']
     refs={(r['dataset'],r['query_id'],r['k']):r for r in read(HERE/audit['artifact'])}

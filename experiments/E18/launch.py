@@ -18,7 +18,10 @@ def run(module,args,timeout=None):
 
 
 def complete(path):
-    return path.exists() and json.loads(path.read_text()).get('status') in ('VERIFIED','FAILED_ACCURACY','FAILED_EXECUTION','COMPLETE')
+    if not path.exists():return False
+    report=json.loads(path.read_text())
+    if report.get('plan_sha256')!=sha(HERE/'plan.json'):raise RuntimeError('Existing artifact belongs to a different plan')
+    return report.get('status') in ('VERIFIED','FAILED_ACCURACY','FAILED_EXECUTION','COMPLETE')
 
 
 def main():

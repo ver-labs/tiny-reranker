@@ -20,6 +20,7 @@ def main():
     plan=verify_plan();out=HERE/'scores'/f'{a.device}_{a.path}.jsonl.gz';out.parent.mkdir(exist_ok=True)
     summary=HERE/f'{a.device}_{a.path}_accuracy.json'
     if summary.exists() and json.loads(summary.read_text()).get('status') in ('VERIFIED','FAILED_ACCURACY'):
+        assert json.loads(summary.read_text())['plan_sha256']==sha(HERE/'plan.json')
         assert json.loads(summary.read_text())['artifact_sha256']==sha(out);print('Already audited',a.path);return
     started=time.perf_counter();report={'device':a.device,'path':a.path,'plan_sha256':sha(HERE/'plan.json'),'environment':environment()}
     data=rows();expected=[(r,k) for k in plan['accuracy']['document_counts'] for r in data]

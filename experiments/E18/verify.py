@@ -36,6 +36,32 @@ def main():
             for k in (10,50,100):
                 subset=[r for r in records if r['dataset']==dataset and r['k']==k]
                 assert_trec_parity({r['query_id']:r['qrels'] for r in subset},{r['query_id']:r['ranking'] for r in subset})
+        device=report['device']
+        with gzip.open(HERE/'scores'/f'{device}_stock.jsonl.gz','rt') as f:
+            reference={(v['dataset'],v['query_id'],v['k']):v for v in map(json.loads,f)}
+        absolute=[];relative=[];strict=True;cell_records={}
+        for r in records:
+            a=reference[r['dataset'],r['query_id'],r['k']]
+            x=np.array(a['scores']);y=np.array(r['scores']);error=np.abs(x-y)
+            absolute.extend(error);relative.extend(error/np.maximum(np.abs(x),1e-3));strict &= bool(np.all(error<=2e-5+1e-4*np.abs(x)))
+            cell_records.setdefault(f"{r['dataset']}/K{r['k']}",[]).append((a,r))
+        for field,values in [('absolute_error',absolute),('relative_error_floor_1e-3',relative)]:
+            quantiles=np.quantile(values,[0,.25,.5,.75,.95,.99,1])
+            assert all(abs(report[field][name]-v)<1e-12 for name,v in zip(('min','p25','median','p75','p95','p99','max'),quantiles))
+        assert bool(strict)==report['strict_numerical_pass']
+        application=max(absolute)<=.01
+        for key,items in cell_records.items():
+            top1=sum(a['ranking'][0]!=r['ranking'][0] for a,r in items)
+            membership=sum(set(a['ranking'][:10])!=set(r['ranking'][:10]) for a,r in items)
+            assert report['cells'][key]['top1_changed']==top1 and report['cells'][key]['top10_membership_changed']==membership
+            passed=top1/len(items)<=.01 and membership/len(items)<=.01
+            for name,field in [('ndcg_at_10','ndcg_delta'),('mrr_at_10','mrr_delta')]:
+                delta=np.array([r['metrics'][name]-a['metrics'][name] for a,r in items])
+                generator=np.random.default_rng(1801);means=delta[generator.integers(0,len(delta),(10000,len(delta)))].mean(axis=1);ci=np.quantile(means,[.025,.975])
+                assert np.allclose(ci,report['cells'][key][field]['ci95'],atol=1e-12,rtol=0)
+                passed &= ci[0]>=-.001
+            assert bool(passed)==report['cells'][key]['application_pass'];application &= passed
+        assert bool(application)==report['application_pass']
         result['scores'][p.stem]={'status':'VERIFIED','records':1455,'pairs':77600,'metric_oracle':'Independent direct formulas and pytrec_eval nDCG/recall'}
     for p in (HERE/'raw').glob('*http_s*.json'):
         report=json.loads(p.read_text())

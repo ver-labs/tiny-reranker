@@ -9,6 +9,11 @@ Run from the tiny-reranker root. This is the user-authorized smaller first study
 cargo test --manifest-path experiments/E18/rust-server/Cargo.toml
 cargo build --release --manifest-path experiments/E18/rust-server/Cargo.toml
 .venv/bin/python -u -m experiments.E18.launch --device mps
+.venv/bin/python -u -m experiments.E18.finish_device --device mps
+.venv/bin/python -m experiments.E18.summarize
+.venv/bin/python -m experiments.E18.verify
+.venv/bin/python -m experiments.E18.plots
+.venv/bin/python -m experiments.E18.report
 ```
 
 GPU execution must be outside a filesystem sandbox that disables Metal. The launcher refuses CPU substitution, executes one benchmark at a time on each GPU, resumes completed artifacts, and starts a fresh child process for each path/session. Stock accuracy must precede candidate accuracy. Compilation failures are retained. Existing partial JSON-lines score artifacts can resume with identical hashes and record ordering. Completed timing cells are only reused when the complete path/session artifact exists; partial sessions are retained in exclusion records before rerunning.

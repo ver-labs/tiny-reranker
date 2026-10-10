@@ -53,3 +53,10 @@ def test_no_cuda_fallback_contract():
     with pytest.raises(RuntimeError,match='no fallback'):residual_norm(r,r,w,w)
     with pytest.raises(ValueError):residual_norm(r[:,:128],r[:,:128],w,w)
     with pytest.raises(ValueError):residual_norm(r,r,w,w,eps=0)
+
+
+def test_resume_refuses_changed_plan(tmp_path):
+    import json
+    from experiments.E18.launch import complete
+    artifact=tmp_path/'old.json';artifact.write_text(json.dumps({'status':'COMPLETE','plan_sha256':'0'*64}))
+    with pytest.raises(RuntimeError,match='different plan'):complete(artifact)

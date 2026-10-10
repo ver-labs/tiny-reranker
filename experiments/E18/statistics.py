@@ -26,7 +26,7 @@ def paired_ratio(records,baseline,candidate,key='seconds'):
         if min(v.values())<=0:raise ValueError('Nonpositive measurement')
         # Lower elapsed time means higher throughput.
         sessions.setdefault(s,[]).append(np.log(v[baseline]/v[candidate]))
-    result=interval([np.mean(v) for v in sessions.values()])
+    result=interval([np.mean(sessions[s]) for s in sorted(sessions)])
     result.update(ratio=float(np.exp(result.pop('mean'))),ci95=np.exp(result['ci95']).tolist(),
                   independent_unit='session mean log ratio',paired_repetitions=len(indexed),
                   interval_interpretation='Unadjusted exploratory 95% interval')

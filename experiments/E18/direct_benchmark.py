@@ -15,7 +15,8 @@ def selected(ids):
 
 def run(device,path,session):
     plan=verify_plan();dest=HERE/'raw'/f'{device}_direct_s{session}_{path}.json'
-    if dest.exists() and json.loads(dest.read_text()).get('status')=='COMPLETE':return
+    if dest.exists() and json.loads(dest.read_text()).get('status')=='COMPLETE':
+        assert json.loads(dest.read_text())['plan_sha256']==sha(HERE/'plan.json');return
     result={'device':device,'path':path,'session':session,'plan_sha256':sha(HERE/'plan.json'),'environment':environment(),'observations':[],'warmups':[],'protocol_addendum_sha256':sha(HERE/'protocol_addendum.json')}
     try:
         model=Inference(device,path)

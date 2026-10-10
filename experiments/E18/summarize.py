@@ -19,12 +19,14 @@ def main():
         for cell,items in cells.items():
             paths=sorted({r['path'] for r in items});entry={'distribution':{},'comparisons':{}}
             for path in paths:
-                rr=[r for r in items if r['path']==path];entry['distribution'][path]={'seconds':distribution([r['seconds'] for r in rr]),'pairs_per_second':distribution([r['pairs_per_second'] for r in rr]),'repetitions':len(rr),'sessions':len({r['session'] for r in rr}),'accuracy':output['accuracy'].get(device+'_'+path,{}).get('status','PENDING')}
+                rr=[r for r in items if r['path']==path];entry['distribution'][path]={'seconds':distribution([r['seconds'] for r in rr]),'pairs_per_second':distribution([r['pairs_per_second'] for r in rr]),'repetitions':len(rr),'sessions':len({r['session'] for r in rr}),'accuracy':output['accuracy'].get(device+'_'+path,{}).get('status','PENDING') if cell[2:4]==(16,512) else 'DIAGNOSTIC_B_OR_L_NOT_FULLY_AUDITED'}
             comparisons=[('stock',p) for p in paths if p!='stock']
             if device=='mps':
                 comparisons += [('mlx',p) for p in ('mlx_compiled','metal','metal_compiled') if p in paths]
                 if 'mlx_compiled' in paths and 'metal_compiled' in paths:comparisons.append(('mlx_compiled','metal_compiled'))
-            else:comparisons += [('explicit',p) for p in ('cuda','triton') if p in paths]
+            else:
+                comparisons += [('explicit',p) for p in ('cuda','triton') if p in paths]
+                if 'compiled' in paths:comparisons += [('compiled',p) for p in ('cuda','triton') if p in paths]
             for baseline,path in comparisons:
                 try:entry['comparisons'][baseline+'/'+path]=paired_ratio(items,baseline,path)
                 except ValueError as error:entry['comparisons'][baseline+'/'+path]={'status':'INCOMPLETE','reason':str(error)}
