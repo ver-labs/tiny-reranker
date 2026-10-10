@@ -30,6 +30,21 @@ def main():
             axes[0,col].set_title(f'Concurrency {c}');axes[0,col].set_ylabel('Request P50 (ms)');axes[1,col].set_ylabel('Requests / second');axes[1,col].set_xlabel('Documents per request (K)')
             for ax in axes[:,col]:ax.set_ylim(bottom=0);ax.grid(alpha=.2);ax.set_xticks([10,50,100])
         axes[0,0].legend(fontsize=8);fig.suptitle('Local loopback HTTP · FP32 · B=16 · L≤512\nMedian and IQR across 16 repetitions / 8 sessions; 16 requests per repetition',fontsize=12);fig.tight_layout(rect=(0,0,1,.92));fig.savefig(out/'http_workloads.png',dpi=160);plt.close(fig)
+    families=sorted({key.split('/')[0] for key in summary.get('optimized_http',{})})
+    if families:
+        fig,axes=plt.subplots(2,len(families),figsize=(7*len(families),7),squeeze=False)
+        for col,family in enumerate(families):
+            cells=[summary['optimized_http'].get(f'{family}/K100/C{c}') for c in (1,4,8)]
+            if any(e is None for e in cells):continue
+            for path in sorted(set.intersection(*(set(e['distribution']) for e in cells))):
+                color=COLORS.get(path.split('/')[1],'#777')
+                bars(axes[0,col],[1,4,8],[e['distribution'][path] for e in cells],'p50_ms',path,color)
+                bars(axes[1,col],[1,4,8],[e['distribution'][path] for e in cells],'requests_per_second',path,color)
+            axes[0,col].set_title(family+' · new matched baseline');axes[0,col].set_ylabel('Request P50 (ms)');axes[1,col].set_ylabel('Requests / second');axes[1,col].set_xlabel('Concurrent requests (C)')
+            for ax in axes[:,col]:ax.set_ylim(bottom=0);ax.grid(alpha=.2);ax.set_xticks([1,4,8])
+            axes[0,col].legend(fontsize=8)
+        fig.suptitle('Conditional optimized HTTP follow-up · Python coordinator · K100 / B16 / L≤512\nMedian and IQR across fresh matched sessions; 16 requests per repetition',fontsize=12)
+        fig.tight_layout(rect=(0,0,1,.92));fig.savefig(out/'optimized_http.png',dpi=160);plt.close(fig)
     for device in ('mps','cuda'):
         cells={}
         for key,value in summary['direct'].items():

@@ -6,7 +6,7 @@ from .statistics import paired_ratio,distribution
 
 
 def main():
-    output={'plan_sha256':sha(HERE/'plan.json'),'accuracy':{},'direct':{},'http':{},'operation':{},'optimized_http':{}}
+    output={'plan_sha256':sha(HERE/'plan.json'),'accuracy':{},'direct':{},'http':{},'operation':{},'optimized_http':{},'service_setup':{}}
     for p in HERE.glob('*_accuracy.json'):
         r=json.loads(p.read_text());output['accuracy'][p.stem.replace('_accuracy','')]={k:v for k,v in r.items() if k not in ('per_query','environment','traceback')}
     for device in ('mps','cuda'):
@@ -39,10 +39,22 @@ def main():
                 entry['distribution'][path]=distribution([r['seconds']*1e6 for r in selected if r['path']==path])
                 if path!='native':entry['comparisons']['native/'+path]=paired_ratio(selected,'native',path)
             output['operation'][f'{device}/{rows}']=entry
-    runs=[]
+    runs=[];setup=defaultdict(list)
     for p in (HERE/'raw').glob('*http_s*.json'):
         result=json.loads(p.read_text())
-        if result.get('status')=='COMPLETE':runs += [{**r,'study':result.get('study','primary')} for r in result['runs']]
+        if result.get('status')=='COMPLETE':
+            runs += [{**r,'study':result.get('study','primary')} for r in result['runs']]
+            setup[result.get('study','primary')+'/'+result['coordinator']+'/'+result['path']].append(result)
+    for key,records in setup.items():
+        entry={'sessions':len(records),'startup_seconds':distribution([r['startup_seconds'] for r in records]),'rss_scope':'Before/after process RSS snapshots; shared pages may be double-counted; not system peak'}
+        for point in ('before','after'):
+            for role in ('worker','coordinator'):
+                values=[]
+                for r in records:
+                    worker=str(r['health']['worker_pid']);snapshot=r['rss_'+point]['bytes']
+                    values.extend(v for pid,v in snapshot.items() if v is not None and (pid==worker)==(role=='worker'))
+                if values:entry[f'{role}_rss_{point}_bytes']=distribution(values)
+        output['service_setup'][key]=entry
     for study,k,c in sorted({(r['study'],r['k'],r['concurrency']) for r in runs}):
         selected=[r for r in runs if (r['study'],r['k'],r['concurrency'])==(study,k,c)];entry={'distribution':{},'comparisons':{}}
         for path in sorted({r['path'] for r in selected}):

@@ -57,6 +57,9 @@ def verify_ratio(observations,baseline,candidate,reported):
 
 def main():
     plan=verify_plan();lookup={(r['dataset'],r['query_id']):r for r in rows()};result={'plan_sha256':sha(HERE/'plan.json'),'scores':{},'http':{},'direct':{},'limitations':[]}
+    manifest=json.loads((HERE/'data_manifest.json').read_text())
+    for relative,digest in manifest['source_sha256'].items():assert sha(ROOT/relative)==digest
+    result['source_inputs']='VERIFIED candidate file, assets, frozen manifests and source corpora/qrels'
     for p in HERE.glob('*_accuracy.json'):
         report=json.loads(p.read_text())
         if report['status']=='FAILED_EXECUTION':result['scores'][p.stem]={'status':'FAILED_EXECUTION','error':report['error']};continue
@@ -121,14 +124,22 @@ def main():
                 ids=[d['document_id'] for d in r['ranking']];assert ids==ref['ranking'] and len(ids)==run['k']
                 expected=dict(zip(ref['ids'],ref['scores']))
                 assert all(math.isfinite(d['score']) and abs(d['score']-expected[d['document_id']])<=2e-5+1e-4*abs(expected[d['document_id']]) for d in r['ranking'])
-            for percentile in (50,95,99):assert abs(run['latency_ms'][f'p{percentile}']-np.percentile([r['latency_ms'] for r in good],percentile))<1e-8
+            assert run['failures']==len(selected)-len(good) and run['timeouts']==sum(v.get('timeout',False) for v in selected)
+            assert abs(run['pairs_per_second']-run['successful_pairs']/run['seconds'])<1e-10
+            for scope in ('latency','queue','processing'):
+                for percentile in (50,95,99):
+                    assert all(math.isfinite(v[scope+'_ms']) and v[scope+'_ms']>=0 for v in good)
+                    assert abs(run[scope+'_ms'][f'p{percentile}']-np.percentile([v[scope+'_ms'] for v in good],percentile))<1e-8
         result['http'][p.stem]={'status':'VERIFIED','requests':len(obs),'successful_pairs':sum(r['successful_pairs'] for r in report['runs'])}
     for p in (HERE/'raw').glob('*_direct_s*.json'):
         r=json.loads(p.read_text())
         if r.get('status')!='COMPLETE':result['direct'][p.stem]={'status':r.get('status','INCOMPLETE')};continue
         assert len(r['observations'])==60
         assert len({(v['k'],v['batch'],v['length'],v['scope'],v['repetition'],v['group']) for v in r['observations']})==60
+        expected_cells={(*cell,'primary' if cell==[100,16,512] else 'sweep') for cell in plan['direct']['cells']}|{(100,16,512,'sweep')}
+        assert {(v['k'],v['batch'],v['length'],v['group']) for v in r['observations']}==expected_cells
         for v in r['observations']:
+            assert v['queries']==(16 if v['group']=='primary' else 4) and v['session']==r['session'] and v['path']==r['path']
             assert v['pairs']==v['queries']*v['k'] and v['seconds']>0 and abs(v['pairs_per_second']-v['pairs']/v['seconds'])<1e-8
         result['direct'][p.stem]={'status':'VERIFIED','observations':60}
     result['confirmation']={};result['context']={};result['operations']={}
@@ -178,6 +189,22 @@ def main():
             for comparison,r in cell['comparisons'].items():
                 baseline,candidate=comparison.split('/');verify_ratio(observations,baseline,candidate,r)
                 result['timing_intervals'][key+'/'+comparison]='VERIFIED'
+        http_observations=[]
+        for p in (HERE/'raw').glob('*http_s*.json'):
+            raw=json.loads(p.read_text())
+            if raw.get('status')=='COMPLETE':http_observations.extend({**v,'study':raw.get('study','primary')} for v in raw['runs'])
+        for family in ('http','optimized_http'):
+            for key,cell in summary[family].items():
+                if family=='http':study='primary';kk,cc=key.split('/')
+                else:study,kk,cc=key.split('/')
+                observations=[v for v in http_observations if (v['study'],v['k'],v['concurrency'])==(study,int(kk[1:]),int(cc[1:]))]
+                for comparison,r in cell['comparisons'].items():
+                    if 'ratio' not in r:continue
+                    if family=='http':
+                        parts=comparison.split('/');baseline='/'.join(parts[:2]);candidate='/'.join(parts[2:])
+                    else:baseline='python/'+study.removeprefix('optimized_');candidate=comparison
+                    verify_ratio(observations,baseline,candidate,r)
+                    result['timing_intervals'][family+'/'+key+'/'+comparison]='VERIFIED'
     result['status']='VERIFIED_SAVED_ARTIFACTS'
     result['completeness']={'expected_primary_http_sessions':32,'complete_http_sessions':sum(v['status']=='VERIFIED' for k,v in result['http'].items() if k.startswith('http_s')),'expected_mps_direct_sessions':36,'complete_mps_direct_sessions':sum(v['status']=='VERIFIED' for k,v in result['direct'].items() if k.startswith('mps')),'expected_cuda_direct_sessions':25,'complete_cuda_direct_sessions':sum(v['status']=='VERIFIED' for k,v in result['direct'].items() if k.startswith('cuda'))}
     save(HERE/'verification.json',result)

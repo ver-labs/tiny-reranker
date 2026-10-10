@@ -67,3 +67,12 @@ def test_unknown_path_and_cpu_optimization_never_fall_back():
     with pytest.raises(ValueError,match='no fallback'):Inference('mps','typo')
     with pytest.raises(ValueError,match='correctness diagnostics'):Inference('cpu','compiled')
     with pytest.raises(ValueError,match='cap'):Inference('mps','stock',length=513)
+
+
+def test_saved_interval_audit_rejects_wrong_uncertainty():
+    from experiments.E18.verify import verify_ratio
+    records=[{'session':s,'repetition':r,'path':p,'seconds':(10+s if p=='stock' else 5)} for s in range(5) for r in range(3) for p in ('stock','other')]
+    reported=paired_ratio(records,'stock','other')
+    verify_ratio(records,'stock','other',reported)
+    wrong=copy.deepcopy(reported);wrong['ci95']=[reported['ratio'],reported['ratio']]
+    with pytest.raises(AssertionError):verify_ratio(records,'stock','other',wrong)
