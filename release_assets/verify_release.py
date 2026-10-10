@@ -4,6 +4,8 @@ from pathlib import Path
 import runpy
 import sys
 import torch
+if __name__ == '__main__':
+    sys.path.insert(0, sys.argv[1])
 from reranker import Reranker, encode_pairs, sort_results
 
 

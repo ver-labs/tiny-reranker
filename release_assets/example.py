@@ -1,5 +1,8 @@
 """Run with: python example.py /path/to/downloaded/snapshot"""
 import sys
+if __name__ == '__main__':
+    # Hub snapshots may symlink scripts to a separate blob directory.
+    sys.path.insert(0, sys.argv[1])
 from reranker import Reranker
 
 

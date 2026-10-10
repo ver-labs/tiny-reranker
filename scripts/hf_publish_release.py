@@ -5,6 +5,7 @@ The first commit contains the artifact; the second pins that immutable commit in
 """
 import argparse
 import json
+import re
 from pathlib import Path
 import subprocess
 import sys
@@ -79,9 +80,9 @@ def publish(stage, report_dir, python):
     first = api.upload_folder(repo_id=repo_id, folder_path=stage, allow_patterns=sorted(FILES),
                               commit_message='Release original scratch-trained epoch 3 (experimental educational artifact)')
     pinned = first.oid
-    card = card_path.read_text().replace(
-        "revision = HfApi().model_info(repo_id).sha  # resolve once; record this immutable commit",
-        f"revision = '{pinned}'  # immutable weights release commit")
+    card = re.sub(r'^revision = .*$',
+                  f"revision = '{pinned}'  # immutable weights release commit",
+                  card_path.read_text(), flags=re.MULTILINE)
     card_path.write_text(card)
     refresh_manifest(stage)
     check_stage(stage)
@@ -117,9 +118,10 @@ def publish(stage, report_dir, python):
     # Execute README download block: it pins the first immutable artifact commit.
     readme = (remote_path / 'README.md').read_text()
     download_block = readme.split('```python\n')[1].split('```')[0]
+    local_block = readme.split('<!-- local-example -->')[1].split('```python\n')[1].split('```')[0]
     with tempfile.TemporaryDirectory(prefix='hf-readme-download-') as work:
         smoke = Path(work) / 'readme_download.py'
-        smoke.write_text(download_block + '\nimport subprocess, sys\nsubprocess.run([sys.executable,"-B",str(__import__("pathlib").Path(snapshot)/"example.py"),snapshot],check=True)\n')
+        smoke.write_text(download_block + '\n' + local_block + '\nimport subprocess, sys\nsubprocess.run([sys.executable,"-B",str(__import__("pathlib").Path(snapshot)/"example.py"),snapshot],check=True)\nsubprocess.run([sys.executable,"-B",str(__import__("pathlib").Path(snapshot)/"verify_release.py"),snapshot],check=True)\n')
         subprocess.run([str(python), '-B', str(smoke)],cwd=work,check=True)
     # Explicit unauthenticated public page/API availability, not just owner's authenticated access.
     import httpx
@@ -149,4 +151,6 @@ if __name__ == '__main__':
     parser.add_argument('--report-dir',type=Path,required=True)
     parser.add_argument('--python',type=Path,required=True)
     args = parser.parse_args()
-    sys.exit(publish(args.stage.resolve(),args.report_dir.resolve(),args.python.resolve()))
+    # Preserve a virtualenv's interpreter symlink: resolving it selects base Python
+    # and loses the isolated environment's installed packages.
+    sys.exit(publish(args.stage.resolve(),args.report_dir.resolve(),args.python.absolute()))
