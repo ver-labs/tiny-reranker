@@ -1,0 +1,19 @@
+{
+  "benchmark_plan_sha256": "71e6c1d92703272a02f8a481bd67f2e720996ba186a66dbd33bf27036ca953fb",
+  "declared_at_utc": "2026-10-10T11:17:16.640635+00:00",
+  "reason": "Compile succeeded, creating five paths but only four startup rotations. Declared before inspecting timing results; accuracy results already observed. Add missing fifth rotation without changing frozen measurement function.",
+  "sessions": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "repeats_per_session": 3,
+  "paired_repetitions": 15,
+  "additional_session": 4,
+  "precision_microbatch_inputs_tolerances": "unchanged original contract",
+  "statistics": "Same seeded session-mean bootstrap, now five independent sessions; retain original four-session summary separately.",
+  "runner_sha256": "3c94006f5a3a21249d0ccbf182946c9b9f5c98d3b186f86c0809fef8fdfd8eb2",
+  "measurement_source_sha256": "da03cb6f7048c7535d908eb735de7412db86cf0fbba5c3d31ee0af34633085f3"
+}

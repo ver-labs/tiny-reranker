@@ -103,6 +103,9 @@ Once NVIDIA authentication is restored, copy the frozen E17 code/plan and all fi
     (HERE/'REPORT.md').write_text(report)
     hardware=json.loads((HERE/'hardware_status.json').read_text());hardware['status']='Apple benchmarks complete and audited; NVIDIA pending authentication'
     save(HERE/'hardware_status.json',hardware)
+    if (HERE/'cuda_supplement.json').exists():
+        from .nvidia_report import refresh_completed_status
+        refresh_completed_status()
     print('Independent input audit and post-collection interpretation saved')
 
 
