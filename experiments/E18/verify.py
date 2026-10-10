@@ -3,6 +3,7 @@ import gzip
 import ast
 import json
 import math
+import random
 from collections import Counter
 import numpy as np
 from .common import HERE,ROOT,rows,sha,save,verify_plan,fixtures
@@ -122,6 +123,8 @@ def main():
         for run in report['runs']:
             selected=[r for r in obs if (r['repetition'],r['k'],r['concurrency'])==(run['repetition'],run['k'],run['concurrency'])]
             assert len(selected)==16 and {r['index'] for r in selected}==set(range(16)) and len({r['request_id'] for r in selected})==16
+            query_order=list(plan['timing_ids']);random.Random(1801+report['session']*100+run['repetition']).shuffle(query_order)
+            assert [v['request_id'] for v in sorted(selected,key=lambda v:v['index'])]==[f'{dataset}:{qid}:K{run["k"]}:{index}' for index,(dataset,qid) in enumerate(query_order)]
             good=[r for r in selected if r['success']];assert len(good)==run['successful_requests']
             assert run['successful_pairs']==len(good)*run['k']
             assert abs(run['requests_per_second']-len(good)/run['seconds'])<1e-12
