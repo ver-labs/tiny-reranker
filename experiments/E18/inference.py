@@ -132,11 +132,13 @@ class Inference:
         for _ in range(3):self.forward(inputs)
         self.sync()
         if self.path in ('mlx','mlx_compiled','metal','metal_compiled'):
+            import mlx.core as mx
             from . import metal_kernel
             metal_kernel.CALLS=0
-            values=self.call(**inputs);mx.eval(values);self.sync()
+            values=self.call(**inputs)
             graph=HERE/'traces'/f'{self.device}_{self.path}_dispatch.dot';graph.parent.mkdir(exist_ok=True)
             mx.export_to_dot(str(graph),values)
+            mx.eval(values);self.sync()
             text=graph.read_text()
             import re
             primitives=re.findall(r'label ="([^"]+)"',text)

@@ -1,6 +1,8 @@
 """Resumable sequential GPU execution; fresh process for every path/session."""
 import argparse
 import json
+import os
+import time
 import subprocess
 import sys
 from .common import ROOT,HERE,verify_plan,sha,save
@@ -20,7 +22,12 @@ def complete(path):
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--device',required=True,choices=['mps','cuda']);p.add_argument('--stage',choices=['accuracy','direct','http','all'],default='all');a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--device',required=True,choices=['mps','cuda']);p.add_argument('--wait-pid',type=int);p.add_argument('--stage',choices=['accuracy','direct','http','all'],default='all');a=p.parse_args()
+    if a.wait_pid:
+        while True:
+            try:os.kill(a.wait_pid,0)
+            except ProcessLookupError:break
+            time.sleep(5)
     plan=verify_plan();paths=plan['paths'][a.device]
     if a.stage in ('accuracy','all'):
         for path in paths:

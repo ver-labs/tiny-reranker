@@ -16,14 +16,14 @@ def selected(ids):
 def run(device,path,session):
     plan=verify_plan();dest=HERE/'raw'/f'{device}_direct_s{session}_{path}.json'
     if dest.exists() and json.loads(dest.read_text()).get('status')=='COMPLETE':return
-    result={'device':device,'path':path,'session':session,'plan_sha256':sha(HERE/'plan.json'),'environment':environment(),'observations':[],'warmups':[]}
+    result={'device':device,'path':path,'session':session,'plan_sha256':sha(HERE/'plan.json'),'environment':environment(),'observations':[],'warmups':[],'protocol_addendum_sha256':sha(HERE/'protocol_addendum.json')}
     try:
         model=Inference(device,path)
         result['dispatch']=model.dispatch(pairs(selected(plan['sweep_ids'])[0],10))
-        cells=list(plan['direct']['cells']);random.Random(1801+session).shuffle(cells)
-        for k,b,l in cells:
+        cells=[(*cell,'primary' if cell==[100,16,512] else 'sweep') for cell in plan['direct']['cells']]+[(100,16,512,'sweep')];random.Random(1801+session).shuffle(cells)
+        for k,b,l,group in cells:
             model.length=l
-            primary=(k,b,l)==(100,16,512)
+            primary=group=='primary'
             data=selected(plan['timing_ids'] if primary else plan['sweep_ids'])
             batches=[]
             for row in data:
@@ -47,7 +47,7 @@ def run(device,path,session):
                     else:
                         for pp in batches:model.score(pp)
                     model.sync();seconds=time.perf_counter()-start
-                    result['observations'].append({'session':session,'repetition':rep,'path':path,'scope':scope,'k':k,'batch':b,'length':l,'queries':len(data),'pairs':len(data)*k,'seconds':seconds,'pairs_per_second':len(data)*k/seconds})
+                    result['observations'].append({'session':session,'repetition':rep,'path':path,'scope':scope,'group':group,'k':k,'batch':b,'length':l,'queries':len(data),'pairs':len(data)*k,'seconds':seconds,'pairs_per_second':len(data)*k/seconds})
                     save(dest,result)
             del prepared,encoded
         result.update(status='COMPLETE',memory=model.memory())

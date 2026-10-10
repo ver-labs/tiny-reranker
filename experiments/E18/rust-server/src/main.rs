@@ -264,7 +264,8 @@ struct Config {
 impl Config {
     fn parse() -> Result<Self, String> {
         let root = PathBuf::from(env!("CARGO_MANIFEST_DIR"))
-            .parent()
+            .ancestors()
+            .nth(3)
             .unwrap()
             .to_path_buf();
         let mut c = Self {

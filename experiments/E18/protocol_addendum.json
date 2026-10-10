@@ -1,0 +1,14 @@
+{
+  "version": "E18-small-v1-batch-controls",
+  "base_plan_sha256": "2b54eeeed727e77e89e3f4e589ff4bb78badee59786d3a3c6a44810db73f1df0",
+  "reason": "Before direct headline collection, add a repeated B16 sweep cell on the same four queries as B1/8/32/64; the 16-query primary endpoint remains separate. Prevents workload composition from confounding the batch curve.",
+  "additional_cell": {
+    "k": 100,
+    "batch": 16,
+    "length": 512,
+    "group": "sweep"
+  },
+  "operation_sessions": 6,
+  "operation_repetitions_per_session": 3,
+  "scope": "No tolerance, primary endpoint, HTTP matrix or repetition reduction; one secondary control added"
+}

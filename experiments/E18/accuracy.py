@@ -4,6 +4,7 @@ import gzip
 import json
 import time
 import traceback
+import shutil
 from .common import HERE,rows,save,sha,ranked,environment,verify_plan
 from .inference import Inference
 from .statistics import accuracy_gate
@@ -22,7 +23,24 @@ def main():
         assert json.loads(summary.read_text())['artifact_sha256']==sha(out);print('Already audited',a.path);return
     started=time.perf_counter();report={'device':a.device,'path':a.path,'plan_sha256':sha(HERE/'plan.json'),'environment':environment()}
     data=rows();expected=[(r,k) for k in plan['accuracy']['document_counts'] for r in data]
-    existing=read(out) if out.exists() else []
+    try:
+        existing=read(out) if out.exists() else []
+    except EOFError:
+        # Keep the interrupted original; recover only complete JSON lines.
+        backup=out.with_name(out.stem+'_interrupted'+out.suffix)
+        if backup.exists():raise RuntimeError('An interrupted backup already exists; inspect before recovery')
+        shutil.copy2(out,backup);existing=[]
+        with gzip.open(out,'rt') as f:
+            try:
+                while True:
+                    line=f.readline()
+                    if not line:break
+                    if not line.endswith('\n'):break
+                    existing.append(json.loads(line))
+            except EOFError:pass
+        with gzip.open(out,'wt') as f:
+            for record in existing:f.write(json.dumps(record,allow_nan=False)+'\n')
+        save(HERE/'raw'/f'{a.device}_{a.path}_recovery.json',{'status':'TECHNICAL_RECOVERY','reason':'Interrupted gzip writer; complete lines retained and remaining inputs rescored','original_artifact':str(backup.relative_to(HERE)),'original_sha256':sha(backup),'recovered_records':len(existing)})
     assert len(existing)<=len(expected)
     for old,(r,k) in zip(existing,expected):assert (old['dataset'],old['query_id'],old['k'])==(r['dataset'],r['query_id'],k)
     try:
