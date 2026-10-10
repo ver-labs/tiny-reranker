@@ -36,6 +36,8 @@ class Inference:
             if device!='mps':
                 raise ValueError('MLX paths require Apple GPU')
             import mlx.core as mx
+            if not mx.is_available(mx.gpu):raise RuntimeError('MLX Apple GPU required; CPU fallback prohibited')
+            mx.set_default_device(mx.gpu)
             from mlx.utils import tree_flatten
             from .mlx_model import Model
             from safetensors.numpy import load_file
@@ -154,7 +156,7 @@ class Inference:
             if attention_count+math_attention!=6:raise RuntimeError('Attention graph does not contain six attention sites')
             if self.path in ('metal','metal_compiled') and custom_count!=12:raise RuntimeError(f'Observed {custom_count} custom sites')
             if self.path in ('mlx_compiled','metal_compiled') and not any(v.startswith('Compiled') for v in primitives):raise RuntimeError('No compiled primitives observed')
-            return {'framework':'MLX','attention':'mx.fast.scaled_dot_product_attention',
+            return {'framework':'MLX','execution_device':str(mx.default_device()),'attention':'mx.fast.scaled_dot_product_attention',
                     'compiled':self.path in ('mlx_compiled','metal_compiled'),'custom_sites':custom_count,
                     'observed_fused_attention_sites':attention_count,'observed_math_attention_softmax_sites':math_attention,'graph_file':str(graph.relative_to(HERE)),
                     'observed_primitives':dict(Counter(primitives)),'python_custom_calls':metal_kernel.CALLS}
