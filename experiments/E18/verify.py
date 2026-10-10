@@ -37,12 +37,12 @@ def main():
                 subset=[r for r in records if r['dataset']==dataset and r['k']==k]
                 assert_trec_parity({r['query_id']:r['qrels'] for r in subset},{r['query_id']:r['ranking'] for r in subset})
         result['scores'][p.stem]={'status':'VERIFIED','records':1455,'pairs':77600,'metric_oracle':'Independent direct formulas and pytrec_eval nDCG/recall'}
-    for p in (HERE/'raw').glob('http_s*.json'):
+    for p in (HERE/'raw').glob('*http_s*.json'):
         report=json.loads(p.read_text())
         if report.get('status')!='COMPLETE':result['http'][p.stem]={'status':'INCOMPLETE'};continue
         artifact=HERE/report['response_artifact'];assert sha(artifact)==report['response_sha256']
         with gzip.open(artifact,'rt') as f:obs=[json.loads(line) for line in f]
-        assert len(obs)==288
+        assert len(obs)==(96 if report.get('primary_only') else 288)
         audit=HERE/'scores'/f"mps_{report['path']}.jsonl.gz"
         with gzip.open(audit,'rt') as f:refs={(r['dataset'],r['query_id'],r['k']):r for r in map(json.loads,f)}
         for run in report['runs']:
@@ -67,7 +67,7 @@ def main():
             assert v['pairs']==v['queries']*v['k'] and v['seconds']>0 and abs(v['pairs_per_second']-v['pairs']/v['seconds'])<1e-8
         result['direct'][p.stem]={'status':'VERIFIED','observations':60}
     result['status']='VERIFIED_SAVED_ARTIFACTS'
-    result['completeness']={'expected_primary_http_sessions':32,'complete_http_sessions':sum(v['status']=='VERIFIED' for v in result['http'].values()),'expected_mps_direct_sessions':36,'complete_mps_direct_sessions':sum(v['status']=='VERIFIED' for k,v in result['direct'].items() if k.startswith('mps')),'expected_cuda_direct_sessions':25,'complete_cuda_direct_sessions':sum(v['status']=='VERIFIED' for k,v in result['direct'].items() if k.startswith('cuda'))}
+    result['completeness']={'expected_primary_http_sessions':32,'complete_http_sessions':sum(v['status']=='VERIFIED' for k,v in result['http'].items() if k.startswith('http_s')),'expected_mps_direct_sessions':36,'complete_mps_direct_sessions':sum(v['status']=='VERIFIED' for k,v in result['direct'].items() if k.startswith('mps')),'expected_cuda_direct_sessions':25,'complete_cuda_direct_sessions':sum(v['status']=='VERIFIED' for k,v in result['direct'].items() if k.startswith('cuda'))}
     save(HERE/'verification.json',result)
     files=[p for p in HERE.rglob('*') if p.is_file() and '__pycache__' not in str(p) and not any(part in p.parts for part in ('cache','target')) and p.name not in ('checksums.json',) and not p.name.endswith('_server.log') and p.suffix not in ('.so',)]
     save(HERE/'checksums.json',{'files':{str(p.relative_to(HERE)):sha(p) for p in sorted(files)}});print(result['completeness'],flush=True)

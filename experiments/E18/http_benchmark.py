@@ -74,8 +74,9 @@ def rss(pids):
     return {'bytes':result,'scope':'Coordinator and worker process RSS snapshots; shared memory may be counted twice; not total system peak'}
 
 
-async def measure(session,coordinator,path):
-    plan=verify_plan();dest=HERE/'raw'/f'http_s{session}_{coordinator}_{path}.json'
+async def measure(session,coordinator,path,study='primary',primary_only=False):
+    plan=verify_plan();prefix='http' if study=='primary' else study+'_http'
+    dest=HERE/'raw'/f'{prefix}_s{session}_{coordinator}_{path}.json'
     if dest.exists() and json.loads(dest.read_text()).get('status')=='COMPLETE':return
     audit=json.loads((HERE/f'mps_{path}_accuracy.json').read_text());assert audit['status'] in ('VERIFIED','FAILED_ACCURACY') and audit['plan_sha256']==sha(HERE/'plan.json')
     assert sha(HERE/audit['artifact'])==audit['artifact_sha256']
@@ -84,11 +85,11 @@ async def measure(session,coordinator,path):
     with socket.socket() as sock:sock.bind(('127.0.0.1',0));port=sock.getsockname()[1]
     command=[str(BINARY),'--python',sys.executable,'--root',str(ROOT),'--worker-script',str(HERE/'worker.py')] if coordinator=='rust' else [sys.executable,'-u','-m','experiments.E18.python_server']
     command+=['--backend',backend,'--port',str(port),'--pair-batch-size','16','--queue-size','32','--timeout','120','--worker-timeout','120']
-    env={**os.environ,'E18_INFERENCE_PATH':path};log=HERE/f'http_s{session}_{coordinator}_{path}_server.log'
+    env={**os.environ,'E18_INFERENCE_PATH':path};log=HERE/f'{prefix}_s{session}_{coordinator}_{path}_server.log'
     start=time.perf_counter()
     with log.open('w') as f:proc=subprocess.Popen(command,cwd=ROOT,env=env,stdout=f,stderr=f)
-    result={'session':session,'coordinator':coordinator,'path':path,'plan_sha256':sha(HERE/'plan.json'),'environment':environment(),'accuracy_status':audit['status'],'runs':[]}
-    raw=HERE/'raw'/f'http_s{session}_{coordinator}_{path}_responses.jsonl.gz';raw.parent.mkdir(exist_ok=True)
+    result={'session':session,'coordinator':coordinator,'path':path,'plan_sha256':sha(HERE/'plan.json'),'environment':environment(),'accuracy_status':audit['status'],'study':study,'primary_only':primary_only,'runs':[]}
+    raw=HERE/'raw'/f'{prefix}_s{session}_{coordinator}_{path}_responses.jsonl.gz';raw.parent.mkdir(exist_ok=True)
     try:
         async with httpx.AsyncClient(base_url=f'http://127.0.0.1:{port}',timeout=120,trust_env=False,limits=httpx.Limits(max_connections=8,max_keepalive_connections=8)) as client:
             while time.perf_counter()-start<900:
@@ -102,7 +103,7 @@ async def measure(session,coordinator,path):
             health=response.json();assert health['max_length']==512 and health['checkpoint_sha256']==plan['model']['file_sha256']['model.safetensors'] and health['pair_batch_size']==16
             result.update(startup_seconds=time.perf_counter()-start,health=health,rss_before=rss([proc.pid,health['worker_pid']]))
             invalid=await client.post('/rerank',json={**payload(data[0],10,0),'documents':[]});assert invalid.status_code==422
-            cells=[(k,c) for k in plan['document_counts'] for c in plan['concurrency']];random.Random(1801+session).shuffle(cells)
+            cells=[(k,c) for k in ([100] if primary_only else plan['document_counts']) for c in plan['concurrency']];random.Random(1801+session).shuffle(cells)
             with gzip.open(raw,'wt') as f:
                 for rep in range(2):
                     for k,c in cells[rep*3:]+cells[:rep*3]:
@@ -124,6 +125,6 @@ async def measure(session,coordinator,path):
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--session',type=int,required=True);p.add_argument('--coordinator',choices=['python','rust'],required=True);p.add_argument('--path',required=True);a=p.parse_args();asyncio.run(measure(a.session,a.coordinator,a.path))
+    p=argparse.ArgumentParser();p.add_argument('--session',type=int,required=True);p.add_argument('--coordinator',choices=['python','rust'],required=True);p.add_argument('--path',required=True);p.add_argument('--study',default='primary');p.add_argument('--primary-only',action='store_true');a=p.parse_args();asyncio.run(measure(a.session,a.coordinator,a.path,a.study,a.primary_only))
 
 if __name__=='__main__':main()

@@ -6,7 +6,7 @@ from .statistics import paired_ratio,distribution
 
 
 def main():
-    output={'plan_sha256':sha(HERE/'plan.json'),'accuracy':{},'direct':{},'http':{},'operation':{}}
+    output={'plan_sha256':sha(HERE/'plan.json'),'accuracy':{},'direct':{},'http':{},'operation':{},'optimized_http':{}}
     for p in HERE.glob('*_accuracy.json'):
         r=json.loads(p.read_text());output['accuracy'][p.stem.replace('_accuracy','')]={k:v for k,v in r.items() if k not in ('per_query','environment','traceback')}
     for device in ('mps','cuda'):
@@ -21,7 +21,9 @@ def main():
             for path in paths:
                 rr=[r for r in items if r['path']==path];entry['distribution'][path]={'seconds':distribution([r['seconds'] for r in rr]),'pairs_per_second':distribution([r['pairs_per_second'] for r in rr]),'repetitions':len(rr),'sessions':len({r['session'] for r in rr}),'accuracy':output['accuracy'].get(device+'_'+path,{}).get('status','PENDING')}
             comparisons=[('stock',p) for p in paths if p!='stock']
-            if device=='mps':comparisons += [('mlx',p) for p in ('mlx_compiled','metal','metal_compiled') if p in paths]
+            if device=='mps':
+                comparisons += [('mlx',p) for p in ('mlx_compiled','metal','metal_compiled') if p in paths]
+                if 'mlx_compiled' in paths and 'metal_compiled' in paths:comparisons.append(('mlx_compiled','metal_compiled'))
             else:comparisons += [('explicit',p) for p in ('cuda','triton') if p in paths]
             for baseline,path in comparisons:
                 try:entry['comparisons'][baseline+'/'+path]=paired_ratio(items,baseline,path)
@@ -36,11 +38,11 @@ def main():
                 if path!='native':entry['comparisons']['native/'+path]=paired_ratio(selected,'native',path)
             output['operation'][f'{device}/{rows}']=entry
     runs=[]
-    for p in (HERE/'raw').glob('http_s*.json'):
+    for p in (HERE/'raw').glob('*http_s*.json'):
         result=json.loads(p.read_text())
-        if result.get('status')=='COMPLETE':runs+=result['runs']
-    for k,c in sorted({(r['k'],r['concurrency']) for r in runs}):
-        selected=[r for r in runs if (r['k'],r['concurrency'])==(k,c)];entry={'distribution':{},'comparisons':{}}
+        if result.get('status')=='COMPLETE':runs += [{**r,'study':result.get('study','primary')} for r in result['runs']]
+    for study,k,c in sorted({(r['study'],r['k'],r['concurrency']) for r in runs}):
+        selected=[r for r in runs if (r['study'],r['k'],r['concurrency'])==(study,k,c)];entry={'distribution':{},'comparisons':{}}
         for path in sorted({r['path'] for r in selected}):
             records=[r for r in selected if r['path']==path]
             entry['distribution'][path]={f:distribution([r[f] for r in records]) for f in ('seconds','requests_per_second','pairs_per_second','validation_seconds','client_cpu_fraction_of_one_core')}
@@ -49,7 +51,11 @@ def main():
         for backend in ('stock','mlx'):
             try:entry['comparisons']['python/'+backend+'/rust/'+backend]=paired_ratio(selected,'python/'+backend,'rust/'+backend)
             except ValueError as e:entry['comparisons'][backend]={'status':'INCOMPLETE','reason':str(e)}
-        output['http'][f'K{k}/C{c}']=entry
+        if study=='primary':output['http'][f'K{k}/C{c}']=entry
+        else:
+            baseline='python/'+study.removeprefix('optimized_')
+            entry['comparisons']={path:paired_ratio(selected,baseline,path) for path in entry['distribution'] if path!=baseline}
+            output['optimized_http'][f'{study}/K{k}/C{c}']=entry
     save(HERE/'summary.json',output);print('Summary updated',flush=True)
 
 if __name__=='__main__':main()

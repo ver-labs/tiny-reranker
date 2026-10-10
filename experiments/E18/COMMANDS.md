@@ -21,7 +21,7 @@ For NVIDIA, copy E18 sources/plan/manifests to the existing approved cluster pro
 /opt/slurm/current/bin/sbatch experiments/E18/nvidia.sbatch
 ```
 
-CUDA build uses NVHPC's nvcc, architecture sm_89, FP32, FMA disabled, precise division/square root, and static CUDA runtime. Module initialization is cluster-specific and recorded in build logs. Do not run directly on the login node's CPU or substitute another GPU.
+CUDA build uses NVIDIA's checksum-verified project-local nvcc 12.6.85, architecture sm_89, FP32, FMA disabled, precise division/square root, and static CUDA runtime. The old cluster module was unavailable; compiler/runtime archives are pinned by the official redistribution manifest and archive SHA-256 values in cuda_compiler_manifest.json. Do not run directly on the login node's CPU or substitute another GPU.
 
 Optional isolated diagnostic commands, run sequentially after the main launcher:
 
