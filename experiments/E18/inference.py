@@ -2,6 +2,7 @@
 import os
 os.environ['MLX_ENABLE_TF32'] = '0'
 os.environ['TOKENIZERS_PARALLELISM'] = 'false'
+os.environ['PYTORCH_ENABLE_MPS_FALLBACK'] = '0'
 import json
 import numpy as np
 from .common import HERE,ASSETS,verify_assets
