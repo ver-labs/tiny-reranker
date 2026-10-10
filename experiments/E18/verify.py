@@ -60,6 +60,12 @@ def main():
     manifest=json.loads((HERE/'data_manifest.json').read_text())
     for relative,digest in manifest['source_sha256'].items():assert sha(ROOT/relative)==digest
     result['source_inputs']='VERIFIED candidate file, assets, frozen manifests and source corpora/qrels'
+    for p in list(HERE.glob('*_accuracy.json'))+list(HERE.glob('*_reserve.json')):
+        report=json.loads(p.read_text());target=report.get('accuracy',report)
+        if 'per_query_artifact' in target:
+            artifact=HERE/target['per_query_artifact'];assert sha(artifact)==target['per_query_artifact_sha256']
+            with gzip.open(artifact,'rt') as f:diagnostics=json.load(f)
+            assert sum(len(v) for v in diagnostics.values())==(421 if p.name.endswith('_reserve.json') else 1455)
     for p in HERE.glob('*_accuracy.json'):
         report=json.loads(p.read_text())
         if report['status']=='FAILED_EXECUTION':result['scores'][p.stem]={'status':'FAILED_EXECUTION','error':report['error']};continue
