@@ -1440,3 +1440,103 @@ sums before marking success. Its requested 1/2/4-warp values are API parameters;
 triton-msl's MLX route derives the actual threadgroup size from compiler metadata,
 so they must not be reported as three distinct GPU configurations without inspection.
 This experimental Apple route remains blocked and is separate from the completed NVIDIA E13 benchmark.
+
+## E14 — handwritten CUDA port of the Metal kernel versus Triton
+
+Completed 2026-10-10 on the same NVIDIA L40S (dash2), FP32 with TF32 disabled.
+Metal cannot execute on this NVIDIA GPU: `experiments/E14/residual_layer_norm.cu`
+ports E11's algorithm into CUDA C++, preserving one warp per row, lane-strided
+values, centered two-pass population variance, affine normalization and both
+outputs. It supports hidden sizes 32/64/128/256. Precise sqrt plus reciprocal
+implements reciprocal square root; backend reduction order and math instructions
+need not be bitwise identical to Metal. No fast math or fused multiply-add.
+
+The cluster's NVHPC 24.9 module supplies nvcc 12.6. The shared library statically
+links the CUDA runtime and launches on PyTorch's current stream through ctypes.
+The existing PyTorch 2.14.1+cu130/Triton 3.8.0 environment and driver 610.43.02
+were retained. The measured binary SHA256 is recorded alongside all model/kernel
+source hashes. Recompile on Linux; the ignored `.so` cannot run on this Mac.
+
+All 50 CUDA tests passed on L40S, including a float64 oracle across four hidden
+sizes, random/constant/cancellation inputs, strict CPU/stride/gradient guards.
+Epoch-3 weights loaded strictly with verified checkpoint, tokenizer and candidate
+hashes. On the same 128-query/256-pair validation fixture, CUDA and Triton each
+had maximum reference score error 9.5367431640625e-7, zero changed rankings,
+MRR@10 0.953125 and nDCG@10 0.9653996643973239. This is sample parity, not a
+full held-out test evaluation; no training or deployment switch was performed.
+
+Complete scoring medians include tokenization, GPU transfer, forward and
+CPU-readable scores; 20 rotated repeats. M5 values are saved E11 measurements,
+verified to use the same checkpoint, candidates and sample, but different hardware.
+
+| Pair batch | Handwritten CUDA port on L40S (ms) | Triton, 4 warps on L40S (ms) | Original custom Metal on M5 (ms) |
+|---:|---:|---:|---:|
+| 1 | 1.488 | 1.668 | 2.307 |
+| 2 | 1.876 | 2.061 | 3.660 |
+| 8 | 3.204 | 3.390 | 9.025 |
+| 16 | 4.884 | 5.071 | 13.090 |
+| 64 | 14.924 | 14.986 | 45.023 |
+| 128 | 29.329 | 29.303 | 83.914 |
+
+To separate host dispatch from GPU work, a second job captured 100 operations
+per CUDA graph and measured replay using CUDA events, divided by 100. Each graph
+was checked against the reference after replay. These are resident-input,
+amortized operation times, not isolated kernel timestamps or serving latency.
+Thirty rotated repeats were retained; graph capture and compilation are excluded.
+Repeated inputs can benefit from cache reuse, so these are microbenchmarks.
+
+| Pair batch | PyTorch reference (µs) | CUDA port (µs) | Triton 4 warps (µs) | Triton 1 warp (µs) |
+|---:|---:|---:|---:|---:|
+| 1 | 3.164 | 2.058 | 1.311 | 1.198 |
+| 2 | 3.400 | 2.283 | 1.556 | 1.556 |
+| 8 | 4.096 | 2.570 | 2.109 | 1.964 |
+| 16 | 5.600 | 3.174 | 2.621 | 2.497 |
+| 64 | 13.220 | 6.742 | 6.419 | 5.745 |
+| 128 | 23.347 | 11.069 | 11.346 | 10.117 |
+
+Both custom operations save device work versus the two-operation reference.
+Triton's one-warp device medians are lower than the CUDA port at every tested
+size; four warps are lower through batch 64 and close at 128. Ordinary synchronized
+wall calls reverse that comparison: the ctypes CUDA port takes approximately
+40–47 µs, versus 59–64 µs for Triton at four warps. The CUDA port also improves
+small-batch model forward latency versus Triton, but both lose to matched PyTorch
+at those batches. At batches 64/128 whole-model differences are small. This is
+consistent with host dispatch costs hiding device savings; the graph experiment
+does not attribute those costs to a specific Python function. One-warp Triton
+whole-model latency was not measured in E14, so its device advantage must not be
+claimed as a whole-model result. Keep the ordinary framework default.
+
+Raw repeats, numerical/ranking parity, compiled/source hashes and scopes are in
+`benchmark.json`, `device_benchmark.json` and `comparison.json`; successful Slurm
+logs are `e14_benchmark_172833.log` and `e14_device_172834.log`. The same-GPU chart
+is `comparison.png`; M5 is excluded from that chart to avoid mixing hardware.
+
+Reproduce from the existing isolated E13 cluster environment:
+
+```bash
+sbatch experiments/E14/cluster_benchmark.sbatch
+# After the above job succeeds:
+sbatch experiments/E14/device_benchmark.sbatch
+# After downloading reports and the measured .so into experiments/E14:
+.venv/bin/python -m experiments.E14.compare
+```
+
+The CUDA library is inference only; it does not implement backward propagation.
+
+The CUDA port is a handwritten kernel, not normal PyTorch. For the direct
+same-GPU model comparison, prepared-input forward medians are:
+
+| Pair batch | Normal PyTorch reference (ms) | Custom CUDA port (ms) | Custom Triton, 4 warps (ms) |
+|---:|---:|---:|---:|
+| 1 | 0.830 | 0.994 | 1.161 |
+| 2 | 0.953 | 1.131 | 1.306 |
+| 8 | 0.909 | 1.094 | 1.296 |
+| 16 | 0.901 | 1.073 | 1.268 |
+| 64 | 1.449 | 1.420 | 1.438 |
+| 128 | 2.727 | 2.709 | 2.696 |
+
+Decision: keep normal PyTorch for the measured small-batch NVIDIA workload. The
+custom CUDA port beats Triton there but does not beat the normal reference. Large
+batches are close; lower isolated GPU time alone does not establish lower model
+latency. Next, complete full held-out CUDA ranking evaluation before choosing any
+new optimization.

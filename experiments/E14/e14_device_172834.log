@@ -1,0 +1,6 @@
+Device graph batch=1 complete
+Device graph batch=2 complete
+Device graph batch=8 complete
+Device graph batch=16 complete
+Device graph batch=64 complete
+Device graph batch=128 complete
