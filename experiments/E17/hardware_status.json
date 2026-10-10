@@ -1,0 +1,41 @@
+{
+  "status": "Apple benchmarks complete and audited; NVIDIA pending authentication",
+  "parameter_count": 4717185,
+  "architecture": {
+    "vocab_size": 30522,
+    "pad_token_id": 0,
+    "max_length": 128,
+    "num_layers": 4,
+    "hidden_size": 128,
+    "num_attention_heads": 4,
+    "feed_forward_size": 512,
+    "dropout": 0.1
+  },
+  "package_versions": {
+    "torch": "2.14.1",
+    "mlx": "0.32.3",
+    "numpy": "2.5.3",
+    "transformers": "5.18.0",
+    "httpx": "0.28.1",
+    "fastapi": "0.142.4",
+    "uvicorn": "0.54.0"
+  },
+  "nvidia_access": "Single BatchMode SSH attempt returned Permission denied; user instructed Apple only; user interactive attempt also rejected. No additional attempts or jobs.",
+  "checkpoint_sha256": "2ea2608a9ec98083b89606d13bed1d7c6e7a90dc6160bbe44732166137538d52",
+  "mps_fallback_environment": "unset (no fallback enabled by harness)",
+  "verification_tests": {
+    "new_benchmark": {
+      "passed": 8
+    },
+    "existing_HTTP_and_metrics": {
+      "passed": 19
+    },
+    "CUDA_Triton_local_guards": {
+      "passed": 15,
+      "skipped_requires_GPU": 121
+    },
+    "NVIDIA_provenance_guards": {
+      "passed": 3
+    }
+  }
+}

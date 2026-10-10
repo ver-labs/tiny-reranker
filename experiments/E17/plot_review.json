@@ -1,0 +1,10 @@
+{
+  "status": "visually reviewed",
+  "plots": [
+    "http_workloads.png",
+    "coordinator_uncertainty.png"
+  ],
+  "units": "Client request latency in milliseconds and throughput in requests per second; document count and concurrency explicit.",
+  "uncertainty": "Workload bars are repetition IQR; coordinator bars are four-session bootstrap CI. No mixed scope or cross-hardware comparisons.",
+  "layout": "Labels, titles and legend fully visible; no clipping or incorrect units observed."
+}

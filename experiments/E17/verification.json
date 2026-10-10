@@ -1,0 +1,12 @@
+{
+  "status": "verified",
+  "plan_sha256": "71e6c1d92703272a02f8a481bd67f2e720996ba186a66dbd33bf27036ca953fb",
+  "checksums_sha256": "37ff20765518eedccadd43b02e4be1ef8b8f21847a478e601a545563bdfad935",
+  "accuracy_records": 1455,
+  "accuracy_pairs_per_path": 77600,
+  "trec_metric_groups_verified": 24,
+  "successful_http_requests": 6912,
+  "successful_http_pairs": 368640,
+  "raw_http_files": 16,
+  "nvidia": "pending authentication; no substitute measurements"
+}

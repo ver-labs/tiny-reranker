@@ -1,0 +1,137 @@
+{
+  "status": "inspected",
+  "source_sha256": "b4406c29d0a2dddae9440c6cdf18231d76cebf0114ebf8eff59039edc5e52836",
+  "startup_ready_seconds": {
+    "python/mlx": {
+      "median": 3.5480598125141114,
+      "range": [
+        3.2666943329386413,
+        3.902084874920547
+      ],
+      "iqr": [
+        3.428552114230115,
+        3.685732406505849
+      ]
+    },
+    "python/pytorch": {
+      "median": 4.7693277498474345,
+      "range": [
+        3.6817510419059545,
+        5.043371082982048
+      ],
+      "iqr": [
+        4.385806760401465,
+        4.949465395591687
+      ]
+    },
+    "rust/mlx": {
+      "median": 2.259578562923707,
+      "range": [
+        2.0794927501119673,
+        3.2940894588828087
+      ],
+      "iqr": [
+        2.214217562926933,
+        2.5185458337073214
+      ]
+    },
+    "rust/pytorch": {
+      "median": 2.7349059795960784,
+      "range": [
+        2.511479292064905,
+        3.072063707979396
+      ],
+      "iqr": [
+        2.6366033235099167,
+        2.861641395895276
+      ]
+    }
+  },
+  "combined_individual_RSS_samples_bytes": {
+    "python/mlx": {
+      "median": 177471488.0,
+      "range": [
+        89505792.0,
+        317014016.0
+      ],
+      "iqr": [
+        93913088.0,
+        300507136.0
+      ]
+    },
+    "python/pytorch": {
+      "median": 159989760.0,
+      "range": [
+        37109760.0,
+        436142080.0
+      ],
+      "iqr": [
+        79650816.0,
+        400736256.0
+      ]
+    },
+    "rust/mlx": {
+      "median": 96567296.0,
+      "range": [
+        3096576.0,
+        316063744.0
+      ],
+      "iqr": [
+        8200192.0,
+        300564480.0
+      ]
+    },
+    "rust/pytorch": {
+      "median": 120324096.0,
+      "range": [
+        2539520.0,
+        508182528.0
+      ],
+      "iqr": [
+        8028160.0,
+        381313024.0
+      ]
+    }
+  },
+  "RSS_scope": "Individual coordinator/worker samples combined for range only; not summed peak memory.",
+  "K100_C4_session_median_requests_per_second": {
+    "python/mlx": {
+      "0": 12.763136661608385,
+      "1": 13.912774790443521,
+      "2": 12.476988652053558,
+      "3": 12.615855192682458
+    },
+    "python/pytorch": {
+      "0": 14.26538929193966,
+      "1": 14.714740382761255,
+      "2": 15.991904772865981,
+      "3": 14.38174506410576
+    },
+    "rust/mlx": {
+      "0": 11.58518799441361,
+      "1": 11.65091775058469,
+      "2": 13.151483475647407,
+      "3": 12.012845111438159
+    },
+    "rust/pytorch": {
+      "0": 14.87629143277222,
+      "1": 12.358636433261964,
+      "2": 16.106394820527427,
+      "3": 14.070513939639813
+    }
+  },
+  "largest_client_latency": {
+    "latency_ms": 2079.2920000385493,
+    "queue_ms": 1109.4809169999999,
+    "processing_ms": 954.1974170000001,
+    "backend": "pytorch",
+    "coordinator": "rust",
+    "session": 1,
+    "documents": 50,
+    "concurrency": 8,
+    "repeat": 2,
+    "request_id": "nfcorpus:PLAIN-1362:50"
+  },
+  "outlier_policy": "Retained all observations, no filtering",
+  "power": "All sampled sessions AC power; no recorded thermal/performance warnings. No GPU clocks/temperature/utilization or exclusive isolation."
+}

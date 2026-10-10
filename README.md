@@ -1727,3 +1727,32 @@ uv run --with rank-bm25==0.2.2 --with pytrec-eval-terrier==0.5.10 --with numpy==
 Next quality work should use separate development queries and realistic
 retrieval candidates before another final test. Preserve these test results;
 do not tune on them. E7 pairwise loss and E10 early exits remain deferred.
+
+
+### E17 — realistic inference and HTTP benchmark audit
+
+Completed Apple M5 benchmarks using the original epoch-3 checkpoint and fixed
+128-token FP32 inference: complete development accuracy at 10/50/100 documents,
+and 12 paired repetitions across four process sessions for direct inference
+and Python/Rust × PyTorch/MLX loopback HTTP at concurrency 1/4/8.
+All four Apple paths (strict, eager stock, compiled stock, MLX) passed the
+predeclared numerical/application checks. Compiled stock changed three lower
+rankings; top-1/top-10 and quality metrics were unchanged. All 6,912 measured
+HTTP requests / 368,640 pairs passed score and ranking audits without failures.
+
+No Rust throughput advantage is supported; 17/18 coordinator throughput
+intervals include parity. One exploratory point favors Python. The MPS eager
+fast-path flag does not activate the fused encoder; a same-model diagnostic
+reversed its apparent timing advantage, so no gain is attributed to that flag.
+Compiled PyTorch was slower in complete scoring for the 50/100-document
+fixtures (paired ratios 0.900/0.859); prepared-forward gains are inconclusive.
+NVIDIA CUDA/Triton versus optimized-stock measurements remain pending because
+SSH authentication failed. No CPU or cross-hardware results substitute for them.
+
+See [E17 report and reproduction](experiments/E17/REPORT.md),
+[latency/throughput plots](experiments/E17/http_workloads.png), and
+[paired coordinator uncertainty](experiments/E17/coordinator_uncertainty.png).
+The fixed plan, compact raw repetitions, accuracy distributions, independent
+verification and checksums are in that directory. Full score/response audits
+remain local outside Git. These are short closed-loop waves on one unisolated
+machine; the model's poor retrieval quality is unchanged.

@@ -1,0 +1,12 @@
+{
+  "status": "verified",
+  "source_sha256": "b4406c29d0a2dddae9440c6cdf18231d76cebf0114ebf8eff59039edc5e52836",
+  "original_training_pairs": 735276,
+  "original_training_queries": 367581,
+  "development_queries": 485,
+  "development_top100_pairs": 48500,
+  "original_train_development_normalized_overlaps": 0,
+  "original_test_development_normalized_overlaps": 0,
+  "official_query_text_candidate_text_and_full_qrels": "Every record checked against source files",
+  "candidate_policy": "Frozen E16 preparation/file hashes; BM25 was not rebuilt or retuned."
+}
