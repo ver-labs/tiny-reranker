@@ -11,7 +11,7 @@ from experiments.E15.metrics import metrics
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--device',required=True);p.add_argument('--path',required=True);a=p.parse_args();verify_plan()
+    p=argparse.ArgumentParser();p.add_argument('--device',required=True,choices=['mps','cuda']);p.add_argument('--path',required=True);a=p.parse_args();verify_plan()
     model=Inference(a.device,a.path);data=fixtures(True);artifact=HERE/'scores'/f'{a.device}_{a.path}_reserve.jsonl.gz';artifact.parent.mkdir(exist_ok=True)
     started=time.perf_counter();records=[]
     with gzip.open(artifact,'wt') as f:

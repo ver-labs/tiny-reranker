@@ -16,7 +16,7 @@ def read(path):
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--device',required=True);p.add_argument('--path',required=True);a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--device',required=True,choices=['mps','cuda']);p.add_argument('--path',required=True);a=p.parse_args()
     plan=verify_plan();out=HERE/'scores'/f'{a.device}_{a.path}.jsonl.gz';out.parent.mkdir(exist_ok=True)
     summary=HERE/f'{a.device}_{a.path}_accuracy.json'
     if summary.exists() and json.loads(summary.read_text()).get('status') in ('VERIFIED','FAILED_ACCURACY'):

@@ -11,7 +11,7 @@ from experiments.E15.metrics import metrics
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--device',required=True);a=p.parse_args();plan=verify_plan();data=selected(plan['timing_ids']);output={'device':a.device,'scope':'Secondary 16-query / K100 check; no all-485 shortened-context qualification','plan_sha256':sha(HERE/'plan.json'),'cells':{}}
+    p=argparse.ArgumentParser();p.add_argument('--device',required=True,choices=['mps','cuda']);a=p.parse_args();plan=verify_plan();data=selected(plan['timing_ids']);output={'device':a.device,'scope':'Secondary 16-query / K100 check; no all-485 shortened-context qualification','plan_sha256':sha(HERE/'plan.json'),'cells':{}}
     baseline=read(HERE/'scores'/f'{a.device}_stock.jsonl.gz');lookup={(r['dataset'],r['query_id'],r['k']):r for r in baseline};paths=['stock','mlx'] if a.device=='mps' else ['stock']
     records_by={}
     for length in (128,256):

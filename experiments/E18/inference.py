@@ -9,6 +9,11 @@ from .common import HERE,ASSETS,verify_assets
 
 class Inference:
     def __init__(self,device,path='stock',length=512):
+        if path not in ('stock','eager_attention','compiled','mlx','mlx_compiled','metal','metal_compiled','explicit','cuda','triton'):
+            raise ValueError('Unknown inference path; no fallback')
+        if device=='cpu' and path not in ('stock','eager_attention'):
+            raise ValueError('CPU is reserved for reference correctness diagnostics')
+        if not isinstance(length,int) or not 3<=length<=512:raise ValueError('Combined token cap must be 3..512')
         import torch
         from transformers import AutoTokenizer,AutoModelForSequenceClassification
         verify_assets()

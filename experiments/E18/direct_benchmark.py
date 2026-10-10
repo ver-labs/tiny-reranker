@@ -60,6 +60,6 @@ def run(device,path,session):
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--device',required=True);p.add_argument('--path',required=True);p.add_argument('--session',type=int,required=True);a=p.parse_args();run(a.device,a.path,a.session)
+    p=argparse.ArgumentParser();p.add_argument('--device',required=True,choices=['mps','cuda']);p.add_argument('--path',required=True);p.add_argument('--session',type=int,required=True);a=p.parse_args();run(a.device,a.path,a.session)
 
 if __name__=='__main__':main()

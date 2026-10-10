@@ -7,9 +7,12 @@ from .common import HERE,save,sha,verify_plan,environment
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--device',required=True);p.add_argument('--session',type=int,required=True);a=p.parse_args();verify_plan()
+    p=argparse.ArgumentParser();p.add_argument('--device',required=True,choices=['mps','cuda']);p.add_argument('--session',type=int,required=True);a=p.parse_args();verify_plan()
     rng=np.random.default_rng(1801);result={'session':a.session,'device':a.device,'plan_sha256':sha(HERE/'plan.json'),'environment':environment(),'observations':[]}
     paths=['native','metal'] if a.device=='mps' else ['native','cuda','triton']
+    if a.session==0 and not (HERE/f'{a.device}_kernel_guards.json').exists():
+        from .kernel_guards import check
+        check(a.device)
     for rows in (16*128,16*256,16*512):
         values=[rng.normal(size=shape).astype(np.float32) for shape in ((rows,384),(rows,384),(384,),(384,))]
         if a.device=='mps':

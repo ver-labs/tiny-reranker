@@ -49,6 +49,8 @@ def main():
             records=[r for r in selected if r['path']==path]
             entry['distribution'][path]={f:distribution([r[f] for r in records]) for f in ('seconds','requests_per_second','pairs_per_second','validation_seconds','client_cpu_fraction_of_one_core')}
             for percentile in ('p50','p95','p99'):entry['distribution'][path][percentile+'_ms']=distribution([r['latency_ms'][percentile] for r in records])
+            for scope in ('queue','processing'):
+                entry['distribution'][path][scope+'_ms']={percentile:distribution([r[scope+'_ms'][percentile] for r in records]) for percentile in ('p50','p95','p99')}
             entry['distribution'][path].update(failures=sum(r['failures'] for r in records),timeouts=sum(r['timeouts'] for r in records),requests=sum(r['successful_requests'] for r in records),repetitions=len(records))
         for backend in ('stock','mlx'):
             try:entry['comparisons']['python/'+backend+'/rust/'+backend]=paired_ratio(selected,'python/'+backend,'rust/'+backend)

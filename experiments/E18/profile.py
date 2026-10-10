@@ -9,7 +9,7 @@ from .inference import Inference
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--device',required=True);p.add_argument('--path',required=True);a=p.parse_args();plan=verify_plan();model=Inference(a.device,a.path)
+    p=argparse.ArgumentParser();p.add_argument('--device',required=True,choices=['mps','cuda']);p.add_argument('--path',required=True);a=p.parse_args();plan=verify_plan();model=Inference(a.device,a.path)
     row=selected(plan['sweep_ids'])[0];pp=pairs(row,100)
     model.request(row,100);stages=[]
     for _ in range(3):

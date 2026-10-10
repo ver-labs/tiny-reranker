@@ -60,3 +60,10 @@ def test_resume_refuses_changed_plan(tmp_path):
     from experiments.E18.launch import complete
     artifact=tmp_path/'old.json';artifact.write_text(json.dumps({'status':'COMPLETE','plan_sha256':'0'*64}))
     with pytest.raises(RuntimeError,match='different plan'):complete(artifact)
+
+
+def test_unknown_path_and_cpu_optimization_never_fall_back():
+    from experiments.E18.inference import Inference
+    with pytest.raises(ValueError,match='no fallback'):Inference('mps','typo')
+    with pytest.raises(ValueError,match='correctness diagnostics'):Inference('cpu','compiled')
+    with pytest.raises(ValueError,match='cap'):Inference('mps','stock',length=513)

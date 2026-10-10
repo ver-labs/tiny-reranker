@@ -30,8 +30,16 @@ def main():
         for path,d in sorted(cell['distribution'].items()):
             v=d['requests_per_second'];backend=path.split('/')[1];r=cell['comparisons'].get('python/'+backend+'/rust/'+backend,{})
             lines.append(f"| {k} | {c} | {path} | {d['p50_ms']['median']:.1f} / {d['p95_ms']['median']:.1f} / {d['p99_ms']['median']:.1f} | {v['median']:.3f} [{v['p25']:.3f}, {v['p75']:.3f}] | {d['pairs_per_second']['median']:.1f} | {d['requests']} / {d['failures']} | {ratio(r) if path.startswith('rust') else '—'} |")
-    lines+=['','The 16-request repetition gives only two waves at C8. P99 is a near-maximum of a short wave, not a production tail-latency estimate. The load is fixed-concurrency closed-loop; it does not test open-loop overload. Rust coordinates a shared Python inference worker.','',
-      '## Resident operation','', '| Device / rows × 384 | Path | Median µs [IQR] | Native / candidate time ratio [95% CI] |','|---|---|---|---|']
+    lines+=['','The 16-request repetition gives only two waves at C8. P99 is a near-maximum of a short wave, not a production tail-latency estimate. The load is fixed-concurrency closed-loop; it does not test open-loop overload. Rust coordinates a shared Python inference worker.']
+    if summary['optimized_http']:
+        lines+=['','## Follow-up optimized HTTP','',
+          'Each family uses newly started matched baseline workers. These are conditional follow-ups selected from direct scoring; compare within this family, rather than with the earlier coordinator study.','',
+          '| Study / workload | Worker (Python coordinator) | P50 / P95 / P99 ms | Requests/s | Matched baseline / candidate time [95% CI] |',
+          '|---|---|---|---|---|']
+        for key,cell in sorted(summary['optimized_http'].items()):
+            for path,d in sorted(cell['distribution'].items()):
+                lines.append(f"| {key} | {path} | {d['p50_ms']['median']:.1f} / {d['p95_ms']['median']:.1f} / {d['p99_ms']['median']:.1f} | {d['requests_per_second']['median']:.3f} | {ratio(cell['comparisons'][path]) if path in cell['comparisons'] else 'Baseline'} |")
+    lines+=['','## Resident operation','', '| Device / rows × 384 | Path | Median µs [IQR] | Native / candidate time ratio [95% CI] |','|---|---|---|---|']
     for key,cell in sorted(summary['operation'].items()):
         for path,d in cell['distribution'].items():lines.append(f"| {key} | {path} | {d['median']:.1f} [{d['p25']:.1f}, {d['p75']:.1f}] | {'Baseline' if path=='native' else ratio(cell['comparisons'].get('native/'+path,{}))} |")
     lines+=['','Apple operation measurements include dispatch and synchronized amortized wall time. CUDA operation measurements use device events over 100 launches and include GPU-visible launch gaps. These scopes differ and must not be interpreted as cross-hardware kernel speedups.','',

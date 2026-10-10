@@ -7,7 +7,7 @@ from .inference import Inference
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--device',required=True);p.add_argument('--path',choices=['stock','compiled'],required=True);a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--device',required=True,choices=['mps','cuda']);p.add_argument('--path',choices=['stock','compiled'],required=True);a=p.parse_args()
     cache=HERE/'cache'/f'{a.device}_startup_{a.path}'
     if cache.exists():raise RuntimeError('Fresh-cache probe already attempted; retain and version a new attempt')
     (cache/'inductor').mkdir(parents=True);(cache/'triton').mkdir()
