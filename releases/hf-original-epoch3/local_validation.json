@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "device": "cpu",
+  "precision": "float32",
+  "atol": 1e-05,
+  "rtol": 0,
+  "max_source_score_error": 0.0,
+  "max_batch_score_error": 1.1920928955078125e-07,
+  "fixture_cases": 8,
+  "fixture_pairs": 30,
+  "token_ids_masks_segments_exact": true,
+  "readme_example": "passed",
+  "truncation_padding_ties_finite": "passed"
+}
