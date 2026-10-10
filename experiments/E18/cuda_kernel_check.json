@@ -1,0 +1,688 @@
+{
+  "device": "cuda",
+  "epsilon": 1e-12,
+  "tolerance": "abs <= 2e-5 + 1e-4*abs(float64_oracle)",
+  "oracle": "Residual addition rounded FP32, centered statistics/affine in CPU FP64",
+  "cases": [
+    {
+      "path": "cuda",
+      "case": "random",
+      "shape": [
+        1,
+        384
+      ],
+      "max_abs_error": 2.453511824818122e-07,
+      "native_max_abs_error": 2.091247561786247e-07,
+      "passed": true
+    },
+    {
+      "path": "cuda",
+      "case": "zero",
+      "shape": [
+        1,
+        384
+      ],
+      "max_abs_error": 0.0,
+      "native_max_abs_error": 0.0,
+      "passed": true
+    },
+    {
+      "path": "cuda",
+      "case": "constant",
+      "shape": [
+        1,
+        384
+      ],
+      "max_abs_error": 0.0,
+      "native_max_abs_error": 0.0,
+      "passed": true
+    },
+    {
+      "path": "cuda",
+      "case": "near_constant",
+      "shape": [
+        1,
+        384
+      ],
+      "max_abs_error": 1.5707871714454313e-07,
+      "native_max_abs_error": 0.03947990970503312,
+      "passed": true
+    },
+    {
+      "path": "cuda",
+      "case": "cancellation",
+      "shape": [
+        1,
+        384
+      ],
+      "max_abs_error": 2.1225668511704043e-07,
+      "native_max_abs_error": 1.6699348392990032e-07,
+      "passed": true
+    },
+    {
+      "path": "cuda",
+      "case": "mixed_magnitude",
+      "shape": [
+        1,
+        384
+      ],
+      "max_abs_error": 1.1616711326212226e-07,
+      "native_max_abs_error": 1.1616711326212226e-07,
+      "passed": true
+    },
+    {
+      "path": "cuda",
+      "case": "random",
+      "shape": [
+        5,
+        384
+      ],
+      "max_abs_error": 5.467298236361273e-07,
+      "native_max_abs_error": 2.775014102951445e-07,
+      "passed": true
+    },
+    {
+      "path": "cuda",
+      "case": "zero",
+      "shape": [
+        5,
+        384
+      ],
+      "max_abs_error": 0.0,
+      "native_max_abs_error": 0.0,
+      "passed": true
+    },
+    {
+      "path": "cuda",
+      "case": "constant",
+      "shape": [
+        5,
+        384
+      ],
+      "max_abs_error": 0.0,
+      "native_max_abs_error": 0.0,
+      "passed": true
+    },
+    {
+      "path": "cuda",
+      "case": "near_constant",
+      "shape": [
+        5,
+        384
+      ],
+      "max_abs_error": 2.3633272117074e-07,
+      "native_max_abs_error": 0.03743125259586355,
+      "passed": true
+    },
+    {
+      "path": "cuda",
+      "case": "cancellation",
+      "shape": [
+        5,
+        384
+      ],
+      "max_abs_error": 2.845045337096508e-07,
+      "native_max_abs_error": 3.3460728143808183e-07,
+      "passed": true
+    },
+    {
+      "path": "cuda",
+      "case": "mixed_magnitude",
+      "shape": [
+        5,
+        384
+      ],
+      "max_abs_error": 4.6855885438290557e-07,
+      "native_max_abs_error": 2.8959469533518245e-07,
+      "passed": true
+    },
+    {
+      "path": "cuda",
+      "case": "random",
+      "shape": [
+        2,
+        37,
+        384
+      ],
+      "max_abs_error": 5.782779468610499e-07,
+      "native_max_abs_error": 6.533722749502147e-07,
+      "passed": true
+    },
+    {
+      "path": "cuda",
+      "case": "zero",
+      "shape": [
+        2,
+        37,
+        384
+      ],
+      "max_abs_error": 0.0,
+      "native_max_abs_error": 0.0,
+      "passed": true
+    },
+    {
+      "path": "cuda",
+      "case": "constant",
+      "shape": [
+        2,
+        37,
+        384
+      ],
+      "max_abs_error": 0.0,
+      "native_max_abs_error": 0.0,
+      "passed": true
+    },
+    {
+      "path": "cuda",
+      "case": "near_constant",
+      "shape": [
+        2,
+        37,
+        384
+      ],
+      "max_abs_error": 3.385752114226648e-07,
+      "native_max_abs_error": 0.07779266792105788,
+      "passed": true
+    },
+    {
+      "path": "cuda",
+      "case": "cancellation",
+      "shape": [
+        2,
+        37,
+        384
+      ],
+      "max_abs_error": 5.545363177539286e-07,
+      "native_max_abs_error": 4.5958200933782223e-07,
+      "passed": true
+    },
+    {
+      "path": "cuda",
+      "case": "mixed_magnitude",
+      "shape": [
+        2,
+        37,
+        384
+      ],
+      "max_abs_error": 6.800449687816013e-07,
+      "native_max_abs_error": 6.816804436482471e-07,
+      "passed": true
+    },
+    {
+      "path": "cuda",
+      "case": "real_activation",
+      "shape": [
+        17,
+        384
+      ],
+      "max_abs_error": 1.0730884305587551e-06,
+      "native_max_abs_error": 2.741608835066245e-06,
+      "passed": true
+    },
+    {
+      "path": "cuda",
+      "case": "real_activation",
+      "shape": [
+        17,
+        384
+      ],
+      "max_abs_error": 1.138004487089006e-06,
+      "native_max_abs_error": 3.221146207543768e-07,
+      "passed": true
+    },
+    {
+      "path": "cuda",
+      "case": "real_activation",
+      "shape": [
+        17,
+        384
+      ],
+      "max_abs_error": 5.148321378101173e-07,
+      "native_max_abs_error": 4.169928393693567e-07,
+      "passed": true
+    },
+    {
+      "path": "cuda",
+      "case": "real_activation",
+      "shape": [
+        17,
+        384
+      ],
+      "max_abs_error": 5.08671604837474e-07,
+      "native_max_abs_error": 6.234512004432702e-07,
+      "passed": true
+    },
+    {
+      "path": "cuda",
+      "case": "real_activation",
+      "shape": [
+        17,
+        384
+      ],
+      "max_abs_error": 4.2295250111124005e-06,
+      "native_max_abs_error": 4.5070619769660425e-07,
+      "passed": true
+    },
+    {
+      "path": "cuda",
+      "case": "real_activation",
+      "shape": [
+        17,
+        384
+      ],
+      "max_abs_error": 5.541940093500841e-07,
+      "native_max_abs_error": 1.1230956040719775e-06,
+      "passed": true
+    },
+    {
+      "path": "cuda",
+      "case": "real_activation",
+      "shape": [
+        17,
+        384
+      ],
+      "max_abs_error": 1.6458772336136462e-06,
+      "native_max_abs_error": 5.91421771112266e-07,
+      "passed": true
+    },
+    {
+      "path": "cuda",
+      "case": "real_activation",
+      "shape": [
+        17,
+        384
+      ],
+      "max_abs_error": 5.867866379460907e-07,
+      "native_max_abs_error": 1.106610882928294e-06,
+      "passed": true
+    },
+    {
+      "path": "cuda",
+      "case": "real_activation",
+      "shape": [
+        17,
+        384
+      ],
+      "max_abs_error": 1.2379623868241652e-06,
+      "native_max_abs_error": 6.693862459883348e-07,
+      "passed": true
+    },
+    {
+      "path": "cuda",
+      "case": "real_activation",
+      "shape": [
+        17,
+        384
+      ],
+      "max_abs_error": 4.436833673793217e-07,
+      "native_max_abs_error": 5.795700590560671e-07,
+      "passed": true
+    },
+    {
+      "path": "cuda",
+      "case": "real_activation",
+      "shape": [
+        17,
+        384
+      ],
+      "max_abs_error": 2.1605949900305177e-06,
+      "native_max_abs_error": 1.6541022755944823e-06,
+      "passed": true
+    },
+    {
+      "path": "cuda",
+      "case": "real_activation",
+      "shape": [
+        17,
+        384
+      ],
+      "max_abs_error": 7.995537467664349e-07,
+      "native_max_abs_error": 7.995537467664349e-07,
+      "passed": true
+    },
+    {
+      "path": "triton",
+      "case": "random",
+      "shape": [
+        1,
+        384
+      ],
+      "max_abs_error": 2.453511824818122e-07,
+      "native_max_abs_error": 2.091247561786247e-07,
+      "passed": true
+    },
+    {
+      "path": "triton",
+      "case": "zero",
+      "shape": [
+        1,
+        384
+      ],
+      "max_abs_error": 0.0,
+      "native_max_abs_error": 0.0,
+      "passed": true
+    },
+    {
+      "path": "triton",
+      "case": "constant",
+      "shape": [
+        1,
+        384
+      ],
+      "max_abs_error": 0.0,
+      "native_max_abs_error": 0.0,
+      "passed": true
+    },
+    {
+      "path": "triton",
+      "case": "near_constant",
+      "shape": [
+        1,
+        384
+      ],
+      "max_abs_error": 1.5707871714454313e-07,
+      "native_max_abs_error": 0.03947990970503312,
+      "passed": true
+    },
+    {
+      "path": "triton",
+      "case": "cancellation",
+      "shape": [
+        1,
+        384
+      ],
+      "max_abs_error": 2.1225668511704043e-07,
+      "native_max_abs_error": 1.6699348392990032e-07,
+      "passed": true
+    },
+    {
+      "path": "triton",
+      "case": "mixed_magnitude",
+      "shape": [
+        1,
+        384
+      ],
+      "max_abs_error": 1.1616711326212226e-07,
+      "native_max_abs_error": 1.1616711326212226e-07,
+      "passed": true
+    },
+    {
+      "path": "triton",
+      "case": "random",
+      "shape": [
+        5,
+        384
+      ],
+      "max_abs_error": 4.0920102195585173e-07,
+      "native_max_abs_error": 2.775014102951445e-07,
+      "passed": true
+    },
+    {
+      "path": "triton",
+      "case": "zero",
+      "shape": [
+        5,
+        384
+      ],
+      "max_abs_error": 0.0,
+      "native_max_abs_error": 0.0,
+      "passed": true
+    },
+    {
+      "path": "triton",
+      "case": "constant",
+      "shape": [
+        5,
+        384
+      ],
+      "max_abs_error": 0.0,
+      "native_max_abs_error": 0.0,
+      "passed": true
+    },
+    {
+      "path": "triton",
+      "case": "near_constant",
+      "shape": [
+        5,
+        384
+      ],
+      "max_abs_error": 2.90295250504613e-07,
+      "native_max_abs_error": 0.03743125259586355,
+      "passed": true
+    },
+    {
+      "path": "triton",
+      "case": "cancellation",
+      "shape": [
+        5,
+        384
+      ],
+      "max_abs_error": 4.4812772026503467e-07,
+      "native_max_abs_error": 3.3460728143808183e-07,
+      "passed": true
+    },
+    {
+      "path": "triton",
+      "case": "mixed_magnitude",
+      "shape": [
+        5,
+        384
+      ],
+      "max_abs_error": 6.939096279801049e-07,
+      "native_max_abs_error": 2.8959469533518245e-07,
+      "passed": true
+    },
+    {
+      "path": "triton",
+      "case": "random",
+      "shape": [
+        2,
+        37,
+        384
+      ],
+      "max_abs_error": 5.732536454416959e-07,
+      "native_max_abs_error": 6.533722749502147e-07,
+      "passed": true
+    },
+    {
+      "path": "triton",
+      "case": "zero",
+      "shape": [
+        2,
+        37,
+        384
+      ],
+      "max_abs_error": 0.0,
+      "native_max_abs_error": 0.0,
+      "passed": true
+    },
+    {
+      "path": "triton",
+      "case": "constant",
+      "shape": [
+        2,
+        37,
+        384
+      ],
+      "max_abs_error": 0.0,
+      "native_max_abs_error": 0.0,
+      "passed": true
+    },
+    {
+      "path": "triton",
+      "case": "near_constant",
+      "shape": [
+        2,
+        37,
+        384
+      ],
+      "max_abs_error": 3.226225970820451e-07,
+      "native_max_abs_error": 0.07779266792105788,
+      "passed": true
+    },
+    {
+      "path": "triton",
+      "case": "cancellation",
+      "shape": [
+        2,
+        37,
+        384
+      ],
+      "max_abs_error": 4.645893767474263e-07,
+      "native_max_abs_error": 4.5958200933782223e-07,
+      "passed": true
+    },
+    {
+      "path": "triton",
+      "case": "mixed_magnitude",
+      "shape": [
+        2,
+        37,
+        384
+      ],
+      "max_abs_error": 7.488310309611279e-07,
+      "native_max_abs_error": 6.816804436482471e-07,
+      "passed": true
+    },
+    {
+      "path": "triton",
+      "case": "real_activation",
+      "shape": [
+        17,
+        384
+      ],
+      "max_abs_error": 1.0730884305587551e-06,
+      "native_max_abs_error": 2.741608835066245e-06,
+      "passed": true
+    },
+    {
+      "path": "triton",
+      "case": "real_activation",
+      "shape": [
+        17,
+        384
+      ],
+      "max_abs_error": 4.673865006132871e-07,
+      "native_max_abs_error": 3.221146207543768e-07,
+      "passed": true
+    },
+    {
+      "path": "triton",
+      "case": "real_activation",
+      "shape": [
+        17,
+        384
+      ],
+      "max_abs_error": 5.148321378101173e-07,
+      "native_max_abs_error": 4.169928393693567e-07,
+      "passed": true
+    },
+    {
+      "path": "triton",
+      "case": "real_activation",
+      "shape": [
+        17,
+        384
+      ],
+      "max_abs_error": 5.801474713962307e-07,
+      "native_max_abs_error": 6.234512004432702e-07,
+      "passed": true
+    },
+    {
+      "path": "triton",
+      "case": "real_activation",
+      "shape": [
+        17,
+        384
+      ],
+      "max_abs_error": 2.3221763782999005e-06,
+      "native_max_abs_error": 4.5070619769660425e-07,
+      "passed": true
+    },
+    {
+      "path": "triton",
+      "case": "real_activation",
+      "shape": [
+        17,
+        384
+      ],
+      "max_abs_error": 7.842530287405225e-07,
+      "native_max_abs_error": 1.1230956040719775e-06,
+      "passed": true
+    },
+    {
+      "path": "triton",
+      "case": "real_activation",
+      "shape": [
+        17,
+        384
+      ],
+      "max_abs_error": 6.890335573217499e-07,
+      "native_max_abs_error": 5.91421771112266e-07,
+      "passed": true
+    },
+    {
+      "path": "triton",
+      "case": "real_activation",
+      "shape": [
+        17,
+        384
+      ],
+      "max_abs_error": 8.007377498842061e-07,
+      "native_max_abs_error": 1.106610882928294e-06,
+      "passed": true
+    },
+    {
+      "path": "triton",
+      "case": "real_activation",
+      "shape": [
+        17,
+        384
+      ],
+      "max_abs_error": 1.2379623868241652e-06,
+      "native_max_abs_error": 6.693862459883348e-07,
+      "passed": true
+    },
+    {
+      "path": "triton",
+      "case": "real_activation",
+      "shape": [
+        17,
+        384
+      ],
+      "max_abs_error": 4.890668048318503e-07,
+      "native_max_abs_error": 5.795700590560671e-07,
+      "passed": true
+    },
+    {
+      "path": "triton",
+      "case": "real_activation",
+      "shape": [
+        17,
+        384
+      ],
+      "max_abs_error": 9.026189768945869e-07,
+      "native_max_abs_error": 1.6541022755944823e-06,
+      "passed": true
+    },
+    {
+      "path": "triton",
+      "case": "real_activation",
+      "shape": [
+        17,
+        384
+      ],
+      "max_abs_error": 7.995537467664349e-07,
+      "native_max_abs_error": 7.995537467664349e-07,
+      "passed": true
+    }
+  ],
+  "paths": {
+    "triton": {
+      "status": "VERIFIED"
+    },
+    "cuda": {
+      "status": "VERIFIED"
+    }
+  }
+}

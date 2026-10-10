@@ -1,0 +1,2273 @@
+{
+  "device": "cuda",
+  "path": "compiled",
+  "session": 2,
+  "plan_sha256": "2b54eeeed727e77e89e3f4e589ff4bb78badee59786d3a3c6a44810db73f1df0",
+  "environment": {
+    "platform": "Linux-5.15.0-173-generic-x86_64-with-glibc2.35",
+    "python": "3.12.15 (main, Oct  3 2026, 01:03:07) [Clang 22.1.3 ]",
+    "packages": {
+      "torch": "2.14.1",
+      "transformers": "5.18.0",
+      "numpy": "2.5.3",
+      "httpx": "0.28.1",
+      "safetensors": "0.8.0"
+    },
+    "isolation": "No continuous hardware isolation verified",
+    "source_commit": "Copied source snapshot; use frozen source hashes",
+    "hardware": "FileNotFoundError",
+    "power": "FileNotFoundError",
+    "thermal": "FileNotFoundError",
+    "processes": "    PID COMMAND         %CPU   RSS\n      1 systemd          0.0 15132\n      2 kthreadd         0.0     0\n      3 rcu_gp           0.0     0\n      4 rcu_par_gp       0.0     0\n      5 slub_flushwq     0.0     0\n      6 netns            0.0     0\n      8 kworker/0:0H-ev  0.0     0\n      9 kworker/u384:0+  0.0     0\n     11 mm_percpu_wq     0.0     0\n     12 rcu_tasks_rude_  0.0     0\n     13 rcu_tasks_trace  0.0     0\n     14 ksoftirqd/0      0.0     0\n     15 rcu_sched        0.5     0\n     16 migration/0      0.0     0\n     17 idle_inject/0    0.0     0\n     19 cpuhp/0          0.0     0\n     20 cpuhp/1          0.0     0\n     21 idle_inject/1    0.0     0\n     22 migration/1      0.0     0\n     23 ksoftirqd/1      0.0     0\n     25 kworker/1:0H-ev  0.0     0\n     26 cpuhp/2          0.0     0\n     27 idle_inject/2    0.0     0\n     28 migration/2      0.0     0\n     29 ksoftirqd/2      0.0     0\n     31 kworker/2:0H-ev  0.0     0\n     32 cpuhp/3          0.0     0\n     33 idle_inject/3    0.0     0\n     34 migration/3      0.0     0\n     35 ksoftirqd/3      0.0     0\n     37 kworker/3:0H-ev  0.0     0\n     38 cpuhp/4          0.0     0\n     39 idle_inject/4    0.0     0\n     40 migration/4      0.0     0\n     41 ksoftirqd/4      0.0     0\n     43 kworker/4:0H-ev  0.0     0\n     44 cpuhp/5          0.0     0\n     45 idle_inject/5    0.0     0\n     46 migration/5      0.0     0\n     47 ksoftirqd/5      0.0     0\n     49 kworker/5:0H-ev  0.0     0\n     50 cpuhp/6          0.0     0\n     51 idle_inject/6    0.0     0\n     52 migration/6      0.0     0\n     53 ksoftirqd/6      0.0     0\n     55 kworker/6:0H-ev  0.0     0\n     56 cpuhp/7          0.0     0\n     57 idle_inject/7    0.0     0\n     58 migration/7      0.0     0\n     59 ksoftirqd/7      0.0     0\n     61 kworker/7:0H-kb  0.0     0\n     62 cpuhp/8          0.0     0\n     63 idle_inject/8    0.0     0\n     64 migration/8      0.0     0\n     65 ksoftirqd/8      0.0     0\n     67 kworker/8:0H-ev  0.0     0\n     68 cpuhp/9          0.0     0\n     69 idle_inject/9    0.0     0\n     70 migration/9      0.0     0\n     71 ksoftirqd/9      0.0     0\n     73 kworker/9:0H-ev  0.0     0\n     74 cpuhp/10         0.0     0\n     75 idle_inject/10   0.0     0\n     76 migration/10     0.0     0\n     77 ksoftirqd/10     0.0     0\n     79 kworker/10:0H-e  0.0     0\n     80 cpuhp/11         0.0     0\n     81 idle_inject/11   0.0     0\n     82 migration/11     0.0     0\n     83 ksoftirqd/11     0.0     0\n     85 kworker/11:0H-e  0.0     0\n     86 cpuhp/12         0.0     0\n     87 idle_inject/12   0.0     0\n     88 migration/12     0.0     0\n     89 ksoftirqd/12     0.0     0\n     91 kworker/12:0H-e  0.0     0\n     93 cpuhp/13         0.0     0\n     94 idle_inject/13   0.0     0\n     95 migration/13     0.0     0\n     96 ksoftirqd/13     0.0     0\n     98 kworker/13:0H-e  0.0     0\n     99 cpuhp/14         0.0     0\n    100 idle_inject/14   0.0     0\n    101 migration/14     0.0     0\n    102 ksoftirqd/14     0.0     0\n    104 kworker/14:0H-e  0.0     0\n    105 cpuhp/15         0.0     0\n    106 idle_inject/15   0.0     0\n    107 migration/15     0.0     0\n    108 ksoftirqd/15     0.0     0\n    110 kworker/15:0H-e  0.0     0\n    111 cpuhp/16         0.0     0\n    112 idle_inject/16   0.0     0\n    113 migration/16     0.0     0\n    114 ksoftirqd/16     0.0     0\n    116 kworker/16:0H-e  0.0     0\n    117 cpuhp/17         0.0     0\n    118 idle_inject/17   0.0     0\n    119 migration/17     0.0     0\n    120 ksoftirqd/17     0.0     0\n    122 kworker/17:0H-e  0.0     0\n    123 cpuhp/18         0.0     0\n    124 idle_inject/18   0.0     0\n    125 migration/18     0.0     0\n    126 ksoftirqd/18     0.0     0\n    128 kworker/18:0H-e  0.0     0\n    129 cpuhp/19         0.0     0\n    130 idle_inject/19   0.0     0\n    131 migration/19     0.0     0\n    132 ksoftirqd/19     0.0     0\n    134 kworker/19:0H-e  0.0     0\n    135 cpuhp/20         0.0     0\n    136 idle_inject/20   0.0     0\n    137 migration/20     0.0     0\n    138 ksoftirqd/20     0.0     0\n    140 kworker/20:0H-e  0.0     0\n    141 cpuhp/21         0.0     0\n    142 idle_inject/21   0.0     0\n    143 migration/21     0.0     0\n    144 ksoftirqd/21     0.0     0\n    146 kworker/21:0H-e  0.0     0\n    147 cpuhp/22         0.0     0\n    148 idle_inject/22   0.0     0\n    149 migration/22     0.0     0\n    150 ksoftirqd/22     0.0     0\n    152 kworker/22:0H-e  0.0     0\n    153 cpuhp/23         0.0     0\n    154 idle_inject/23   0.0     0\n    155 migration/23     0.0     0\n    156 ksoftirqd/23     0.0     0\n    158 kworker/23:0H-e  0.0     0\n    159 cpuhp/24         0.0     0\n    160 idle_inject/24   0.0     0\n    161 migration/24     0.0     0\n    162 ksoftirqd/24     0.0     0\n    164 kworker/24:0H-e  0.0     0\n    166 cpuhp/25         0.0     0\n    167 idle_inject/25   0.0     0\n    168 migration/25     0.0     0\n    169 ksoftirqd/25     0.0     0\n    171 kworker/25:0H-e  0.0     0\n    172 cpuhp/26         0.0     0\n    173 idle_inject/26   0.0     0\n    174 migration/26     0.0     0\n    175 ksoftirqd/26     0.0     0\n    177 kworker/26:0H-e  0.0     0\n    178 cpuhp/27         0.0     0\n    179 idle_inject/27   0.0     0\n    180 migration/27     0.0     0\n    181 ksoftirqd/27     0.0     0\n    183 kworker/27:0H-e  0.0     0\n    184 cpuhp/28         0.0     0\n    185 idle_inject/28   0.0     0\n    186 migration/28     0.0     0\n    187 ksoftirqd/28     0.0     0\n    189 kworker/28:0H-e  0.0     0\n    190 cpuhp/29         0.0     0\n    191 idle_inject/29   0.0     0\n    192 migration/29     0.0     0\n    193 ksoftirqd/29     0.0     0\n    195 kworker/29:0H-e  0.0     0\n    196 cpuhp/30         0.0     0\n    197 idle_inject/30   0.0     0\n    198 migration/30     0.0     0\n    199 ksoftirqd/30     0.0     0\n    201 kworker/30:0H-e  0.0     0\n    202 cpuhp/31         0.0     0\n    203 idle_inject/31   0.0     0\n    204 migration/31     0.0     0\n    205 ksoftirqd/31     0.0     0\n    207 kworker/31:0H-e  0.0     0\n    208 cpuhp/32         0.0     0\n    209 idle_inject/32   0.0     0\n    210 migration/32     0.0     0\n    211 ksoftirqd/32     0.0     0\n    213 kworker/32:0H-e  0.0     0\n    215 cpuhp/33         0.0     0\n    216 idle_inject/33   0.0     0\n    217 migration/33     0.0     0\n    218 ksoftirqd/33     0.0     0\n    220 kworker/33:0H-e  0.0     0\n    221 cpuhp/34         0.0     0\n    222 idle_inject/34   0.0     0\n    223 migration/34     0.0     0\n    224 ksoftirqd/34     0.0     0\n    226 kworker/34:0H-e  0.0     0\n    227 cpuhp/35         0.0     0\n    228 idle_inject/35   0.0     0\n    229 migration/35     0.0     0\n    230 ksoftirqd/35     0.0     0\n    232 kworker/35:0H-e  0.0     0\n    233 cpuhp/36         0.0     0\n    234 idle_inject/36   0.0     0\n    235 migration/36     0.0     0\n    236 ksoftirqd/36     0.0     0\n    238 kworker/36:0H-e  0.0     0\n    240 cpuhp/37         0.0     0\n    241 idle_inject/37   0.0     0\n    242 migration/37     0.0     0\n    243 ksoftirqd/37     0.0     0\n    245 kworker/37:0H-k  0.0     0\n    246 cpuhp/38         0.0     0\n    247 idle_inject/38   0.0     0\n    248 migration/38     0.0     0\n    249 ksoftirqd/38     0.0     0\n    251 kworker/38:0H-k  0.0     0\n    252 cpuhp/39         0.0     0\n    253 idle_inject/39   0.0     0\n    254 migration/39     0.0     0\n    255 ksoftirqd/39     0.0     0\n    257 kworker/39:0H-e  0.0     0\n    258 cpuhp/40         0.0     0\n    259 idle_inject/40   0.0     0\n    260 migration/40     0.0     0\n    261 ksoftirqd/40     0.0     0\n    263 kworker/40:0H-k  0.0     0\n    264 cpuhp/41         0.0     0\n    265 idle_inject/41   0.0     0\n    266 migration/41     0.0     0\n    267 ksoftirqd/41     0.0     0\n    269 kworker/41:0H-e  0.0     0\n    270 cpuhp/42         0.0     0\n    271 idle_inject/42   0.0     0\n    272 migration/42     0.0     0\n    273 ksoftirqd/42     0.0     0\n    275 kworker/42:0H-k  0.0     0\n    276 cpuhp/43         0.0     0\n    277 idle_inject/43   0.0     0\n    278 migration/43     0.0     0\n    279 ksoftirqd/43     0.0     0\n    281 kworker/43:0H-e  0.0     0\n    282 cpuhp/44         0.0     0\n    283 idle_inject/44   0.0     0\n    284 migration/44     0.0     0\n    285 ksoftirqd/44     0.0     0\n    287 kworker/44:0H-e  0.0     0\n    288 cpuhp/45         0.0     0\n    289 idle_inject/45   0.0     0\n    290 migration/45     0.0     0\n    291 ksoftirqd/45     0.0     0\n    293 kworker/45:0H-e  0.0     0\n    294 cpuhp/46         0.0     0\n    295 idle_inject/46   0.0     0\n    296 migration/46     0.0     0\n    297 ksoftirqd/46     0.0     0\n    299 kworker/46:0H-e  0.0     0\n    300 cpuhp/47         0.0     0\n    301 idle_inject/47   0.0     0\n    302 migration/47     0.0     0\n    303 ksoftirqd/47     0.0     0\n    305 kworker/47:0H-e  0.0     0\n    306 cpuhp/48         0.0     0\n    307 idle_inject/48   0.0     0\n    308 migration/48     0.0     0\n    309 ksoftirqd/48     0.0     0\n    311 kworker/48:0H-e  0.0     0\n    313 cpuhp/49         0.0     0\n    314 idle_inject/49   0.0     0\n    315 migration/49     0.0     0\n    316 ksoftirqd/49     0.0     0\n    318 kworker/49:0H-e  0.0     0\n    319 cpuhp/50         0.0     0\n    320 idle_inject/50   0.0     0\n    321 migration/50     0.0     0\n    322 ksoftirqd/50     0.0     0\n    324 kworker/50:0H-e  0.0     0\n    325 cpuhp/51         0.0     0\n    326 idle_inject/51   0.0     0\n    327 migration/51     0.0     0\n    328 ksoftirqd/51     0.0     0\n    330 kworker/51:0H-e  0.0     0\n    331 cpuhp/52         0.0     0\n    332 idle_inject/52   0.0     0\n    333 migration/52     0.0     0\n    334 ksoftirqd/52     0.0     0\n    336 kworker/52:0H-e  0.0     0\n    337 cpuhp/53         0.0     0\n    338 idle_inject/53   0.0     0\n    339 migration/53     0.0     0\n    340 ksoftirqd/53     0.0     0\n    342 kworker/53:0H-e  0.0     0\n    343 cpuhp/54         0.0     0\n    344 idle_inject/54   0.0     0\n    345 migration/54     0.0     0\n    346 ksoftirqd/54     0.0     0\n    348 kworker/54:0H-e  0.0     0\n    349 cpuhp/55         0.0     0\n    350 idle_inject/55   0.0     0\n    351 migration/55     0.0     0\n    352 ksoftirqd/55     0.0     0\n    354 kworker/55:0H-e  0.0     0\n    355 cpuhp/56         0.0     0\n    356 idle_inject/56   0.0     0\n    357 migration/56     0.0     0\n    358 ksoftirqd/56     0.0     0\n    360 kworker/56:0H-e  0.0     0\n    361 cpuhp/57         0.0     0\n    362 idle_inject/57   0.0     0\n    363 migration/57     0.0     0\n    364 ksoftirqd/57     0.0     0\n    366 kworker/57:0H-e  0.0     0\n    368 cpuhp/58         0.0     0\n    369 idle_inject/58   0.0     0\n    370 migration/58     0.0     0\n    371 ksoftirqd/58     0.0     0\n    373 kworker/58:0H-e  0.0     0\n    374 cpuhp/59         0.0     0\n    375 idle_inject/59   0.0     0\n    376 migration/59     0.0     0\n    377 ksoftirqd/59     0.0     0\n    379 kworker/59:0H-k  0.0     0\n    380 cpuhp/60         0.0     0\n    381 idle_inject/60   0.0     0\n    382 migration/60     0.0     0\n    383 ksoftirqd/60     0.0     0\n    385 kworker/60:0H-e  0.0     0\n    387 cpuhp/61         0.0     0\n    388 idle_inject/61   0.0     0\n    389 migration/61     0.0     0\n    390 ksoftirqd/61     0.0     0\n    392 kworker/61:0H-k  0.0     0\n    393 cpuhp/62         0.0     0\n    394 idle_inject/62   0.0     0\n    395 migration/62     0.0     0\n    396 ksoftirqd/62     0.0     0\n    398 kworker/62:0H-k  0.0     0\n    399 cpuhp/63         0.0     0\n    400 idle_inject/63   0.0     0\n    401 migration/63     0.0     0\n    402 ksoftirqd/63     0.0     0\n    404 kworker/63:0H-k  0.0     0\n    405 cpuhp/64         0.0     0\n    406 idle_inject/64   0.0     0\n    407 migration/64     0.0     0\n    408 ksoftirqd/64     0.0     0\n    410 kworker/64:0H-e  0.0     0\n    411 cpuhp/65         0.0     0\n    412 idle_inject/65   0.0     0\n    413 migration/65     0.0     0\n    414 ksoftirqd/65     0.0     0\n    416 kworker/65:0H-k  0.0     0\n    417 cpuhp/66         0.0     0\n    418 idle_inject/66   0.0     0\n    419 migration/66     0.0     0\n    420 ksoftirqd/66     0.0     0\n    422 kworker/66:0H-k  0.0     0\n    423 cpuhp/67         0.0     0\n    424 idle_inject/67   0.0     0\n    425 migration/67     0.0     0\n    426 ksoftirqd/67     0.0     0\n    428 kworker/67:0H-k  0.0     0\n    429 cpuhp/68         0.0     0\n    430 idle_inject/68   0.0     0\n    431 migration/68     0.0     0\n    432 ksoftirqd/68     0.0     0\n    434 kworker/68:0H-e  0.0     0\n    435 cpuhp/69         0.0     0\n    436 idle_inject/69   0.0     0\n    437 migration/69     0.0     0\n    438 ksoftirqd/69     0.0     0\n    440 kworker/69:0H-e  0.0     0\n    441 cpuhp/70         0.0     0\n    442 idle_inject/70   0.0     0\n    443 migration/70     0.0     0\n    444 ksoftirqd/70     0.0     0\n    446 kworker/70:0H-e  0.0     0\n    447 cpuhp/71         0.0     0\n    448 idle_inject/71   0.0     0\n    449 migration/71     0.0     0\n    450 ksoftirqd/71     0.0     0\n    452 kworker/71:0H-e  0.0     0\n    453 cpuhp/72         0.0     0\n    454 idle_inject/72   0.0     0\n    455 migration/72     0.0     0\n    456 ksoftirqd/72     0.0     0\n    458 kworker/72:0H-e  0.0     0\n    460 cpuhp/73         0.0     0\n    461 idle_inject/73   0.0     0\n    462 migration/73     0.0     0\n    463 ksoftirqd/73     0.0     0\n    465 kworker/73:0H-e  0.0     0\n    466 cpuhp/74         0.0     0\n    467 idle_inject/74   0.0     0\n    468 migration/74     0.0     0\n    469 ksoftirqd/74     0.0     0\n    471 kworker/74:0H-e  0.0     0\n    472 cpuhp/75         0.0     0\n    473 idle_inject/75   0.0     0\n    474 migration/75     0.0     0\n    475 ksoftirqd/75     0.0     0\n    477 kworker/75:0H-k  0.0     0\n    478 cpuhp/76         0.0     0\n    479 idle_inject/76   0.0     0\n    480 migration/76     0.0     0\n    481 ksoftirqd/76     0.0     0\n    483 kworker/76:0H-e  0.0     0\n    484 cpuhp/77         0.0     0\n    485 idle_inject/77   0.0     0\n    486 migration/77     0.0     0\n    487 ksoftirqd/77     0.0     0\n    489 kworker/77:0H-e  0.0     0\n    490 cpuhp/78         0.0     0\n    491 idle_inject/78   0.0     0\n    492 migration/78     0.0     0\n    493 ksoftirqd/78     0.0     0\n    495 kworker/78:0H-e  0.0     0\n    496 cpuhp/79         0.0     0\n    497 idle_inject/79   0.0     0\n    498 migration/79     0.0     0\n    499 ksoftirqd/79     0.0     0\n    501 kworker/79:0H-e  0.0     0\n    502 cpuhp/80         0.0     0\n    503 idle_inject/80   0.0     0\n    504 migration/80     0.0     0\n    505 ksoftirqd/80     0.0     0\n    507 kworker/80:0H-e  0.0     0\n    508 cpuhp/81         0.0     0\n    509 idle_inject/81   0.0     0\n    510 migration/81     0.0     0\n    511 ksoftirqd/81     0.0     0\n    513 kworker/81:0H-e  0.0     0\n    514 cpuhp/82         0.0     0\n    515 idle_inject/82   0.0     0\n    516 migration/82     0.0     0\n    517 ksoftirqd/82     0.0     0\n    519 kworker/82:0H-e  0.0     0\n    520 cpuhp/83         0.0     0\n    521 idle_inject/83   0.0     0\n    522 migration/83     0.0     0\n    523 ksoftirqd/83     0.0     0\n    525 kworker/83:0H-e  0.0     0\n    526 cpuhp/84         0.0     0\n    527 idle_inject/84   0.0     0\n    528 migration/84     0.0     0\n    529 ksoftirqd/84     0.0     0\n    531 kworker/84:0H-e  0.0     0\n    533 cpuhp/85         0.0     0\n    534 idle_inject/85   0.0     0\n    535 migration/85     0.0     0\n    536 ksoftirqd/85     0.0     0\n    538 kworker/85:0H-e  0.0     0\n    539 cpuhp/86         0.0     0\n    540 idle_inject/86   0.0     0\n    541 migration/86     0.0     0\n    542 ksoftirqd/86     0.0     0\n    544 kworker/86:0H-e  0.0     0\n    545 cpuhp/87         0.0     0\n    546 idle_inject/87   0.0     0\n    547 migration/87     0.0     0\n    548 ksoftirqd/87     0.0     0\n    550 kworker/87:0H-e  0.0     0\n    551 cpuhp/88         0.0     0\n    552 idle_inject/88   0.0     0\n    553 migration/88     0.0     0\n    554 ksoftirqd/88     0.0     0\n    556 kworker/88:0H-e  0.0     0\n    557 cpuhp/89         0.0     0\n    558 idle_inject/89   0.0     0\n    559 migration/89     0.0     0\n    560 ksoftirqd/89     0.0     0\n    562 kworker/89:0H-k  0.0     0\n    563 cpuhp/90         0.0     0\n    564 idle_inject/90   0.0     0\n    565 migration/90     0.0     0\n    566 ksoftirqd/90     0.0     0\n    568 kworker/90:0H-e  0.0     0\n    569 cpuhp/91         0.0     0\n    570 idle_inject/91   0.0     0\n    571 migration/91     0.0     0\n    572 ksoftirqd/91     0.0     0\n    574 kworker/91:0H-e  0.0     0\n    575 cpuhp/92         0.0     0\n    576 idle_inject/92   0.0     0\n    577 migration/92     0.0     0\n    578 ksoftirqd/92     0.0     0\n    580 kworker/92:0H-e  0.0     0\n    581 cpuhp/93         0.0     0\n    582 idle_inject/93   0.0     0\n    583 migration/93     0.0     0\n    584 ksoftirqd/93     0.0     0\n    586 kworker/93:0H-e  0.0     0\n    587 cpuhp/94         0.0     0\n    588 idle_inject/94   0.0     0\n    589 migration/94     0.0     0\n    590 ksoftirqd/94     0.0     0\n    592 kworker/94:0H-k  0.0     0\n    593 cpuhp/95         0.0     0\n    594 idle_inject/95   0.0     0\n    595 migration/95     0.0     0\n    596 ksoftirqd/95     0.0     0\n    598 kworker/95:0H-e  0.0     0\n    599 cpuhp/96         0.0     0\n    600 idle_inject/96   0.0     0\n    601 migration/96     0.0     0\n    602 ksoftirqd/96     0.0     0\n    604 kworker/96:0H-e  0.0     0\n    605 cpuhp/97         0.0     0\n    606 idle_inject/97   0.0     0\n    607 migration/97     0.0     0\n    608 ksoftirqd/97     0.0     0\n    610 kworker/97:0H-e  0.0     0\n    611 cpuhp/98         0.0     0\n    612 idle_inject/98   0.0     0\n    613 migration/98     0.0     0\n    614 ksoftirqd/98     0.0     0\n    616 kworker/98:0H-e  0.0     0\n    617 cpuhp/99         0.0     0\n    618 idle_inject/99   0.0     0\n    619 migration/99     0.0     0\n    620 ksoftirqd/99     0.0     0\n    622 kworker/99:0H-e  0.0     0\n    623 cpuhp/100        0.0     0\n    624 idle_inject/100  0.0     0\n    625 migration/100    0.0     0\n    626 ksoftirqd/100    0.0     0\n    628 kworker/100:0H-  0.0     0\n    629 cpuhp/101        0.0     0\n    630 idle_inject/101  0.0     0\n    631 migration/101    0.0     0\n    632 ksoftirqd/101    0.0     0\n    634 kworker/101:0H-  0.0     0\n    635 cpuhp/102        0.0     0\n    636 idle_inject/102  0.0     0\n    637 migration/102    0.0     0\n    638 ksoftirqd/102    0.0     0\n    640 kworker/102:0H-  0.0     0\n    641 cpuhp/103        0.0     0\n    642 idle_inject/103  0.0     0\n    643 migration/103    0.0     0\n    644 ksoftirqd/103    0.0     0\n    646 kworker/103:0H-  0.0     0\n    647 cpuhp/104        0.0     0\n    648 idle_inject/104  0.0     0\n    649 migration/104    0.0     0\n    650 ksoftirqd/104    0.0     0\n    652 kworker/104:0H-  0.0     0\n    653 cpuhp/105        0.0     0\n    654 idle_inject/105  0.0     0\n    655 migration/105    0.0     0\n    656 ksoftirqd/105    0.0     0\n    658 kworker/105:0H-  0.0     0\n    659 cpuhp/106        0.0     0\n    660 idle_inject/106  0.0     0\n    661 migration/106    0.0     0\n    662 ksoftirqd/106    0.0     0\n    664 kworker/106:0H-  0.0     0\n    665 cpuhp/107        0.0     0\n    666 idle_inject/107  0.0     0\n    667 migration/107    0.0     0\n    668 ksoftirqd/107    0.0     0\n    670 kworker/107:0H-  0.0     0\n    671 cpuhp/108        0.0     0\n    672 idle_inject/108  0.0     0\n    673 migration/108    0.0     0\n    674 ksoftirqd/108    0.0     0\n    676 kworker/108:0H-  0.0     0\n    677 cpuhp/109        0.0     0\n    678 idle_inject/109  0.0     0\n    679 migration/109    0.0     0\n    680 ksoftirqd/109    0.0     0\n    682 kworker/109:0H-  0.0     0\n    683 cpuhp/110        0.0     0\n    684 idle_inject/110  0.0     0\n    685 migration/110    0.0     0\n    686 ksoftirqd/110    0.0     0\n    688 kworker/110:0H-  0.0     0\n    689 cpuhp/111        0.0     0\n    690 idle_inject/111  0.0     0\n    691 migration/111    0.0     0\n    692 ksoftirqd/111    0.0     0\n    694 kworker/111:0H-  0.0     0\n    695 cpuhp/112        0.0     0\n    696 idle_inject/112  0.0     0\n    697 migration/112    0.0     0\n    698 ksoftirqd/112    0.0     0\n    700 kworker/112:0H-  0.0     0\n    701 cpuhp/113        0.0     0\n    702 idle_inject/113  0.0     0\n    703 migration/113    0.0     0\n    704 ksoftirqd/113    0.0     0\n    706 kworker/113:0H-  0.0     0\n    707 cpuhp/114        0.0     0\n    708 idle_inject/114  0.0     0\n    709 migration/114    0.0     0\n    710 ksoftirqd/114    0.0     0\n    712 kworker/114:0H-  0.0     0\n    713 cpuhp/115        0.0     0\n    714 idle_inject/115  0.0     0\n    715 migration/115    0.0     0\n    716 ksoftirqd/115    0.0     0\n    718 kworker/115:0H-  0.0     0\n    719 cpuhp/116        0.0     0\n    720 idle_inject/116  0.0     0\n    721 migration/116    0.0     0\n    722 ksoftirqd/116    0.0     0\n    724 kworker/116:0H-  0.0     0\n    725 cpuhp/117        0.0     0\n    726 idle_inject/117  0.0     0\n    727 migration/117    0.0     0\n    728 ksoftirqd/117    0.0     0\n    730 kworker/117:0H-  0.0     0\n    731 cpuhp/118        0.0     0\n    732 idle_inject/118  0.0     0\n    733 migration/118    0.0     0\n    734 ksoftirqd/118    0.0     0\n    736 kworker/118:0H-  0.0     0\n    737 cpuhp/119        0.0     0\n    738 idle_inject/119  0.0     0\n    739 migration/119    0.0     0\n    740 ksoftirqd/119    0.0     0\n    742 kworker/119:0H-  0.0     0\n    743 cpuhp/120        0.0     0\n    744 idle_inject/120  0.0     0\n    745 migration/120    0.0     0\n    746 ksoftirqd/120    0.0     0\n    748 kworker/120:0H-  0.0     0\n    749 cpuhp/121        0.0     0\n    750 idle_inject/121  0.0     0\n    751 migration/121    0.0     0\n    752 ksoftirqd/121    0.0     0\n    754 kworker/121:0H-  0.0     0\n    755 cpuhp/122        0.0     0\n    756 idle_inject/122  0.0     0\n    757 migration/122    0.0     0\n    758 ksoftirqd/122    0.0     0\n    760 kworker/122:0H-  0.0     0\n    761 cpuhp/123        0.0     0\n    762 idle_inject/123  0.0     0\n    763 migration/123    0.0     0\n    764 ksoftirqd/123    0.0     0\n    766 kworker/123:0H-  0.0     0\n    767 cpuhp/124        0.0     0\n    768 idle_inject/124  0.0     0\n    769 migration/124    0.0     0\n    770 ksoftirqd/124    0.0     0\n    772 kworker/124:0H-  0.0     0\n    773 cpuhp/125        0.0     0\n    774 idle_inject/125  0.0     0\n    775 migration/125    0.0     0\n    776 ksoftirqd/125    0.0     0\n    778 kworker/125:0H-  0.0     0\n    779 cpuhp/126        0.0     0\n    780 idle_inject/126  0.0     0\n    781 migration/126    0.0     0\n    782 ksoftirqd/126    0.0     0\n    784 kworker/126:0H-  0.0     0\n    785 cpuhp/127        0.0     0\n    786 idle_inject/127  0.0     0\n    787 migration/127    0.0     0\n    788 ksoftirqd/127    0.0     0\n    790 kworker/127:0H-  0.0     0\n    791 cpuhp/128        0.0     0\n    792 idle_inject/128  0.0     0\n    793 migration/128    0.0     0\n    794 ksoftirqd/128    0.0     0\n    796 kworker/128:0H-  0.0     0\n    797 cpuhp/129        0.0     0\n    798 idle_inject/129  0.0     0\n    799 migration/129    0.0     0\n    800 ksoftirqd/129    0.0     0\n    802 kworker/129:0H-  0.0     0\n    803 cpuhp/130        0.0     0\n    804 idle_inject/130  0.0     0\n    805 migration/130    0.0     0\n    806 ksoftirqd/130    0.0     0\n    808 kworker/130:0H-  0.0     0\n    809 cpuhp/131        0.0     0\n    810 idle_inject/131  0.0     0\n    811 migration/131    0.0     0\n    812 ksoftirqd/131    0.0     0\n    814 kworker/131:0H-  0.0     0\n    815 cpuhp/132        0.0     0\n    816 idle_inject/132  0.0     0\n    817 migration/132    0.0     0\n    818 ksoftirqd/132    0.0     0\n    820 kworker/132:0H-  0.0     0\n    821 cpuhp/133        0.0     0\n    822 idle_inject/133  0.0     0\n    823 migration/133    0.0     0\n    824 ksoftirqd/133    0.0     0\n    826 kworker/133:0H-  0.0     0\n    827 cpuhp/134        0.0     0\n    828 idle_inject/134  0.0     0\n    829 migration/134    0.0     0\n    830 ksoftirqd/134    0.0     0\n    832 kworker/134:0H-  0.0     0\n    833 cpuhp/135        0.0     0\n    834 idle_inject/135  0.0     0\n    835 migration/135    0.0     0\n    836 ksoftirqd/135    0.0     0\n    838 kworker/135:0H-  0.0     0\n    839 cpuhp/136        0.0     0\n    840 idle_inject/136  0.0     0\n    841 migration/136    0.0     0\n    842 ksoftirqd/136    0.0     0\n    844 kworker/136:0H-  0.0     0\n    845 cpuhp/137        0.0     0\n    846 idle_inject/137  0.0     0\n    847 migration/137    0.0     0\n    848 ksoftirqd/137    0.0     0\n    850 kworker/137:0H-  0.0     0\n    851 cpuhp/138        0.0     0\n    852 idle_inject/138  0.0     0\n    853 migration/138    0.0     0\n    854 ksoftirqd/138    0.0     0\n    856 kworker/138:0H-  0.0     0\n    857 cpuhp/139        0.0     0\n    858 idle_inject/139  0.0     0\n    859 migration/139    0.0     0\n    860 ksoftirqd/139    0.0     0\n    862 kworker/139:0H-  0.0     0\n    863 cpuhp/140        0.0     0\n    864 idle_inject/140  0.0     0\n    865 migration/140    0.0     0\n    866 ksoftirqd/140    0.0     0\n    868 kworker/140:0H-  0.0     0\n    869 cpuhp/141        0.0     0\n    870 idle_inject/141  0.0     0\n    871 migration/141    0.0     0\n    872 ksoftirqd/141    0.0     0\n    874 kworker/141:0H-  0.0     0\n    875 cpuhp/142        0.0     0\n    876 idle_inject/142  0.0     0\n    877 migration/142    0.0     0\n    878 ksoftirqd/142    0.0     0\n    880 kworker/142:0H-  0.0     0\n    881 cpuhp/143        0.0     0\n    882 idle_inject/143  0.0     0\n    883 migration/143    0.0     0\n    884 ksoftirqd/143    0.0     0\n    886 kworker/143:0H-  0.0     0\n    887 cpuhp/144        0.0     0\n    888 idle_inject/144  0.0     0\n    889 migration/144    0.0     0\n    890 ksoftirqd/144    0.0     0\n    892 kworker/144:0H-  0.0     0\n    893 cpuhp/145        0.0     0\n    894 idle_inject/145  0.0     0\n    895 migration/145    0.0     0\n    896 ksoftirqd/145    0.0     0\n    898 kworker/145:0H-  0.0     0\n    899 cpuhp/146        0.0     0\n    900 idle_inject/146  0.0     0\n    901 migration/146    0.0     0\n    902 ksoftirqd/146    0.0     0\n    904 kworker/146:0H-  0.0     0\n    905 cpuhp/147        0.0     0\n    906 idle_inject/147  0.0     0\n    907 migration/147    0.0     0\n    908 ksoftirqd/147    0.0     0\n    910 kworker/147:0H-  0.0     0\n    911 cpuhp/148        0.0     0\n    912 idle_inject/148  0.0     0\n    913 migration/148    0.0     0\n    914 ksoftirqd/148    0.0     0\n    916 kworker/148:0H-  0.0     0\n    917 cpuhp/149        0.0     0\n    918 idle_inject/149  0.0     0\n    919 migration/149    0.0     0\n    920 ksoftirqd/149    0.0     0\n    922 kworker/149:0H-  0.0     0\n    923 cpuhp/150        0.0     0\n    924 idle_inject/150  0.0     0\n    925 migration/150    0.0     0\n    926 ksoftirqd/150    0.0     0\n    928 kworker/150:0H-  0.0     0\n    929 cpuhp/151        0.0     0\n    930 idle_inject/151  0.0     0\n    931 migration/151    0.0     0\n    932 ksoftirqd/151    0.0     0\n    934 kworker/151:0H-  0.0     0\n    935 cpuhp/152        0.0     0\n    936 idle_inject/152  0.0     0\n    937 migration/152    0.0     0\n    938 ksoftirqd/152    0.0     0\n    940 kworker/152:0H-  0.0     0\n    941 cpuhp/153        0.0     0\n    942 idle_inject/153  0.0     0\n    943 migration/153    0.0     0\n    944 ksoftirqd/153    0.0     0\n    946 kworker/153:0H-  0.0     0\n    947 cpuhp/154        0.0     0\n    948 idle_inject/154  0.0     0\n    949 migration/154    0.0     0\n    950 ksoftirqd/154    0.0     0\n    952 kworker/154:0H-  0.0     0\n    953 cpuhp/155        0.0     0\n    954 idle_inject/155  0.0     0\n    955 migration/155    0.0     0\n    956 ksoftirqd/155    0.0     0\n    958 kworker/155:0H-  0.0     0\n    959 cpuhp/156        0.0     0\n    960 idle_inject/156  0.0     0\n    961 migration/156    0.0     0\n    962 ksoftirqd/156    0.0     0\n    964 kworker/156:0H-  0.0     0\n    965 cpuhp/157        0.0     0\n    966 idle_inject/157  0.0     0\n    967 migration/157    0.0     0\n    968 ksoftirqd/157    0.0     0\n    970 kworker/157:0H-  0.0     0\n    971 cpuhp/158        0.0     0\n    972 idle_inject/158  0.0     0\n    973 migration/158    0.0     0\n    974 ksoftirqd/158    0.0     0\n    976 kworker/158:0H-  0.0     0\n    977 cpuhp/159        0.0     0\n    978 idle_inject/159  0.0     0\n    979 migration/159    0.0     0\n    980 ksoftirqd/159    0.0     0\n    982 kworker/159:0H-  0.0     0\n    983 cpuhp/160        0.0     0\n    984 idle_inject/160  0.0     0\n    985 migration/160    0.0     0\n    986 ksoftirqd/160    0.0     0\n    988 kworker/160:0H-  0.0     0\n    989 cpuhp/161        0.0     0\n    990 idle_inject/161  0.0     0\n    991 migration/161    0.0     0\n    992 ksoftirqd/161    0.0     0\n    994 kworker/161:0H-  0.0     0\n    995 cpuhp/162        0.0     0\n    996 idle_inject/162  0.0     0\n    997 migration/162    0.0     0\n    998 ksoftirqd/162    0.0     0\n   1000 kworker/162:0H-  0.0     0\n   1001 cpuhp/163        0.0     0\n   1002 idle_inject/163  0.0     0\n   1003 migration/163    0.0     0\n   1004 ksoftirqd/163    0.0     0\n   1006 kworker/163:0H-  0.0     0\n   1007 cpuhp/164        0.0     0\n   1008 idle_inject/164  0.0     0\n   1009 migration/164    0.0     0\n   1010 ksoftirqd/164    0.0     0\n   1012 kworker/164:0H-  0.0     0\n   1013 cpuhp/165        0.0     0\n   1014 idle_inject/165  0.0     0\n   1015 migration/165    0.0     0\n   1016 ksoftirqd/165    0.0     0\n   1018 kworker/165:0H-  0.0     0\n   1019 cpuhp/166        0.0     0\n   1020 idle_inject/166  0.0     0\n   1021 migration/166    0.0     0\n   1022 ksoftirqd/166    0.0     0\n   1024 kworker/166:0H-  0.0     0\n   1025 cpuhp/167        0.0     0\n   1026 idle_inject/167  0.0     0\n   1027 migration/167    0.0     0\n   1028 ksoftirqd/167    0.0     0\n   1030 kworker/167:0H-  0.0     0\n   1031 cpuhp/168        0.0     0\n   1032 idle_inject/168  0.0     0\n   1033 migration/168    0.0     0\n   1034 ksoftirqd/168    0.0     0\n   1036 kworker/168:0H-  0.0     0\n   1037 cpuhp/169        0.0     0\n   1038 idle_inject/169  0.0     0\n   1039 migration/169    0.0     0\n   1040 ksoftirqd/169    0.0     0\n   1042 kworker/169:0H-  0.0     0\n   1043 cpuhp/170        0.0     0\n   1044 idle_inject/170  0.0     0\n   1045 migration/170    0.0     0\n   1046 ksoftirqd/170    0.0     0\n   1048 kworker/170:0H-  0.0     0\n   1049 cpuhp/171        0.0     0\n   1050 idle_inject/171  0.0     0\n   1051 migration/171    0.0     0\n   1052 ksoftirqd/171    0.0     0\n   1054 kworker/171:0H-  0.0     0\n   1055 cpuhp/172        0.0     0\n   1056 idle_inject/172  0.0     0\n   1057 migration/172    0.0     0\n   1058 ksoftirqd/172    0.0     0\n   1060 kworker/172:0H-  0.0     0\n   1061 cpuhp/173        0.0     0\n   1062 idle_inject/173  0.0     0\n   1063 migration/173    0.0     0\n   1064 ksoftirqd/173    0.0     0\n   1066 kworker/173:0H-  0.0     0\n   1067 cpuhp/174        0.0     0\n   1068 idle_inject/174  0.0     0\n   1069 migration/174    0.0     0\n   1070 ksoftirqd/174    0.0     0\n   1072 kworker/174:0H-  0.0     0\n   1073 cpuhp/175        0.0     0\n   1074 idle_inject/175  0.0     0\n   1075 migration/175    0.0     0\n   1076 ksoftirqd/175    0.0     0\n   1078 kworker/175:0H-  0.0     0\n   1079 cpuhp/176        0.0     0\n   1080 idle_inject/176  0.0     0\n   1081 migration/176    0.0     0\n   1082 ksoftirqd/176    0.0     0\n   1084 kworker/176:0H-  0.0     0\n   1085 cpuhp/177        0.0     0\n   1086 idle_inject/177  0.0     0\n   1087 migration/177    0.0     0\n   1088 ksoftirqd/177    0.0     0\n   1090 kworker/177:0H-  0.0     0\n   1091 cpuhp/178        0.0     0\n   1092 idle_inject/178  0.0     0\n   1093 migration/178    0.0     0\n   1094 ksoftirqd/178    0.0     0\n   1096 kworker/178:0H-  0.0     0\n   1097 cpuhp/179        0.0     0\n   1098 idle_inject/179  0.0     0\n   1099 migration/179    0.0     0\n   1100 ksoftirqd/179    0.0     0\n   1102 kworker/179:0H-  0.0     0\n   1103 cpuhp/180        0.0     0\n   1104 idle_inject/180  0.0     0\n   1105 migration/180    0.0     0\n   1106 ksoftirqd/180    0.0     0\n   1108 kworker/180:0H-  0.0     0\n   1109 cpuhp/181        0.0     0\n   1110 idle_inject/181  0.0     0\n   1111 migration/181    0.0     0\n   1112 ksoftirqd/181    0.0     0\n   1114 kworker/181:0H-  0.0     0\n   1115 cpuhp/182        0.0     0\n   1116 idle_inject/182  0.0     0\n   1117 migration/182    0.0     0\n   1118 ksoftirqd/182    0.0     0\n   1120 kworker/182:0H-  0.0     0\n   1121 cpuhp/183        0.0     0\n   1122 idle_inject/183  0.0     0\n   1123 migration/183    0.0     0\n   1124 ksoftirqd/183    0.0     0\n   1126 kworker/183:0H-  0.0     0\n   1127 cpuhp/184        0.0     0\n   1128 idle_inject/184  0.0     0\n   1129 migration/184    0.0     0\n   1130 ksoftirqd/184    0.0     0\n   1132 kworker/184:0H-  0.0     0\n   1133 cpuhp/185        0.0     0\n   1134 idle_inject/185  0.0     0\n   1135 migration/185    0.0     0\n   1136 ksoftirqd/185    0.0     0\n   1138 kworker/185:0H-  0.0     0\n   1139 cpuhp/186        0.0     0\n   1140 idle_inject/186  0.0     0\n   1141 migration/186    0.0     0\n   1142 ksoftirqd/186    0.0     0\n   1144 kworker/186:0H-  0.0     0\n   1145 cpuhp/187        0.0     0\n   1146 idle_inject/187  0.0     0\n   1147 migration/187    0.0     0\n   1148 ksoftirqd/187    0.0     0\n   1150 kworker/187:0H-  0.0     0\n   1151 cpuhp/188        0.0     0\n   1152 idle_inject/188  0.0     0\n   1153 migration/188    0.0     0\n   1154 ksoftirqd/188    0.0     0\n   1156 kworker/188:0H-  0.0     0\n   1157 cpuhp/189        0.0     0\n   1158 idle_inject/189  0.0     0\n   1159 migration/189    0.0     0\n   1160 ksoftirqd/189    0.0     0\n   1162 kworker/189:0H-  0.0     0\n   1163 cpuhp/190        0.0     0\n   1164 idle_inject/190  0.0     0\n   1165 migration/190    0.0     0\n   1166 ksoftirqd/190    0.0     0\n   1168 kworker/190:0H-  0.0     0\n   1169 cpuhp/191        0.0     0\n   1170 idle_inject/191  0.0     0\n   1171 migration/191    0.0     0\n   1172 ksoftirqd/191    0.0     0\n   1174 kworker/191:0H-  0.0     0\n   1175 kdevtmpfs        0.0     0\n   1176 inet_frag_wq     0.0     0\n   1177 kauditd          0.0     0\n   1178 khungtaskd       0.0     0\n   1179 oom_reaper       0.0     0\n   1180 writeback        0.0     0\n   1181 kcompactd0       0.0     0\n   1182 kcompactd1       0.0     0\n   1183 kcompactd2       0.0     0\n   1184 kcompactd3       0.0     0\n   1185 kcompactd4       0.0     0\n   1186 kcompactd5       0.0     0\n   1187 kcompactd6       0.0     0\n   1188 kcompactd7       0.0     0\n   1189 ksmd             0.0     0\n   1190 khugepaged       0.0     0\n   1237 kintegrityd      0.0     0\n   1238 kblockd          0.0     0\n   1239 blkcg_punt_bio   0.0     0\n   1430 tpm_dev_wq       0.0     0\n   1431 ata_sff          0.0     0\n   1432 md               0.0     0\n   1433 edac-poller      0.0     0\n   1434 devfreq_wq       0.0     0\n   1435 watchdogd        0.0     0\n   1436 kworker/96:1H-e  0.0     0\n   1438 kswapd0          0.0     0\n   1439 kswapd1          0.0     0\n   1440 kswapd2          0.0     0\n   1441 kswapd3          0.0     0\n   1442 kswapd4          0.0     0\n   1443 kswapd5          0.0     0\n   1444 kswapd6          0.0     0\n   1445 kswapd7          0.0     0\n   1446 ecryptfs-kthrea  0.0     0\n   1448 kthrotld         0.0     0\n   1449 irq/52-pciehp    0.0     0\n   1450 irq/53-pciehp    0.0     0\n   1451 irq/54-pciehp    0.0     0\n   1452 irq/55-pciehp    0.0     0\n   1453 acpi_thermal_pm  0.0     0\n   1455 vfio-irqfd-clea  0.0     0\n   1456 kworker/u384:1+  0.0     0\n   1457 mld              0.0     0\n   1458 kworker/3:1H-kb  0.0     0\n   1459 ipv6_addrconf    0.0     0\n   1469 kstrp            0.0     0\n   1472 zswap-shrink     0.0     0\n   1664 kworker/u393:0   0.0     0\n   1679 charger_manager  0.0     0\n   1702 kworker/105:1H-  0.0     0\n   1751 kworker/101:1H-  0.0     0\n   1752 nvme-wq          0.0     0\n   1753 nvme-reset-wq    0.0     0\n   1754 nvme-delete-wq   0.0     0\n   1757 cryptd           0.0     0\n   1825 kworker/143:1H-  0.0     0\n   1829 kworker/36:1H-k  0.0     0\n   1835 kworker/76:1H-k  0.0     0\n   1975 kworker/5:1H-kb  0.0     0\n   1977 kworker/6:1H-kb  0.0     0\n   1981 kworker/107:1H-  0.0     0\n   1983 kworker/100:1H-  0.0     0\n   1984 kworker/2:1H-kb  0.0     0\n   1986 kworker/8:1H-kb  0.0     0\n   1988 kworker/10:1H-k  0.0     0\n   1992 kworker/112:1H-  0.0     0\n   1995 kworker/24:1H-k  0.0     0\n   1996 kworker/106:1H-  0.0     0\n   2006 kworker/169:1H-  0.0     0\n   2008 kworker/151:1H-  0.0     0\n   2014 kworker/157:1H-  0.0     0\n   2027 kworker/27:1H-k  0.0     0\n   2028 kworker/25:1H-k  0.0     0\n   2032 kworker/131:1H-  0.0     0\n   2035 kworker/120:1H-  0.0     0\n   2037 kworker/18:1H-k  0.0     0\n   2039 kworker/126:1H-  0.0     0\n   2040 kworker/26:1H-k  0.0     0\n   2046 kworker/113:1H-  0.0     0\n   2047 kworker/125:1H-  0.0     0\n   2059 kworker/69:1H-k  0.0     0\n   2060 kworker/166:1H-  0.0     0\n   2061 kworker/159:1H-  0.0     0\n   2063 md0_raid1        0.0     0\n   2064 md2_raid1        0.0     0\n   2066 kworker/160:1H-  0.0     0\n   2069 kworker/60:1H-k  0.0     0\n   2089 kworker/162:1H-  0.0     0\n   2104 kworker/163:1H-  0.0     0\n   2114 kdmflush         0.0     0\n   2116 kdmflush         0.0     0\n   2117 kdmflush         0.0     0\n   2120 kdmflush         0.0     0\n   2124 kworker/164:1H-  0.0     0\n   2127 kworker/152:1H-  0.0     0\n   2164 kworker/52:1H-k  0.0     0\n   2175 kworker/4:1H-kb  0.0     0\n   2193 kworker/54:1H-k  0.0     0\n   2194 kworker/53:1H-k  0.0     0\n   2201 kworker/51:1H-k  0.0     0\n   2203 scsi_eh_0        0.0     0\n   2204 scsi_tmf_0       0.0     0\n   2206 scsi_eh_1        0.0     0\n   2216 scsi_tmf_1       0.0     0\n   2217 scsi_eh_2        0.0     0\n   2218 scsi_tmf_2       0.0     0\n   2219 scsi_eh_3        0.0     0\n   2220 scsi_tmf_3       0.0     0\n   2221 scsi_eh_4        0.0     0\n   2222 scsi_tmf_4       0.0     0\n   2251 scsi_eh_5        0.0     0\n   2252 scsi_tmf_5       0.0     0\n   2253 scsi_eh_6        0.0     0\n   2254 scsi_tmf_6       0.0     0\n   2255 scsi_eh_7        0.0     0\n   2256 scsi_tmf_7       0.0     0\n   2264 kworker/129:1H-  0.0     0\n   2271 kworker/128:1H-  0.0     0\n   2277 kworker/31:1H-k  0.0     0\n   2281 kworker/130:1H-  0.0     0\n   2292 kworker/30:1H-k  0.0     0\n   2313 raid5wq          0.0     0\n   2369 kworker/102:1H-  0.0     0\n   2370 jbd2/dm-3-8      0.0     0\n   2371 ext4-rsv-conver  0.0     0\n   2385 jbd2/dm-0-8      0.0     0\n   2386 ext4-rsv-conver  0.0     0\n   2403 kworker/99:1H-k  0.0     0\n   2410 kworker/9:1H-kb  0.0     0\n   2419 kworker/122:1H-  0.0     0\n   2463 kworker/98:1H-k  0.0     0\n   2464 kworker/0:1H-kb  0.0     0\n   2484 kworker/17:1H-k  0.0     0\n   2496 kworker/117:1H-  0.0     0\n   2499 kaluad           0.0     0\n   2502 kmpath_rdacd     0.0     0\n   2503 kmpathd          0.0     0\n   2504 kmpath_handlerd  0.0     0\n   2505 multipathd       0.0 27484\n   2506 kworker/12:1H-k  0.0     0\n   2516 kworker/97:1H-k  0.0     0\n   2517 kworker/115:1H-  0.0     0\n   2651 kworker/110:1H-  0.0     0\n   2654 ipmi-msghandler  0.0     0\n   2658 kworker/19:1H-k  0.0     0\n   2659 kipmi0           0.0     0\n   2661 kworker/123:1H-  0.0     0\n   2667 kworker/16:1H-k  0.0     0\n   2669 kworker/21:1H-k  0.0     0\n   2670 kworker/33:1H-k  0.0     0\n   2694 kworker/1:1H-kb  0.0     0\n   2714 kworker/121:1H-  0.0     0\n   2715 kworker/28:1H-k  0.0     0\n   2722 kworker/34:1H-k  0.0     0\n   2723 kworker/127:1H-  0.0     0\n   2724 kworker/43:1H-k  0.0     0\n   2728 kworker/178:1H-  0.0     0\n   2732 kworker/29:1H-k  0.0     0\n   2735 kworker/85:1H-k  0.0     0\n   2736 kworker/175:1H-  0.0     0\n   2744 kworker/177:1H-  0.0     0\n   2745 kworker/174:1H-  0.0     0\n   2748 kworker/49:1H-k  0.0     0\n   2783 kworker/179:1H-  0.0     0\n   2791 kworker/70:1H-k  0.0     0\n   2793 kworker/86:1H-k  0.0     0\n   2794 kworker/71:1H-k  0.0     0\n   2800 kworker/148:1H-  0.0     0\n   2808 kworker/176:1H-  0.0     0\n   2828 mgmt_wq0         0.0     0\n   2899 qdma_cmpl_statu  0.0     0\n   2900 qdma_cmpl_statu  0.0     0\n   2901 qdma_cmpl_statu  0.0     0\n   2903 qdma_cmpl_statu  0.0     0\n   2904 qdma_cmpl_statu  0.0     0\n   2905 qdma_cmpl_statu  0.0     0\n   2907 qdma_cmpl_statu  0.0     0\n   2908 qdma_cmpl_statu  0.0     0\n   2909 qdma_cmpl_statu  0.0     0\n   2911 qdma_cmpl_statu  0.0     0\n   2912 qdma_cmpl_statu  0.0     0\n   2913 qdma_cmpl_statu  0.0     0\n   2915 qdma_cmpl_statu  0.0     0\n   2916 qdma_cmpl_statu  0.0     0\n   2917 qdma_cmpl_statu  0.0     0\n   2918 qdma_cmpl_statu  0.0     0\n   2920 qdma_cmpl_statu  0.0     0\n   2921 qdma_cmpl_statu  0.0     0\n   2922 qdma_cmpl_statu  0.0     0\n   2923 qdma_cmpl_statu  0.0     0\n   2925 qdma_cmpl_statu  0.0     0\n   2926 qdma_cmpl_statu  0.0     0\n   2927 qdma_cmpl_statu  0.0     0\n   2928 qdma_cmpl_statu  0.0     0\n   2930 qdma_cmpl_statu  0.0     0\n   2931 qdma_cmpl_statu  0.0     0\n   2932 qdma_cmpl_statu  0.0     0\n   2933 qdma_cmpl_statu  0.0     0\n   2935 qdma_cmpl_statu  0.0     0\n   2936 qdma_cmpl_statu  0.0     0\n   2937 qdma_cmpl_statu  0.0     0\n   2939 qdma_cmpl_statu  0.0     0\n   2940 qdma_cmpl_statu  0.0     0\n   2941 qdma_cmpl_statu  0.0     0\n   2943 qdma_cmpl_statu  0.0     0\n   2944 qdma_cmpl_statu  0.0     0\n   2945 qdma_cmpl_statu  0.0     0\n   2946 qdma_cmpl_statu  0.0     0\n   2947 qdma_cmpl_statu  0.0     0\n   2949 qdma_cmpl_statu  0.0     0\n   2950 qdma_cmpl_statu  0.0     0\n   2951 qdma_cmpl_statu  0.0     0\n   2953 qdma_cmpl_statu  0.0     0\n   2954 qdma_cmpl_statu  0.0     0\n   2955 qdma_cmpl_statu  0.0     0\n   2957 qdma_cmpl_statu  0.0     0\n   2958 qdma_cmpl_statu  0.0     0\n   2959 qdma_cmpl_statu  0.0     0\n   2961 qdma_cmpl_statu  0.0     0\n   2962 qdma_cmpl_statu  0.0     0\n   2963 qdma_cmpl_statu  0.0     0\n   2965 qdma_cmpl_statu  0.0     0\n   2966 qdma_cmpl_statu  0.0     0\n   2967 qdma_cmpl_statu  0.0     0\n   2969 qdma_cmpl_statu  0.0     0\n   2970 qdma_cmpl_statu  0.0     0\n   2971 qdma_cmpl_statu  0.0     0\n   2973 qdma_cmpl_statu  0.0     0\n   2974 qdma_cmpl_statu  0.0     0\n   2975 qdma_cmpl_statu  0.0     0\n   2977 qdma_cmpl_statu  0.0     0\n   2978 qdma_cmpl_statu  0.0     0\n   2979 qdma_cmpl_statu  0.0     0\n   2980 qdma_cmpl_statu  0.0     0\n   2982 qdma_cmpl_statu  0.0     0\n   2983 qdma_cmpl_statu  0.0     0\n   2984 qdma_cmpl_statu  0.0     0\n   2986 qdma_cmpl_statu  0.0     0\n   2987 qdma_cmpl_statu  0.0     0\n   2988 qdma_cmpl_statu  0.0     0\n   2989 qdma_cmpl_statu  0.0     0\n   2991 qdma_cmpl_statu  0.0     0\n   2992 qdma_cmpl_statu  0.0     0\n   2994 qdma_cmpl_statu  0.0     0\n   2995 qdma_cmpl_statu  0.0     0\n   2996 qdma_cmpl_statu  0.0     0\n   2998 qdma_cmpl_statu  0.0     0\n   2999 qdma_cmpl_statu  0.0     0\n   3000 qdma_cmpl_statu  0.0     0\n   3002 qdma_cmpl_statu  0.0     0\n   3003 qdma_cmpl_statu  0.0     0\n   3004 qdma_cmpl_statu  0.0     0\n   3005 qdma_cmpl_statu  0.0     0\n   3007 qdma_cmpl_statu  0.0     0\n   3008 qdma_cmpl_statu  0.0     0\n   3009 qdma_cmpl_statu  0.0     0\n   3011 qdma_cmpl_statu  0.0     0\n   3012 qdma_cmpl_statu  0.0     0\n   3013 qdma_cmpl_statu  0.0     0\n   3015 qdma_cmpl_statu  0.0     0\n   3016 qdma_cmpl_statu  0.0     0\n   3017 qdma_cmpl_statu  0.0     0\n   3019 qdma_cmpl_statu  0.0     0\n   3020 qdma_cmpl_statu  0.0     0\n   3021 qdma_cmpl_statu  0.0     0\n   3023 qdma_cmpl_statu  0.0     0\n   3024 qdma_cmpl_statu  0.0     0\n   3025 qdma_cmpl_statu  0.0     0\n   3027 qdma_cmpl_statu  0.0     0\n   3028 qdma_cmpl_statu  0.0     0\n   3029 qdma_cmpl_statu  0.0     0\n   3030 qdma_cmpl_statu  0.0     0\n   3031 qdma_cmpl_statu  0.0     0\n   3032 qdma_cmpl_statu  0.0     0\n   3034 qdma_cmpl_statu  0.0     0\n   3035 qdma_cmpl_statu  0.0     0\n   3036 qdma_cmpl_statu  0.0     0\n   3037 qdma_cmpl_statu  0.0     0\n   3039 qdma_cmpl_statu  0.0     0\n   3040 qdma_cmpl_statu  0.0     0\n   3041 qdma_cmpl_statu  0.0     0\n   3043 qdma_cmpl_statu  0.0     0\n   3044 qdma_cmpl_statu  0.0     0\n   3045 qdma_cmpl_statu  0.0     0\n   3046 qdma_cmpl_statu  0.0     0\n   3048 qdma_cmpl_statu  0.0     0\n   3049 qdma_cmpl_statu  0.0     0\n   3050 qdma_cmpl_statu  0.0     0\n   3052 qdma_cmpl_statu  0.0     0\n   3053 qdma_cmpl_statu  0.0     0\n   3054 qdma_cmpl_statu  0.0     0\n   3056 qdma_cmpl_statu  0.0     0\n   3057 qdma_cmpl_statu  0.0     0\n   3058 qdma_cmpl_statu  0.0     0\n   3060 qdma_cmpl_statu  0.0     0\n   3061 qdma_cmpl_statu  0.0     0\n   3062 qdma_cmpl_statu  0.0     0\n   3063 qdma_cmpl_statu  0.0     0\n   3064 qdma_cmpl_statu  0.0     0\n   3066 qdma_cmpl_statu  0.0     0\n   3067 qdma_cmpl_statu  0.0     0\n   3068 qdma_cmpl_statu  0.0     0\n   3069 qdma_cmpl_statu  0.0     0\n   3071 qdma_cmpl_statu  0.0     0\n   3072 qdma_cmpl_statu  0.0     0\n   3073 qdma_cmpl_statu  0.0     0\n   3074 qdma_cmpl_statu  0.0     0\n   3076 qdma_cmpl_statu  0.0     0\n   3077 qdma_cmpl_statu  0.0     0\n   3078 qdma_cmpl_statu  0.0     0\n   3079 qdma_cmpl_statu  0.0     0\n   3081 qdma_cmpl_statu  0.0     0\n   3082 qdma_cmpl_statu  0.0     0\n   3083 qdma_cmpl_statu  0.0     0\n   3084 qdma_cmpl_statu  0.0     0\n   3086 qdma_cmpl_statu  0.0     0\n   3087 qdma_cmpl_statu  0.0     0\n   3088 qdma_cmpl_statu  0.0     0\n   3089 qdma_cmpl_statu  0.0     0\n   3091 qdma_cmpl_statu  0.0     0\n   3092 qdma_cmpl_statu  0.0     0\n   3093 qdma_cmpl_statu  0.0     0\n   3094 qdma_cmpl_statu  0.0     0\n   3095 qdma_cmpl_statu  0.0     0\n   3096 qdma_cmpl_statu  0.0     0\n   3097 qdma_cmpl_statu  0.0     0\n   3099 qdma_cmpl_statu  0.0     0\n   3100 qdma_cmpl_statu  0.0     0\n   3101 qdma_cmpl_statu  0.0     0\n   3102 qdma_cmpl_statu  0.0     0\n   3103 qdma_cmpl_statu  0.0     0\n   3104 qdma_cmpl_statu  0.0     0\n   3105 qdma_cmpl_statu  0.0     0\n   3106 qdma_cmpl_statu  0.0     0\n   3107 qdma_cmpl_statu  0.0     0\n   3108 qdma_cmpl_statu  0.0     0\n   3109 qdma_cmpl_statu  0.0     0\n   3110 qdma_cmpl_statu  0.0     0\n   3111 qdma_cmpl_statu  0.0     0\n   3112 qdma_cmpl_statu  0.0     0\n   3113 qdma_cmpl_statu  0.0     0\n   3114 qdma_cmpl_statu  0.0     0\n   3115 qdma_cmpl_statu  0.0     0\n   3116 qdma_cmpl_statu  0.0     0\n   3117 qdma_cmpl_statu  0.0     0\n   3118 qdma_cmpl_statu  0.0     0\n   3119 qdma_cmpl_statu  0.0     0\n   3120 qdma_cmpl_statu  0.0     0\n   3121 qdma_cmpl_statu  0.0     0\n   3122 qdma_cmpl_statu  0.0     0\n   3123 qdma_cmpl_statu  0.0     0\n   3124 qdma_cmpl_statu  0.0     0\n   3125 qdma_cmpl_statu  0.0     0\n   3126 qdma_cmpl_statu  0.0     0\n   3127 qdma_cmpl_statu  0.0     0\n   3128 qdma_cmpl_statu  0.0     0\n   3129 qdma_cmpl_statu  0.0     0\n   3130 qdma_cmpl_statu  0.0     0\n   3131 qdma_cmpl_statu  0.0     0\n   3132 qdma_cmpl_statu  0.0     0\n   3133 qdma_cmpl_statu  0.0     0\n   3134 qdma_cmpl_statu  0.0     0\n   3135 mlx5_cmd_0000:2  0.0     0\n   3136 mlx5_health0000  0.0     0\n   3137 mlx5_page_alloc  0.0     0\n   3138 kworker/22:1H-k  0.0     0\n   3140 kworker/u384:4+  0.0     0\n   3142 kworker/118:1H-  0.0     0\n   3149 kworker/u384:5+  0.0     0\n   3154 xocl_wq0         0.0     0\n   3155 kworker/u384:8+  0.0     0\n   3169 kworker/133:1H-  0.0     0\n   3175 kworker/91:1H-k  0.0     0\n   3177 kworker/32:1H-k  0.0     0\n   3179 kworker/46:1H-k  0.0     0\n   3182 kworker/168:1H-  0.0     0\n   3185 kworker/90:1H-k  0.0     0\n   3189 kworker/83:1H-k  0.0     0\n   3190 kworker/145:1H-  0.0     0\n   3206 kworker/47:1H-k  0.0     0\n   3208 kworker/132:1H-  0.0     0\n   3210 kworker/116:1H-  0.0     0\n   3275 kworker/73:1H-k  0.0     0\n   3276 mailbox.m.94371  0.0     0\n   3277 mailbox.m.94371  0.0     0\n   3278 mailbox.m.94371  0.0     0\n   3285 nv_queue         0.0     0\n   3287 nv_mem_pool_scr  0.0     0\n   3288 nv_mem_pool_scr  0.0     0\n   3289 nv_mem_pool_scr  0.0     0\n   3290 nv_mem_pool_scr  0.0     0\n   3291 nv_mem_pool_scr  0.0     0\n   3293 nv_mem_pool_scr  0.0     0\n   3294 nv_mem_pool_scr  0.0     0\n   3295 nv_mem_pool_scr  0.0     0\n   3296 nv_mem_pool_scr  0.0     0\n   3297 nv_mem_pool_scr  0.0     0\n   3298 nv_mem_pool_scr  0.0     0\n   3299 nv_mem_pool_scr  0.0     0\n   3300 nv_mem_pool_scr  0.0     0\n   3301 nv_mem_pool_scr  0.0     0\n   3302 nv_mem_pool_scr  0.0     0\n   3304 nv_mem_pool_scr  0.0     0\n   3305 nv_mem_pool_scr  0.0     0\n   3306 nv_mem_pool_scr  0.0     0\n   3307 nv_mem_pool_scr  0.0     0\n   3308 nv_mem_pool_scr  0.0     0\n   3309 nv_mem_pool_scr  0.0     0\n   3310 nv_mem_pool_scr  0.0     0\n   3311 nv_mem_pool_scr  0.0     0\n   3312 nv_mem_pool_scr  0.0     0\n   3313 nv_queue         0.0     0\n   3317 nv_open_q        0.0     0\n   3327 0000:6a:01.0     0.0     0\n   3330 irq/741-idxd-mi  0.0     0\n   3331 irq/742-idxd-po  0.0     0\n   3332 irq/743-idxd-po  0.0     0\n   3333 irq/744-idxd-po  0.0     0\n   3336 irq/745-idxd-po  0.0     0\n   3337 irq/746-idxd-po  0.0     0\n   3338 irq/747-idxd-po  0.0     0\n   3339 irq/748-idxd-po  0.0     0\n   3340 irq/749-idxd-po  0.0     0\n   3350 mdadm            0.0  2536\n   3361 kworker/134:1H-  0.0     0\n   3371 jbd2/md0p1-8     0.0     0\n   3372 ext4-rsv-conver  0.0     0\n   3374 jbd2/dm-2-8      0.0     0\n   3375 ext4-rsv-conver  0.0     0\n   3379 kworker/56:1H-k  0.0     0\n   3382 jbd2/dm-1-8      0.0     0\n   3383 ext4-rsv-conver  0.0     0\n   3384 kworker/147:1H-  0.0     0\n   3389 kworker/80:1H-k  0.0     0\n   3391 kworker/95:1H-k  0.0     0\n   3397 kworker/124:1H-  0.0     0\n   3401 kworker/11:1H-k  0.0     0\n   3407 kworker/61:1H-k  0.0     0\n   3410 0000:6f:01.0     0.0     0\n   3411 irq/750-idxd-mi  0.0     0\n   3412 irq/751-idxd-po  0.0     0\n   3413 irq/752-idxd-po  0.0     0\n   3414 irq/753-idxd-po  0.0     0\n   3415 irq/754-idxd-po  0.0     0\n   3416 irq/755-idxd-po  0.0     0\n   3417 irq/756-idxd-po  0.0     0\n   3418 irq/757-idxd-po  0.0     0\n   3419 irq/758-idxd-po  0.0     0\n   3424 nvidia-modeset/  0.0     0\n   3425 nvidia-modeset/  0.0     0\n   3430 mlx5_events      0.0     0\n   3431 mlx5_fw_reset_e  0.0     0\n   3432 ptp2             0.0     0\n   3433 mlx5_esw_wq      0.0     0\n   3435 mlx5_vhca_event  0.0     0\n   3436 mlx5_fc          0.0     0\n   3437 mlx5_fw_tracer   0.0     0\n   3438 mlx5_hv_vhca     0.0     0\n   3439 0000:74:01.0     0.0     0\n   3440 irq/759-idxd-mi  0.0     0\n   3441 irq/760-idxd-po  0.0     0\n   3443 irq/761-idxd-po  0.0     0\n   3444 irq/762-idxd-po  0.0     0\n   3445 irq/763-idxd-po  0.0     0\n   3446 irq/764-idxd-po  0.0     0\n   3447 irq/765-idxd-po  0.0     0\n   3448 irq/766-idxd-po  0.0     0\n   3449 irq/767-idxd-po  0.0     0\n   3450 kworker/165:1H-  0.0     0\n   3452 0000:79:01.0     0.0     0\n   3454 irq/832-idxd-mi  0.0     0\n   3455 irq/833-idxd-po  0.0     0\n   3456 irq/834-idxd-po  0.0     0\n   3457 kworker/15:1H-k  0.0     0\n   3458 irq/835-idxd-po  0.0     0\n   3459 irq/836-idxd-po  0.0     0\n   3460 irq/837-idxd-po  0.0     0\n   3461 irq/838-idxd-po  0.0     0\n   3462 mlx5_active_sf   0.0     0\n   3463 irq/839-idxd-po  0.0     0\n   3465 irq/840-idxd-po  0.0     0\n   3471 kworker/62:1H-k  0.0     0\n   3476 kworker/35:1H-k  0.0     0\n   3477 mlx5e            0.0     0\n   3479 0000:e7:01.0     0.0     0\n   3480 irq/841-idxd-mi  0.0     0\n   3481 irq/842-idxd-po  0.0     0\n   3482 irq/843-idxd-po  0.0     0\n   3483 irq/844-idxd-po  0.0     0\n   3484 irq/845-idxd-po  0.0     0\n   3486 irq/846-idxd-po  0.0     0\n   3487 irq/847-idxd-po  0.0     0\n   3488 irq/848-idxd-po  0.0     0\n   3489 irq/849-idxd-po  0.0     0\n   3495 mlx5e_tls_tx_po  0.0     0\n   3497 irq/850-nvidia   0.0     0\n   3498 irq/851-nvidia   0.0     0\n   3499 irq/852-nvidia   0.0     0\n   3500 irq/853-nvidia   0.0     0\n   3502 irq/854-nvidia   0.0     0\n   3503 irq/855-nvidia   0.0     0\n   3504 nvidia           0.0     0\n   3505 nv_queue         0.0     0\n   3506 kworker/146:1H-  0.0     0\n   3508 0000:ec:01.0     0.0     0\n   3509 irq/856-idxd-mi  0.0     0\n   3510 irq/857-idxd-po  0.0     0\n   3511 irq/858-idxd-po  0.0     0\n   3512 irq/859-idxd-po  0.0     0\n   3513 irq/860-idxd-po  0.0     0\n   3514 irq/861-idxd-po  0.0     0\n   3515 irq/862-idxd-po  0.0     0\n   3516 irq/863-idxd-po  0.0     0\n   3517 irq/864-idxd-po  0.0     0\n   3523 kworker/180:1H-  0.0     0\n   3524 mlx5e_arfs       0.0     0\n   3525 0000:f1:01.0     0.0     0\n   3526 irq/865-idxd-mi  0.0     0\n   3527 irq/866-idxd-po  0.0     0\n   3528 irq/867-idxd-po  0.0     0\n   3529 irq/868-idxd-po  0.0     0\n   3530 irq/869-idxd-po  0.0     0\n   3531 irq/870-idxd-po  0.0     0\n   3532 irq/871-idxd-po  0.0     0\n   3533 irq/872-idxd-po  0.0     0\n   3534 irq/873-idxd-po  0.0     0\n   3535 kworker/181:1H-  0.0     0\n   3542 kworker/156:1H-  0.0     0\n   3562 mlx5e_tls_rx     0.0     0\n   3563 kworker/158:1H-  0.0     0\n   3566 mlx5_cmd_0000:2  0.0     0\n   3573 mlx5_health0000  0.0     0\n   3574 mlx5_page_alloc  0.0     0\n   3578 kworker/64:1H-k  0.0     0\n   3580 kworker/155:1H-  0.0     0\n   3582 kworker/150:1H-  0.0     0\n   3583 kworker/153:1H-  0.0     0\n   3585 kworker/154:1H-  0.0     0\n   3600 kworker/84:1H-k  0.0     0\n   3604 kworker/58:1H-k  0.0     0\n   3610 kworker/173:1H-  0.0     0\n   3613 kworker/149:1H-  0.0     0\n   3615 xclmgmt health   0.0     0\n   3621 kworker/50:1H-k  0.0     0\n   3622 kworker/48:1H-k  0.0     0\n   3650 0000:f6:01.0     0.0     0\n   3651 irq/874-idxd-mi  0.0     0\n   3652 irq/875-idxd-po  0.0     0\n   3653 irq/876-idxd-po  0.0     0\n   3654 irq/877-idxd-po  0.0     0\n   3655 irq/878-idxd-po  0.0     0\n   3656 irq/879-idxd-po  0.0     0\n   3657 irq/880-idxd-po  0.0     0\n   3658 irq/881-idxd-po  0.0     0\n   3659 irq/882-idxd-po  0.0     0\n   3663 ib-comp-wq       0.0     0\n   3665 ib-comp-unb-wq   0.0     0\n   3666 ib_mcast         0.0     0\n   3667 ib_nl_sa_wq      0.0     0\n   3732 kworker/66:1H-k  0.0     0\n   3742 ovsdb-server     0.0  6288\n   3781 kworker/57:1H-k  0.0     0\n   3795 mlx5_events      0.0     0\n   3796 mlx5_fw_reset_e  0.0     0\n   3797 ptp3             0.0     0\n   3798 mlx5_esw_wq      0.0     0\n   3799 mlx5_vhca_event  0.0     0\n   3800 mlx5_fc          0.0     0\n   3801 mlx5_fw_tracer   0.0     0\n   3802 mlx5_hv_vhca     0.0     0\n   3803 mlx5_active_sf   0.0     0\n   3804 mlx5e            0.0     0\n   3805 mlx5e_tls_tx_po  0.0     0\n   3823 mlx5e_arfs       0.0     0\n   3850 nfit             0.0     0\n   3855 mlx5e_tls_rx     0.0     0\n   3892 mlx5_cmd_0000:b  0.0     0\n   3893 mlx5_health0000  0.0     0\n   3894 mlx5_page_alloc  0.0     0\n   3895 kworker/103:1H-  0.0     0\n   3896 kworker/138:1H-  0.0     0\n   3897 kworker/136:1H-  0.0     0\n   3898 kworker/104:1H-  0.0     0\n   3899 kworker/137:1H-  0.0     0\n   3905 kworker/55:1H-k  0.0     0\n   3915 mlx5_events      0.0     0\n   3916 mlx5_fw_reset_e  0.0     0\n   3917 ptp4             0.0     0\n   3919 mlx5_esw_wq      0.0     0\n   3920 mlx5_vhca_event  0.0     0\n   3921 mlx5_fc          0.0     0\n   3922 mlx5_fw_tracer   0.0     0\n   3923 mlx5_hv_vhca     0.0     0\n   3924 mlx5_active_sf   0.0     0\n   3926 mlx5e            0.0     0\n   3927 kworker/72:1H-k  0.0     0\n   3928 mlx5e_tls_tx_po  0.0     0\n   3931 mlx5e_arfs       0.0     0\n   3935 mlx5e_tls_rx     0.0     0\n   3936 mlx5_cmd_0000:b  0.0     0\n   3937 mlx5_health0000  0.0     0\n   3938 mlx5_page_alloc  0.0     0\n   3945 kworker/38:1H-k  0.0     0\n   3946 mlx5_events      0.0     0\n   3947 mlx5_fw_reset_e  0.0     0\n   3948 ptp5             0.0     0\n   3949 mlx5_esw_wq      0.0     0\n   3950 mlx5_vhca_event  0.0     0\n   3951 mlx5_fc          0.0     0\n   3952 mlx5_fw_tracer   0.0     0\n   3953 mlx5_hv_vhca     0.0     0\n   3954 mlx5_active_sf   0.0     0\n   3955 mlx5e            0.0     0\n   3956 mlx5e_tls_tx_po  0.0     0\n   3957 mlx5e_arfs       0.0     0\n   3958 mlx5e_tls_rx     0.0     0\n   3959 mlx5_ib_sigerr_  0.0     0\n   3960 kworker/141:1H-  0.0     0\n   3963 ib_mad1          0.0     0\n   3966 mkey_cache       0.0     0\n   3968 kworker/13:1H-k  0.0     0\n   3971 kworker/20:1H-k  0.0     0\n   3986 kworker/111:1H-  0.0     0\n   4009 ib_mad1          0.0     0\n   4010 mkey_cache       0.0     0\n   4011 kworker/79:1H-k  0.0     0\n   4023 ib_mad1          0.0     0\n   4026 mkey_cache       0.0     0\n   4027 kworker/u384:11  0.0     0\n   4030 ib_mad1          0.0     0\n   4031 mkey_cache       0.0     0\n   4043 kworker/82:1H-k  0.0     0\n   4047 kworker/78:1H-k  0.0     0\n   4348 rdma-ndd         0.0  2984\n   4369 kworker/171:1H-  0.0     0\n   4371 kworker/170:1H-  0.0     0\n   4372 kworker/172:1H-  0.0     0\n   4393 iw_cm_wq         0.0     0\n   4394 rdma_cm          0.0     0\n   4406 kworker/77:1H-k  0.0     0\n   4442 kworker/40:1H-k  0.0     0\n   4443 kworker/94:1H-k  0.0     0\n   4444 kworker/63:1H-k  0.0     0\n   4445 kworker/59:1H-k  0.0     0\n   4446 kworker/67:1H-k  0.0     0\n   4447 kworker/65:1H-k  0.0     0\n   4448 kworker/7:1H-kb  0.0     0\n   4469 mailbox.u.94371  0.0     0\n   4470 mailbox.u.94371  0.0     0\n   4471 mailbox.u.94371  0.0     0\n   4488 rpcbind          0.0  3244\n   4489 kworker/81:1H-k  0.0     0\n   4494 avahi-daemon     0.0  3724\n   4495 dbus-daemon      0.0  6120\n   4496 rpciod           0.0     0\n   4497 xprtiod          0.0     0\n   4502 irqbalance       0.4  4092\n   4506 networkd-dispat  0.0 10260\n   4509 smartd           0.0  3952\n   4513 kworker/167:1H-  0.0     0\n   4565 avahi-daemon     0.0     4\n   4587 fail2ban-server  0.0 18528\n   4590 rhsmcertd        0.0  2080\n   4599 python3.10       0.0  2504\n   4600 rshim            5.8  1844\n   4620 containerd       0.4 35272\n   4645 chronyd          0.0  2972\n   4648 chronyd          0.0  2048\n   4686 systemd-logind   0.0  6404\n   4698 uptimed          0.0  1844\n   4781 munged           0.0  3652\n   4840 unattended-upgr  0.0  3372\n   4867 /opt/saltstack/  0.1 76088\n   5769 kworker/109:1H-  0.0     0\n   5788 kworker/14:1H-k  0.0     0\n   5963 kworker/161:1H-  0.0     0\n   6417 UVM global queu  0.0     0\n   6418 UVM deferred re  0.0     0\n   6419 UVM Tools Event  0.0     0\n   6502 kworker/41:1H-k  0.0     0\n   6644 kworker/42:1H-k  0.0     0\n   6645 kworker/39:1H-k  0.0     0\n   6738 kworker/75:1H-k  0.0     0\n   6768 kworker/93:1H-k  0.0     0\n   6787 kworker/189:1H-  0.0     0\n   6843 kworker/140:1H-  0.0     0\n   7140 kworker/44:1H-k  0.0     0\n   7259 kworker/45:1H-k  0.0     0\n   7280 kworker/108:1H-  0.0     0\n   7283 kworker/186:1H-  0.0     0\n   7376 kworker/114:1H-  0.0     0\n   7377 kworker/119:1H-  0.0     0\n   7431 kworker/23:1H-k  0.0     0\n   7432 acc              0.5 29740\n   7433 dockerd          0.2 60264\n   7447 cron             0.0  2404\n   7502 sensu-agent      0.9 103904\n   7507 atd              0.0  2240\n   7542 automount        0.0  4084\n   7576 agetty           0.0   824\n   7596 nfsiod           0.0     0\n   7609 NFSv4 callback   0.0     0\n   7878 containerd-shim  0.0  5668\n   7901 systemd          0.0 10740\n   8248 docker-proxy     0.0  2352\n   8469 systemd-journal  0.0 255328\n   8486 containerd       1.3 56376\n   8573 kubelet          7.2 107612\n   8622 containerd-shim  0.0  5844\n   8644 containerd-shim  0.0  9492\n   8684 containerd-shim  0.0  5892\n   8706 containerd-shim  0.0  5876\n   8715 pause            0.0     0\n   8722 pause            0.0     0\n   8733 kworker/87:1H-k  0.0     0\n   8736 pause            0.0     0\n   8773 pause            0.0     0\n   8823 etcd             1.9 22024\n   8844 kworker/188:1H-  0.0     0\n   8856 kworker/187:1H-  0.0     0\n   8863 kube-controller  0.5 46760\n   8879 kube-scheduler   2.7 44148\n   8890 kworker/191:1H-  0.0     0\n   8950 kworker/183:1H-  0.0     0\n   8962 kworker/88:1H-k  0.0     0\n   9065 kworker/37:1H-k  0.0     0\n   9103 kworker/190:1H-  0.0     0\n   9201 kworker/144:1H-  0.0     0\n   9367 kworker/184:1H-  0.0     0\n   9418 kworker/182:1H-  0.0     0\n   9420 kworker/68:1H-k  0.0     0\n   9576 kworker/89:1H-k  0.0     0\n   9577 kworker/74:1H-k  0.0     0\n   9949 slurmstepd       0.0   776\n  10232 kworker/142:1H-  0.0     0\n  10279 kworker/185:1H-  0.0     0\n  10343 kworker/135:1H-  0.0     0\n  10511 udisksd          0.0  9456\n  10555 upowerd          0.0  5704\n  10946 kworker/92:1H-k  0.0     0\n  14632 kworker/148:2-m  0.0     0\n  28916 kworker/27:2-rc  0.0     0\n  29273 kworker/26:2     0.0     0\n  30640 kworker/28:1     0.0     0\n  49518 kworker/139:1H-  0.0     0\n  84446 kworker/126:0-m  0.0     0\n  90776 kworker/111:0-e  0.0     0\n 142745 kworker/108:0-e  0.0     0\n 142891 kworker/15:1     0.0     0\n 142910 kworker/116:0-m  0.0     0\n 142917 kworker/109:2    0.0     0\n 142963 kworker/111:2-m  0.0     0\n 143404 kworker/19:2-ev  0.0     0\n 143607 kworker/17:0-ev  0.0     0\n 143618 kworker/22:0     0.0     0\n 143637 kworker/119:0-e  0.0     0\n 149899 kworker/155:2-r  0.0     0\n 154208 kworker/110:0-m  0.0     0\n 174260 packagekitd      0.0  7276\n 259974 kworker/21:2-mm  0.0     0\n 260658 kworker/68:2-ev  0.0     0\n 299575 kworker/159:0-r  0.0     0\n 356622 kworker/16:2-rc  0.0     0\n 361347 kworker/29:0     0.0     0\n 363348 kworker/124:2-m  0.0     0\n 363628 kworker/125:1-r  0.0     0\n 363964 kworker/2:2-eve  0.0     0\n 364337 kworker/154:0-r  0.0     0\n 368620 kworker/12:3-rc  0.0     0\n 386598 kworker/118:2-m  0.0     0\n 394881 kworker/154:1-m  0.0     0\n 403339 rsyslogd         0.0  5936\n 405743 kworker/150:1-r  0.0     0\n 407762 kworker/153:1-r  0.0     0\n 408072 kworker/153:0-e  0.0     0\n 409202 kworker/163:1-r  0.0     0\n 409277 kworker/161:1-r  0.0     0\n 409483 kworker/53:1-mm  0.0     0\n 410321 kworker/155:0-m  0.0     0\n 434934 kworker/59:0-rc  0.0     0\n 435314 kworker/68:0-mm  0.0     0\n 436738 kworker/71:0-rc  0.0     0\n 436980 kworker/165:1-r  0.0     0\n 438464 kworker/129:0-e  0.0     0\n 438609 kworker/64:0-rc  0.0     0\n 438802 kworker/159:2-e  0.0     0\n 438861 kworker/57:2     0.0     0\n 443597 kworker/65:0-rc  0.0     0\n 447716 kworker/59:2-mm  0.0     0\n 448179 kworker/u388:1-  0.0     0\n 453459 rtkit-daemon     0.0  2696\n 453697 rpc.statd        0.0  1448\n 461008 kworker/162:0-m  0.0     0\n 461012 kworker/64:1-mm  0.0     0\n 480900 kworker/62:2-rc  0.0     0\n 481849 kworker/9:2-rcu  0.0     0\n 484607 kworker/50:0-mm  0.0     0\n 484990 kworker/160:0-r  0.0     0\n 484991 kworker/158:2-r  0.0     0\n 485918 kworker/99:2-ev  0.0     0\n 485959 kworker/51:0-rc  0.0     0\n 486607 kworker/165:0-m  0.0     0\n 487344 kworker/56:0-rc  0.0     0\n 488758 kworker/18:0-rc  0.0     0\n 488759 kworker/20:2     0.0     0\n 489244 kworker/146:1-r  0.0     0\n 503741 kworker/18:1-ev  0.0     0\n 503742 kworker/16:0-mm  0.0     0\n 503749 kworker/2:1-rcu  0.0     0\n 505958 kworker/187:1-r  0.0     0\n 508340 kworker/162:1    0.0     0\n 511362 kworker/21:1     0.0     0\n 511777 kworker/146:0-m  0.0     0\n 511804 kworker/8:2-eve  0.0     0\n 512914 kworker/114:1-m  0.0     0\n 512915 kworker/115:0-m  0.0     0\n 513043 kworker/15:0-mm  0.0     0\n 513271 kworker/67:0-mm  0.0     0\n 513272 kworker/161:0-m  0.0     0\n 513527 kworker/101:2-r  0.0     0\n 513613 kworker/70:2-rc  0.0     0\n 513967 kworker/157:1-m  0.0     0\n 514479 kworker/160:2-e  0.0     0\n 514480 kworker/62:1-rc  0.0     0\n 514783 kworker/71:2-mm  0.0     0\n 515329 kworker/9:0-eve  0.0     0\n 515360 kworker/7:2-rcu  0.0     0\n 515554 kworker/51:2-mm  0.0     0\n 515595 kworker/98:2     0.0     0\n 515847 kworker/105:0-r  0.0     0\n 516305 kworker/55:0-mm  0.0     0\n 516324 kworker/54:1-rc  0.0     0\n 516475 kworker/u387:1-  0.0     0\n 516638 kworker/6:2-rcu  0.0     0\n 516721 kworker/152:2-r  0.0     0\n 516722 kworker/145:0-r  0.0     0\n 517264 kworker/60:2-rc  0.0     0\n 517701 kworker/151:0-r  0.0     0\n 518401 kworker/150:0-m  0.0     0\n 519500 kworker/186:1-r  0.0     0\n 519797 kworker/95:0-rc  0.0     0\n 520955 kworker/58:2-mm  0.0     0\n 521120 kworker/61:1-rc  0.0     0\n 521913 kworker/70:1-mm  0.0     0\n 521914 kworker/69:2-cg  0.0     0\n 522120 kworker/60:0-mm  0.0     0\n 522139 kworker/61:2-mm  0.0     0\n 522140 kworker/66:2-mm  0.0     0\n 522632 kworker/53:0     0.0     0\n 522645 kworker/69:0-mm  0.0     0\n 522646 kworker/144:0-m  0.0     0\n 522647 kworker/147:1-r  0.0     0\n 522648 kworker/58:1     0.0     0\n 522889 kworker/144:1-r  0.0     0\n 523048 kworker/158:0-m  0.0     0\n 523226 kworker/54:2-mm  0.0     0\n 523227 kworker/55:2-rc  0.0     0\n 523516 kworker/163:2-m  0.0     0\n 523517 kworker/164:1-m  0.0     0\n 523720 kworker/90:2-rc  0.0     0\n 523767 kworker/184:1-m  0.0     0\n 523770 kworker/183:0-m  0.0     0\n 524078 kworker/u387:0-  0.0     0\n 524261 kworker/172:0-r  0.0     0\n 524399 kworker/94:1-mm  0.0     0\n 524419 kworker/187:0-m  0.0     0\n 524558 kworker/27:0-ev  0.0     0\n 524559 kworker/131:1-e  0.0     0\n 526048 kworker/175:1-r  0.0     0\n 542614 kworker/67:2-mm  0.0     0\n 599815 kworker/u390:1-  0.0     0\n 599997 kworker/80:0-rc  0.0     0\n 600000 kworker/10:2-ev  0.0     0\n 600230 kworker/191:1-r  0.0     0\n 600250 kworker/188:2-r  0.0     0\n 600281 kworker/149:1-m  0.0     0\n 600304 kworker/147:2-m  0.0     0\n 600305 kworker/148:0    0.0     0\n 600306 kworker/52:1-ev  0.0     0\n 600475 kworker/120:0-e  0.0     0\n 600525 kworker/56:1-mm  0.0     0\n 600543 kworker/151:1-m  0.0     0\n 600544 kworker/152:0-m  0.0     0\n 600606 kworker/u384:6-  0.0     0\n 600803 kworker/184:0-r  0.0     0\n 600986 kworker/106:1-m  0.0     0\n 601270 kworker/149:0    0.0     0\n 601883 kworker/3:0-eve  0.0     0\n 601962 kworker/100:0-r  0.0     0\n 602003 kworker/u395:3   0.0     0\n 602034 kworker/101:1-e  0.0     0\n 602035 kworker/104:2-e  0.0     0\n 602043 kworker/105:1-e  0.0     0\n 602051 kworker/11:1-rc  0.0     0\n 602064 kworker/0:2-eve  0.1     0\n 602078 kworker/5:2-rcu  0.0     0\n 602079 kworker/107:1-m  0.0     0\n 602086 kworker/99:1     0.0     0\n 602339 kworker/76:1-rc  0.0     0\n 602373 kworker/173:2-m  0.0     0\n 602391 kworker/170:2-r  0.0     0\n 602444 kworker/90:0-mm  0.0     0\n 602594 kworker/106:2    0.0     0\n 602595 kworker/175:0-e  0.0     0\n 602623 kworker/75:1-mm  0.0     0\n 602910 kworker/88:1-mm  0.0     0\n 603049 kworker/185:1-r  0.0     0\n 603050 kworker/186:2-m  0.0     0\n 603061 kworker/92:2-rc  0.0     0\n 603252 kworker/89:0-rc  0.0     0\n 603283 kworker/93:2-rc  0.0     0\n 603491 kworker/63:2-mm  0.0     0\n 603510 kworker/167:0-r  0.0     0\n 603511 kworker/166:0-r  0.0     0\n 604373 kworker/164:2    0.0     0\n 604653 kworker/107:2    0.0     0\n 604682 kworker/4:0-rcu  0.0     0\n 604683 kworker/8:1-rcu  0.0     0\n 604700 kworker/6:0-eve  0.0     0\n 604716 kworker/73:2-rc  0.0     0\n 604795 kworker/81:0-rc  0.0     0\n 604837 kworker/97:3-ev  0.0     0\n 604872 kworker/19:1-mm  0.0     0\n 604980 kworker/183:2    0.0     0\n 605014 kworker/u395:0-  0.0     0\n 605101 kworker/102:1-r  0.0     0\n 605108 kworker/92:1-mm  0.0     0\n 605120 kworker/180:1-r  0.0     0\n 605139 kworker/65:2-mm  0.0     0\n 605171 kworker/63:1     0.0     0\n 605214 kworker/u384:7-  0.0     0\n 605371 kworker/96:0-cg  0.0     0\n 605407 kworker/156:2-r  0.0     0\n 605408 kworker/157:0-r  0.0     0\n 605439 kworker/78:0-ev  0.0     0\n 605446 kworker/178:0-r  0.0     0\n 605489 kworker/u390:2-  0.0     0\n 605492 kworker/87:2-mm  0.0     0\n 605528 kworker/191:0-m  0.0     0\n 605556 kworker/102:2-m  0.0     0\n 605573 kworker/1:1-eve  0.0     0\n 605812 kworker/72:2-mm  0.0     0\n 605823 kworker/93:0-mm  0.0     0\n 605888 kworker/66:1-ev  0.0     0\n 605892 kworker/50:1     0.0     0\n 605981 kworker/7:1-eve  0.0     0\n 606035 kworker/169:1-r  0.0     0\n 606045 kworker/82:2-rc  0.0     0\n 606066 kworker/168:2-r  0.0     0\n 606300 kworker/84:2-mm  0.0     0\n 606330 kworker/179:2-r  0.0     0\n 606517 kworker/188:1-m  0.0     0\n 606543 kworker/156:1-r  0.0     0\n 606615 kworker/79:0-rc  0.0     0\n 606617 kworker/80:2-mm  0.0     0\n 606619 kworker/178:1-m  0.0     0\n 606692 kworker/12:0-mm  0.0     0\n 606698 kworker/u386:3-  0.0     0\n 606821 kworker/u385:1-  0.0     0\n 606822 kworker/176:0-r  0.0     0\n 606833 kworker/83:0-rc  0.0     0\n 606881 kworker/u386:1-  0.0     0\n 606896 kworker/75:0-ev  0.0     0\n 606897 kworker/79:2-ev  0.0     0\n 607049 kworker/174:0-e  0.0     0\n 607060 kworker/82:1-mm  0.0     0\n 607079 kworker/74:0-rc  0.0     0\n 607080 kworker/176:2-m  0.0     0\n 607086 kworker/171:0-r  0.0     0\n 607126 kworker/72:1-rc  0.0     0\n 607251 kworker/91:2-rc  0.0     0\n 607262 kworker/182:0-r  0.0     0\n 607325 kworker/89:1-mm  0.0     0\n 607328 kworker/181:0-m  0.0     0\n 607474 kworker/77:0-rc  0.0     0\n 607485 kworker/169:0-m  0.0     0\n 607504 kworker/179:0-m  0.0     0\n 607538 kworker/48:0-rc  0.0     0\n 607551 kworker/78:1-mm  0.0     0\n 607552 kworker/170:1-e  0.0     0\n 607553 kworker/u391:2-  0.0     0\n 607554 kworker/171:2-m  0.0     0\n 607723 kworker/173:0-r  0.0     0\n 607734 kworker/189:1-m  0.0     0\n 607754 kworker/86:1-rc  0.0     0\n 607797 kworker/190:0-r  0.0     0\n 607902 kworker/u389:2-  0.0     0\n 607928 kworker/74:1-rc  0.0     0\n 607939 kworker/172:1-e  0.0     0\n 607958 kworker/77:2-ev  0.0     0\n 607959 kworker/177:2-m  0.0     0\n 608009 kworker/73:0-rc  0.0     0\n 608145 kworker/u384:2-  0.0     0\n 608195 kworker/94:2     0.0     0\n 608214 kworker/85:0-rc  0.0     0\n 608238 kworker/u392:1-  0.0     0\n 608257 kworker/174:2    0.0     0\n 608259 kworker/52:0     0.0     0\n 608261 kworker/u386:0-  0.0     0\n 608319 kworker/u385:2-  0.0     0\n 608355 kworker/177:0    0.0     0\n 608383 kworker/11:2-ev  0.0     0\n 608384 kworker/97:1     0.0     0\n 608385 kworker/96:2-ev  0.0     0\n 608404 kworker/104:0-r  0.0     0\n 608405 kworker/103:2-e  0.0     0\n 608422 kworker/0:0      0.0     0\n 608440 kworker/u389:1-  0.0     0\n 608458 kworker/185:0-m  0.0     0\n 608505 kworker/u391:1-  0.0     0\n 608508 kworker/49:0-rc  0.0     0\n 608605 kworker/100:1-m  0.0     0\n 608679 kworker/5:0-mm_  0.0     0\n 608680 kworker/4:1-eve  0.0     0\n 608687 kworker/u385:4-  0.0     0\n 608711 kworker/u386:2-  0.0     0\n 608714 kworker/u385:6-  0.1     0\n 608848 kworker/1:2      0.0     0\n 608874 slurmstepd       0.0 33524\n 608892 sleep            0.0  1056\n 608895 slurmstepd       0.1 33608\n 608910 slurm_script     0.0  3376\n 608917 python           0.0 35832\n 608924 kworker/u386:5-  0.0     0\n 608925 kworker/u385:7-  0.0     0\n 608926 kworker/u385:8-  0.0     0\n 608927 kworker/u394:3-  0.4     0\n 608945 kworker/103:1-r  0.0     0\n 608996 kworker/u385:10  0.0     0\n 608997 kworker/u385:11  0.0     0\n 609041 kworker/76:2-mm  0.0     0\n 609059 kworker/166:2-m  0.0     0\n 609060 kworker/167:1-m  0.0     0\n 609114 kworker/48:2-mm  0.0     0\n 609127 kworker/83:1-rc  0.0     0\n 609128 kworker/168:0-r  0.0     0\n 609324 kworker/u386:6-  0.0     0\n 609337 kworker/u389:0-  0.0     0\n 609462 kworker/180:2-m  0.0     0\n 609463 kworker/181:1    0.0     0\n 609464 kworker/85:2-ev  0.0     0\n 609474 kworker/91:1-ev  0.0     0\n 609492 kworker/95:2-mm  0.0     0\n 609493 kworker/182:1-e  0.0     0\n 609554 kworker/49:1-mm  0.0     0\n 609567 kworker/86:2-mm  0.0     0\n 609570 kworker/87:0     0.0     0\n 609683 kworker/u394:1-  0.4     0\n 609684 kworker/u385:3-  0.1     0\n 609689 kworker/3:2-eve  0.0     0\n 609833 kworker/190:2-m  0.0     0\n 609834 kworker/84:0-rc  0.0     0\n 609844 kworker/88:0     0.0     0\n 609862 kworker/189:2-c  0.0     0\n 609918 kworker/145:1-m  0.0     0\n 609931 kworker/u392:2-  0.0     0\n 609932 kworker/81:2-mm  0.0     0\n 609933 kworker/u391:3-  0.0     0\n 610272 kworker/u386:4-  0.0     0\n 610273 kworker/u394:0   0.0     0\n 610367 kworker/74:2-mm  0.0     0\n 610376 kworker/168:1-m  0.0     0\n 610396 kworker/62:0-mm  0.0     0\n 610397 kworker/156:0-m  0.0     0\n 610436 kworker/73:1-ev  0.0     0\n 610449 kworker/83:2-mm  0.0     0\n 610450 kworker/u391:0   0.0     0\n 610451 kworker/u391:4   0.0     0\n 610498 kworker/u386:7-  0.0     0\n 610512 kworker/u389:3   0.0     0\n 610579 python           0.0 35256\n 610589 ps               0.0  3232\n 625425 qualys-cloud-ag  0.0 83208\n 626927 qualys-cep       0.0 19292\n 627159 agentid-service  0.0 11396\n 627209 sssd             0.0  5628\n 627210 sssd_be          0.0 14432\n 627211 sssd_nss         0.0 11116\n 627212 sssd_pam         0.0  7176\n 627213 sssd_autofs      0.0  4724\n 627214 sssd_sudo        0.0  7080\n 628513 sshd             0.0  3408\n1193771 kworker/u396:0-  0.0     0\n1590473 systemd-network  0.0  4976\n1590488 systemd-resolve  0.0  6348\n1591035 systemd-udevd    0.0  6416\n1669378 pmd              4.0 576764\n1669994 dypdng           0.0 37980\n1669995 clad             0.0  2636\n1670324 sandboxd         0.0 19760\n2273849 kworker/u396:1-  0.0     0\n2468620 kworker/u400:3-  0.0     0\n2468634 kworker/u397:1   0.0     0\n2618136 fwupd            0.0 32948\n2731835 snapd            0.0 49468\n2978575 slurmd           0.0 38008\n3346177 polkitd          0.0  9716\n3357975 kworker/47:2-ev  0.0     0\n3360386 kworker/39:2-mm  0.0     0\n3369187 kworker/36:2-mm  0.0     0\n3394564 kworker/u400:1-  0.0     0\n3498687 kworker/u398:1-  0.0     0\n3499851 kworker/42:1-rc  0.0     0\n3503080 kworker/142:1-r  0.0     0\n3505587 kworker/143:2-e  0.0     0\n3506349 kworker/44:2-rc  0.0     0\n3544978 kworker/37:1-rc  0.0     0\n3576640 kworker/u398:2-  0.0     0\n3579251 kworker/39:1-ev  0.0     0\n3579252 kworker/36:0     0.0     0\n3613697 kworker/30:1-rc  0.0     0\n3613760 kworker/138:0-c  0.0     0\n3615346 kworker/140:0-r  0.0     0\n3615393 kworker/45:2-mm  0.0     0\n3616467 kworker/47:0     0.0     0\n3617996 kworker/40:2-mm  0.0     0\n3618043 kworker/46:1-rc  0.0     0\n3618264 kworker/30:2-mm  0.0     0\n3631395 kworker/135:2-r  0.0     0\n3695139 kworker/37:0-ev  0.0     0\n3696891 kworker/135:1-m  0.0     0\n3697839 systemd          0.0  7180\n3697840 (sd-pam)         0.0     8\n3697863 dbus-daemon      0.0  2204\n3705646 systemd-journal  0.1 120408\n3706999 kworker/115:2-r  0.0     0\n3709392 kworker/31:2-rc  0.0     0\n3712883 kworker/25:0-mm  0.0     0\n3712895 kworker/140:1-m  0.0     0\n3712915 kworker/139:1-r  0.0     0\n3712961 kworker/123:1-r  0.0     0\n3713284 kworker/124:1-r  0.0     0\n3713457 kworker/133:1-r  0.0     0\n3713458 kworker/132:0-r  0.0     0\n3714624 kworker/134:0-r  0.0     0\n3714968 kworker/41:1-rc  0.0     0\n3714970 kworker/42:2-mm  0.0     0\n3716492 kworker/22:1-ev  0.0     0\n3717462 kworker/98:1-mm  0.0     0\n3718445 kworker/137:1-r  0.0     0\n3718456 kworker/138:1-m  0.0     0\n3718475 kworker/139:0-m  0.0     0\n3718524 kworker/143:1-r  0.0     0\n3718745 kworker/142:2-m  0.0     0\n3718748 kworker/141:1-m  0.0     0\n3720737 kworker/133:0-e  0.0     0\n3742631 kworker/23:2-rc  0.0     0\n3742845 kworker/33:1-rc  0.0     0\n3743447 kworker/136:2-r  0.0     0\n3744953 kworker/117:2-m  0.0     0\n3745870 kworker/46:0-mm  0.0     0\n3745881 kworker/45:0     0.0     0\n3745900 kworker/136:1-m  0.0     0\n3745901 kworker/132:1-m  0.0     0\n3745908 kworker/40:1     0.0     0\n3746094 kworker/35:2-rc  0.0     0\n3746095 kworker/34:0-rc  0.0     0\n3746340 kworker/14:2-rc  0.0     0\n3746390 kworker/17:1-rc  0.0     0\n3747461 kworker/23:1-mm  0.0     0\n3747908 kworker/137:0-e  0.0     0\n3747937 kworker/43:1-ev  0.0     0\n3747987 kworker/113:0-r  0.0     0\n3747989 kworker/141:2    0.0     0\n3750845 kworker/121:1-m  0.0     0\n3750855 kworker/126:2-m  0.0     0\n3750920 kworker/38:2-rc  0.0     0\n3750921 kworker/122:1-r  0.0     0\n3751207 kworker/123:2-m  0.0     0\n3751494 kworker/109:0-m  0.0     0\n3752347 kworker/130:2-r  0.0     0\n3752793 kworker/116:1-r  0.0     0\n3753015 kworker/24:0-rc  0.0     0\n3753063 kworker/113:2-m  0.0     0\n3753232 kworker/33:0-mm  0.0     0\n3753233 kworker/34:1-mm  0.0     0\n3753263 kworker/35:1-mm  0.0     0\n3753270 kworker/32:1-mm  0.0     0\n3754228 kworker/119:2-r  0.0     0\n3755129 kworker/110:1-e  0.0     0\n3755140 kworker/20:0-mm  0.0     0\n3755237 kworker/129:2-r  0.0     0\n3755371 kworker/118:0-r  0.0     0\n3755401 kworker/112:2-r  0.0     0\n3755402 kworker/117:0-r  0.0     0\n3755448 kworker/13:0-mm  0.0     0\n3755595 kworker/31:1-mm  0.0     0\n3755660 kworker/121:2-e  0.0     0\n3755949 kworker/130:0-e  0.0     0\n3759714 kworker/41:2-mm  0.0     0\n3797802 kworker/131:2-e  0.0     0\n3797833 kworker/108:2-r  0.0     0\n3798188 kworker/127:0-r  0.0     0\n3799604 kworker/25:2-rc  0.0     0\n3800581 kworker/26:0-mm  0.0     0\n3803243 kworker/43:2-mm  0.0     0\n3803244 kworker/44:1-mm  0.0     0\n3885109 pyxd             1.7 48732\n3885176 lted             0.0 53316\n3895479 kworker/29:2-ev  0.0     0\n3901242 kworker/32:2-rc  0.0     0\n3929876 kworker/u397:2-  0.0     0\n3930387 kworker/120:2-r  0.0     0\n3931747 sshd             0.0 14396\n3931941 sshd             0.0  9524\n3931942 bash             0.0  6560\n3934161 kworker/u399:2-  0.0     0\n3934179 kworker/u401:1-  0.0     0\n3935564 kworker/u401:3-  0.0     0\n3936292 kworker/10:0-rc  0.0     0\n3947718 kworker/125:2-e  0.0     0\n3947733 kworker/24:1-mm  0.0     0\n3947734 kworker/128:2-m  0.0     0\n3948446 kworker/u399:0-  0.0     0\n3961839 kworker/127:1-m  0.0     0\n3961840 kworker/128:0-r  0.0     0\n3965055 kworker/u388:0-  0.0     0\n3975887 kworker/13:2     0.0     0\n3975905 kworker/14:1-mm  0.0     0\n3976381 kworker/114:0-r  0.0     0\n3976391 kworker/112:0-m  0.0     0\n4019135 kworker/134:2-e  0.0     0\n4019145 kworker/38:0-mm  0.0     0\n4019300 kworker/57:1-mm  0.0     0\n4026134 kworker/28:0-mm  0.0     0\n4191448 kworker/122:0-m  0.0     0",
+    "gpu": "name, driver_version, temperature.gpu, clocks.current.sm [MHz], utilization.gpu [%], memory.used [MiB]\nNVIDIA L40S, 610.43.02, 55, 2520 MHz, 0 %, 0 MiB"
+  },
+  "observations": [
+    {
+      "session": 2,
+      "repetition": 0,
+      "path": "compiled",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 100,
+      "batch": 32,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 0.7211503703147173,
+      "pairs_per_second": 554.6693400787356
+    },
+    {
+      "session": 2,
+      "repetition": 0,
+      "path": "compiled",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 100,
+      "batch": 32,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 0.261992777697742,
+      "pairs_per_second": 1526.7596439680308
+    },
+    {
+      "session": 2,
+      "repetition": 1,
+      "path": "compiled",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 100,
+      "batch": 32,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 0.7220807652920485,
+      "pairs_per_second": 553.9546533111409
+    },
+    {
+      "session": 2,
+      "repetition": 1,
+      "path": "compiled",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 100,
+      "batch": 32,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 0.2620353251695633,
+      "pairs_per_second": 1526.5117393662845
+    },
+    {
+      "session": 2,
+      "repetition": 2,
+      "path": "compiled",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 100,
+      "batch": 32,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 0.26515285298228264,
+      "pairs_per_second": 1508.563817062635
+    },
+    {
+      "session": 2,
+      "repetition": 2,
+      "path": "compiled",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 100,
+      "batch": 32,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 0.5574569376185536,
+      "pairs_per_second": 717.5442137446402
+    },
+    {
+      "session": 2,
+      "repetition": 0,
+      "path": "compiled",
+      "scope": "forward",
+      "group": "primary",
+      "k": 100,
+      "batch": 16,
+      "length": 512,
+      "queries": 16,
+      "pairs": 1600,
+      "seconds": 1.1056294403970242,
+      "pairs_per_second": 1447.1394678360325
+    },
+    {
+      "session": 2,
+      "repetition": 0,
+      "path": "compiled",
+      "scope": "scoring",
+      "group": "primary",
+      "k": 100,
+      "batch": 16,
+      "length": 512,
+      "queries": 16,
+      "pairs": 1600,
+      "seconds": 2.1709486227482557,
+      "pairs_per_second": 737.0050047405183
+    },
+    {
+      "session": 2,
+      "repetition": 1,
+      "path": "compiled",
+      "scope": "scoring",
+      "group": "primary",
+      "k": 100,
+      "batch": 16,
+      "length": 512,
+      "queries": 16,
+      "pairs": 1600,
+      "seconds": 2.1701375003904104,
+      "pairs_per_second": 737.2804717268643
+    },
+    {
+      "session": 2,
+      "repetition": 1,
+      "path": "compiled",
+      "scope": "forward",
+      "group": "primary",
+      "k": 100,
+      "batch": 16,
+      "length": 512,
+      "queries": 16,
+      "pairs": 1600,
+      "seconds": 1.1025508446618915,
+      "pairs_per_second": 1451.18024057263
+    },
+    {
+      "session": 2,
+      "repetition": 2,
+      "path": "compiled",
+      "scope": "forward",
+      "group": "primary",
+      "k": 100,
+      "batch": 16,
+      "length": 512,
+      "queries": 16,
+      "pairs": 1600,
+      "seconds": 1.110577754676342,
+      "pairs_per_second": 1440.6915619035528
+    },
+    {
+      "session": 2,
+      "repetition": 2,
+      "path": "compiled",
+      "scope": "scoring",
+      "group": "primary",
+      "k": 100,
+      "batch": 16,
+      "length": 512,
+      "queries": 16,
+      "pairs": 1600,
+      "seconds": 2.180851054377854,
+      "pairs_per_second": 733.658539765084
+    },
+    {
+      "session": 2,
+      "repetition": 0,
+      "path": "compiled",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 100,
+      "batch": 16,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 0.27196250576525927,
+      "pairs_per_second": 1470.7909786110536
+    },
+    {
+      "session": 2,
+      "repetition": 0,
+      "path": "compiled",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 100,
+      "batch": 16,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 0.5342898061499,
+      "pairs_per_second": 748.6573679599201
+    },
+    {
+      "session": 2,
+      "repetition": 1,
+      "path": "compiled",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 100,
+      "batch": 16,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 0.5347500843927264,
+      "pairs_per_second": 748.012972179796
+    },
+    {
+      "session": 2,
+      "repetition": 1,
+      "path": "compiled",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 100,
+      "batch": 16,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 0.2694377787411213,
+      "pairs_per_second": 1484.572808864804
+    },
+    {
+      "session": 2,
+      "repetition": 2,
+      "path": "compiled",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 100,
+      "batch": 16,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 0.2727053305134177,
+      "pairs_per_second": 1466.7846765111879
+    },
+    {
+      "session": 2,
+      "repetition": 2,
+      "path": "compiled",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 100,
+      "batch": 16,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 0.5327566657215357,
+      "pairs_per_second": 750.8118166072356
+    },
+    {
+      "session": 2,
+      "repetition": 0,
+      "path": "compiled",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 100,
+      "batch": 1,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 0.8982856031507254,
+      "pairs_per_second": 445.2926759562939
+    },
+    {
+      "session": 2,
+      "repetition": 0,
+      "path": "compiled",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 100,
+      "batch": 1,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 0.3832215406000614,
+      "pairs_per_second": 1043.7826625655393
+    },
+    {
+      "session": 2,
+      "repetition": 1,
+      "path": "compiled",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 100,
+      "batch": 1,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 0.3813542518764734,
+      "pairs_per_second": 1048.8935105135952
+    },
+    {
+      "session": 2,
+      "repetition": 1,
+      "path": "compiled",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 100,
+      "batch": 1,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 0.8924428597092628,
+      "pairs_per_second": 448.2079672084672
+    },
+    {
+      "session": 2,
+      "repetition": 2,
+      "path": "compiled",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 100,
+      "batch": 1,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 0.38238131906837225,
+      "pairs_per_second": 1046.0762073172236
+    },
+    {
+      "session": 2,
+      "repetition": 2,
+      "path": "compiled",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 100,
+      "batch": 1,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 0.8949557449668646,
+      "pairs_per_second": 446.9494745964337
+    },
+    {
+      "session": 2,
+      "repetition": 0,
+      "path": "compiled",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 100,
+      "batch": 16,
+      "length": 128,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 0.33349273912608624,
+      "pairs_per_second": 1199.426413445148
+    },
+    {
+      "session": 2,
+      "repetition": 0,
+      "path": "compiled",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 100,
+      "batch": 16,
+      "length": 128,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 0.05608262959867716,
+      "pairs_per_second": 7132.333181635173
+    },
+    {
+      "session": 2,
+      "repetition": 1,
+      "path": "compiled",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 100,
+      "batch": 16,
+      "length": 128,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 0.3325984450057149,
+      "pairs_per_second": 1202.6514435241181
+    },
+    {
+      "session": 2,
+      "repetition": 1,
+      "path": "compiled",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 100,
+      "batch": 16,
+      "length": 128,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 0.05619151517748833,
+      "pairs_per_second": 7118.512443320796
+    },
+    {
+      "session": 2,
+      "repetition": 2,
+      "path": "compiled",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 100,
+      "batch": 16,
+      "length": 128,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 0.33257579151540995,
+      "pairs_per_second": 1202.7333624536107
+    },
+    {
+      "session": 2,
+      "repetition": 2,
+      "path": "compiled",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 100,
+      "batch": 16,
+      "length": 128,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 0.05623731296509504,
+      "pairs_per_second": 7112.715364766254
+    },
+    {
+      "session": 2,
+      "repetition": 0,
+      "path": "compiled",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 50,
+      "batch": 16,
+      "length": 512,
+      "queries": 4,
+      "pairs": 200,
+      "seconds": 0.1364633534103632,
+      "pairs_per_second": 1465.5949381411856
+    },
+    {
+      "session": 2,
+      "repetition": 0,
+      "path": "compiled",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 50,
+      "batch": 16,
+      "length": 512,
+      "queries": 4,
+      "pairs": 200,
+      "seconds": 0.273280369117856,
+      "pairs_per_second": 731.849128591257
+    },
+    {
+      "session": 2,
+      "repetition": 1,
+      "path": "compiled",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 50,
+      "batch": 16,
+      "length": 512,
+      "queries": 4,
+      "pairs": 200,
+      "seconds": 0.2710395026952028,
+      "pairs_per_second": 737.899819071428
+    },
+    {
+      "session": 2,
+      "repetition": 1,
+      "path": "compiled",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 50,
+      "batch": 16,
+      "length": 512,
+      "queries": 4,
+      "pairs": 200,
+      "seconds": 0.13232114259153605,
+      "pairs_per_second": 1511.4742518312644
+    },
+    {
+      "session": 2,
+      "repetition": 2,
+      "path": "compiled",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 50,
+      "batch": 16,
+      "length": 512,
+      "queries": 4,
+      "pairs": 200,
+      "seconds": 0.2719101635739207,
+      "pairs_per_second": 735.5370515439691
+    },
+    {
+      "session": 2,
+      "repetition": 2,
+      "path": "compiled",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 50,
+      "batch": 16,
+      "length": 512,
+      "queries": 4,
+      "pairs": 200,
+      "seconds": 0.13156520295888186,
+      "pairs_per_second": 1520.1587920060147
+    },
+    {
+      "session": 2,
+      "repetition": 0,
+      "path": "compiled",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 10,
+      "batch": 16,
+      "length": 512,
+      "queries": 4,
+      "pairs": 40,
+      "seconds": 0.024813499301671982,
+      "pairs_per_second": 1612.025757177454
+    },
+    {
+      "session": 2,
+      "repetition": 0,
+      "path": "compiled",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 10,
+      "batch": 16,
+      "length": 512,
+      "queries": 4,
+      "pairs": 40,
+      "seconds": 0.05497933831065893,
+      "pairs_per_second": 727.5460423692501
+    },
+    {
+      "session": 2,
+      "repetition": 1,
+      "path": "compiled",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 10,
+      "batch": 16,
+      "length": 512,
+      "queries": 4,
+      "pairs": 40,
+      "seconds": 0.05347609706223011,
+      "pairs_per_second": 747.9977447391499
+    },
+    {
+      "session": 2,
+      "repetition": 1,
+      "path": "compiled",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 10,
+      "batch": 16,
+      "length": 512,
+      "queries": 4,
+      "pairs": 40,
+      "seconds": 0.022962594404816628,
+      "pairs_per_second": 1741.963442580757
+    },
+    {
+      "session": 2,
+      "repetition": 2,
+      "path": "compiled",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 10,
+      "batch": 16,
+      "length": 512,
+      "queries": 4,
+      "pairs": 40,
+      "seconds": 0.02333509549498558,
+      "pairs_per_second": 1714.156259124609
+    },
+    {
+      "session": 2,
+      "repetition": 2,
+      "path": "compiled",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 10,
+      "batch": 16,
+      "length": 512,
+      "queries": 4,
+      "pairs": 40,
+      "seconds": 0.05508189368993044,
+      "pairs_per_second": 726.1914455078444
+    },
+    {
+      "session": 2,
+      "repetition": 0,
+      "path": "compiled",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 100,
+      "batch": 64,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 0.5185056319460273,
+      "pairs_per_second": 771.447743969032
+    },
+    {
+      "session": 2,
+      "repetition": 0,
+      "path": "compiled",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 100,
+      "batch": 64,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 0.2549409084022045,
+      "pairs_per_second": 1568.9910360284146
+    },
+    {
+      "session": 2,
+      "repetition": 1,
+      "path": "compiled",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 100,
+      "batch": 64,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 0.5168324541300535,
+      "pairs_per_second": 773.945205653331
+    },
+    {
+      "session": 2,
+      "repetition": 1,
+      "path": "compiled",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 100,
+      "batch": 64,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 0.254322093911469,
+      "pairs_per_second": 1572.8086925048767
+    },
+    {
+      "session": 2,
+      "repetition": 2,
+      "path": "compiled",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 100,
+      "batch": 64,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 0.2612775722518563,
+      "pairs_per_second": 1530.9389036056389
+    },
+    {
+      "session": 2,
+      "repetition": 2,
+      "path": "compiled",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 100,
+      "batch": 64,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 0.5180741902440786,
+      "pairs_per_second": 772.0901900392862
+    },
+    {
+      "session": 2,
+      "repetition": 0,
+      "path": "compiled",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 100,
+      "batch": 8,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 0.2650698246434331,
+      "pairs_per_second": 1509.036347453251
+    },
+    {
+      "session": 2,
+      "repetition": 0,
+      "path": "compiled",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 100,
+      "batch": 8,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 0.545581080019474,
+      "pairs_per_second": 733.1632540954726
+    },
+    {
+      "session": 2,
+      "repetition": 1,
+      "path": "compiled",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 100,
+      "batch": 8,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 0.259550835005939,
+      "pairs_per_second": 1541.1239189072433
+    },
+    {
+      "session": 2,
+      "repetition": 1,
+      "path": "compiled",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 100,
+      "batch": 8,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 0.5463262880221009,
+      "pairs_per_second": 732.1631939918998
+    },
+    {
+      "session": 2,
+      "repetition": 2,
+      "path": "compiled",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 100,
+      "batch": 8,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 0.5429170383140445,
+      "pairs_per_second": 736.7608156895315
+    },
+    {
+      "session": 2,
+      "repetition": 2,
+      "path": "compiled",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 100,
+      "batch": 8,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 0.2595188468694687,
+      "pairs_per_second": 1541.3138769115667
+    },
+    {
+      "session": 2,
+      "repetition": 0,
+      "path": "compiled",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 100,
+      "batch": 16,
+      "length": 256,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 0.10900249984115362,
+      "pairs_per_second": 3669.640609920957
+    },
+    {
+      "session": 2,
+      "repetition": 0,
+      "path": "compiled",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 100,
+      "batch": 16,
+      "length": 256,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 0.3826001491397619,
+      "pairs_per_second": 1045.4778987916234
+    },
+    {
+      "session": 2,
+      "repetition": 1,
+      "path": "compiled",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 100,
+      "batch": 16,
+      "length": 256,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 0.1061886353418231,
+      "pairs_per_second": 3766.881443691153
+    },
+    {
+      "session": 2,
+      "repetition": 1,
+      "path": "compiled",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 100,
+      "batch": 16,
+      "length": 256,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 0.382688925601542,
+      "pairs_per_second": 1045.235368050557
+    },
+    {
+      "session": 2,
+      "repetition": 2,
+      "path": "compiled",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 100,
+      "batch": 16,
+      "length": 256,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 0.1071441313251853,
+      "pairs_per_second": 3733.288935685981
+    },
+    {
+      "session": 2,
+      "repetition": 2,
+      "path": "compiled",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 100,
+      "batch": 16,
+      "length": 256,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 0.3820527419447899,
+      "pairs_per_second": 1046.975865069969
+    }
+  ],
+  "warmups": [
+    {
+      "k": 100,
+      "batch": 32,
+      "length": 512,
+      "seconds": 0.1366671659052372,
+      "signatures": [
+        [
+          4,
+          269
+        ],
+        [
+          4,
+          442
+        ],
+        [
+          4,
+          451
+        ],
+        [
+          4,
+          512
+        ],
+        [
+          32,
+          441
+        ],
+        [
+          32,
+          459
+        ],
+        [
+          32,
+          512
+        ]
+      ]
+    },
+    {
+      "k": 100,
+      "batch": 16,
+      "length": 512,
+      "seconds": 0.24568424932658672,
+      "signatures": [
+        [
+          4,
+          269
+        ],
+        [
+          4,
+          342
+        ],
+        [
+          4,
+          384
+        ],
+        [
+          4,
+          433
+        ],
+        [
+          4,
+          441
+        ],
+        [
+          4,
+          442
+        ],
+        [
+          4,
+          447
+        ],
+        [
+          4,
+          451
+        ],
+        [
+          4,
+          481
+        ],
+        [
+          4,
+          485
+        ],
+        [
+          4,
+          512
+        ],
+        [
+          16,
+          407
+        ],
+        [
+          16,
+          440
+        ],
+        [
+          16,
+          441
+        ],
+        [
+          16,
+          443
+        ],
+        [
+          16,
+          452
+        ],
+        [
+          16,
+          455
+        ],
+        [
+          16,
+          456
+        ],
+        [
+          16,
+          459
+        ],
+        [
+          16,
+          468
+        ],
+        [
+          16,
+          471
+        ],
+        [
+          16,
+          472
+        ],
+        [
+          16,
+          480
+        ],
+        [
+          16,
+          483
+        ],
+        [
+          16,
+          487
+        ],
+        [
+          16,
+          497
+        ],
+        [
+          16,
+          500
+        ],
+        [
+          16,
+          512
+        ]
+      ]
+    },
+    {
+      "k": 100,
+      "batch": 16,
+      "length": 512,
+      "seconds": 0.10138532891869545,
+      "signatures": [
+        [
+          4,
+          269
+        ],
+        [
+          4,
+          442
+        ],
+        [
+          4,
+          451
+        ],
+        [
+          4,
+          512
+        ],
+        [
+          16,
+          440
+        ],
+        [
+          16,
+          441
+        ],
+        [
+          16,
+          452
+        ],
+        [
+          16,
+          455
+        ],
+        [
+          16,
+          459
+        ],
+        [
+          16,
+          512
+        ]
+      ]
+    },
+    {
+      "k": 100,
+      "batch": 1,
+      "length": 512,
+      "seconds": 1.7304412703961134,
+      "signatures": [
+        [
+          1,
+          39
+        ],
+        [
+          1,
+          65
+        ],
+        [
+          1,
+          81
+        ],
+        [
+          1,
+          101
+        ],
+        [
+          1,
+          113
+        ],
+        [
+          1,
+          118
+        ],
+        [
+          1,
+          122
+        ],
+        [
+          1,
+          131
+        ],
+        [
+          1,
+          132
+        ],
+        [
+          1,
+          133
+        ],
+        [
+          1,
+          135
+        ],
+        [
+          1,
+          136
+        ],
+        [
+          1,
+          141
+        ],
+        [
+          1,
+          145
+        ],
+        [
+          1,
+          150
+        ],
+        [
+          1,
+          153
+        ],
+        [
+          1,
+          158
+        ],
+        [
+          1,
+          164
+        ],
+        [
+          1,
+          166
+        ],
+        [
+          1,
+          167
+        ],
+        [
+          1,
+          169
+        ],
+        [
+          1,
+          171
+        ],
+        [
+          1,
+          172
+        ],
+        [
+          1,
+          174
+        ],
+        [
+          1,
+          177
+        ],
+        [
+          1,
+          185
+        ],
+        [
+          1,
+          188
+        ],
+        [
+          1,
+          189
+        ],
+        [
+          1,
+          193
+        ],
+        [
+          1,
+          197
+        ],
+        [
+          1,
+          199
+        ],
+        [
+          1,
+          200
+        ],
+        [
+          1,
+          202
+        ],
+        [
+          1,
+          203
+        ],
+        [
+          1,
+          204
+        ],
+        [
+          1,
+          207
+        ],
+        [
+          1,
+          208
+        ],
+        [
+          1,
+          210
+        ],
+        [
+          1,
+          211
+        ],
+        [
+          1,
+          212
+        ],
+        [
+          1,
+          213
+        ],
+        [
+          1,
+          215
+        ],
+        [
+          1,
+          217
+        ],
+        [
+          1,
+          219
+        ],
+        [
+          1,
+          221
+        ],
+        [
+          1,
+          224
+        ],
+        [
+          1,
+          225
+        ],
+        [
+          1,
+          226
+        ],
+        [
+          1,
+          228
+        ],
+        [
+          1,
+          231
+        ],
+        [
+          1,
+          236
+        ],
+        [
+          1,
+          237
+        ],
+        [
+          1,
+          243
+        ],
+        [
+          1,
+          244
+        ],
+        [
+          1,
+          246
+        ],
+        [
+          1,
+          247
+        ],
+        [
+          1,
+          250
+        ],
+        [
+          1,
+          251
+        ],
+        [
+          1,
+          252
+        ],
+        [
+          1,
+          254
+        ],
+        [
+          1,
+          257
+        ],
+        [
+          1,
+          258
+        ],
+        [
+          1,
+          260
+        ],
+        [
+          1,
+          261
+        ],
+        [
+          1,
+          263
+        ],
+        [
+          1,
+          266
+        ],
+        [
+          1,
+          269
+        ],
+        [
+          1,
+          270
+        ],
+        [
+          1,
+          271
+        ],
+        [
+          1,
+          273
+        ],
+        [
+          1,
+          274
+        ],
+        [
+          1,
+          275
+        ],
+        [
+          1,
+          276
+        ],
+        [
+          1,
+          279
+        ],
+        [
+          1,
+          280
+        ],
+        [
+          1,
+          283
+        ],
+        [
+          1,
+          287
+        ],
+        [
+          1,
+          288
+        ],
+        [
+          1,
+          290
+        ],
+        [
+          1,
+          291
+        ],
+        [
+          1,
+          292
+        ],
+        [
+          1,
+          294
+        ],
+        [
+          1,
+          295
+        ],
+        [
+          1,
+          296
+        ],
+        [
+          1,
+          297
+        ],
+        [
+          1,
+          299
+        ],
+        [
+          1,
+          300
+        ],
+        [
+          1,
+          303
+        ],
+        [
+          1,
+          304
+        ],
+        [
+          1,
+          305
+        ],
+        [
+          1,
+          307
+        ],
+        [
+          1,
+          308
+        ],
+        [
+          1,
+          309
+        ],
+        [
+          1,
+          310
+        ],
+        [
+          1,
+          311
+        ],
+        [
+          1,
+          312
+        ],
+        [
+          1,
+          313
+        ],
+        [
+          1,
+          315
+        ],
+        [
+          1,
+          316
+        ],
+        [
+          1,
+          317
+        ],
+        [
+          1,
+          318
+        ],
+        [
+          1,
+          320
+        ],
+        [
+          1,
+          323
+        ],
+        [
+          1,
+          325
+        ],
+        [
+          1,
+          326
+        ],
+        [
+          1,
+          329
+        ],
+        [
+          1,
+          331
+        ],
+        [
+          1,
+          332
+        ],
+        [
+          1,
+          334
+        ],
+        [
+          1,
+          335
+        ],
+        [
+          1,
+          336
+        ],
+        [
+          1,
+          337
+        ],
+        [
+          1,
+          338
+        ],
+        [
+          1,
+          339
+        ],
+        [
+          1,
+          341
+        ],
+        [
+          1,
+          342
+        ],
+        [
+          1,
+          343
+        ],
+        [
+          1,
+          347
+        ],
+        [
+          1,
+          349
+        ],
+        [
+          1,
+          351
+        ],
+        [
+          1,
+          352
+        ],
+        [
+          1,
+          353
+        ],
+        [
+          1,
+          354
+        ],
+        [
+          1,
+          355
+        ],
+        [
+          1,
+          356
+        ],
+        [
+          1,
+          358
+        ],
+        [
+          1,
+          360
+        ],
+        [
+          1,
+          361
+        ],
+        [
+          1,
+          362
+        ],
+        [
+          1,
+          364
+        ],
+        [
+          1,
+          365
+        ],
+        [
+          1,
+          366
+        ],
+        [
+          1,
+          367
+        ],
+        [
+          1,
+          369
+        ],
+        [
+          1,
+          372
+        ],
+        [
+          1,
+          374
+        ],
+        [
+          1,
+          375
+        ],
+        [
+          1,
+          376
+        ],
+        [
+          1,
+          377
+        ],
+        [
+          1,
+          378
+        ],
+        [
+          1,
+          380
+        ],
+        [
+          1,
+          383
+        ],
+        [
+          1,
+          384
+        ],
+        [
+          1,
+          385
+        ],
+        [
+          1,
+          386
+        ],
+        [
+          1,
+          388
+        ],
+        [
+          1,
+          389
+        ],
+        [
+          1,
+          390
+        ],
+        [
+          1,
+          391
+        ],
+        [
+          1,
+          392
+        ],
+        [
+          1,
+          393
+        ],
+        [
+          1,
+          394
+        ],
+        [
+          1,
+          395
+        ],
+        [
+          1,
+          396
+        ],
+        [
+          1,
+          397
+        ],
+        [
+          1,
+          398
+        ],
+        [
+          1,
+          399
+        ],
+        [
+          1,
+          400
+        ],
+        [
+          1,
+          401
+        ],
+        [
+          1,
+          405
+        ],
+        [
+          1,
+          406
+        ],
+        [
+          1,
+          408
+        ],
+        [
+          1,
+          409
+        ],
+        [
+          1,
+          410
+        ],
+        [
+          1,
+          411
+        ],
+        [
+          1,
+          412
+        ],
+        [
+          1,
+          413
+        ],
+        [
+          1,
+          414
+        ],
+        [
+          1,
+          415
+        ],
+        [
+          1,
+          417
+        ],
+        [
+          1,
+          418
+        ],
+        [
+          1,
+          420
+        ],
+        [
+          1,
+          422
+        ],
+        [
+          1,
+          424
+        ],
+        [
+          1,
+          425
+        ],
+        [
+          1,
+          426
+        ],
+        [
+          1,
+          428
+        ],
+        [
+          1,
+          429
+        ],
+        [
+          1,
+          431
+        ],
+        [
+          1,
+          432
+        ],
+        [
+          1,
+          433
+        ],
+        [
+          1,
+          434
+        ],
+        [
+          1,
+          438
+        ],
+        [
+          1,
+          440
+        ],
+        [
+          1,
+          441
+        ],
+        [
+          1,
+          442
+        ],
+        [
+          1,
+          443
+        ],
+        [
+          1,
+          445
+        ],
+        [
+          1,
+          446
+        ],
+        [
+          1,
+          447
+        ],
+        [
+          1,
+          449
+        ],
+        [
+          1,
+          450
+        ],
+        [
+          1,
+          451
+        ],
+        [
+          1,
+          452
+        ],
+        [
+          1,
+          453
+        ],
+        [
+          1,
+          454
+        ],
+        [
+          1,
+          455
+        ],
+        [
+          1,
+          458
+        ],
+        [
+          1,
+          459
+        ],
+        [
+          1,
+          460
+        ],
+        [
+          1,
+          461
+        ],
+        [
+          1,
+          468
+        ],
+        [
+          1,
+          469
+        ],
+        [
+          1,
+          473
+        ],
+        [
+          1,
+          474
+        ],
+        [
+          1,
+          476
+        ],
+        [
+          1,
+          477
+        ],
+        [
+          1,
+          478
+        ],
+        [
+          1,
+          482
+        ],
+        [
+          1,
+          483
+        ],
+        [
+          1,
+          484
+        ],
+        [
+          1,
+          485
+        ],
+        [
+          1,
+          488
+        ],
+        [
+          1,
+          490
+        ],
+        [
+          1,
+          492
+        ],
+        [
+          1,
+          495
+        ],
+        [
+          1,
+          499
+        ],
+        [
+          1,
+          500
+        ],
+        [
+          1,
+          501
+        ],
+        [
+          1,
+          505
+        ],
+        [
+          1,
+          507
+        ],
+        [
+          1,
+          512
+        ]
+      ]
+    },
+    {
+      "k": 100,
+      "batch": 16,
+      "length": 128,
+      "seconds": 0.011641736142337322,
+      "signatures": [
+        [
+          4,
+          128
+        ],
+        [
+          16,
+          128
+        ]
+      ]
+    },
+    {
+      "k": 50,
+      "batch": 16,
+      "length": 512,
+      "seconds": 0.08913350664079189,
+      "signatures": [
+        [
+          2,
+          269
+        ],
+        [
+          2,
+          405
+        ],
+        [
+          2,
+          417
+        ],
+        [
+          2,
+          451
+        ],
+        [
+          16,
+          440
+        ],
+        [
+          16,
+          455
+        ],
+        [
+          16,
+          469
+        ],
+        [
+          16,
+          483
+        ],
+        [
+          16,
+          512
+        ]
+      ]
+    },
+    {
+      "k": 10,
+      "batch": 16,
+      "length": 512,
+      "seconds": 0.036684393882751465,
+      "signatures": [
+        [
+          10,
+          434
+        ],
+        [
+          10,
+          451
+        ],
+        [
+          10,
+          512
+        ]
+      ]
+    },
+    {
+      "k": 100,
+      "batch": 64,
+      "length": 512,
+      "seconds": 0.2066688360646367,
+      "signatures": [
+        [
+          36,
+          441
+        ],
+        [
+          36,
+          512
+        ],
+        [
+          64,
+          512
+        ]
+      ]
+    },
+    {
+      "k": 100,
+      "batch": 8,
+      "length": 512,
+      "seconds": 0.14071695320308208,
+      "signatures": [
+        [
+          4,
+          269
+        ],
+        [
+          4,
+          442
+        ],
+        [
+          4,
+          451
+        ],
+        [
+          4,
+          512
+        ],
+        [
+          8,
+          383
+        ],
+        [
+          8,
+          414
+        ],
+        [
+          8,
+          417
+        ],
+        [
+          8,
+          420
+        ],
+        [
+          8,
+          426
+        ],
+        [
+          8,
+          431
+        ],
+        [
+          8,
+          432
+        ],
+        [
+          8,
+          440
+        ],
+        [
+          8,
+          441
+        ],
+        [
+          8,
+          446
+        ],
+        [
+          8,
+          452
+        ],
+        [
+          8,
+          453
+        ],
+        [
+          8,
+          455
+        ],
+        [
+          8,
+          459
+        ],
+        [
+          8,
+          460
+        ],
+        [
+          8,
+          469
+        ],
+        [
+          8,
+          483
+        ],
+        [
+          8,
+          484
+        ],
+        [
+          8,
+          499
+        ],
+        [
+          8,
+          500
+        ],
+        [
+          8,
+          505
+        ],
+        [
+          8,
+          512
+        ]
+      ]
+    },
+    {
+      "k": 100,
+      "batch": 16,
+      "length": 256,
+      "seconds": 0.018457459285855293,
+      "signatures": [
+        [
+          4,
+          256
+        ],
+        [
+          16,
+          256
+        ]
+      ]
+    }
+  ],
+  "protocol_addendum_sha256": "d79e67b5a429253e13b52d6778317141ec4c09d0cd33f004e9fd6147c46a0f84",
+  "dispatch": {
+    "operators": {
+      "TorchDynamo Cache Lookup": 1,
+      "Torch-Compiled Region: 0/0": 1,
+      "Pregraph bytecode": 1,
+      "AOTDispatcher Runtime Wrapper Prologue": 1,
+      "## Call CompiledFxGraph fvyjkjmeeqvxkrw3vci6puuibjynsntx26s273nxeyk3cslq5ahi ##": 1,
+      "triton_per_fused_add_embedding_native_layer_norm_slice_0": 1,
+      "aten::addmm": 19,
+      "triton_poi_fused__scaled_dot_product_efficient_attention__to_copy_add_arange_bitwise_and_constant_pad_nd_expand_ge_index_new_ones_scalar_tensor_slice_transpose_unsqueeze_view_where_1": 1,
+      "aten::_scaled_dot_product_efficient_attention": 6,
+      "aten::transpose": 24,
+      "aten::as_strided": 26,
+      "aten::_efficient_attention_forward": 6,
+      "aten::zeros": 12,
+      "aten::empty": 24,
+      "aten::zero_": 12,
+      "aten::fill_": 12,
+      "aten::mm": 19,
+      "triton_per_fused_add_addmm_native_layer_norm_view_2": 12,
+      "triton_poi_fused_addmm_gelu_view_3": 6,
+      "triton_poi_fused__scaled_dot_product_efficient_attention__to_copy_add_arange_bitwise_and_constant_pad_nd_expand_ge_index_new_ones_scalar_tensor_slice_transpose_unsqueeze_view_where_4": 1,
+      "triton_poi_fused_addmm_tanh_5": 1,
+      "aten::expand": 1,
+      "aten::select": 1
+    },
+    "stock_attention_requested": "sdpa",
+    "custom_calls": 0,
+    "compiled": true
+  },
+  "status": "COMPLETE",
+  "memory": {
+    "active_bytes": 99407360,
+    "peak_bytes": 826445824,
+    "scope": "PyTorch CUDA allocator counters"
+  },
+  "compile_counters": {
+    "unimplemented": {},
+    "stats": {
+      "calls_captured": 633,
+      "unique_graphs": 2
+    },
+    "aot_autograd": {
+      "total": 3,
+      "autograd_cache_miss": 1,
+      "autograd_cache_hit": 2,
+      "ok": 2
+    },
+    "inductor": {
+      "triton_bundler_load_static_autotuner": 8,
+      "async_compile_cache_miss": 36,
+      "async_compile_cache_hit": 20,
+      "pattern_matcher_count": 38,
+      "pattern_matcher_nodes": 38,
+      "extern_calls": 100,
+      "fxgraph_cache_hit": 2
+    }
+  },
+  "end_environment": {
+    "platform": "Linux-5.15.0-173-generic-x86_64-with-glibc2.35",
+    "python": "3.12.15 (main, Oct  3 2026, 01:03:07) [Clang 22.1.3 ]",
+    "packages": {
+      "torch": "2.14.1",
+      "transformers": "5.18.0",
+      "numpy": "2.5.3",
+      "httpx": "0.28.1",
+      "safetensors": "0.8.0"
+    },
+    "isolation": "No continuous hardware isolation verified",
+    "source_commit": "Copied source snapshot; use frozen source hashes",
+    "hardware": "FileNotFoundError",
+    "power": "FileNotFoundError",
+    "thermal": "FileNotFoundError",
+    "processes": "    PID COMMAND         %CPU   RSS\n      1 systemd          0.0 15132\n      2 kthreadd         0.0     0\n      3 rcu_gp           0.0     0\n      4 rcu_par_gp       0.0     0\n      5 slub_flushwq     0.0     0\n      6 netns            0.0     0\n      8 kworker/0:0H-ev  0.0     0\n      9 kworker/u384:0+  0.0     0\n     11 mm_percpu_wq     0.0     0\n     12 rcu_tasks_rude_  0.0     0\n     13 rcu_tasks_trace  0.0     0\n     14 ksoftirqd/0      0.0     0\n     15 rcu_sched        0.5     0\n     16 migration/0      0.0     0\n     17 idle_inject/0    0.0     0\n     19 cpuhp/0          0.0     0\n     20 cpuhp/1          0.0     0\n     21 idle_inject/1    0.0     0\n     22 migration/1      0.0     0\n     23 ksoftirqd/1      0.0     0\n     25 kworker/1:0H-ev  0.0     0\n     26 cpuhp/2          0.0     0\n     27 idle_inject/2    0.0     0\n     28 migration/2      0.0     0\n     29 ksoftirqd/2      0.0     0\n     31 kworker/2:0H-ev  0.0     0\n     32 cpuhp/3          0.0     0\n     33 idle_inject/3    0.0     0\n     34 migration/3      0.0     0\n     35 ksoftirqd/3      0.0     0\n     37 kworker/3:0H-ev  0.0     0\n     38 cpuhp/4          0.0     0\n     39 idle_inject/4    0.0     0\n     40 migration/4      0.0     0\n     41 ksoftirqd/4      0.0     0\n     43 kworker/4:0H-ev  0.0     0\n     44 cpuhp/5          0.0     0\n     45 idle_inject/5    0.0     0\n     46 migration/5      0.0     0\n     47 ksoftirqd/5      0.0     0\n     49 kworker/5:0H-ev  0.0     0\n     50 cpuhp/6          0.0     0\n     51 idle_inject/6    0.0     0\n     52 migration/6      0.0     0\n     53 ksoftirqd/6      0.0     0\n     55 kworker/6:0H-ev  0.0     0\n     56 cpuhp/7          0.0     0\n     57 idle_inject/7    0.0     0\n     58 migration/7      0.0     0\n     59 ksoftirqd/7      0.0     0\n     61 kworker/7:0H-kb  0.0     0\n     62 cpuhp/8          0.0     0\n     63 idle_inject/8    0.0     0\n     64 migration/8      0.0     0\n     65 ksoftirqd/8      0.0     0\n     67 kworker/8:0H-ev  0.0     0\n     68 cpuhp/9          0.0     0\n     69 idle_inject/9    0.0     0\n     70 migration/9      0.0     0\n     71 ksoftirqd/9      0.0     0\n     73 kworker/9:0H-ev  0.0     0\n     74 cpuhp/10         0.0     0\n     75 idle_inject/10   0.0     0\n     76 migration/10     0.0     0\n     77 ksoftirqd/10     0.0     0\n     79 kworker/10:0H-e  0.0     0\n     80 cpuhp/11         0.0     0\n     81 idle_inject/11   0.0     0\n     82 migration/11     0.0     0\n     83 ksoftirqd/11     0.0     0\n     85 kworker/11:0H-e  0.0     0\n     86 cpuhp/12         0.0     0\n     87 idle_inject/12   0.0     0\n     88 migration/12     0.0     0\n     89 ksoftirqd/12     0.0     0\n     91 kworker/12:0H-e  0.0     0\n     93 cpuhp/13         0.0     0\n     94 idle_inject/13   0.0     0\n     95 migration/13     0.0     0\n     96 ksoftirqd/13     0.0     0\n     98 kworker/13:0H-e  0.0     0\n     99 cpuhp/14         0.0     0\n    100 idle_inject/14   0.0     0\n    101 migration/14     0.0     0\n    102 ksoftirqd/14     0.0     0\n    104 kworker/14:0H-e  0.0     0\n    105 cpuhp/15         0.0     0\n    106 idle_inject/15   0.0     0\n    107 migration/15     0.0     0\n    108 ksoftirqd/15     0.0     0\n    110 kworker/15:0H-e  0.0     0\n    111 cpuhp/16         0.0     0\n    112 idle_inject/16   0.0     0\n    113 migration/16     0.0     0\n    114 ksoftirqd/16     0.0     0\n    116 kworker/16:0H-e  0.0     0\n    117 cpuhp/17         0.0     0\n    118 idle_inject/17   0.0     0\n    119 migration/17     0.0     0\n    120 ksoftirqd/17     0.0     0\n    122 kworker/17:0H-e  0.0     0\n    123 cpuhp/18         0.0     0\n    124 idle_inject/18   0.0     0\n    125 migration/18     0.0     0\n    126 ksoftirqd/18     0.0     0\n    128 kworker/18:0H-e  0.0     0\n    129 cpuhp/19         0.0     0\n    130 idle_inject/19   0.0     0\n    131 migration/19     0.0     0\n    132 ksoftirqd/19     0.0     0\n    134 kworker/19:0H-e  0.0     0\n    135 cpuhp/20         0.0     0\n    136 idle_inject/20   0.0     0\n    137 migration/20     0.0     0\n    138 ksoftirqd/20     0.0     0\n    140 kworker/20:0H-e  0.0     0\n    141 cpuhp/21         0.0     0\n    142 idle_inject/21   0.0     0\n    143 migration/21     0.0     0\n    144 ksoftirqd/21     0.0     0\n    146 kworker/21:0H-e  0.0     0\n    147 cpuhp/22         0.0     0\n    148 idle_inject/22   0.0     0\n    149 migration/22     0.0     0\n    150 ksoftirqd/22     0.0     0\n    152 kworker/22:0H-e  0.0     0\n    153 cpuhp/23         0.0     0\n    154 idle_inject/23   0.0     0\n    155 migration/23     0.0     0\n    156 ksoftirqd/23     0.0     0\n    158 kworker/23:0H-e  0.0     0\n    159 cpuhp/24         0.0     0\n    160 idle_inject/24   0.0     0\n    161 migration/24     0.0     0\n    162 ksoftirqd/24     0.0     0\n    164 kworker/24:0H-e  0.0     0\n    166 cpuhp/25         0.0     0\n    167 idle_inject/25   0.0     0\n    168 migration/25     0.0     0\n    169 ksoftirqd/25     0.0     0\n    171 kworker/25:0H-e  0.0     0\n    172 cpuhp/26         0.0     0\n    173 idle_inject/26   0.0     0\n    174 migration/26     0.0     0\n    175 ksoftirqd/26     0.0     0\n    177 kworker/26:0H-e  0.0     0\n    178 cpuhp/27         0.0     0\n    179 idle_inject/27   0.0     0\n    180 migration/27     0.0     0\n    181 ksoftirqd/27     0.0     0\n    183 kworker/27:0H-e  0.0     0\n    184 cpuhp/28         0.0     0\n    185 idle_inject/28   0.0     0\n    186 migration/28     0.0     0\n    187 ksoftirqd/28     0.0     0\n    189 kworker/28:0H-e  0.0     0\n    190 cpuhp/29         0.0     0\n    191 idle_inject/29   0.0     0\n    192 migration/29     0.0     0\n    193 ksoftirqd/29     0.0     0\n    195 kworker/29:0H-e  0.0     0\n    196 cpuhp/30         0.0     0\n    197 idle_inject/30   0.0     0\n    198 migration/30     0.0     0\n    199 ksoftirqd/30     0.0     0\n    201 kworker/30:0H-e  0.0     0\n    202 cpuhp/31         0.0     0\n    203 idle_inject/31   0.0     0\n    204 migration/31     0.0     0\n    205 ksoftirqd/31     0.0     0\n    207 kworker/31:0H-e  0.0     0\n    208 cpuhp/32         0.0     0\n    209 idle_inject/32   0.0     0\n    210 migration/32     0.0     0\n    211 ksoftirqd/32     0.0     0\n    213 kworker/32:0H-e  0.0     0\n    215 cpuhp/33         0.0     0\n    216 idle_inject/33   0.0     0\n    217 migration/33     0.0     0\n    218 ksoftirqd/33     0.0     0\n    220 kworker/33:0H-e  0.0     0\n    221 cpuhp/34         0.0     0\n    222 idle_inject/34   0.0     0\n    223 migration/34     0.0     0\n    224 ksoftirqd/34     0.0     0\n    226 kworker/34:0H-e  0.0     0\n    227 cpuhp/35         0.0     0\n    228 idle_inject/35   0.0     0\n    229 migration/35     0.0     0\n    230 ksoftirqd/35     0.0     0\n    232 kworker/35:0H-e  0.0     0\n    233 cpuhp/36         0.0     0\n    234 idle_inject/36   0.0     0\n    235 migration/36     0.0     0\n    236 ksoftirqd/36     0.0     0\n    238 kworker/36:0H-e  0.0     0\n    240 cpuhp/37         0.0     0\n    241 idle_inject/37   0.0     0\n    242 migration/37     0.0     0\n    243 ksoftirqd/37     0.0     0\n    245 kworker/37:0H-k  0.0     0\n    246 cpuhp/38         0.0     0\n    247 idle_inject/38   0.0     0\n    248 migration/38     0.0     0\n    249 ksoftirqd/38     0.0     0\n    251 kworker/38:0H-k  0.0     0\n    252 cpuhp/39         0.0     0\n    253 idle_inject/39   0.0     0\n    254 migration/39     0.0     0\n    255 ksoftirqd/39     0.0     0\n    257 kworker/39:0H-e  0.0     0\n    258 cpuhp/40         0.0     0\n    259 idle_inject/40   0.0     0\n    260 migration/40     0.0     0\n    261 ksoftirqd/40     0.0     0\n    263 kworker/40:0H-k  0.0     0\n    264 cpuhp/41         0.0     0\n    265 idle_inject/41   0.0     0\n    266 migration/41     0.0     0\n    267 ksoftirqd/41     0.0     0\n    269 kworker/41:0H-e  0.0     0\n    270 cpuhp/42         0.0     0\n    271 idle_inject/42   0.0     0\n    272 migration/42     0.0     0\n    273 ksoftirqd/42     0.0     0\n    275 kworker/42:0H-k  0.0     0\n    276 cpuhp/43         0.0     0\n    277 idle_inject/43   0.0     0\n    278 migration/43     0.0     0\n    279 ksoftirqd/43     0.0     0\n    281 kworker/43:0H-e  0.0     0\n    282 cpuhp/44         0.0     0\n    283 idle_inject/44   0.0     0\n    284 migration/44     0.0     0\n    285 ksoftirqd/44     0.0     0\n    287 kworker/44:0H-e  0.0     0\n    288 cpuhp/45         0.0     0\n    289 idle_inject/45   0.0     0\n    290 migration/45     0.0     0\n    291 ksoftirqd/45     0.0     0\n    293 kworker/45:0H-e  0.0     0\n    294 cpuhp/46         0.0     0\n    295 idle_inject/46   0.0     0\n    296 migration/46     0.0     0\n    297 ksoftirqd/46     0.0     0\n    299 kworker/46:0H-e  0.0     0\n    300 cpuhp/47         0.0     0\n    301 idle_inject/47   0.0     0\n    302 migration/47     0.0     0\n    303 ksoftirqd/47     0.0     0\n    305 kworker/47:0H-e  0.0     0\n    306 cpuhp/48         0.0     0\n    307 idle_inject/48   0.0     0\n    308 migration/48     0.0     0\n    309 ksoftirqd/48     0.0     0\n    311 kworker/48:0H-e  0.0     0\n    313 cpuhp/49         0.0     0\n    314 idle_inject/49   0.0     0\n    315 migration/49     0.0     0\n    316 ksoftirqd/49     0.0     0\n    318 kworker/49:0H-e  0.0     0\n    319 cpuhp/50         0.0     0\n    320 idle_inject/50   0.0     0\n    321 migration/50     0.0     0\n    322 ksoftirqd/50     0.0     0\n    324 kworker/50:0H-e  0.0     0\n    325 cpuhp/51         0.0     0\n    326 idle_inject/51   0.0     0\n    327 migration/51     0.0     0\n    328 ksoftirqd/51     0.0     0\n    330 kworker/51:0H-e  0.0     0\n    331 cpuhp/52         0.0     0\n    332 idle_inject/52   0.0     0\n    333 migration/52     0.0     0\n    334 ksoftirqd/52     0.0     0\n    336 kworker/52:0H-e  0.0     0\n    337 cpuhp/53         0.0     0\n    338 idle_inject/53   0.0     0\n    339 migration/53     0.0     0\n    340 ksoftirqd/53     0.0     0\n    342 kworker/53:0H-e  0.0     0\n    343 cpuhp/54         0.0     0\n    344 idle_inject/54   0.0     0\n    345 migration/54     0.0     0\n    346 ksoftirqd/54     0.0     0\n    348 kworker/54:0H-e  0.0     0\n    349 cpuhp/55         0.0     0\n    350 idle_inject/55   0.0     0\n    351 migration/55     0.0     0\n    352 ksoftirqd/55     0.0     0\n    354 kworker/55:0H-e  0.0     0\n    355 cpuhp/56         0.0     0\n    356 idle_inject/56   0.0     0\n    357 migration/56     0.0     0\n    358 ksoftirqd/56     0.0     0\n    360 kworker/56:0H-e  0.0     0\n    361 cpuhp/57         0.0     0\n    362 idle_inject/57   0.0     0\n    363 migration/57     0.0     0\n    364 ksoftirqd/57     0.0     0\n    366 kworker/57:0H-e  0.0     0\n    368 cpuhp/58         0.0     0\n    369 idle_inject/58   0.0     0\n    370 migration/58     0.0     0\n    371 ksoftirqd/58     0.0     0\n    373 kworker/58:0H-e  0.0     0\n    374 cpuhp/59         0.0     0\n    375 idle_inject/59   0.0     0\n    376 migration/59     0.0     0\n    377 ksoftirqd/59     0.0     0\n    379 kworker/59:0H-k  0.0     0\n    380 cpuhp/60         0.0     0\n    381 idle_inject/60   0.0     0\n    382 migration/60     0.0     0\n    383 ksoftirqd/60     0.0     0\n    385 kworker/60:0H-e  0.0     0\n    387 cpuhp/61         0.0     0\n    388 idle_inject/61   0.0     0\n    389 migration/61     0.0     0\n    390 ksoftirqd/61     0.0     0\n    392 kworker/61:0H-k  0.0     0\n    393 cpuhp/62         0.0     0\n    394 idle_inject/62   0.0     0\n    395 migration/62     0.0     0\n    396 ksoftirqd/62     0.0     0\n    398 kworker/62:0H-k  0.0     0\n    399 cpuhp/63         0.0     0\n    400 idle_inject/63   0.0     0\n    401 migration/63     0.0     0\n    402 ksoftirqd/63     0.0     0\n    404 kworker/63:0H-k  0.0     0\n    405 cpuhp/64         0.0     0\n    406 idle_inject/64   0.0     0\n    407 migration/64     0.0     0\n    408 ksoftirqd/64     0.0     0\n    410 kworker/64:0H-e  0.0     0\n    411 cpuhp/65         0.0     0\n    412 idle_inject/65   0.0     0\n    413 migration/65     0.0     0\n    414 ksoftirqd/65     0.0     0\n    416 kworker/65:0H-k  0.0     0\n    417 cpuhp/66         0.0     0\n    418 idle_inject/66   0.0     0\n    419 migration/66     0.0     0\n    420 ksoftirqd/66     0.0     0\n    422 kworker/66:0H-k  0.0     0\n    423 cpuhp/67         0.0     0\n    424 idle_inject/67   0.0     0\n    425 migration/67     0.0     0\n    426 ksoftirqd/67     0.0     0\n    428 kworker/67:0H-k  0.0     0\n    429 cpuhp/68         0.0     0\n    430 idle_inject/68   0.0     0\n    431 migration/68     0.0     0\n    432 ksoftirqd/68     0.0     0\n    434 kworker/68:0H-e  0.0     0\n    435 cpuhp/69         0.0     0\n    436 idle_inject/69   0.0     0\n    437 migration/69     0.0     0\n    438 ksoftirqd/69     0.0     0\n    440 kworker/69:0H-e  0.0     0\n    441 cpuhp/70         0.0     0\n    442 idle_inject/70   0.0     0\n    443 migration/70     0.0     0\n    444 ksoftirqd/70     0.0     0\n    446 kworker/70:0H-e  0.0     0\n    447 cpuhp/71         0.0     0\n    448 idle_inject/71   0.0     0\n    449 migration/71     0.0     0\n    450 ksoftirqd/71     0.0     0\n    452 kworker/71:0H-e  0.0     0\n    453 cpuhp/72         0.0     0\n    454 idle_inject/72   0.0     0\n    455 migration/72     0.0     0\n    456 ksoftirqd/72     0.0     0\n    458 kworker/72:0H-e  0.0     0\n    460 cpuhp/73         0.0     0\n    461 idle_inject/73   0.0     0\n    462 migration/73     0.0     0\n    463 ksoftirqd/73     0.0     0\n    465 kworker/73:0H-e  0.0     0\n    466 cpuhp/74         0.0     0\n    467 idle_inject/74   0.0     0\n    468 migration/74     0.0     0\n    469 ksoftirqd/74     0.0     0\n    471 kworker/74:0H-e  0.0     0\n    472 cpuhp/75         0.0     0\n    473 idle_inject/75   0.0     0\n    474 migration/75     0.0     0\n    475 ksoftirqd/75     0.0     0\n    477 kworker/75:0H-k  0.0     0\n    478 cpuhp/76         0.0     0\n    479 idle_inject/76   0.0     0\n    480 migration/76     0.0     0\n    481 ksoftirqd/76     0.0     0\n    483 kworker/76:0H-e  0.0     0\n    484 cpuhp/77         0.0     0\n    485 idle_inject/77   0.0     0\n    486 migration/77     0.0     0\n    487 ksoftirqd/77     0.0     0\n    489 kworker/77:0H-e  0.0     0\n    490 cpuhp/78         0.0     0\n    491 idle_inject/78   0.0     0\n    492 migration/78     0.0     0\n    493 ksoftirqd/78     0.0     0\n    495 kworker/78:0H-e  0.0     0\n    496 cpuhp/79         0.0     0\n    497 idle_inject/79   0.0     0\n    498 migration/79     0.0     0\n    499 ksoftirqd/79     0.0     0\n    501 kworker/79:0H-e  0.0     0\n    502 cpuhp/80         0.0     0\n    503 idle_inject/80   0.0     0\n    504 migration/80     0.0     0\n    505 ksoftirqd/80     0.0     0\n    507 kworker/80:0H-e  0.0     0\n    508 cpuhp/81         0.0     0\n    509 idle_inject/81   0.0     0\n    510 migration/81     0.0     0\n    511 ksoftirqd/81     0.0     0\n    513 kworker/81:0H-e  0.0     0\n    514 cpuhp/82         0.0     0\n    515 idle_inject/82   0.0     0\n    516 migration/82     0.0     0\n    517 ksoftirqd/82     0.0     0\n    519 kworker/82:0H-e  0.0     0\n    520 cpuhp/83         0.0     0\n    521 idle_inject/83   0.0     0\n    522 migration/83     0.0     0\n    523 ksoftirqd/83     0.0     0\n    525 kworker/83:0H-e  0.0     0\n    526 cpuhp/84         0.0     0\n    527 idle_inject/84   0.0     0\n    528 migration/84     0.0     0\n    529 ksoftirqd/84     0.0     0\n    531 kworker/84:0H-e  0.0     0\n    533 cpuhp/85         0.0     0\n    534 idle_inject/85   0.0     0\n    535 migration/85     0.0     0\n    536 ksoftirqd/85     0.0     0\n    538 kworker/85:0H-e  0.0     0\n    539 cpuhp/86         0.0     0\n    540 idle_inject/86   0.0     0\n    541 migration/86     0.0     0\n    542 ksoftirqd/86     0.0     0\n    544 kworker/86:0H-e  0.0     0\n    545 cpuhp/87         0.0     0\n    546 idle_inject/87   0.0     0\n    547 migration/87     0.0     0\n    548 ksoftirqd/87     0.0     0\n    550 kworker/87:0H-e  0.0     0\n    551 cpuhp/88         0.0     0\n    552 idle_inject/88   0.0     0\n    553 migration/88     0.0     0\n    554 ksoftirqd/88     0.0     0\n    556 kworker/88:0H-e  0.0     0\n    557 cpuhp/89         0.0     0\n    558 idle_inject/89   0.0     0\n    559 migration/89     0.0     0\n    560 ksoftirqd/89     0.0     0\n    562 kworker/89:0H-k  0.0     0\n    563 cpuhp/90         0.0     0\n    564 idle_inject/90   0.0     0\n    565 migration/90     0.0     0\n    566 ksoftirqd/90     0.0     0\n    568 kworker/90:0H-e  0.0     0\n    569 cpuhp/91         0.0     0\n    570 idle_inject/91   0.0     0\n    571 migration/91     0.0     0\n    572 ksoftirqd/91     0.0     0\n    574 kworker/91:0H-e  0.0     0\n    575 cpuhp/92         0.0     0\n    576 idle_inject/92   0.0     0\n    577 migration/92     0.0     0\n    578 ksoftirqd/92     0.0     0\n    580 kworker/92:0H-e  0.0     0\n    581 cpuhp/93         0.0     0\n    582 idle_inject/93   0.0     0\n    583 migration/93     0.0     0\n    584 ksoftirqd/93     0.0     0\n    586 kworker/93:0H-e  0.0     0\n    587 cpuhp/94         0.0     0\n    588 idle_inject/94   0.0     0\n    589 migration/94     0.0     0\n    590 ksoftirqd/94     0.0     0\n    592 kworker/94:0H-k  0.0     0\n    593 cpuhp/95         0.0     0\n    594 idle_inject/95   0.0     0\n    595 migration/95     0.0     0\n    596 ksoftirqd/95     0.0     0\n    598 kworker/95:0H-e  0.0     0\n    599 cpuhp/96         0.0     0\n    600 idle_inject/96   0.0     0\n    601 migration/96     0.0     0\n    602 ksoftirqd/96     0.0     0\n    604 kworker/96:0H-e  0.0     0\n    605 cpuhp/97         0.0     0\n    606 idle_inject/97   0.0     0\n    607 migration/97     0.0     0\n    608 ksoftirqd/97     0.0     0\n    610 kworker/97:0H-e  0.0     0\n    611 cpuhp/98         0.0     0\n    612 idle_inject/98   0.0     0\n    613 migration/98     0.0     0\n    614 ksoftirqd/98     0.0     0\n    616 kworker/98:0H-e  0.0     0\n    617 cpuhp/99         0.0     0\n    618 idle_inject/99   0.0     0\n    619 migration/99     0.0     0\n    620 ksoftirqd/99     0.0     0\n    622 kworker/99:0H-e  0.0     0\n    623 cpuhp/100        0.0     0\n    624 idle_inject/100  0.0     0\n    625 migration/100    0.0     0\n    626 ksoftirqd/100    0.0     0\n    628 kworker/100:0H-  0.0     0\n    629 cpuhp/101        0.0     0\n    630 idle_inject/101  0.0     0\n    631 migration/101    0.0     0\n    632 ksoftirqd/101    0.0     0\n    634 kworker/101:0H-  0.0     0\n    635 cpuhp/102        0.0     0\n    636 idle_inject/102  0.0     0\n    637 migration/102    0.0     0\n    638 ksoftirqd/102    0.0     0\n    640 kworker/102:0H-  0.0     0\n    641 cpuhp/103        0.0     0\n    642 idle_inject/103  0.0     0\n    643 migration/103    0.0     0\n    644 ksoftirqd/103    0.0     0\n    646 kworker/103:0H-  0.0     0\n    647 cpuhp/104        0.0     0\n    648 idle_inject/104  0.0     0\n    649 migration/104    0.0     0\n    650 ksoftirqd/104    0.0     0\n    652 kworker/104:0H-  0.0     0\n    653 cpuhp/105        0.0     0\n    654 idle_inject/105  0.0     0\n    655 migration/105    0.0     0\n    656 ksoftirqd/105    0.0     0\n    658 kworker/105:0H-  0.0     0\n    659 cpuhp/106        0.0     0\n    660 idle_inject/106  0.0     0\n    661 migration/106    0.0     0\n    662 ksoftirqd/106    0.0     0\n    664 kworker/106:0H-  0.0     0\n    665 cpuhp/107        0.0     0\n    666 idle_inject/107  0.0     0\n    667 migration/107    0.0     0\n    668 ksoftirqd/107    0.0     0\n    670 kworker/107:0H-  0.0     0\n    671 cpuhp/108        0.0     0\n    672 idle_inject/108  0.0     0\n    673 migration/108    0.0     0\n    674 ksoftirqd/108    0.0     0\n    676 kworker/108:0H-  0.0     0\n    677 cpuhp/109        0.0     0\n    678 idle_inject/109  0.0     0\n    679 migration/109    0.0     0\n    680 ksoftirqd/109    0.0     0\n    682 kworker/109:0H-  0.0     0\n    683 cpuhp/110        0.0     0\n    684 idle_inject/110  0.0     0\n    685 migration/110    0.0     0\n    686 ksoftirqd/110    0.0     0\n    688 kworker/110:0H-  0.0     0\n    689 cpuhp/111        0.0     0\n    690 idle_inject/111  0.0     0\n    691 migration/111    0.0     0\n    692 ksoftirqd/111    0.0     0\n    694 kworker/111:0H-  0.0     0\n    695 cpuhp/112        0.0     0\n    696 idle_inject/112  0.0     0\n    697 migration/112    0.0     0\n    698 ksoftirqd/112    0.0     0\n    700 kworker/112:0H-  0.0     0\n    701 cpuhp/113        0.0     0\n    702 idle_inject/113  0.0     0\n    703 migration/113    0.0     0\n    704 ksoftirqd/113    0.0     0\n    706 kworker/113:0H-  0.0     0\n    707 cpuhp/114        0.0     0\n    708 idle_inject/114  0.0     0\n    709 migration/114    0.0     0\n    710 ksoftirqd/114    0.0     0\n    712 kworker/114:0H-  0.0     0\n    713 cpuhp/115        0.0     0\n    714 idle_inject/115  0.0     0\n    715 migration/115    0.0     0\n    716 ksoftirqd/115    0.0     0\n    718 kworker/115:0H-  0.0     0\n    719 cpuhp/116        0.0     0\n    720 idle_inject/116  0.0     0\n    721 migration/116    0.0     0\n    722 ksoftirqd/116    0.0     0\n    724 kworker/116:0H-  0.0     0\n    725 cpuhp/117        0.0     0\n    726 idle_inject/117  0.0     0\n    727 migration/117    0.0     0\n    728 ksoftirqd/117    0.0     0\n    730 kworker/117:0H-  0.0     0\n    731 cpuhp/118        0.0     0\n    732 idle_inject/118  0.0     0\n    733 migration/118    0.0     0\n    734 ksoftirqd/118    0.0     0\n    736 kworker/118:0H-  0.0     0\n    737 cpuhp/119        0.0     0\n    738 idle_inject/119  0.0     0\n    739 migration/119    0.0     0\n    740 ksoftirqd/119    0.0     0\n    742 kworker/119:0H-  0.0     0\n    743 cpuhp/120        0.0     0\n    744 idle_inject/120  0.0     0\n    745 migration/120    0.0     0\n    746 ksoftirqd/120    0.0     0\n    748 kworker/120:0H-  0.0     0\n    749 cpuhp/121        0.0     0\n    750 idle_inject/121  0.0     0\n    751 migration/121    0.0     0\n    752 ksoftirqd/121    0.0     0\n    754 kworker/121:0H-  0.0     0\n    755 cpuhp/122        0.0     0\n    756 idle_inject/122  0.0     0\n    757 migration/122    0.0     0\n    758 ksoftirqd/122    0.0     0\n    760 kworker/122:0H-  0.0     0\n    761 cpuhp/123        0.0     0\n    762 idle_inject/123  0.0     0\n    763 migration/123    0.0     0\n    764 ksoftirqd/123    0.0     0\n    766 kworker/123:0H-  0.0     0\n    767 cpuhp/124        0.0     0\n    768 idle_inject/124  0.0     0\n    769 migration/124    0.0     0\n    770 ksoftirqd/124    0.0     0\n    772 kworker/124:0H-  0.0     0\n    773 cpuhp/125        0.0     0\n    774 idle_inject/125  0.0     0\n    775 migration/125    0.0     0\n    776 ksoftirqd/125    0.0     0\n    778 kworker/125:0H-  0.0     0\n    779 cpuhp/126        0.0     0\n    780 idle_inject/126  0.0     0\n    781 migration/126    0.0     0\n    782 ksoftirqd/126    0.0     0\n    784 kworker/126:0H-  0.0     0\n    785 cpuhp/127        0.0     0\n    786 idle_inject/127  0.0     0\n    787 migration/127    0.0     0\n    788 ksoftirqd/127    0.0     0\n    790 kworker/127:0H-  0.0     0\n    791 cpuhp/128        0.0     0\n    792 idle_inject/128  0.0     0\n    793 migration/128    0.0     0\n    794 ksoftirqd/128    0.0     0\n    796 kworker/128:0H-  0.0     0\n    797 cpuhp/129        0.0     0\n    798 idle_inject/129  0.0     0\n    799 migration/129    0.0     0\n    800 ksoftirqd/129    0.0     0\n    802 kworker/129:0H-  0.0     0\n    803 cpuhp/130        0.0     0\n    804 idle_inject/130  0.0     0\n    805 migration/130    0.0     0\n    806 ksoftirqd/130    0.0     0\n    808 kworker/130:0H-  0.0     0\n    809 cpuhp/131        0.0     0\n    810 idle_inject/131  0.0     0\n    811 migration/131    0.0     0\n    812 ksoftirqd/131    0.0     0\n    814 kworker/131:0H-  0.0     0\n    815 cpuhp/132        0.0     0\n    816 idle_inject/132  0.0     0\n    817 migration/132    0.0     0\n    818 ksoftirqd/132    0.0     0\n    820 kworker/132:0H-  0.0     0\n    821 cpuhp/133        0.0     0\n    822 idle_inject/133  0.0     0\n    823 migration/133    0.0     0\n    824 ksoftirqd/133    0.0     0\n    826 kworker/133:0H-  0.0     0\n    827 cpuhp/134        0.0     0\n    828 idle_inject/134  0.0     0\n    829 migration/134    0.0     0\n    830 ksoftirqd/134    0.0     0\n    832 kworker/134:0H-  0.0     0\n    833 cpuhp/135        0.0     0\n    834 idle_inject/135  0.0     0\n    835 migration/135    0.0     0\n    836 ksoftirqd/135    0.0     0\n    838 kworker/135:0H-  0.0     0\n    839 cpuhp/136        0.0     0\n    840 idle_inject/136  0.0     0\n    841 migration/136    0.0     0\n    842 ksoftirqd/136    0.0     0\n    844 kworker/136:0H-  0.0     0\n    845 cpuhp/137        0.0     0\n    846 idle_inject/137  0.0     0\n    847 migration/137    0.0     0\n    848 ksoftirqd/137    0.0     0\n    850 kworker/137:0H-  0.0     0\n    851 cpuhp/138        0.0     0\n    852 idle_inject/138  0.0     0\n    853 migration/138    0.0     0\n    854 ksoftirqd/138    0.0     0\n    856 kworker/138:0H-  0.0     0\n    857 cpuhp/139        0.0     0\n    858 idle_inject/139  0.0     0\n    859 migration/139    0.0     0\n    860 ksoftirqd/139    0.0     0\n    862 kworker/139:0H-  0.0     0\n    863 cpuhp/140        0.0     0\n    864 idle_inject/140  0.0     0\n    865 migration/140    0.0     0\n    866 ksoftirqd/140    0.0     0\n    868 kworker/140:0H-  0.0     0\n    869 cpuhp/141        0.0     0\n    870 idle_inject/141  0.0     0\n    871 migration/141    0.0     0\n    872 ksoftirqd/141    0.0     0\n    874 kworker/141:0H-  0.0     0\n    875 cpuhp/142        0.0     0\n    876 idle_inject/142  0.0     0\n    877 migration/142    0.0     0\n    878 ksoftirqd/142    0.0     0\n    880 kworker/142:0H-  0.0     0\n    881 cpuhp/143        0.0     0\n    882 idle_inject/143  0.0     0\n    883 migration/143    0.0     0\n    884 ksoftirqd/143    0.0     0\n    886 kworker/143:0H-  0.0     0\n    887 cpuhp/144        0.0     0\n    888 idle_inject/144  0.0     0\n    889 migration/144    0.0     0\n    890 ksoftirqd/144    0.0     0\n    892 kworker/144:0H-  0.0     0\n    893 cpuhp/145        0.0     0\n    894 idle_inject/145  0.0     0\n    895 migration/145    0.0     0\n    896 ksoftirqd/145    0.0     0\n    898 kworker/145:0H-  0.0     0\n    899 cpuhp/146        0.0     0\n    900 idle_inject/146  0.0     0\n    901 migration/146    0.0     0\n    902 ksoftirqd/146    0.0     0\n    904 kworker/146:0H-  0.0     0\n    905 cpuhp/147        0.0     0\n    906 idle_inject/147  0.0     0\n    907 migration/147    0.0     0\n    908 ksoftirqd/147    0.0     0\n    910 kworker/147:0H-  0.0     0\n    911 cpuhp/148        0.0     0\n    912 idle_inject/148  0.0     0\n    913 migration/148    0.0     0\n    914 ksoftirqd/148    0.0     0\n    916 kworker/148:0H-  0.0     0\n    917 cpuhp/149        0.0     0\n    918 idle_inject/149  0.0     0\n    919 migration/149    0.0     0\n    920 ksoftirqd/149    0.0     0\n    922 kworker/149:0H-  0.0     0\n    923 cpuhp/150        0.0     0\n    924 idle_inject/150  0.0     0\n    925 migration/150    0.0     0\n    926 ksoftirqd/150    0.0     0\n    928 kworker/150:0H-  0.0     0\n    929 cpuhp/151        0.0     0\n    930 idle_inject/151  0.0     0\n    931 migration/151    0.0     0\n    932 ksoftirqd/151    0.0     0\n    934 kworker/151:0H-  0.0     0\n    935 cpuhp/152        0.0     0\n    936 idle_inject/152  0.0     0\n    937 migration/152    0.0     0\n    938 ksoftirqd/152    0.0     0\n    940 kworker/152:0H-  0.0     0\n    941 cpuhp/153        0.0     0\n    942 idle_inject/153  0.0     0\n    943 migration/153    0.0     0\n    944 ksoftirqd/153    0.0     0\n    946 kworker/153:0H-  0.0     0\n    947 cpuhp/154        0.0     0\n    948 idle_inject/154  0.0     0\n    949 migration/154    0.0     0\n    950 ksoftirqd/154    0.0     0\n    952 kworker/154:0H-  0.0     0\n    953 cpuhp/155        0.0     0\n    954 idle_inject/155  0.0     0\n    955 migration/155    0.0     0\n    956 ksoftirqd/155    0.0     0\n    958 kworker/155:0H-  0.0     0\n    959 cpuhp/156        0.0     0\n    960 idle_inject/156  0.0     0\n    961 migration/156    0.0     0\n    962 ksoftirqd/156    0.0     0\n    964 kworker/156:0H-  0.0     0\n    965 cpuhp/157        0.0     0\n    966 idle_inject/157  0.0     0\n    967 migration/157    0.0     0\n    968 ksoftirqd/157    0.0     0\n    970 kworker/157:0H-  0.0     0\n    971 cpuhp/158        0.0     0\n    972 idle_inject/158  0.0     0\n    973 migration/158    0.0     0\n    974 ksoftirqd/158    0.0     0\n    976 kworker/158:0H-  0.0     0\n    977 cpuhp/159        0.0     0\n    978 idle_inject/159  0.0     0\n    979 migration/159    0.0     0\n    980 ksoftirqd/159    0.0     0\n    982 kworker/159:0H-  0.0     0\n    983 cpuhp/160        0.0     0\n    984 idle_inject/160  0.0     0\n    985 migration/160    0.0     0\n    986 ksoftirqd/160    0.0     0\n    988 kworker/160:0H-  0.0     0\n    989 cpuhp/161        0.0     0\n    990 idle_inject/161  0.0     0\n    991 migration/161    0.0     0\n    992 ksoftirqd/161    0.0     0\n    994 kworker/161:0H-  0.0     0\n    995 cpuhp/162        0.0     0\n    996 idle_inject/162  0.0     0\n    997 migration/162    0.0     0\n    998 ksoftirqd/162    0.0     0\n   1000 kworker/162:0H-  0.0     0\n   1001 cpuhp/163        0.0     0\n   1002 idle_inject/163  0.0     0\n   1003 migration/163    0.0     0\n   1004 ksoftirqd/163    0.0     0\n   1006 kworker/163:0H-  0.0     0\n   1007 cpuhp/164        0.0     0\n   1008 idle_inject/164  0.0     0\n   1009 migration/164    0.0     0\n   1010 ksoftirqd/164    0.0     0\n   1012 kworker/164:0H-  0.0     0\n   1013 cpuhp/165        0.0     0\n   1014 idle_inject/165  0.0     0\n   1015 migration/165    0.0     0\n   1016 ksoftirqd/165    0.0     0\n   1018 kworker/165:0H-  0.0     0\n   1019 cpuhp/166        0.0     0\n   1020 idle_inject/166  0.0     0\n   1021 migration/166    0.0     0\n   1022 ksoftirqd/166    0.0     0\n   1024 kworker/166:0H-  0.0     0\n   1025 cpuhp/167        0.0     0\n   1026 idle_inject/167  0.0     0\n   1027 migration/167    0.0     0\n   1028 ksoftirqd/167    0.0     0\n   1030 kworker/167:0H-  0.0     0\n   1031 cpuhp/168        0.0     0\n   1032 idle_inject/168  0.0     0\n   1033 migration/168    0.0     0\n   1034 ksoftirqd/168    0.0     0\n   1036 kworker/168:0H-  0.0     0\n   1037 cpuhp/169        0.0     0\n   1038 idle_inject/169  0.0     0\n   1039 migration/169    0.0     0\n   1040 ksoftirqd/169    0.0     0\n   1042 kworker/169:0H-  0.0     0\n   1043 cpuhp/170        0.0     0\n   1044 idle_inject/170  0.0     0\n   1045 migration/170    0.0     0\n   1046 ksoftirqd/170    0.0     0\n   1048 kworker/170:0H-  0.0     0\n   1049 cpuhp/171        0.0     0\n   1050 idle_inject/171  0.0     0\n   1051 migration/171    0.0     0\n   1052 ksoftirqd/171    0.0     0\n   1054 kworker/171:0H-  0.0     0\n   1055 cpuhp/172        0.0     0\n   1056 idle_inject/172  0.0     0\n   1057 migration/172    0.0     0\n   1058 ksoftirqd/172    0.0     0\n   1060 kworker/172:0H-  0.0     0\n   1061 cpuhp/173        0.0     0\n   1062 idle_inject/173  0.0     0\n   1063 migration/173    0.0     0\n   1064 ksoftirqd/173    0.0     0\n   1066 kworker/173:0H-  0.0     0\n   1067 cpuhp/174        0.0     0\n   1068 idle_inject/174  0.0     0\n   1069 migration/174    0.0     0\n   1070 ksoftirqd/174    0.0     0\n   1072 kworker/174:0H-  0.0     0\n   1073 cpuhp/175        0.0     0\n   1074 idle_inject/175  0.0     0\n   1075 migration/175    0.0     0\n   1076 ksoftirqd/175    0.0     0\n   1078 kworker/175:0H-  0.0     0\n   1079 cpuhp/176        0.0     0\n   1080 idle_inject/176  0.0     0\n   1081 migration/176    0.0     0\n   1082 ksoftirqd/176    0.0     0\n   1084 kworker/176:0H-  0.0     0\n   1085 cpuhp/177        0.0     0\n   1086 idle_inject/177  0.0     0\n   1087 migration/177    0.0     0\n   1088 ksoftirqd/177    0.0     0\n   1090 kworker/177:0H-  0.0     0\n   1091 cpuhp/178        0.0     0\n   1092 idle_inject/178  0.0     0\n   1093 migration/178    0.0     0\n   1094 ksoftirqd/178    0.0     0\n   1096 kworker/178:0H-  0.0     0\n   1097 cpuhp/179        0.0     0\n   1098 idle_inject/179  0.0     0\n   1099 migration/179    0.0     0\n   1100 ksoftirqd/179    0.0     0\n   1102 kworker/179:0H-  0.0     0\n   1103 cpuhp/180        0.0     0\n   1104 idle_inject/180  0.0     0\n   1105 migration/180    0.0     0\n   1106 ksoftirqd/180    0.0     0\n   1108 kworker/180:0H-  0.0     0\n   1109 cpuhp/181        0.0     0\n   1110 idle_inject/181  0.0     0\n   1111 migration/181    0.0     0\n   1112 ksoftirqd/181    0.0     0\n   1114 kworker/181:0H-  0.0     0\n   1115 cpuhp/182        0.0     0\n   1116 idle_inject/182  0.0     0\n   1117 migration/182    0.0     0\n   1118 ksoftirqd/182    0.0     0\n   1120 kworker/182:0H-  0.0     0\n   1121 cpuhp/183        0.0     0\n   1122 idle_inject/183  0.0     0\n   1123 migration/183    0.0     0\n   1124 ksoftirqd/183    0.0     0\n   1126 kworker/183:0H-  0.0     0\n   1127 cpuhp/184        0.0     0\n   1128 idle_inject/184  0.0     0\n   1129 migration/184    0.0     0\n   1130 ksoftirqd/184    0.0     0\n   1132 kworker/184:0H-  0.0     0\n   1133 cpuhp/185        0.0     0\n   1134 idle_inject/185  0.0     0\n   1135 migration/185    0.0     0\n   1136 ksoftirqd/185    0.0     0\n   1138 kworker/185:0H-  0.0     0\n   1139 cpuhp/186        0.0     0\n   1140 idle_inject/186  0.0     0\n   1141 migration/186    0.0     0\n   1142 ksoftirqd/186    0.0     0\n   1144 kworker/186:0H-  0.0     0\n   1145 cpuhp/187        0.0     0\n   1146 idle_inject/187  0.0     0\n   1147 migration/187    0.0     0\n   1148 ksoftirqd/187    0.0     0\n   1150 kworker/187:0H-  0.0     0\n   1151 cpuhp/188        0.0     0\n   1152 idle_inject/188  0.0     0\n   1153 migration/188    0.0     0\n   1154 ksoftirqd/188    0.0     0\n   1156 kworker/188:0H-  0.0     0\n   1157 cpuhp/189        0.0     0\n   1158 idle_inject/189  0.0     0\n   1159 migration/189    0.0     0\n   1160 ksoftirqd/189    0.0     0\n   1162 kworker/189:0H-  0.0     0\n   1163 cpuhp/190        0.0     0\n   1164 idle_inject/190  0.0     0\n   1165 migration/190    0.0     0\n   1166 ksoftirqd/190    0.0     0\n   1168 kworker/190:0H-  0.0     0\n   1169 cpuhp/191        0.0     0\n   1170 idle_inject/191  0.0     0\n   1171 migration/191    0.0     0\n   1172 ksoftirqd/191    0.0     0\n   1174 kworker/191:0H-  0.0     0\n   1175 kdevtmpfs        0.0     0\n   1176 inet_frag_wq     0.0     0\n   1177 kauditd          0.0     0\n   1178 khungtaskd       0.0     0\n   1179 oom_reaper       0.0     0\n   1180 writeback        0.0     0\n   1181 kcompactd0       0.0     0\n   1182 kcompactd1       0.0     0\n   1183 kcompactd2       0.0     0\n   1184 kcompactd3       0.0     0\n   1185 kcompactd4       0.0     0\n   1186 kcompactd5       0.0     0\n   1187 kcompactd6       0.0     0\n   1188 kcompactd7       0.0     0\n   1189 ksmd             0.0     0\n   1190 khugepaged       0.0     0\n   1237 kintegrityd      0.0     0\n   1238 kblockd          0.0     0\n   1239 blkcg_punt_bio   0.0     0\n   1430 tpm_dev_wq       0.0     0\n   1431 ata_sff          0.0     0\n   1432 md               0.0     0\n   1433 edac-poller      0.0     0\n   1434 devfreq_wq       0.0     0\n   1435 watchdogd        0.0     0\n   1436 kworker/96:1H-e  0.0     0\n   1438 kswapd0          0.0     0\n   1439 kswapd1          0.0     0\n   1440 kswapd2          0.0     0\n   1441 kswapd3          0.0     0\n   1442 kswapd4          0.0     0\n   1443 kswapd5          0.0     0\n   1444 kswapd6          0.0     0\n   1445 kswapd7          0.0     0\n   1446 ecryptfs-kthrea  0.0     0\n   1448 kthrotld         0.0     0\n   1449 irq/52-pciehp    0.0     0\n   1450 irq/53-pciehp    0.0     0\n   1451 irq/54-pciehp    0.0     0\n   1452 irq/55-pciehp    0.0     0\n   1453 acpi_thermal_pm  0.0     0\n   1455 vfio-irqfd-clea  0.0     0\n   1456 kworker/u384:1+  0.0     0\n   1457 mld              0.0     0\n   1458 kworker/3:1H-kb  0.0     0\n   1459 ipv6_addrconf    0.0     0\n   1469 kstrp            0.0     0\n   1472 zswap-shrink     0.0     0\n   1664 kworker/u393:0   0.0     0\n   1679 charger_manager  0.0     0\n   1702 kworker/105:1H-  0.0     0\n   1751 kworker/101:1H-  0.0     0\n   1752 nvme-wq          0.0     0\n   1753 nvme-reset-wq    0.0     0\n   1754 nvme-delete-wq   0.0     0\n   1757 cryptd           0.0     0\n   1825 kworker/143:1H-  0.0     0\n   1829 kworker/36:1H-k  0.0     0\n   1835 kworker/76:1H-k  0.0     0\n   1975 kworker/5:1H-kb  0.0     0\n   1977 kworker/6:1H-kb  0.0     0\n   1981 kworker/107:1H-  0.0     0\n   1983 kworker/100:1H-  0.0     0\n   1984 kworker/2:1H-kb  0.0     0\n   1986 kworker/8:1H-kb  0.0     0\n   1988 kworker/10:1H-k  0.0     0\n   1992 kworker/112:1H-  0.0     0\n   1995 kworker/24:1H-k  0.0     0\n   1996 kworker/106:1H-  0.0     0\n   2006 kworker/169:1H-  0.0     0\n   2008 kworker/151:1H-  0.0     0\n   2014 kworker/157:1H-  0.0     0\n   2027 kworker/27:1H-k  0.0     0\n   2028 kworker/25:1H-k  0.0     0\n   2032 kworker/131:1H-  0.0     0\n   2035 kworker/120:1H-  0.0     0\n   2037 kworker/18:1H-k  0.0     0\n   2039 kworker/126:1H-  0.0     0\n   2040 kworker/26:1H-k  0.0     0\n   2046 kworker/113:1H-  0.0     0\n   2047 kworker/125:1H-  0.0     0\n   2059 kworker/69:1H-k  0.0     0\n   2060 kworker/166:1H-  0.0     0\n   2061 kworker/159:1H-  0.0     0\n   2063 md0_raid1        0.0     0\n   2064 md2_raid1        0.0     0\n   2066 kworker/160:1H-  0.0     0\n   2069 kworker/60:1H-k  0.0     0\n   2089 kworker/162:1H-  0.0     0\n   2104 kworker/163:1H-  0.0     0\n   2114 kdmflush         0.0     0\n   2116 kdmflush         0.0     0\n   2117 kdmflush         0.0     0\n   2120 kdmflush         0.0     0\n   2124 kworker/164:1H-  0.0     0\n   2127 kworker/152:1H-  0.0     0\n   2164 kworker/52:1H-k  0.0     0\n   2175 kworker/4:1H-kb  0.0     0\n   2193 kworker/54:1H-k  0.0     0\n   2194 kworker/53:1H-k  0.0     0\n   2201 kworker/51:1H-k  0.0     0\n   2203 scsi_eh_0        0.0     0\n   2204 scsi_tmf_0       0.0     0\n   2206 scsi_eh_1        0.0     0\n   2216 scsi_tmf_1       0.0     0\n   2217 scsi_eh_2        0.0     0\n   2218 scsi_tmf_2       0.0     0\n   2219 scsi_eh_3        0.0     0\n   2220 scsi_tmf_3       0.0     0\n   2221 scsi_eh_4        0.0     0\n   2222 scsi_tmf_4       0.0     0\n   2251 scsi_eh_5        0.0     0\n   2252 scsi_tmf_5       0.0     0\n   2253 scsi_eh_6        0.0     0\n   2254 scsi_tmf_6       0.0     0\n   2255 scsi_eh_7        0.0     0\n   2256 scsi_tmf_7       0.0     0\n   2264 kworker/129:1H-  0.0     0\n   2271 kworker/128:1H-  0.0     0\n   2277 kworker/31:1H-k  0.0     0\n   2281 kworker/130:1H-  0.0     0\n   2292 kworker/30:1H-k  0.0     0\n   2313 raid5wq          0.0     0\n   2369 kworker/102:1H-  0.0     0\n   2370 jbd2/dm-3-8      0.0     0\n   2371 ext4-rsv-conver  0.0     0\n   2385 jbd2/dm-0-8      0.0     0\n   2386 ext4-rsv-conver  0.0     0\n   2403 kworker/99:1H-k  0.0     0\n   2410 kworker/9:1H-kb  0.0     0\n   2419 kworker/122:1H-  0.0     0\n   2463 kworker/98:1H-k  0.0     0\n   2464 kworker/0:1H-kb  0.0     0\n   2484 kworker/17:1H-k  0.0     0\n   2496 kworker/117:1H-  0.0     0\n   2499 kaluad           0.0     0\n   2502 kmpath_rdacd     0.0     0\n   2503 kmpathd          0.0     0\n   2504 kmpath_handlerd  0.0     0\n   2505 multipathd       0.0 27484\n   2506 kworker/12:1H-k  0.0     0\n   2516 kworker/97:1H-k  0.0     0\n   2517 kworker/115:1H-  0.0     0\n   2651 kworker/110:1H-  0.0     0\n   2654 ipmi-msghandler  0.0     0\n   2658 kworker/19:1H-k  0.0     0\n   2659 kipmi0           0.0     0\n   2661 kworker/123:1H-  0.0     0\n   2667 kworker/16:1H-k  0.0     0\n   2669 kworker/21:1H-k  0.0     0\n   2670 kworker/33:1H-k  0.0     0\n   2694 kworker/1:1H-kb  0.0     0\n   2714 kworker/121:1H-  0.0     0\n   2715 kworker/28:1H-k  0.0     0\n   2722 kworker/34:1H-k  0.0     0\n   2723 kworker/127:1H-  0.0     0\n   2724 kworker/43:1H-k  0.0     0\n   2728 kworker/178:1H-  0.0     0\n   2732 kworker/29:1H-k  0.0     0\n   2735 kworker/85:1H-k  0.0     0\n   2736 kworker/175:1H-  0.0     0\n   2744 kworker/177:1H-  0.0     0\n   2745 kworker/174:1H-  0.0     0\n   2748 kworker/49:1H-k  0.0     0\n   2783 kworker/179:1H-  0.0     0\n   2791 kworker/70:1H-k  0.0     0\n   2793 kworker/86:1H-k  0.0     0\n   2794 kworker/71:1H-k  0.0     0\n   2800 kworker/148:1H-  0.0     0\n   2808 kworker/176:1H-  0.0     0\n   2828 mgmt_wq0         0.0     0\n   2899 qdma_cmpl_statu  0.0     0\n   2900 qdma_cmpl_statu  0.0     0\n   2901 qdma_cmpl_statu  0.0     0\n   2903 qdma_cmpl_statu  0.0     0\n   2904 qdma_cmpl_statu  0.0     0\n   2905 qdma_cmpl_statu  0.0     0\n   2907 qdma_cmpl_statu  0.0     0\n   2908 qdma_cmpl_statu  0.0     0\n   2909 qdma_cmpl_statu  0.0     0\n   2911 qdma_cmpl_statu  0.0     0\n   2912 qdma_cmpl_statu  0.0     0\n   2913 qdma_cmpl_statu  0.0     0\n   2915 qdma_cmpl_statu  0.0     0\n   2916 qdma_cmpl_statu  0.0     0\n   2917 qdma_cmpl_statu  0.0     0\n   2918 qdma_cmpl_statu  0.0     0\n   2920 qdma_cmpl_statu  0.0     0\n   2921 qdma_cmpl_statu  0.0     0\n   2922 qdma_cmpl_statu  0.0     0\n   2923 qdma_cmpl_statu  0.0     0\n   2925 qdma_cmpl_statu  0.0     0\n   2926 qdma_cmpl_statu  0.0     0\n   2927 qdma_cmpl_statu  0.0     0\n   2928 qdma_cmpl_statu  0.0     0\n   2930 qdma_cmpl_statu  0.0     0\n   2931 qdma_cmpl_statu  0.0     0\n   2932 qdma_cmpl_statu  0.0     0\n   2933 qdma_cmpl_statu  0.0     0\n   2935 qdma_cmpl_statu  0.0     0\n   2936 qdma_cmpl_statu  0.0     0\n   2937 qdma_cmpl_statu  0.0     0\n   2939 qdma_cmpl_statu  0.0     0\n   2940 qdma_cmpl_statu  0.0     0\n   2941 qdma_cmpl_statu  0.0     0\n   2943 qdma_cmpl_statu  0.0     0\n   2944 qdma_cmpl_statu  0.0     0\n   2945 qdma_cmpl_statu  0.0     0\n   2946 qdma_cmpl_statu  0.0     0\n   2947 qdma_cmpl_statu  0.0     0\n   2949 qdma_cmpl_statu  0.0     0\n   2950 qdma_cmpl_statu  0.0     0\n   2951 qdma_cmpl_statu  0.0     0\n   2953 qdma_cmpl_statu  0.0     0\n   2954 qdma_cmpl_statu  0.0     0\n   2955 qdma_cmpl_statu  0.0     0\n   2957 qdma_cmpl_statu  0.0     0\n   2958 qdma_cmpl_statu  0.0     0\n   2959 qdma_cmpl_statu  0.0     0\n   2961 qdma_cmpl_statu  0.0     0\n   2962 qdma_cmpl_statu  0.0     0\n   2963 qdma_cmpl_statu  0.0     0\n   2965 qdma_cmpl_statu  0.0     0\n   2966 qdma_cmpl_statu  0.0     0\n   2967 qdma_cmpl_statu  0.0     0\n   2969 qdma_cmpl_statu  0.0     0\n   2970 qdma_cmpl_statu  0.0     0\n   2971 qdma_cmpl_statu  0.0     0\n   2973 qdma_cmpl_statu  0.0     0\n   2974 qdma_cmpl_statu  0.0     0\n   2975 qdma_cmpl_statu  0.0     0\n   2977 qdma_cmpl_statu  0.0     0\n   2978 qdma_cmpl_statu  0.0     0\n   2979 qdma_cmpl_statu  0.0     0\n   2980 qdma_cmpl_statu  0.0     0\n   2982 qdma_cmpl_statu  0.0     0\n   2983 qdma_cmpl_statu  0.0     0\n   2984 qdma_cmpl_statu  0.0     0\n   2986 qdma_cmpl_statu  0.0     0\n   2987 qdma_cmpl_statu  0.0     0\n   2988 qdma_cmpl_statu  0.0     0\n   2989 qdma_cmpl_statu  0.0     0\n   2991 qdma_cmpl_statu  0.0     0\n   2992 qdma_cmpl_statu  0.0     0\n   2994 qdma_cmpl_statu  0.0     0\n   2995 qdma_cmpl_statu  0.0     0\n   2996 qdma_cmpl_statu  0.0     0\n   2998 qdma_cmpl_statu  0.0     0\n   2999 qdma_cmpl_statu  0.0     0\n   3000 qdma_cmpl_statu  0.0     0\n   3002 qdma_cmpl_statu  0.0     0\n   3003 qdma_cmpl_statu  0.0     0\n   3004 qdma_cmpl_statu  0.0     0\n   3005 qdma_cmpl_statu  0.0     0\n   3007 qdma_cmpl_statu  0.0     0\n   3008 qdma_cmpl_statu  0.0     0\n   3009 qdma_cmpl_statu  0.0     0\n   3011 qdma_cmpl_statu  0.0     0\n   3012 qdma_cmpl_statu  0.0     0\n   3013 qdma_cmpl_statu  0.0     0\n   3015 qdma_cmpl_statu  0.0     0\n   3016 qdma_cmpl_statu  0.0     0\n   3017 qdma_cmpl_statu  0.0     0\n   3019 qdma_cmpl_statu  0.0     0\n   3020 qdma_cmpl_statu  0.0     0\n   3021 qdma_cmpl_statu  0.0     0\n   3023 qdma_cmpl_statu  0.0     0\n   3024 qdma_cmpl_statu  0.0     0\n   3025 qdma_cmpl_statu  0.0     0\n   3027 qdma_cmpl_statu  0.0     0\n   3028 qdma_cmpl_statu  0.0     0\n   3029 qdma_cmpl_statu  0.0     0\n   3030 qdma_cmpl_statu  0.0     0\n   3031 qdma_cmpl_statu  0.0     0\n   3032 qdma_cmpl_statu  0.0     0\n   3034 qdma_cmpl_statu  0.0     0\n   3035 qdma_cmpl_statu  0.0     0\n   3036 qdma_cmpl_statu  0.0     0\n   3037 qdma_cmpl_statu  0.0     0\n   3039 qdma_cmpl_statu  0.0     0\n   3040 qdma_cmpl_statu  0.0     0\n   3041 qdma_cmpl_statu  0.0     0\n   3043 qdma_cmpl_statu  0.0     0\n   3044 qdma_cmpl_statu  0.0     0\n   3045 qdma_cmpl_statu  0.0     0\n   3046 qdma_cmpl_statu  0.0     0\n   3048 qdma_cmpl_statu  0.0     0\n   3049 qdma_cmpl_statu  0.0     0\n   3050 qdma_cmpl_statu  0.0     0\n   3052 qdma_cmpl_statu  0.0     0\n   3053 qdma_cmpl_statu  0.0     0\n   3054 qdma_cmpl_statu  0.0     0\n   3056 qdma_cmpl_statu  0.0     0\n   3057 qdma_cmpl_statu  0.0     0\n   3058 qdma_cmpl_statu  0.0     0\n   3060 qdma_cmpl_statu  0.0     0\n   3061 qdma_cmpl_statu  0.0     0\n   3062 qdma_cmpl_statu  0.0     0\n   3063 qdma_cmpl_statu  0.0     0\n   3064 qdma_cmpl_statu  0.0     0\n   3066 qdma_cmpl_statu  0.0     0\n   3067 qdma_cmpl_statu  0.0     0\n   3068 qdma_cmpl_statu  0.0     0\n   3069 qdma_cmpl_statu  0.0     0\n   3071 qdma_cmpl_statu  0.0     0\n   3072 qdma_cmpl_statu  0.0     0\n   3073 qdma_cmpl_statu  0.0     0\n   3074 qdma_cmpl_statu  0.0     0\n   3076 qdma_cmpl_statu  0.0     0\n   3077 qdma_cmpl_statu  0.0     0\n   3078 qdma_cmpl_statu  0.0     0\n   3079 qdma_cmpl_statu  0.0     0\n   3081 qdma_cmpl_statu  0.0     0\n   3082 qdma_cmpl_statu  0.0     0\n   3083 qdma_cmpl_statu  0.0     0\n   3084 qdma_cmpl_statu  0.0     0\n   3086 qdma_cmpl_statu  0.0     0\n   3087 qdma_cmpl_statu  0.0     0\n   3088 qdma_cmpl_statu  0.0     0\n   3089 qdma_cmpl_statu  0.0     0\n   3091 qdma_cmpl_statu  0.0     0\n   3092 qdma_cmpl_statu  0.0     0\n   3093 qdma_cmpl_statu  0.0     0\n   3094 qdma_cmpl_statu  0.0     0\n   3095 qdma_cmpl_statu  0.0     0\n   3096 qdma_cmpl_statu  0.0     0\n   3097 qdma_cmpl_statu  0.0     0\n   3099 qdma_cmpl_statu  0.0     0\n   3100 qdma_cmpl_statu  0.0     0\n   3101 qdma_cmpl_statu  0.0     0\n   3102 qdma_cmpl_statu  0.0     0\n   3103 qdma_cmpl_statu  0.0     0\n   3104 qdma_cmpl_statu  0.0     0\n   3105 qdma_cmpl_statu  0.0     0\n   3106 qdma_cmpl_statu  0.0     0\n   3107 qdma_cmpl_statu  0.0     0\n   3108 qdma_cmpl_statu  0.0     0\n   3109 qdma_cmpl_statu  0.0     0\n   3110 qdma_cmpl_statu  0.0     0\n   3111 qdma_cmpl_statu  0.0     0\n   3112 qdma_cmpl_statu  0.0     0\n   3113 qdma_cmpl_statu  0.0     0\n   3114 qdma_cmpl_statu  0.0     0\n   3115 qdma_cmpl_statu  0.0     0\n   3116 qdma_cmpl_statu  0.0     0\n   3117 qdma_cmpl_statu  0.0     0\n   3118 qdma_cmpl_statu  0.0     0\n   3119 qdma_cmpl_statu  0.0     0\n   3120 qdma_cmpl_statu  0.0     0\n   3121 qdma_cmpl_statu  0.0     0\n   3122 qdma_cmpl_statu  0.0     0\n   3123 qdma_cmpl_statu  0.0     0\n   3124 qdma_cmpl_statu  0.0     0\n   3125 qdma_cmpl_statu  0.0     0\n   3126 qdma_cmpl_statu  0.0     0\n   3127 qdma_cmpl_statu  0.0     0\n   3128 qdma_cmpl_statu  0.0     0\n   3129 qdma_cmpl_statu  0.0     0\n   3130 qdma_cmpl_statu  0.0     0\n   3131 qdma_cmpl_statu  0.0     0\n   3132 qdma_cmpl_statu  0.0     0\n   3133 qdma_cmpl_statu  0.0     0\n   3134 qdma_cmpl_statu  0.0     0\n   3135 mlx5_cmd_0000:2  0.0     0\n   3136 mlx5_health0000  0.0     0\n   3137 mlx5_page_alloc  0.0     0\n   3138 kworker/22:1H-k  0.0     0\n   3140 kworker/u384:4+  0.0     0\n   3142 kworker/118:1H-  0.0     0\n   3149 kworker/u384:5+  0.0     0\n   3154 xocl_wq0         0.0     0\n   3155 kworker/u384:8+  0.0     0\n   3169 kworker/133:1H-  0.0     0\n   3175 kworker/91:1H-k  0.0     0\n   3177 kworker/32:1H-k  0.0     0\n   3179 kworker/46:1H-k  0.0     0\n   3182 kworker/168:1H-  0.0     0\n   3185 kworker/90:1H-k  0.0     0\n   3189 kworker/83:1H-k  0.0     0\n   3190 kworker/145:1H-  0.0     0\n   3206 kworker/47:1H-k  0.0     0\n   3208 kworker/132:1H-  0.0     0\n   3210 kworker/116:1H-  0.0     0\n   3275 kworker/73:1H-k  0.0     0\n   3276 mailbox.m.94371  0.0     0\n   3277 mailbox.m.94371  0.0     0\n   3278 mailbox.m.94371  0.0     0\n   3285 nv_queue         0.0     0\n   3287 nv_mem_pool_scr  0.0     0\n   3288 nv_mem_pool_scr  0.0     0\n   3289 nv_mem_pool_scr  0.0     0\n   3290 nv_mem_pool_scr  0.0     0\n   3291 nv_mem_pool_scr  0.0     0\n   3293 nv_mem_pool_scr  0.0     0\n   3294 nv_mem_pool_scr  0.0     0\n   3295 nv_mem_pool_scr  0.0     0\n   3296 nv_mem_pool_scr  0.0     0\n   3297 nv_mem_pool_scr  0.0     0\n   3298 nv_mem_pool_scr  0.0     0\n   3299 nv_mem_pool_scr  0.0     0\n   3300 nv_mem_pool_scr  0.0     0\n   3301 nv_mem_pool_scr  0.0     0\n   3302 nv_mem_pool_scr  0.0     0\n   3304 nv_mem_pool_scr  0.0     0\n   3305 nv_mem_pool_scr  0.0     0\n   3306 nv_mem_pool_scr  0.0     0\n   3307 nv_mem_pool_scr  0.0     0\n   3308 nv_mem_pool_scr  0.0     0\n   3309 nv_mem_pool_scr  0.0     0\n   3310 nv_mem_pool_scr  0.0     0\n   3311 nv_mem_pool_scr  0.0     0\n   3312 nv_mem_pool_scr  0.0     0\n   3313 nv_queue         0.0     0\n   3317 nv_open_q        0.0     0\n   3327 0000:6a:01.0     0.0     0\n   3330 irq/741-idxd-mi  0.0     0\n   3331 irq/742-idxd-po  0.0     0\n   3332 irq/743-idxd-po  0.0     0\n   3333 irq/744-idxd-po  0.0     0\n   3336 irq/745-idxd-po  0.0     0\n   3337 irq/746-idxd-po  0.0     0\n   3338 irq/747-idxd-po  0.0     0\n   3339 irq/748-idxd-po  0.0     0\n   3340 irq/749-idxd-po  0.0     0\n   3350 mdadm            0.0  2536\n   3361 kworker/134:1H-  0.0     0\n   3371 jbd2/md0p1-8     0.0     0\n   3372 ext4-rsv-conver  0.0     0\n   3374 jbd2/dm-2-8      0.0     0\n   3375 ext4-rsv-conver  0.0     0\n   3379 kworker/56:1H-k  0.0     0\n   3382 jbd2/dm-1-8      0.0     0\n   3383 ext4-rsv-conver  0.0     0\n   3384 kworker/147:1H-  0.0     0\n   3389 kworker/80:1H-k  0.0     0\n   3391 kworker/95:1H-k  0.0     0\n   3397 kworker/124:1H-  0.0     0\n   3401 kworker/11:1H-k  0.0     0\n   3407 kworker/61:1H-k  0.0     0\n   3410 0000:6f:01.0     0.0     0\n   3411 irq/750-idxd-mi  0.0     0\n   3412 irq/751-idxd-po  0.0     0\n   3413 irq/752-idxd-po  0.0     0\n   3414 irq/753-idxd-po  0.0     0\n   3415 irq/754-idxd-po  0.0     0\n   3416 irq/755-idxd-po  0.0     0\n   3417 irq/756-idxd-po  0.0     0\n   3418 irq/757-idxd-po  0.0     0\n   3419 irq/758-idxd-po  0.0     0\n   3424 nvidia-modeset/  0.0     0\n   3425 nvidia-modeset/  0.0     0\n   3430 mlx5_events      0.0     0\n   3431 mlx5_fw_reset_e  0.0     0\n   3432 ptp2             0.0     0\n   3433 mlx5_esw_wq      0.0     0\n   3435 mlx5_vhca_event  0.0     0\n   3436 mlx5_fc          0.0     0\n   3437 mlx5_fw_tracer   0.0     0\n   3438 mlx5_hv_vhca     0.0     0\n   3439 0000:74:01.0     0.0     0\n   3440 irq/759-idxd-mi  0.0     0\n   3441 irq/760-idxd-po  0.0     0\n   3443 irq/761-idxd-po  0.0     0\n   3444 irq/762-idxd-po  0.0     0\n   3445 irq/763-idxd-po  0.0     0\n   3446 irq/764-idxd-po  0.0     0\n   3447 irq/765-idxd-po  0.0     0\n   3448 irq/766-idxd-po  0.0     0\n   3449 irq/767-idxd-po  0.0     0\n   3450 kworker/165:1H-  0.0     0\n   3452 0000:79:01.0     0.0     0\n   3454 irq/832-idxd-mi  0.0     0\n   3455 irq/833-idxd-po  0.0     0\n   3456 irq/834-idxd-po  0.0     0\n   3457 kworker/15:1H-k  0.0     0\n   3458 irq/835-idxd-po  0.0     0\n   3459 irq/836-idxd-po  0.0     0\n   3460 irq/837-idxd-po  0.0     0\n   3461 irq/838-idxd-po  0.0     0\n   3462 mlx5_active_sf   0.0     0\n   3463 irq/839-idxd-po  0.0     0\n   3465 irq/840-idxd-po  0.0     0\n   3471 kworker/62:1H-k  0.0     0\n   3476 kworker/35:1H-k  0.0     0\n   3477 mlx5e            0.0     0\n   3479 0000:e7:01.0     0.0     0\n   3480 irq/841-idxd-mi  0.0     0\n   3481 irq/842-idxd-po  0.0     0\n   3482 irq/843-idxd-po  0.0     0\n   3483 irq/844-idxd-po  0.0     0\n   3484 irq/845-idxd-po  0.0     0\n   3486 irq/846-idxd-po  0.0     0\n   3487 irq/847-idxd-po  0.0     0\n   3488 irq/848-idxd-po  0.0     0\n   3489 irq/849-idxd-po  0.0     0\n   3495 mlx5e_tls_tx_po  0.0     0\n   3497 irq/850-nvidia   0.0     0\n   3498 irq/851-nvidia   0.0     0\n   3499 irq/852-nvidia   0.0     0\n   3500 irq/853-nvidia   0.0     0\n   3502 irq/854-nvidia   0.0     0\n   3503 irq/855-nvidia   0.0     0\n   3504 nvidia           0.0     0\n   3505 nv_queue         0.0     0\n   3506 kworker/146:1H-  0.0     0\n   3508 0000:ec:01.0     0.0     0\n   3509 irq/856-idxd-mi  0.0     0\n   3510 irq/857-idxd-po  0.0     0\n   3511 irq/858-idxd-po  0.0     0\n   3512 irq/859-idxd-po  0.0     0\n   3513 irq/860-idxd-po  0.0     0\n   3514 irq/861-idxd-po  0.0     0\n   3515 irq/862-idxd-po  0.0     0\n   3516 irq/863-idxd-po  0.0     0\n   3517 irq/864-idxd-po  0.0     0\n   3523 kworker/180:1H-  0.0     0\n   3524 mlx5e_arfs       0.0     0\n   3525 0000:f1:01.0     0.0     0\n   3526 irq/865-idxd-mi  0.0     0\n   3527 irq/866-idxd-po  0.0     0\n   3528 irq/867-idxd-po  0.0     0\n   3529 irq/868-idxd-po  0.0     0\n   3530 irq/869-idxd-po  0.0     0\n   3531 irq/870-idxd-po  0.0     0\n   3532 irq/871-idxd-po  0.0     0\n   3533 irq/872-idxd-po  0.0     0\n   3534 irq/873-idxd-po  0.0     0\n   3535 kworker/181:1H-  0.0     0\n   3542 kworker/156:1H-  0.0     0\n   3562 mlx5e_tls_rx     0.0     0\n   3563 kworker/158:1H-  0.0     0\n   3566 mlx5_cmd_0000:2  0.0     0\n   3573 mlx5_health0000  0.0     0\n   3574 mlx5_page_alloc  0.0     0\n   3578 kworker/64:1H-k  0.0     0\n   3580 kworker/155:1H-  0.0     0\n   3582 kworker/150:1H-  0.0     0\n   3583 kworker/153:1H-  0.0     0\n   3585 kworker/154:1H-  0.0     0\n   3600 kworker/84:1H-k  0.0     0\n   3604 kworker/58:1H-k  0.0     0\n   3610 kworker/173:1H-  0.0     0\n   3613 kworker/149:1H-  0.0     0\n   3615 xclmgmt health   0.0     0\n   3621 kworker/50:1H-k  0.0     0\n   3622 kworker/48:1H-k  0.0     0\n   3650 0000:f6:01.0     0.0     0\n   3651 irq/874-idxd-mi  0.0     0\n   3652 irq/875-idxd-po  0.0     0\n   3653 irq/876-idxd-po  0.0     0\n   3654 irq/877-idxd-po  0.0     0\n   3655 irq/878-idxd-po  0.0     0\n   3656 irq/879-idxd-po  0.0     0\n   3657 irq/880-idxd-po  0.0     0\n   3658 irq/881-idxd-po  0.0     0\n   3659 irq/882-idxd-po  0.0     0\n   3663 ib-comp-wq       0.0     0\n   3665 ib-comp-unb-wq   0.0     0\n   3666 ib_mcast         0.0     0\n   3667 ib_nl_sa_wq      0.0     0\n   3732 kworker/66:1H-k  0.0     0\n   3742 ovsdb-server     0.0  6288\n   3781 kworker/57:1H-k  0.0     0\n   3795 mlx5_events      0.0     0\n   3796 mlx5_fw_reset_e  0.0     0\n   3797 ptp3             0.0     0\n   3798 mlx5_esw_wq      0.0     0\n   3799 mlx5_vhca_event  0.0     0\n   3800 mlx5_fc          0.0     0\n   3801 mlx5_fw_tracer   0.0     0\n   3802 mlx5_hv_vhca     0.0     0\n   3803 mlx5_active_sf   0.0     0\n   3804 mlx5e            0.0     0\n   3805 mlx5e_tls_tx_po  0.0     0\n   3823 mlx5e_arfs       0.0     0\n   3850 nfit             0.0     0\n   3855 mlx5e_tls_rx     0.0     0\n   3892 mlx5_cmd_0000:b  0.0     0\n   3893 mlx5_health0000  0.0     0\n   3894 mlx5_page_alloc  0.0     0\n   3895 kworker/103:1H-  0.0     0\n   3896 kworker/138:1H-  0.0     0\n   3897 kworker/136:1H-  0.0     0\n   3898 kworker/104:1H-  0.0     0\n   3899 kworker/137:1H-  0.0     0\n   3905 kworker/55:1H-k  0.0     0\n   3915 mlx5_events      0.0     0\n   3916 mlx5_fw_reset_e  0.0     0\n   3917 ptp4             0.0     0\n   3919 mlx5_esw_wq      0.0     0\n   3920 mlx5_vhca_event  0.0     0\n   3921 mlx5_fc          0.0     0\n   3922 mlx5_fw_tracer   0.0     0\n   3923 mlx5_hv_vhca     0.0     0\n   3924 mlx5_active_sf   0.0     0\n   3926 mlx5e            0.0     0\n   3927 kworker/72:1H-k  0.0     0\n   3928 mlx5e_tls_tx_po  0.0     0\n   3931 mlx5e_arfs       0.0     0\n   3935 mlx5e_tls_rx     0.0     0\n   3936 mlx5_cmd_0000:b  0.0     0\n   3937 mlx5_health0000  0.0     0\n   3938 mlx5_page_alloc  0.0     0\n   3945 kworker/38:1H-k  0.0     0\n   3946 mlx5_events      0.0     0\n   3947 mlx5_fw_reset_e  0.0     0\n   3948 ptp5             0.0     0\n   3949 mlx5_esw_wq      0.0     0\n   3950 mlx5_vhca_event  0.0     0\n   3951 mlx5_fc          0.0     0\n   3952 mlx5_fw_tracer   0.0     0\n   3953 mlx5_hv_vhca     0.0     0\n   3954 mlx5_active_sf   0.0     0\n   3955 mlx5e            0.0     0\n   3956 mlx5e_tls_tx_po  0.0     0\n   3957 mlx5e_arfs       0.0     0\n   3958 mlx5e_tls_rx     0.0     0\n   3959 mlx5_ib_sigerr_  0.0     0\n   3960 kworker/141:1H-  0.0     0\n   3963 ib_mad1          0.0     0\n   3966 mkey_cache       0.0     0\n   3968 kworker/13:1H-k  0.0     0\n   3971 kworker/20:1H-k  0.0     0\n   3986 kworker/111:1H-  0.0     0\n   4009 ib_mad1          0.0     0\n   4010 mkey_cache       0.0     0\n   4011 kworker/79:1H-k  0.0     0\n   4023 ib_mad1          0.0     0\n   4026 mkey_cache       0.0     0\n   4027 kworker/u384:11  0.0     0\n   4030 ib_mad1          0.0     0\n   4031 mkey_cache       0.0     0\n   4043 kworker/82:1H-k  0.0     0\n   4047 kworker/78:1H-k  0.0     0\n   4348 rdma-ndd         0.0  2984\n   4369 kworker/171:1H-  0.0     0\n   4371 kworker/170:1H-  0.0     0\n   4372 kworker/172:1H-  0.0     0\n   4393 iw_cm_wq         0.0     0\n   4394 rdma_cm          0.0     0\n   4406 kworker/77:1H-k  0.0     0\n   4442 kworker/40:1H-k  0.0     0\n   4443 kworker/94:1H-k  0.0     0\n   4444 kworker/63:1H-k  0.0     0\n   4445 kworker/59:1H-k  0.0     0\n   4446 kworker/67:1H-k  0.0     0\n   4447 kworker/65:1H-k  0.0     0\n   4448 kworker/7:1H-kb  0.0     0\n   4469 mailbox.u.94371  0.0     0\n   4470 mailbox.u.94371  0.0     0\n   4471 mailbox.u.94371  0.0     0\n   4488 rpcbind          0.0  3244\n   4489 kworker/81:1H-k  0.0     0\n   4494 avahi-daemon     0.0  3724\n   4495 dbus-daemon      0.0  6120\n   4496 rpciod           0.0     0\n   4497 xprtiod          0.0     0\n   4502 irqbalance       0.4  4092\n   4506 networkd-dispat  0.0 10260\n   4509 smartd           0.0  3952\n   4513 kworker/167:1H-  0.0     0\n   4565 avahi-daemon     0.0     4\n   4587 fail2ban-server  0.0 18528\n   4590 rhsmcertd        0.0  2080\n   4599 python3.10       0.0  2504\n   4600 rshim            5.8  1844\n   4620 containerd       0.4 35272\n   4645 chronyd          0.0  2972\n   4648 chronyd          0.0  2048\n   4686 systemd-logind   0.0  6404\n   4698 uptimed          0.0  1844\n   4781 munged           0.0  3652\n   4840 unattended-upgr  0.0  3372\n   4867 /opt/saltstack/  0.1 76088\n   5769 kworker/109:1H-  0.0     0\n   5788 kworker/14:1H-k  0.0     0\n   5963 kworker/161:1H-  0.0     0\n   6417 UVM global queu  0.0     0\n   6418 UVM deferred re  0.0     0\n   6419 UVM Tools Event  0.0     0\n   6502 kworker/41:1H-k  0.0     0\n   6644 kworker/42:1H-k  0.0     0\n   6645 kworker/39:1H-k  0.0     0\n   6738 kworker/75:1H-k  0.0     0\n   6768 kworker/93:1H-k  0.0     0\n   6787 kworker/189:1H-  0.0     0\n   6843 kworker/140:1H-  0.0     0\n   7140 kworker/44:1H-k  0.0     0\n   7259 kworker/45:1H-k  0.0     0\n   7280 kworker/108:1H-  0.0     0\n   7283 kworker/186:1H-  0.0     0\n   7376 kworker/114:1H-  0.0     0\n   7377 kworker/119:1H-  0.0     0\n   7431 kworker/23:1H-k  0.0     0\n   7432 acc              0.5 29740\n   7433 dockerd          0.2 60264\n   7447 cron             0.0  2404\n   7502 sensu-agent      0.9 103904\n   7507 atd              0.0  2240\n   7542 automount        0.0  4084\n   7576 agetty           0.0   824\n   7596 nfsiod           0.0     0\n   7609 NFSv4 callback   0.0     0\n   7878 containerd-shim  0.0  5636\n   7901 systemd          0.0 10740\n   8248 docker-proxy     0.0  2352\n   8469 systemd-journal  0.0 255328\n   8486 containerd       1.3 56376\n   8573 kubelet          7.2 107612\n   8622 containerd-shim  0.0  5812\n   8644 containerd-shim  0.0  9460\n   8684 containerd-shim  0.0  5828\n   8706 containerd-shim  0.0  5972\n   8715 pause            0.0     0\n   8722 pause            0.0     0\n   8733 kworker/87:1H-k  0.0     0\n   8736 pause            0.0     0\n   8773 pause            0.0     0\n   8823 etcd             1.9 21848\n   8844 kworker/188:1H-  0.0     0\n   8856 kworker/187:1H-  0.0     0\n   8863 kube-controller  0.5 46760\n   8879 kube-scheduler   2.7 44148\n   8890 kworker/191:1H-  0.0     0\n   8950 kworker/183:1H-  0.0     0\n   8962 kworker/88:1H-k  0.0     0\n   9065 kworker/37:1H-k  0.0     0\n   9103 kworker/190:1H-  0.0     0\n   9201 kworker/144:1H-  0.0     0\n   9367 kworker/184:1H-  0.0     0\n   9418 kworker/182:1H-  0.0     0\n   9420 kworker/68:1H-k  0.0     0\n   9576 kworker/89:1H-k  0.0     0\n   9577 kworker/74:1H-k  0.0     0\n   9949 slurmstepd       0.0   776\n  10232 kworker/142:1H-  0.0     0\n  10279 kworker/185:1H-  0.0     0\n  10343 kworker/135:1H-  0.0     0\n  10511 udisksd          0.0  9456\n  10555 upowerd          0.0  5704\n  10946 kworker/92:1H-k  0.0     0\n  14632 kworker/148:2-m  0.0     0\n  28916 kworker/27:2-rc  0.0     0\n  29273 kworker/26:2     0.0     0\n  30640 kworker/28:1     0.0     0\n  49518 kworker/139:1H-  0.0     0\n  84446 kworker/126:0-m  0.0     0\n  90776 kworker/111:0-e  0.0     0\n 142745 kworker/108:0-e  0.0     0\n 142891 kworker/15:1     0.0     0\n 142910 kworker/116:0-m  0.0     0\n 142917 kworker/109:2    0.0     0\n 142963 kworker/111:2-m  0.0     0\n 143404 kworker/19:2-ev  0.0     0\n 143607 kworker/17:0-ev  0.0     0\n 143618 kworker/22:0     0.0     0\n 143637 kworker/119:0-m  0.0     0\n 149899 kworker/155:2-r  0.0     0\n 154208 kworker/110:0-m  0.0     0\n 174260 packagekitd      0.0  7276\n 259974 kworker/21:2-mm  0.0     0\n 260658 kworker/68:2-ev  0.0     0\n 299575 kworker/159:0-r  0.0     0\n 356622 kworker/16:2-rc  0.0     0\n 361347 kworker/29:0     0.0     0\n 363348 kworker/124:2-m  0.0     0\n 363628 kworker/125:1-r  0.0     0\n 363964 kworker/2:2-mm_  0.0     0\n 364337 kworker/154:0-r  0.0     0\n 368620 kworker/12:3-rc  0.0     0\n 386598 kworker/118:2-m  0.0     0\n 394881 kworker/154:1-m  0.0     0\n 403339 rsyslogd         0.0  5936\n 405743 kworker/150:1-r  0.0     0\n 407762 kworker/153:1-r  0.0     0\n 408072 kworker/153:0-e  0.0     0\n 409202 kworker/163:1-r  0.0     0\n 409277 kworker/161:1-r  0.0     0\n 409483 kworker/53:1-mm  0.0     0\n 410321 kworker/155:0-m  0.0     0\n 434934 kworker/59:0-rc  0.0     0\n 435314 kworker/68:0-mm  0.0     0\n 436738 kworker/71:0-rc  0.0     0\n 436980 kworker/165:1-r  0.0     0\n 438464 kworker/129:0-e  0.0     0\n 438609 kworker/64:0-rc  0.0     0\n 438802 kworker/159:2-e  0.0     0\n 438861 kworker/57:2     0.0     0\n 443597 kworker/65:0-rc  0.0     0\n 447716 kworker/59:2-mm  0.0     0\n 448179 kworker/u388:1-  0.0     0\n 453459 rtkit-daemon     0.0  2696\n 453697 rpc.statd        0.0  1448\n 461008 kworker/162:0-m  0.0     0\n 461012 kworker/64:1-mm  0.0     0\n 480900 kworker/62:2-rc  0.0     0\n 481849 kworker/9:2-rcu  0.0     0\n 484607 kworker/50:0-mm  0.0     0\n 484990 kworker/160:0-r  0.0     0\n 484991 kworker/158:2-r  0.0     0\n 485918 kworker/99:2-ev  0.0     0\n 485959 kworker/51:0-rc  0.0     0\n 486607 kworker/165:0-m  0.0     0\n 487344 kworker/56:0-rc  0.0     0\n 488758 kworker/18:0-rc  0.0     0\n 488759 kworker/20:2     0.0     0\n 489244 kworker/146:1-r  0.0     0\n 503741 kworker/18:1-ev  0.0     0\n 503742 kworker/16:0-mm  0.0     0\n 503749 kworker/2:1-rcu  0.0     0\n 505958 kworker/187:1-r  0.0     0\n 508340 kworker/162:1    0.0     0\n 511362 kworker/21:1     0.0     0\n 511777 kworker/146:0-e  0.0     0\n 511804 kworker/8:2-eve  0.0     0\n 512914 kworker/114:1-m  0.0     0\n 512915 kworker/115:0-m  0.0     0\n 513043 kworker/15:0-mm  0.0     0\n 513271 kworker/67:0-mm  0.0     0\n 513272 kworker/161:0-m  0.0     0\n 513527 kworker/101:2-r  0.0     0\n 513613 kworker/70:2-rc  0.0     0\n 513967 kworker/157:1-m  0.0     0\n 514479 kworker/160:2-e  0.0     0\n 514480 kworker/62:1-rc  0.0     0\n 514783 kworker/71:2-mm  0.0     0\n 515329 kworker/9:0-eve  0.0     0\n 515360 kworker/7:2-rcu  0.0     0\n 515554 kworker/51:2-mm  0.0     0\n 515595 kworker/98:2     0.0     0\n 515847 kworker/105:0-r  0.0     0\n 516305 kworker/55:0-mm  0.0     0\n 516324 kworker/54:1-rc  0.0     0\n 516475 kworker/u387:1-  0.0     0\n 516638 kworker/6:2-rcu  0.0     0\n 516721 kworker/152:2-r  0.0     0\n 516722 kworker/145:0-r  0.0     0\n 517264 kworker/60:2-rc  0.0     0\n 517701 kworker/151:0-r  0.0     0\n 518401 kworker/150:0-m  0.0     0\n 519500 kworker/186:1-r  0.0     0\n 519797 kworker/95:0-rc  0.0     0\n 520955 kworker/58:2-mm  0.0     0\n 521120 kworker/61:1-rc  0.0     0\n 521913 kworker/70:1-ev  0.0     0\n 521914 kworker/69:2-cg  0.0     0\n 522120 kworker/60:0-mm  0.0     0\n 522139 kworker/61:2-mm  0.0     0\n 522140 kworker/66:2-ev  0.0     0\n 522632 kworker/53:0     0.0     0\n 522645 kworker/69:0-ev  0.0     0\n 522646 kworker/144:0-m  0.0     0\n 522647 kworker/147:1-r  0.0     0\n 522648 kworker/58:1     0.0     0\n 522889 kworker/144:1-r  0.0     0\n 523048 kworker/158:0-m  0.0     0\n 523226 kworker/54:2-mm  0.0     0\n 523227 kworker/55:2-rc  0.0     0\n 523516 kworker/163:2-m  0.0     0\n 523517 kworker/164:1-m  0.0     0\n 523720 kworker/90:2-rc  0.0     0\n 523767 kworker/184:1-m  0.0     0\n 523770 kworker/183:0-m  0.0     0\n 524078 kworker/u387:0-  0.0     0\n 524261 kworker/172:0-r  0.0     0\n 524399 kworker/94:1-mm  0.0     0\n 524419 kworker/187:0-m  0.0     0\n 524558 kworker/27:0-ev  0.0     0\n 524559 kworker/131:1-e  0.0     0\n 526048 kworker/175:1-r  0.0     0\n 542614 kworker/67:2-mm  0.0     0\n 599815 kworker/u390:1-  0.0     0\n 599997 kworker/80:0-rc  0.0     0\n 600000 kworker/10:2-ev  0.0     0\n 600230 kworker/191:1-r  0.0     0\n 600250 kworker/188:2-r  0.0     0\n 600281 kworker/149:1-m  0.0     0\n 600304 kworker/147:2-m  0.0     0\n 600305 kworker/148:0    0.0     0\n 600306 kworker/52:1-ev  0.0     0\n 600475 kworker/120:0-e  0.0     0\n 600525 kworker/56:1-mm  0.0     0\n 600543 kworker/151:1-m  0.0     0\n 600544 kworker/152:0-m  0.0     0\n 600606 kworker/u384:6-  0.0     0\n 600803 kworker/184:0-r  0.0     0\n 600986 kworker/106:1-m  0.0     0\n 601270 kworker/149:0    0.0     0\n 601883 kworker/3:0-eve  0.0     0\n 601962 kworker/100:0-r  0.0     0\n 602003 kworker/u395:3   0.0     0\n 602034 kworker/101:1-m  0.0     0\n 602035 kworker/104:2-m  0.0     0\n 602043 kworker/105:1-e  0.0     0\n 602051 kworker/11:1-rc  0.0     0\n 602064 kworker/0:2-eve  0.1     0\n 602078 kworker/5:2-rcu  0.0     0\n 602079 kworker/107:1-m  0.0     0\n 602086 kworker/99:1     0.0     0\n 602339 kworker/76:1-rc  0.0     0\n 602373 kworker/173:2-m  0.0     0\n 602391 kworker/170:2-r  0.0     0\n 602444 kworker/90:0-ev  0.0     0\n 602594 kworker/106:2    0.0     0\n 602595 kworker/175:0-e  0.0     0\n 602623 kworker/75:1-ev  0.0     0\n 602910 kworker/88:1-mm  0.0     0\n 603049 kworker/185:1-r  0.0     0\n 603050 kworker/186:2-m  0.0     0\n 603061 kworker/92:2-rc  0.0     0\n 603252 kworker/89:0-rc  0.0     0\n 603283 kworker/93:2-rc  0.0     0\n 603491 kworker/63:2-ev  0.0     0\n 603510 kworker/167:0-r  0.0     0\n 603511 kworker/166:0-r  0.0     0\n 604373 kworker/164:2    0.0     0\n 604653 kworker/107:2    0.0     0\n 604682 kworker/4:0-rcu  0.0     0\n 604683 kworker/8:1-rcu  0.0     0\n 604700 kworker/6:0-mm_  0.0     0\n 604716 kworker/73:2-rc  0.0     0\n 604795 kworker/81:0-rc  0.0     0\n 604837 kworker/97:3-ev  0.0     0\n 604872 kworker/19:1-mm  0.0     0\n 604980 kworker/183:2    0.0     0\n 605014 kworker/u395:0-  0.0     0\n 605101 kworker/102:1-r  0.0     0\n 605108 kworker/92:1-ev  0.0     0\n 605120 kworker/180:1-r  0.0     0\n 605139 kworker/65:2-mm  0.0     0\n 605171 kworker/63:1     0.0     0\n 605214 kworker/u384:7-  0.0     0\n 605371 kworker/96:0-cg  0.0     0\n 605407 kworker/156:2-r  0.0     0\n 605408 kworker/157:0-r  0.0     0\n 605439 kworker/78:0-ev  0.0     0\n 605446 kworker/178:0-r  0.0     0\n 605489 kworker/u390:2-  0.0     0\n 605492 kworker/87:2-ev  0.0     0\n 605528 kworker/191:0-m  0.0     0\n 605556 kworker/102:2-m  0.0     0\n 605573 kworker/1:1-eve  0.0     0\n 605812 kworker/72:2-ev  0.0     0\n 605823 kworker/93:0-mm  0.0     0\n 605888 kworker/66:1-ev  0.0     0\n 605892 kworker/50:1     0.0     0\n 605981 kworker/7:1-eve  0.0     0\n 606035 kworker/169:1-r  0.0     0\n 606045 kworker/82:2-rc  0.0     0\n 606066 kworker/168:2-r  0.0     0\n 606300 kworker/84:2-ev  0.0     0\n 606330 kworker/179:2-r  0.0     0\n 606517 kworker/188:1-m  0.0     0\n 606543 kworker/156:1-r  0.0     0\n 606615 kworker/79:0-rc  0.0     0\n 606617 kworker/80:2-mm  0.0     0\n 606619 kworker/178:1-e  0.0     0\n 606692 kworker/12:0-mm  0.0     0\n 606698 kworker/u386:3-  0.0     0\n 606821 kworker/u385:1-  0.0     0\n 606822 kworker/176:0-r  0.0     0\n 606833 kworker/83:0-rc  0.0     0\n 606881 kworker/u386:1-  0.0     0\n 606896 kworker/75:0-ev  0.0     0\n 606897 kworker/79:2-mm  0.0     0\n 607049 kworker/174:0-m  0.0     0\n 607060 kworker/82:1-mm  0.0     0\n 607079 kworker/74:0-rc  0.0     0\n 607080 kworker/176:2-e  0.0     0\n 607086 kworker/171:0-r  0.0     0\n 607126 kworker/72:1-rc  0.0     0\n 607251 kworker/91:2-rc  0.0     0\n 607262 kworker/182:0-r  0.0     0\n 607325 kworker/89:1-ev  0.0     0\n 607328 kworker/181:0-e  0.0     0\n 607474 kworker/77:0-rc  0.0     0\n 607485 kworker/169:0-m  0.0     0\n 607504 kworker/179:0-m  0.0     0\n 607538 kworker/48:0-rc  0.0     0\n 607551 kworker/78:1-mm  0.0     0\n 607552 kworker/170:1-m  0.0     0\n 607553 kworker/u391:2-  0.0     0\n 607554 kworker/171:2-e  0.0     0\n 607723 kworker/173:0-r  0.0     0\n 607734 kworker/189:1-e  0.0     0\n 607754 kworker/86:1-rc  0.0     0\n 607797 kworker/190:0-r  0.0     0\n 607902 kworker/u389:2-  0.0     0\n 607928 kworker/74:1-rc  0.0     0\n 607939 kworker/172:1-e  0.0     0\n 607958 kworker/77:2-mm  0.0     0\n 607959 kworker/177:2-m  0.0     0\n 608009 kworker/73:0-rc  0.0     0\n 608145 kworker/u384:2-  0.0     0\n 608195 kworker/94:2     0.0     0\n 608214 kworker/85:0-rc  0.0     0\n 608238 kworker/u392:1-  0.0     0\n 608257 kworker/174:2    0.0     0\n 608259 kworker/52:0     0.0     0\n 608261 kworker/u386:0-  0.0     0\n 608319 kworker/u385:2-  0.1     0\n 608355 kworker/177:0    0.0     0\n 608383 kworker/11:2-ev  0.0     0\n 608384 kworker/97:1     0.0     0\n 608385 kworker/96:2-ev  0.0     0\n 608404 kworker/104:0-r  0.0     0\n 608405 kworker/103:2-e  0.0     0\n 608422 kworker/0:0      0.0     0\n 608440 kworker/u389:1-  0.0     0\n 608458 kworker/185:0-m  0.0     0\n 608505 kworker/u391:1-  0.0     0\n 608508 kworker/49:0-rc  0.0     0\n 608605 kworker/100:1-m  0.0     0\n 608679 kworker/5:0-mm_  0.0     0\n 608680 kworker/4:1-eve  0.0     0\n 608687 kworker/u385:4-  0.1     0\n 608711 kworker/u386:2-  0.0     0\n 608714 kworker/u385:6-  0.1     0\n 608848 kworker/1:2      0.0     0\n 608874 slurmstepd       0.0 33524\n 608892 sleep            0.0  1056\n 608895 slurmstepd       0.1 33612\n 608910 slurm_script     0.0  3376\n 608917 python           0.0 35832\n 608924 kworker/u386:5-  0.0     0\n 608925 kworker/u385:7-  0.0     0\n 608926 kworker/u385:8-  0.0     0\n 608927 kworker/u394:3-  0.4     0\n 608945 kworker/103:1-r  0.0     0\n 608996 kworker/u385:10  0.0     0\n 608997 kworker/u385:11  0.0     0\n 609041 kworker/76:2-ev  0.0     0\n 609059 kworker/166:2-m  0.0     0\n 609060 kworker/167:1-m  0.0     0\n 609114 kworker/48:2-ev  0.0     0\n 609127 kworker/83:1-rc  0.0     0\n 609128 kworker/168:0-r  0.0     0\n 609324 kworker/u386:6-  0.0     0\n 609337 kworker/u389:0-  0.0     0\n 609462 kworker/180:2-k  0.0     0\n 609463 kworker/181:1    0.0     0\n 609464 kworker/85:2-ev  0.0     0\n 609474 kworker/91:1-ev  0.0     0\n 609492 kworker/95:2-ev  0.0     0\n 609493 kworker/182:1-e  0.0     0\n 609554 kworker/49:1-mm  0.0     0\n 609567 kworker/86:2-mm  0.0     0\n 609570 kworker/87:0     0.0     0\n 609683 kworker/u394:1-  0.5     0\n 609684 kworker/u385:3-  0.1     0\n 609689 kworker/3:2-eve  0.0     0\n 609833 kworker/190:2-m  0.0     0\n 609834 kworker/84:0-rc  0.0     0\n 609844 kworker/88:0     0.0     0\n 609862 kworker/189:2-c  0.0     0\n 609918 kworker/145:1-k  0.0     0\n 609931 kworker/u392:2-  0.0     0\n 609932 kworker/81:2-ev  0.0     0\n 609933 kworker/u391:3-  0.0     0\n 610272 kworker/u386:4-  0.0     0\n 610273 kworker/u394:0   0.0     0\n 610367 kworker/74:2-mm  0.0     0\n 610376 kworker/168:1-m  0.0     0\n 610396 kworker/62:0-ev  0.0     0\n 610397 kworker/156:0-m  0.0     0\n 610436 kworker/73:1-ev  0.0     0\n 610449 kworker/83:2-ev  0.0     0\n 610450 kworker/u391:0   0.0     0\n 610451 kworker/u391:4   0.0     0\n 610498 kworker/u386:7-  0.0     0\n 610512 kworker/u389:3   0.0     0\n 610579 python          89.6 1288008\n 610599 vidmem lazy fre  0.0     0\n 610600 UVM GPU1 BH      0.0     0\n 610601 UVM GPU1 KC      0.0     0\n 610616 python          10.9 695000\n 610627 python           0.2 405420\n 610629 python           0.2 404972\n 610631 python           0.1 404788\n 610633 python           0.2 405460\n 610669 ps               0.0  3332\n 625425 qualys-cloud-ag  0.0 83208\n 626927 qualys-cep       0.0 19292\n 627159 agentid-service  0.0 11396\n 627209 sssd             0.0  5628\n 627210 sssd_be          0.0 14432\n 627211 sssd_nss         0.0 11116\n 627212 sssd_pam         0.0  7176\n 627213 sssd_autofs      0.0  4724\n 627214 sssd_sudo        0.0  7080\n 628513 sshd             0.0  3408\n1193771 kworker/u396:0-  0.0     0\n1590473 systemd-network  0.0  4976\n1590488 systemd-resolve  0.0  6348\n1591035 systemd-udevd    0.0  6416\n1669378 pmd              4.0 561300\n1669994 dypdng           0.0 37980\n1669995 clad             0.0  2636\n1670324 sandboxd         0.0 19740\n2273849 kworker/u396:1-  0.0     0\n2468620 kworker/u400:3-  0.0     0\n2468634 kworker/u397:1   0.0     0\n2618136 fwupd            0.0 32948\n2731835 snapd            0.0 49468\n2978575 slurmd           0.0 38008\n3346177 polkitd          0.0  9716\n3357975 kworker/47:2-ev  0.0     0\n3360386 kworker/39:2-mm  0.0     0\n3369187 kworker/36:2-mm  0.0     0\n3394564 kworker/u400:1-  0.0     0\n3498687 kworker/u398:1-  0.0     0\n3499851 kworker/42:1-rc  0.0     0\n3503080 kworker/142:1-r  0.0     0\n3505587 kworker/143:2-e  0.0     0\n3506349 kworker/44:2-rc  0.0     0\n3544978 kworker/37:1-rc  0.0     0\n3576640 kworker/u398:2-  0.0     0\n3579251 kworker/39:1-ev  0.0     0\n3579252 kworker/36:0     0.0     0\n3613697 kworker/30:1-rc  0.0     0\n3613760 kworker/138:0-c  0.0     0\n3615346 kworker/140:0-r  0.0     0\n3615393 kworker/45:2-mm  0.0     0\n3616467 kworker/47:0     0.0     0\n3617996 kworker/40:2-mm  0.0     0\n3618043 kworker/46:1-rc  0.0     0\n3618264 kworker/30:2-mm  0.0     0\n3631395 kworker/135:2-r  0.0     0\n3695139 kworker/37:0-ev  0.0     0\n3696891 kworker/135:1-m  0.0     0\n3697839 systemd          0.0  7180\n3697840 (sd-pam)         0.0     8\n3697863 dbus-daemon      0.0  2204\n3705646 systemd-journal  0.1 120448\n3706999 kworker/115:2-r  0.0     0\n3709392 kworker/31:2-rc  0.0     0\n3712883 kworker/25:0-mm  0.0     0\n3712895 kworker/140:1-m  0.0     0\n3712915 kworker/139:1-r  0.0     0\n3712961 kworker/123:1-r  0.0     0\n3713284 kworker/124:1-r  0.0     0\n3713457 kworker/133:1-r  0.0     0\n3713458 kworker/132:0-r  0.0     0\n3714624 kworker/134:0-r  0.0     0\n3714968 kworker/41:1-rc  0.0     0\n3714970 kworker/42:2-mm  0.0     0\n3716492 kworker/22:1-mm  0.0     0\n3717462 kworker/98:1-mm  0.0     0\n3718445 kworker/137:1-r  0.0     0\n3718456 kworker/138:1-m  0.0     0\n3718475 kworker/139:0-m  0.0     0\n3718524 kworker/143:1-r  0.0     0\n3718745 kworker/142:2-m  0.0     0\n3718748 kworker/141:1-m  0.0     0\n3720737 kworker/133:0-e  0.0     0\n3742631 kworker/23:2-rc  0.0     0\n3742845 kworker/33:1-rc  0.0     0\n3743447 kworker/136:2-r  0.0     0\n3744953 kworker/117:2-m  0.0     0\n3745870 kworker/46:0-mm  0.0     0\n3745881 kworker/45:0     0.0     0\n3745900 kworker/136:1-m  0.0     0\n3745901 kworker/132:1-m  0.0     0\n3745908 kworker/40:1     0.0     0\n3746094 kworker/35:2-rc  0.0     0\n3746095 kworker/34:0-rc  0.0     0\n3746340 kworker/14:2-rc  0.0     0\n3746390 kworker/17:1-rc  0.0     0\n3747461 kworker/23:1-mm  0.0     0\n3747908 kworker/137:0-e  0.0     0\n3747937 kworker/43:1-ev  0.0     0\n3747987 kworker/113:0-r  0.0     0\n3747989 kworker/141:2    0.0     0\n3750845 kworker/121:1-m  0.0     0\n3750855 kworker/126:2-m  0.0     0\n3750920 kworker/38:2-rc  0.0     0\n3750921 kworker/122:1-r  0.0     0\n3751207 kworker/123:2-m  0.0     0\n3751494 kworker/109:0-m  0.0     0\n3752347 kworker/130:2-r  0.0     0\n3752793 kworker/116:1-r  0.0     0\n3753015 kworker/24:0-rc  0.0     0\n3753063 kworker/113:2-m  0.0     0\n3753232 kworker/33:0-mm  0.0     0\n3753233 kworker/34:1-mm  0.0     0\n3753263 kworker/35:1-mm  0.0     0\n3753270 kworker/32:1-mm  0.0     0\n3754228 kworker/119:2-r  0.0     0\n3755129 kworker/110:1-e  0.0     0\n3755140 kworker/20:0-mm  0.0     0\n3755237 kworker/129:2-r  0.0     0\n3755371 kworker/118:0-r  0.0     0\n3755401 kworker/112:2-r  0.0     0\n3755402 kworker/117:0-r  0.0     0\n3755448 kworker/13:0-ev  0.0     0\n3755595 kworker/31:1-mm  0.0     0\n3755660 kworker/121:2-e  0.0     0\n3755949 kworker/130:0-e  0.0     0\n3759714 kworker/41:2-mm  0.0     0\n3797802 kworker/131:2-e  0.0     0\n3797833 kworker/108:2-r  0.0     0\n3798188 kworker/127:0-r  0.0     0\n3799604 kworker/25:2-rc  0.0     0\n3800581 kworker/26:0-mm  0.0     0\n3803243 kworker/43:2-mm  0.0     0\n3803244 kworker/44:1-mm  0.0     0\n3885109 pyxd             1.7 48732\n3885176 lted             0.0 53316\n3895479 kworker/29:2-ev  0.0     0\n3901242 kworker/32:2-rc  0.0     0\n3929876 kworker/u397:2-  0.0     0\n3930387 kworker/120:2-r  0.0     0\n3931747 sshd             0.0 14396\n3931941 sshd             0.0  9524\n3931942 bash             0.0  6560\n3934161 kworker/u399:2-  0.0     0\n3934179 kworker/u401:1-  0.0     0\n3935564 kworker/u401:3-  0.0     0\n3936292 kworker/10:0-rc  0.0     0\n3947718 kworker/125:2-e  0.0     0\n3947733 kworker/24:1-mm  0.0     0\n3947734 kworker/128:2-m  0.0     0\n3948446 kworker/u399:0-  0.0     0\n3961839 kworker/127:1-m  0.0     0\n3961840 kworker/128:0-r  0.0     0\n3965055 kworker/u388:0-  0.0     0\n3975887 kworker/13:2     0.0     0\n3975905 kworker/14:1-mm  0.0     0\n3976381 kworker/114:0-r  0.0     0\n3976391 kworker/112:0-m  0.0     0\n4019135 kworker/134:2-e  0.0     0\n4019145 kworker/38:0-mm  0.0     0\n4019300 kworker/57:1-ev  0.0     0\n4026134 kworker/28:0-mm  0.0     0\n4191448 kworker/122:0-m  0.0     0",
+    "gpu": "name, driver_version, temperature.gpu, clocks.current.sm [MHz], utilization.gpu [%], memory.used [MiB]\nNVIDIA L40S, 610.43.02, 55, 2520 MHz, 5 %, 1785 MiB"
+  }
+}

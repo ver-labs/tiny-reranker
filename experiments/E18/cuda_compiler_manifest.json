@@ -1,0 +1,20 @@
+{
+  "source": "https://developer.download.nvidia.com/compute/cuda/redist/redistrib_12.6.3.json",
+  "redistribution_manifest_sha256": "9c598598457a6463eb92889080c16b2b9dc04150e501b8bfc1536d403ba70aaf",
+  "packages": {
+    "cuda_nvcc": {
+      "relative_path": "cuda_nvcc/linux-x86_64/cuda_nvcc-linux-x86_64-12.6.85-archive.tar.xz",
+      "sha256": "840deff234d9bef20d6856439c49881cb4f29423b214f9ecd2fa59b7ac323817",
+      "md5": "727970ed15c7e1b102b7d5e5cc6ded54",
+      "size": "49996208"
+    },
+    "cuda_cudart": {
+      "relative_path": "cuda_cudart/linux-x86_64/cuda_cudart-linux-x86_64-12.6.77-archive.tar.xz",
+      "sha256": "f74689258a60fd9c5bdfa7679458527a55e22442691ba678dcfaeffbf4391ef9",
+      "md5": "868af7d55bed8ce473f6a9c1416f846e",
+      "size": "1126072"
+    }
+  },
+  "nvcc_relative_path": "cache/cuda12.6/cuda_nvcc-linux-x86_64-12.6.85-archive/bin/nvcc",
+  "scope": "Project-local compiler; no system module modifications"
+}

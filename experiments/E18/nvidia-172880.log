@@ -1,0 +1,270 @@
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 6817.89it/s]
+USDT:2026-10-10 09:12:54 608928:608928 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-10 09:12:54 608928:608928 SyncActivityProfilerHandler.cpp:46] profiler_stop
+cuda stock 1 1455
+cuda stock 51 1455
+cuda stock 101 1455
+cuda stock 151 1455
+cuda stock 201 1455
+cuda stock 251 1455
+cuda stock 301 1455
+cuda stock 351 1455
+cuda stock 401 1455
+cuda stock 451 1455
+cuda stock 501 1455
+cuda stock 551 1455
+cuda stock 601 1455
+cuda stock 651 1455
+cuda stock 701 1455
+cuda stock 751 1455
+cuda stock 801 1455
+cuda stock 851 1455
+cuda stock 901 1455
+cuda stock 951 1455
+cuda stock 1001 1455
+cuda stock 1051 1455
+cuda stock 1101 1455
+cuda stock 1151 1455
+cuda stock 1201 1455
+cuda stock 1251 1455
+cuda stock 1301 1455
+cuda stock 1351 1455
+cuda stock 1401 1455
+cuda stock 1451 1455
+VERIFIED
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8331.64it/s]
+USDT:2026-10-10 09:15:06 609014:609014 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-10 09:15:06 609014:609014 SyncActivityProfilerHandler.cpp:46] profiler_stop
+cuda explicit 1 1455
+cuda explicit 51 1455
+cuda explicit 101 1455
+cuda explicit 151 1455
+cuda explicit 201 1455
+cuda explicit 251 1455
+cuda explicit 301 1455
+cuda explicit 351 1455
+cuda explicit 401 1455
+cuda explicit 451 1455
+cuda explicit 501 1455
+cuda explicit 551 1455
+cuda explicit 601 1455
+cuda explicit 651 1455
+cuda explicit 701 1455
+cuda explicit 751 1455
+cuda explicit 801 1455
+cuda explicit 851 1455
+cuda explicit 901 1455
+cuda explicit 951 1455
+cuda explicit 1001 1455
+cuda explicit 1051 1455
+cuda explicit 1101 1455
+cuda explicit 1151 1455
+cuda explicit 1201 1455
+cuda explicit 1251 1455
+cuda explicit 1301 1455
+cuda explicit 1351 1455
+cuda explicit 1401 1455
+cuda explicit 1451 1455
+VERIFIED
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 10275.60it/s]
+USDT:2026-10-10 09:17:44 609204:609204 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-10 09:17:44 609204:609204 SyncActivityProfilerHandler.cpp:46] profiler_stop
+cuda compiled 1 1455
+cuda compiled 51 1455
+cuda compiled 101 1455
+cuda compiled 151 1455
+cuda compiled 201 1455
+cuda compiled 251 1455
+cuda compiled 301 1455
+cuda compiled 351 1455
+cuda compiled 401 1455
+cuda compiled 451 1455
+cuda compiled 501 1455
+cuda compiled 551 1455
+cuda compiled 601 1455
+cuda compiled 651 1455
+cuda compiled 701 1455
+cuda compiled 751 1455
+cuda compiled 801 1455
+cuda compiled 851 1455
+cuda compiled 901 1455
+cuda compiled 951 1455
+cuda compiled 1001 1455
+cuda compiled 1051 1455
+cuda compiled 1101 1455
+cuda compiled 1151 1455
+cuda compiled 1201 1455
+cuda compiled 1251 1455
+cuda compiled 1301 1455
+cuda compiled 1351 1455
+cuda compiled 1401 1455
+cuda compiled 1451 1455
+VERIFIED
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 10046.35it/s]
+USDT:2026-10-10 09:19:57 609341:609341 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-10 09:19:57 609341:609341 SyncActivityProfilerHandler.cpp:46] profiler_stop
+cuda cuda 1 1455
+cuda cuda 51 1455
+cuda cuda 101 1455
+cuda cuda 151 1455
+cuda cuda 201 1455
+cuda cuda 251 1455
+cuda cuda 301 1455
+cuda cuda 351 1455
+cuda cuda 401 1455
+cuda cuda 451 1455
+cuda cuda 501 1455
+cuda cuda 551 1455
+cuda cuda 601 1455
+cuda cuda 651 1455
+cuda cuda 701 1455
+cuda cuda 751 1455
+cuda cuda 801 1455
+cuda cuda 851 1455
+cuda cuda 901 1455
+cuda cuda 951 1455
+cuda cuda 1001 1455
+cuda cuda 1051 1455
+cuda cuda 1101 1455
+cuda cuda 1151 1455
+cuda cuda 1201 1455
+cuda cuda 1251 1455
+cuda cuda 1301 1455
+cuda cuda 1351 1455
+cuda cuda 1401 1455
+cuda cuda 1451 1455
+VERIFIED
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8415.54it/s]
+USDT:2026-10-10 09:22:11 609601:609601 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-10 09:22:11 609601:609601 SyncActivityProfilerHandler.cpp:46] profiler_stop
+cuda triton 1 1455
+cuda triton 51 1455
+cuda triton 101 1455
+cuda triton 151 1455
+cuda triton 201 1455
+cuda triton 251 1455
+cuda triton 301 1455
+cuda triton 351 1455
+cuda triton 401 1455
+cuda triton 451 1455
+cuda triton 501 1455
+cuda triton 551 1455
+cuda triton 601 1455
+cuda triton 651 1455
+cuda triton 701 1455
+cuda triton 751 1455
+cuda triton 801 1455
+cuda triton 851 1455
+cuda triton 901 1455
+cuda triton 951 1455
+cuda triton 1001 1455
+cuda triton 1051 1455
+cuda triton 1101 1455
+cuda triton 1151 1455
+cuda triton 1201 1455
+cuda triton 1251 1455
+cuda triton 1301 1455
+cuda triton 1351 1455
+cuda triton 1401 1455
+cuda triton 1451 1455
+VERIFIED
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8420.69it/s]
+USDT:2026-10-10 09:24:28 609691:609691 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-10 09:24:28 609691:609691 SyncActivityProfilerHandler.cpp:46] profiler_stop
+cuda stock 0 COMPLETE
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7814.92it/s]
+USDT:2026-10-10 09:25:23 609757:609757 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-10 09:25:23 609757:609757 SyncActivityProfilerHandler.cpp:46] profiler_stop
+cuda explicit 0 COMPLETE
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7402.21it/s]
+USDT:2026-10-10 09:26:18 609905:609905 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-10 09:26:18 609905:609905 SyncActivityProfilerHandler.cpp:46] profiler_stop
+cuda compiled 0 COMPLETE
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7589.21it/s]
+USDT:2026-10-10 09:27:17 610026:610026 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-10 09:27:17 610026:610026 SyncActivityProfilerHandler.cpp:46] profiler_stop
+cuda cuda 0 COMPLETE
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8176.18it/s]
+USDT:2026-10-10 09:28:06 610084:610084 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-10 09:28:06 610084:610084 SyncActivityProfilerHandler.cpp:46] profiler_stop
+cuda triton 0 COMPLETE
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 6915.86it/s]
+USDT:2026-10-10 09:29:01 610143:610143 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-10 09:29:01 610143:610143 SyncActivityProfilerHandler.cpp:46] profiler_stop
+cuda explicit 1 COMPLETE
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 10481.77it/s]
+USDT:2026-10-10 09:29:55 610202:610202 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-10 09:29:55 610202:610202 SyncActivityProfilerHandler.cpp:46] profiler_stop
+cuda compiled 1 COMPLETE
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7031.58it/s]
+USDT:2026-10-10 09:30:48 610323:610323 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-10 09:30:48 610323:610323 SyncActivityProfilerHandler.cpp:46] profiler_stop
+cuda cuda 1 COMPLETE
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8392.76it/s]
+USDT:2026-10-10 09:31:35 610452:610452 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-10 09:31:35 610452:610452 SyncActivityProfilerHandler.cpp:46] profiler_stop
+cuda triton 1 COMPLETE
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7796.66it/s]
+USDT:2026-10-10 09:32:26 610523:610523 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-10 09:32:26 610523:610523 SyncActivityProfilerHandler.cpp:46] profiler_stop
+cuda stock 1 COMPLETE
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8064.94it/s]
+USDT:2026-10-10 09:33:29 610579:610579 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-10 09:33:29 610579:610579 SyncActivityProfilerHandler.cpp:46] profiler_stop
+cuda compiled 2 COMPLETE
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7439.47it/s]
+USDT:2026-10-10 09:34:26 610672:610672 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-10 09:34:26 610672:610672 SyncActivityProfilerHandler.cpp:46] profiler_stop
+cuda cuda 2 COMPLETE
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 6864.76it/s]
+USDT:2026-10-10 09:35:17 610736:610736 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-10 09:35:17 610736:610736 SyncActivityProfilerHandler.cpp:46] profiler_stop
+cuda triton 2 COMPLETE
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7201.88it/s]
+USDT:2026-10-10 09:36:11 610829:610829 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-10 09:36:11 610829:610829 SyncActivityProfilerHandler.cpp:46] profiler_stop
+cuda stock 2 COMPLETE
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 6942.68it/s]
+USDT:2026-10-10 09:36:59 610939:610939 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-10 09:36:59 610939:610939 SyncActivityProfilerHandler.cpp:46] profiler_stop
+cuda explicit 2 COMPLETE
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7944.90it/s]
+USDT:2026-10-10 09:37:47 611012:611012 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-10 09:37:47 611012:611012 SyncActivityProfilerHandler.cpp:46] profiler_stop
+cuda cuda 3 COMPLETE
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 10240.24it/s]
+USDT:2026-10-10 09:38:32 611065:611065 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-10 09:38:32 611065:611065 SyncActivityProfilerHandler.cpp:46] profiler_stop
+cuda triton 3 COMPLETE
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 11999.40it/s]
+USDT:2026-10-10 09:39:25 611125:611125 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-10 09:39:25 611125:611125 SyncActivityProfilerHandler.cpp:46] profiler_stop
+cuda stock 3 COMPLETE
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 6686.33it/s]
+USDT:2026-10-10 09:40:13 611184:611184 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-10 09:40:13 611184:611184 SyncActivityProfilerHandler.cpp:46] profiler_stop
+cuda explicit 3 COMPLETE
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 9097.71it/s]
+USDT:2026-10-10 09:41:14 611272:611272 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-10 09:41:14 611272:611272 SyncActivityProfilerHandler.cpp:46] profiler_stop
+cuda compiled 3 COMPLETE
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 6133.48it/s]
+USDT:2026-10-10 09:42:13 611365:611365 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-10 09:42:13 611365:611365 SyncActivityProfilerHandler.cpp:46] profiler_stop
+cuda triton 4 COMPLETE
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 12227.27it/s]
+USDT:2026-10-10 09:42:59 611503:611503 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-10 09:42:59 611503:611503 SyncActivityProfilerHandler.cpp:46] profiler_stop
+cuda stock 4 COMPLETE
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8479.21it/s]
+USDT:2026-10-10 09:43:53 611559:611559 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-10 09:43:53 611559:611559 SyncActivityProfilerHandler.cpp:46] profiler_stop
+cuda explicit 4 COMPLETE
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 10235.24it/s]
+USDT:2026-10-10 09:44:53 611617:611617 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-10 09:44:53 611617:611617 SyncActivityProfilerHandler.cpp:46] profiler_stop
+cuda compiled 4 COMPLETE
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 10904.82it/s]
+USDT:2026-10-10 09:45:46 611746:611746 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-10 09:45:46 611746:611746 SyncActivityProfilerHandler.cpp:46] profiler_stop
+cuda cuda 4 COMPLETE

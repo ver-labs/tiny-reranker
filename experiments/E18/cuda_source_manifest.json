@@ -1,0 +1,16 @@
+{
+  "scope": "Remote copied snapshot used for completed CUDA study; no remote Git metadata. Later local input guards and device CLI validation are absent from these source files; valid CUDA execution logic unchanged.",
+  "files": {
+    "experiments/E18/inference.py": "eb6137363d4dafd795b05c797010f40458099c5034c2df8e21b5d41e51c7895b",
+    "experiments/E18/direct_benchmark.py": "cf6b629c0e1e38b0d43c46197d7a7a2a93f1707d46422d629ac5789cc4fc8d8b",
+    "experiments/E18/accuracy.py": "18b4ea1812390913f03dcadfaf5645126a37441ad31a34f265e2950185e88b12",
+    "experiments/E18/statistics.py": "6b07c7f5ed26d530975e8900a7802a8b7effd3806bcb06e2ef0679fe54e49525",
+    "experiments/E18/torch_kernel.py": "5e267c1cdd7fc6c17d42c7be42d8a36f08368c52a9b8c5baa8757640b43bdbbf",
+    "experiments/E18/triton_kernel.py": "fca099861fa2db01e7061911360e25802498fe26e95c14d0c5e03860574c6dac",
+    "experiments/E18/residual_norm.cu": "5f282000152e645a794e605fa1b0bed71fa253812643e456939932950ebc9f12",
+    "experiments/E18/residual_norm.so": "081a81d4b2165abc88994a748e8fba9e329f76c03cb0de1bfa648ca69993421b",
+    "experiments/E18/launch.py": "401e9edf89ee797633b82a85fe9f2685611923dc92934a7f103119a6bc5c6b37",
+    "experiments/E18/plan.json": "2b54eeeed727e77e89e3f4e589ff4bb78badee59786d3a3c6a44810db73f1df0",
+    "experiments/E18/protocol_addendum.json": "d79e67b5a429253e13b52d6778317141ec4c09d0cd33f004e9fd6147c46a0f84"
+  }
+}

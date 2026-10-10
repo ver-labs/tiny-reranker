@@ -1,0 +1,11 @@
+nvcc: NVIDIA (R) Cuda compiler driver
+Copyright (c) 2005-2024 NVIDIA Corporation
+Built on Tue_Oct_29_23:50:19_PDT_2024
+Cuda compilation tools, release 12.6, V12.6.85
+Build cuda_12.6.r12.6/compiler.35059454_0
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 12089.32it/s]
+{'triton': {'status': 'VERIFIED'}, 'cuda': {'status': 'VERIFIED'}}
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 6490.53it/s]
+USDT:2026-10-10 09:12:11 608729:608729 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-10 09:12:11 608729:608729 SyncActivityProfilerHandler.cpp:46] profiler_stop
+SUPPORTED 

@@ -1,0 +1,51 @@
+{
+  "device": "cuda",
+  "scope": "Secondary 16-query / K100 check; no all-485 shortened-context qualification",
+  "plan_sha256": "2b54eeeed727e77e89e3f4e589ff4bb78badee59786d3a3c6a44810db73f1df0",
+  "cells": {
+    "L128/stock": {
+      "artifact": "scores/cuda_stock_L128_context.jsonl.gz",
+      "artifact_sha256": "504b074bae657e7d2c53d40c959b116c29bbd2e522d497578e71284b12ea72ae",
+      "quality_changes_vs_stock_L512": {
+        "ndcg_at_10": {
+          "mean": -0.016467321907680025,
+          "ci95": [
+            -0.06998989370010861,
+            0.017829316710823287
+          ],
+          "units": 16
+        },
+        "mrr_at_10": {
+          "mean": -0.03645833333333333,
+          "ci95": [
+            -0.19270833333333331,
+            0.08346354166666478
+          ],
+          "units": 16
+        }
+      }
+    },
+    "L256/stock": {
+      "artifact": "scores/cuda_stock_L256_context.jsonl.gz",
+      "artifact_sha256": "4262ba77b49d12a675e03f8055ecd255742faba969fa4c1edc873e308ea09b4d",
+      "quality_changes_vs_stock_L512": {
+        "ndcg_at_10": {
+          "mean": 0.0016969499210855096,
+          "ci95": [
+            -0.005261440102630598,
+            0.011142510613724156
+          ],
+          "units": 16
+        },
+        "mrr_at_10": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "units": 16
+        }
+      }
+    }
+  }
+}

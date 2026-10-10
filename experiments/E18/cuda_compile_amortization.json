@@ -1,0 +1,6 @@
+{
+  "first_use_overhead_seconds": 50.255925924517214,
+  "median_paired_warm_saving_per_K100_query_seconds": 0.0044526284909807146,
+  "estimated_queries_to_amortize": 11286.799701865108,
+  "interpretation": "Diagnostic estimate from one fresh-cache startup comparison and 15 paired warm repetitions; driver cache unknown; startup has no uncertainty interval; not a true fully cold system measurement or an HTTP break-even estimate"
+}

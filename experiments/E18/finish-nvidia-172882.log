@@ -1,0 +1,21 @@
+Summary updated
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 9974.45it/s]
+USDT:2026-10-10 09:47:07 612034:612034 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-10 09:47:07 612034:612034 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-10-10 09:47:07 612034:612034 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-10 09:47:07 612034:612034 SyncActivityProfilerHandler.cpp:46] profiler_stop
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 13210.60it/s]
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7858.71it/s]
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 9603.81it/s]
+cuda stock reserve 0
+cuda stock reserve 50
+cuda stock reserve 100
+cuda stock reserve 150
+cuda stock reserve 200
+cuda stock reserve 250
+cuda stock reserve 300
+cuda stock reserve 350
+cuda stock reserve 400
+Summary updated
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7505.40it/s]
+UNSUPPORTED

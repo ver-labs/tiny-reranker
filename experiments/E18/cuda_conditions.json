@@ -1,0 +1,22 @@
+{
+  "scope": "50 before/after snapshots for 25 CUDA direct processes; not continuous monitoring or proof of machine isolation",
+  "snapshots": 50,
+  "ranges": {
+    "temperature.gpu": [
+      53.0,
+      58.0
+    ],
+    "clocks.current.sm [MHz]": [
+      2460.0,
+      2520.0
+    ],
+    "utilization.gpu [%]": [
+      0.0,
+      54.0
+    ],
+    "memory.used [MiB]": [
+      0.0,
+      1785.0
+    ]
+  }
+}

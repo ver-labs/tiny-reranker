@@ -1,0 +1,86 @@
+{
+  "status": "COMPLETE",
+  "device": "cuda",
+  "path": "stock",
+  "queries": 421,
+  "pairs": 42100,
+  "seconds": 60.230591267347336,
+  "plan_sha256": "2b54eeeed727e77e89e3f4e589ff4bb78badee59786d3a3c6a44810db73f1df0",
+  "artifact": "scores/cuda_stock_reserve.jsonl.gz",
+  "artifact_sha256": "7464067fc6b6affd831e9e8dcc6d9725a0c6b0a3e3c4b7c73f5a9ce36e160f2a",
+  "interpretation": "One confirmation pass; file writes and ranking included in wall time; not a repeated direct performance endpoint",
+  "accuracy": {
+    "strict_numerical_pass": true,
+    "application_pass": true,
+    "absolute_error": {
+      "min": 0.0,
+      "p25": 0.0,
+      "median": 0.0,
+      "p75": 0.0,
+      "p95": 0.0,
+      "p99": 0.0,
+      "max": 0.0
+    },
+    "relative_error_floor_1e-3": {
+      "min": 0.0,
+      "p25": 0.0,
+      "median": 0.0,
+      "p75": 0.0,
+      "p95": 0.0,
+      "p99": 0.0,
+      "max": 0.0
+    },
+    "cells": {
+      "scifact/K100": {
+        "queries": 130,
+        "full_ranking_changed": 0,
+        "top1_changed": 0,
+        "top10_membership_changed": 0,
+        "top10_order_changed": 0,
+        "ndcg_delta": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "units": 130
+        },
+        "mrr_delta": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "units": 130
+        },
+        "application_pass": true
+      },
+      "nfcorpus/K100": {
+        "queries": 291,
+        "full_ranking_changed": 0,
+        "top1_changed": 0,
+        "top10_membership_changed": 0,
+        "top10_order_changed": 0,
+        "ndcg_delta": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "units": 291
+        },
+        "mrr_delta": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "units": 291
+        },
+        "application_pass": true
+      }
+    },
+    "per_query_artifact": "scores/cuda_stock_reserve_deltas.json.gz",
+    "per_query_artifact_sha256": "c08ad807c56f84656a1fa534c4c37e8b0063b3290e615fd2756cd642e12a04c6"
+  }
+}
