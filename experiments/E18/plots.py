@@ -12,6 +12,7 @@ COLORS={'stock':'#20639b','mlx':'#e07a22','compiled':'#7c4d9e','mlx_compiled':'#
 
 
 def bars(ax,x,entries,field,label,color):
+    if any(e[field]['median'] is None for e in entries):return
     values=[e[field]['median'] for e in entries];low=[v-e[field]['p25'] for v,e in zip(values,entries)];high=[e[field]['p75']-v for v,e in zip(values,entries)]
     ax.errorbar(x,values,yerr=[low,high],label=label,color=color,marker='o',capsize=3,linewidth=1.5)
 

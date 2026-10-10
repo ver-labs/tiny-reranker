@@ -76,3 +76,10 @@ def test_saved_interval_audit_rejects_wrong_uncertainty():
     verify_ratio(records,'stock','other',reported)
     wrong=copy.deepcopy(reported);wrong['ci95']=[reported['ratio'],reported['ratio']]
     with pytest.raises(AssertionError):verify_ratio(records,'stock','other',wrong)
+
+
+def test_failed_http_cannot_be_a_speed_winner():
+    from experiments.E18.summarize import http_ratio,percentiles_or_missing
+    records=[{'session':s,'repetition':0,'path':p,'seconds':(10 if p=='baseline' else 1),'failures':(0 if p=='baseline' else 16),'successful_requests':(16 if p=='baseline' else 0)} for s in range(8) for p in ('baseline','broken')]
+    assert http_ratio(records,'baseline','broken')['status']=='UNQUALIFIED_HTTP_FAILURES'
+    assert percentiles_or_missing([])['median'] is None

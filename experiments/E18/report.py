@@ -8,6 +8,10 @@ def ratio(r):
     return f"{r['ratio']:.3f} [{r['ci95'][0]:.3f}, {r['ci95'][1]:.3f}]" if 'ratio' in r else r.get('status','PENDING')
 
 
+def latency(d):
+    return ' / '.join('—' if d[f'p{p}_ms']['median'] is None else f"{d[f'p{p}_ms']['median']:.1f}" for p in (50,95,99))
+
+
 def main():
     summary=json.loads((HERE/'summary.json').read_text());lines=['# E18 measured tables','',
       'These tables describe E18-small-v1 with its batch-control addendum. FP32, L≤512, raw logits. Ratios above one favor the candidate. Confidence intervals are unadjusted exploratory session-bootstrap intervals; no confirmatory significance family is claimed. Accuracy-failing paths remain diagnostic. Missing observations are pending, not zero.','',
@@ -29,7 +33,7 @@ def main():
         k,c=(int(x[1:]) for x in key.split('/'))
         for path,d in sorted(cell['distribution'].items()):
             v=d['requests_per_second'];backend=path.split('/')[1];r=cell['comparisons'].get('python/'+backend+'/rust/'+backend,{})
-            lines.append(f"| {k} | {c} | {path} | {d['p50_ms']['median']:.1f} / {d['p95_ms']['median']:.1f} / {d['p99_ms']['median']:.1f} | {v['median']:.3f} [{v['p25']:.3f}, {v['p75']:.3f}] | {d['pairs_per_second']['median']:.1f} | {d['requests']} / {d['failures']} | {ratio(r) if path.startswith('rust') else '—'} |")
+            lines.append(f"| {k} | {c} | {path} | {latency(d)} | {v['median']:.3f} [{v['p25']:.3f}, {v['p75']:.3f}] | {d['pairs_per_second']['median']:.1f} | {d['requests']} / {d['failures']} | {ratio(r) if path.startswith('rust') else '—'} |")
     lines+=['','The 16-request repetition gives only two waves at C8. P99 is a near-maximum of a short wave, not a production tail-latency estimate. The load is fixed-concurrency closed-loop; it does not test open-loop overload. Rust coordinates a shared Python inference worker.']
     if summary.get('service_setup'):
         lines+=['','## Service setup and process memory','',
@@ -46,7 +50,7 @@ def main():
           '|---|---|---|---|---|']
         for key,cell in sorted(summary['optimized_http'].items()):
             for path,d in sorted(cell['distribution'].items()):
-                lines.append(f"| {key} | {path} | {d['p50_ms']['median']:.1f} / {d['p95_ms']['median']:.1f} / {d['p99_ms']['median']:.1f} | {d['requests_per_second']['median']:.3f} | {ratio(cell['comparisons'][path]) if path in cell['comparisons'] else 'Baseline'} |")
+                lines.append(f"| {key} | {path} | {latency(d)} | {d['requests_per_second']['median']:.3f} | {ratio(cell['comparisons'][path]) if path in cell['comparisons'] else 'Baseline'} |")
     lines+=['','## Resident operation','', '| Device / rows × 384 | Path | Median µs [IQR] | Native / candidate time ratio [95% CI] |','|---|---|---|---|']
     for key,cell in sorted(summary['operation'].items()):
         for path,d in cell['distribution'].items():lines.append(f"| {key} | {path} | {d['median']:.1f} [{d['p25']:.1f}, {d['p75']:.1f}] | {'Baseline' if path=='native' else ratio(cell['comparisons'].get('native/'+path,{}))} |")

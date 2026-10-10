@@ -133,10 +133,13 @@ def main():
             assert run['failures']==len(selected)-len(good) and run['timeouts']==sum(v.get('timeout',False) for v in selected)
             assert abs(run['pairs_per_second']-run['successful_pairs']/run['seconds'])<1e-10
             for scope in ('latency','queue','processing'):
+                if not good:
+                    assert run[scope+'_ms'] is None
+                    continue
                 for percentile in (50,95,99):
                     assert all(math.isfinite(v[scope+'_ms']) and v[scope+'_ms']>=0 for v in good)
                     assert abs(run[scope+'_ms'][f'p{percentile}']-np.percentile([v[scope+'_ms'] for v in good],percentile))<1e-8
-        result['http'][p.stem]={'status':'VERIFIED','requests':len(obs),'successful_pairs':sum(r['successful_pairs'] for r in report['runs'])}
+        result['http'][p.stem]={'status':'VERIFIED','requests':len(obs),'successful_requests':sum(r['successful_requests'] for r in report['runs']),'failures':sum(r['failures'] for r in report['runs']),'successful_pairs':sum(r['successful_pairs'] for r in report['runs'])}
     for p in (HERE/'raw').glob('*_direct_s*.json'):
         r=json.loads(p.read_text())
         if r.get('status')!='COMPLETE':result['direct'][p.stem]={'status':r.get('status','INCOMPLETE')};continue

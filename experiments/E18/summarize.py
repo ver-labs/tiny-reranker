@@ -5,6 +5,17 @@ from .common import HERE,save,sha
 from .statistics import paired_ratio,distribution
 
 
+def http_ratio(records,baseline,candidate):
+    selected=[r for r in records if r['path'] in (baseline,candidate)]
+    if any(r['failures'] or r['successful_requests']!=16 for r in selected):
+        return {'status':'UNQUALIFIED_HTTP_FAILURES','reason':'All 16 requests in every paired repetition must succeed; failed runs are retained, not removed'}
+    return paired_ratio(selected,baseline,candidate)
+
+
+def percentiles_or_missing(values):
+    return distribution(values) if values else {**{key:None for key in ('min','p25','median','p75','p95','p99','max')},'status':'NO_SUCCESSFUL_REQUESTS'}
+
+
 def main():
     output={'plan_sha256':sha(HERE/'plan.json'),'accuracy':{},'direct':{},'http':{},'operation':{},'optimized_http':{},'service_setup':{}}
     for p in HERE.glob('*_accuracy.json'):
@@ -60,17 +71,17 @@ def main():
         for path in sorted({r['path'] for r in selected}):
             records=[r for r in selected if r['path']==path]
             entry['distribution'][path]={f:distribution([r[f] for r in records]) for f in ('seconds','requests_per_second','pairs_per_second','validation_seconds','client_cpu_fraction_of_one_core')}
-            for percentile in ('p50','p95','p99'):entry['distribution'][path][percentile+'_ms']=distribution([r['latency_ms'][percentile] for r in records])
+            for percentile in ('p50','p95','p99'):entry['distribution'][path][percentile+'_ms']=percentiles_or_missing([r['latency_ms'][percentile] for r in records if r['latency_ms'] is not None])
             for scope in ('queue','processing'):
-                entry['distribution'][path][scope+'_ms']={percentile:distribution([r[scope+'_ms'][percentile] for r in records]) for percentile in ('p50','p95','p99')}
+                entry['distribution'][path][scope+'_ms']={percentile:percentiles_or_missing([r[scope+'_ms'][percentile] for r in records if r[scope+'_ms'] is not None]) for percentile in ('p50','p95','p99')}
             entry['distribution'][path].update(failures=sum(r['failures'] for r in records),timeouts=sum(r['timeouts'] for r in records),requests=sum(r['successful_requests'] for r in records),repetitions=len(records))
         for backend in ('stock','mlx'):
-            try:entry['comparisons']['python/'+backend+'/rust/'+backend]=paired_ratio(selected,'python/'+backend,'rust/'+backend)
+            try:entry['comparisons']['python/'+backend+'/rust/'+backend]=http_ratio(selected,'python/'+backend,'rust/'+backend)
             except ValueError as e:entry['comparisons'][backend]={'status':'INCOMPLETE','reason':str(e)}
         if study=='primary':output['http'][f'K{k}/C{c}']=entry
         else:
             baseline='python/'+study.removeprefix('optimized_')
-            entry['comparisons']={path:paired_ratio(selected,baseline,path) for path in entry['distribution'] if path!=baseline}
+            entry['comparisons']={path:http_ratio(selected,baseline,path) for path in entry['distribution'] if path!=baseline}
             output['optimized_http'][f'{study}/K{k}/C{c}']=entry
     save(HERE/'summary.json',output);print('Summary updated',flush=True)
 
