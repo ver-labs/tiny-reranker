@@ -8,4 +8,5 @@
 set -euo pipefail
 # Submit only after authenticated access is restored and the frozen inputs are
 # copied and verified. No existing jobs are cancelled or changed.
+.cuda-env/bin/python -m experiments.E17.nvidia_provenance --require-gpu
 .cuda-env/bin/python -m experiments.E17.launch --device cuda

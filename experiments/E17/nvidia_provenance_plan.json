@@ -1,0 +1,11 @@
+{
+  "benchmark_plan_sha256": "71e6c1d92703272a02f8a481bd67f2e720996ba186a66dbd33bf27036ca953fb",
+  "purpose": "Supplemental asset guard before any NVIDIA execution; original Apple contract unchanged",
+  "hardware": "NVIDIA L40S",
+  "files": {
+    "experiments/E14/residual_layer_norm.cu": "6cee9e55cab3e5470cbf33a530c1e4601c5ab45c7986cdf1f62dcf7acafe95e5",
+    "experiments/E14/residual_layer_norm.so": "c3b0c446bc66ecae80637724f70cc5692576e08f1aed6ef8b9275d3a82dbd97a"
+  },
+  "guard_source_sha256": "6d019509cd9482d7dde1f655171a49e84bbf2202df5f338000fe17df4c55c3f7",
+  "E14_binary_provenance_sha256": "2a8a2306dd13203d4e1a3d5c9c7e4f04c5dd2fd5270b8a26c41c4e751561e3ff"
+}
