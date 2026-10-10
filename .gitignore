@@ -42,3 +42,6 @@ artifacts/e15_tinybert/
 artifacts/e15_minilm/
 experiments/E15/*_rankings.jsonl.gz
 experiments/E15/*_rankings.jsonl.gz.tmp
+
+# E18 immutable pretrained weights and tokenizer; hashes committed separately.
+artifacts/e18_minilm_l6/

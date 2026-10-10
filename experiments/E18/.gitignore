@@ -1,0 +1,7 @@
+scores/
+traces/
+cache/
+*.so
+*_server.log
+raw/*responses*.jsonl.gz
+rust-server/target/
