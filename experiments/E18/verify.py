@@ -118,10 +118,17 @@ def main():
         artifact=HERE/report['response_artifact'];assert sha(artifact)==report['response_sha256']
         with gzip.open(artifact,'rt') as f:obs=[json.loads(line) for line in f]
         assert len(obs)==(96 if report.get('primary_only') else 288)
+        counts=(100,) if report.get('primary_only') else (10,50,100)
+        expected_runs={(rep,k,c) for rep in (0,1) for k in counts for c in (1,4,8)}
+        assert len(report['runs'])==len(expected_runs) and {(v['repetition'],v['k'],v['concurrency']) for v in report['runs']}==expected_runs
+        assert report['health']['max_length']==512 and report['health']['pair_batch_size']==16
+        assert report['health']['checkpoint_sha256']==plan['model']['file_sha256']['model.safetensors']
         audit=HERE/'scores'/f"mps_{report['path']}.jsonl.gz"
         with gzip.open(audit,'rt') as f:refs={(r['dataset'],r['query_id'],r['k']):r for r in map(json.loads,f)}
         for run in report['runs']:
+            assert run['session']==report['session'] and run['path']==report['coordinator']+'/'+report['path'] and run['batch']==16 and run['length']==512
             selected=[r for r in obs if (r['repetition'],r['k'],r['concurrency'])==(run['repetition'],run['k'],run['concurrency'])]
+            assert all(v['session']==run['session'] and v['path']==run['path'] and v['batch']==16 and v['length']==512 for v in selected)
             assert len(selected)==16 and {r['index'] for r in selected}==set(range(16)) and len({r['request_id'] for r in selected})==16
             query_order=list(plan['timing_ids']);random.Random(1801+report['session']*100+run['repetition']).shuffle(query_order)
             assert [v['request_id'] for v in sorted(selected,key=lambda v:v['index'])]==[f'{dataset}:{qid}:K{run["k"]}:{index}' for index,(dataset,qid) in enumerate(query_order)]
