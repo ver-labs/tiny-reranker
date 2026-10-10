@@ -1,0 +1,17 @@
+{
+  "queries": 45709,
+  "pairs": 91424,
+  "changed_rankings": 0,
+  "max_score_absolute_error": 1.6689300537109375e-06,
+  "pair_batch_limit": 64,
+  "seconds": 151.3993997501675,
+  "rankings_sha256": "e47f1ad7f16bacd8985f44700c9a6dde0e781d1c093a0bc2fd036c1f2307e253",
+  "standard": {
+    "mrr_at_10": 0.9425714848279332,
+    "ndcg_at_10": 0.9576079311959301
+  },
+  "fused": {
+    "mrr_at_10": 0.9425714848279332,
+    "ndcg_at_10": 0.9576079311959301
+  }
+}

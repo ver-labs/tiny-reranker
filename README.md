@@ -1124,7 +1124,8 @@ by the following branch, so a fused implementation may need to return both the
 sum and normalized values; silently discarding the sum would change the model.
 Normalization and residual additions have appreciable isolated overhead, while
 GELU and dense feed-forward layers become more prominent at large batches. A
-kernel's end-to-end benefit remains unmeasured; no custom kernel is enabled.
+kernel's end-to-end benefit was unmeasured at this profiling stage; the
+subsequent implementation and benchmark below records the result.
 
 Reproduction and offline plot:
 
@@ -1148,3 +1149,123 @@ The trace bundles and binary CPU profile are excluded from Git. MLX's
 [official capture documentation](https://ml-explore.github.io/mlx/build/html/dev/metal_debugger.html)
 describes the capture environment and opening traces in Xcode. Existing captures
 are preserved on rerun.
+
+### E11 — fused residual addition + LayerNorm Metal kernel
+
+Implemented in `experiments/E11/residual_layer_norm.metal` using MLX's
+[custom Metal interface](https://ml-explore.github.io/mlx/build/html/dev/custom_metal_kernels.html).
+The wrapper `experiments/E11/kernel.py` exposes both ordinary MLX and custom
+paths. Each 32-thread SIMD group handles one token row, keeps the residual sum
+in registers, reduces the mean and population variance in FP32 using two passes,
+and applies epsilon, learned scale and bias. SIMD reductions need no threadgroup
+shared-memory barrier in this one-SIMD-group-per-row design. The kernel writes
+both the residual sum and its normalized value, preserving the later branch.
+
+The custom contract is nonempty rank-2/3 FP32 inputs with matching residual/branch
+shapes, FP32 affine vectors, and hidden sizes 32/64/128/256. The trained model
+uses hidden size 128. MLX packs strided arrays before dispatch, with copy cost
+included in caller timings. Unsupported sizes/dtypes fall back to ordinary MLX
+or raise when `fallback=False`; malformed shapes/epsilon raise. Inputs should
+have finite values with representable residual sums and reduction intermediates.
+The numerical tests include constant 1e20 rows and mixed-sign values scaled by
+1e15, not a claim of overflow-free behavior for every possible FP32 input.
+
+`experiments/E11/mlx_model.py` adds `use_fused=True` to the existing architecture.
+It fuses eight residual-add/normalization pairs across the four pre-norm layers,
+including the final normalization. The embedding norm and first attention norm
+remain ordinary MLX. The residual sum continues down the original branch;
+normalization parameters belong to the next consumer exactly as in the reference.
+Weights and architecture are unchanged. The default is ordinary MLX; this
+experiment does not change the HTTP workers. The custom model path rejects
+training mode, and no custom backward implementation is provided. The user
+confirmed this task is epoch-3 inference benchmarking, not another training epoch.
+
+All 35 actual-GPU tests passed: supported shapes/hidden sizes, odd row counts,
+multiple lengths, constant/cancellation/large finite values, strided packing,
+fallbacks and rejection, all encoder-state comparisons, and the training guard.
+Operation tolerance is atol=rtol=2e-5 against ordinary MLX and a float64 NumPy
+oracle on random fixtures; complete-model state tolerance is atol=rtol=3e-5.
+The implementation follows the standard two-pass population-variance algorithm;
+MLX's [LayerNorm source](https://github.com/ml-explore/mlx/blob/main/mlx/backend/metal/kernels/layer_norm.metal)
+was checked to match that convention and the epsilon/affine placement.
+
+```bash
+.venv/bin/python -m pytest tests/test_e11_kernel.py -q
+.venv/bin/python -u -m experiments.E11.benchmark_kernel
+.venv/bin/python -m experiments.E11.plot_kernel
+```
+
+`benchmark_kernel.py` checks trained-model states and padding behavior, measures
+first kernel use separately, warms both paths, runs 30 paired operation timings,
+compares both execution paths on all 45,709 validation queries, and then runs
+the fixed 128-query batch sweep. Whole-model timings have 20 repeats per point
+in two reversed batch-order rounds; path order and forward/scoring order also
+alternate. Both paths share the same model weights and encoded inputs. These
+are synchronized direct-inference wall timings, not pure GPU timestamps or HTTP
+serving speed measurements. No test data is accessed for this kernel experiment.
+
+Full validation produced identical rankings and quality across ordinary/fused
+MLX: nDCG@10 0.957607931196 and MRR@10 0.942571484828, with zero changed query
+rankings. Maximum score difference was 0.000001669 across 91,424 candidate pairs.
+`kernel_quality.json` retains compact quality results and the hash of the locally
+saved `fused_validation_rankings.jsonl`; the large ranking file is outside Git.
+
+Completed E11 timing results (20 paired whole-model repeats per point):
+
+| Pairs per batch | Isolated operation speedup | Prepared-forward throughput ratio | Complete-scoring throughput ratio | Ordinary scoring pairs/s | Fused scoring pairs/s |
+| ---: | ---: | ---: | ---: | ---: | ---: |
+| 1 | 1.671x | 1.140x | 1.024x | 414.6 | 424.7 |
+| 2 | 1.022x | 1.082x | 0.921x | 555.1 | 510.9 |
+| 8 | 1.277x | 1.072x | 0.939x | 856.3 | 804.1 |
+| 16 | 1.542x | 1.086x | 1.067x | 1072.5 | 1144.9 |
+| 64 | 1.599x | 1.052x | 1.032x | 1304.0 | 1346.1 |
+| 128 | 1.920x | 1.091x | 1.091x | 1397.0 | 1524.3 |
+
+First kernel use took 2.812 ms, including setup/JIT work
+when needed; it is excluded from steady-state timing. This is not pure compiler time.
+
+The fused operation improved isolated median wall time at all tested points,
+and prepared-input whole-model throughput was 5–14% higher in this run. Complete
+scoring was mixed: approximately 8% lower throughput at batch 2, 6% lower at
+batch 8, and modest gains at the other points. Repeat ranges overlap substantially;
+these medians do not establish a reliable production speedup. Tokenization and
+other CPU work remain part of complete scoring, and this run does not attribute
+the differences to a single cause. Ordinary MLX remains the default, particularly
+for the existing two-document HTTP workload. No HTTP speedup is claimed and no
+training was performed.
+
+The completed experiment retains the custom kernel as a learning result with a
+measured limitation. Raw samples, hashes, probe errors, complete validation
+quality, and startup timing are saved in `experiments/E11/kernel_benchmark.json`.
+`kernel_interactive.html` plots both throughput scopes, repeat IQR, isolated
+operation ratios, and ranking parity. The GPU correctness tests and full-validation
+comparison verify the implemented path; expected floating-point differences
+are small, but outputs are not claimed bitwise identical.
+
+#### Residual addition + LayerNorm: isolated latency savings
+
+This measures residual addition followed by LayerNorm only; attention itself
+is not fused. Results are medians of 30 paired repeats on resident inputs,
+including Python dispatch, materialization and synchronization, not pure GPU
+kernel timestamps.
+
+| Pairs per batch | Ordinary MLX ms | Custom kernel ms | Saved ms | Reduction |
+| ---: | ---: | ---: | ---: | ---: |
+| 1 | 0.473 | 0.283 | 0.190 | 40.1% |
+| 2 | 0.270 | 0.264 | 0.006 | 2.2% |
+| 8 | 0.666 | 0.521 | 0.144 | 21.7% |
+| 16 | 0.636 | 0.412 | 0.223 | 35.1% |
+| 64 | 1.013 | 0.633 | 0.379 | 37.5% |
+| 128 | 2.698 | 1.405 | 1.293 | 47.9% |
+
+At batch 2, the median saving was only 0.006 ms (2.2%). Ordinary MLX's IQR was
+0.239–0.293 ms and the custom kernel's was 0.238–0.296 ms: the ranges almost
+completely overlap, so this does not establish a meaningful small-request gain.
+Larger batches showed more substantial isolated savings. These savings cannot
+be multiplied by the number of model occurrences or treated as the same
+percentage reduction in complete-model latency; launch scheduling, input shapes,
+other operations and measurement overhead differ in the full graph. Complete
+scoring results remain mixed, and ordinary MLX remains the default.
+
+The source measurements and all repeat samples remain in
+`experiments/E11/kernel_benchmark.json` under `operation_microbench`.

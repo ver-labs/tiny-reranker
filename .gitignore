@@ -30,3 +30,5 @@ experiments/E12/*_rankings.jsonl
 experiments/E12/*_rankings.jsonl.tmp
 experiments/E11/*.gputrace/
 experiments/E11/*.prof
+experiments/E11/*_rankings.jsonl
+experiments/E11/*_rankings.jsonl.tmp
