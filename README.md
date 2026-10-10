@@ -1596,3 +1596,46 @@ sbatch experiments/E14/evaluate_test.sbatch
 Conclusion: both custom kernels preserve epoch-3 ranking quality on the complete
 saved test set. They remain learning/benchmark paths; quality parity alone does
 not justify changing the default execution path.
+
+### E14 — measured latency across the full test set
+
+Completed on L40S `dash2`, Slurm job 172836. This is a dedicated latency run
+across all 45,665 evaluable test queries / 91,337 pairs, rather than an estimate
+from the small fixture or the quality evaluator's shared-tokenization pass.
+Each implementation completed three full-dataset passes at pair batch size 128
+(714 batches per pass, final batch 73 pairs). Path order rotated across rounds.
+Epoch 3, FP32/TF32 disabled, Triton four warps, dynamic padding/max length 128,
+and disabled PyTorch MHA fast paths match the full quality evaluation.
+
+Every path tokenizes the full data independently. Each batch timer includes
+its tokenization, host-to-GPU transfer, model execution and CPU float scores.
+Scoring time is the sum of those batch timers. File loading, model loading,
+compilation/warm-up, ranking sorting and quality auditing are excluded; no HTTP
+server is involved. Gross pass wall time, which additionally includes loop checks
+and progress output, is also retained. Percentiles span batches throughout the
+full dataset; the table reports the median of each statistic across three passes.
+
+| Implementation | Full-test scoring (s) | Pass scoring range (s) | Batch P50 (ms) | Batch P95 (ms) | Pairs/s |
+|---|---:|---:|---:|---:|---:|
+| Normal PyTorch | 21.371 | 21.134–23.735 | 29.634 | 30.801 | 4273.9 |
+| Custom CUDA port | 21.272 | 21.120–21.516 | 29.523 | 30.717 | 4293.8 |
+| Custom Triton | 21.104 | 21.045–21.252 | 29.476 | 30.571 | 4327.9 |
+
+Triton's median total scoring time is approximately 1.2% lower than normal
+PyTorch; the CUDA port is approximately 0.5% lower. The pass ranges overlap,
+so three passes do not establish a reliable performance winner at batch 128.
+All nine passes produced exactly the previous full-test rankings and metrics;
+quality auditing happens after each timed pass. This result does not change the
+small-batch framework default or imply HTTP request latency.
+
+Raw timings for every batch, padded lengths, pair counts, all nine pass totals,
+P50/P95/P99, provenance hashes and quality checks are in
+`experiments/E14/full_test_latency.json`. The successful job log is
+`e14_full_latency_172836.log`. Download verification checked the source hashes,
+all 714 batch records in every pass, pair/metric counts, total durations and
+recomputed percentiles. The entire allocated GPU job completed and released its
+resource.
+
+```bash
+sbatch experiments/E14/benchmark_full_test.sbatch
+```
