@@ -1,0 +1,8 @@
+{
+  "version": "E18-small-v1-http-warmup-v1",
+  "frozen_before": "All HTTP timing; zero collected HTTP service runs at definition",
+  "server_readiness": "Existing model load and all forward-shape warm-up retained; readiness time remains separate",
+  "full_request_warmup": "After READY, submit one validated complete request for each K10/K50/K100 using the first frozen timing query. Retain warm-up identities and score checks separately; exclude from timing observations and successful measured counts",
+  "connection_checks": "Before each measured repetition/cell, issue C concurrent health checks using the same persistent HTTP client, outside the timing boundary",
+  "unchanged": "16 measured requests per repetition, eight primary service-start cycles, two repetitions, same K/C/B/L, worker, queue and protocol. NVIDIA direct measurements are unaffected"
+}

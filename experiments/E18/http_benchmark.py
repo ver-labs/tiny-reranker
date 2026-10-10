@@ -90,6 +90,7 @@ async def measure(session,coordinator,path,study='primary',primary_only=False):
     start=time.perf_counter()
     with log.open('w') as f:proc=subprocess.Popen(command,cwd=ROOT,env=env,stdout=f,stderr=f)
     result={'session':session,'coordinator':coordinator,'path':path,'plan_sha256':sha(HERE/'plan.json'),'environment':environment(),'accuracy_status':audit['status'],'study':study,'primary_only':primary_only,'runs':[]}
+    result['http_warmup_addendum_sha256']=sha(HERE/'http_warmup_addendum.json')
     raw=HERE/'raw'/f'{prefix}_s{session}_{coordinator}_{path}_responses.jsonl.gz';raw.parent.mkdir(exist_ok=True)
     try:
         async with httpx.AsyncClient(base_url=f'http://127.0.0.1:{port}',timeout=120,trust_env=False,limits=httpx.Limits(max_connections=8,max_keepalive_connections=8)) as client:
@@ -104,10 +105,18 @@ async def measure(session,coordinator,path,study='primary',primary_only=False):
             health=response.json();assert health['max_length']==512 and health['checkpoint_sha256']==plan['model']['file_sha256']['model.safetensors'] and health['pair_batch_size']==16
             result.update(startup_seconds=time.perf_counter()-start,health=health,rss_before=rss([proc.pid,health['worker_pid']]))
             invalid=await client.post('/rerank',json={**payload(data[0],10,0),'documents':[]});assert invalid.status_code==422
+            warm_start=time.perf_counter();result['http_warmup']=[]
+            for k in plan['document_counts']:
+                request=payload(data[0],k,-1);response=await client.post('/rerank',json=request);response.raise_for_status()
+                error=validate(response.json(),request,refs[data[0]['dataset'],data[0]['query_id'],k])
+                result['http_warmup'].append({'request_id':request['request_id'],'pairs':k,'max_score_error':error})
+            result['http_warmup_seconds']=time.perf_counter()-warm_start
             cells=[(k,c) for k in ([100] if primary_only else plan['document_counts']) for c in plan['concurrency']];random.Random(1801+session).shuffle(cells)
             with gzip.open(raw,'wt') as f:
                 for rep in range(2):
                     for k,c in cells[rep*3:]+cells[:rep*3]:
+                        connections=await asyncio.gather(*(client.get('/health') for _ in range(c)))
+                        assert all(r.status_code==200 and r.json()['ready'] for r in connections)
                         order=list(data);random.Random(1801+session*100+rep).shuffle(order)
                         requests=[(payload(r,k,i),refs[r['dataset'],r['query_id'],k]) for i,r in enumerate(order)]
                         obs,stats=await load(client,requests,c,k,refs)

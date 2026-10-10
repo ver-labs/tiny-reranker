@@ -38,11 +38,11 @@ def main():
     if summary.get('service_setup'):
         lines+=['','## Service setup and process memory','',
           'Readiness includes model loading and all HTTP shape warm-up. RSS values are after-run snapshots, not peak memory; shared pages may be counted twice.','',
-          '| Study / coordinator / worker | Starts | Readiness seconds median [IQR] | Worker / coordinator RSS median MiB |',
-          '|---|---|---|---|']
+          '| Study / coordinator / worker | Starts | Readiness seconds median [IQR] | Three HTTP warm-up requests, seconds median | Worker / coordinator RSS median MiB |',
+          '|---|---|---|---|---|']
         for key,d in sorted(summary['service_setup'].items()):
             v=d['startup_seconds'];memory=[f"{d[role+'_rss_after_bytes']['median']/2**20:.1f}" if role+'_rss_after_bytes' in d else 'Unavailable' for role in ('worker','coordinator')]
-            lines.append(f"| {key} | {d['sessions']} | {v['median']:.1f} [{v['p25']:.1f}, {v['p75']:.1f}] | {' / '.join(memory)} |")
+            lines.append(f"| {key} | {d['sessions']} | {v['median']:.1f} [{v['p25']:.1f}, {v['p75']:.1f}] | {d['http_warmup_seconds']['median']:.1f} | {' / '.join(memory)} |")
     if summary['optimized_http']:
         lines+=['','## Follow-up optimized HTTP','',
           'Each family uses newly started matched baseline workers. These are conditional follow-ups selected from direct scoring; compare within this family, rather than with the earlier coordinator study.','',

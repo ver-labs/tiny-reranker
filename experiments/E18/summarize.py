@@ -58,6 +58,7 @@ def main():
             setup[result.get('study','primary')+'/'+result['coordinator']+'/'+result['path']].append(result)
     for key,records in setup.items():
         entry={'sessions':len(records),'startup_seconds':distribution([r['startup_seconds'] for r in records]),'rss_scope':'Before/after process RSS snapshots; shared pages may be double-counted; not system peak'}
+        entry['http_warmup_seconds']=distribution([r['http_warmup_seconds'] for r in records])
         for point in ('before','after'):
             for role in ('worker','coordinator'):
                 values=[]

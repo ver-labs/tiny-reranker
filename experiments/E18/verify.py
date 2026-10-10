@@ -123,6 +123,10 @@ def main():
         assert len(report['runs'])==len(expected_runs) and {(v['repetition'],v['k'],v['concurrency']) for v in report['runs']}==expected_runs
         assert report['health']['max_length']==512 and report['health']['pair_batch_size']==16
         assert report['health']['checkpoint_sha256']==plan['model']['file_sha256']['model.safetensors']
+        assert report['http_warmup_addendum_sha256']==sha(HERE/'http_warmup_addendum.json')
+        first_dataset,first_qid=plan['timing_ids'][0]
+        assert [v['request_id'] for v in report['http_warmup']]==[f'{first_dataset}:{first_qid}:K{k}:-1' for k in (10,50,100)]
+        assert sum(v['pairs'] for v in report['http_warmup'])==160 and report['http_warmup_seconds']>0
         audit=HERE/'scores'/f"mps_{report['path']}.jsonl.gz"
         with gzip.open(audit,'rt') as f:refs={(r['dataset'],r['query_id'],r['k']):r for r in map(json.loads,f)}
         for run in report['runs']:
