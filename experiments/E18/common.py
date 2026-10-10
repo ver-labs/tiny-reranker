@@ -5,6 +5,7 @@ from pathlib import Path
 import platform
 import subprocess
 import sys
+from datetime import datetime,timezone
 from collections import Counter
 import numpy as np
 
@@ -62,7 +63,7 @@ def ranked(ids, scores):
 
 def environment():
     import importlib.metadata as m
-    result = {'platform':platform.platform(), 'python':sys.version,
+    result = {'utc':datetime.now(timezone.utc).isoformat(),'platform':platform.platform(), 'python':sys.version,
               'packages':{p:m.version(p) for p in ('torch','transformers','numpy','httpx','safetensors')},
               'isolation':'No continuous hardware isolation verified'}
     try:
