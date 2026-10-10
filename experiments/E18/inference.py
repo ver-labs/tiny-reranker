@@ -83,11 +83,11 @@ class Inference:
         import torch
         return {k:torch.from_numpy(v).to(self.device) for k,v in encoded.items()}
 
-    def forward(self,inputs):
+    def forward(self,inputs,asynchronous=False):
         if self.path in ('mlx','mlx_compiled','metal','metal_compiled'):
             import mlx.core as mx
             values = self.call(**inputs)
-            mx.eval(values)
+            (mx.async_eval if asynchronous else mx.eval)(values)
             return values
         import torch
         with torch.inference_mode():

@@ -1,0 +1,9 @@
+{
+  "version": "E18-small-v1-apple-forward-v1",
+  "frozen_before": "All Apple direct performance measurements; zero completed Apple direct sessions at definition",
+  "scope": "Prepared-input forward only",
+  "reason": "Match asynchronous GPU enqueue with one synchronization at the timing boundary; avoid waiting after each MLX batch while PyTorch only waits at the end",
+  "mlx_execution": "Installed MLX 0.32.3 mx.async_eval schedules each output; mx.synchronize waits after the complete prepared-input loop",
+  "qualification": "Before each cell, synchronous and asynchronous first-batch scores must be exactly equal; computation and inputs are unchanged; checks excluded from timing",
+  "unchanged": "All CPU-readable direct scoring, HTTP, accuracy and CUDA measurements. Original frozen plan and batch-control addendum are retained"
+}

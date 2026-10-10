@@ -144,6 +144,11 @@ def main():
         assert len({(v['k'],v['batch'],v['length'],v['scope'],v['repetition'],v['group']) for v in r['observations']})==60
         expected_cells={(*cell,'primary' if cell==[100,16,512] else 'sweep') for cell in plan['direct']['cells']}|{(100,16,512,'sweep')}
         assert {(v['k'],v['batch'],v['length'],v['group']) for v in r['observations']}==expected_cells
+        if r['device']=='mps':
+            assert r['apple_forward_addendum_sha256']==sha(HERE/'apple_forward_addendum.json')
+            if r['path'] in ('mlx','mlx_compiled','metal','metal_compiled'):
+                assert len(r['async_checks'])==10 and {(v['k'],v['batch'],v['length'],v['group']) for v in r['async_checks']}==expected_cells
+                assert all(v['max_abs_error']==0 for v in r['async_checks'])
         for v in r['observations']:
             assert v['queries']==(16 if v['group']=='primary' else 4) and v['session']==r['session'] and v['path']==r['path']
             assert v['pairs']==v['queries']*v['k'] and v['seconds']>0 and abs(v['pairs_per_second']-v['pairs']/v['seconds'])<1e-8

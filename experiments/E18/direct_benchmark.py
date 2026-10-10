@@ -20,6 +20,7 @@ def run(device,path,session):
     result={'device':device,'path':path,'session':session,'plan_sha256':sha(HERE/'plan.json'),'environment':environment(),'observations':[],'warmups':[],'protocol_addendum_sha256':sha(HERE/'protocol_addendum.json')}
     try:
         model=Inference(device,path)
+        if device=='mps':result['apple_forward_addendum_sha256']=sha(HERE/'apple_forward_addendum.json')
         result['dispatch']=model.dispatch(pairs(selected(plan['sweep_ids'])[0],10))
         cells=[(*cell,'primary' if cell==[100,16,512] else 'sweep') for cell in plan['direct']['cells']]+[(100,16,512,'sweep')];random.Random(1801+session).shuffle(cells)
         for k,b,l,group in cells:
@@ -32,6 +33,12 @@ def run(device,path,session):
                 batches.extend(pp[o:o+b] for o in range(0,k,b))
             encoded=[model.encode(pp) for pp in batches]
             prepared=[model.prepare(e) for e in encoded]
+            if path in ('mlx','mlx_compiled','metal','metal_compiled'):
+                import numpy as np
+                synchronous=model.cpu(model.forward(prepared[0]))
+                asynchronous=model.cpu(model.forward(prepared[0],asynchronous=True))
+                assert np.array_equal(synchronous,asynchronous),'Async scheduling changed scores'
+                result.setdefault('async_checks',[]).append({'k':k,'batch':b,'length':l,'group':group,'max_abs_error':0.0})
             warm=time.perf_counter();signatures=set()
             for inputs in prepared:
                 signature=tuple(inputs['input_ids'].shape)
@@ -44,7 +51,7 @@ def run(device,path,session):
                 for scope in scopes:
                     model.sync();start=time.perf_counter()
                     if scope=='forward':
-                        for inputs in prepared:model.forward(inputs)
+                        for inputs in prepared:model.forward(inputs,asynchronous=True)
                     else:
                         for pp in batches:model.score(pp)
                     model.sync();seconds=time.perf_counter()-start
