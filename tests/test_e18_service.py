@@ -37,14 +37,17 @@ def service(request,tmp_path):
                               env={**os.environ,'E18_FIXTURE_EVENTS':str(events)})
     client=httpx.Client(base_url=f'http://127.0.0.1:{port}',timeout=5,trust_env=False)
     try:
-        for _ in range(200):
+        # Python imports the shared validation module (and its dependencies).
+        # Readiness is setup, separate from the deliberately short request timeout.
+        deadline=time.monotonic()+30
+        while time.monotonic()<deadline:
             assert proc.poll() is None,log.read_text()
             try:
                 response=client.get('/health')
                 if response.status_code==200: break
             except httpx.ConnectError: pass
             time.sleep(.02)
-        else: pytest.fail('Readiness timeout')
+        else: pytest.fail('Readiness timeout: '+log.read_text())
         pid=response.json()['worker_pid']
         yield client,proc,events
     finally:
