@@ -1,0 +1,204 @@
+{
+  "status": "complete",
+  "scope": "All train-pair text features; deterministic lowest-512-ID validation query sample with both labels. No test rankings used.",
+  "clean_pairs_sha256": "88383010f0f3dc755bbe975c2616ec6d7eee5e5e38285e6f9f6f949145f579a7",
+  "checkpoint_sha256": "2ea2608a9ec98083b89606d13bed1d7c6e7a90dc6160bbe44732166137538d52",
+  "code_sha256": "531938fd6fc7b94f63b61d2367740305082e8466f2bc749b263b9e249f95dc1f",
+  "train_queries": 367581,
+  "validation_queries": 45709,
+  "sample_queries": 512,
+  "train_label_features": {
+    "0": {
+      "characters": 334.04158982477327,
+      "words": 56.99002007409462,
+      "uppercase_fraction": 0.05873436819495524,
+      "all_lowercase": 0.012229421332941644,
+      "starts_uppercase": 0.9063236118137951,
+      "pairs": 367638
+    },
+    "1": {
+      "characters": 352.4242352531566,
+      "words": 60.65609648621742,
+      "uppercase_fraction": 0.04374480329112055,
+      "all_lowercase": 0.009199266669930747,
+      "starts_uppercase": 0.9127076091154886,
+      "pairs": 367638
+    }
+  },
+  "validation_ablation_metrics": {
+    "normal": {
+      "ndcg_at_10": 0.9589121014718225,
+      "mrr_at_10": 0.9443359375,
+      "recall_at_10": 1.0,
+      "recall_at_100": 1.0
+    },
+    "rotated_query": {
+      "ndcg_at_10": 0.9279159674944253,
+      "mrr_at_10": 0.90234375,
+      "recall_at_10": 1.0,
+      "recall_at_100": 1.0
+    },
+    "empty_query": {
+      "ndcg_at_10": 0.9192658835937564,
+      "mrr_at_10": 0.890625,
+      "recall_at_10": 1.0,
+      "recall_at_100": 1.0
+    },
+    "lowercase_documents": {
+      "ndcg_at_10": 0.9589121014718225,
+      "mrr_at_10": 0.9443359375,
+      "recall_at_10": 1.0,
+      "recall_at_100": 1.0
+    },
+    "lowercase_heuristic": {
+      "ndcg_at_10": 0.81186067516045,
+      "mrr_at_10": 0.7451171875,
+      "recall_at_10": 1.0,
+      "recall_at_100": 1.0
+    },
+    "shorter_document_heuristic": {
+      "ndcg_at_10": 0.8075356332101156,
+      "mrr_at_10": 0.7392578125,
+      "recall_at_10": 1.0,
+      "recall_at_100": 1.0
+    }
+  },
+  "examples": {
+    "0": [
+      {
+        "pair_id": "bb81dda30d4b33d41bd0ee8efa66bbf3bea7048602fce6be02e335d7aa9a81b4",
+        "query_id": "d296bed7d09e48cf29b0c13f4d92f0680b24aac51aaba79dc53d70aaa434e591",
+        "split": "train",
+        "query": "what are the liberal arts?",
+        "document": "The New York State Education Department requires 60 Liberal Arts credits in a Bachelor of Science program and 90 Liberal Arts credits in a Bachelor of Arts program. In the list of course descriptions, courses which are liberal arts for all students are identified by (Liberal Arts) after the course number.",
+        "label": 0
+      },
+      {
+        "pair_id": "8e09232015349387d6c34c77fc8fdc4fa8ec04709cae33cfd6f986822a6f560e",
+        "query_id": "838b5448e24952808919f5a10e5f011627f2ea80d9532de02c65f7c79582e95c",
+        "split": "train",
+        "query": "what is the mechanism of action of fibrinolytic or thrombolytic drugs?",
+        "document": "Fibrinolytic drug. Fibrinolytic drug, also called thrombolytic drug, any agent that is capable of stimulating the dissolution of a blood clot (thrombus). Fibrinolytic drugs work by activating the so-called fibrinolytic pathway.",
+        "label": 0
+      },
+      {
+        "pair_id": "b81509994987f9b1e9a84bb10aa40bc22d6dccda428dcf67afc13b954c8fa6be",
+        "query_id": "90b6451b267567021002e419ca7753b6dde53b9e459fd54315d6f567600d362d",
+        "split": "train",
+        "query": "which act requires manufacturers to disclose the origins of their minerals?",
+        "document": "In 2010, Congress passed the Dodd-Frank Act, which directs the Commission to issue rules requiring certain companies to disclose their use of conflict minerals if those minerals are \u00e2\u0080\u009cnecessary to the functionality or production of a product\u00e2\u0080\u009d manufactured by those companies. Under the Act, those minerals include tantalum, tin, gold or tungsten.",
+        "label": 0
+      },
+      {
+        "pair_id": "a5ac6cdfd183206f3e5998849b4bfa7a2ddd072c5f189b01599f01c3742fb1b4",
+        "query_id": "b7ea2f2fe020b94e354d32ee9fbf29206e39129376cfd080e01c4ccf0d56ad1c",
+        "split": "train",
+        "query": "when do you have hcg in the body",
+        "document": "HCG Eating Out Diet-So you are going to go on the HCG weight loss program or maybe you are already on it and just not sure what to do when you have had a busy day.",
+        "label": 0
+      },
+      {
+        "pair_id": "909541d397ff6579f9e65df44f92eb1fc0671f480cffc716aaa4b8d538a70e3e",
+        "query_id": "0bc024a870f18f928d7600884d0cc9ab2dadfe8882ce8efbc5aaea41c3d44db8",
+        "split": "train",
+        "query": "average price for eye exam and contact fitting no insurance",
+        "document": "Q. How much is the cost of an eye exam? A. The fee of the exam will be based on any insurance coverage that you may have. If you do not have any insurance coverage the current exam fee for UCSC students is $53, representing 40% off of our usual and customary fee.. How much is the cost for fitting of contact lenses? A. In addition to the eye exam fee, the fitting for contact lenses depend on the type of lenses to be fitted (e.g. for astigmatism or no astigmatism, soft disposable or gas permeable, and level of complexity). The fitting fee can range from $32 to $300.",
+        "label": 0
+      },
+      {
+        "pair_id": "21aaa133dfe574e14d2b0f29e3217b1c08b7d4636df886341fb21b371ed51f83",
+        "query_id": "f2a53baf035dceb7fca1d2d4cfdb6bba6a4795bb0848a804202ce8763901b300",
+        "split": "train",
+        "query": "where is gordonville, pa",
+        "document": "Gordonville, TX. Gordonville is located in northeast Texas. Gordonville is part of Grayson County. On average, the public school district that covers Gordonville is better than the state average in quality. The Gordonville area code is 903.",
+        "label": 0
+      },
+      {
+        "pair_id": "5bdfd0c1ff6b22c11aeacd43fcbb79e29f0225b9f8b6cd58c28891f9a836fdcb",
+        "query_id": "1dba110c9e36ccf4bc723f3d2f82117ecce359b5d582a5a8c68473c5d9c04bc2",
+        "split": "train",
+        "query": "who is the actor in the trivago commercial",
+        "document": "Photo Credit: The hotel-shopping site with the weird name, Trivago, is starting to gain traction in the U.S. based on a lot of TV advertising Pictured is actor Tim Williams, appearing in a Trivago commercial. Trivago.",
+        "label": 0
+      },
+      {
+        "pair_id": "88f0f43182c69aa7c11f24b99a8961f3ea08f16cae6086a1f2e1cdd46a60aa71",
+        "query_id": "d087936f4389531d3cf553c77cd9aff5abeaf61d89d7e48288fb82c6a983ca35",
+        "split": "train",
+        "query": "what kind of hip hop dancing",
+        "document": "Page content: History of hip hop dancing, where does hip hop dance originate from, hip hop origin, hip hop histories.",
+        "label": 0
+      }
+    ],
+    "1": [
+      {
+        "pair_id": "94fe3be5b93cd2fcf12d03046253a8ea612a7f5fc5f7adb6902e9f71cf51d8ff",
+        "query_id": "d296bed7d09e48cf29b0c13f4d92f0680b24aac51aaba79dc53d70aaa434e591",
+        "split": "train",
+        "query": "what are the liberal arts?",
+        "document": "liberal arts. 1. the academic course of instruction at a college intended to provide general knowledge and comprising the arts, humanities, natural sciences, and social sciences, as opposed to professional or technical subjects.",
+        "label": 1
+      },
+      {
+        "pair_id": "751d9c4cc28276ca3a5756d271a2c361f36fd5555fe33cf8086af674da6b0377",
+        "query_id": "838b5448e24952808919f5a10e5f011627f2ea80d9532de02c65f7c79582e95c",
+        "split": "train",
+        "query": "what is the mechanism of action of fibrinolytic or thrombolytic drugs?",
+        "document": "Bailli\u00c3\u00a8re's Clinical Haematology. 6 Mechanism of action of the thrombolytic agents. 6 Mechanism of action of the thrombolytic agents JEFFREY I. WEITZ Fibrin formed during the haemostatic, inflammatory or tissue repair process serves a temporary role, and must be degraded to restore normal tissue function and structure.",
+        "label": 1
+      },
+      {
+        "pair_id": "cd0576476bcdea2398e28abd1db84c3010c0345571f30c40b76b1c26f7e4ab4c",
+        "query_id": "90b6451b267567021002e419ca7753b6dde53b9e459fd54315d6f567600d362d",
+        "split": "train",
+        "query": "which act requires manufacturers to disclose the origins of their minerals?",
+        "document": "International efforts to reduce trade in conflict resources, tried to reduce incentives to extract and fight over them. For example, in the United States, the 2010 Dodd\u00e2\u0080\u0093Frank Wall Street Reform and Consumer Protection Act required manufacturers to audit their supply chains and report use of conflict minerals. In 2015 a US federal appeals court struck down some aspects of the reporting requirements as a violation of corporations\u00e2\u0080\u0099 freedom of speech, but left others in place.",
+        "label": 1
+      },
+      {
+        "pair_id": "8d49bab8ec21402d2aeb691963483eb5b9a3a34410860dcc75242ce61e0a6797",
+        "query_id": "b7ea2f2fe020b94e354d32ee9fbf29206e39129376cfd080e01c4ccf0d56ad1c",
+        "split": "train",
+        "query": "when do you have hcg in the body",
+        "document": "As pregnancy tests, quantitative blood tests and the most sensitive urine tests usually detect hCG between 6 and 12 days after ovulation. However, it must be taken into account that total hCG levels may vary in a very wide range within the first 4 weeks of gestation, leading to false results during this period.",
+        "label": 1
+      },
+      {
+        "pair_id": "7f9fccf6a196d0c795b78e59dd24a453c20d151f8a061677123d2467552bdad9",
+        "query_id": "0bc024a870f18f928d7600884d0cc9ab2dadfe8882ce8efbc5aaea41c3d44db8",
+        "split": "train",
+        "query": "average price for eye exam and contact fitting no insurance",
+        "document": "According to vision insurance provider Vision Service Plan Direct, the national average price as of June 2015 of a comprehensive eye exam without insurance is $154. The latter does not include frames, prescription lenses or optical lens enhancements.",
+        "label": 1
+      },
+      {
+        "pair_id": "811867c582fd4d9da915195c0168fd352e6b36c2551bd38c6d391f5a70f1209f",
+        "query_id": "f2a53baf035dceb7fca1d2d4cfdb6bba6a4795bb0848a804202ce8763901b300",
+        "split": "train",
+        "query": "where is gordonville, pa",
+        "document": "Gordonville, Pennsylvania. Gordonville. Gordonville, Pennsylvania is an unincorporated place or village and census-designated place in Leacock Township in eastern Lancaster County, Pennsylvania, USA. The village is located about nine miles (14 km) east of the county seat of Lancaster, two miles (3 km) southwest of the village of Intercourse, one mile (1.6 km) north of Paradise, and about three miles (5 km) southeast of Bird-in-Hand.",
+        "label": 1
+      },
+      {
+        "pair_id": "90d47bc9cc7b1d5795929f612f9aaa49e807f28c1067b5e7b7cbda440638747b",
+        "query_id": "1dba110c9e36ccf4bc723f3d2f82117ecce359b5d582a5a8c68473c5d9c04bc2",
+        "split": "train",
+        "query": "who is the actor in the trivago commercial",
+        "document": "The Trivago Guy, aka Tim Williams, the Houston-born actor and Berlin resident who stars in hotel-search site Trivago\u00e2\u0080\u0099s TV commercials in North America, says he\u00e2\u0080\u0099s perplexed and amused about all the attention he\u00e2\u0080\u0099s getting from the TV spots, and he\u00e2\u0080\u0099s enjoying every minute of it. \u00e2\u0080\u009cBring it on, I love it,\u00e2\u0080\u009d Williams says.",
+        "label": 1
+      },
+      {
+        "pair_id": "26346d58c1f8e7a7ffecba6174fcf2949ef8ae0ce6d2a483ff6ff7a2cf070b64",
+        "query_id": "d087936f4389531d3cf553c77cd9aff5abeaf61d89d7e48288fb82c6a983ca35",
+        "split": "train",
+        "query": "what kind of hip hop dancing",
+        "document": "Hip hop is a street style that has been represented on the show in all its many forms, including the down and dirty Krumping, and the arm flalling Waacking, which was made popular by contestant Princess Lockeroo. Popping, Locking and Breaking are also forms of hip hip, which originated in the 1970s.",
+        "label": 1
+      }
+    ]
+  },
+  "limitations": [
+    "Sample ablations diagnose query dependence, not full retrieval quality.",
+    "Heuristics are fixed diagnostics, not trained replacements."
+  ]
+}
