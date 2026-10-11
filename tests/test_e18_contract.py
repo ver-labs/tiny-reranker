@@ -6,6 +6,15 @@ from experiments.E18.statistics import paired_ratio,accuracy_gate
 from experiments.E18.http_benchmark import payload,validate,aggregate
 
 
+def test_file_worker_bootstrap_does_not_shadow_stdlib(tmp_path):
+    import subprocess
+    import sys
+    from pathlib import Path
+    worker=Path(__file__).resolve().parents[1]/'experiments/E18/worker.py'
+    code='import sys,runpy; sys.path.insert(0,sys.argv[1]); runpy.run_path(sys.argv[2],run_name="bootstrap_test"); import cProfile,profile; assert "experiments/E18" not in profile.__file__'
+    subprocess.run([sys.executable,'-c',code,str(worker.parent),str(worker)],cwd=tmp_path,check=True)
+
+
 def test_candidate_contract():
     data=rows();assert len(data)==485 and len(fixtures(True))==421
     for r in fixtures():

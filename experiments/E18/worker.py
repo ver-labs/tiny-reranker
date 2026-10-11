@@ -6,8 +6,12 @@ import os
 import sys
 from pathlib import Path
 # Rust invokes this by file path.
-if __package__ is None:
-    sys.path.insert(0,str(Path(__file__).resolve().parents[2]));__package__='experiments.E18'
+if not __package__:
+    # File execution otherwise exposes profile.py as the stdlib profile module
+    # when Transformers imports cProfile. Match the package launch import path.
+    script_dir=Path(__file__).resolve().parent
+    sys.path[:]=[entry for entry in sys.path if Path(entry or os.getcwd()).resolve()!=script_dir]
+    sys.path.insert(0,str(script_dir.parents[1]));__package__='experiments.E18'
 MAX_FRAME=8*1024*1024
 
 
