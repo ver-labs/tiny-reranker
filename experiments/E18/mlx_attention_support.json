@@ -1,0 +1,15 @@
+{
+  "mlx_version": "0.32.3",
+  "dtype": "FP32",
+  "qkv_shape": [
+    16,
+    12,
+    512,
+    32
+  ],
+  "stream": "GPU",
+  "force_fused": "Capability diagnostic only; benchmark keeps default routing",
+  "source": "https://github.com/ml-explore/mlx/blob/v0.32.3/mlx/backend/metal/scaled_dot_product_attention.cpp#L697",
+  "status": "FUSED_UNSUPPORTED",
+  "error": "[scaled_dot_product_attention] force_fused=True but no fused kernel is available: the full attention kernel supports head dims {64, 72, 80, 96, 128, 192, 256} with matching query/value dims, or (query, value) head dims (96, 64), plus head dim 512 on NAX GPUs (float32 also requires TF32); got query head dim 32 and value head dim 32."
+}

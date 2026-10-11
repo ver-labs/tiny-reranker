@@ -1,0 +1,2285 @@
+{
+  "device": "mps",
+  "path": "stock",
+  "session": 2,
+  "plan_sha256": "2b54eeeed727e77e89e3f4e589ff4bb78badee59786d3a3c6a44810db73f1df0",
+  "environment": {
+    "utc": "2026-10-10T19:16:16.782511+00:00",
+    "platform": "macOS-26.5.2-arm64-arm-64bit",
+    "python": "3.12.13 (main, Jun 23 2026, 15:44:24) [Clang 22.1.3 ]",
+    "execution_environment": {
+      "PYTORCH_ENABLE_MPS_FALLBACK": "0",
+      "MLX_ENABLE_TF32": "0",
+      "TOKENIZERS_PARALLELISM": "false"
+    },
+    "packages": {
+      "torch": "2.14.1",
+      "transformers": "5.18.0",
+      "numpy": "2.5.3",
+      "httpx": "0.28.1",
+      "safetensors": "0.8.0"
+    },
+    "isolation": "No continuous hardware isolation verified",
+    "source_commit": "303a3472e1a810b2c0ced397efebf9f223f88eed",
+    "hardware": "2026-10-11 00:46:16.875 system_profiler[56974:51011255] hw.cpufamily: 0x1d5a87e8\nHardware:\n\n    Hardware Overview:\n\n      Model Name: MacBook Air\n      Model Identifier: Mac17,3\n      Model Number: MDHK4HN/A\n      Chip: Apple M5\n      Total Number of Cores: 10 (4 Super and 6 Efficiency)\n      Memory: 24 GB\n      System Firmware Version: 18000.121.3\n      OS Loader Version: 18000.121.3\n      Activation Lock Status: Enabled\n",
+    "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22937699)\t54%; charging; 2:49 remaining present: true",
+    "thermal": "Note: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded",
+    "processes": "  PID COMM              %CPU    RSS\n    1 /sbin/launchd      0.1  19408\n  239 .venv/bin/python   0.0   1808\n  336 /usr/libexec/log   1.5  17616\n  338 /usr/libexec/Use   0.0   7296\n  340 /System/Library/   0.0   7456\n  341 /System/Library/   0.0   7648\n  344 /usr/sbin/system   0.0   3616\n  348 /usr/libexec/con   0.0   5600\n  350 /System/Library/   0.0   6096\n  351 /usr/libexec/IOM   0.0    144\n  355 /usr/libexec/rem   0.0   1520\n  359 /System/Library/   0.0   4160\n  361 /usr/libexec/wat   0.0    768\n  365 /System/Library/   0.1  15216\n  367 /usr/libexec/ker   0.0    992\n  368 /usr/libexec/dis   0.0   3424\n  372 /usr/sbin/syslog   0.0   1616\n  374 /usr/libexec/the   0.0   1536\n  375 /System/Library/   0.0   7520\n  376 /usr/libexec/xpr   0.0    800\n  377 /usr/libexec/ope   0.0   8336\n  378 /System/Library/   0.0  13104\n  379 /System/Library/   0.4  11536\n  380 /usr/libexec/tim   0.0   2960\n  382 /usr/sbin/securi   0.0   7760\n  384 /usr/libexec/loc   0.0  18240\n  385 /usr/libexec/nes   0.0   2336\n  387 autofsd            0.0     96\n  388 /usr/libexec/das   0.0  15264\n  389 /usr/libexec/cor   0.0   2016\n  391 /usr/sbin/distno   0.0   2272\n  395 /System/Library/   0.0   2800\n  396 /System/Library/   0.0   2048\n  397 /usr/sbin/Kernel   0.0    128\n  402 /usr/sbin/notify   0.2   4624\n  404 /usr/libexec/cor   0.1   4608\n  405 /usr/libexec/Air   0.0   2192\n  406 /System/Library/   0.0   5712\n  409 /System/Library/  10.8  79840\n  411 /usr/sbin/cfpref   0.0   4544\n  412 /System/Library/   0.0  23392\n  415 /System/Library/   0.0   3056\n  416 /usr/libexec/run   0.0  14000\n  418 /usr/sbin/coreau   0.1  17952\n  419 /usr/sbin/mDNSRe   0.0  11264\n  423 /usr/libexec/nsu   0.0   9088\n  425 /usr/libexec/lsd   0.0   5008\n  431 /System/Library/   0.0   6224\n  437 /usr/libexec/eli   0.0   3040\n  447 /usr/sbin/distno   0.0    976\n  452 /usr/libexec/air   0.0  19568\n  453 /usr/sbin/distno   0.0    976\n  459 /usr/libexec/sym   0.0   8080\n  479 /usr/sbin/distno   0.0    960\n  482 /System/Library/   0.0   5792\n  495 /usr/libexec/sys   0.0   7456\n  503 /usr/sbin/mDNSRe   0.0    672\n  512 /usr/libexec/App   0.0    432\n  518 Core Audio Drive   0.0   4192\n  521 /usr/libexec/aud   0.0   8032\n  528 /usr/libexec/aud   0.0   1552\n  532 /usr/sbin/distno   0.0    944\n  534 /usr/libexec/com   0.0   1696\n  538 /usr/libexec/cam   0.0   4976\n  539 /System/Library/   0.0   1888\n  540 /System/Library/   0.0   3792\n  544 /Library/Privile   0.0    416\n  545 Core Audio Drive   0.0    800\n  554 /System/Library/   0.0    624\n  557 /System/Library/   0.0   1504\n  559 /usr/libexec/mod   0.0   5472\n  565 /usr/sbin/distno   0.0    944\n  569 /System/Library/   0.4  26560\n  571 /System/Library/   0.0   3824\n  578 /usr/sbin/distno   0.0    960\n  586 /usr/libexec/sea   0.0  14336\n  587 /usr/sbin/distno   0.0    944\n  588 /usr/sbin/distno   0.0    960\n  597 /System/Library/   0.0   5744\n  601 /usr/sbin/distno   0.0   3872\n  609 /usr/sbin/distno   0.0    960\n  611 /usr/libexec/Use   0.0   5120\n  616 /System/Library/   0.0  19152\n  623 /usr/sbin/univer   0.0   5856\n  624 /usr/libexec/Con   0.0   7280\n  626 /usr/libexec/pbo   0.0   5648\n  629 /usr/libexec/lsd   0.0   7584\n  638 /usr/libexec/nsu   0.0  13232\n  639 /usr/libexec/rap   0.0  13840\n  640 /usr/sbin/userno   0.0  14656\n  643 /System/Library/   0.0   6944\n  645 /System/Library/   0.0   3008\n  646 /usr/sbin/distno   0.0    976\n  651 /System/Library/   0.0   7216\n  659 /System/Library/   0.1  23600\n  663 /System/Library/   0.0   2016\n  669 /System/Library/   0.0   1552\n  671 /System/Library/   0.0   7568\n  674 /usr/libexec/sha   0.1  19792\n  677 /System/Library/   0.0   1680\n  684 /System/Library/   0.0  13360\n  689 /System/Library/   0.0   5456\n  697 /System/Library/   0.0  12960\n  707 /System/Library/   0.0   4528\n  709 /System/Library/   0.4  23664\n  711 /System/Library/   0.1   6976\n  712 /System/Library/   0.2  48656\n  713 /System/Library/   0.0   8560\n  715 /System/Library/   0.0  35840\n  719 /usr/sbin/distno   0.0    944\n  720 /System/Library/   0.0   7312\n  723 /System/Library/   0.0   6656\n  726 /usr/sbin/fileco   0.0   4320\n  731 /System/Library/   0.0   5424\n  733 automountd         0.0    160\n  744 /System/Library/   0.0  10480\n  748 /usr/libexec/ros   0.0   1120\n  754 /System/Library/   0.0   1872\n  757 /usr/libexec/nea   0.0   6720\n  762 /System/Library/   0.0  35424\n  765 /System/Library/   0.0  13808\n  766 /System/Library/   0.0   9648\n  773 /System/Library/   0.0  77456\n  774 /System/Library/   0.0   9792\n  776 /System/Library/   0.0   6480\n  777 /System/Library/   0.0   6352\n  778 /System/Library/   0.0  23440\n  787 /System/Library/   0.0  11136\n  801 /System/Library/   0.0  25072\n  803 /usr/sbin/distno   0.0    960\n  804 /System/Applicat   0.0   5440\n  810 /System/Library/   0.0  20432\n  816 /System/Library/   0.0   2000\n  818 /System/Library/   0.0   9360\n  837 /System/Library/   0.0   1808\n  838 /usr/libexec/avc   0.0  11168\n  851 /System/Library/   0.0   2864\n  853 /System/Library/   0.0  11248\n  858 /System/Library/   0.0   7184\n  867 /System/Library/   0.0    192\n  883 /System/Library/   0.0   1296\n  897 /System/Library/   0.0   3392\n  911 /System/Library/   0.0   5712\n  923 /System/Library/   0.0  12064\n  930 /usr/sbin/distno   0.0    960\n  961 /usr/sbin/distno   0.0    960\n  963 /System/Library/   0.0   2848\n 1034 /System/Library/   0.0   1504\n 1958 /Applications/Do   0.0   6464\n 1961 /Applications/Do   0.3  56464\n 1962 /Applications/Do   0.0   4720\n 1978 /Applications/Do   0.0   1904\n 1980 /Applications/Do   0.1  38960\n 1983 /Applications/Do   0.0    720\n 2003 /Applications/Do   0.0   7200\n 2004 /Applications/Do   0.0   5824\n 2050 /Applications/Do   0.0  26752\n 2078 /opt/homebrew/op   0.0     32\n 2084 /System/Library/   0.0   5296\n 2085 com.apple.weathe   0.0  29184\n 2087 /System/Library/   0.0   5680\n 2088 /System/Library/   0.0   6832\n 2090 /System/Library/   0.0    848\n 2096 /Applications/Ta   0.0  14560\n 2105 /System/Library/   0.0    640\n 2110 /Library/SystemE   0.0  32256\n 2135 /usr/sbin/distno   0.0    960\n 2163 /usr/sbin/distno   0.0    944\n 2356 caffeinate         0.0    656\n 2510 /Users/nandanadi   0.0   2288\n 2971 /Applications/Ch   0.0   1360\n 2972 /Applications/Ch   0.0   1008\n 2978 /Applications/Ch   0.0   1408\n 3161 /usr/sbin/system   0.0   2368\n 3658 /System/Library/   0.0    608\n 4099 /usr/sbin/distno   0.0    960\n 4323 /Applications/Cu   0.8 184624\n 4419 /Applications/Cu   0.0    816\n 4420 /Applications/Cu   6.1  43616\n 4422 /Applications/Cu   0.0  17856\n 4434 Cursor Helper: s   0.0  34240\n 4435 /Applications/Cu   1.9 440912\n 4436 /Applications/Cu  40.9 621248\n 4537 Cursor Helper: m   0.0  12496\n 4538 Cursor Helper: t   2.0  39024\n 4539 Cursor Helper (P   1.0  37648\n 4551 Cursor Helper (P   0.2  33840\n 4552 Cursor Helper: f   0.0  19056\n 4558 /Applications/Cu   0.0   5664\n 4559 Cursor Helper: f   0.0  16672\n 4581 /Applications/Cu   0.0   3120\n 4874 /Applications/Cu   0.0  11280\n 5340 /System/Library/   0.0    400\n 5507 /System/Library/  57.8   9120\n 5634 /Library/Develop   0.0   1520\n 7002 /System/Library/   0.0   8960\n 7251 <defunct>          0.0      0\n 8321 /opt/homebrew/op   0.0   1808\n 8338 postgres: checkp   0.0    432\n 8339 postgres: backgr   0.0    512\n 8341 postgres: walwri   0.0    352\n 8342 postgres: autova   0.0   2160\n 8344 postgres: logica   0.0   1792\n 9769 /usr/sbin/distno   0.0    976\n 9770 /System/Library/   0.0     16\n 9771 /System/Library/   0.0     16\n 9772 /System/Library/   0.0     16\n10382 /Applications/Cu   0.0   2208\n10707 /System/Library/   0.0    768\n10722 /usr/bin/ssh-age   0.0    112\n10818 /opt/homebrew/bi   0.0   3104\n12876 /Applications/Cu   0.0   7616\n15974 /System/Library/   0.0   6432\n20039 /System/Library/   0.0   6672\n20216 /Users/nandanadi   1.2 136880\n20252 /System/Volumes/   0.0  67520\n20268 /System/Library/   0.0  18336\n20280 /System/Library/   0.0   4736\n20291 /Applications/Ch   0.0    496\n20292 /Applications/Ch   0.0     32\n20411 redis-server *:6   0.0     32\n20428 /Applications/Ch   0.0    464\n20743 /Applications/Ch   0.0     32\n20744 /Applications/Ch   0.0    448\n20800 /Users/nandanadi   0.0    160\n20814 /Applications/Ch   0.0    464\n20982 /Users/nandanadi   0.0   6928\n22347 /Applications/Cu   0.0    496\n22499 /System/Library/   0.0   3824\n22938 /System/Library/   0.0    192\n23470 /System/Library/   0.0   6192\n23784 /Applications/Ch   0.0   1232\n23785 /Applications/Ch   0.0   1232\n23786 /Applications/Ch   0.0   5760\n23787 /Applications/Ch   0.0   1008\n23788 /Applications/Ch   0.0  26608\n24300 /opt/homebrew/op   0.0   7472\n27251 /System/Library/   0.0    192\n28888 /Applications/Wh   0.0     16\n31152 /System/Library/   0.0   6144\n31429 /usr/libexec/wif   0.0   8848\n33490 /System/Library/   0.0  11344\n33502 /System/Library/   0.0  10592\n35256 /Applications/Cu   1.7 343168\n35257 Cursor Helper (P   0.2  24560\n35269 Cursor Helper: f   0.0   8016\n35276 /Applications/Cu   0.0   3984\n35277 /Applications/Cu   0.0   4464\n35278 /Applications/Cu   0.0   4000\n35282 /Applications/Cu   0.0   4128\n35628 .venv/bin/python   0.0   6176\n36491 /usr/sbin/blueto   0.1  16096\n36500 /System/Library/   0.0  16816\n36501 /System/Library/   0.0   2656\n36502 /System/Library/   0.8  41488\n36503 /System/Library/   0.0   5776\n36537 /System/Library/   0.0    992\n36570 /System/Library/   0.0 232672\n37096 /Applications/Cu   0.0   4752\n37181 /System/Cryptexe   0.0   6528\n38059 /System/Library/   0.0   9040\n38064 /usr/libexec/sec   0.0  13712\n38069 /System/Library/  44.5  13008\n38070 /usr/libexec/tru   0.0   8240\n38075 /usr/libexec/tru   0.0   7552\n38100 /usr/sbin/cfpref   0.0   4224\n38112 /usr/sbin/Wirele   0.0   5744\n38137 /usr/libexec/Sid   0.0   4560\n41651 /usr/libexec/con   0.0   5760\n41655 /System/Library/   0.0  16368\n42621 /usr/libexec/wif   0.0    752\n43251 /usr/sbin/BTLESe   0.0   2032\n43456 /System/Applicat   0.0  10752\n43655 /Applications/Ch   0.1  88528\n43659 /Applications/Ch   0.0   1984\n43661 /Applications/Ch   0.0   1984\n43672 /Applications/Ch   0.0  13328\n43673 /Applications/Ch   0.0  28032\n43676 /Applications/Ch   0.0   8128\n43789 /Applications/Ch   0.0   7408\n43792 /Applications/Ch   0.0  11728\n43808 /Applications/Ch   0.0  25920\n43827 /Applications/Ch   0.0  15648\n43840 /System/Library/   0.0   9120\n43850 /Applications/Ch   0.0  27632\n43855 /Applications/Ch   0.0   8304\n43868 /Applications/Ch   0.0   7536\n44147 /Applications/Ch   0.0   2368\n44148 /Applications/Ch   0.0   1552\n44149 /Users/nandanadi   0.0   6080\n44164 /Users/nandanadi   0.0   5984\n44165 /Applications/Ch   0.0   1552\n44166 /Applications/Ch   0.0   2384\n44309 /Users/nandanadi   0.0  14640\n44406 /System/Library/   0.0  13248\n44414 /Applications/Ch   0.0   6784\n44627 /Applications/Ch   0.1  11008\n45031 /System/Library/   0.0   9200\n45034 node               0.0   3568\n45370 /Applications/Ch   0.0   3248\n45372 /Users/nandanadi   0.0   7680\n45598 /System/Library/   0.0   6224\n47008 /System/Library/   0.0   8544\n47481 /Users/nandanadi   0.0   6096\n47482 /Applications/Ch   0.0   1616\n47483 /Applications/Ch   0.0   2464\n48115 /System/Library/   0.0   9552\n48648 /System/Applicat   0.0    144\n48649 /System/Applicat   0.0     16\n48651 /System/Applicat   0.0     32\n48652 /System/Applicat   0.0     96\n48660 /System/Applicat   0.0     16\n48718 /System/Library/   0.0     64\n48781 /System/Applicat   0.0     16\n48782 /System/Applicat   0.0     16\n48788 /System/Applicat   0.0     16\n48793 /System/Applicat   0.0     16\n48799 /System/Applicat   0.0     16\n48822 /System/Applicat   0.0     16\n49447 /System/Library/   0.0   7840\n49581 /System/Library/   0.0  15824\n50083 /System/Applicat   0.0   5488\n50210 /Users/nandanadi   0.0   6112\n50211 /Applications/Ch   0.0   1616\n50212 /Applications/Ch   0.0   2480\n50213 /Applications/Ch   0.0   1616\n50223 /Applications/Ch   0.0   2480\n50367 /System/Cryptexe   0.0   3328\n50415 /Applications/Ch   0.0   1552\n50671 /System/Library/   0.0   6432\n51918 /System/Library/   0.0  15888\n52176 /System/Library/   0.0   2048\n52183 /usr/sbin/distno   0.0    960\n52809 /System/Library/   0.0   9888\n53054 /System/Library/   0.0   8944\n53102 /System/Library/   0.0   7984\n54118 /System/Library/   0.0  10160\n54195 /System/Library/   0.0    576\n54342 adb                0.0   2432\n54352 /Applications/Wi   1.1  31696\n54364 /System/Library/   0.0   7776\n54369 /usr/libexec/due   0.0  18880\n54370 /System/Library/   0.0   9152\n54378 Cursor Helper (P   1.0  62544\n54379 Cursor Helper (P   0.8  76848\n54380 Cursor Helper (P   0.8  52416\n54390 Cursor Helper (P   0.2  53552\n54391 Cursor Helper (P   0.4  80688\n54392 Cursor Helper (P   0.7  64480\n54406 /Applications/Cu   0.0   4784\n54421 /Applications/Cu   0.0   4784\n54707 /usr/sbin/netbio   0.0   2736\n54943 /usr/libexec/ane   0.0   3872\n55004 /System/Applicat   0.0  44656\n55349 /System/Library/   0.0  14960\n55417 /usr/libexec/lin   0.0  12624\n55681 /System/Library/   0.0   9216\n55974 /System/Library/   0.0   8736\n56094 /System/Library/   0.0  15856\n56351 /Applications/Do   0.0  10384\n56357 /System/Library/  10.5 661744\n56460 /usr/libexec/con   0.0   3168\n56467 /usr/libexec/con   0.0   5280\n56469 /usr/libexec/con   0.0   3168\n56605 /System/Library/   0.0   5696\n56656 /System/Library/   0.0   8512\n56692 /System/Library/   0.0  19200\n56693 /System/Library/   0.0   3504\n56700 /System/Library/   0.0  84480\n56703 /usr/libexec/pkd   0.0  13392\n56730 /System/Library/   0.0  15568\n56733 /System/Library/   0.0  10432\n56740 /System/Library/   0.5  25392\n56741 /usr/libexec/spo   0.0  12176\n56748 /System/Library/   0.0   6352\n56749 /usr/libexec/use   0.0   4128\n56750 /System/Library/   0.0  10704\n56751 /System/Library/   0.0  23120\n56752 /System/Library/   0.0   3168\n56754 /System/Library/   0.0  19408\n56755 /System/Library/   0.0  25456\n56757 /System/Library/   0.0  10624\n56758 /usr/libexec/neh   0.0   5984\n56761 /System/Library/   0.0  15088\n56767 /System/Cryptexe   0.0  13360\n56770 /usr/libexec/nea   0.0  11360\n56776 /usr/libexec/mob   0.0  16672\n56777 /System/Library/   0.0  10304\n56780 /System/Library/   0.0   7088\n56782 /System/Library/   0.0   8352\n56820 /System/Library/   0.0   4432\n56821 /usr/libexec/rou   0.0  28864\n56822 /usr/libexec/sec   0.0   9328\n56823 /System/Library/   0.0   7296\n56824 /System/Library/   0.0   9840\n56825 /System/Library/   0.0  14016\n56827 /System/Library/   0.0  13040\n56828 /System/Library/   0.0  13952\n56829 /System/Library/   0.0  13920\n56837 /usr/libexec/con   0.0   3504\n56843 /usr/libexec/fee   0.0   5904\n56844 /System/Library/   0.0   8800\n56845 /usr/libexec/onl   0.0   2288\n56846 /System/Library/   0.0   7392\n56848 /System/Library/   0.0   7232\n56849 /System/Library/   0.0   6256\n56852 /usr/libexec/tri   0.0   9696\n56853 /usr/libexec/rep   0.0  15920\n56854 /System/Library/   0.0  23072\n56855 /System/Library/   0.0   3792\n56856 /usr/libexec/sir   0.0  17008\n56859 /System/Library/   0.0   3808\n56860 /System/Library/   0.0   3840\n56861 /usr/libexec/tri   0.0  11936\n56862 /usr/libexec/Ass   0.0   4816\n56863 /System/Library/   0.0   3296\n56864 /System/Library/   0.0   2624\n56865 /System/Library/   0.0  11952\n56866 /System/Library/   0.0   3344\n56867 /System/Library/   0.0  19152\n56868 /System/Library/   0.0   2688\n56869 /usr/libexec/sto   0.0   8528\n56870 /System/Library/   0.0   8160\n56872 /usr/libexec/fsk   0.0  10880\n56878 /System/Library/   0.0  36640\n56879 /System/Library/   0.0  41712\n56881 /System/Library/   0.0   5712\n56882 /System/Library/   0.0   8880\n56883 /System/Library/   0.0  10688\n56884 /System/Library/   0.0   7200\n56888 /System/Library/   0.0  30128\n56891 /usr/libexec/nfc   0.0   7872\n56892 /System/Library/   0.0   4896\n56893 /System/Library/   0.0   9232\n56894 /System/Library/   0.0   4880\n56895 /System/Library/   0.0  18304\n56896 /usr/libexec/bio   0.0   8176\n56899 /usr/libexec/net   0.0  17344\n56900 /System/Library/   0.0  38944\n56901 /System/Library/   0.0   3328\n56902 /System/Library/   0.0   4016\n56903 /System/Library/   0.0   2928\n56905 /System/Library/   0.0   5984\n56906 /usr/libexec/swt   0.0   9264\n56907 /System/Library/   0.0   7264\n56908 /System/Library/   0.0   8784\n56909 /usr/libexec/Gam   0.0  28736\n56910 /System/Library/   0.0   2944\n56913 /usr/libexec/san   0.0   7328\n56917 /usr/libexec/osp   0.0  11792\n56918 /System/Library/   0.0  11648\n56956 /usr/libexec/his   0.0  12720\n56961 /usr/libexec/fin   0.0  13392\n56962 /usr/libexec/mob   0.0  11280\n56963 /usr/libexec/fin   0.0  11952\n56964 /usr/libexec/sec   0.0   8640\n56969 /usr/libexec/ass   0.0  11072\n56970 /Users/nandanadi  34.0  35312\n56978 ps                 0.0   1664\n57473 /usr/sbin/distno   0.0    944\n58783 /usr/libexec/Per   5.8  13968\n59293 /Users/nandanadi   0.0   6144\n59444 /System/Library/   0.0    720\n63331 /System/Library/   0.0   4864\n64572 node               0.0   3392\n65717 /usr/libexec/sea   0.0   6800\n65794 /System/Library/   0.0    752\n65796 /System/Library/   0.0   1984\n69107 /usr/libexec/key   0.0   2064\n70580 .venv/bin/python   0.0   6128\n70906 /System/Library/   0.0  48432\n71404 /Applications/Ch   0.0   1008\n71405 /Applications/Ch   0.0   1360\n71406 /Users/nandanadi   0.0   5584\n71516 /Applications/Ch   0.0   1376\n73675 /System/Library/   0.0    752\n75208 /System/Library/   0.0    800\n77062 /System/Library/   0.0   6624\n77622 /System/Library/   0.0   4640\n78093 /Library/Develop   0.0   1488\n80179 /System/Library/   0.0   7856\n80249 /usr/libexec/gam   0.0  11024\n80558 /usr/libexec/apf   0.0    880\n80889 /System/Library/   0.0  12496\n81001 /System/Library/   0.0  10112\n82087 /Applications/Ol   0.0  10656\n82100 /Applications/Ol   0.0   3408\n83702 /System/Library/   0.0   1968\n85582 /System/Library/   0.0    880\n86140 /System/Library/   0.0   1040\n86662 /System/Library/   0.0   2464\n86677 /System/Library/   0.0   2016\n87583 /System/Cryptexe   0.0   2512\n87810 /System/Library/   0.0   7056\n88840 /usr/sbin/appleh   0.0    736\n89061 /usr/libexec/ass   0.0   8656\n90198 .venv/bin/python   0.6  10288\n90355 /usr/libexec/tas   0.0     16\n90456 /System/Library/   0.0   5376\n92086 /System/Library/   0.0   3696\n92724 /System/Library/   0.0   4816\n96386 /usr/sbin/BTLESe   0.0   1216\n97179 /System/Applicat   0.0   9968\n99794 /Library/Develop   0.0   1552\n51731 -zsh               0.0     32\n87030 -zsh               0.0    208\n87069 -zsh               0.0     32\n87127 pi                 0.0    272\n 4569 /bin/zsh           0.0     32\n 4570 /bin/zsh           0.0     32\n 4572 /bin/zsh           0.0     32\n 4590 /bin/zsh           0.0    256\n71399 codex              0.0  16768\n 6923 /bin/zsh           0.0     32\n 7100 codex              0.0  16000\n 2834 codex              5.0  39104\n 7773 /bin/zsh           0.0    240\n35258 /bin/zsh           0.0     32\n35537 codex              0.0  10512",
+    "gpu": "FileNotFoundError"
+  },
+  "observations": [
+    {
+      "session": 2,
+      "repetition": 0,
+      "path": "stock",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 100,
+      "batch": 32,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 5.0607782090082765,
+      "pairs_per_second": 79.03922746268405
+    },
+    {
+      "session": 2,
+      "repetition": 0,
+      "path": "stock",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 100,
+      "batch": 32,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 5.192510708002374,
+      "pairs_per_second": 77.03402505911927
+    },
+    {
+      "session": 2,
+      "repetition": 1,
+      "path": "stock",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 100,
+      "batch": 32,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 5.185430082958192,
+      "pairs_per_second": 77.13921383581888
+    },
+    {
+      "session": 2,
+      "repetition": 1,
+      "path": "stock",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 100,
+      "batch": 32,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 4.994570750044659,
+      "pairs_per_second": 80.08696242743652
+    },
+    {
+      "session": 2,
+      "repetition": 2,
+      "path": "stock",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 100,
+      "batch": 32,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 5.075294165872037,
+      "pairs_per_second": 78.81316568598777
+    },
+    {
+      "session": 2,
+      "repetition": 2,
+      "path": "stock",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 100,
+      "batch": 32,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 5.204802416963503,
+      "pairs_per_second": 76.85210080142892
+    },
+    {
+      "session": 2,
+      "repetition": 0,
+      "path": "stock",
+      "scope": "forward",
+      "group": "primary",
+      "k": 100,
+      "batch": 16,
+      "length": 512,
+      "queries": 16,
+      "pairs": 1600,
+      "seconds": 18.93238937505521,
+      "pairs_per_second": 84.51125572708301
+    },
+    {
+      "session": 2,
+      "repetition": 0,
+      "path": "stock",
+      "scope": "scoring",
+      "group": "primary",
+      "k": 100,
+      "batch": 16,
+      "length": 512,
+      "queries": 16,
+      "pairs": 1600,
+      "seconds": 18.680587916867808,
+      "pairs_per_second": 85.65040924409372
+    },
+    {
+      "session": 2,
+      "repetition": 1,
+      "path": "stock",
+      "scope": "scoring",
+      "group": "primary",
+      "k": 100,
+      "batch": 16,
+      "length": 512,
+      "queries": 16,
+      "pairs": 1600,
+      "seconds": 21.367708584060892,
+      "pairs_per_second": 74.8793439271027
+    },
+    {
+      "session": 2,
+      "repetition": 1,
+      "path": "stock",
+      "scope": "forward",
+      "group": "primary",
+      "k": 100,
+      "batch": 16,
+      "length": 512,
+      "queries": 16,
+      "pairs": 1600,
+      "seconds": 16.27392204105854,
+      "pairs_per_second": 98.31680377743334
+    },
+    {
+      "session": 2,
+      "repetition": 2,
+      "path": "stock",
+      "scope": "forward",
+      "group": "primary",
+      "k": 100,
+      "batch": 16,
+      "length": 512,
+      "queries": 16,
+      "pairs": 1600,
+      "seconds": 15.887668582843617,
+      "pairs_per_second": 100.70703524919752
+    },
+    {
+      "session": 2,
+      "repetition": 2,
+      "path": "stock",
+      "scope": "scoring",
+      "group": "primary",
+      "k": 100,
+      "batch": 16,
+      "length": 512,
+      "queries": 16,
+      "pairs": 1600,
+      "seconds": 17.575947040924802,
+      "pairs_per_second": 91.03350142524167
+    },
+    {
+      "session": 2,
+      "repetition": 0,
+      "path": "stock",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 100,
+      "batch": 16,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 4.176141625037417,
+      "pairs_per_second": 95.78219225178124
+    },
+    {
+      "session": 2,
+      "repetition": 0,
+      "path": "stock",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 100,
+      "batch": 16,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 4.392311749979854,
+      "pairs_per_second": 91.0682170958914
+    },
+    {
+      "session": 2,
+      "repetition": 1,
+      "path": "stock",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 100,
+      "batch": 16,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 4.267650916939601,
+      "pairs_per_second": 93.72837839483981
+    },
+    {
+      "session": 2,
+      "repetition": 1,
+      "path": "stock",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 100,
+      "batch": 16,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 5.75518829212524,
+      "pairs_per_second": 69.50250447015183
+    },
+    {
+      "session": 2,
+      "repetition": 2,
+      "path": "stock",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 100,
+      "batch": 16,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 4.330717874923721,
+      "pairs_per_second": 92.3634398620449
+    },
+    {
+      "session": 2,
+      "repetition": 2,
+      "path": "stock",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 100,
+      "batch": 16,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 4.1300581661053,
+      "pairs_per_second": 96.85093621265032
+    },
+    {
+      "session": 2,
+      "repetition": 0,
+      "path": "stock",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 100,
+      "batch": 1,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 3.5622313749045134,
+      "pairs_per_second": 112.28916875471687
+    },
+    {
+      "session": 2,
+      "repetition": 0,
+      "path": "stock",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 100,
+      "batch": 1,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 3.14451245800592,
+      "pairs_per_second": 127.20572913667462
+    },
+    {
+      "session": 2,
+      "repetition": 1,
+      "path": "stock",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 100,
+      "batch": 1,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 3.039605916943401,
+      "pairs_per_second": 131.5960064988412
+    },
+    {
+      "session": 2,
+      "repetition": 1,
+      "path": "stock",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 100,
+      "batch": 1,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 3.5769900418817997,
+      "pairs_per_second": 111.82586345405818
+    },
+    {
+      "session": 2,
+      "repetition": 2,
+      "path": "stock",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 100,
+      "batch": 1,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 3.0980390831828117,
+      "pairs_per_second": 129.11392957284926
+    },
+    {
+      "session": 2,
+      "repetition": 2,
+      "path": "stock",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 100,
+      "batch": 1,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 3.691525958944112,
+      "pairs_per_second": 108.35627446445265
+    },
+    {
+      "session": 2,
+      "repetition": 0,
+      "path": "stock",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 100,
+      "batch": 16,
+      "length": 128,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 0.9577441669534892,
+      "pairs_per_second": 417.64806699096835
+    },
+    {
+      "session": 2,
+      "repetition": 0,
+      "path": "stock",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 100,
+      "batch": 16,
+      "length": 128,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 0.9641189170069993,
+      "pairs_per_second": 414.8865798025785
+    },
+    {
+      "session": 2,
+      "repetition": 1,
+      "path": "stock",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 100,
+      "batch": 16,
+      "length": 128,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 1.0372874999884516,
+      "pairs_per_second": 385.62115132444313
+    },
+    {
+      "session": 2,
+      "repetition": 1,
+      "path": "stock",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 100,
+      "batch": 16,
+      "length": 128,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 0.7309727501124144,
+      "pairs_per_second": 547.2160213065193
+    },
+    {
+      "session": 2,
+      "repetition": 2,
+      "path": "stock",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 100,
+      "batch": 16,
+      "length": 128,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 1.074176625115797,
+      "pairs_per_second": 372.3782389668736
+    },
+    {
+      "session": 2,
+      "repetition": 2,
+      "path": "stock",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 100,
+      "batch": 16,
+      "length": 128,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 0.7999762080144137,
+      "pairs_per_second": 500.01487043323783
+    },
+    {
+      "session": 2,
+      "repetition": 0,
+      "path": "stock",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 50,
+      "batch": 16,
+      "length": 512,
+      "queries": 4,
+      "pairs": 200,
+      "seconds": 2.4087611250579357,
+      "pairs_per_second": 83.0302340566002
+    },
+    {
+      "session": 2,
+      "repetition": 0,
+      "path": "stock",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 50,
+      "batch": 16,
+      "length": 512,
+      "queries": 4,
+      "pairs": 200,
+      "seconds": 2.0102239579427987,
+      "pairs_per_second": 99.49140204491137
+    },
+    {
+      "session": 2,
+      "repetition": 1,
+      "path": "stock",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 50,
+      "batch": 16,
+      "length": 512,
+      "queries": 4,
+      "pairs": 200,
+      "seconds": 2.123054667143151,
+      "pairs_per_second": 94.20388607756684
+    },
+    {
+      "session": 2,
+      "repetition": 1,
+      "path": "stock",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 50,
+      "batch": 16,
+      "length": 512,
+      "queries": 4,
+      "pairs": 200,
+      "seconds": 1.9888110419269651,
+      "pairs_per_second": 100.56259533143952
+    },
+    {
+      "session": 2,
+      "repetition": 2,
+      "path": "stock",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 50,
+      "batch": 16,
+      "length": 512,
+      "queries": 4,
+      "pairs": 200,
+      "seconds": 2.1390557910781354,
+      "pairs_per_second": 93.49919755912266
+    },
+    {
+      "session": 2,
+      "repetition": 2,
+      "path": "stock",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 50,
+      "batch": 16,
+      "length": 512,
+      "queries": 4,
+      "pairs": 200,
+      "seconds": 2.0587743748910725,
+      "pairs_per_second": 97.14517648908554
+    },
+    {
+      "session": 2,
+      "repetition": 0,
+      "path": "stock",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 10,
+      "batch": 16,
+      "length": 512,
+      "queries": 4,
+      "pairs": 40,
+      "seconds": 0.526378083974123,
+      "pairs_per_second": 75.99100573869336
+    },
+    {
+      "session": 2,
+      "repetition": 0,
+      "path": "stock",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 10,
+      "batch": 16,
+      "length": 512,
+      "queries": 4,
+      "pairs": 40,
+      "seconds": 0.5025391250383109,
+      "pairs_per_second": 79.59579265982647
+    },
+    {
+      "session": 2,
+      "repetition": 1,
+      "path": "stock",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 10,
+      "batch": 16,
+      "length": 512,
+      "queries": 4,
+      "pairs": 40,
+      "seconds": 0.42321291705593467,
+      "pairs_per_second": 94.5150735905193
+    },
+    {
+      "session": 2,
+      "repetition": 1,
+      "path": "stock",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 10,
+      "batch": 16,
+      "length": 512,
+      "queries": 4,
+      "pairs": 40,
+      "seconds": 0.37237879098393023,
+      "pairs_per_second": 107.41750327484729
+    },
+    {
+      "session": 2,
+      "repetition": 2,
+      "path": "stock",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 10,
+      "batch": 16,
+      "length": 512,
+      "queries": 4,
+      "pairs": 40,
+      "seconds": 0.3789332080632448,
+      "pairs_per_second": 105.55950006187874
+    },
+    {
+      "session": 2,
+      "repetition": 2,
+      "path": "stock",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 10,
+      "batch": 16,
+      "length": 512,
+      "queries": 4,
+      "pairs": 40,
+      "seconds": 0.36998199997469783,
+      "pairs_per_second": 108.11336768474008
+    },
+    {
+      "session": 2,
+      "repetition": 0,
+      "path": "stock",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 100,
+      "batch": 64,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 4.712130666943267,
+      "pairs_per_second": 84.88728948161317
+    },
+    {
+      "session": 2,
+      "repetition": 0,
+      "path": "stock",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 100,
+      "batch": 64,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 4.042804999975488,
+      "pairs_per_second": 98.9412054260409
+    },
+    {
+      "session": 2,
+      "repetition": 1,
+      "path": "stock",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 100,
+      "batch": 64,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 4.521648249821737,
+      "pairs_per_second": 88.46331645009532
+    },
+    {
+      "session": 2,
+      "repetition": 1,
+      "path": "stock",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 100,
+      "batch": 64,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 5.282502708025277,
+      "pairs_per_second": 75.72168385116254
+    },
+    {
+      "session": 2,
+      "repetition": 2,
+      "path": "stock",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 100,
+      "batch": 64,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 4.607464290922508,
+      "pairs_per_second": 86.81564842251049
+    },
+    {
+      "session": 2,
+      "repetition": 2,
+      "path": "stock",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 100,
+      "batch": 64,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 4.087585540954024,
+      "pairs_per_second": 97.85727931375396
+    },
+    {
+      "session": 2,
+      "repetition": 0,
+      "path": "stock",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 100,
+      "batch": 8,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 3.7305354168638587,
+      "pairs_per_second": 107.22321471384586
+    },
+    {
+      "session": 2,
+      "repetition": 0,
+      "path": "stock",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 100,
+      "batch": 8,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 4.010755500057712,
+      "pairs_per_second": 99.73183356458509
+    },
+    {
+      "session": 2,
+      "repetition": 1,
+      "path": "stock",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 100,
+      "batch": 8,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 3.641386792063713,
+      "pairs_per_second": 109.84825914999948
+    },
+    {
+      "session": 2,
+      "repetition": 1,
+      "path": "stock",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 100,
+      "batch": 8,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 4.042154041817412,
+      "pairs_per_second": 98.95713915448758
+    },
+    {
+      "session": 2,
+      "repetition": 2,
+      "path": "stock",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 100,
+      "batch": 8,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 3.9894474579486996,
+      "pairs_per_second": 100.26451136811629
+    },
+    {
+      "session": 2,
+      "repetition": 2,
+      "path": "stock",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 100,
+      "batch": 8,
+      "length": 512,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 3.7921689581125975,
+      "pairs_per_second": 105.48053222794277
+    },
+    {
+      "session": 2,
+      "repetition": 0,
+      "path": "stock",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 100,
+      "batch": 16,
+      "length": 256,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 2.3246371659915894,
+      "pairs_per_second": 172.06986356917224
+    },
+    {
+      "session": 2,
+      "repetition": 0,
+      "path": "stock",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 100,
+      "batch": 16,
+      "length": 256,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 1.703124790918082,
+      "pairs_per_second": 234.86241415367869
+    },
+    {
+      "session": 2,
+      "repetition": 1,
+      "path": "stock",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 100,
+      "batch": 16,
+      "length": 256,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 1.8969334580469877,
+      "pairs_per_second": 210.86664811733837
+    },
+    {
+      "session": 2,
+      "repetition": 1,
+      "path": "stock",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 100,
+      "batch": 16,
+      "length": 256,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 1.842648999998346,
+      "pairs_per_second": 217.0787816889484
+    },
+    {
+      "session": 2,
+      "repetition": 2,
+      "path": "stock",
+      "scope": "forward",
+      "group": "sweep",
+      "k": 100,
+      "batch": 16,
+      "length": 256,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 2.2314815840218216,
+      "pairs_per_second": 179.25310379621237
+    },
+    {
+      "session": 2,
+      "repetition": 2,
+      "path": "stock",
+      "scope": "scoring",
+      "group": "sweep",
+      "k": 100,
+      "batch": 16,
+      "length": 256,
+      "queries": 4,
+      "pairs": 400,
+      "seconds": 1.702256582910195,
+      "pairs_per_second": 234.98220187003534
+    }
+  ],
+  "warmups": [
+    {
+      "k": 100,
+      "batch": 32,
+      "length": 512,
+      "seconds": 2.7545042079873383,
+      "signatures": [
+        [
+          4,
+          269
+        ],
+        [
+          4,
+          442
+        ],
+        [
+          4,
+          451
+        ],
+        [
+          4,
+          512
+        ],
+        [
+          32,
+          441
+        ],
+        [
+          32,
+          459
+        ],
+        [
+          32,
+          512
+        ]
+      ]
+    },
+    {
+      "k": 100,
+      "batch": 16,
+      "length": 512,
+      "seconds": 4.111810666974634,
+      "signatures": [
+        [
+          4,
+          269
+        ],
+        [
+          4,
+          342
+        ],
+        [
+          4,
+          384
+        ],
+        [
+          4,
+          433
+        ],
+        [
+          4,
+          441
+        ],
+        [
+          4,
+          442
+        ],
+        [
+          4,
+          447
+        ],
+        [
+          4,
+          451
+        ],
+        [
+          4,
+          481
+        ],
+        [
+          4,
+          485
+        ],
+        [
+          4,
+          512
+        ],
+        [
+          16,
+          407
+        ],
+        [
+          16,
+          440
+        ],
+        [
+          16,
+          441
+        ],
+        [
+          16,
+          443
+        ],
+        [
+          16,
+          452
+        ],
+        [
+          16,
+          455
+        ],
+        [
+          16,
+          456
+        ],
+        [
+          16,
+          459
+        ],
+        [
+          16,
+          468
+        ],
+        [
+          16,
+          471
+        ],
+        [
+          16,
+          472
+        ],
+        [
+          16,
+          480
+        ],
+        [
+          16,
+          483
+        ],
+        [
+          16,
+          487
+        ],
+        [
+          16,
+          497
+        ],
+        [
+          16,
+          500
+        ],
+        [
+          16,
+          512
+        ]
+      ]
+    },
+    {
+      "k": 100,
+      "batch": 16,
+      "length": 512,
+      "seconds": 1.4255009170155972,
+      "signatures": [
+        [
+          4,
+          269
+        ],
+        [
+          4,
+          442
+        ],
+        [
+          4,
+          451
+        ],
+        [
+          4,
+          512
+        ],
+        [
+          16,
+          440
+        ],
+        [
+          16,
+          441
+        ],
+        [
+          16,
+          452
+        ],
+        [
+          16,
+          455
+        ],
+        [
+          16,
+          459
+        ],
+        [
+          16,
+          512
+        ]
+      ]
+    },
+    {
+      "k": 100,
+      "batch": 1,
+      "length": 512,
+      "seconds": 1.6568099590949714,
+      "signatures": [
+        [
+          1,
+          39
+        ],
+        [
+          1,
+          65
+        ],
+        [
+          1,
+          81
+        ],
+        [
+          1,
+          101
+        ],
+        [
+          1,
+          113
+        ],
+        [
+          1,
+          118
+        ],
+        [
+          1,
+          122
+        ],
+        [
+          1,
+          131
+        ],
+        [
+          1,
+          132
+        ],
+        [
+          1,
+          133
+        ],
+        [
+          1,
+          135
+        ],
+        [
+          1,
+          136
+        ],
+        [
+          1,
+          141
+        ],
+        [
+          1,
+          145
+        ],
+        [
+          1,
+          150
+        ],
+        [
+          1,
+          153
+        ],
+        [
+          1,
+          158
+        ],
+        [
+          1,
+          164
+        ],
+        [
+          1,
+          166
+        ],
+        [
+          1,
+          167
+        ],
+        [
+          1,
+          169
+        ],
+        [
+          1,
+          171
+        ],
+        [
+          1,
+          172
+        ],
+        [
+          1,
+          174
+        ],
+        [
+          1,
+          177
+        ],
+        [
+          1,
+          185
+        ],
+        [
+          1,
+          188
+        ],
+        [
+          1,
+          189
+        ],
+        [
+          1,
+          193
+        ],
+        [
+          1,
+          197
+        ],
+        [
+          1,
+          199
+        ],
+        [
+          1,
+          200
+        ],
+        [
+          1,
+          202
+        ],
+        [
+          1,
+          203
+        ],
+        [
+          1,
+          204
+        ],
+        [
+          1,
+          207
+        ],
+        [
+          1,
+          208
+        ],
+        [
+          1,
+          210
+        ],
+        [
+          1,
+          211
+        ],
+        [
+          1,
+          212
+        ],
+        [
+          1,
+          213
+        ],
+        [
+          1,
+          215
+        ],
+        [
+          1,
+          217
+        ],
+        [
+          1,
+          219
+        ],
+        [
+          1,
+          221
+        ],
+        [
+          1,
+          224
+        ],
+        [
+          1,
+          225
+        ],
+        [
+          1,
+          226
+        ],
+        [
+          1,
+          228
+        ],
+        [
+          1,
+          231
+        ],
+        [
+          1,
+          236
+        ],
+        [
+          1,
+          237
+        ],
+        [
+          1,
+          243
+        ],
+        [
+          1,
+          244
+        ],
+        [
+          1,
+          246
+        ],
+        [
+          1,
+          247
+        ],
+        [
+          1,
+          250
+        ],
+        [
+          1,
+          251
+        ],
+        [
+          1,
+          252
+        ],
+        [
+          1,
+          254
+        ],
+        [
+          1,
+          257
+        ],
+        [
+          1,
+          258
+        ],
+        [
+          1,
+          260
+        ],
+        [
+          1,
+          261
+        ],
+        [
+          1,
+          263
+        ],
+        [
+          1,
+          266
+        ],
+        [
+          1,
+          269
+        ],
+        [
+          1,
+          270
+        ],
+        [
+          1,
+          271
+        ],
+        [
+          1,
+          273
+        ],
+        [
+          1,
+          274
+        ],
+        [
+          1,
+          275
+        ],
+        [
+          1,
+          276
+        ],
+        [
+          1,
+          279
+        ],
+        [
+          1,
+          280
+        ],
+        [
+          1,
+          283
+        ],
+        [
+          1,
+          287
+        ],
+        [
+          1,
+          288
+        ],
+        [
+          1,
+          290
+        ],
+        [
+          1,
+          291
+        ],
+        [
+          1,
+          292
+        ],
+        [
+          1,
+          294
+        ],
+        [
+          1,
+          295
+        ],
+        [
+          1,
+          296
+        ],
+        [
+          1,
+          297
+        ],
+        [
+          1,
+          299
+        ],
+        [
+          1,
+          300
+        ],
+        [
+          1,
+          303
+        ],
+        [
+          1,
+          304
+        ],
+        [
+          1,
+          305
+        ],
+        [
+          1,
+          307
+        ],
+        [
+          1,
+          308
+        ],
+        [
+          1,
+          309
+        ],
+        [
+          1,
+          310
+        ],
+        [
+          1,
+          311
+        ],
+        [
+          1,
+          312
+        ],
+        [
+          1,
+          313
+        ],
+        [
+          1,
+          315
+        ],
+        [
+          1,
+          316
+        ],
+        [
+          1,
+          317
+        ],
+        [
+          1,
+          318
+        ],
+        [
+          1,
+          320
+        ],
+        [
+          1,
+          323
+        ],
+        [
+          1,
+          325
+        ],
+        [
+          1,
+          326
+        ],
+        [
+          1,
+          329
+        ],
+        [
+          1,
+          331
+        ],
+        [
+          1,
+          332
+        ],
+        [
+          1,
+          334
+        ],
+        [
+          1,
+          335
+        ],
+        [
+          1,
+          336
+        ],
+        [
+          1,
+          337
+        ],
+        [
+          1,
+          338
+        ],
+        [
+          1,
+          339
+        ],
+        [
+          1,
+          341
+        ],
+        [
+          1,
+          342
+        ],
+        [
+          1,
+          343
+        ],
+        [
+          1,
+          347
+        ],
+        [
+          1,
+          349
+        ],
+        [
+          1,
+          351
+        ],
+        [
+          1,
+          352
+        ],
+        [
+          1,
+          353
+        ],
+        [
+          1,
+          354
+        ],
+        [
+          1,
+          355
+        ],
+        [
+          1,
+          356
+        ],
+        [
+          1,
+          358
+        ],
+        [
+          1,
+          360
+        ],
+        [
+          1,
+          361
+        ],
+        [
+          1,
+          362
+        ],
+        [
+          1,
+          364
+        ],
+        [
+          1,
+          365
+        ],
+        [
+          1,
+          366
+        ],
+        [
+          1,
+          367
+        ],
+        [
+          1,
+          369
+        ],
+        [
+          1,
+          372
+        ],
+        [
+          1,
+          374
+        ],
+        [
+          1,
+          375
+        ],
+        [
+          1,
+          376
+        ],
+        [
+          1,
+          377
+        ],
+        [
+          1,
+          378
+        ],
+        [
+          1,
+          380
+        ],
+        [
+          1,
+          383
+        ],
+        [
+          1,
+          384
+        ],
+        [
+          1,
+          385
+        ],
+        [
+          1,
+          386
+        ],
+        [
+          1,
+          388
+        ],
+        [
+          1,
+          389
+        ],
+        [
+          1,
+          390
+        ],
+        [
+          1,
+          391
+        ],
+        [
+          1,
+          392
+        ],
+        [
+          1,
+          393
+        ],
+        [
+          1,
+          394
+        ],
+        [
+          1,
+          395
+        ],
+        [
+          1,
+          396
+        ],
+        [
+          1,
+          397
+        ],
+        [
+          1,
+          398
+        ],
+        [
+          1,
+          399
+        ],
+        [
+          1,
+          400
+        ],
+        [
+          1,
+          401
+        ],
+        [
+          1,
+          405
+        ],
+        [
+          1,
+          406
+        ],
+        [
+          1,
+          408
+        ],
+        [
+          1,
+          409
+        ],
+        [
+          1,
+          410
+        ],
+        [
+          1,
+          411
+        ],
+        [
+          1,
+          412
+        ],
+        [
+          1,
+          413
+        ],
+        [
+          1,
+          414
+        ],
+        [
+          1,
+          415
+        ],
+        [
+          1,
+          417
+        ],
+        [
+          1,
+          418
+        ],
+        [
+          1,
+          420
+        ],
+        [
+          1,
+          422
+        ],
+        [
+          1,
+          424
+        ],
+        [
+          1,
+          425
+        ],
+        [
+          1,
+          426
+        ],
+        [
+          1,
+          428
+        ],
+        [
+          1,
+          429
+        ],
+        [
+          1,
+          431
+        ],
+        [
+          1,
+          432
+        ],
+        [
+          1,
+          433
+        ],
+        [
+          1,
+          434
+        ],
+        [
+          1,
+          438
+        ],
+        [
+          1,
+          440
+        ],
+        [
+          1,
+          441
+        ],
+        [
+          1,
+          442
+        ],
+        [
+          1,
+          443
+        ],
+        [
+          1,
+          445
+        ],
+        [
+          1,
+          446
+        ],
+        [
+          1,
+          447
+        ],
+        [
+          1,
+          449
+        ],
+        [
+          1,
+          450
+        ],
+        [
+          1,
+          451
+        ],
+        [
+          1,
+          452
+        ],
+        [
+          1,
+          453
+        ],
+        [
+          1,
+          454
+        ],
+        [
+          1,
+          455
+        ],
+        [
+          1,
+          458
+        ],
+        [
+          1,
+          459
+        ],
+        [
+          1,
+          460
+        ],
+        [
+          1,
+          461
+        ],
+        [
+          1,
+          468
+        ],
+        [
+          1,
+          469
+        ],
+        [
+          1,
+          473
+        ],
+        [
+          1,
+          474
+        ],
+        [
+          1,
+          476
+        ],
+        [
+          1,
+          477
+        ],
+        [
+          1,
+          478
+        ],
+        [
+          1,
+          482
+        ],
+        [
+          1,
+          483
+        ],
+        [
+          1,
+          484
+        ],
+        [
+          1,
+          485
+        ],
+        [
+          1,
+          488
+        ],
+        [
+          1,
+          490
+        ],
+        [
+          1,
+          492
+        ],
+        [
+          1,
+          495
+        ],
+        [
+          1,
+          499
+        ],
+        [
+          1,
+          500
+        ],
+        [
+          1,
+          501
+        ],
+        [
+          1,
+          505
+        ],
+        [
+          1,
+          507
+        ],
+        [
+          1,
+          512
+        ]
+      ]
+    },
+    {
+      "k": 100,
+      "batch": 16,
+      "length": 128,
+      "seconds": 0.09125787508673966,
+      "signatures": [
+        [
+          4,
+          128
+        ],
+        [
+          16,
+          128
+        ]
+      ]
+    },
+    {
+      "k": 50,
+      "batch": 16,
+      "length": 512,
+      "seconds": 1.2077433750964701,
+      "signatures": [
+        [
+          2,
+          269
+        ],
+        [
+          2,
+          405
+        ],
+        [
+          2,
+          417
+        ],
+        [
+          2,
+          451
+        ],
+        [
+          16,
+          440
+        ],
+        [
+          16,
+          455
+        ],
+        [
+          16,
+          469
+        ],
+        [
+          16,
+          483
+        ],
+        [
+          16,
+          512
+        ]
+      ]
+    },
+    {
+      "k": 10,
+      "batch": 16,
+      "length": 512,
+      "seconds": 0.6260355000849813,
+      "signatures": [
+        [
+          10,
+          434
+        ],
+        [
+          10,
+          451
+        ],
+        [
+          10,
+          512
+        ]
+      ]
+    },
+    {
+      "k": 100,
+      "batch": 64,
+      "length": 512,
+      "seconds": 3.5794506249949336,
+      "signatures": [
+        [
+          36,
+          441
+        ],
+        [
+          36,
+          512
+        ],
+        [
+          64,
+          512
+        ]
+      ]
+    },
+    {
+      "k": 100,
+      "batch": 8,
+      "length": 512,
+      "seconds": 2.0194441250059754,
+      "signatures": [
+        [
+          4,
+          269
+        ],
+        [
+          4,
+          442
+        ],
+        [
+          4,
+          451
+        ],
+        [
+          4,
+          512
+        ],
+        [
+          8,
+          383
+        ],
+        [
+          8,
+          414
+        ],
+        [
+          8,
+          417
+        ],
+        [
+          8,
+          420
+        ],
+        [
+          8,
+          426
+        ],
+        [
+          8,
+          431
+        ],
+        [
+          8,
+          432
+        ],
+        [
+          8,
+          440
+        ],
+        [
+          8,
+          441
+        ],
+        [
+          8,
+          446
+        ],
+        [
+          8,
+          452
+        ],
+        [
+          8,
+          453
+        ],
+        [
+          8,
+          455
+        ],
+        [
+          8,
+          459
+        ],
+        [
+          8,
+          460
+        ],
+        [
+          8,
+          469
+        ],
+        [
+          8,
+          483
+        ],
+        [
+          8,
+          484
+        ],
+        [
+          8,
+          499
+        ],
+        [
+          8,
+          500
+        ],
+        [
+          8,
+          505
+        ],
+        [
+          8,
+          512
+        ]
+      ]
+    },
+    {
+      "k": 100,
+      "batch": 16,
+      "length": 256,
+      "seconds": 0.2992567499168217,
+      "signatures": [
+        [
+          4,
+          256
+        ],
+        [
+          16,
+          256
+        ]
+      ]
+    }
+  ],
+  "protocol_addendum_sha256": "d79e67b5a429253e13b52d6778317141ec4c09d0cd33f004e9fd6147c46a0f84",
+  "apple_forward_addendum_sha256": "fd27b823c16b3d7182afd59608fcc416160ee05882153714d761f866c26ce265",
+  "dispatch": {
+    "operators": {
+      "aten::alias": 19,
+      "aten::embedding": 3,
+      "aten::reshape": 11,
+      "aten::view": 141,
+      "aten::index_select": 3,
+      "aten::empty": 117,
+      "aten::resize_": 13,
+      "aten::add": 16,
+      "aten::layer_norm": 13,
+      "aten::native_layer_norm": 13,
+      "aten::empty_like": 22,
+      "aten::dropout": 14,
+      "aten::to": 9,
+      "aten::_to_copy": 1,
+      "aten::empty_strided": 2,
+      "aten::copy_": 9,
+      "aten::all": 1,
+      "aten::as_strided": 49,
+      "aten::is_nonzero": 1,
+      "aten::item": 1,
+      "aten::_local_scalar_dense": 1,
+      "aten::arange": 8,
+      "aten::unsqueeze": 12,
+      "aten::new_ones": 1,
+      "aten::new_empty": 1,
+      "aten::fill_": 13,
+      "aten::ge": 1,
+      "aten::__and__": 2,
+      "aten::bitwise_and": 2,
+      "aten::index": 1,
+      "aten::expand": 9,
+      "aten::_reshape_alias": 2,
+      "aten::contiguous": 8,
+      "aten::clone": 8,
+      "aten::linear": 38,
+      "aten::flatten": 72,
+      "aten::transpose": 24,
+      "aten::scaled_dot_product_attention": 6,
+      "aten::scalar_tensor": 12,
+      "aten::where": 12,
+      "aten::_scaled_dot_product_attention_math_for_mps": 6,
+      "aten::gelu": 6,
+      "aten::select": 2,
+      "aten::tanh": 1
+    },
+    "stock_attention_requested": "sdpa",
+    "custom_calls": 0,
+    "compiled": false
+  },
+  "status": "COMPLETE",
+  "memory": {
+    "active_bytes": 91191552,
+    "driver_bytes": 2191196160,
+    "scope": "PyTorch MPS allocator snapshot"
+  },
+  "end_environment": {
+    "utc": "2026-10-10T19:21:12.826974+00:00",
+    "platform": "macOS-26.5.2-arm64-arm-64bit",
+    "python": "3.12.13 (main, Jun 23 2026, 15:44:24) [Clang 22.1.3 ]",
+    "execution_environment": {
+      "PYTORCH_ENABLE_MPS_FALLBACK": "0",
+      "MLX_ENABLE_TF32": "0",
+      "TOKENIZERS_PARALLELISM": "false"
+    },
+    "packages": {
+      "torch": "2.14.1",
+      "transformers": "5.18.0",
+      "numpy": "2.5.3",
+      "httpx": "0.28.1",
+      "safetensors": "0.8.0"
+    },
+    "isolation": "No continuous hardware isolation verified",
+    "source_commit": "303a3472e1a810b2c0ced397efebf9f223f88eed",
+    "hardware": "2026-10-11 00:51:12.926 system_profiler[57419:51016905] hw.cpufamily: 0x1d5a87e8\nHardware:\n\n    Hardware Overview:\n\n      Model Name: MacBook Air\n      Model Identifier: Mac17,3\n      Model Number: MDHK4HN/A\n      Chip: Apple M5\n      Total Number of Cores: 10 (4 Super and 6 Efficiency)\n      Memory: 24 GB\n      System Firmware Version: 18000.121.3\n      OS Loader Version: 18000.121.3\n      Activation Lock Status: Enabled\n",
+    "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22937699)\t56%; charging; 2:41 remaining present: true",
+    "thermal": "Note: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded",
+    "processes": "  PID COMM              %CPU    RSS\n    1 /sbin/launchd      0.1  22400\n  239 .venv/bin/python   0.0   1872\n  336 /usr/libexec/log   1.9  30768\n  338 /usr/libexec/Use   0.0   7936\n  340 /System/Library/   0.0   7888\n  341 /System/Library/   0.0   7568\n  344 /usr/sbin/system   0.0   4816\n  348 /usr/libexec/con   0.0   8272\n  350 /System/Library/   0.0   8144\n  351 /usr/libexec/IOM   0.0    144\n  355 /usr/libexec/rem   0.0   1488\n  359 /System/Library/   0.0   4112\n  361 /usr/libexec/wat   0.0   1104\n  365 /System/Library/   0.0  20432\n  367 /usr/libexec/ker   0.0   1312\n  368 /usr/libexec/dis   0.0   3632\n  372 /usr/sbin/syslog   0.0   1744\n  374 /usr/libexec/the   0.0   1536\n  375 /System/Library/   0.0   9936\n  376 /usr/libexec/xpr   0.0   1760\n  377 /usr/libexec/ope   0.3  10240\n  378 /System/Library/   0.0  22944\n  379 /System/Library/   0.3  13312\n  380 /usr/libexec/tim   0.0   5088\n  382 /usr/sbin/securi   0.0   8880\n  384 /usr/libexec/loc   0.0  20640\n  385 /usr/libexec/nes   0.0   2928\n  387 autofsd            0.0     96\n  388 /usr/libexec/das   0.6  18512\n  389 /usr/libexec/cor   0.0   2016\n  391 /usr/sbin/distno   0.0   2400\n  395 /System/Library/   0.0   3712\n  396 /System/Library/   0.0   2048\n  397 /usr/sbin/Kernel   0.0    128\n  402 /usr/sbin/notify   0.3   4624\n  404 /usr/libexec/cor   0.1   7200\n  405 /usr/libexec/Air   0.0   3856\n  406 /System/Library/   0.0   5824\n  409 /System/Library/  15.1 136864\n  411 /usr/sbin/cfpref   0.1   5776\n  412 /System/Library/   0.0  25984\n  415 /System/Library/   0.0   4896\n  416 /usr/libexec/run   0.0  18320\n  418 /usr/sbin/coreau   0.0  29328\n  419 /usr/sbin/mDNSRe   0.0  12480\n  423 /usr/libexec/nsu   0.0   9440\n  425 /usr/libexec/lsd   0.0  10896\n  431 /System/Library/   0.0   9072\n  437 /usr/libexec/eli   0.0   3040\n  447 /usr/sbin/distno   0.0    976\n  452 /usr/libexec/air   0.0  27856\n  453 /usr/sbin/distno   0.0    976\n  459 /usr/libexec/sym   0.0  10720\n  479 /usr/sbin/distno   0.0   1312\n  482 /System/Library/   0.0   5792\n  495 /usr/libexec/sys   0.0   9584\n  503 /usr/sbin/mDNSRe   0.0    672\n  512 /usr/libexec/App   0.0    432\n  518 Core Audio Drive   0.0   4144\n  521 /usr/libexec/aud   0.0   8240\n  528 /usr/libexec/aud   0.0   1824\n  532 /usr/sbin/distno   0.0    976\n  534 /usr/libexec/com   0.0   2976\n  538 /usr/libexec/cam   0.0   6560\n  539 /System/Library/   0.0   3568\n  540 /System/Library/   0.0   4976\n  544 /Library/Privile   0.0    736\n  545 Core Audio Drive   0.0    800\n  554 /System/Library/   0.0    624\n  557 /System/Library/   0.0   2768\n  559 /usr/libexec/mod   0.0   5472\n  565 /usr/sbin/distno   0.0    976\n  569 /System/Library/   0.0  42384\n  571 /System/Library/   0.0   3856\n  578 /usr/sbin/distno   0.0    976\n  586 /usr/libexec/sea   0.0  15392\n  587 /usr/sbin/distno   0.0    976\n  588 /usr/sbin/distno   0.0    960\n  597 /System/Library/   0.0   5840\n  601 /usr/sbin/distno   0.0   4704\n  609 /usr/sbin/distno   0.0    976\n  611 /usr/libexec/Use   0.0   7712\n  616 /System/Library/   0.0  20544\n  623 /usr/sbin/univer   0.0   6000\n  624 /usr/libexec/Con   0.0   7568\n  626 /usr/libexec/pbo   0.0   5824\n  629 /usr/libexec/lsd   0.0   8912\n  638 /usr/libexec/nsu   0.0  15072\n  639 /usr/libexec/rap   0.0  19024\n  640 /usr/sbin/userno   0.0  21152\n  643 /System/Library/   0.0   9824\n  645 /System/Library/   0.0   3328\n  646 /usr/sbin/distno   0.0    992\n  651 /System/Library/   0.0  19696\n  659 /System/Library/   0.0  28032\n  663 /System/Library/   0.0   5232\n  669 /System/Library/   0.0   3056\n  671 /System/Library/   0.0   7824\n  674 /usr/libexec/sha   0.0  29664\n  677 /System/Library/   0.0   1680\n  684 /System/Library/   0.0  18976\n  689 /System/Library/   0.0   8880\n  697 /System/Library/   0.0  28864\n  707 /System/Library/   0.0   6752\n  709 /System/Library/   0.3  34096\n  711 /System/Library/   0.0   9536\n  712 /System/Library/   0.1  76928\n  713 /System/Library/   0.0  11088\n  715 /System/Library/   0.0  43216\n  719 /usr/sbin/distno   0.0    976\n  720 /System/Library/   0.0   8608\n  723 /System/Library/   0.0   7168\n  726 /usr/sbin/fileco   0.0   5472\n  731 /System/Library/   0.0   7024\n  733 automountd         0.0    160\n  744 /System/Library/   0.0  10880\n  748 /usr/libexec/ros   0.0   1088\n  754 /System/Library/   0.0   4128\n  757 /usr/libexec/nea   0.0   7104\n  762 /System/Library/   0.0  66928\n  765 /System/Library/   0.0  15680\n  766 /System/Library/   0.0  12464\n  773 /System/Library/   0.0 285008\n  774 /System/Library/   0.0  11184\n  776 /System/Library/   0.0   6928\n  777 /System/Library/   0.0   6544\n  778 /System/Library/   0.0  69216\n  787 /System/Library/   0.0  12144\n  801 /System/Library/   0.0  59344\n  803 /usr/sbin/distno   0.0    992\n  804 /System/Applicat   0.0   5440\n  810 /System/Library/   0.0  22096\n  816 /System/Library/   0.0   2000\n  818 /System/Library/   0.0   9696\n  837 /System/Library/   0.0   1728\n  838 /usr/libexec/avc   0.0  12160\n  851 /System/Library/   0.0   2864\n  853 /System/Library/   0.0  19792\n  858 /System/Library/   0.0  13856\n  867 /System/Library/   0.0    192\n  883 /System/Library/   0.0   1296\n  897 /System/Library/   0.0   4832\n  911 /System/Library/   0.0   6944\n  923 /System/Library/   0.0  13568\n  930 /usr/sbin/distno   0.0    976\n  961 /usr/sbin/distno   0.0    976\n  963 /System/Library/   0.0   4128\n 1034 /System/Library/   0.0   1504\n 1958 /Applications/Do   0.0  27120\n 1961 /Applications/Do   0.4 138256\n 1962 /Applications/Do   0.0  26560\n 1978 /Applications/Do   0.0  41664\n 1980 /Applications/Do   0.0  56608\n 1983 /Applications/Do   0.0   1296\n 2003 /Applications/Do   0.0  11152\n 2004 /Applications/Do   0.0   6256\n 2050 /Applications/Do   0.0  26960\n 2078 /opt/homebrew/op   0.0     32\n 2084 /System/Library/   0.0   5472\n 2085 com.apple.weathe   0.0  43520\n 2087 /System/Library/   0.0   6416\n 2088 /System/Library/   0.0   8144\n 2090 /System/Library/   0.0    848\n 2096 /Applications/Ta   0.0  18608\n 2105 /System/Library/   0.0   1808\n 2110 /Library/SystemE   0.0  47760\n 2135 /usr/sbin/distno   0.0    976\n 2163 /usr/sbin/distno   0.0    976\n 2356 caffeinate         0.0    656\n 2510 /Users/nandanadi   0.0  14480\n 2971 /Applications/Ch   0.0   2064\n 2972 /Applications/Ch   0.0   1008\n 2978 /Applications/Ch   0.0   2816\n 3161 /usr/sbin/system   0.0   2704\n 3658 /System/Library/   0.0    608\n 4099 /usr/sbin/distno   0.0    960\n 4323 /Applications/Cu   0.8 223056\n 4419 /Applications/Cu   0.0    816\n 4420 /Applications/Cu   5.9  47504\n 4422 /Applications/Cu   0.0  21088\n 4434 Cursor Helper: s   0.0  56624\n 4435 /Applications/Cu   2.1 498944\n 4436 /Applications/Cu  59.2 654688\n 4537 Cursor Helper: m   0.0  18608\n 4538 Cursor Helper: t   1.9  56160\n 4539 Cursor Helper (P   0.9  50496\n 4551 Cursor Helper (P   0.2  47920\n 4552 Cursor Helper: f   0.1  21200\n 4558 /Applications/Cu   0.0   6096\n 4559 Cursor Helper: f   0.0  19936\n 4581 /Applications/Cu   0.0   4128\n 4874 /Applications/Cu   0.0  12400\n 5340 /System/Library/   0.0    400\n 5507 /System/Library/  58.7  14560\n 5634 /Library/Develop   0.0   1520\n 7002 /System/Library/   0.0  10224\n 7251 <defunct>          0.0      0\n 8321 /opt/homebrew/op   0.0   1888\n 8338 postgres: checkp   0.0    688\n 8339 postgres: backgr   0.0    512\n 8341 postgres: walwri   0.0    352\n 8342 postgres: autova   0.0   2160\n 8344 postgres: logica   0.0   1792\n 9769 /usr/sbin/distno   0.0    992\n 9770 /System/Library/   0.0     16\n 9771 /System/Library/   0.0     16\n 9772 /System/Library/   0.0     16\n10382 /Applications/Cu   0.0   2208\n10707 /System/Library/   0.0   1952\n10722 /usr/bin/ssh-age   0.0    112\n10818 /opt/homebrew/bi   0.0   3104\n12876 /Applications/Cu   0.0   9024\n15974 /System/Library/   0.0   7440\n20039 /System/Library/   0.0   7632\n20216 /Users/nandanadi   0.0 145504\n20252 /System/Volumes/   2.7 252656\n20268 /System/Library/   0.0  72560\n20280 /System/Library/   0.0   9840\n20291 /Applications/Ch   0.0   1072\n20292 /Applications/Ch   0.0     32\n20411 redis-server *:6   0.0     32\n20428 /Applications/Ch   0.0   1152\n20743 /Applications/Ch   0.0     32\n20744 /Applications/Ch   0.0   1136\n20800 /Users/nandanadi   0.0    352\n20814 /Applications/Ch   0.0   1104\n20982 /Users/nandanadi   0.0   7120\n22347 /Applications/Cu   0.0    496\n22499 /System/Library/   0.0   3760\n22938 /System/Library/   0.0    192\n23470 /System/Library/   0.0   6528\n23784 /Applications/Ch   0.0   1408\n23785 /Applications/Ch   0.0   1392\n23786 /Applications/Ch   0.0  14368\n23787 /Applications/Ch   0.0   1008\n23788 /Applications/Ch   0.0  27536\n24300 /opt/homebrew/op   0.0  13840\n27251 /System/Library/   0.0    192\n28888 /Applications/Wh   0.0     16\n31152 /System/Library/   0.0  10080\n31429 /usr/libexec/wif   0.0  11136\n33490 /System/Library/   0.0  18224\n33502 /System/Library/   0.0  19008\n35256 /Applications/Cu   1.5 382192\n35257 Cursor Helper (P   0.2  41632\n35269 Cursor Helper: f   0.0   8608\n35276 /Applications/Cu   0.0   4832\n35277 /Applications/Cu   0.0   5248\n35278 /Applications/Cu   0.0   4832\n35282 /Applications/Cu   0.0   7712\n35628 .venv/bin/python   0.0   6176\n36491 /usr/sbin/blueto   0.0  20416\n36500 /System/Library/   1.8  81328\n36501 /System/Library/   0.0   2816\n36502 /System/Library/   0.2  45264\n36503 /System/Library/   0.0   5968\n36537 /System/Library/   0.0    992\n36570 /System/Library/   0.1 315152\n37096 /Applications/Cu   0.0   4944\n37181 /System/Cryptexe   0.0   8000\n38059 /System/Library/   0.0  15552\n38064 /usr/libexec/sec   0.0  15728\n38069 /System/Library/  45.2  16416\n38070 /usr/libexec/tru   0.0  12272\n38075 /usr/libexec/tru   0.0  11728\n38100 /usr/sbin/cfpref   0.2   6192\n38112 /usr/sbin/Wirele   0.0   7136\n38137 /usr/libexec/Sid   0.0   4560\n41651 /usr/libexec/con   0.0   6640\n41655 /System/Library/   0.0  24416\n42621 /usr/libexec/wif   0.0    752\n43251 /usr/sbin/BTLESe   0.0   3440\n43456 /System/Applicat   0.0  13200\n43655 /Applications/Ch   0.1 171552\n43659 /Applications/Ch   0.0   1984\n43661 /Applications/Ch   0.0   1984\n43672 /Applications/Ch   0.0  18800\n43673 /Applications/Ch   0.0  42608\n43676 /Applications/Ch   0.0   8704\n43789 /Applications/Ch   0.0   8096\n43792 /Applications/Ch   0.0  36496\n43808 /Applications/Ch   0.0 210256\n43827 /Applications/Ch   0.0  22304\n43840 /System/Library/   0.0  11120\n43850 /Applications/Ch   0.0  40096\n43855 /Applications/Ch   0.0   9232\n43868 /Applications/Ch   0.0   8288\n44147 /Applications/Ch   0.0   2992\n44148 /Applications/Ch   0.0   1552\n44149 /Users/nandanadi   0.0   6112\n44164 /Users/nandanadi   0.0   6016\n44165 /Applications/Ch   0.0   1552\n44166 /Applications/Ch   0.0   3040\n44309 /Users/nandanadi   0.0  16544\n44406 /System/Library/   0.0  13248\n44414 /Applications/Ch   0.0   7376\n44627 /Applications/Ch   0.0  13744\n45031 /System/Library/   0.0  11072\n45034 node               0.0   3664\n45370 /Applications/Ch   0.0   4592\n45372 /Users/nandanadi   0.0   7728\n45598 /System/Library/   0.0   7280\n47008 /System/Library/   0.0  10192\n47481 /Users/nandanadi   0.0   6096\n47482 /Applications/Ch   0.0   1616\n47483 /Applications/Ch   0.0   3120\n48115 /System/Library/   0.0  10720\n48648 /System/Applicat   0.0    144\n48649 /System/Applicat   0.0     16\n48651 /System/Applicat   0.0     32\n48652 /System/Applicat   0.0     96\n48660 /System/Applicat   0.0     16\n48718 /System/Library/   0.0     64\n48781 /System/Applicat   0.0     16\n48782 /System/Applicat   0.0     16\n48788 /System/Applicat   0.0     16\n48793 /System/Applicat   0.0     16\n48799 /System/Applicat   0.0     16\n48822 /System/Applicat   0.0     16\n49447 /System/Library/   0.0   8496\n49581 /System/Library/   0.0 112864\n50083 /System/Applicat   0.0   5488\n50210 /Users/nandanadi   0.0   6112\n50211 /Applications/Ch   0.0   1616\n50212 /Applications/Ch   0.0   3168\n50213 /Applications/Ch   0.0   1616\n50223 /Applications/Ch   0.0   3168\n50367 /System/Cryptexe   0.0  50816\n50415 /Applications/Ch   0.0   1552\n50671 /System/Library/   0.0   6944\n51918 /System/Library/   0.0  30896\n52176 /System/Library/   0.0   2048\n52183 /usr/sbin/distno   0.0    976\n52809 /System/Library/   0.0  12016\n53054 /System/Library/   0.0  25648\n53102 /System/Library/   0.0  13568\n54118 /System/Library/   0.0  17488\n54195 /System/Library/   0.0    576\n54342 adb                0.1   3280\n54352 /Applications/Wi   0.6  43568\n54364 /System/Library/   0.0   9904\n54369 /usr/libexec/due   0.0  57584\n54370 /System/Library/   0.0  19600\n54378 Cursor Helper (P   0.8  91312\n54379 Cursor Helper (P   0.8 127248\n54380 Cursor Helper (P   0.8  63440\n54390 Cursor Helper (P   0.2  85184\n54391 Cursor Helper (P   0.6 125120\n54392 Cursor Helper (P   1.4  76256\n54406 /Applications/Cu   0.0   5888\n54421 /Applications/Cu   0.0   5920\n54707 /usr/sbin/netbio   0.0   3536\n54943 /usr/libexec/ane   0.0   3872\n55004 /System/Applicat   0.0  58480\n55349 /System/Library/   0.0  18320\n55417 /usr/libexec/lin   0.0  13984\n55681 /System/Library/   0.0  29776\n55974 /System/Library/   0.0  12160\n56094 /System/Library/   0.0  18192\n56351 /Applications/Do   0.0  15936\n56357 /System/Library/   2.3 1269760\n56460 /usr/libexec/con   0.0   3936\n56467 /usr/libexec/con   0.0   5264\n56469 /usr/libexec/con   0.0   3920\n56605 /System/Library/   0.0   5616\n56692 /System/Library/   0.0  20544\n56693 /System/Library/   0.0   3984\n56703 /usr/libexec/pkd   0.0  14016\n56730 /System/Library/   0.0  16336\n56733 /System/Library/   0.0  16704\n56740 /System/Library/   0.0  27792\n56741 /usr/libexec/spo   0.0  14064\n56748 /System/Library/   0.0   9040\n56749 /usr/libexec/use   0.0   4704\n56750 /System/Library/   0.0  32448\n56751 /System/Library/   0.0  23056\n56752 /System/Library/   0.0   3152\n56754 /System/Library/   0.0  19536\n56755 /System/Library/   0.0  30800\n56757 /System/Library/   0.0  16144\n56758 /usr/libexec/neh   0.0   6224\n56767 /System/Cryptexe   0.0  18064\n56770 /usr/libexec/nea   0.0  11440\n56776 /usr/libexec/mob   0.0  20208\n56777 /System/Library/   0.0  17056\n56780 /System/Library/   0.0   7968\n56782 /System/Library/   0.0  27408\n56820 /System/Library/   0.0   6000\n56821 /usr/libexec/rou   0.0  35072\n56822 /usr/libexec/sec   0.0  11296\n56823 /System/Library/   0.0   8528\n56824 /System/Library/   0.0  15504\n56825 /System/Library/   0.0  14752\n56827 /System/Library/   0.0  14080\n56828 /System/Library/   0.0  13696\n56829 /System/Library/   0.0  13696\n56837 /usr/libexec/con   0.0   4240\n56843 /usr/libexec/fee   0.0   5872\n56844 /System/Library/   0.0   8944\n56845 /usr/libexec/onl   0.0   3280\n56846 /System/Library/   0.0   7312\n56848 /System/Library/   0.0   7296\n56849 /System/Library/   0.0   6240\n56852 /usr/libexec/tri   0.0   9648\n56853 /usr/libexec/rep   0.0  15872\n56854 /System/Library/   0.0  24144\n56855 /System/Library/   0.0   4736\n56856 /usr/libexec/sir   0.0  27776\n56859 /System/Library/   0.0   5072\n56860 /System/Library/   0.0   3840\n56861 /usr/libexec/tri   0.0  14256\n56862 /usr/libexec/Ass   0.0   4816\n56863 /System/Library/   0.0   3296\n56864 /System/Library/   0.0   2624\n56865 /System/Library/   0.0  11936\n56866 /System/Library/   0.0   3344\n56867 /System/Library/   0.0  19232\n56868 /System/Library/   0.0   2688\n56869 /usr/libexec/sto   0.0   8480\n56870 /System/Library/   0.0   8816\n56872 /usr/libexec/fsk   0.0  10864\n56879 /System/Library/   0.0  45008\n56881 /System/Library/   0.0   6592\n56882 /System/Library/   0.0   9216\n56883 /System/Library/   0.0  10800\n56884 /System/Library/   0.0   7184\n56888 /System/Library/   0.0  30992\n56891 /usr/libexec/nfc   0.0   8576\n56892 /System/Library/   0.0   4896\n56893 /System/Library/   0.0   9152\n56894 /System/Library/   0.0   5568\n56895 /System/Library/   0.0  18400\n56896 /usr/libexec/bio   0.0  10128\n56899 /usr/libexec/net   0.0  22112\n56901 /System/Library/   0.0   3696\n56902 /System/Library/   0.0   5632\n56905 /System/Library/   0.0   5872\n56906 /usr/libexec/swt   0.0   9120\n56907 /System/Library/   0.0   7136\n56908 /System/Library/   0.0   8624\n56909 /usr/libexec/Gam   0.0  28688\n56910 /System/Library/   0.0   2848\n56913 /usr/libexec/san   0.0  11744\n56917 /usr/libexec/osp   0.0  11648\n56918 /System/Library/   0.0  12192\n56956 /usr/libexec/his   0.0  12496\n56961 /usr/libexec/fin   0.0  13168\n56962 /usr/libexec/mob   0.0  11072\n56963 /usr/libexec/fin   0.0  11728\n56964 /usr/libexec/sec   0.0   8672\n56969 /usr/libexec/ass   0.0  10864\n56970 /Users/nandanadi  14.8 821856\n56980 /System/Library/   0.0  14736\n56981 /usr/libexec/pow   0.0   7744\n56984 /usr/libexec/Pow   0.0  13376\n56985 /Users/nandanadi   0.0  19088\n56989 /System/Library/   0.0   9888\n57050 /System/Library/   0.0  13280\n57051 /System/Library/   0.0   8640\n57054 /usr/libexec/rtc   0.0   9728\n57058 /System/Library/   0.0  19008\n57063 /System/Library/   0.0  18496\n57064 /System/Library/   0.0  13488\n57065 /System/Library/   0.0  59696\n57066 /usr/libexec/pro   0.0  20096\n57067 /System/Library/   0.0  28240\n57068 /System/Library/   0.0  47904\n57069 /usr/libexec/kno   0.0  55360\n57070 /System/Library/   0.0   9200\n57071 /usr/libexec/inp   0.0  11328\n57072 /usr/sbin/spindu   0.0   7248\n57073 /usr/libexec/spi   0.0   5024\n57074 /System/Library/   0.0  28256\n57075 /System/Library/  10.7 710304\n57076 /usr/libexec/swc   0.0  13232\n57082 /usr/libexec/dmd   0.0  17056\n57083 /System/Library/   0.0   9856\n57084 /System/Library/   0.0  18736\n57085 /System/Library/   0.0  19024\n57086 /System/Library/   0.0  19856\n57087 /System/Library/   0.0  20816\n57090 /System/Library/   0.0  28384\n57091 /usr/libexec/cor   0.0  34560\n57093 /System/Library/   0.0  30000\n57094 /System/Library/   0.0  18848\n57095 /System/Library/   0.0  28896\n57102 /System/Library/   0.0   6112\n57162 /System/Library/   0.0 210096\n57165 /usr/libexec/sep   0.0   3200\n57205 /System/Library/   0.0  18624\n57206 /System/Library/   0.0  15616\n57207 /System/Library/   0.0  14144\n57208 /usr/libexec/aud   0.0   9568\n57209 /System/Library/   0.0  13008\n57210 /System/Library/   0.0  14240\n57211 /System/Library/   0.0  13248\n57212 /System/Library/   0.0  15072\n57213 /System/Library/   0.0  14736\n57235 /System/Library/   0.0  15408\n57236 /System/Library/   0.0  10240\n57239 /System/Library/   0.0  14608\n57240 /System/Library/   0.0  21904\n57244 /System/Library/   0.0  47120\n57291 /System/Library/   0.0  19120\n57302 /System/Library/   0.0  13248\n57344 /Library/Applica   0.0  43712\n57345 /Library/Privile   0.0  19680\n57347 /System/Library/   0.0  12880\n57423 ps                 0.0   1696\n57473 /usr/sbin/distno   0.0    960\n58783 /usr/libexec/Per   0.0  23456\n59293 /Users/nandanadi   0.0   6176\n59444 /System/Library/   0.0    720\n63331 /System/Library/   0.0   9440\n64572 node               0.0   3408\n65717 /usr/libexec/sea   0.0  16992\n65794 /System/Library/   0.0   1360\n65796 /System/Library/   0.0   1952\n69107 /usr/libexec/key   0.0   2064\n70580 .venv/bin/python   0.0   6160\n70906 /System/Library/   0.0  57728\n71404 /Applications/Ch   0.0   1008\n71405 /Applications/Ch   0.0   2032\n71406 /Users/nandanadi   0.0   5584\n71516 /Applications/Ch   0.0   1968\n73675 /System/Library/   0.0   1376\n75208 /System/Library/   0.0    800\n77062 /System/Library/   0.0   7952\n77622 /System/Library/   0.0   5248\n78093 /Library/Develop   0.0   1488\n80179 /System/Library/   0.0   9936\n80249 /usr/libexec/gam   0.0  12512\n80558 /usr/libexec/apf   0.0    880\n80889 /System/Library/   0.0  19280\n81001 /System/Library/   0.0  13008\n82087 /Applications/Ol   0.0  19824\n82100 /Applications/Ol   0.0  11664\n83702 /System/Library/   0.0   1952\n85582 /System/Library/   0.0   2608\n86140 /System/Library/   0.0   1040\n86662 /System/Library/   0.0   2704\n86677 /System/Library/   0.0   2000\n87583 /System/Cryptexe   0.0   2752\n87810 /System/Library/   0.0   7472\n88840 /usr/sbin/appleh   0.0   2080\n89061 /usr/libexec/ass   0.0   8560\n90198 .venv/bin/python   0.0  10272\n90355 /usr/libexec/tas   0.0     16\n90456 /System/Library/   0.0   6064\n92086 /System/Library/   0.0   5104\n92724 /System/Library/   0.0   5552\n96386 /usr/sbin/BTLESe   0.0   2896\n97179 /System/Applicat   0.0  31536\n99794 /Library/Develop   0.0   1552\n51731 -zsh               0.0     32\n87030 -zsh               0.0    208\n87069 -zsh               0.0     32\n87127 pi                 0.0    464\n 4569 /bin/zsh           0.0     32\n 4570 /bin/zsh           0.0     32\n 4572 /bin/zsh           0.0     32\n 4590 /bin/zsh           0.0    256\n71399 codex              0.0  19328\n 6923 /bin/zsh           0.0     32\n 7100 codex              0.0  18096\n 2834 codex              4.0  42992\n 7773 /bin/zsh           0.0    240\n35258 /bin/zsh           0.0     32\n35537 codex              0.0  21728",
+    "gpu": "FileNotFoundError"
+  }
+}

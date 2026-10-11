@@ -1,0 +1,78 @@
+{
+  "source_score_sha256": "36d08e50cb10699172c06db8959bb7c336dc5d926e09aebdfc85beb008c0e960",
+  "scope": "Descriptive dev quality of this pinned pretrained model on fixed BM25 candidates; no training-overlap claim",
+  "cells": {
+    "scifact/K10": {
+      "queries": 162,
+      "model": {
+        "ndcg_at_10": 0.7045913368555852,
+        "mrr_at_10": 0.6757789535567313
+      },
+      "bm25_prefix": {
+        "ndcg_at_10": 0.678641927176393,
+        "mrr_at_10": 0.640970997452479
+      },
+      "zero_retrieved_positive_queries": 27
+    },
+    "scifact/K50": {
+      "queries": 162,
+      "model": {
+        "ndcg_at_10": 0.7146637919912057,
+        "mrr_at_10": 0.6846683323535175
+      },
+      "bm25_prefix": {
+        "ndcg_at_10": 0.678641927176393,
+        "mrr_at_10": 0.640970997452479
+      },
+      "zero_retrieved_positive_queries": 16
+    },
+    "scifact/K100": {
+      "queries": 162,
+      "model": {
+        "ndcg_at_10": 0.7264802999053072,
+        "mrr_at_10": 0.6939202429943171
+      },
+      "bm25_prefix": {
+        "ndcg_at_10": 0.678641927176393,
+        "mrr_at_10": 0.640970997452479
+      },
+      "zero_retrieved_positive_queries": 10
+    },
+    "nfcorpus/K10": {
+      "queries": 323,
+      "model": {
+        "ndcg_at_10": 0.2759142588946538,
+        "mrr_at_10": 0.49198854980588724
+      },
+      "bm25_prefix": {
+        "ndcg_at_10": 0.2673048612713541,
+        "mrr_at_10": 0.4671838911002997
+      },
+      "zero_retrieved_positive_queries": 122
+    },
+    "nfcorpus/K50": {
+      "queries": 323,
+      "model": {
+        "ndcg_at_10": 0.2958571451358553,
+        "mrr_at_10": 0.5077964519140991
+      },
+      "bm25_prefix": {
+        "ndcg_at_10": 0.2673048612713541,
+        "mrr_at_10": 0.4671838911002997
+      },
+      "zero_retrieved_positive_queries": 91
+    },
+    "nfcorpus/K100": {
+      "queries": 323,
+      "model": {
+        "ndcg_at_10": 0.2972074164494752,
+        "mrr_at_10": 0.5113052238439235
+      },
+      "bm25_prefix": {
+        "ndcg_at_10": 0.2673048612713541,
+        "mrr_at_10": 0.4671838911002997
+      },
+      "zero_retrieved_positive_queries": 86
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "device": "mps",
+  "plan_sha256": "2b54eeeed727e77e89e3f4e589ff4bb78badee59786d3a3c6a44810db73f1df0",
+  "warm_comparison": {
+    "ci95": [
+      1.0813528584458927,
+      1.1982656248684125
+    ],
+    "units": 6,
+    "ratio": 1.1371005245075914,
+    "independent_unit": "session mean log ratio",
+    "paired_repetitions": 18,
+    "interval_interpretation": "Unadjusted exploratory 95% interval",
+    "practical_primary_gain": true
+  },
+  "scope": "One ordered fresh software-cache startup pair; GPU driver cache unknown; startup CI unavailable. Model setup includes imports and storage effects. Warm saving uses matched K100 requests; not an HTTP or fully cold hardware break-even.",
+  "startup_artifact_sha256": {
+    "stock": "25566877ca4d8e21ace7a1655e60a9d662f2182c35bcc589dc9516552efba424",
+    "compiled": "f87ce790e97194da7b12cae39bdb49753574bde4f0b65e3d14858f1f2f6abdcf"
+  },
+  "status": "DIAGNOSTIC_ONLY",
+  "median_warm_seconds_saved_per_K100_query": 0.15751454300334444,
+  "first_score_overhead_seconds": 7.173867458011955,
+  "total_startup_difference_seconds": 6.411907374858856,
+  "first_score_amortization_queries": 45.54415942316917,
+  "total_startup_amortization_queries": 40.706764293648206
+}

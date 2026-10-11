@@ -1,0 +1,11 @@
+{
+  "query": [
+    "scifact",
+    "340"
+  ],
+  "k": 100,
+  "batch": 16,
+  "length": 512,
+  "reference": "Separate profile.py selects first frozen sweep fixture; CPU/GPU stage percentages are for this query only",
+  "plan_sha256": "2b54eeeed727e77e89e3f4e589ff4bb78badee59786d3a3c6a44810db73f1df0"
+}

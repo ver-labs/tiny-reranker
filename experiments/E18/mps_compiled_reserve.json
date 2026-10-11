@@ -1,0 +1,86 @@
+{
+  "status": "COMPLETE",
+  "device": "mps",
+  "path": "compiled",
+  "queries": 421,
+  "pairs": 42100,
+  "seconds": 309.3113855840638,
+  "plan_sha256": "2b54eeeed727e77e89e3f4e589ff4bb78badee59786d3a3c6a44810db73f1df0",
+  "artifact": "scores/mps_compiled_reserve.jsonl.gz",
+  "artifact_sha256": "47279196ec0673ded7ecf2e9d928258fb1f9359f7fc522a11eab419071a54f9c",
+  "interpretation": "One confirmation pass; file writes and ranking included in wall time; not a repeated direct performance endpoint",
+  "accuracy": {
+    "strict_numerical_pass": true,
+    "application_pass": true,
+    "absolute_error": {
+      "min": 0.0,
+      "p25": 0.0,
+      "median": 4.76837158203125e-07,
+      "p75": 9.5367431640625e-07,
+      "p95": 1.9073486328125e-06,
+      "p99": 2.86102294921875e-06,
+      "max": 7.152557373046875e-06
+    },
+    "relative_error_floor_1e-3": {
+      "min": 0.0,
+      "p25": 0.0,
+      "median": 8.688191284098486e-08,
+      "p75": 1.7453893293718062e-07,
+      "p95": 5.48689119034173e-07,
+      "p99": 2.27948750738269e-06,
+      "max": 0.00042695889631125304
+    },
+    "cells": {
+      "scifact/K100": {
+        "queries": 130,
+        "full_ranking_changed": 0,
+        "top1_changed": 0,
+        "top10_membership_changed": 0,
+        "top10_order_changed": 0,
+        "ndcg_delta": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "units": 130
+        },
+        "mrr_delta": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "units": 130
+        },
+        "application_pass": true
+      },
+      "nfcorpus/K100": {
+        "queries": 291,
+        "full_ranking_changed": 2,
+        "top1_changed": 0,
+        "top10_membership_changed": 0,
+        "top10_order_changed": 0,
+        "ndcg_delta": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "units": 291
+        },
+        "mrr_delta": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "units": 291
+        },
+        "application_pass": true
+      }
+    },
+    "per_query_artifact": "scores/mps_compiled_reserve_deltas.json.gz",
+    "per_query_artifact_sha256": "72b6b9f4ad2fb9d4032cd3a276ee3990ad7de4ee4229eff5f4b4ad4d34f50525"
+  }
+}

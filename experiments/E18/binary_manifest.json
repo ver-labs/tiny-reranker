@@ -1,0 +1,15 @@
+{
+  "rust_coordinator": {
+    "path": "experiments/E18/rust-server/target/release/tiny-reranker-server",
+    "sha256": "51ef2b091d1ab94adf9873000989add8db5aec8b0f69b8ba7cdae257c59cd26d",
+    "relative_to": "repository"
+  },
+  "scope": "Local measured Rust binary rehashed after collection; CUDA library hash/size recorded by remote GPU preflight, not present locally",
+  "cuda_custom": {
+    "sha256": "081a81d4b2165abc88994a748e8fba9e329f76c03cb0de1bfa648ca69993421b",
+    "bytes": 1016352,
+    "path": "residual_norm.so",
+    "compiler": "Official NVIDIA nvcc 12.6.85; static cudart",
+    "relative_to": "remote experiments/E18"
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "scope": "Derived throughput from three separately timed CPU tokenization stages on selected K100 query; one hot process, not independent performance repetitions or all-query throughput. GPU work excluded from each tokenization timer.",
+  "profiles": {
+    "mps_stock_profile": {
+      "profile_sha256": "872d8b6b3c3587341788a53c820ab733a301e8efdeadd0ad926a699113ffa7c8",
+      "query": {
+        "dataset": "scifact",
+        "query_id": "340"
+      },
+      "pairs_per_observation": 100,
+      "observations": [
+        {
+          "seconds": 0.06309245782904327,
+          "pairs_per_second": 1584.9755016829781
+        },
+        {
+          "seconds": 0.062389498576521873,
+          "pairs_per_second": 1602.8338467466308
+        },
+        {
+          "seconds": 0.05025062710046768,
+          "pairs_per_second": 1990.0249165063515
+        }
+      ]
+    },
+    "mps_mlx_profile": {
+      "profile_sha256": "c3492517f489fcff294c41d733f550d2adeb0043918e03b833b8ea28e45b3a70",
+      "query": {
+        "dataset": "scifact",
+        "query_id": "340"
+      },
+      "pairs_per_observation": 100,
+      "observations": [
+        {
+          "seconds": 0.04297199775464833,
+          "pairs_per_second": 2327.0968357337515
+        },
+        {
+          "seconds": 0.050696000922471285,
+          "pairs_per_second": 1972.5421765107008
+        },
+        {
+          "seconds": 0.046394624980166554,
+          "pairs_per_second": 2155.4220999253566
+        }
+      ]
+    },
+    "cuda_stock_profile": {
+      "profile_sha256": "aa37fb0a49cec9c62ba0787df79bc0f5a93b79849797d7d91aed0e8464734595",
+      "query": {
+        "dataset": "scifact",
+        "query_id": "340"
+      },
+      "pairs_per_observation": 100,
+      "observations": [
+        {
+          "seconds": 0.13412002101540565,
+          "pairs_per_second": 745.6008375402322
+        },
+        {
+          "seconds": 0.13392878137528896,
+          "pairs_per_second": 746.6654961922238
+        },
+        {
+          "seconds": 0.13455891981720924,
+          "pairs_per_second": 743.1688671092514
+        }
+      ]
+    }
+  }
+}

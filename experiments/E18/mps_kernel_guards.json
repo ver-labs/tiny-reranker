@@ -1,0 +1,17 @@
+{
+  "device": "mps",
+  "scope": "Correctness only, no performance measurements",
+  "cases": [
+    {
+      "case": "strided_inputs_explicitly_packed",
+      "path": "metal",
+      "passed": true,
+      "max_abs_error": 4.792206125259213e-07
+    },
+    {
+      "case": "fp16_rejected",
+      "passed": true
+    }
+  ],
+  "status": "VERIFIED"
+}

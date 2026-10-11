@@ -1,0 +1,29 @@
+{
+  "mps_amortization": {
+    "status": "VERIFIED",
+    "paired_repetitions": 18,
+    "artifact_sha256": "3a5d74034b42c4777125b3b5a5ddf88a40b961fc78a152069d52caa507b80bda"
+  },
+  "cuda_amortization": {
+    "status": "VERIFIED",
+    "paired_repetitions": 15,
+    "artifact_sha256": "37d6534cd953581f52d838e65e046f7936bfade40b2c684999dfecac0f0f8d9c"
+  },
+  "tokenizer_profile": {
+    "status": "VERIFIED",
+    "artifact_sha256": "526b32b645ee249612fecb9a8cceb4fc9b5bbe663389cffef82e6095647017ae"
+  },
+  "rust_binary": {
+    "status": "VERIFIED",
+    "sha256": "51ef2b091d1ab94adf9873000989add8db5aec8b0f69b8ba7cdae257c59cd26d"
+  },
+  "cuda_binary": {
+    "status": "REMOTE_RECORDED_NOT_LOCALLY_REHASHED",
+    "sha256": "081a81d4b2165abc88994a748e8fba9e329f76c03cb0de1bfa648ca69993421b"
+  },
+  "plots": {
+    "status": "VISUALLY_INSPECTED",
+    "count": 7,
+    "checks": "Scope, units, repetition/session variation, axis labels, clipping and unsupported cross-device interpretations"
+  }
+}

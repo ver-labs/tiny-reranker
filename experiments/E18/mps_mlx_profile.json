@@ -1,0 +1,70 @@
+{
+  "device": "mps",
+  "path": "mlx",
+  "plan_sha256": "2b54eeeed727e77e89e3f4e589ff4bb78badee59786d3a3c6a44810db73f1df0",
+  "dataset": "scifact",
+  "query_id": "340",
+  "k": 100,
+  "batch": 16,
+  "length": 512,
+  "scope": "Synchronized stage wall time, three diagnostic passes; not GPU kernel time",
+  "stages_seconds": [
+    {
+      "tokenization": 0.04297199775464833,
+      "transfer_or_array": 0.00030479091219604015,
+      "forward": 1.4893522921483964,
+      "cpu_scores": 0.00011937553063035011,
+      "sorting": 5.050003528594971e-05,
+      "serialization": 6.88331201672554e-05
+    },
+    {
+      "tokenization": 0.050696000922471285,
+      "transfer_or_array": 0.00024045794270932674,
+      "forward": 1.5747864157892764,
+      "cpu_scores": 3.558420576155186e-05,
+      "sorting": 3.4250086173415184e-05,
+      "serialization": 6.491714157164097e-05
+    },
+    {
+      "tokenization": 0.046394624980166554,
+      "transfer_or_array": 0.00024821097031235695,
+      "forward": 1.2173835411667824,
+      "cpu_scores": 7.458287291228771e-05,
+      "sorting": 2.9999995604157448e-05,
+      "serialization": 5.483301356434822e-05
+    }
+  ],
+  "dispatch": {
+    "framework": "MLX",
+    "execution_device": "Device(gpu, 0)",
+    "attention": "mx.fast.scaled_dot_product_attention",
+    "compiled": false,
+    "custom_sites": 0,
+    "observed_fused_attention_sites": 0,
+    "observed_math_attention_softmax_sites": 6,
+    "graph_file": "traces/mps_mlx_dispatch.dot",
+    "observed_primitives": {
+      "Broadcast": 76,
+      "NotEqual": 1,
+      "ExpandDims": 2,
+      "Gather": 3,
+      "Squeeze": 5,
+      "Add": 20,
+      "Arange": 1,
+      "LayerNorm": 13,
+      "Reshape": 96,
+      "Transpose": 68,
+      "AddMM": 38,
+      "Multiply": 18,
+      "Matmul": 12,
+      "Select": 6,
+      "Softmax": 6,
+      "Divide": 6,
+      "Erf": 6,
+      "Slice": 1,
+      "Tanh": 1
+    },
+    "python_custom_calls": 0
+  },
+  "gpu_trace": {}
+}

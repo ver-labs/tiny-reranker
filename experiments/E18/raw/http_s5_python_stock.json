@@ -1,0 +1,719 @@
+{
+  "session": 5,
+  "coordinator": "python",
+  "path": "stock",
+  "plan_sha256": "2b54eeeed727e77e89e3f4e589ff4bb78badee59786d3a3c6a44810db73f1df0",
+  "environment": {
+    "utc": "2026-10-10T23:12:42.994372+00:00",
+    "platform": "macOS-26.5.2-arm64-arm-64bit",
+    "python": "3.12.13 (main, Jun 23 2026, 15:44:24) [Clang 22.1.3 ]",
+    "execution_environment": {
+      "PYTORCH_ENABLE_MPS_FALLBACK": "0",
+      "MLX_ENABLE_TF32": "0",
+      "TOKENIZERS_PARALLELISM": "false"
+    },
+    "packages": {
+      "torch": "2.14.1",
+      "transformers": "5.18.0",
+      "numpy": "2.5.3",
+      "httpx": "0.28.1",
+      "safetensors": "0.8.0"
+    },
+    "isolation": "No continuous hardware isolation verified",
+    "source_commit": "303a3472e1a810b2c0ced397efebf9f223f88eed",
+    "hardware": "2026-10-11 04:42:43.155 system_profiler[81148:51368020] hw.cpufamily: 0x1d5a87e8\nHardware:\n\n    Hardware Overview:\n\n      Model Name: MacBook Air\n      Model Identifier: Mac17,3\n      Model Number: MDHK4HN/A\n      Chip: Apple M5\n      Total Number of Cores: 10 (4 Super and 6 Efficiency)\n      Memory: 24 GB\n      System Firmware Version: 18000.121.3\n      OS Loader Version: 18000.121.3\n      Activation Lock Status: Enabled\n",
+    "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22937699)\t100%; charged; 0:00 remaining present: true",
+    "thermal": "Note: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded",
+    "processes": "  PID COMM              %CPU    RSS\n    1 /sbin/launchd      0.6  19392\n  239 .venv/bin/python   0.0   1808\n  336 /usr/libexec/log   1.6  13824\n  338 /usr/libexec/Use   0.1   7536\n  340 /System/Library/   0.0   4896\n  341 /System/Library/   0.0   4848\n  344 /usr/sbin/system   0.0   5248\n  348 /usr/libexec/con   0.0   4432\n  350 /System/Library/   0.0   5984\n  351 /usr/libexec/IOM   0.0    144\n  355 /usr/libexec/rem   0.0   1504\n  359 /System/Library/   0.0   1504\n  361 /usr/libexec/wat   0.0   1104\n  365 /System/Library/   0.0  13616\n  367 /usr/libexec/ker   0.0    912\n  368 /usr/libexec/dis   0.0   3376\n  372 /usr/sbin/syslog   0.0    368\n  374 /usr/libexec/the   0.0   1568\n  375 /System/Library/   0.0   6256\n  376 /usr/libexec/xpr   0.0    800\n  377 /usr/libexec/ope   0.2   7792\n  378 /System/Library/   0.2   9568\n  379 /System/Library/   0.4  10752\n  380 /usr/libexec/tim   0.0   2320\n  382 /usr/sbin/securi   0.0   4576\n  384 /usr/libexec/loc   1.8  15504\n  385 /usr/libexec/nes   0.0   2112\n  387 autofsd            0.0     96\n  388 /usr/libexec/das   0.0  17744\n  389 /usr/libexec/cor   0.0   1600\n  391 /usr/sbin/distno   0.0   2272\n  395 /System/Library/   0.0   1728\n  396 /System/Library/   0.0   2304\n  397 /usr/sbin/Kernel   0.0    128\n  402 /usr/sbin/notify   0.4   4560\n  404 /usr/libexec/cor   0.0   4512\n  405 /usr/libexec/Air   0.0   2064\n  406 /System/Library/   0.0   5744\n  409 /System/Library/   0.2  30960\n  411 /usr/sbin/cfpref   0.1   4720\n  412 /System/Library/   0.0  25936\n  415 /System/Library/   0.0   2672\n  416 /usr/libexec/run   0.0  13744\n  418 /usr/sbin/coreau   0.4   6576\n  419 /usr/sbin/mDNSRe   0.0   9616\n  423 /usr/libexec/nsu   0.0   7408\n  425 /usr/libexec/lsd   0.0   9872\n  431 /System/Library/   0.0   7424\n  437 /usr/libexec/eli   0.0   2784\n  447 /usr/sbin/distno   0.0    960\n  452 /usr/libexec/air   2.1  16400\n  453 /usr/sbin/distno   0.0   1200\n  459 /usr/libexec/sym   0.0   7472\n  479 /usr/sbin/distno   0.0   1216\n  482 /System/Library/   0.2   5776\n  495 /usr/libexec/sys   0.2   7472\n  503 /usr/sbin/mDNSRe   0.0    640\n  512 /usr/libexec/App   0.0    432\n  518 Core Audio Drive   0.0   2016\n  521 /usr/libexec/aud   0.0   3616\n  528 /usr/libexec/aud   0.0   1792\n  532 /usr/sbin/distno   0.0   1184\n  534 /usr/libexec/com   0.0   2000\n  538 /usr/libexec/cam   0.0   5248\n  539 /System/Library/   0.0   2208\n  540 /System/Library/   0.0   2640\n  544 /Library/Privile   0.0    416\n  545 Core Audio Drive   0.0    736\n  554 /System/Library/   0.0    624\n  557 /System/Library/   0.0   1088\n  559 /usr/libexec/mod   0.0   4592\n  565 /usr/sbin/distno   0.0   1168\n  569 /System/Library/   0.0  17840\n  571 /System/Library/   0.0   2256\n  578 /usr/sbin/distno   0.0   1184\n  586 /usr/libexec/sea   0.4  13760\n  587 /usr/sbin/distno   0.0    960\n  588 /usr/sbin/distno   0.0   1136\n  597 /System/Library/   0.0   3488\n  601 /usr/sbin/distno   0.0   3872\n  609 /usr/sbin/distno   0.0    896\n  611 /usr/libexec/Use   0.0   4304\n  616 /System/Library/   0.0   6768\n  623 /usr/sbin/univer   0.0   4912\n  624 /usr/libexec/Con   0.0   8304\n  626 /usr/libexec/pbo   0.0   2864\n  629 /usr/libexec/lsd   0.0   7152\n  638 /usr/libexec/nsu   0.0  18128\n  639 /usr/libexec/rap   0.0  11440\n  640 /usr/sbin/userno   0.0   9264\n  643 /System/Library/   0.0   4432\n  645 /System/Library/   0.0   2832\n  646 /usr/sbin/distno   0.0   1184\n  651 /System/Library/   0.0   5888\n  659 /System/Library/   0.0  18064\n  663 /System/Library/   0.0   1888\n  669 /System/Library/   0.0   1168\n  671 /System/Library/   0.0   3968\n  674 /usr/libexec/sha   0.0  17824\n  677 /System/Library/   0.0   1360\n  684 /System/Library/   0.0   8912\n  689 /System/Library/   0.0   4880\n  697 /System/Library/   0.0  11584\n  707 /System/Library/   0.0   3472\n  709 /System/Library/   0.3  13056\n  711 /System/Library/   0.0   5728\n  712 /System/Library/   1.2  40048\n  713 /System/Library/   0.0   6784\n  715 /System/Library/   0.0  28032\n  719 /usr/sbin/distno   0.0   1200\n  720 /System/Library/   0.0   6304\n  723 /System/Library/   0.0   5744\n  726 /usr/sbin/fileco   0.0   4048\n  731 /System/Library/   0.0   2368\n  733 automountd         0.0    112\n  744 /System/Library/   0.0  10416\n  748 /usr/libexec/ros   0.0   1104\n  754 /System/Library/   0.0   1856\n  757 /usr/libexec/nea   0.0   7360\n  762 /System/Library/   0.0  23312\n  765 /System/Library/   0.7   8656\n  766 /System/Library/   0.0  10272\n  773 /System/Library/   0.0  16528\n  774 /System/Library/   0.0   3440\n  776 /System/Library/   0.0   5952\n  777 /System/Library/   0.0   5904\n  778 /System/Library/   0.0  19280\n  787 /System/Library/   0.0   6224\n  801 /System/Library/   0.0  16192\n  803 /usr/sbin/distno   0.0   1152\n  804 /System/Applicat   0.0   3392\n  810 /System/Library/   0.0   7328\n  816 /System/Library/   0.0   1760\n  818 /System/Library/   0.0   7968\n  837 /System/Library/   0.0    896\n  838 /usr/libexec/avc   0.0   8128\n  851 /System/Library/   0.0   2048\n  853 /System/Library/   0.0   7120\n  858 /System/Library/   0.0   7248\n  867 /System/Library/   0.0    192\n  883 /System/Library/   0.0   1248\n  897 /System/Library/   0.0   2512\n  911 /System/Library/   0.0   3552\n  923 /System/Library/   0.0    992\n  930 /usr/sbin/distno   0.0   1168\n  961 /usr/sbin/distno   0.0   1136\n  963 /System/Library/   0.0   2240\n 1034 /System/Library/   0.0   1328\n 1958 /Applications/Do   0.0   6688\n 1961 /Applications/Do   0.0  56304\n 1962 /Applications/Do   0.0   4624\n 1978 /Applications/Do   0.0  10528\n 1980 /Applications/Do   0.0  43264\n 1983 /Applications/Do   0.0    704\n 2003 /Applications/Do   0.0   8064\n 2004 /Applications/Do   0.0   5472\n 2050 /Applications/Do   0.0   4160\n 2078 /opt/homebrew/op   0.0     32\n 2084 /System/Library/   0.0   4640\n 2085 com.apple.weathe   0.0  38864\n 2087 /System/Library/   0.0   5024\n 2088 /System/Library/   0.0   5984\n 2090 /System/Library/   0.0    784\n 2096 /Applications/Ta   0.0  13664\n 2105 /System/Library/   0.0    528\n 2110 /Library/SystemE   0.0  25456\n 2135 /usr/sbin/distno   0.0   1216\n 2163 /usr/sbin/distno   0.0   1232\n 2356 caffeinate         0.0    640\n 2510 /Users/nandanadi   0.0   2064\n 2971 /Applications/Ch   0.0   1360\n 2972 /Applications/Ch   0.0   1008\n 2978 /Applications/Ch   0.0   1760\n 3161 /usr/sbin/system   0.0   1056\n 3658 /System/Library/   0.0    928\n 4099 /usr/sbin/distno   0.0   1248\n 4323 /Applications/Cu   0.0  90400\n 4419 /Applications/Cu   0.0    784\n 4420 /Applications/Cu   0.0  10144\n 4422 /Applications/Cu   0.0  10976\n 4434 Cursor Helper: s   0.0  17488\n 4435 /Applications/Cu   1.3  70032\n 4436 /Applications/Cu   2.1 192432\n 4537 Cursor Helper: m   0.0  12400\n 4538 Cursor Helper: t   0.1  36208\n 4539 Cursor Helper (P   0.4  37408\n 4551 Cursor Helper (P   0.2  32240\n 4552 Cursor Helper: f   0.4  16464\n 4558 /Applications/Cu   0.0   5040\n 4559 Cursor Helper: f   0.0   7552\n 4581 /Applications/Cu   0.0   3120\n 4874 /Applications/Cu   0.0   3168\n 5340 /System/Library/   0.0    400\n 5507 /System/Library/  60.6   8368\n 5634 /Library/Develop   0.0   1520\n 7002 /System/Library/   0.0   7296\n 7251 <defunct>          0.0      0\n 8321 /opt/homebrew/op   0.0   1648\n 8338 postgres: checkp   0.0    320\n 8339 postgres: backgr   0.0    512\n 8341 postgres: walwri   0.0    352\n 8342 postgres: autova   0.0   2160\n 8344 postgres: logica   0.0    976\n 9769 /usr/sbin/distno   0.0   1120\n 9770 /System/Library/   0.0   3216\n 9771 /System/Library/   0.0   2976\n 9772 /System/Library/   0.0   2096\n10382 /Applications/Cu   0.0    928\n10707 /System/Library/   0.0   2224\n10722 /usr/bin/ssh-age   0.0    112\n10818 /opt/homebrew/bi   0.0   3120\n12876 /Applications/Cu   0.1   7728\n15974 /System/Library/   0.0   7200\n20039 /System/Library/   0.0   5712\n20216 /Users/nandanadi   0.0  24192\n20252 /System/Volumes/   0.0  71392\n20268 /System/Library/   0.0  17776\n20280 /System/Library/   0.0   2816\n20291 /Applications/Ch   0.0    464\n20292 /Applications/Ch   0.0     32\n20411 redis-server *:6   0.0     32\n20428 /Applications/Ch   0.0    464\n20743 /Applications/Ch   0.0     32\n20744 /Applications/Ch   0.0    448\n20800 /Users/nandanadi   0.0    304\n20814 /Applications/Ch   0.0    448\n20982 /Users/nandanadi   0.0    192\n22347 /Applications/Cu   0.0    496\n22499 /System/Library/   0.0   2656\n22938 /System/Library/   0.0    192\n23470 /System/Library/   0.0   5840\n23784 /Applications/Ch   0.0   1216\n23785 /Applications/Ch   0.0   1216\n23786 /Applications/Ch   0.0   7248\n23787 /Applications/Ch   0.0   1008\n23788 /Applications/Ch   0.0  15328\n24300 /opt/homebrew/op   0.0   5056\n27251 /System/Library/   0.0    192\n28888 /Applications/Wh   0.0     16\n33490 /System/Library/   0.0   9616\n33502 /System/Library/   0.0   9360\n35256 /Applications/Cu   1.1  70144\n35257 Cursor Helper (P   0.4  21680\n35269 Cursor Helper: f   0.0   7488\n35276 /Applications/Cu   0.0   4224\n35277 /Applications/Cu   0.0   4160\n35278 /Applications/Cu   0.0   5200\n35282 /Applications/Cu   0.0   4352\n35628 .venv/bin/python   0.0   6176\n36491 /usr/sbin/blueto   0.0  15600\n36500 /System/Library/   0.0  14992\n36501 /System/Library/   0.0   2432\n36502 /System/Library/   0.4  38352\n36503 /System/Library/   0.0   5680\n36537 /System/Library/   0.0    976\n36570 /System/Library/   0.0  32160\n37096 /Applications/Cu   0.0   3824\n37181 /System/Cryptexe   0.0   4112\n38059 /System/Library/   0.0   9696\n38064 /usr/libexec/sec   0.3  13408\n38069 /System/Library/  45.6   8480\n38070 /usr/libexec/tru   0.0   8176\n38075 /usr/libexec/tru   0.1   8240\n38100 /usr/sbin/cfpref   0.1   4320\n38112 /usr/sbin/Wirele   0.0   4912\n41651 /usr/libexec/con   0.0   4944\n41655 /System/Library/   0.0  15280\n42621 /usr/libexec/wif   0.0    752\n43456 /System/Applicat   0.0   8272\n43655 /Applications/Ch   0.1 131008\n43659 /Applications/Ch   0.0   1824\n43661 /Applications/Ch   0.0   1824\n43672 /Applications/Ch   0.0  15584\n43673 /Applications/Ch   0.0  39792\n43676 /Applications/Ch   0.0   7088\n43789 /Applications/Ch   0.0   6080\n43792 /Applications/Ch   0.0  17216\n43808 /Applications/Ch   0.0 180912\n43827 /Applications/Ch   0.0  17872\n43840 /System/Library/   0.0   8128\n43850 /Applications/Ch   0.0  20992\n43855 /Applications/Ch   0.0   6416\n43868 /Applications/Ch   0.0   6512\n44309 /Users/nandanadi   0.0  12976\n44406 /System/Library/   0.0  13376\n44414 /Applications/Ch   0.0   5776\n44627 /Applications/Ch   0.0   9648\n45031 /System/Library/   0.0   4112\n45034 node               0.0   3024\n45370 /Applications/Ch   0.0   2576\n45372 /Users/nandanadi   0.0   6432\n45598 /System/Library/   0.0   5760\n47008 /System/Library/   0.0   6288\n48115 /System/Library/   0.0   5664\n48648 /System/Applicat   0.0    144\n48649 /System/Applicat   0.0     16\n48651 /System/Applicat   0.0     32\n48652 /System/Applicat   0.0     96\n48660 /System/Applicat   0.0     16\n48718 /System/Library/   0.0     64\n48781 /System/Applicat   0.0     16\n48782 /System/Applicat   0.0     16\n48788 /System/Applicat   0.0     16\n48793 /System/Applicat   0.0     16\n48799 /System/Applicat   0.0     16\n48822 /System/Applicat   0.0     16\n49447 /System/Library/   0.0   6240\n49581 /System/Library/   0.0  19440\n50083 /System/Applicat   0.0   5728\n50367 /System/Cryptexe   0.0   2032\n50415 /Applications/Ch   0.0   1408\n50671 /System/Library/   0.0   5744\n52176 /System/Library/   0.0   2528\n52183 /usr/sbin/distno   0.0   1168\n52809 /System/Library/   0.0   6752\n53054 /System/Library/   0.0  16416\n53102 /System/Library/   0.0  16928\n54195 /System/Library/   0.0    576\n54342 adb                0.0   2848\n54352 /Applications/Wi   0.6  26720\n54364 /System/Library/   0.0   7520\n54707 /usr/sbin/netbio   0.0   1744\n55004 /System/Applicat   0.2  20096\n56351 /Applications/Do   0.0   8480\n56357 /System/Library/   2.9 546144\n57473 /usr/sbin/distno   0.0    960\n58499 /System/Library/   0.0   6464\n58517 /usr/libexec/due   0.0   9568\n58598 /System/Applicat   0.0  11200\n59293 /Users/nandanadi   0.0   6176\n59444 /System/Library/   0.0    720\n59834 /usr/libexec/mil   0.0   3440\n60252 /Applications/Ch   0.0   1600\n60253 /Users/nandanadi   0.0   6176\n60254 /Applications/Ch   0.0   1600\n60255 /Applications/Ch   0.0   2192\n60257 /Applications/Ch   0.0   2192\n60746 /Applications/Go   0.0  29664\n60756 /Applications/Go   0.0   2208\n60779 /Applications/Go   0.0  12656\n60782 /Applications/Go   0.0  10624\n60785 /Applications/Go   0.0   6608\n60844 /System/Library/   0.0   8112\n60910 /Applications/Go   0.0   8928\n63241 /System/Library/   0.0  10896\n63272 /System/Applicat   0.0  24672\n63279 /System/Library/   0.0   4496\n63285 /System/Library/   0.0   3600\n63331 /System/Library/   0.0   4464\n63533 /System/Library/   0.0   7296\n64572 node               0.0   2800\n64629 /usr/libexec/bio   0.0   5232\n65430 /System/Library/   0.0   5312\n65458 /System/Library/   0.0   3280\n65717 /usr/libexec/sea   0.0   6320\n65794 /System/Library/   0.0    704\n65796 /System/Library/   0.0    704\n66341 /usr/libexec/Sid   0.0   4400\n66413 /usr/libexec/Per   0.1  12336\n68319 /System/Library/   0.0   9664\n68710 /System/Library/   0.0   8640\n69107 /usr/libexec/key   0.0   2832\n69441 /System/Library/   0.0   3472\n70580 .venv/bin/python   0.0   6160\n70906 /System/Library/   0.0  26112\n71404 /Applications/Ch   0.0   1008\n71405 /Applications/Ch   0.0   1360\n71406 /Users/nandanadi   0.0   5584\n71516 /Applications/Ch   0.0   1360\n72833 /System/Library/   0.0   7680\n73675 /System/Library/   0.0    704\n75208 /System/Library/   0.0    784\n77062 /System/Library/   0.0   6448\n77622 /System/Library/   0.0   3856\n78093 /Library/Develop   0.0   1488\n78846 /System/Library/   0.0  25376\n79511 /System/Library/   0.0   8912\n79512 /System/Library/   0.0   8784\n79748 /usr/libexec/use   0.0   4304\n80084 /usr/libexec/sec   0.0   7008\n80179 /System/Library/   0.0   7408\n80249 /usr/libexec/gam   0.0  11104\n80372 /usr/libexec/mob   0.0   9744\n80441 /usr/libexec/lin   0.0  11744\n80558 /usr/libexec/apf   0.0   1072\n80685 /usr/libexec/con   0.0   5472\n80723 /System/Library/   0.0  10400\n80807 /usr/libexec/aud   0.0   6576\n80824 /System/Library/   0.0   8768\n80833 /usr/libexec/rou   0.0  22496\n80836 /System/Library/   0.0   9040\n80847 /System/Library/   0.0  28912\n80889 /System/Library/   0.1  12544\n80918 /usr/libexec/con   0.0   3504\n80924 /usr/sbin/cfpref   0.0   2912\n80928 /usr/libexec/con   0.0   3504\n80929 /usr/libexec/con   0.0   3504\n80938 /System/Library/   0.0  22816\n80939 /System/Library/   0.0   9872\n80940 /usr/libexec/kno   0.0  25584\n80945 /System/Library/   0.0   4640\n80949 /System/Library/   0.0  29856\n80959 /usr/libexec/rep   0.0  16512\n80962 /System/Library/   0.0  16880\n80963 /System/Library/   0.0  42352\n80964 /usr/libexec/neh   0.0   4352\n80970 /System/Library/   0.0  23200\n80974 /usr/libexec/nfc   0.0   5936\n80975 /System/Library/   0.0   3888\n80976 /usr/sbin/cfpref   0.0   2896\n80977 /System/Library/   0.0   3808\n80978 /System/Library/   0.0  20208\n80979 /usr/libexec/pkd   0.0  14304\n80980 /System/Library/   0.0   2288\n80983 /usr/libexec/tri   0.0   9136\n80984 /usr/libexec/Ass   0.0   5712\n80985 /System/Library/   0.0   2656\n80986 /System/Library/   0.0   3328\n80987 /usr/libexec/tri   0.0  11808\n80988 /System/Library/   0.0   3360\n80989 /usr/libexec/spo   0.0  11600\n80990 /System/Library/   0.0   3952\n80991 /System/Library/   0.0   6784\n80992 /System/Library/   0.0  12160\n80993 /System/Library/   0.0   3248\n80994 /usr/libexec/sto   0.6   9072\n80999 /System/Library/   0.0   4816\n81001 /System/Library/   0.0   9696\n81002 /usr/libexec/onl   0.0   2336\n81003 /System/Library/   0.0   7920\n81004 /usr/libexec/fsk   0.0  10832\n81007 /System/Library/   0.0   5040\n81008 /System/Library/   0.0   6784\n81011 /usr/libexec/his   0.0   6272\n81012 /System/Library/   0.0  16752\n81013 /System/Library/   0.0   6560\n81023 /usr/sbin/cfpref   0.0   2848\n81024 /usr/sbin/cfpref   0.0   2800\n81025 /usr/sbin/cfpref   0.0   2784\n81026 /usr/sbin/cfpref   0.0   2768\n81027 /usr/sbin/cfpref   0.0   2784\n81028 /System/Library/   0.0  16560\n81030 /usr/libexec/nea   0.0   7616\n81031 /System/Library/   0.0  21552\n81032 /System/Library/   0.0   8880\n81033 /System/Library/   0.0   2032\n81034 /usr/libexec/sec   0.0   5056\n81037 /System/Library/   0.0  11648\n81039 /usr/libexec/san   0.0   4960\n81040 /System/Library/   0.0  17168\n81041 /System/Library/   0.0   5600\n81042 /System/Library/   0.0   8928\n81045 /usr/libexec/ass   0.0   5136\n81046 cloudphotod        0.0  15104\n81047 /usr/libexec/fee   0.0   5936\n81048 /System/Library/   0.0  16000\n81049 /System/Library/   0.0  14160\n81055 /usr/libexec/gam   0.0   7808\n81056 /usr/libexec/pro   0.0  12544\n81059 /System/Library/   0.0  24704\n81060 /usr/libexec/fin   0.0  14336\n81061 /System/Library/   0.0  20432\n81062 /System/Library/   0.0   9952\n81063 /System/Library/   0.0  10752\n81064 /System/Cryptexe   0.2  13312\n81067 /usr/libexec/gam   0.0   6928\n81068 /System/Library/   0.0  14464\n81069 /System/Library/   0.0  11728\n81070 /System/Library/   0.0   9040\n81071 /System/Library/   0.0   9712\n81072 /System/Library/   0.0   9200\n81073 /System/Library/   0.0  10576\n81074 /usr/libexec/osp   0.0   8112\n81075 /System/Library/   0.0   7584\n81078 /usr/libexec/sys   0.0   1856\n81086 /System/Library/   0.0  21104\n81087 /System/Library/   0.0   2272\n81088 /usr/libexec/sir   0.0  17184\n81089 /System/Library/   0.0  11344\n81090 /usr/libexec/sec   0.0   5840\n81091 /usr/libexec/tru   0.0   5344\n81092 /usr/libexec/tru   0.0   3312\n81093 /System/Library/   0.0  17344\n81094 /System/Library/   0.0  11808\n81095 /usr/libexec/sec   0.0   5808\n81096 /usr/libexec/sec   0.0   5904\n81097 /usr/sbin/cfpref   0.0   3408\n81098 /usr/libexec/tru   0.0   5392\n81099 /usr/libexec/bio   0.0   8016\n81104 /System/Library/   0.1 133584\n81105 /System/Library/   0.0   3600\n81106 /System/Library/   0.0   5296\n81108 /System/Library/   0.0   6704\n81109 /System/Library/   0.0  41248\n81112 /System/Library/   0.0   8528\n81113 /usr/libexec/Gam   0.0  26928\n81114 /System/Library/   0.0   2464\n81118 /System/Library/   0.0   9840\n81119 /System/Library/   0.0   8864\n81120 /System/Library/   0.0  10176\n81121 /System/Library/   0.0   8752\n81122 /System/Library/   0.0   9136\n81123 /System/Library/   0.0  10000\n81124 /usr/sbin/cfpref   0.0   3280\n81125 /usr/sbin/cfpref   0.0   3056\n81126 /System/Library/   0.0   9840\n81127 /usr/sbin/cfpref   0.0   4000\n81132 /System/Library/   0.0  13104\n81136 /usr/libexec/fin   1.6  13376\n81137 /usr/libexec/mob   0.7  11248\n81138 /usr/libexec/fin   0.8  11984\n81143 /Users/nandanadi  38.4 188416\n81144 /Users/nandanadi  32.0  56448\n81152 ps                 0.0   1680\n82087 /Applications/Ol   0.0  11568\n82100 /Applications/Ol   0.0   3648\n83702 /System/Library/   0.0    688\n85582 /System/Library/   0.0    864\n86140 /System/Library/   0.0    432\n86662 /System/Library/   0.0   1696\n86677 /System/Library/   0.0    688\n87583 /System/Cryptexe   0.0   2672\n87810 /System/Library/   0.0   4672\n88840 /usr/sbin/appleh   0.0    816\n89061 /usr/libexec/ass   0.0   4240\n90198 .venv/bin/python   0.1   5984\n90355 /usr/libexec/tas   0.0     16\n90456 /System/Library/   0.0   4976\n92086 /System/Library/   0.0   2352\n92724 /System/Library/   0.0   4528\n96386 /usr/sbin/BTLESe   0.0    960\n97179 /System/Applicat   0.0  10016\n99794 /Library/Develop   0.0   1552\n51731 -zsh               0.0     32\n87030 -zsh               0.0    208\n87069 -zsh               0.0     32\n87127 pi                 0.0    272\n 4569 /bin/zsh           0.0     32\n 4570 /bin/zsh           0.0     32\n 4572 /bin/zsh           0.0     32\n 4590 /bin/zsh           0.0    256\n71399 codex              0.0   9952\n 6923 /bin/zsh           0.0     32\n 7100 codex              0.0   9040\n 2834 codex              0.0  17248\n 7773 /bin/zsh           0.0    240\n35258 /bin/zsh           0.0     32\n35537 codex              0.0   9024",
+    "gpu": "FileNotFoundError"
+  },
+  "accuracy_status": "VERIFIED",
+  "study": "primary",
+  "primary_only": false,
+  "runs": [
+    {
+      "session": 5,
+      "repetition": 0,
+      "path": "python/stock",
+      "k": 50,
+      "concurrency": 8,
+      "batch": 16,
+      "length": 512,
+      "successful_requests": 16,
+      "successful_pairs": 800,
+      "failures": 0,
+      "timeouts": 0,
+      "seconds": 6.378067041980103,
+      "requests_per_second": 2.50859702393983,
+      "pairs_per_second": 125.42985119699149,
+      "latency_ms": {
+        "p50": 2919.8384168557823,
+        "p95": 3444.0498332260177,
+        "p99": 3444.61523310747
+      },
+      "queue_ms": {
+        "p50": 2538.018125575036,
+        "p95": 3074.336499790661,
+        "p99": 3098.9077999955043
+      },
+      "processing_ms": {
+        "p50": 373.35847900249064,
+        "p95": 557.7867181273177,
+        "p99": 657.7465435722842
+      },
+      "validation_seconds": 0.0009858321864157915,
+      "client_cpu_seconds": 0.02094299999999999,
+      "client_cpu_fraction_of_one_core": 0.003284067078965233
+    },
+    {
+      "session": 5,
+      "repetition": 0,
+      "path": "python/stock",
+      "k": 50,
+      "concurrency": 1,
+      "batch": 16,
+      "length": 512,
+      "successful_requests": 16,
+      "successful_pairs": 800,
+      "failures": 0,
+      "timeouts": 0,
+      "seconds": 6.282868083100766,
+      "requests_per_second": 2.5466076620382525,
+      "pairs_per_second": 127.33038310191263,
+      "latency_ms": {
+        "p50": 377.8921039775014,
+        "p95": 463.65972922649235,
+        "p99": 483.90867866110057
+      },
+      "queue_ms": {
+        "p50": 0.029688002541661263,
+        "p95": 0.03435462713241577,
+        "p99": 0.03500450402498245
+      },
+      "processing_ms": {
+        "p50": 376.3273539952934,
+        "p95": 461.6783331730403,
+        "p99": 481.99573300080374
+      },
+      "validation_seconds": 0.0009066672064363956,
+      "client_cpu_seconds": 0.01761299999999999,
+      "client_cpu_fraction_of_one_core": 0.0028038150359041107
+    },
+    {
+      "session": 5,
+      "repetition": 0,
+      "path": "python/stock",
+      "k": 100,
+      "concurrency": 4,
+      "batch": 16,
+      "length": 512,
+      "successful_requests": 16,
+      "successful_pairs": 1600,
+      "failures": 0,
+      "timeouts": 0,
+      "seconds": 12.388106165919453,
+      "requests_per_second": 1.2915614207454178,
+      "pairs_per_second": 129.15614207454178,
+      "latency_ms": {
+        "p50": 3071.353395585902,
+        "p95": 3183.7936559459195,
+        "p99": 3185.5761310784146
+      },
+      "queue_ms": {
+        "p50": 2295.98162509501,
+        "p95": 2371.554926969111,
+        "p99": 2384.6515517681837
+      },
+      "processing_ms": {
+        "p50": 780.5665205232799,
+        "p95": 810.7246767613105,
+        "p99": 813.5726025677286
+      },
+      "validation_seconds": 0.0016037514433264732,
+      "client_cpu_seconds": 0.02298800000000001,
+      "client_cpu_fraction_of_one_core": 0.0018558930390223675
+    },
+    {
+      "session": 5,
+      "repetition": 0,
+      "path": "python/stock",
+      "k": 10,
+      "concurrency": 1,
+      "batch": 16,
+      "length": 512,
+      "successful_requests": 16,
+      "successful_pairs": 160,
+      "failures": 0,
+      "timeouts": 0,
+      "seconds": 1.2004238341469318,
+      "requests_per_second": 13.328625727737426,
+      "pairs_per_second": 133.28625727737426,
+      "latency_ms": {
+        "p50": 76.1710834922269,
+        "p95": 80.08391677867621,
+        "p99": 80.1386167993769
+      },
+      "queue_ms": {
+        "p50": 0.021229032427072525,
+        "p95": 0.028260692488402128,
+        "p99": 0.042285711970180266
+      },
+      "processing_ms": {
+        "p50": 75.17818757332861,
+        "p95": 79.13871872005984,
+        "p99": 79.15754377609119
+      },
+      "validation_seconds": 0.00040579307824373245,
+      "client_cpu_seconds": 0.009222000000000008,
+      "client_cpu_fraction_of_one_core": 0.0076831196929326735
+    },
+    {
+      "session": 5,
+      "repetition": 0,
+      "path": "python/stock",
+      "k": 100,
+      "concurrency": 1,
+      "batch": 16,
+      "length": 512,
+      "successful_requests": 16,
+      "successful_pairs": 1600,
+      "failures": 0,
+      "timeouts": 0,
+      "seconds": 13.407876499928534,
+      "requests_per_second": 1.193328414091917,
+      "pairs_per_second": 119.3328414091917,
+      "latency_ms": {
+        "p50": 799.5336874155328,
+        "p95": 1038.7634686776437,
+        "p99": 1094.0506938030012
+      },
+      "queue_ms": {
+        "p50": 0.03927107900381088,
+        "p95": 0.05012471228837967,
+        "p99": 0.05382504314184189
+      },
+      "processing_ms": {
+        "p50": 797.6820210460573,
+        "p95": 1036.6002297960222,
+        "p99": 1091.9343794696033
+      },
+      "validation_seconds": 0.0013539183419197798,
+      "client_cpu_seconds": 0.021123000000000003,
+      "client_cpu_fraction_of_one_core": 0.0015755664217307346
+    },
+    {
+      "session": 5,
+      "repetition": 0,
+      "path": "python/stock",
+      "k": 100,
+      "concurrency": 8,
+      "batch": 16,
+      "length": 512,
+      "successful_requests": 16,
+      "successful_pairs": 1600,
+      "failures": 0,
+      "timeouts": 0,
+      "seconds": 13.066594541072845,
+      "requests_per_second": 1.224496554913864,
+      "pairs_per_second": 122.4496554913864,
+      "latency_ms": {
+        "p50": 6347.895604092628,
+        "p95": 6522.790489718318,
+        "p99": 6542.7847642451525
+      },
+      "queue_ms": {
+        "p50": 5560.258916462772,
+        "p95": 5638.607927307021,
+        "p99": 5649.150952638593
+      },
+      "processing_ms": {
+        "p50": 806.4070000546053,
+        "p95": 904.4670310104266,
+        "p99": 930.7817061664537
+      },
+      "validation_seconds": 0.0014708754606544971,
+      "client_cpu_seconds": 0.024170999999999943,
+      "client_cpu_fraction_of_one_core": 0.0018500612324054864
+    },
+    {
+      "session": 5,
+      "repetition": 0,
+      "path": "python/stock",
+      "k": 10,
+      "concurrency": 8,
+      "batch": 16,
+      "length": 512,
+      "successful_requests": 16,
+      "successful_pairs": 160,
+      "failures": 0,
+      "timeouts": 0,
+      "seconds": 1.2443413329310715,
+      "requests_per_second": 12.858208255697551,
+      "pairs_per_second": 128.5820825569755,
+      "latency_ms": {
+        "p50": 599.2596669821069,
+        "p95": 646.9328022794798,
+        "p99": 649.985626921989
+      },
+      "queue_ms": {
+        "p50": 529.1790834162384,
+        "p95": 563.5416664299555,
+        "p99": 564.8306669318117
+      },
+      "processing_ms": {
+        "p50": 77.921187505126,
+        "p95": 90.00697871670127,
+        "p99": 91.01452929899096
+      },
+      "validation_seconds": 0.0006596655584871769,
+      "client_cpu_seconds": 0.016257999999999995,
+      "client_cpu_fraction_of_one_core": 0.013067154139852679
+    },
+    {
+      "session": 5,
+      "repetition": 0,
+      "path": "python/stock",
+      "k": 50,
+      "concurrency": 4,
+      "batch": 16,
+      "length": 512,
+      "successful_requests": 16,
+      "successful_pairs": 800,
+      "failures": 0,
+      "timeouts": 0,
+      "seconds": 6.145361416973174,
+      "requests_per_second": 2.603589750768575,
+      "pairs_per_second": 130.17948753842873,
+      "latency_ms": {
+        "p50": 1546.362250461243,
+        "p95": 1578.1250939471647,
+        "p99": 1581.5998188918456
+      },
+      "queue_ms": {
+        "p50": 1155.456958571449,
+        "p95": 1191.3294891710393,
+        "p99": 1199.9213650240563
+      },
+      "processing_ms": {
+        "p50": 390.0104375788942,
+        "p95": 402.18480239855126,
+        "p99": 402.92192777851596
+      },
+      "validation_seconds": 0.00086808274500072,
+      "client_cpu_seconds": 0.016217000000000037,
+      "client_cpu_fraction_of_one_core": 0.002639226385482235
+    },
+    {
+      "session": 5,
+      "repetition": 0,
+      "path": "python/stock",
+      "k": 10,
+      "concurrency": 4,
+      "batch": 16,
+      "length": 512,
+      "successful_requests": 16,
+      "successful_pairs": 160,
+      "failures": 0,
+      "timeouts": 0,
+      "seconds": 1.1877057501114905,
+      "requests_per_second": 13.471350120598535,
+      "pairs_per_second": 134.71350120598535,
+      "latency_ms": {
+        "p50": 295.4407710349187,
+        "p95": 310.71175017859787,
+        "p99": 311.1235500080511
+      },
+      "queue_ms": {
+        "p50": 218.57072913553566,
+        "p95": 232.58309357333928,
+        "p99": 235.70311872754246
+      },
+      "processing_ms": {
+        "p50": 75.28245856519789,
+        "p95": 80.16709395451471,
+        "p99": 81.51901880046353
+      },
+      "validation_seconds": 0.0003656258340924978,
+      "client_cpu_seconds": 0.00907200000000008,
+      "client_cpu_fraction_of_one_core": 0.007639939437144466
+    },
+    {
+      "session": 5,
+      "repetition": 1,
+      "path": "python/stock",
+      "k": 10,
+      "concurrency": 1,
+      "batch": 16,
+      "length": 512,
+      "successful_requests": 16,
+      "successful_pairs": 160,
+      "failures": 0,
+      "timeouts": 0,
+      "seconds": 1.174042334081605,
+      "requests_per_second": 13.628128676054944,
+      "pairs_per_second": 136.28128676054942,
+      "latency_ms": {
+        "p50": 73.93599988427013,
+        "p95": 78.48081237170845,
+        "p99": 78.733862307854
+      },
+      "queue_ms": {
+        "p50": 0.021792016923427582,
+        "p95": 0.024791806936264038,
+        "p99": 0.02609211951494217
+      },
+      "processing_ms": {
+        "p50": 72.9436045512557,
+        "p95": 77.43671856587753,
+        "p99": 77.67854359699413
+      },
+      "validation_seconds": 0.00043441541492938995,
+      "client_cpu_seconds": 0.010160999999999976,
+      "client_cpu_fraction_of_one_core": 0.00865726874146386
+    },
+    {
+      "session": 5,
+      "repetition": 1,
+      "path": "python/stock",
+      "k": 100,
+      "concurrency": 1,
+      "batch": 16,
+      "length": 512,
+      "successful_requests": 16,
+      "successful_pairs": 1600,
+      "failures": 0,
+      "timeouts": 0,
+      "seconds": 12.347862042021006,
+      "requests_per_second": 1.2957708747919603,
+      "pairs_per_second": 129.57708747919602,
+      "latency_ms": {
+        "p50": 774.7079380787909,
+        "p95": 820.3426153631881,
+        "p99": 857.4559903005138
+      },
+      "queue_ms": {
+        "p50": 0.03724999260157347,
+        "p95": 0.043874664697796106,
+        "p99": 0.04427490057423711
+      },
+      "processing_ms": {
+        "p50": 772.7723750285804,
+        "p95": 818.4390313108452,
+        "p99": 855.4204062209465
+      },
+      "validation_seconds": 0.0012208749540150166,
+      "client_cpu_seconds": 0.020232000000000028,
+      "client_cpu_fraction_of_one_core": 0.0016386642425337806
+    },
+    {
+      "session": 5,
+      "repetition": 1,
+      "path": "python/stock",
+      "k": 100,
+      "concurrency": 8,
+      "batch": 16,
+      "length": 512,
+      "successful_requests": 16,
+      "successful_pairs": 1600,
+      "failures": 0,
+      "timeouts": 0,
+      "seconds": 11.884710625046864,
+      "requests_per_second": 1.3462675284899424,
+      "pairs_per_second": 134.62675284899424,
+      "latency_ms": {
+        "p50": 5903.2811869401485,
+        "p95": 5965.437187580392,
+        "p99": 5969.751937640831
+      },
+      "queue_ms": {
+        "p50": 5175.770708476193,
+        "p95": 5217.225000378676,
+        "p99": 5226.092799962498
+      },
+      "processing_ms": {
+        "p50": 750.9759159293026,
+        "p95": 765.8045520656742,
+        "p99": 769.9758767266758
+      },
+      "validation_seconds": 0.00129520776681602,
+      "client_cpu_seconds": 0.020947999999999967,
+      "client_cpu_fraction_of_one_core": 0.001762769045116511
+    },
+    {
+      "session": 5,
+      "repetition": 1,
+      "path": "python/stock",
+      "k": 10,
+      "concurrency": 8,
+      "batch": 16,
+      "length": 512,
+      "successful_requests": 16,
+      "successful_pairs": 160,
+      "failures": 0,
+      "timeouts": 0,
+      "seconds": 1.1309448331594467,
+      "requests_per_second": 14.147462838927204,
+      "pairs_per_second": 141.47462838927206,
+      "latency_ms": {
+        "p50": 562.4658125452697,
+        "p95": 577.4437807849608,
+        "p99": 581.0512562165968
+      },
+      "queue_ms": {
+        "p50": 487.53020842559636,
+        "p95": 506.2457605381496,
+        "p99": 506.2592857168056
+      },
+      "processing_ms": {
+        "p50": 70.50697901286185,
+        "p95": 75.04718779819086,
+        "p99": 75.72523752460256
+      },
+      "validation_seconds": 0.00037633301690220833,
+      "client_cpu_seconds": 0.010504999999999987,
+      "client_cpu_fraction_of_one_core": 0.009290462003038048
+    },
+    {
+      "session": 5,
+      "repetition": 1,
+      "path": "python/stock",
+      "k": 50,
+      "concurrency": 4,
+      "batch": 16,
+      "length": 512,
+      "successful_requests": 16,
+      "successful_pairs": 800,
+      "failures": 0,
+      "timeouts": 0,
+      "seconds": 5.8341698329895735,
+      "requests_per_second": 2.7424638736992684,
+      "pairs_per_second": 137.1231936849634,
+      "latency_ms": {
+        "p50": 1446.8270203797147,
+        "p95": 1482.2908332571387,
+        "p99": 1486.5126330405474
+      },
+      "queue_ms": {
+        "p50": 1080.712833441794,
+        "p95": 1114.7337603615597,
+        "p99": 1119.7005847701803
+      },
+      "processing_ms": {
+        "p50": 368.29987494274974,
+        "p95": 380.3905937820673,
+        "p99": 381.8221189081669
+      },
+      "validation_seconds": 0.0007672517094761133,
+      "client_cpu_seconds": 0.015005000000000046,
+      "client_cpu_fraction_of_one_core": 0.0025720883055457143
+    },
+    {
+      "session": 5,
+      "repetition": 1,
+      "path": "python/stock",
+      "k": 10,
+      "concurrency": 4,
+      "batch": 16,
+      "length": 512,
+      "successful_requests": 16,
+      "successful_pairs": 160,
+      "failures": 0,
+      "timeouts": 0,
+      "seconds": 1.127823917195201,
+      "requests_per_second": 14.186611718423737,
+      "pairs_per_second": 141.86611718423737,
+      "latency_ms": {
+        "p50": 281.2005834421143,
+        "p95": 291.25980206299573,
+        "p99": 294.32262687478215
+      },
+      "queue_ms": {
+        "p50": 208.61695799976587,
+        "p95": 220.7578852539882,
+        "p99": 224.34740986209363
+      },
+      "processing_ms": {
+        "p50": 70.57645788881928,
+        "p95": 75.4215627675876,
+        "p99": 75.987712549977
+      },
+      "validation_seconds": 0.00037037511356174946,
+      "client_cpu_seconds": 0.009128000000000025,
+      "client_cpu_fraction_of_one_core": 0.008095235311825618
+    },
+    {
+      "session": 5,
+      "repetition": 1,
+      "path": "python/stock",
+      "k": 50,
+      "concurrency": 8,
+      "batch": 16,
+      "length": 512,
+      "successful_requests": 16,
+      "successful_pairs": 800,
+      "failures": 0,
+      "timeouts": 0,
+      "seconds": 6.131585041992366,
+      "requests_per_second": 2.609439466373452,
+      "pairs_per_second": 130.47197331867258,
+      "latency_ms": {
+        "p50": 2903.249521041289,
+        "p95": 3270.8381772390567,
+        "p99": 3274.7029027785175
+      },
+      "queue_ms": {
+        "p50": 2514.9347913684323,
+        "p95": 2906.2203540233895,
+        "p99": 2909.7523044561967
+      },
+      "processing_ms": {
+        "p50": 366.7007079347968,
+        "p95": 477.8561359271407,
+        "p99": 495.0174607336521
+      },
+      "validation_seconds": 0.0008042911067605019,
+      "client_cpu_seconds": 0.015753999999999935,
+      "client_cpu_fraction_of_one_core": 0.0025696455145112554
+    },
+    {
+      "session": 5,
+      "repetition": 1,
+      "path": "python/stock",
+      "k": 50,
+      "concurrency": 1,
+      "batch": 16,
+      "length": 512,
+      "successful_requests": 16,
+      "successful_pairs": 800,
+      "failures": 0,
+      "timeouts": 0,
+      "seconds": 5.830084209097549,
+      "requests_per_second": 2.7443857457552356,
+      "pairs_per_second": 137.21928728776177,
+      "latency_ms": {
+        "p50": 360.4671454522759,
+        "p95": 404.28985375911,
+        "p99": 406.87090437859297
+      },
+      "queue_ms": {
+        "p50": 0.031479052267968655,
+        "p95": 0.041968305595219135,
+        "p99": 0.043893628753721714
+      },
+      "processing_ms": {
+        "p50": 358.4011460188776,
+        "p95": 402.2528541390784,
+        "p99": 404.5415044412948
+      },
+      "validation_seconds": 0.000910499831661582,
+      "client_cpu_seconds": 0.017947999999999964,
+      "client_cpu_fraction_of_one_core": 0.0030788577585191585
+    },
+    {
+      "session": 5,
+      "repetition": 1,
+      "path": "python/stock",
+      "k": 100,
+      "concurrency": 4,
+      "batch": 16,
+      "length": 512,
+      "successful_requests": 16,
+      "successful_pairs": 1600,
+      "failures": 0,
+      "timeouts": 0,
+      "seconds": 11.541925917146727,
+      "requests_per_second": 1.3862504503022621,
+      "pairs_per_second": 138.6250450302262,
+      "latency_ms": {
+        "p50": 2844.907187973149,
+        "p95": 2926.2929378892295,
+        "p99": 2929.7353876172565
+      },
+      "queue_ms": {
+        "p50": 2131.4903328893706,
+        "p95": 2188.2353546097875,
+        "p99": 2191.159904561937
+      },
+      "processing_ms": {
+        "p50": 729.9699999857694,
+        "p95": 748.845822934527,
+        "p99": 760.137098247651
+      },
+      "validation_seconds": 0.0011996261309832335,
+      "client_cpu_seconds": 0.01953500000000008,
+      "client_cpu_fraction_of_one_core": 0.0016926984404722083
+    }
+  ],
+  "http_warmup_addendum_sha256": "7027d321d030df67841147af369a336ef3433fad2ab1fe1b86114c876a2722b1",
+  "startup_seconds": 7.831232541007921,
+  "health": {
+    "coordinator": "python",
+    "backend": "pytorch",
+    "pair_batch_size": 16,
+    "max_length": 512,
+    "checkpoint_sha256": "821d1aa69520101d6e0737f78a042ae25b19e5cb9160701909d10434f4aeb0ae",
+    "worker_pid": 81155,
+    "queue_capacity": 32,
+    "ready": true,
+    "queue_depth": 0
+  },
+  "rss_before": {
+    "bytes": {
+      "81144": 89227264,
+      "81155": 787251200
+    },
+    "scope": "Coordinator and worker process RSS snapshots; shared memory may be counted twice; not total system peak"
+  },
+  "http_warmup": [
+    {
+      "request_id": "scifact:340:K10:-1",
+      "pairs": 10,
+      "max_score_error": 0.0
+    },
+    {
+      "request_id": "scifact:340:K50:-1",
+      "pairs": 50,
+      "max_score_error": 0.0
+    },
+    {
+      "request_id": "scifact:340:K100:-1",
+      "pairs": 100,
+      "max_score_error": 0.0
+    }
+  ],
+  "http_warmup_seconds": 0.9714045829605311,
+  "status": "COMPLETE",
+  "rss_after": {
+    "bytes": {
+      "81144": 92995584,
+      "81155": 792510464
+    },
+    "scope": "Coordinator and worker process RSS snapshots; shared memory may be counted twice; not total system peak"
+  },
+  "response_artifact": "raw/http_s5_python_stock_responses.jsonl.gz",
+  "response_sha256": "ad451b227bfd9a9b9c2ea71284cb49d6f881fe9fd006934dcd2b8b640434d89e",
+  "end_environment": {
+    "utc": "2026-10-10T23:14:50.783868+00:00",
+    "platform": "macOS-26.5.2-arm64-arm-64bit",
+    "python": "3.12.13 (main, Jun 23 2026, 15:44:24) [Clang 22.1.3 ]",
+    "execution_environment": {
+      "PYTORCH_ENABLE_MPS_FALLBACK": "0",
+      "MLX_ENABLE_TF32": "0",
+      "TOKENIZERS_PARALLELISM": "false"
+    },
+    "packages": {
+      "torch": "2.14.1",
+      "transformers": "5.18.0",
+      "numpy": "2.5.3",
+      "httpx": "0.28.1",
+      "safetensors": "0.8.0"
+    },
+    "isolation": "No continuous hardware isolation verified",
+    "source_commit": "303a3472e1a810b2c0ced397efebf9f223f88eed",
+    "hardware": "2026-10-11 04:44:50.925 system_profiler[81248:51369734] hw.cpufamily: 0x1d5a87e8\nHardware:\n\n    Hardware Overview:\n\n      Model Name: MacBook Air\n      Model Identifier: Mac17,3\n      Model Number: MDHK4HN/A\n      Chip: Apple M5\n      Total Number of Cores: 10 (4 Super and 6 Efficiency)\n      Memory: 24 GB\n      System Firmware Version: 18000.121.3\n      OS Loader Version: 18000.121.3\n      Activation Lock Status: Enabled\n",
+    "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22937699)\t100%; charged; 0:00 remaining present: true",
+    "thermal": "Note: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded",
+    "processes": "  PID COMM              %CPU    RSS\n    1 /sbin/launchd      0.1  21440\n  239 .venv/bin/python   0.0   1872\n  336 /usr/libexec/log   1.7  18960\n  338 /usr/libexec/Use   0.0   8016\n  340 /System/Library/   0.1   5472\n  341 /System/Library/   0.0   5040\n  344 /usr/sbin/system   0.0   5616\n  348 /usr/libexec/con   0.0   7248\n  350 /System/Library/   0.0   6528\n  351 /usr/libexec/IOM   0.0    144\n  355 /usr/libexec/rem   0.0   1472\n  359 /System/Library/   0.0   1504\n  361 /usr/libexec/wat   0.0   1104\n  365 /System/Library/   0.0  17296\n  367 /usr/libexec/ker   0.0    912\n  368 /usr/libexec/dis   0.0   3376\n  372 /usr/sbin/syslog   0.0   1504\n  374 /usr/libexec/the   0.0   1568\n  375 /System/Library/   0.0   6736\n  376 /usr/libexec/xpr   0.0    800\n  377 /usr/libexec/ope   0.2   8976\n  378 /System/Library/   0.0   9952\n  379 /System/Library/   0.6  11776\n  380 /usr/libexec/tim   0.0   2320\n  382 /usr/sbin/securi   0.0   4720\n  384 /usr/libexec/loc   0.0  16240\n  385 /usr/libexec/nes   0.0   2112\n  387 autofsd            0.0     96\n  388 /usr/libexec/das   0.0  19472\n  389 /usr/libexec/cor   0.0   1600\n  391 /usr/sbin/distno   0.0   2288\n  395 /System/Library/   0.0   2512\n  396 /System/Library/   0.0   2304\n  397 /usr/sbin/Kernel   0.0    128\n  402 /usr/sbin/notify   0.3   4544\n  404 /usr/libexec/cor   0.0   5184\n  405 /usr/libexec/Air   0.0   2064\n  406 /System/Library/   0.0   5888\n  409 /System/Library/   0.1  41280\n  411 /usr/sbin/cfpref   0.1   5168\n  412 /System/Library/   0.0  51664\n  415 /System/Library/   0.0   3648\n  416 /usr/libexec/run   0.0  14864\n  418 /usr/sbin/coreau   0.0   8624\n  419 /usr/sbin/mDNSRe   0.0  11808\n  423 /usr/libexec/nsu   0.0   7776\n  425 /usr/libexec/lsd   0.0  10176\n  431 /System/Library/   0.0   8688\n  437 /usr/libexec/eli   0.0   3200\n  447 /usr/sbin/distno   0.0   1312\n  452 /usr/libexec/air   0.0  27328\n  453 /usr/sbin/distno   0.0   1200\n  459 /usr/libexec/sym   0.0   7632\n  479 /usr/sbin/distno   0.0   1296\n  482 /System/Library/   0.0   5760\n  495 /usr/libexec/sys   0.0   7616\n  503 /usr/sbin/mDNSRe   0.0    640\n  512 /usr/libexec/App   0.0    432\n  518 Core Audio Drive   0.0   2016\n  521 /usr/libexec/aud   0.0   3616\n  528 /usr/libexec/aud   0.0   1792\n  532 /usr/sbin/distno   0.0   1344\n  534 /usr/libexec/com   0.0   3216\n  538 /usr/libexec/cam   0.0   6752\n  539 /System/Library/   0.0   3680\n  540 /System/Library/   0.0   2560\n  544 /Library/Privile   0.0    736\n  545 Core Audio Drive   0.0    736\n  554 /System/Library/   0.0    624\n  557 /System/Library/   0.0   1088\n  559 /usr/libexec/mod   0.0   4592\n  565 /usr/sbin/distno   0.0   1216\n  569 /System/Library/   0.0  24640\n  571 /System/Library/   0.0   2480\n  578 /usr/sbin/distno   0.0   1200\n  586 /usr/libexec/sea   0.0  14336\n  587 /usr/sbin/distno   0.0   1312\n  588 /usr/sbin/distno   0.0   1200\n  597 /System/Library/   0.0   3488\n  601 /usr/sbin/distno   0.0   4032\n  609 /usr/sbin/distno   0.0   1328\n  611 /usr/libexec/Use   0.0   6832\n  616 /System/Library/   0.0   8048\n  623 /usr/sbin/univer   0.0   4944\n  624 /usr/libexec/Con   0.0   8640\n  626 /usr/libexec/pbo   0.0   2816\n  629 /usr/libexec/lsd   0.0   8368\n  638 /usr/libexec/nsu   0.0  18560\n  639 /usr/libexec/rap   0.0  13072\n  640 /usr/sbin/userno   0.0  11264\n  643 /System/Library/   0.0   7104\n  645 /System/Library/   0.0   3136\n  646 /usr/sbin/distno   0.0   1216\n  651 /System/Library/   0.0   6304\n  659 /System/Library/   0.0  21744\n  663 /System/Library/   0.0   2144\n  669 /System/Library/   0.0   1168\n  671 /System/Library/   0.0   4976\n  674 /usr/libexec/sha   0.0  20768\n  677 /System/Library/   0.0   1360\n  684 /System/Library/   0.0   9392\n  689 /System/Library/   0.0   5248\n  697 /System/Library/   0.0  21296\n  707 /System/Library/   0.0   3472\n  709 /System/Library/   0.4  18544\n  711 /System/Library/   0.0   5936\n  712 /System/Library/   0.1  45584\n  713 /System/Library/   0.0   6816\n  715 /System/Library/   0.0  29760\n  719 /usr/sbin/distno   0.0   1200\n  720 /System/Library/   0.0   6496\n  723 /System/Library/   0.0   5808\n  726 /usr/sbin/fileco   0.0   4704\n  731 /System/Library/   0.0   3824\n  733 automountd         0.0    160\n  744 /System/Library/   0.0  10448\n  748 /usr/libexec/ros   0.0   1088\n  754 /System/Library/   0.0   1856\n  757 /usr/libexec/nea   0.0   7872\n  762 /System/Library/   0.0  67776\n  765 /System/Library/   0.0  11600\n  766 /System/Library/   0.0  10272\n  773 /System/Library/   0.0 220320\n  774 /System/Library/   0.0   3440\n  776 /System/Library/   0.0   6096\n  777 /System/Library/   0.0   6000\n  778 /System/Library/   0.0  40096\n  787 /System/Library/   0.0   8256\n  801 /System/Library/   0.0  21792\n  803 /usr/sbin/distno   0.0   1296\n  804 /System/Applicat   0.0   3392\n  810 /System/Library/   0.0   7360\n  816 /System/Library/   0.0   1760\n  818 /System/Library/   0.0   8304\n  837 /System/Library/   0.0    896\n  838 /usr/libexec/avc   0.0   9792\n  851 /System/Library/   0.0   2048\n  853 /System/Library/   0.0   7168\n  858 /System/Library/   0.0  13488\n  867 /System/Library/   0.0    192\n  883 /System/Library/   0.0   1248\n  897 /System/Library/   0.0   2784\n  911 /System/Library/   0.0   3920\n  923 /System/Library/   0.0    992\n  930 /usr/sbin/distno   0.0   1200\n  961 /usr/sbin/distno   0.0   1168\n  963 /System/Library/   0.0   2240\n 1034 /System/Library/   0.0   1328\n 1958 /Applications/Do   0.0  27088\n 1961 /Applications/Do   0.7 136464\n 1962 /Applications/Do   0.0  27168\n 1978 /Applications/Do   0.0  13392\n 1980 /Applications/Do   0.0  49088\n 1983 /Applications/Do   0.0    992\n 2003 /Applications/Do   0.0  10512\n 2004 /Applications/Do   0.0   6464\n 2050 /Applications/Do   0.0  27120\n 2078 /opt/homebrew/op   0.0     32\n 2084 /System/Library/   0.0   4688\n 2085 com.apple.weathe   0.0  39632\n 2087 /System/Library/   0.0   5184\n 2088 /System/Library/   0.0   6016\n 2090 /System/Library/   0.0    784\n 2096 /Applications/Ta   0.0  14096\n 2105 /System/Library/   0.0    528\n 2110 /Library/SystemE   0.0  37392\n 2135 /usr/sbin/distno   0.0   1296\n 2163 /usr/sbin/distno   0.0   1312\n 2356 caffeinate         0.0    640\n 2510 /Users/nandanadi   0.0   2576\n 2971 /Applications/Ch   0.0   1360\n 2972 /Applications/Ch   0.0   1008\n 2978 /Applications/Ch   0.0   2320\n 3161 /usr/sbin/system   0.0   1056\n 3658 /System/Library/   0.0    928\n 4099 /usr/sbin/distno   0.0   1296\n 4323 /Applications/Cu   0.2 163296\n 4419 /Applications/Cu   0.0   1984\n 4420 /Applications/Cu   0.0  15792\n 4422 /Applications/Cu   0.0  19184\n 4434 Cursor Helper: s   0.0  47264\n 4435 /Applications/Cu   1.2 379984\n 4436 /Applications/Cu   3.7 539168\n 4537 Cursor Helper: m   0.0  16080\n 4538 Cursor Helper: t   0.6  40960\n 4539 Cursor Helper (P   0.7  53536\n 4551 Cursor Helper (P   0.4  36944\n 4552 Cursor Helper: f   0.1  20304\n 4558 /Applications/Cu   0.0   5664\n 4559 Cursor Helper: f   0.0   8688\n 4581 /Applications/Cu   0.0   3344\n 4874 /Applications/Cu   0.0   3424\n 5340 /System/Library/   0.0    400\n 5507 /System/Library/  60.4   8384\n 5634 /Library/Develop   0.0   1520\n 7002 /System/Library/   0.0   7312\n 7251 <defunct>          0.0      0\n 8321 /opt/homebrew/op   0.0   1872\n 8338 postgres: checkp   0.0    320\n 8339 postgres: backgr   0.0    512\n 8341 postgres: walwri   0.0    352\n 8342 postgres: autova   0.0   2160\n 8344 postgres: logica   0.0   1792\n 9769 /usr/sbin/distno   0.0   1200\n 9770 /System/Library/   0.0   3216\n 9771 /System/Library/   0.0   2976\n 9772 /System/Library/   0.0   2096\n10382 /Applications/Cu   0.0    928\n10707 /System/Library/   0.0   2704\n10722 /usr/bin/ssh-age   0.0    112\n10818 /opt/homebrew/bi   0.0   3120\n12876 /Applications/Cu   0.0  11056\n15974 /System/Library/   0.0   8016\n20039 /System/Library/   0.0   5808\n20216 /Users/nandanadi   0.0  39632\n20252 /System/Volumes/   0.0  97776\n20268 /System/Library/   0.0  30272\n20280 /System/Library/   0.0   2816\n20291 /Applications/Ch   0.0    464\n20292 /Applications/Ch   0.0     32\n20411 redis-server *:6   0.0     32\n20428 /Applications/Ch   0.0    464\n20743 /Applications/Ch   0.0     32\n20744 /Applications/Ch   0.0    448\n20800 /Users/nandanadi   0.0    368\n20814 /Applications/Ch   0.0    448\n20982 /Users/nandanadi   0.0    192\n22347 /Applications/Cu   0.0    496\n22499 /System/Library/   0.0   2656\n22938 /System/Library/   0.0    192\n23470 /System/Library/   0.0   6000\n23784 /Applications/Ch   0.0   1216\n23785 /Applications/Ch   0.0   1216\n23786 /Applications/Ch   0.0   7584\n23787 /Applications/Ch   0.0   1008\n23788 /Applications/Ch   0.0  15408\n24300 /opt/homebrew/op   0.0  13856\n27251 /System/Library/   0.0    192\n28888 /Applications/Wh   0.0     16\n33490 /System/Library/   0.0  10464\n33502 /System/Library/   0.0  10288\n35256 /Applications/Cu   1.0 336640\n35257 Cursor Helper (P   0.3  28288\n35269 Cursor Helper: f   0.0   8640\n35276 /Applications/Cu   0.0   4336\n35277 /Applications/Cu   0.0   4400\n35278 /Applications/Cu   0.0   5360\n35282 /Applications/Cu   0.0   4352\n35628 .venv/bin/python   0.0   6176\n36491 /usr/sbin/blueto   0.0  15872\n36500 /System/Library/   0.0  17440\n36501 /System/Library/   0.0   2432\n36502 /System/Library/   0.0  40368\n36503 /System/Library/   0.0   5728\n36537 /System/Library/   0.0    976\n36570 /System/Library/   0.0 100800\n37096 /Applications/Cu   0.0   3824\n37181 /System/Cryptexe   0.0   7664\n38059 /System/Library/   0.0  13168\n38064 /usr/libexec/sec   0.0  14928\n38069 /System/Library/  45.1   8480\n38070 /usr/libexec/tru   0.0   9072\n38075 /usr/libexec/tru   0.0   8528\n38100 /usr/sbin/cfpref   0.2   5376\n38112 /usr/sbin/Wirele   0.0   5728\n41651 /usr/libexec/con   0.0   5264\n41655 /System/Library/   0.0  17008\n42621 /usr/libexec/wif   0.0    752\n43456 /System/Applicat   0.0  10112\n43655 /Applications/Ch   0.3 165472\n43659 /Applications/Ch   0.0   1824\n43661 /Applications/Ch   0.0   1824\n43672 /Applications/Ch   0.0  19232\n43673 /Applications/Ch   0.0  42624\n43676 /Applications/Ch   0.0   9728\n43789 /Applications/Ch   0.0   6192\n43792 /Applications/Ch   0.0  46976\n43808 /Applications/Ch   0.0 247520\n43827 /Applications/Ch   0.0  22480\n43840 /System/Library/   0.0   8368\n43850 /Applications/Ch   0.0  34432\n43855 /Applications/Ch   0.0   9024\n43868 /Applications/Ch   0.0   8768\n44309 /Users/nandanadi   0.0  13696\n44406 /System/Library/   0.0  13376\n44414 /Applications/Ch   0.0   7376\n44627 /Applications/Ch   0.0  11328\n45031 /System/Library/   0.0   4112\n45034 node               0.0   3680\n45370 /Applications/Ch   0.0   2576\n45372 /Users/nandanadi   0.0   6496\n45598 /System/Library/   0.0   5760\n47008 /System/Library/   0.0   7184\n48115 /System/Library/   0.0   5664\n48648 /System/Applicat   0.0    144\n48649 /System/Applicat   0.0     16\n48651 /System/Applicat   0.0     32\n48652 /System/Applicat   0.0     96\n48660 /System/Applicat   0.0     16\n48718 /System/Library/   0.0     64\n48781 /System/Applicat   0.0     16\n48782 /System/Applicat   0.0     16\n48788 /System/Applicat   0.0     16\n48793 /System/Applicat   0.0     16\n48799 /System/Applicat   0.0     16\n48822 /System/Applicat   0.0     16\n49447 /System/Library/   0.0   6480\n49581 /System/Library/   0.0  23168\n50083 /System/Applicat   0.0   5728\n50367 /System/Cryptexe   0.0   2384\n50415 /Applications/Ch   0.0   1408\n50671 /System/Library/   0.0   5872\n52176 /System/Library/   0.0   2528\n52183 /usr/sbin/distno   0.0   1328\n52809 /System/Library/   0.0   6736\n53054 /System/Library/   0.0  16672\n53102 /System/Library/   0.0  17520\n54195 /System/Library/   0.0    576\n54342 adb                0.0   3136\n54352 /Applications/Wi   0.8  29984\n54364 /System/Library/   0.0   7568\n54707 /usr/sbin/netbio   0.0   1744\n55004 /System/Applicat   0.0  25904\n56351 /Applications/Do   0.0  15328\n56357 /System/Library/   7.6 1202128\n57473 /usr/sbin/distno   0.0   1328\n58499 /System/Library/   0.0   6720\n58517 /usr/libexec/due   0.0   9568\n58598 /System/Applicat   0.0  12272\n59293 /Users/nandanadi   0.0   6176\n59444 /System/Library/   0.0    720\n59834 /usr/libexec/mil   0.0   3904\n60252 /Applications/Ch   0.0   1600\n60253 /Users/nandanadi   0.0   6176\n60254 /Applications/Ch   0.0   1600\n60255 /Applications/Ch   0.0   2192\n60257 /Applications/Ch   0.0   2192\n60746 /Applications/Go   0.0  54544\n60756 /Applications/Go   0.0   2208\n60779 /Applications/Go   0.0  20704\n60782 /Applications/Go   0.0  12624\n60785 /Applications/Go   0.0   7632\n60844 /System/Library/   0.0   8272\n60910 /Applications/Go   0.0  10160\n63241 /System/Library/   0.0  11040\n63272 /System/Applicat   0.0  28864\n63279 /System/Library/   0.0   4496\n63285 /System/Library/   0.0   3600\n63331 /System/Library/   0.0   4464\n63533 /System/Library/   0.0   7280\n64572 node               0.0   3360\n64629 /usr/libexec/bio   0.0   5056\n65430 /System/Library/   0.0   6720\n65458 /System/Library/   0.0   4224\n65717 /usr/libexec/sea   0.0   6528\n65794 /System/Library/   0.0    704\n65796 /System/Library/   0.0    704\n66341 /usr/libexec/Sid   0.0   4400\n66413 /usr/libexec/Per   0.0  14128\n68319 /System/Library/   0.0  11008\n68710 /System/Library/   0.0  12176\n69107 /usr/libexec/key   0.0   2832\n69441 /System/Library/   0.0   3424\n70580 .venv/bin/python   0.0   6160\n70906 /System/Library/   0.0  26400\n71404 /Applications/Ch   0.0   1008\n71405 /Applications/Ch   0.0   1360\n71406 /Users/nandanadi   0.0   5584\n71516 /Applications/Ch   0.0   1360\n72833 /System/Library/   0.0  10400\n73675 /System/Library/   0.0    704\n75208 /System/Library/   0.0    784\n77062 /System/Library/   0.0   6640\n77622 /System/Library/   0.0   3856\n78093 /Library/Develop   0.0   1488\n78846 /System/Library/   0.0  25264\n79511 /System/Library/   0.0  12240\n79512 /System/Library/   0.0  12336\n79748 /usr/libexec/use   0.0   4272\n80084 /usr/libexec/sec   0.0   7920\n80179 /System/Library/   0.0   7664\n80249 /usr/libexec/gam   0.0  11600\n80372 /usr/libexec/mob   0.0  18112\n80441 /usr/libexec/lin   0.0  11648\n80558 /usr/libexec/apf   0.0   1072\n80685 /usr/libexec/con   0.0   5440\n80723 /System/Library/   0.0  13248\n80807 /usr/libexec/aud   0.0   6672\n80824 /System/Library/   0.0   8624\n80833 /usr/libexec/rou   0.0  29520\n80836 /System/Library/   0.0  10144\n80847 /System/Library/   0.0  32432\n80889 /System/Library/   0.0  14208\n80918 /usr/libexec/con   0.0   3504\n80924 /usr/sbin/cfpref   0.0   2896\n80928 /usr/libexec/con   0.0   3504\n80929 /usr/libexec/con   0.0   3504\n80938 /System/Library/   0.0  23616\n80939 /System/Library/   0.0   9872\n80940 /usr/libexec/kno   0.0  39408\n80945 /System/Library/   0.0   4640\n80949 /System/Library/   0.0  30256\n80959 /usr/libexec/rep   0.0  16544\n80962 /System/Library/   0.0  19136\n80963 /System/Library/   0.0  42512\n80964 /usr/libexec/neh   0.0   6112\n80970 /System/Library/   0.0  24528\n80974 /usr/libexec/nfc   0.0   5936\n80975 /System/Library/   0.0   3888\n80976 /usr/sbin/cfpref   0.0   2880\n80977 /System/Library/   0.0   5040\n80978 /System/Library/   0.0  23424\n80979 /usr/libexec/pkd   0.0  14448\n80980 /System/Library/   0.0   2288\n80983 /usr/libexec/tri   0.0   9136\n80984 /usr/libexec/Ass   0.0   5712\n80985 /System/Library/   0.0   2656\n80986 /System/Library/   0.0   3328\n80987 /usr/libexec/tri   0.0  11808\n80988 /System/Library/   0.0   3360\n80989 /usr/libexec/spo   0.0  31360\n80990 /System/Library/   0.0   3952\n80991 /System/Library/   0.0   6784\n80992 /System/Library/   0.0  12160\n80993 /System/Library/   0.0   3248\n80994 /usr/libexec/sto   0.0   9040\n80999 /System/Library/   0.0   4816\n81001 /System/Library/   0.0   9632\n81002 /usr/libexec/onl   0.0   2336\n81003 /System/Library/   0.0   7920\n81004 /usr/libexec/fsk   0.0  10832\n81007 /System/Library/   0.0   5040\n81008 /System/Library/   0.0   6784\n81011 /usr/libexec/his   0.0   6272\n81012 /System/Library/   0.0  16960\n81013 /System/Library/   0.0   6560\n81023 /usr/sbin/cfpref   0.0   2832\n81024 /usr/sbin/cfpref   0.0   2784\n81025 /usr/sbin/cfpref   0.0   2768\n81026 /usr/sbin/cfpref   0.0   2752\n81027 /usr/sbin/cfpref   0.0   2768\n81028 /System/Library/   0.0  45248\n81030 /usr/libexec/nea   0.0  11568\n81031 /System/Library/   0.0  51456\n81032 /System/Library/   0.0   8752\n81033 /System/Library/   0.0   2032\n81034 /usr/libexec/sec   0.0   4960\n81037 /System/Library/   0.0  41440\n81039 /usr/libexec/san   0.0   4896\n81041 /System/Library/   0.0   5568\n81042 /System/Library/   0.0   8912\n81045 /usr/libexec/ass   0.0   5136\n81046 cloudphotod        0.0  14816\n81047 /usr/libexec/fee   0.0   5920\n81048 /System/Library/   0.0  16000\n81049 /System/Library/   0.0  14032\n81055 /usr/libexec/gam   0.0   7888\n81056 /usr/libexec/pro   0.0  12544\n81059 /System/Library/   0.0  24688\n81060 /usr/libexec/fin   0.0  15008\n81061 /System/Library/   0.0  20320\n81062 /System/Library/   0.0  13856\n81063 /System/Library/   0.0  10720\n81064 /System/Cryptexe   0.0  13376\n81067 /usr/libexec/gam   0.0   7024\n81068 /System/Library/   0.0  14464\n81069 /System/Library/   0.0  11728\n81070 /System/Library/   0.0   9040\n81071 /System/Library/   0.0   9712\n81072 /System/Library/   0.0   9200\n81073 /System/Library/   0.0  10576\n81074 /usr/libexec/osp   0.0   8112\n81075 /System/Library/   0.0  10048\n81078 /usr/libexec/sys   0.0   1856\n81086 /System/Library/   0.0  22672\n81087 /System/Library/   0.0   2272\n81088 /usr/libexec/sir   0.0  17184\n81089 /System/Library/   0.0  13072\n81090 /usr/libexec/sec   0.0   5840\n81091 /usr/libexec/tru   0.0   5344\n81092 /usr/libexec/tru   0.0   3312\n81093 /System/Library/   0.0  17584\n81094 /System/Library/   0.0  13168\n81095 /usr/libexec/sec   0.0   5808\n81096 /usr/libexec/sec   0.0   5904\n81097 /usr/sbin/cfpref   0.0   3424\n81098 /usr/libexec/tru   0.0   5392\n81105 /System/Library/   0.0   3696\n81106 /System/Library/   0.0   6048\n81108 /System/Library/   0.0   6592\n81112 /System/Library/   0.0   8384\n81113 /usr/libexec/Gam   0.0  27456\n81114 /System/Library/   0.0   2368\n81124 /usr/sbin/cfpref   0.0   3264\n81125 /usr/sbin/cfpref   0.0   3072\n81127 /usr/sbin/cfpref   0.0   4096\n81136 /usr/libexec/fin   0.0  13184\n81137 /usr/libexec/mob   0.0  11120\n81138 /usr/libexec/fin   0.0  11776\n81143 /Users/nandanadi   2.1 200560\n81174 /usr/libexec/net   0.0  28640\n81175 /System/Library/   0.0   9888\n81177 /usr/libexec/rtc   0.0   9728\n81191 /System/Library/   0.0 183936\n81192 /usr/libexec/wif   0.0  19776\n81200 /usr/libexec/cor   0.0  29328\n81201 /System/Library/   0.0  20400\n81214 /System/Library/   0.0  13152\n81215 /System/Library/   0.0  12992\n81227 /System/Library/   0.0  47056\n81237 /System/Library/   0.0  12768\n81238 /System/Library/   0.0  12752\n81239 /System/Library/   0.0  12864\n81240 /System/Library/   0.0  12672\n81241 /usr/sbin/cfpref   0.0   6624\n81242 /usr/sbin/cfpref   0.0   6544\n81252 ps                 0.0   1680\n82087 /Applications/Ol   0.0  17840\n82100 /Applications/Ol   0.0  11840\n83702 /System/Library/   0.0    864\n85582 /System/Library/   0.0    864\n86140 /System/Library/   0.0    432\n86662 /System/Library/   0.0   1680\n86677 /System/Library/   0.0    864\n87583 /System/Cryptexe   0.0   2736\n87810 /System/Library/   0.0   5120\n88840 /usr/sbin/appleh   0.0   2064\n89061 /usr/libexec/ass   0.0   4224\n90198 .venv/bin/python   0.0   5968\n90355 /usr/libexec/tas   0.0     16\n90456 /System/Library/   0.0   5024\n92086 /System/Library/   0.0   3184\n92724 /System/Library/   0.0   4608\n96386 /usr/sbin/BTLESe   0.0    960\n97179 /System/Applicat   0.0  31872\n99794 /Library/Develop   0.0   1552\n51731 -zsh               0.0     32\n87030 -zsh               0.0    208\n87069 -zsh               0.0     32\n87127 pi                 0.0    464\n 4569 /bin/zsh           0.0     32\n 4570 /bin/zsh           0.0     32\n 4572 /bin/zsh           0.0     32\n 4590 /bin/zsh           0.0    256\n71399 codex              0.0  17088\n 6923 /bin/zsh           0.0     32\n 7100 codex              0.0  15136\n 2834 codex              0.0  20416\n 7773 /bin/zsh           0.0    240\n35258 /bin/zsh           0.0     32\n35537 codex              0.0  15056",
+    "gpu": "FileNotFoundError"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "status": "TECHNICAL_RECOVERY",
+  "reason": "Interrupted gzip writer; complete lines retained and remaining inputs rescored",
+  "original_artifact": "scores/mps_compiled.jsonl_interrupted.gz",
+  "original_sha256": "adea729dbc17deaadf22a192c6c5a0a2ad3e46c2001b6eef8a6df3fd6da8e9cc",
+  "recovered_records": 563
+}

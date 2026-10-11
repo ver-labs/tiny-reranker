@@ -1,6 +1,27 @@
 {
-  "first_use_overhead_seconds": 50.255925924517214,
-  "median_paired_warm_saving_per_K100_query_seconds": 0.0044526284909807146,
-  "estimated_queries_to_amortize": 11286.799701865108,
-  "interpretation": "Diagnostic estimate from one fresh-cache startup comparison and 15 paired warm repetitions; driver cache unknown; startup has no uncertainty interval; not a true fully cold system measurement or an HTTP break-even estimate"
+  "device": "cuda",
+  "plan_sha256": "2b54eeeed727e77e89e3f4e589ff4bb78badee59786d3a3c6a44810db73f1df0",
+  "warm_comparison": {
+    "ci95": [
+      1.0318358004901893,
+      1.0344186401170383
+    ],
+    "units": 5,
+    "ratio": 1.0329771928238676,
+    "independent_unit": "session mean log ratio",
+    "paired_repetitions": 15,
+    "interval_interpretation": "Unadjusted exploratory 95% interval",
+    "practical_primary_gain": false
+  },
+  "scope": "One ordered fresh software-cache startup pair; GPU driver cache unknown; startup CI unavailable. Model setup includes imports and storage effects. Warm saving uses matched K100 requests; not an HTTP or fully cold hardware break-even.",
+  "startup_artifact_sha256": {
+    "stock": "0790462184f638b0200da19ee38a9d236c48f27dd0b3a6502d1b0a55794a9a80",
+    "compiled": "615ec37cc9c959c5d1f3f4f6687d9218dc77c0d6db4088f1aeca58afb416b9a9"
+  },
+  "status": "DIAGNOSTIC_ONLY",
+  "median_warm_seconds_saved_per_K100_query": 0.0044526284909807146,
+  "first_score_overhead_seconds": 24.274921371601522,
+  "total_startup_difference_seconds": 50.255925924517214,
+  "first_score_amortization_queries": 5451.818273357642,
+  "total_startup_amortization_queries": 11286.799701865108
 }

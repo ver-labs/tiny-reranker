@@ -1,0 +1,9 @@
+{
+  "reason": "File launch exposed E18/profile.py to cProfile during Rust startup.",
+  "failed_attempt_manifest": "raw/attempts/http_cycle0_before_bootstrap_fix/manifest.json",
+  "fix_commit": "6109c4e",
+  "collection_change": "Remove the script directory from sys.path before inserting the repository root. This correction was applied after the first Rust startup failure and before the remaining successful Rust services. The subsequent regression test broadened the package guard from None to empty-or-None; ordinary file execution uses None.",
+  "scope": "Import-path initialization only. Model, tokenizer, inputs, worker JSON-lines protocol and timing boundaries unchanged. Whole first coordinator cycle repeated in frozen path order after other primary cycles; original successful and failed attempts retained.",
+  "source_commit_limitation": "Raw source_commit is the repository HEAD and does not by itself identify uncommitted bootstrap edits. This provenance note and the committed bootstrap correction identify that change.",
+  "worker_sha256": "1fefc947543273b0c5b5e9e3f5c0e16ddd35e2d86e028b2f2defd82e955ca7fa"
+}

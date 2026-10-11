@@ -1,0 +1,1269 @@
+{
+  "plan_sha256": "2b54eeeed727e77e89e3f4e589ff4bb78badee59786d3a3c6a44810db73f1df0",
+  "scores": {
+    "mps_mlx_accuracy": {
+      "status": "VERIFIED",
+      "records": 1455,
+      "pairs": 77600,
+      "metric_oracle": "Independent direct formulas and pytrec_eval nDCG/recall"
+    },
+    "mps_metal_accuracy": {
+      "status": "VERIFIED",
+      "records": 1455,
+      "pairs": 77600,
+      "metric_oracle": "Independent direct formulas and pytrec_eval nDCG/recall"
+    },
+    "cuda_explicit_accuracy": {
+      "status": "VERIFIED",
+      "records": 1455,
+      "pairs": 77600,
+      "metric_oracle": "Independent direct formulas and pytrec_eval nDCG/recall"
+    },
+    "cuda_stock_accuracy": {
+      "status": "VERIFIED",
+      "records": 1455,
+      "pairs": 77600,
+      "metric_oracle": "Independent direct formulas and pytrec_eval nDCG/recall"
+    },
+    "mps_stock_accuracy": {
+      "status": "VERIFIED",
+      "records": 1455,
+      "pairs": 77600,
+      "metric_oracle": "Independent direct formulas and pytrec_eval nDCG/recall"
+    },
+    "cuda_triton_accuracy": {
+      "status": "VERIFIED",
+      "records": 1455,
+      "pairs": 77600,
+      "metric_oracle": "Independent direct formulas and pytrec_eval nDCG/recall"
+    },
+    "mps_metal_compiled_accuracy": {
+      "status": "VERIFIED",
+      "records": 1455,
+      "pairs": 77600,
+      "metric_oracle": "Independent direct formulas and pytrec_eval nDCG/recall"
+    },
+    "cuda_cuda_accuracy": {
+      "status": "VERIFIED",
+      "records": 1455,
+      "pairs": 77600,
+      "metric_oracle": "Independent direct formulas and pytrec_eval nDCG/recall"
+    },
+    "mps_mlx_compiled_accuracy": {
+      "status": "VERIFIED",
+      "records": 1455,
+      "pairs": 77600,
+      "metric_oracle": "Independent direct formulas and pytrec_eval nDCG/recall"
+    },
+    "cuda_compiled_accuracy": {
+      "status": "VERIFIED",
+      "records": 1455,
+      "pairs": 77600,
+      "metric_oracle": "Independent direct formulas and pytrec_eval nDCG/recall"
+    },
+    "mps_compiled_accuracy": {
+      "status": "VERIFIED",
+      "records": 1455,
+      "pairs": 77600,
+      "metric_oracle": "Independent direct formulas and pytrec_eval nDCG/recall"
+    }
+  },
+  "http": {
+    "optimized_stock_http_s4_python_compiled": {
+      "status": "VERIFIED",
+      "requests": 96,
+      "successful_requests": 96,
+      "failures": 0,
+      "successful_pairs": 9600
+    },
+    "optimized_stock_http_s1_python_compiled": {
+      "status": "VERIFIED",
+      "requests": 96,
+      "successful_requests": 96,
+      "failures": 0,
+      "successful_pairs": 9600
+    },
+    "http_s4_rust_stock": {
+      "status": "VERIFIED",
+      "requests": 288,
+      "successful_requests": 288,
+      "failures": 0,
+      "successful_pairs": 15360
+    },
+    "optimized_mlx_http_s0_python_mlx": {
+      "status": "VERIFIED",
+      "requests": 96,
+      "successful_requests": 96,
+      "failures": 0,
+      "successful_pairs": 9600
+    },
+    "http_s6_python_mlx": {
+      "status": "VERIFIED",
+      "requests": 288,
+      "successful_requests": 288,
+      "failures": 0,
+      "successful_pairs": 15360
+    },
+    "optimized_mlx_http_s4_python_mlx_compiled": {
+      "status": "VERIFIED",
+      "requests": 96,
+      "successful_requests": 96,
+      "failures": 0,
+      "successful_pairs": 9600
+    },
+    "optimized_mlx_http_s0_python_mlx_compiled": {
+      "status": "VERIFIED",
+      "requests": 96,
+      "successful_requests": 96,
+      "failures": 0,
+      "successful_pairs": 9600
+    },
+    "http_s1_python_mlx": {
+      "status": "VERIFIED",
+      "requests": 288,
+      "successful_requests": 288,
+      "failures": 0,
+      "successful_pairs": 15360
+    },
+    "optimized_mlx_http_s7_python_mlx": {
+      "status": "VERIFIED",
+      "requests": 96,
+      "successful_requests": 96,
+      "failures": 0,
+      "successful_pairs": 9600
+    },
+    "http_s3_rust_stock": {
+      "status": "VERIFIED",
+      "requests": 288,
+      "successful_requests": 288,
+      "failures": 0,
+      "successful_pairs": 15360
+    },
+    "http_s4_rust_mlx": {
+      "status": "VERIFIED",
+      "requests": 288,
+      "successful_requests": 288,
+      "failures": 0,
+      "successful_pairs": 15360
+    },
+    "http_s0_rust_mlx": {
+      "status": "VERIFIED",
+      "requests": 288,
+      "successful_requests": 288,
+      "failures": 0,
+      "successful_pairs": 15360
+    },
+    "optimized_mlx_http_s6_python_mlx": {
+      "status": "VERIFIED",
+      "requests": 96,
+      "successful_requests": 96,
+      "failures": 0,
+      "successful_pairs": 9600
+    },
+    "http_s0_python_mlx": {
+      "status": "VERIFIED",
+      "requests": 288,
+      "successful_requests": 288,
+      "failures": 0,
+      "successful_pairs": 15360
+    },
+    "optimized_stock_http_s5_python_compiled": {
+      "status": "VERIFIED",
+      "requests": 96,
+      "successful_requests": 96,
+      "failures": 0,
+      "successful_pairs": 9600
+    },
+    "http_s2_rust_stock": {
+      "status": "VERIFIED",
+      "requests": 288,
+      "successful_requests": 288,
+      "failures": 0,
+      "successful_pairs": 15360
+    },
+    "optimized_stock_http_s0_python_compiled": {
+      "status": "VERIFIED",
+      "requests": 96,
+      "successful_requests": 96,
+      "failures": 0,
+      "successful_pairs": 9600
+    },
+    "http_s5_rust_stock": {
+      "status": "VERIFIED",
+      "requests": 288,
+      "successful_requests": 288,
+      "failures": 0,
+      "successful_pairs": 15360
+    },
+    "optimized_mlx_http_s1_python_mlx_compiled": {
+      "status": "VERIFIED",
+      "requests": 96,
+      "successful_requests": 96,
+      "failures": 0,
+      "successful_pairs": 9600
+    },
+    "http_s7_python_mlx": {
+      "status": "VERIFIED",
+      "requests": 288,
+      "successful_requests": 288,
+      "failures": 0,
+      "successful_pairs": 15360
+    },
+    "optimized_mlx_http_s1_python_mlx": {
+      "status": "VERIFIED",
+      "requests": 96,
+      "successful_requests": 96,
+      "failures": 0,
+      "successful_pairs": 9600
+    },
+    "http_s7_rust_mlx": {
+      "status": "VERIFIED",
+      "requests": 288,
+      "successful_requests": 288,
+      "failures": 0,
+      "successful_pairs": 15360
+    },
+    "optimized_mlx_http_s5_python_mlx_compiled": {
+      "status": "VERIFIED",
+      "requests": 96,
+      "successful_requests": 96,
+      "failures": 0,
+      "successful_pairs": 9600
+    },
+    "http_s3_rust_mlx": {
+      "status": "VERIFIED",
+      "requests": 288,
+      "successful_requests": 288,
+      "failures": 0,
+      "successful_pairs": 15360
+    },
+    "optimized_stock_http_s2_python_stock": {
+      "status": "VERIFIED",
+      "requests": 96,
+      "successful_requests": 96,
+      "failures": 0,
+      "successful_pairs": 9600
+    },
+    "optimized_mlx_http_s4_python_mlx": {
+      "status": "VERIFIED",
+      "requests": 96,
+      "successful_requests": 96,
+      "failures": 0,
+      "successful_pairs": 9600
+    },
+    "http_s2_python_mlx": {
+      "status": "VERIFIED",
+      "requests": 288,
+      "successful_requests": 288,
+      "failures": 0,
+      "successful_pairs": 15360
+    },
+    "http_s7_python_stock": {
+      "status": "VERIFIED",
+      "requests": 288,
+      "successful_requests": 288,
+      "failures": 0,
+      "successful_pairs": 15360
+    },
+    "http_s2_rust_mlx": {
+      "status": "VERIFIED",
+      "requests": 288,
+      "successful_requests": 288,
+      "failures": 0,
+      "successful_pairs": 15360
+    },
+    "optimized_stock_http_s7_python_stock": {
+      "status": "VERIFIED",
+      "requests": 96,
+      "successful_requests": 96,
+      "failures": 0,
+      "successful_pairs": 9600
+    },
+    "http_s6_rust_mlx": {
+      "status": "VERIFIED",
+      "requests": 288,
+      "successful_requests": 288,
+      "failures": 0,
+      "successful_pairs": 15360
+    },
+    "http_s2_python_stock": {
+      "status": "VERIFIED",
+      "requests": 288,
+      "successful_requests": 288,
+      "failures": 0,
+      "successful_pairs": 15360
+    },
+    "http_s0_rust_stock": {
+      "status": "VERIFIED",
+      "requests": 288,
+      "successful_requests": 288,
+      "failures": 0,
+      "successful_pairs": 15360
+    },
+    "http_s7_rust_stock": {
+      "status": "VERIFIED",
+      "requests": 288,
+      "successful_requests": 288,
+      "failures": 0,
+      "successful_pairs": 15360
+    },
+    "http_s1_rust_mlx": {
+      "status": "VERIFIED",
+      "requests": 288,
+      "successful_requests": 288,
+      "failures": 0,
+      "successful_pairs": 15360
+    },
+    "optimized_mlx_http_s7_python_mlx_compiled": {
+      "status": "VERIFIED",
+      "requests": 96,
+      "successful_requests": 96,
+      "failures": 0,
+      "successful_pairs": 9600
+    },
+    "optimized_stock_http_s3_python_stock": {
+      "status": "VERIFIED",
+      "requests": 96,
+      "successful_requests": 96,
+      "failures": 0,
+      "successful_pairs": 9600
+    },
+    "optimized_stock_http_s3_python_compiled": {
+      "status": "VERIFIED",
+      "requests": 96,
+      "successful_requests": 96,
+      "failures": 0,
+      "successful_pairs": 9600
+    },
+    "http_s6_python_stock": {
+      "status": "VERIFIED",
+      "requests": 288,
+      "successful_requests": 288,
+      "failures": 0,
+      "successful_pairs": 15360
+    },
+    "http_s5_rust_mlx": {
+      "status": "VERIFIED",
+      "requests": 288,
+      "successful_requests": 288,
+      "failures": 0,
+      "successful_pairs": 15360
+    },
+    "optimized_mlx_http_s3_python_mlx_compiled": {
+      "status": "VERIFIED",
+      "requests": 96,
+      "successful_requests": 96,
+      "failures": 0,
+      "successful_pairs": 9600
+    },
+    "optimized_stock_http_s6_python_compiled": {
+      "status": "VERIFIED",
+      "requests": 96,
+      "successful_requests": 96,
+      "failures": 0,
+      "successful_pairs": 9600
+    },
+    "optimized_stock_http_s6_python_stock": {
+      "status": "VERIFIED",
+      "requests": 96,
+      "successful_requests": 96,
+      "failures": 0,
+      "successful_pairs": 9600
+    },
+    "http_s5_python_mlx": {
+      "status": "VERIFIED",
+      "requests": 288,
+      "successful_requests": 288,
+      "failures": 0,
+      "successful_pairs": 15360
+    },
+    "optimized_mlx_http_s3_python_mlx": {
+      "status": "VERIFIED",
+      "requests": 96,
+      "successful_requests": 96,
+      "failures": 0,
+      "successful_pairs": 9600
+    },
+    "http_s3_python_stock": {
+      "status": "VERIFIED",
+      "requests": 288,
+      "successful_requests": 288,
+      "failures": 0,
+      "successful_pairs": 15360
+    },
+    "optimized_mlx_http_s2_python_mlx_compiled": {
+      "status": "VERIFIED",
+      "requests": 96,
+      "successful_requests": 96,
+      "failures": 0,
+      "successful_pairs": 9600
+    },
+    "http_s6_rust_stock": {
+      "status": "VERIFIED",
+      "requests": 288,
+      "successful_requests": 288,
+      "failures": 0,
+      "successful_pairs": 15360
+    },
+    "optimized_stock_http_s0_python_stock": {
+      "status": "VERIFIED",
+      "requests": 96,
+      "successful_requests": 96,
+      "failures": 0,
+      "successful_pairs": 9600
+    },
+    "http_s5_python_stock": {
+      "status": "VERIFIED",
+      "requests": 288,
+      "successful_requests": 288,
+      "failures": 0,
+      "successful_pairs": 15360
+    },
+    "optimized_mlx_http_s6_python_mlx_compiled": {
+      "status": "VERIFIED",
+      "requests": 96,
+      "successful_requests": 96,
+      "failures": 0,
+      "successful_pairs": 9600
+    },
+    "optimized_stock_http_s5_python_stock": {
+      "status": "VERIFIED",
+      "requests": 96,
+      "successful_requests": 96,
+      "failures": 0,
+      "successful_pairs": 9600
+    },
+    "http_s0_python_stock": {
+      "status": "VERIFIED",
+      "requests": 288,
+      "successful_requests": 288,
+      "failures": 0,
+      "successful_pairs": 15360
+    },
+    "optimized_mlx_http_s2_python_mlx": {
+      "status": "VERIFIED",
+      "requests": 96,
+      "successful_requests": 96,
+      "failures": 0,
+      "successful_pairs": 9600
+    },
+    "http_s4_python_mlx": {
+      "status": "VERIFIED",
+      "requests": 288,
+      "successful_requests": 288,
+      "failures": 0,
+      "successful_pairs": 15360
+    },
+    "http_s3_python_mlx": {
+      "status": "VERIFIED",
+      "requests": 288,
+      "successful_requests": 288,
+      "failures": 0,
+      "successful_pairs": 15360
+    },
+    "optimized_mlx_http_s5_python_mlx": {
+      "status": "VERIFIED",
+      "requests": 96,
+      "successful_requests": 96,
+      "failures": 0,
+      "successful_pairs": 9600
+    },
+    "optimized_stock_http_s1_python_stock": {
+      "status": "VERIFIED",
+      "requests": 96,
+      "successful_requests": 96,
+      "failures": 0,
+      "successful_pairs": 9600
+    },
+    "http_s4_python_stock": {
+      "status": "VERIFIED",
+      "requests": 288,
+      "successful_requests": 288,
+      "failures": 0,
+      "successful_pairs": 15360
+    },
+    "optimized_stock_http_s2_python_compiled": {
+      "status": "VERIFIED",
+      "requests": 96,
+      "successful_requests": 96,
+      "failures": 0,
+      "successful_pairs": 9600
+    },
+    "optimized_stock_http_s4_python_stock": {
+      "status": "VERIFIED",
+      "requests": 96,
+      "successful_requests": 96,
+      "failures": 0,
+      "successful_pairs": 9600
+    },
+    "http_s1_python_stock": {
+      "status": "VERIFIED",
+      "requests": 288,
+      "successful_requests": 288,
+      "failures": 0,
+      "successful_pairs": 15360
+    },
+    "optimized_stock_http_s7_python_compiled": {
+      "status": "VERIFIED",
+      "requests": 96,
+      "successful_requests": 96,
+      "failures": 0,
+      "successful_pairs": 9600
+    },
+    "http_s1_rust_stock": {
+      "status": "VERIFIED",
+      "requests": 288,
+      "successful_requests": 288,
+      "failures": 0,
+      "successful_pairs": 15360
+    }
+  },
+  "direct": {
+    "mps_direct_s1_metal": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "cuda_direct_s0_compiled": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "cuda_direct_s4_compiled": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "cuda_direct_s3_stock": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "mps_direct_s4_stock": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "mps_direct_s1_stock": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "cuda_direct_s2_triton": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "mps_direct_s4_metal": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "cuda_direct_s3_compiled": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "cuda_direct_s3_cuda": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "cuda_direct_s4_explicit": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "cuda_direct_s1_stock": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "mps_direct_s3_metal": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "cuda_direct_s0_explicit": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "cuda_direct_s4_cuda": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "mps_direct_s4_metal_compiled": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "mps_direct_s1_compiled": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "cuda_direct_s1_triton": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "mps_direct_s5_compiled": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "mps_direct_s5_metal_compiled": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "cuda_direct_s4_triton": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "mps_direct_s2_compiled": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "mps_direct_s3_metal_compiled": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "mps_direct_s2_metal_compiled": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "mps_direct_s3_stock": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "mps_direct_s1_metal_compiled": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "cuda_direct_s4_stock": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "cuda_direct_s3_explicit": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "mps_direct_s1_mlx": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "mps_direct_s0_mlx": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "mps_direct_s0_metal_compiled": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "cuda_direct_s2_cuda": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "mps_direct_s0_stock": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "mps_direct_s3_compiled": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "cuda_direct_s3_triton": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "mps_direct_s5_metal": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "mps_direct_s2_mlx_compiled": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "cuda_direct_s2_explicit": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "cuda_direct_s1_explicit": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "mps_direct_s0_metal": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "mps_direct_s5_mlx": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "mps_direct_s4_mlx": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "cuda_direct_s2_stock": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "cuda_direct_s1_cuda": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "mps_direct_s4_compiled": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "mps_direct_s3_mlx_compiled": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "mps_direct_s5_stock": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "mps_direct_s0_compiled": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "mps_direct_s5_mlx_compiled": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "mps_direct_s2_mlx": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "mps_direct_s3_mlx": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "mps_direct_s2_stock": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "mps_direct_s0_mlx_compiled": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "cuda_direct_s2_compiled": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "mps_direct_s4_mlx_compiled": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "cuda_direct_s0_stock": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "cuda_direct_s1_compiled": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "cuda_direct_s0_triton": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "mps_direct_s2_metal": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "mps_direct_s1_mlx_compiled": {
+      "status": "VERIFIED",
+      "observations": 60
+    },
+    "cuda_direct_s0_cuda": {
+      "status": "VERIFIED",
+      "observations": 60
+    }
+  },
+  "limitations": [],
+  "source_inputs": "VERIFIED candidate file, assets, frozen manifests and source corpora/qrels",
+  "retained_attempts": {
+    "raw/attempts/http_cycle0_before_bootstrap_fix/manifest.json": {
+      "status": "VERIFIED",
+      "files": 11
+    }
+  },
+  "confirmation": {
+    "mps_stock_reserve": {
+      "status": "VERIFIED",
+      "queries": 421,
+      "pairs": 42100
+    },
+    "cuda_stock_reserve": {
+      "status": "VERIFIED",
+      "queries": 421,
+      "pairs": 42100
+    },
+    "mps_mlx_compiled_reserve": {
+      "status": "VERIFIED",
+      "queries": 421,
+      "pairs": 42100
+    },
+    "mps_compiled_reserve": {
+      "status": "VERIFIED",
+      "queries": 421,
+      "pairs": 42100
+    }
+  },
+  "context": {
+    "cuda_context_check/L128/stock": {
+      "status": "VERIFIED",
+      "queries": 16,
+      "pairs": 1600
+    },
+    "cuda_context_check/L256/stock": {
+      "status": "VERIFIED",
+      "queries": 16,
+      "pairs": 1600
+    },
+    "mps_context_check/L128/stock": {
+      "status": "VERIFIED",
+      "queries": 16,
+      "pairs": 1600
+    },
+    "mps_context_check/L128/mlx": {
+      "status": "VERIFIED",
+      "queries": 16,
+      "pairs": 1600
+    },
+    "mps_context_check/L256/stock": {
+      "status": "VERIFIED",
+      "queries": 16,
+      "pairs": 1600
+    },
+    "mps_context_check/L256/mlx": {
+      "status": "VERIFIED",
+      "queries": 16,
+      "pairs": 1600
+    }
+  },
+  "operations": {
+    "cuda_operation_s4": {
+      "status": "VERIFIED",
+      "observations": 27
+    },
+    "mps_operation_s4": {
+      "status": "VERIFIED",
+      "observations": 18
+    },
+    "mps_operation_s5": {
+      "status": "VERIFIED",
+      "observations": 18
+    },
+    "cuda_operation_s5": {
+      "status": "VERIFIED",
+      "observations": 27
+    },
+    "mps_operation_s2": {
+      "status": "VERIFIED",
+      "observations": 18
+    },
+    "cuda_operation_s2": {
+      "status": "VERIFIED",
+      "observations": 27
+    },
+    "cuda_operation_s3": {
+      "status": "VERIFIED",
+      "observations": 27
+    },
+    "mps_operation_s3": {
+      "status": "VERIFIED",
+      "observations": 18
+    },
+    "mps_operation_s0": {
+      "status": "VERIFIED",
+      "observations": 18
+    },
+    "cuda_operation_s0": {
+      "status": "VERIFIED",
+      "observations": 27
+    },
+    "cuda_operation_s1": {
+      "status": "VERIFIED",
+      "observations": 27
+    },
+    "mps_operation_s1": {
+      "status": "VERIFIED",
+      "observations": 18
+    }
+  },
+  "startup": {
+    "mps_stock_startup": "VERIFIED",
+    "mps_compiled_startup": "VERIFIED",
+    "cuda_stock_startup": "VERIFIED",
+    "cuda_compiled_startup": "VERIFIED"
+  },
+  "timing_intervals": {
+    "mps/('scoring', 10, 16, 512, 'sweep')/stock/compiled": "VERIFIED",
+    "mps/('scoring', 10, 16, 512, 'sweep')/stock/metal": "VERIFIED",
+    "mps/('scoring', 10, 16, 512, 'sweep')/stock/metal_compiled": "VERIFIED",
+    "mps/('scoring', 10, 16, 512, 'sweep')/stock/mlx": "VERIFIED",
+    "mps/('scoring', 10, 16, 512, 'sweep')/stock/mlx_compiled": "VERIFIED",
+    "mps/('scoring', 10, 16, 512, 'sweep')/mlx/mlx_compiled": "VERIFIED",
+    "mps/('scoring', 10, 16, 512, 'sweep')/mlx/metal": "VERIFIED",
+    "mps/('scoring', 10, 16, 512, 'sweep')/mlx/metal_compiled": "VERIFIED",
+    "mps/('scoring', 10, 16, 512, 'sweep')/mlx_compiled/metal_compiled": "VERIFIED",
+    "mps/('forward', 10, 16, 512, 'sweep')/stock/compiled": "VERIFIED",
+    "mps/('forward', 10, 16, 512, 'sweep')/stock/metal": "VERIFIED",
+    "mps/('forward', 10, 16, 512, 'sweep')/stock/metal_compiled": "VERIFIED",
+    "mps/('forward', 10, 16, 512, 'sweep')/stock/mlx": "VERIFIED",
+    "mps/('forward', 10, 16, 512, 'sweep')/stock/mlx_compiled": "VERIFIED",
+    "mps/('forward', 10, 16, 512, 'sweep')/mlx/mlx_compiled": "VERIFIED",
+    "mps/('forward', 10, 16, 512, 'sweep')/mlx/metal": "VERIFIED",
+    "mps/('forward', 10, 16, 512, 'sweep')/mlx/metal_compiled": "VERIFIED",
+    "mps/('forward', 10, 16, 512, 'sweep')/mlx_compiled/metal_compiled": "VERIFIED",
+    "mps/('forward', 100, 32, 512, 'sweep')/stock/compiled": "VERIFIED",
+    "mps/('forward', 100, 32, 512, 'sweep')/stock/metal": "VERIFIED",
+    "mps/('forward', 100, 32, 512, 'sweep')/stock/metal_compiled": "VERIFIED",
+    "mps/('forward', 100, 32, 512, 'sweep')/stock/mlx": "VERIFIED",
+    "mps/('forward', 100, 32, 512, 'sweep')/stock/mlx_compiled": "VERIFIED",
+    "mps/('forward', 100, 32, 512, 'sweep')/mlx/mlx_compiled": "VERIFIED",
+    "mps/('forward', 100, 32, 512, 'sweep')/mlx/metal": "VERIFIED",
+    "mps/('forward', 100, 32, 512, 'sweep')/mlx/metal_compiled": "VERIFIED",
+    "mps/('forward', 100, 32, 512, 'sweep')/mlx_compiled/metal_compiled": "VERIFIED",
+    "mps/('scoring', 100, 32, 512, 'sweep')/stock/compiled": "VERIFIED",
+    "mps/('scoring', 100, 32, 512, 'sweep')/stock/metal": "VERIFIED",
+    "mps/('scoring', 100, 32, 512, 'sweep')/stock/metal_compiled": "VERIFIED",
+    "mps/('scoring', 100, 32, 512, 'sweep')/stock/mlx": "VERIFIED",
+    "mps/('scoring', 100, 32, 512, 'sweep')/stock/mlx_compiled": "VERIFIED",
+    "mps/('scoring', 100, 32, 512, 'sweep')/mlx/mlx_compiled": "VERIFIED",
+    "mps/('scoring', 100, 32, 512, 'sweep')/mlx/metal": "VERIFIED",
+    "mps/('scoring', 100, 32, 512, 'sweep')/mlx/metal_compiled": "VERIFIED",
+    "mps/('scoring', 100, 32, 512, 'sweep')/mlx_compiled/metal_compiled": "VERIFIED",
+    "mps/('forward', 100, 16, 128, 'sweep')/stock/compiled": "VERIFIED",
+    "mps/('forward', 100, 16, 128, 'sweep')/stock/metal": "VERIFIED",
+    "mps/('forward', 100, 16, 128, 'sweep')/stock/metal_compiled": "VERIFIED",
+    "mps/('forward', 100, 16, 128, 'sweep')/stock/mlx": "VERIFIED",
+    "mps/('forward', 100, 16, 128, 'sweep')/stock/mlx_compiled": "VERIFIED",
+    "mps/('forward', 100, 16, 128, 'sweep')/mlx/mlx_compiled": "VERIFIED",
+    "mps/('forward', 100, 16, 128, 'sweep')/mlx/metal": "VERIFIED",
+    "mps/('forward', 100, 16, 128, 'sweep')/mlx/metal_compiled": "VERIFIED",
+    "mps/('forward', 100, 16, 128, 'sweep')/mlx_compiled/metal_compiled": "VERIFIED",
+    "mps/('scoring', 100, 16, 128, 'sweep')/stock/compiled": "VERIFIED",
+    "mps/('scoring', 100, 16, 128, 'sweep')/stock/metal": "VERIFIED",
+    "mps/('scoring', 100, 16, 128, 'sweep')/stock/metal_compiled": "VERIFIED",
+    "mps/('scoring', 100, 16, 128, 'sweep')/stock/mlx": "VERIFIED",
+    "mps/('scoring', 100, 16, 128, 'sweep')/stock/mlx_compiled": "VERIFIED",
+    "mps/('scoring', 100, 16, 128, 'sweep')/mlx/mlx_compiled": "VERIFIED",
+    "mps/('scoring', 100, 16, 128, 'sweep')/mlx/metal": "VERIFIED",
+    "mps/('scoring', 100, 16, 128, 'sweep')/mlx/metal_compiled": "VERIFIED",
+    "mps/('scoring', 100, 16, 128, 'sweep')/mlx_compiled/metal_compiled": "VERIFIED",
+    "mps/('forward', 50, 16, 512, 'sweep')/stock/compiled": "VERIFIED",
+    "mps/('forward', 50, 16, 512, 'sweep')/stock/metal": "VERIFIED",
+    "mps/('forward', 50, 16, 512, 'sweep')/stock/metal_compiled": "VERIFIED",
+    "mps/('forward', 50, 16, 512, 'sweep')/stock/mlx": "VERIFIED",
+    "mps/('forward', 50, 16, 512, 'sweep')/stock/mlx_compiled": "VERIFIED",
+    "mps/('forward', 50, 16, 512, 'sweep')/mlx/mlx_compiled": "VERIFIED",
+    "mps/('forward', 50, 16, 512, 'sweep')/mlx/metal": "VERIFIED",
+    "mps/('forward', 50, 16, 512, 'sweep')/mlx/metal_compiled": "VERIFIED",
+    "mps/('forward', 50, 16, 512, 'sweep')/mlx_compiled/metal_compiled": "VERIFIED",
+    "mps/('scoring', 50, 16, 512, 'sweep')/stock/compiled": "VERIFIED",
+    "mps/('scoring', 50, 16, 512, 'sweep')/stock/metal": "VERIFIED",
+    "mps/('scoring', 50, 16, 512, 'sweep')/stock/metal_compiled": "VERIFIED",
+    "mps/('scoring', 50, 16, 512, 'sweep')/stock/mlx": "VERIFIED",
+    "mps/('scoring', 50, 16, 512, 'sweep')/stock/mlx_compiled": "VERIFIED",
+    "mps/('scoring', 50, 16, 512, 'sweep')/mlx/mlx_compiled": "VERIFIED",
+    "mps/('scoring', 50, 16, 512, 'sweep')/mlx/metal": "VERIFIED",
+    "mps/('scoring', 50, 16, 512, 'sweep')/mlx/metal_compiled": "VERIFIED",
+    "mps/('scoring', 50, 16, 512, 'sweep')/mlx_compiled/metal_compiled": "VERIFIED",
+    "mps/('forward', 100, 16, 512, 'primary')/stock/compiled": "VERIFIED",
+    "mps/('forward', 100, 16, 512, 'primary')/stock/metal": "VERIFIED",
+    "mps/('forward', 100, 16, 512, 'primary')/stock/metal_compiled": "VERIFIED",
+    "mps/('forward', 100, 16, 512, 'primary')/stock/mlx": "VERIFIED",
+    "mps/('forward', 100, 16, 512, 'primary')/stock/mlx_compiled": "VERIFIED",
+    "mps/('forward', 100, 16, 512, 'primary')/mlx/mlx_compiled": "VERIFIED",
+    "mps/('forward', 100, 16, 512, 'primary')/mlx/metal": "VERIFIED",
+    "mps/('forward', 100, 16, 512, 'primary')/mlx/metal_compiled": "VERIFIED",
+    "mps/('forward', 100, 16, 512, 'primary')/mlx_compiled/metal_compiled": "VERIFIED",
+    "mps/('scoring', 100, 16, 512, 'primary')/stock/compiled": "VERIFIED",
+    "mps/('scoring', 100, 16, 512, 'primary')/stock/metal": "VERIFIED",
+    "mps/('scoring', 100, 16, 512, 'primary')/stock/metal_compiled": "VERIFIED",
+    "mps/('scoring', 100, 16, 512, 'primary')/stock/mlx": "VERIFIED",
+    "mps/('scoring', 100, 16, 512, 'primary')/stock/mlx_compiled": "VERIFIED",
+    "mps/('scoring', 100, 16, 512, 'primary')/mlx/mlx_compiled": "VERIFIED",
+    "mps/('scoring', 100, 16, 512, 'primary')/mlx/metal": "VERIFIED",
+    "mps/('scoring', 100, 16, 512, 'primary')/mlx/metal_compiled": "VERIFIED",
+    "mps/('scoring', 100, 16, 512, 'primary')/mlx_compiled/metal_compiled": "VERIFIED",
+    "mps/('scoring', 100, 1, 512, 'sweep')/stock/compiled": "VERIFIED",
+    "mps/('scoring', 100, 1, 512, 'sweep')/stock/metal": "VERIFIED",
+    "mps/('scoring', 100, 1, 512, 'sweep')/stock/metal_compiled": "VERIFIED",
+    "mps/('scoring', 100, 1, 512, 'sweep')/stock/mlx": "VERIFIED",
+    "mps/('scoring', 100, 1, 512, 'sweep')/stock/mlx_compiled": "VERIFIED",
+    "mps/('scoring', 100, 1, 512, 'sweep')/mlx/mlx_compiled": "VERIFIED",
+    "mps/('scoring', 100, 1, 512, 'sweep')/mlx/metal": "VERIFIED",
+    "mps/('scoring', 100, 1, 512, 'sweep')/mlx/metal_compiled": "VERIFIED",
+    "mps/('scoring', 100, 1, 512, 'sweep')/mlx_compiled/metal_compiled": "VERIFIED",
+    "mps/('forward', 100, 1, 512, 'sweep')/stock/compiled": "VERIFIED",
+    "mps/('forward', 100, 1, 512, 'sweep')/stock/metal": "VERIFIED",
+    "mps/('forward', 100, 1, 512, 'sweep')/stock/metal_compiled": "VERIFIED",
+    "mps/('forward', 100, 1, 512, 'sweep')/stock/mlx": "VERIFIED",
+    "mps/('forward', 100, 1, 512, 'sweep')/stock/mlx_compiled": "VERIFIED",
+    "mps/('forward', 100, 1, 512, 'sweep')/mlx/mlx_compiled": "VERIFIED",
+    "mps/('forward', 100, 1, 512, 'sweep')/mlx/metal": "VERIFIED",
+    "mps/('forward', 100, 1, 512, 'sweep')/mlx/metal_compiled": "VERIFIED",
+    "mps/('forward', 100, 1, 512, 'sweep')/mlx_compiled/metal_compiled": "VERIFIED",
+    "mps/('forward', 100, 8, 512, 'sweep')/stock/compiled": "VERIFIED",
+    "mps/('forward', 100, 8, 512, 'sweep')/stock/metal": "VERIFIED",
+    "mps/('forward', 100, 8, 512, 'sweep')/stock/metal_compiled": "VERIFIED",
+    "mps/('forward', 100, 8, 512, 'sweep')/stock/mlx": "VERIFIED",
+    "mps/('forward', 100, 8, 512, 'sweep')/stock/mlx_compiled": "VERIFIED",
+    "mps/('forward', 100, 8, 512, 'sweep')/mlx/mlx_compiled": "VERIFIED",
+    "mps/('forward', 100, 8, 512, 'sweep')/mlx/metal": "VERIFIED",
+    "mps/('forward', 100, 8, 512, 'sweep')/mlx/metal_compiled": "VERIFIED",
+    "mps/('forward', 100, 8, 512, 'sweep')/mlx_compiled/metal_compiled": "VERIFIED",
+    "mps/('scoring', 100, 8, 512, 'sweep')/stock/compiled": "VERIFIED",
+    "mps/('scoring', 100, 8, 512, 'sweep')/stock/metal": "VERIFIED",
+    "mps/('scoring', 100, 8, 512, 'sweep')/stock/metal_compiled": "VERIFIED",
+    "mps/('scoring', 100, 8, 512, 'sweep')/stock/mlx": "VERIFIED",
+    "mps/('scoring', 100, 8, 512, 'sweep')/stock/mlx_compiled": "VERIFIED",
+    "mps/('scoring', 100, 8, 512, 'sweep')/mlx/mlx_compiled": "VERIFIED",
+    "mps/('scoring', 100, 8, 512, 'sweep')/mlx/metal": "VERIFIED",
+    "mps/('scoring', 100, 8, 512, 'sweep')/mlx/metal_compiled": "VERIFIED",
+    "mps/('scoring', 100, 8, 512, 'sweep')/mlx_compiled/metal_compiled": "VERIFIED",
+    "mps/('forward', 100, 16, 512, 'sweep')/stock/compiled": "VERIFIED",
+    "mps/('forward', 100, 16, 512, 'sweep')/stock/metal": "VERIFIED",
+    "mps/('forward', 100, 16, 512, 'sweep')/stock/metal_compiled": "VERIFIED",
+    "mps/('forward', 100, 16, 512, 'sweep')/stock/mlx": "VERIFIED",
+    "mps/('forward', 100, 16, 512, 'sweep')/stock/mlx_compiled": "VERIFIED",
+    "mps/('forward', 100, 16, 512, 'sweep')/mlx/mlx_compiled": "VERIFIED",
+    "mps/('forward', 100, 16, 512, 'sweep')/mlx/metal": "VERIFIED",
+    "mps/('forward', 100, 16, 512, 'sweep')/mlx/metal_compiled": "VERIFIED",
+    "mps/('forward', 100, 16, 512, 'sweep')/mlx_compiled/metal_compiled": "VERIFIED",
+    "mps/('scoring', 100, 16, 512, 'sweep')/stock/compiled": "VERIFIED",
+    "mps/('scoring', 100, 16, 512, 'sweep')/stock/metal": "VERIFIED",
+    "mps/('scoring', 100, 16, 512, 'sweep')/stock/metal_compiled": "VERIFIED",
+    "mps/('scoring', 100, 16, 512, 'sweep')/stock/mlx": "VERIFIED",
+    "mps/('scoring', 100, 16, 512, 'sweep')/stock/mlx_compiled": "VERIFIED",
+    "mps/('scoring', 100, 16, 512, 'sweep')/mlx/mlx_compiled": "VERIFIED",
+    "mps/('scoring', 100, 16, 512, 'sweep')/mlx/metal": "VERIFIED",
+    "mps/('scoring', 100, 16, 512, 'sweep')/mlx/metal_compiled": "VERIFIED",
+    "mps/('scoring', 100, 16, 512, 'sweep')/mlx_compiled/metal_compiled": "VERIFIED",
+    "mps/('forward', 100, 64, 512, 'sweep')/stock/compiled": "VERIFIED",
+    "mps/('forward', 100, 64, 512, 'sweep')/stock/metal": "VERIFIED",
+    "mps/('forward', 100, 64, 512, 'sweep')/stock/metal_compiled": "VERIFIED",
+    "mps/('forward', 100, 64, 512, 'sweep')/stock/mlx": "VERIFIED",
+    "mps/('forward', 100, 64, 512, 'sweep')/stock/mlx_compiled": "VERIFIED",
+    "mps/('forward', 100, 64, 512, 'sweep')/mlx/mlx_compiled": "VERIFIED",
+    "mps/('forward', 100, 64, 512, 'sweep')/mlx/metal": "VERIFIED",
+    "mps/('forward', 100, 64, 512, 'sweep')/mlx/metal_compiled": "VERIFIED",
+    "mps/('forward', 100, 64, 512, 'sweep')/mlx_compiled/metal_compiled": "VERIFIED",
+    "mps/('scoring', 100, 64, 512, 'sweep')/stock/compiled": "VERIFIED",
+    "mps/('scoring', 100, 64, 512, 'sweep')/stock/metal": "VERIFIED",
+    "mps/('scoring', 100, 64, 512, 'sweep')/stock/metal_compiled": "VERIFIED",
+    "mps/('scoring', 100, 64, 512, 'sweep')/stock/mlx": "VERIFIED",
+    "mps/('scoring', 100, 64, 512, 'sweep')/stock/mlx_compiled": "VERIFIED",
+    "mps/('scoring', 100, 64, 512, 'sweep')/mlx/mlx_compiled": "VERIFIED",
+    "mps/('scoring', 100, 64, 512, 'sweep')/mlx/metal": "VERIFIED",
+    "mps/('scoring', 100, 64, 512, 'sweep')/mlx/metal_compiled": "VERIFIED",
+    "mps/('scoring', 100, 64, 512, 'sweep')/mlx_compiled/metal_compiled": "VERIFIED",
+    "mps/('scoring', 100, 16, 256, 'sweep')/stock/compiled": "VERIFIED",
+    "mps/('scoring', 100, 16, 256, 'sweep')/stock/metal": "VERIFIED",
+    "mps/('scoring', 100, 16, 256, 'sweep')/stock/metal_compiled": "VERIFIED",
+    "mps/('scoring', 100, 16, 256, 'sweep')/stock/mlx": "VERIFIED",
+    "mps/('scoring', 100, 16, 256, 'sweep')/stock/mlx_compiled": "VERIFIED",
+    "mps/('scoring', 100, 16, 256, 'sweep')/mlx/mlx_compiled": "VERIFIED",
+    "mps/('scoring', 100, 16, 256, 'sweep')/mlx/metal": "VERIFIED",
+    "mps/('scoring', 100, 16, 256, 'sweep')/mlx/metal_compiled": "VERIFIED",
+    "mps/('scoring', 100, 16, 256, 'sweep')/mlx_compiled/metal_compiled": "VERIFIED",
+    "mps/('forward', 100, 16, 256, 'sweep')/stock/compiled": "VERIFIED",
+    "mps/('forward', 100, 16, 256, 'sweep')/stock/metal": "VERIFIED",
+    "mps/('forward', 100, 16, 256, 'sweep')/stock/metal_compiled": "VERIFIED",
+    "mps/('forward', 100, 16, 256, 'sweep')/stock/mlx": "VERIFIED",
+    "mps/('forward', 100, 16, 256, 'sweep')/stock/mlx_compiled": "VERIFIED",
+    "mps/('forward', 100, 16, 256, 'sweep')/mlx/mlx_compiled": "VERIFIED",
+    "mps/('forward', 100, 16, 256, 'sweep')/mlx/metal": "VERIFIED",
+    "mps/('forward', 100, 16, 256, 'sweep')/mlx/metal_compiled": "VERIFIED",
+    "mps/('forward', 100, 16, 256, 'sweep')/mlx_compiled/metal_compiled": "VERIFIED",
+    "cuda/('forward', 100, 32, 512, 'sweep')/stock/compiled": "VERIFIED",
+    "cuda/('forward', 100, 32, 512, 'sweep')/stock/cuda": "VERIFIED",
+    "cuda/('forward', 100, 32, 512, 'sweep')/stock/explicit": "VERIFIED",
+    "cuda/('forward', 100, 32, 512, 'sweep')/stock/triton": "VERIFIED",
+    "cuda/('forward', 100, 32, 512, 'sweep')/explicit/cuda": "VERIFIED",
+    "cuda/('forward', 100, 32, 512, 'sweep')/explicit/triton": "VERIFIED",
+    "cuda/('forward', 100, 32, 512, 'sweep')/compiled/cuda": "VERIFIED",
+    "cuda/('forward', 100, 32, 512, 'sweep')/compiled/triton": "VERIFIED",
+    "cuda/('scoring', 100, 32, 512, 'sweep')/stock/compiled": "VERIFIED",
+    "cuda/('scoring', 100, 32, 512, 'sweep')/stock/cuda": "VERIFIED",
+    "cuda/('scoring', 100, 32, 512, 'sweep')/stock/explicit": "VERIFIED",
+    "cuda/('scoring', 100, 32, 512, 'sweep')/stock/triton": "VERIFIED",
+    "cuda/('scoring', 100, 32, 512, 'sweep')/explicit/cuda": "VERIFIED",
+    "cuda/('scoring', 100, 32, 512, 'sweep')/explicit/triton": "VERIFIED",
+    "cuda/('scoring', 100, 32, 512, 'sweep')/compiled/cuda": "VERIFIED",
+    "cuda/('scoring', 100, 32, 512, 'sweep')/compiled/triton": "VERIFIED",
+    "cuda/('forward', 100, 16, 512, 'sweep')/stock/compiled": "VERIFIED",
+    "cuda/('forward', 100, 16, 512, 'sweep')/stock/cuda": "VERIFIED",
+    "cuda/('forward', 100, 16, 512, 'sweep')/stock/explicit": "VERIFIED",
+    "cuda/('forward', 100, 16, 512, 'sweep')/stock/triton": "VERIFIED",
+    "cuda/('forward', 100, 16, 512, 'sweep')/explicit/cuda": "VERIFIED",
+    "cuda/('forward', 100, 16, 512, 'sweep')/explicit/triton": "VERIFIED",
+    "cuda/('forward', 100, 16, 512, 'sweep')/compiled/cuda": "VERIFIED",
+    "cuda/('forward', 100, 16, 512, 'sweep')/compiled/triton": "VERIFIED",
+    "cuda/('scoring', 100, 16, 512, 'sweep')/stock/compiled": "VERIFIED",
+    "cuda/('scoring', 100, 16, 512, 'sweep')/stock/cuda": "VERIFIED",
+    "cuda/('scoring', 100, 16, 512, 'sweep')/stock/explicit": "VERIFIED",
+    "cuda/('scoring', 100, 16, 512, 'sweep')/stock/triton": "VERIFIED",
+    "cuda/('scoring', 100, 16, 512, 'sweep')/explicit/cuda": "VERIFIED",
+    "cuda/('scoring', 100, 16, 512, 'sweep')/explicit/triton": "VERIFIED",
+    "cuda/('scoring', 100, 16, 512, 'sweep')/compiled/cuda": "VERIFIED",
+    "cuda/('scoring', 100, 16, 512, 'sweep')/compiled/triton": "VERIFIED",
+    "cuda/('scoring', 100, 16, 256, 'sweep')/stock/compiled": "VERIFIED",
+    "cuda/('scoring', 100, 16, 256, 'sweep')/stock/cuda": "VERIFIED",
+    "cuda/('scoring', 100, 16, 256, 'sweep')/stock/explicit": "VERIFIED",
+    "cuda/('scoring', 100, 16, 256, 'sweep')/stock/triton": "VERIFIED",
+    "cuda/('scoring', 100, 16, 256, 'sweep')/explicit/cuda": "VERIFIED",
+    "cuda/('scoring', 100, 16, 256, 'sweep')/explicit/triton": "VERIFIED",
+    "cuda/('scoring', 100, 16, 256, 'sweep')/compiled/cuda": "VERIFIED",
+    "cuda/('scoring', 100, 16, 256, 'sweep')/compiled/triton": "VERIFIED",
+    "cuda/('forward', 100, 16, 256, 'sweep')/stock/compiled": "VERIFIED",
+    "cuda/('forward', 100, 16, 256, 'sweep')/stock/cuda": "VERIFIED",
+    "cuda/('forward', 100, 16, 256, 'sweep')/stock/explicit": "VERIFIED",
+    "cuda/('forward', 100, 16, 256, 'sweep')/stock/triton": "VERIFIED",
+    "cuda/('forward', 100, 16, 256, 'sweep')/explicit/cuda": "VERIFIED",
+    "cuda/('forward', 100, 16, 256, 'sweep')/explicit/triton": "VERIFIED",
+    "cuda/('forward', 100, 16, 256, 'sweep')/compiled/cuda": "VERIFIED",
+    "cuda/('forward', 100, 16, 256, 'sweep')/compiled/triton": "VERIFIED",
+    "cuda/('scoring', 100, 64, 512, 'sweep')/stock/compiled": "VERIFIED",
+    "cuda/('scoring', 100, 64, 512, 'sweep')/stock/cuda": "VERIFIED",
+    "cuda/('scoring', 100, 64, 512, 'sweep')/stock/explicit": "VERIFIED",
+    "cuda/('scoring', 100, 64, 512, 'sweep')/stock/triton": "VERIFIED",
+    "cuda/('scoring', 100, 64, 512, 'sweep')/explicit/cuda": "VERIFIED",
+    "cuda/('scoring', 100, 64, 512, 'sweep')/explicit/triton": "VERIFIED",
+    "cuda/('scoring', 100, 64, 512, 'sweep')/compiled/cuda": "VERIFIED",
+    "cuda/('scoring', 100, 64, 512, 'sweep')/compiled/triton": "VERIFIED",
+    "cuda/('forward', 100, 64, 512, 'sweep')/stock/compiled": "VERIFIED",
+    "cuda/('forward', 100, 64, 512, 'sweep')/stock/cuda": "VERIFIED",
+    "cuda/('forward', 100, 64, 512, 'sweep')/stock/explicit": "VERIFIED",
+    "cuda/('forward', 100, 64, 512, 'sweep')/stock/triton": "VERIFIED",
+    "cuda/('forward', 100, 64, 512, 'sweep')/explicit/cuda": "VERIFIED",
+    "cuda/('forward', 100, 64, 512, 'sweep')/explicit/triton": "VERIFIED",
+    "cuda/('forward', 100, 64, 512, 'sweep')/compiled/cuda": "VERIFIED",
+    "cuda/('forward', 100, 64, 512, 'sweep')/compiled/triton": "VERIFIED",
+    "cuda/('scoring', 100, 16, 128, 'sweep')/stock/compiled": "VERIFIED",
+    "cuda/('scoring', 100, 16, 128, 'sweep')/stock/cuda": "VERIFIED",
+    "cuda/('scoring', 100, 16, 128, 'sweep')/stock/explicit": "VERIFIED",
+    "cuda/('scoring', 100, 16, 128, 'sweep')/stock/triton": "VERIFIED",
+    "cuda/('scoring', 100, 16, 128, 'sweep')/explicit/cuda": "VERIFIED",
+    "cuda/('scoring', 100, 16, 128, 'sweep')/explicit/triton": "VERIFIED",
+    "cuda/('scoring', 100, 16, 128, 'sweep')/compiled/cuda": "VERIFIED",
+    "cuda/('scoring', 100, 16, 128, 'sweep')/compiled/triton": "VERIFIED",
+    "cuda/('forward', 100, 16, 128, 'sweep')/stock/compiled": "VERIFIED",
+    "cuda/('forward', 100, 16, 128, 'sweep')/stock/cuda": "VERIFIED",
+    "cuda/('forward', 100, 16, 128, 'sweep')/stock/explicit": "VERIFIED",
+    "cuda/('forward', 100, 16, 128, 'sweep')/stock/triton": "VERIFIED",
+    "cuda/('forward', 100, 16, 128, 'sweep')/explicit/cuda": "VERIFIED",
+    "cuda/('forward', 100, 16, 128, 'sweep')/explicit/triton": "VERIFIED",
+    "cuda/('forward', 100, 16, 128, 'sweep')/compiled/cuda": "VERIFIED",
+    "cuda/('forward', 100, 16, 128, 'sweep')/compiled/triton": "VERIFIED",
+    "cuda/('scoring', 100, 1, 512, 'sweep')/stock/compiled": "VERIFIED",
+    "cuda/('scoring', 100, 1, 512, 'sweep')/stock/cuda": "VERIFIED",
+    "cuda/('scoring', 100, 1, 512, 'sweep')/stock/explicit": "VERIFIED",
+    "cuda/('scoring', 100, 1, 512, 'sweep')/stock/triton": "VERIFIED",
+    "cuda/('scoring', 100, 1, 512, 'sweep')/explicit/cuda": "VERIFIED",
+    "cuda/('scoring', 100, 1, 512, 'sweep')/explicit/triton": "VERIFIED",
+    "cuda/('scoring', 100, 1, 512, 'sweep')/compiled/cuda": "VERIFIED",
+    "cuda/('scoring', 100, 1, 512, 'sweep')/compiled/triton": "VERIFIED",
+    "cuda/('forward', 100, 1, 512, 'sweep')/stock/compiled": "VERIFIED",
+    "cuda/('forward', 100, 1, 512, 'sweep')/stock/cuda": "VERIFIED",
+    "cuda/('forward', 100, 1, 512, 'sweep')/stock/explicit": "VERIFIED",
+    "cuda/('forward', 100, 1, 512, 'sweep')/stock/triton": "VERIFIED",
+    "cuda/('forward', 100, 1, 512, 'sweep')/explicit/cuda": "VERIFIED",
+    "cuda/('forward', 100, 1, 512, 'sweep')/explicit/triton": "VERIFIED",
+    "cuda/('forward', 100, 1, 512, 'sweep')/compiled/cuda": "VERIFIED",
+    "cuda/('forward', 100, 1, 512, 'sweep')/compiled/triton": "VERIFIED",
+    "cuda/('forward', 100, 16, 512, 'primary')/stock/compiled": "VERIFIED",
+    "cuda/('forward', 100, 16, 512, 'primary')/stock/cuda": "VERIFIED",
+    "cuda/('forward', 100, 16, 512, 'primary')/stock/explicit": "VERIFIED",
+    "cuda/('forward', 100, 16, 512, 'primary')/stock/triton": "VERIFIED",
+    "cuda/('forward', 100, 16, 512, 'primary')/explicit/cuda": "VERIFIED",
+    "cuda/('forward', 100, 16, 512, 'primary')/explicit/triton": "VERIFIED",
+    "cuda/('forward', 100, 16, 512, 'primary')/compiled/cuda": "VERIFIED",
+    "cuda/('forward', 100, 16, 512, 'primary')/compiled/triton": "VERIFIED",
+    "cuda/('scoring', 100, 16, 512, 'primary')/stock/compiled": "VERIFIED",
+    "cuda/('scoring', 100, 16, 512, 'primary')/stock/cuda": "VERIFIED",
+    "cuda/('scoring', 100, 16, 512, 'primary')/stock/explicit": "VERIFIED",
+    "cuda/('scoring', 100, 16, 512, 'primary')/stock/triton": "VERIFIED",
+    "cuda/('scoring', 100, 16, 512, 'primary')/explicit/cuda": "VERIFIED",
+    "cuda/('scoring', 100, 16, 512, 'primary')/explicit/triton": "VERIFIED",
+    "cuda/('scoring', 100, 16, 512, 'primary')/compiled/cuda": "VERIFIED",
+    "cuda/('scoring', 100, 16, 512, 'primary')/compiled/triton": "VERIFIED",
+    "cuda/('scoring', 10, 16, 512, 'sweep')/stock/compiled": "VERIFIED",
+    "cuda/('scoring', 10, 16, 512, 'sweep')/stock/cuda": "VERIFIED",
+    "cuda/('scoring', 10, 16, 512, 'sweep')/stock/explicit": "VERIFIED",
+    "cuda/('scoring', 10, 16, 512, 'sweep')/stock/triton": "VERIFIED",
+    "cuda/('scoring', 10, 16, 512, 'sweep')/explicit/cuda": "VERIFIED",
+    "cuda/('scoring', 10, 16, 512, 'sweep')/explicit/triton": "VERIFIED",
+    "cuda/('scoring', 10, 16, 512, 'sweep')/compiled/cuda": "VERIFIED",
+    "cuda/('scoring', 10, 16, 512, 'sweep')/compiled/triton": "VERIFIED",
+    "cuda/('forward', 10, 16, 512, 'sweep')/stock/compiled": "VERIFIED",
+    "cuda/('forward', 10, 16, 512, 'sweep')/stock/cuda": "VERIFIED",
+    "cuda/('forward', 10, 16, 512, 'sweep')/stock/explicit": "VERIFIED",
+    "cuda/('forward', 10, 16, 512, 'sweep')/stock/triton": "VERIFIED",
+    "cuda/('forward', 10, 16, 512, 'sweep')/explicit/cuda": "VERIFIED",
+    "cuda/('forward', 10, 16, 512, 'sweep')/explicit/triton": "VERIFIED",
+    "cuda/('forward', 10, 16, 512, 'sweep')/compiled/cuda": "VERIFIED",
+    "cuda/('forward', 10, 16, 512, 'sweep')/compiled/triton": "VERIFIED",
+    "cuda/('scoring', 100, 8, 512, 'sweep')/stock/compiled": "VERIFIED",
+    "cuda/('scoring', 100, 8, 512, 'sweep')/stock/cuda": "VERIFIED",
+    "cuda/('scoring', 100, 8, 512, 'sweep')/stock/explicit": "VERIFIED",
+    "cuda/('scoring', 100, 8, 512, 'sweep')/stock/triton": "VERIFIED",
+    "cuda/('scoring', 100, 8, 512, 'sweep')/explicit/cuda": "VERIFIED",
+    "cuda/('scoring', 100, 8, 512, 'sweep')/explicit/triton": "VERIFIED",
+    "cuda/('scoring', 100, 8, 512, 'sweep')/compiled/cuda": "VERIFIED",
+    "cuda/('scoring', 100, 8, 512, 'sweep')/compiled/triton": "VERIFIED",
+    "cuda/('forward', 100, 8, 512, 'sweep')/stock/compiled": "VERIFIED",
+    "cuda/('forward', 100, 8, 512, 'sweep')/stock/cuda": "VERIFIED",
+    "cuda/('forward', 100, 8, 512, 'sweep')/stock/explicit": "VERIFIED",
+    "cuda/('forward', 100, 8, 512, 'sweep')/stock/triton": "VERIFIED",
+    "cuda/('forward', 100, 8, 512, 'sweep')/explicit/cuda": "VERIFIED",
+    "cuda/('forward', 100, 8, 512, 'sweep')/explicit/triton": "VERIFIED",
+    "cuda/('forward', 100, 8, 512, 'sweep')/compiled/cuda": "VERIFIED",
+    "cuda/('forward', 100, 8, 512, 'sweep')/compiled/triton": "VERIFIED",
+    "cuda/('scoring', 50, 16, 512, 'sweep')/stock/compiled": "VERIFIED",
+    "cuda/('scoring', 50, 16, 512, 'sweep')/stock/cuda": "VERIFIED",
+    "cuda/('scoring', 50, 16, 512, 'sweep')/stock/explicit": "VERIFIED",
+    "cuda/('scoring', 50, 16, 512, 'sweep')/stock/triton": "VERIFIED",
+    "cuda/('scoring', 50, 16, 512, 'sweep')/explicit/cuda": "VERIFIED",
+    "cuda/('scoring', 50, 16, 512, 'sweep')/explicit/triton": "VERIFIED",
+    "cuda/('scoring', 50, 16, 512, 'sweep')/compiled/cuda": "VERIFIED",
+    "cuda/('scoring', 50, 16, 512, 'sweep')/compiled/triton": "VERIFIED",
+    "cuda/('forward', 50, 16, 512, 'sweep')/stock/compiled": "VERIFIED",
+    "cuda/('forward', 50, 16, 512, 'sweep')/stock/cuda": "VERIFIED",
+    "cuda/('forward', 50, 16, 512, 'sweep')/stock/explicit": "VERIFIED",
+    "cuda/('forward', 50, 16, 512, 'sweep')/stock/triton": "VERIFIED",
+    "cuda/('forward', 50, 16, 512, 'sweep')/explicit/cuda": "VERIFIED",
+    "cuda/('forward', 50, 16, 512, 'sweep')/explicit/triton": "VERIFIED",
+    "cuda/('forward', 50, 16, 512, 'sweep')/compiled/cuda": "VERIFIED",
+    "cuda/('forward', 50, 16, 512, 'sweep')/compiled/triton": "VERIFIED",
+    "mps/2048/native/metal": "VERIFIED",
+    "mps/4096/native/metal": "VERIFIED",
+    "mps/8192/native/metal": "VERIFIED",
+    "cuda/2048/native/cuda": "VERIFIED",
+    "cuda/2048/native/triton": "VERIFIED",
+    "cuda/4096/native/cuda": "VERIFIED",
+    "cuda/4096/native/triton": "VERIFIED",
+    "cuda/8192/native/cuda": "VERIFIED",
+    "cuda/8192/native/triton": "VERIFIED",
+    "http/K10/C1/python/stock/rust/stock": "VERIFIED",
+    "http/K10/C1/python/mlx/rust/mlx": "VERIFIED",
+    "http/K10/C4/python/stock/rust/stock": "VERIFIED",
+    "http/K10/C4/python/mlx/rust/mlx": "VERIFIED",
+    "http/K10/C8/python/stock/rust/stock": "VERIFIED",
+    "http/K10/C8/python/mlx/rust/mlx": "VERIFIED",
+    "http/K50/C1/python/stock/rust/stock": "VERIFIED",
+    "http/K50/C1/python/mlx/rust/mlx": "VERIFIED",
+    "http/K50/C4/python/stock/rust/stock": "VERIFIED",
+    "http/K50/C4/python/mlx/rust/mlx": "VERIFIED",
+    "http/K50/C8/python/stock/rust/stock": "VERIFIED",
+    "http/K50/C8/python/mlx/rust/mlx": "VERIFIED",
+    "http/K100/C1/python/stock/rust/stock": "VERIFIED",
+    "http/K100/C1/python/mlx/rust/mlx": "VERIFIED",
+    "http/K100/C4/python/stock/rust/stock": "VERIFIED",
+    "http/K100/C4/python/mlx/rust/mlx": "VERIFIED",
+    "http/K100/C8/python/stock/rust/stock": "VERIFIED",
+    "http/K100/C8/python/mlx/rust/mlx": "VERIFIED",
+    "optimized_http/optimized_mlx/K100/C1/python/mlx_compiled": "VERIFIED",
+    "optimized_http/optimized_mlx/K100/C4/python/mlx_compiled": "VERIFIED",
+    "optimized_http/optimized_mlx/K100/C8/python/mlx_compiled": "VERIFIED",
+    "optimized_http/optimized_stock/K100/C1/python/compiled": "VERIFIED",
+    "optimized_http/optimized_stock/K100/C4/python/compiled": "VERIFIED",
+    "optimized_http/optimized_stock/K100/C8/python/compiled": "VERIFIED"
+  },
+  "status": "VERIFIED_SAVED_ARTIFACTS",
+  "completeness": {
+    "expected_primary_http_sessions": 32,
+    "complete_http_sessions": 32,
+    "expected_mps_direct_sessions": 36,
+    "complete_mps_direct_sessions": 36,
+    "expected_cuda_direct_sessions": 25,
+    "complete_cuda_direct_sessions": 25
+  }
+}

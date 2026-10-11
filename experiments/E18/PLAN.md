@@ -1,6 +1,6 @@
 # E18 — Pretrained reranker inference: experiment plan and results ledger
 
-**Status:** Planned; no E18 measurements collected.  
+**Status:** Completed and independently verified on 2026-10-11 under the user-authorized [E18-small-v1 contract](plan.json), [batch-control addendum](protocol_addendum.json), [Apple forward addendum](apple_forward_addendum.json), and [HTTP warm-up addendum](http_warmup_addendum.json). Apple and NVIDIA measurements are complete. See [report](REPORT.md) and [measured tables](RESULTS.md).
 **Model:** `cross-encoder/ms-marco-MiniLM-L6-v2`.  
 **Purpose:** Determine which framework, batching, serving, compilation, and custom-kernel choices improve inference for one pretrained reranker while preserving accepted ranking behavior.  
 **Scope of this document:** A runnable study design and results-recording contract. Creating this plan does not start downloads, training, remote jobs, or benchmark collection.
@@ -29,13 +29,13 @@ The [published config](https://huggingface.co/cross-encoder/ms-marco-MiniLM-L6-v
 
 Before execution:
 
-- [ ] Resolve the model repository to an immutable revision; save that revision, download date, model card, config, license, and exact parameter count.
-- [ ] Download only required weights and tokenizer assets; hash every asset. Reuse a local copy only if its revision and hashes match.
-- [ ] Load without remote code execution; pin the environment and dependency versions.
-- [ ] Verify query/document token order, special tokens, segment IDs, attention masks, raw score output, pooler, and classification head.
-- [ ] Use the same pinned tokenizer implementation and settings for all primary framework comparisons. Tokenize on CPU, then hand identical tensors to the framework for prepared-input checks.
-- [ ] Record tokenizer throughput separately; a tokenizer change is a separate experiment.
-- [ ] Record Mac model/RAM/OS, NVIDIA GPU/driver/runtime, package versions, compiler flags, source commit, and source/binary hashes.
+- [x] Resolve the model repository to an immutable revision; save that revision, download date, model card, config, license, and exact parameter count.
+- [x] Download only required weights and tokenizer assets; hash every asset. Reuse a local copy only if its revision and hashes match.
+- [x] Load without remote code execution; pin the environment and dependency versions.
+- [x] Verify query/document token order, special tokens, segment IDs, attention masks, raw score output, pooler, and classification head.
+- [x] Use the same pinned tokenizer implementation and settings for all primary framework comparisons. Tokenize on CPU, then hand identical tensors to the framework for prepared-input checks.
+- [x] Record tokenizer throughput separately; a tokenizer change is a separate experiment.
+- [x] Record Mac model/RAM/OS, NVIDIA GPU/driver/runtime, package versions, compiler flags, source commit, and source/binary hashes.
 
 Planned storage: `artifacts/e18_minilm_l6/` for downloaded/converted weights and `experiments/E18/` for scripts and compact reports. Keep large assets, score audits, traces, and caches outside Git, with committed checksum manifests.
 
@@ -193,56 +193,26 @@ GPU execution failure must not become silent CPU fallback. SSH/VPN/authenticatio
 
 Use `PENDING`, `UNSUPPORTED`, `FAILED_ACCURACY`, `INCOMPLETE`, or `VERIFIED` explicitly. A dash means no measurement, not zero. Generate full tables programmatically; the rows below define the report schema and are not predictions.
 
-### 9.1 Qualification
+### 9.1–9.4 Measured ledgers
 
-| Device | Path | Revision/precision/L | Strict parity | Application gate | Max/P99 score error | Top-1 / top-10 changes | nDCG/MRR delta + CI | Artifact |
-|---|---|---|---|---|---|---|---|---|
-| Apple M5 | Stock PyTorch | PENDING | — | — | — | — | — | — |
-| Apple M5 | MLX | PENDING | — | — | — | — | — | — |
-| Apple M5 | Compiled PyTorch | PENDING | — | — | — | — | — | — |
-| Apple M5 | Custom Metal | PENDING | — | — | — | — | — | — |
-| NVIDIA | Stock PyTorch | PENDING | — | — | — | — | — | — |
-| NVIDIA | Compiled PyTorch | PENDING | — | — | — | — | — | — |
-| NVIDIA | Custom CUDA | PENDING | — | — | — | — | — | — |
-| NVIDIA | Custom Triton | PENDING | — | — | — | — | — | — |
+Complete generated accuracy, direct, HTTP, queue/processing, setup/memory, optimized HTTP and operation tables are in [RESULTS.md](RESULTS.md). Startup diagnostics are in each device's `*_startup.json` and `*_compile_amortization.json`. Accepted raw repetitions remain in `raw/`; large score/ranking/response audits remain local with hashes.
 
-### 9.2 Direct scoring / batching / context
+### 9.5 Decision table
 
-| Device | Path | Precision | L | K | B | Forward pairs/s | Complete-scoring pairs/s | Paired ratio + session CI | Memory scope | Status |
-|---|---|---|---:|---:|---:|---:|---:|---|---|---|
-| PENDING | — | — | — | — | — | — | — | — | — | PENDING |
-
-### 9.3 HTTP
-
-| Device/backend | Coordinator/path | L / B | K | C | Requests/session/repeats | P50/P95/P99 ms | req/s / pairs/s | Queue/processing ms | Failures/timeouts | Paired ratio + CI |
-|---|---|---|---:|---:|---|---|---|---|---|---|
-| PENDING | — | — | — | — | — | — | — | — | — | — |
-
-### 9.4 Kernel and compilation
-
-| Device | Operation/path | Shape/dtype | Native operation time | Custom time | Paired speedup + CI | Model/request effect | Correctness | Status |
-|---|---|---|---:|---:|---|---|---|---|
-| PENDING | — | — | — | — | — | — | — | PENDING |
-
-| Device/path | Compile configuration | Cache state | Compile/first-use time | Graph breaks/recompiles | Warm saving + CI | Break-even requests | Status |
-|---|---|---|---:|---|---|---|---|
-| PENDING | — | — | — | — | — | — | PENDING |
-
-### 9.5 Decision table and experiment notes
-
-| Question | Measured answer | Evidence | Limitation | Adopt / keep baseline / investigate |
-|---|---|---|---|---|
-| Best framework/B for each workload? | PENDING | — | — | — |
-| Does compilation improve complete scoring? | PENDING | — | — | — |
-| Does Rust improve matched HTTP serving? | PENDING | — | — | — |
-| Does each custom kernel improve the whole workload? | PENDING | — | — | — |
-| Do combined optimizations retain their individual gains? | PENDING | — | — | — |
+| Question | Measured answer | Evidence / limitation | Decision |
+|---|---|---|---|
+| Framework and batching | Compiled PyTorch leads primary Apple direct scoring; batching is non-monotonic | 18 paired repetitions / six cycles; secondary B/L not fully audited | Keep fixed B16/L512 for primary claims |
+| Compilation | Apple ratio 1.137 [1.081, 1.198]; NVIDIA 1.033 [1.032, 1.034] | Warm scoring; startup separate; exploratory intervals | Select compiled on Apple, stock under NVIDIA 5% rule |
+| Rust coordinator | Six PyTorch cells favor Rust by small exploratory margins; MLX mostly inconclusive | 16 paired repetitions / eight cycles; no Rust lower bound >1.05 | No universal or practical ≥5% Rust claim |
+| Custom kernels | Metal operation gain does not establish model gain; CUDA/Triton slower than compiled stock | Separate operation, forward, scoring scopes | No custom-kernel headline winner |
+| Optimized HTTP | Compiled MLX improves its own baseline; compiled PyTorch has no ≥5% supported gain | New matched baseline workers; K100 only | Preserve backend-specific conclusions |
+| Context and confirmation | Short-context quality intervals broad; selected reserve audits pass | Accuracy confirmation is not repeated performance confirmation | Keep L512; no shorter-context equivalence claim |
 
 For each completed experiment, record: hypothesis; exact single change; fixed controls; plan/source hashes; command; dates/hardware; accuracy outcome; raw artifact; measured effect and uncertainty; interpretation; limitation; decision. Preserve failed attempts and distinguish fixes before collection from post-hoc analyses.
 
 ## 10. Deliverables and handoff
 
-Suggested files under `experiments/E18/` (future implementation, not existing commands):
+Implemented files and evidence under `experiments/E18/`:
 
 - `PLAN.md` — this human-readable plan, with an execution-status checklist.
 - `plan.json`, `model_manifest.json`, `data_manifest.json`, environment lock files — frozen contract and provenance.
@@ -261,20 +231,20 @@ Test the changes that matter: complete weight mapping, mask/tokenizer semantics,
 
 Completion checklist:
 
-- [ ] Assets and data pinned; baseline verified.
-- [ ] Feasibility and immutable execution plan recorded.
-- [ ] Framework/batching/context results recorded.
-- [ ] Compilation outcomes and actual dispatch recorded.
-- [ ] Realistic repeated Python/Rust serving comparison completed.
-- [ ] Metal/CUDA/Triton fused operation implemented and checked, or precise blocking limitation documented.
-- [ ] Operation gains connected to measured model/request effects.
-- [ ] Final selected configurations confirmed on reserve fixtures.
-- [ ] All score/ranking/timing artifacts independently verified.
-- [ ] Results tables, figures and report completed, including negative results.
-- [ ] Parent roadmap updated only for completed work; existing unrelated changes preserved.
-- [ ] Logical implementation/results/documentation commits made when executing the study; no push unless requested.
+- [x] Assets and data pinned; baseline verified.
+- [x] Feasibility and immutable execution plan recorded.
+- [x] Framework/batching/context results recorded.
+- [x] Compilation outcomes and actual dispatch recorded.
+- [x] Realistic repeated Python/Rust serving comparison completed.
+- [x] Metal/CUDA/Triton fused operation implemented and checked, or precise blocking limitation documented.
+- [x] Operation gains connected to measured model/request effects.
+- [x] Final selected configurations confirmed on reserve fixtures.
+- [x] All score/ranking/timing artifacts independently verified.
+- [x] Results tables, figures and report completed, including negative results.
+- [x] Parent roadmap updated only for completed work; existing unrelated changes preserved.
+- [x] Logical implementation/results/documentation commits made when executing the study; no push unless requested.
 
-Article framing after results exist: **“What Actually Speeds Up a Pretrained Reranker? Experiments Across the Inference Stack.”** Conclusions must follow measured evidence. There is no requirement to find a winning optimization.
+Article framing: **“What Actually Speeds Up a Pretrained Reranker? Experiments Across the Inference Stack.”** Conclusions must follow measured evidence. There is no requirement to find a winning optimization.
 
 ## 11. Primary references and local evidence
 
@@ -284,3 +254,9 @@ Article framing after results exist: **“What Actually Speeds Up a Pretrained R
 - [E17 Apple report](../E17/REPORT.md), [NVIDIA report](../E17/NVIDIA_REPORT.md), [E17 frozen plan](../E17/plan.json): methodological lessons and reusable infrastructure, not E18 results.
 
 References checked when preparing this plan. Execution must record actual installed versions and downloaded revisions rather than assuming these moving documentation URLs are immutable.
+
+## 12. Completion boundaries
+
+The smaller versioned protocol, not every optional sweep in the initial design, was executed: 11 full accuracy audits; 36 Apple and 25 NVIDIA direct path sessions; 32 primary and 32 optimized HTTP service starts; six operation cycles per device; profiling, dispatch, context and layout diagnostics; four 421-query reserve audits; and separate software-cache startup pairs. All 12,288 accepted measured HTTP responses passed, with no failures/timeouts. The first HTTP cycle was retained and repeated after a Rust import-path startup fix; see the [attempt manifest](raw/attempts/http_cycle0_before_bootstrap_fix/manifest.json).
+
+Unmeasured: mixed precision, open-loop saturation, NVIDIA HTTP, internet/distributed serving, cross-request batching, fully cold driver compilation, continuous hardware isolation and a larger timing fixture. CUDA custom-plus-fullgraph compilation was unsupported by its ctypes/data-pointer interface. MLX fused full attention at head width 32 was unsupported by the installed backend. See [REPORT.md](REPORT.md) for conclusions and reproduction, and [verification.json](verification.json) for exact completed counts.

@@ -1,0 +1,16 @@
+{
+  "technical_attempts": [
+    {
+      "artifact": "failed_mps_mlx_dispatch_import.json",
+      "reason": "Missing mx import in diagnostic graph recorder before any accuracy scores collected; fixed and rerun"
+    },
+    {
+      "launcher_pid": 87522,
+      "reason": "Stopped orchestration only to retry failed diagnostic; active compiled accuracy child retained"
+    },
+    {
+      "artifact": "raw/attempts/http_cycle0_before_bootstrap_fix/manifest.json",
+      "reason": "Rust stock startup failed before measured requests because file-launched worker exposed E18 profile.py as stdlib profile. Worker bootstrap fixed. Retain and exclude the entire first service cycle, then repeat all four paths in frozen order to preserve pairing/order. No accuracy or direct timing data changed."
+    }
+  ]
+}

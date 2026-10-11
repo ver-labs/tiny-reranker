@@ -1,0 +1,4369 @@
+{
+  "cuda_compiled_accuracy": {
+    "artifact_sha256": "92fe58d8fdf0fdb860326344a2dca5de5fe7276fddd6f2581a0316f56664c208",
+    "cells": {
+      "scifact/K10": {
+        "queries": 162,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "nfcorpus/K10": {
+        "queries": 323,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "scifact/K50": {
+        "queries": 162,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "nfcorpus/K50": {
+        "queries": 323,
+        "full_ranking_changed": 15,
+        "top10_order_changed": 5,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": [
+          {
+            "query_id": "PLAIN-1308",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-4058",
+              "MED-2385",
+              "MED-3023",
+              "MED-855",
+              "MED-3021",
+              "MED-2248",
+              "MED-1021",
+              "MED-1435",
+              "MED-2987",
+              "MED-4947"
+            ],
+            "candidate_top10": [
+              "MED-4058",
+              "MED-2385",
+              "MED-3023",
+              "MED-855",
+              "MED-3021",
+              "MED-2248",
+              "MED-1021",
+              "MED-1435",
+              "MED-2987",
+              "MED-4947"
+            ]
+          },
+          {
+            "query_id": "PLAIN-1408",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-5238",
+              "MED-956",
+              "MED-4937",
+              "MED-1774",
+              "MED-2407",
+              "MED-4943",
+              "MED-2396",
+              "MED-3590",
+              "MED-999",
+              "MED-2173"
+            ],
+            "candidate_top10": [
+              "MED-5238",
+              "MED-956",
+              "MED-4937",
+              "MED-1774",
+              "MED-2407",
+              "MED-4943",
+              "MED-2396",
+              "MED-3590",
+              "MED-999",
+              "MED-2173"
+            ]
+          },
+          {
+            "query_id": "PLAIN-142",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-3608",
+              "MED-3636",
+              "MED-3527",
+              "MED-3615",
+              "MED-859",
+              "MED-1834",
+              "MED-3621",
+              "MED-3619",
+              "MED-4548",
+              "MED-5127"
+            ],
+            "candidate_top10": [
+              "MED-3608",
+              "MED-3636",
+              "MED-3527",
+              "MED-3615",
+              "MED-859",
+              "MED-1834",
+              "MED-3621",
+              "MED-3619",
+              "MED-4548",
+              "MED-5127"
+            ]
+          },
+          {
+            "query_id": "PLAIN-1876",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-1250",
+              "MED-1869",
+              "MED-4258",
+              "MED-1249",
+              "MED-1807",
+              "MED-1873",
+              "MED-3931",
+              "MED-1874",
+              "MED-2432",
+              "MED-4353"
+            ],
+            "candidate_top10": [
+              "MED-1250",
+              "MED-1869",
+              "MED-4258",
+              "MED-1249",
+              "MED-1807",
+              "MED-1873",
+              "MED-3931",
+              "MED-1874",
+              "MED-2432",
+              "MED-4353"
+            ]
+          },
+          {
+            "query_id": "PLAIN-1982",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-3654",
+              "MED-4132",
+              "MED-4178",
+              "MED-4447",
+              "MED-4583",
+              "MED-3230",
+              "MED-4523",
+              "MED-3770",
+              "MED-1178",
+              "MED-3085"
+            ],
+            "candidate_top10": [
+              "MED-3654",
+              "MED-4132",
+              "MED-4178",
+              "MED-4447",
+              "MED-4583",
+              "MED-3230",
+              "MED-4523",
+              "MED-3770",
+              "MED-1178",
+              "MED-3085"
+            ]
+          },
+          {
+            "query_id": "PLAIN-2060",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-4861",
+              "MED-2098",
+              "MED-2066",
+              "MED-3480",
+              "MED-5026",
+              "MED-5070",
+              "MED-3541",
+              "MED-4496",
+              "MED-5076",
+              "MED-2661"
+            ],
+            "candidate_top10": [
+              "MED-4861",
+              "MED-2098",
+              "MED-2066",
+              "MED-3480",
+              "MED-5026",
+              "MED-5070",
+              "MED-3541",
+              "MED-4496",
+              "MED-5076",
+              "MED-2661"
+            ]
+          },
+          {
+            "query_id": "PLAIN-2549",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-1890",
+              "MED-5124",
+              "MED-2973",
+              "MED-2976",
+              "MED-2977",
+              "MED-4892",
+              "MED-4429",
+              "MED-2475",
+              "MED-2738",
+              "MED-1884"
+            ],
+            "candidate_top10": [
+              "MED-1890",
+              "MED-5124",
+              "MED-2973",
+              "MED-2976",
+              "MED-4892",
+              "MED-2977",
+              "MED-4429",
+              "MED-2475",
+              "MED-2738",
+              "MED-1884"
+            ]
+          },
+          {
+            "query_id": "PLAIN-2799",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-2649",
+              "MED-1599",
+              "MED-1598",
+              "MED-1603",
+              "MED-4976",
+              "MED-2678",
+              "MED-5293",
+              "MED-2169",
+              "MED-2176",
+              "MED-4038"
+            ],
+            "candidate_top10": [
+              "MED-2649",
+              "MED-1599",
+              "MED-1598",
+              "MED-1603",
+              "MED-4976",
+              "MED-2678",
+              "MED-5293",
+              "MED-2169",
+              "MED-2176",
+              "MED-4038"
+            ]
+          },
+          {
+            "query_id": "PLAIN-290",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-5256",
+              "MED-5241",
+              "MED-878",
+              "MED-5249",
+              "MED-2155",
+              "MED-5244",
+              "MED-1640",
+              "MED-1628",
+              "MED-5243",
+              "MED-5258"
+            ],
+            "candidate_top10": [
+              "MED-5256",
+              "MED-5241",
+              "MED-878",
+              "MED-5249",
+              "MED-5244",
+              "MED-2155",
+              "MED-1640",
+              "MED-1628",
+              "MED-5243",
+              "MED-5258"
+            ]
+          },
+          {
+            "query_id": "PLAIN-3114",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-1869",
+              "MED-1250",
+              "MED-4258",
+              "MED-1249",
+              "MED-1807",
+              "MED-1873",
+              "MED-1874",
+              "MED-2432",
+              "MED-3931",
+              "MED-4515"
+            ],
+            "candidate_top10": [
+              "MED-1869",
+              "MED-1250",
+              "MED-4258",
+              "MED-1249",
+              "MED-1807",
+              "MED-1873",
+              "MED-2432",
+              "MED-1874",
+              "MED-3931",
+              "MED-4515"
+            ]
+          },
+          {
+            "query_id": "PLAIN-3130",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-4619",
+              "MED-2939",
+              "MED-1795",
+              "MED-4201",
+              "MED-4560",
+              "MED-2814",
+              "MED-940",
+              "MED-1387",
+              "MED-1378",
+              "MED-5235"
+            ],
+            "candidate_top10": [
+              "MED-4619",
+              "MED-2939",
+              "MED-1795",
+              "MED-4201",
+              "MED-4560",
+              "MED-2814",
+              "MED-940",
+              "MED-1387",
+              "MED-1378",
+              "MED-5235"
+            ]
+          },
+          {
+            "query_id": "PLAIN-43",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-2774",
+              "MED-2771",
+              "MED-2772",
+              "MED-5192",
+              "MED-4752",
+              "MED-2136",
+              "MED-3789",
+              "MED-5359",
+              "MED-2769",
+              "MED-4898"
+            ],
+            "candidate_top10": [
+              "MED-2774",
+              "MED-2771",
+              "MED-2772",
+              "MED-5192",
+              "MED-4752",
+              "MED-2136",
+              "MED-3789",
+              "MED-2769",
+              "MED-5359",
+              "MED-4898"
+            ]
+          },
+          {
+            "query_id": "PLAIN-540",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-2298",
+              "MED-3113",
+              "MED-761",
+              "MED-4790",
+              "MED-1565",
+              "MED-3699",
+              "MED-2717",
+              "MED-4106",
+              "MED-3001",
+              "MED-1887"
+            ],
+            "candidate_top10": [
+              "MED-2298",
+              "MED-3113",
+              "MED-761",
+              "MED-4790",
+              "MED-1565",
+              "MED-3699",
+              "MED-2717",
+              "MED-4106",
+              "MED-3001",
+              "MED-1887"
+            ]
+          },
+          {
+            "query_id": "PLAIN-55",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-2888",
+              "MED-2895",
+              "MED-4388",
+              "MED-2899",
+              "MED-2893",
+              "MED-2898",
+              "MED-2889",
+              "MED-1666",
+              "MED-2886",
+              "MED-2884"
+            ],
+            "candidate_top10": [
+              "MED-2888",
+              "MED-2895",
+              "MED-4388",
+              "MED-2899",
+              "MED-2893",
+              "MED-2898",
+              "MED-2889",
+              "MED-1666",
+              "MED-2886",
+              "MED-2884"
+            ]
+          },
+          {
+            "query_id": "PLAIN-730",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-4226",
+              "MED-3193",
+              "MED-3787",
+              "MED-2990",
+              "MED-3562",
+              "MED-1341",
+              "MED-1791",
+              "MED-2985",
+              "MED-3311",
+              "MED-4722"
+            ],
+            "candidate_top10": [
+              "MED-4226",
+              "MED-3787",
+              "MED-3193",
+              "MED-2990",
+              "MED-3562",
+              "MED-1341",
+              "MED-1791",
+              "MED-2985",
+              "MED-3311",
+              "MED-4722"
+            ]
+          }
+        ]
+      },
+      "scifact/K100": {
+        "queries": 162,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "nfcorpus/K100": {
+        "queries": 323,
+        "full_ranking_changed": 28,
+        "top10_order_changed": 4,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": [
+          {
+            "query_id": "PLAIN-1352",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-2891",
+              "MED-5084",
+              "MED-2830",
+              "MED-3918",
+              "MED-4535",
+              "MED-1687",
+              "MED-3802",
+              "MED-4864",
+              "MED-1520",
+              "MED-2926"
+            ],
+            "candidate_top10": [
+              "MED-2891",
+              "MED-5084",
+              "MED-2830",
+              "MED-3918",
+              "MED-4535",
+              "MED-1687",
+              "MED-3802",
+              "MED-4864",
+              "MED-1520",
+              "MED-2926"
+            ]
+          },
+          {
+            "query_id": "PLAIN-1408",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-5238",
+              "MED-956",
+              "MED-4937",
+              "MED-1774",
+              "MED-2407",
+              "MED-4943",
+              "MED-2396",
+              "MED-3590",
+              "MED-999",
+              "MED-2173"
+            ],
+            "candidate_top10": [
+              "MED-5238",
+              "MED-956",
+              "MED-4937",
+              "MED-1774",
+              "MED-2407",
+              "MED-4943",
+              "MED-2396",
+              "MED-3590",
+              "MED-999",
+              "MED-2173"
+            ]
+          },
+          {
+            "query_id": "PLAIN-142",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-3617",
+              "MED-3608",
+              "MED-3636",
+              "MED-3527",
+              "MED-3615",
+              "MED-859",
+              "MED-1834",
+              "MED-3621",
+              "MED-3619",
+              "MED-4548"
+            ],
+            "candidate_top10": [
+              "MED-3617",
+              "MED-3608",
+              "MED-3636",
+              "MED-3527",
+              "MED-3615",
+              "MED-859",
+              "MED-1834",
+              "MED-3621",
+              "MED-3619",
+              "MED-4548"
+            ]
+          },
+          {
+            "query_id": "PLAIN-152",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-3677",
+              "MED-3676",
+              "MED-3692",
+              "MED-3680",
+              "MED-4762",
+              "MED-3695",
+              "MED-3690",
+              "MED-3679",
+              "MED-3683",
+              "MED-3173"
+            ],
+            "candidate_top10": [
+              "MED-3677",
+              "MED-3676",
+              "MED-3692",
+              "MED-3680",
+              "MED-4762",
+              "MED-3695",
+              "MED-3690",
+              "MED-3679",
+              "MED-3683",
+              "MED-3173"
+            ]
+          },
+          {
+            "query_id": "PLAIN-1620",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-4513",
+              "MED-3785",
+              "MED-4511",
+              "MED-5128",
+              "MED-5133",
+              "MED-4607",
+              "MED-4380",
+              "MED-838",
+              "MED-5270",
+              "MED-4468"
+            ],
+            "candidate_top10": [
+              "MED-4513",
+              "MED-3785",
+              "MED-4511",
+              "MED-5128",
+              "MED-5133",
+              "MED-4607",
+              "MED-4380",
+              "MED-838",
+              "MED-5270",
+              "MED-4468"
+            ]
+          },
+          {
+            "query_id": "PLAIN-1740",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-4511",
+              "MED-3151",
+              "MED-1294",
+              "MED-1299",
+              "MED-1300",
+              "MED-2010",
+              "MED-4540",
+              "MED-4699",
+              "MED-2097",
+              "MED-2498"
+            ],
+            "candidate_top10": [
+              "MED-4511",
+              "MED-3151",
+              "MED-1294",
+              "MED-1299",
+              "MED-1300",
+              "MED-2010",
+              "MED-4540",
+              "MED-4699",
+              "MED-2097",
+              "MED-2498"
+            ]
+          },
+          {
+            "query_id": "PLAIN-1836",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-5238",
+              "MED-2407",
+              "MED-2396",
+              "MED-4943",
+              "MED-2389",
+              "MED-2395",
+              "MED-2391",
+              "MED-4937",
+              "MED-2397",
+              "MED-1774"
+            ],
+            "candidate_top10": [
+              "MED-5238",
+              "MED-2407",
+              "MED-2396",
+              "MED-4943",
+              "MED-2389",
+              "MED-2395",
+              "MED-2391",
+              "MED-4937",
+              "MED-2397",
+              "MED-1774"
+            ]
+          },
+          {
+            "query_id": "PLAIN-2060",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-4861",
+              "MED-2098",
+              "MED-2066",
+              "MED-3480",
+              "MED-2075",
+              "MED-3245",
+              "MED-4040",
+              "MED-5026",
+              "MED-5070",
+              "MED-2581"
+            ],
+            "candidate_top10": [
+              "MED-4861",
+              "MED-2098",
+              "MED-2066",
+              "MED-3480",
+              "MED-2075",
+              "MED-3245",
+              "MED-4040",
+              "MED-5026",
+              "MED-5070",
+              "MED-2581"
+            ]
+          },
+          {
+            "query_id": "PLAIN-2374",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-4336",
+              "MED-3139",
+              "MED-1028",
+              "MED-2239",
+              "MED-1807",
+              "MED-1008",
+              "MED-5366",
+              "MED-1103",
+              "MED-2000",
+              "MED-1388"
+            ],
+            "candidate_top10": [
+              "MED-4336",
+              "MED-3139",
+              "MED-1028",
+              "MED-2239",
+              "MED-1807",
+              "MED-1008",
+              "MED-5366",
+              "MED-1103",
+              "MED-2000",
+              "MED-1388"
+            ]
+          },
+          {
+            "query_id": "PLAIN-2439",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-3480",
+              "MED-4363",
+              "MED-4127",
+              "MED-4635",
+              "MED-4036",
+              "MED-4136",
+              "MED-4114",
+              "MED-1055",
+              "MED-2010",
+              "MED-1121"
+            ],
+            "candidate_top10": [
+              "MED-3480",
+              "MED-4363",
+              "MED-4127",
+              "MED-4635",
+              "MED-4036",
+              "MED-4136",
+              "MED-4114",
+              "MED-1055",
+              "MED-2010",
+              "MED-1121"
+            ]
+          },
+          {
+            "query_id": "PLAIN-2539",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-1880",
+              "MED-2064",
+              "MED-3138",
+              "MED-2010",
+              "MED-948",
+              "MED-4040",
+              "MED-4991",
+              "MED-2570",
+              "MED-5079",
+              "MED-2147"
+            ],
+            "candidate_top10": [
+              "MED-1880",
+              "MED-2064",
+              "MED-3138",
+              "MED-2010",
+              "MED-948",
+              "MED-4040",
+              "MED-4991",
+              "MED-2570",
+              "MED-5079",
+              "MED-2147"
+            ]
+          },
+          {
+            "query_id": "PLAIN-2549",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-1890",
+              "MED-5124",
+              "MED-2973",
+              "MED-2976",
+              "MED-2977",
+              "MED-4892",
+              "MED-4429",
+              "MED-2475",
+              "MED-2738",
+              "MED-1884"
+            ],
+            "candidate_top10": [
+              "MED-1890",
+              "MED-5124",
+              "MED-2973",
+              "MED-2976",
+              "MED-4892",
+              "MED-2977",
+              "MED-4429",
+              "MED-2475",
+              "MED-2738",
+              "MED-1884"
+            ]
+          },
+          {
+            "query_id": "PLAIN-2569",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-5237",
+              "MED-3548",
+              "MED-2702",
+              "MED-4222",
+              "MED-4695",
+              "MED-2762",
+              "MED-2246",
+              "MED-2067",
+              "MED-4928",
+              "MED-3699"
+            ],
+            "candidate_top10": [
+              "MED-5237",
+              "MED-3548",
+              "MED-2702",
+              "MED-4222",
+              "MED-4695",
+              "MED-2762",
+              "MED-2246",
+              "MED-2067",
+              "MED-4928",
+              "MED-3699"
+            ]
+          },
+          {
+            "query_id": "PLAIN-2679",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-335",
+              "MED-3096",
+              "MED-334",
+              "MED-3090",
+              "MED-3092",
+              "MED-3085",
+              "MED-3095",
+              "MED-3088",
+              "MED-3086",
+              "MED-3091"
+            ],
+            "candidate_top10": [
+              "MED-335",
+              "MED-3096",
+              "MED-334",
+              "MED-3090",
+              "MED-3092",
+              "MED-3085",
+              "MED-3095",
+              "MED-3088",
+              "MED-3086",
+              "MED-3091"
+            ]
+          },
+          {
+            "query_id": "PLAIN-2709",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-1533",
+              "MED-3370",
+              "MED-1790",
+              "MED-5005",
+              "MED-3369",
+              "MED-3376",
+              "MED-2494",
+              "MED-3771",
+              "MED-1174",
+              "MED-4548"
+            ],
+            "candidate_top10": [
+              "MED-1533",
+              "MED-3370",
+              "MED-1790",
+              "MED-5005",
+              "MED-3369",
+              "MED-3376",
+              "MED-2494",
+              "MED-3771",
+              "MED-1174",
+              "MED-4548"
+            ]
+          },
+          {
+            "query_id": "PLAIN-2799",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-2649",
+              "MED-1599",
+              "MED-1598",
+              "MED-1603",
+              "MED-4976",
+              "MED-2678",
+              "MED-5293",
+              "MED-2169",
+              "MED-5197",
+              "MED-2176"
+            ],
+            "candidate_top10": [
+              "MED-2649",
+              "MED-1599",
+              "MED-1598",
+              "MED-1603",
+              "MED-4976",
+              "MED-2678",
+              "MED-5293",
+              "MED-2169",
+              "MED-5197",
+              "MED-2176"
+            ]
+          },
+          {
+            "query_id": "PLAIN-3096",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-4686",
+              "MED-2323",
+              "MED-3555",
+              "MED-2010",
+              "MED-5010",
+              "MED-4620",
+              "MED-5231",
+              "MED-2327",
+              "MED-2435",
+              "MED-3199"
+            ],
+            "candidate_top10": [
+              "MED-4686",
+              "MED-2323",
+              "MED-3555",
+              "MED-2010",
+              "MED-4620",
+              "MED-5010",
+              "MED-5231",
+              "MED-2327",
+              "MED-2435",
+              "MED-3199"
+            ]
+          },
+          {
+            "query_id": "PLAIN-3130",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-4619",
+              "MED-4496",
+              "MED-2939",
+              "MED-1795",
+              "MED-4201",
+              "MED-1103",
+              "MED-3465",
+              "MED-4560",
+              "MED-1680",
+              "MED-4114"
+            ],
+            "candidate_top10": [
+              "MED-4619",
+              "MED-4496",
+              "MED-2939",
+              "MED-1795",
+              "MED-4201",
+              "MED-1103",
+              "MED-3465",
+              "MED-4560",
+              "MED-1680",
+              "MED-4114"
+            ]
+          },
+          {
+            "query_id": "PLAIN-3190",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-2396",
+              "MED-5238",
+              "MED-2407",
+              "MED-4728",
+              "MED-3057",
+              "MED-3027",
+              "MED-1774",
+              "MED-5228",
+              "MED-5323",
+              "MED-1672"
+            ],
+            "candidate_top10": [
+              "MED-2396",
+              "MED-5238",
+              "MED-2407",
+              "MED-4728",
+              "MED-3057",
+              "MED-3027",
+              "MED-1774",
+              "MED-5228",
+              "MED-5323",
+              "MED-1672"
+            ]
+          },
+          {
+            "query_id": "PLAIN-3200",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-1762",
+              "MED-4747",
+              "MED-4750",
+              "MED-4954",
+              "MED-4145",
+              "MED-4749",
+              "MED-2168",
+              "MED-1593",
+              "MED-3954",
+              "MED-1595"
+            ],
+            "candidate_top10": [
+              "MED-1762",
+              "MED-4747",
+              "MED-4750",
+              "MED-4954",
+              "MED-4145",
+              "MED-4749",
+              "MED-2168",
+              "MED-1593",
+              "MED-3954",
+              "MED-1595"
+            ]
+          },
+          {
+            "query_id": "PLAIN-3321",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-2073",
+              "MED-868",
+              "MED-2922",
+              "MED-4543",
+              "MED-3139",
+              "MED-887",
+              "MED-3842",
+              "MED-903",
+              "MED-4536",
+              "MED-1880"
+            ],
+            "candidate_top10": [
+              "MED-2073",
+              "MED-868",
+              "MED-2922",
+              "MED-4543",
+              "MED-3139",
+              "MED-887",
+              "MED-3842",
+              "MED-903",
+              "MED-4536",
+              "MED-1880"
+            ]
+          },
+          {
+            "query_id": "PLAIN-3441",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-749",
+              "MED-2527",
+              "MED-4087",
+              "MED-2097",
+              "MED-3252",
+              "MED-4575",
+              "MED-2010",
+              "MED-3554",
+              "MED-4412",
+              "MED-5018"
+            ],
+            "candidate_top10": [
+              "MED-749",
+              "MED-2527",
+              "MED-4087",
+              "MED-2097",
+              "MED-3252",
+              "MED-4575",
+              "MED-2010",
+              "MED-3554",
+              "MED-4412",
+              "MED-5018"
+            ]
+          },
+          {
+            "query_id": "PLAIN-43",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-2774",
+              "MED-2771",
+              "MED-2772",
+              "MED-5192",
+              "MED-4752",
+              "MED-2136",
+              "MED-3789",
+              "MED-5359",
+              "MED-2769",
+              "MED-4898"
+            ],
+            "candidate_top10": [
+              "MED-2774",
+              "MED-2771",
+              "MED-2772",
+              "MED-5192",
+              "MED-4752",
+              "MED-2136",
+              "MED-3789",
+              "MED-2769",
+              "MED-5359",
+              "MED-4898"
+            ]
+          },
+          {
+            "query_id": "PLAIN-498",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-4095",
+              "MED-1747",
+              "MED-1417",
+              "MED-5198",
+              "MED-1115",
+              "MED-2900",
+              "MED-1475",
+              "MED-2213",
+              "MED-5201",
+              "MED-976"
+            ],
+            "candidate_top10": [
+              "MED-4095",
+              "MED-1747",
+              "MED-1417",
+              "MED-5198",
+              "MED-1115",
+              "MED-2900",
+              "MED-1475",
+              "MED-2213",
+              "MED-5201",
+              "MED-976"
+            ]
+          },
+          {
+            "query_id": "PLAIN-540",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-2298",
+              "MED-3113",
+              "MED-761",
+              "MED-4598",
+              "MED-4673",
+              "MED-4243",
+              "MED-4790",
+              "MED-1872",
+              "MED-3718",
+              "MED-1565"
+            ],
+            "candidate_top10": [
+              "MED-2298",
+              "MED-3113",
+              "MED-761",
+              "MED-4598",
+              "MED-4673",
+              "MED-4243",
+              "MED-4790",
+              "MED-1872",
+              "MED-3718",
+              "MED-1565"
+            ]
+          },
+          {
+            "query_id": "PLAIN-570",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-5139",
+              "MED-1138",
+              "MED-4342",
+              "MED-1798",
+              "MED-4097",
+              "MED-4415",
+              "MED-4258",
+              "MED-5060",
+              "MED-1446",
+              "MED-1136"
+            ],
+            "candidate_top10": [
+              "MED-5139",
+              "MED-1138",
+              "MED-4342",
+              "MED-1798",
+              "MED-4097",
+              "MED-4415",
+              "MED-4258",
+              "MED-5060",
+              "MED-1446",
+              "MED-1136"
+            ]
+          },
+          {
+            "query_id": "PLAIN-730",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-4226",
+              "MED-3193",
+              "MED-3787",
+              "MED-2990",
+              "MED-3562",
+              "MED-1341",
+              "MED-2814",
+              "MED-5205",
+              "MED-1791",
+              "MED-2985"
+            ],
+            "candidate_top10": [
+              "MED-4226",
+              "MED-3787",
+              "MED-3193",
+              "MED-2990",
+              "MED-3562",
+              "MED-1341",
+              "MED-2814",
+              "MED-5205",
+              "MED-1791",
+              "MED-2985"
+            ]
+          },
+          {
+            "query_id": "PLAIN-750",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-4295",
+              "MED-4289",
+              "MED-2595",
+              "MED-4284",
+              "MED-1393",
+              "MED-4301",
+              "MED-4288",
+              "MED-4705",
+              "MED-2593",
+              "MED-4286"
+            ],
+            "candidate_top10": [
+              "MED-4295",
+              "MED-4289",
+              "MED-2595",
+              "MED-4284",
+              "MED-1393",
+              "MED-4301",
+              "MED-4288",
+              "MED-4705",
+              "MED-2593",
+              "MED-4286"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "cuda_cuda_accuracy": {
+    "artifact_sha256": "3951b85b93f6211226d15e6441c1e7d5c53cdb3cf8b684652f41554490e68c23",
+    "cells": {
+      "scifact/K10": {
+        "queries": 162,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "nfcorpus/K10": {
+        "queries": 323,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "scifact/K50": {
+        "queries": 162,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "nfcorpus/K50": {
+        "queries": 323,
+        "full_ranking_changed": 9,
+        "top10_order_changed": 2,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": [
+          {
+            "query_id": "PLAIN-1408",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-5238",
+              "MED-956",
+              "MED-4937",
+              "MED-1774",
+              "MED-2407",
+              "MED-4943",
+              "MED-2396",
+              "MED-3590",
+              "MED-999",
+              "MED-2173"
+            ],
+            "candidate_top10": [
+              "MED-5238",
+              "MED-956",
+              "MED-4937",
+              "MED-1774",
+              "MED-2407",
+              "MED-4943",
+              "MED-2396",
+              "MED-3590",
+              "MED-999",
+              "MED-2173"
+            ]
+          },
+          {
+            "query_id": "PLAIN-142",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-3608",
+              "MED-3636",
+              "MED-3527",
+              "MED-3615",
+              "MED-859",
+              "MED-1834",
+              "MED-3621",
+              "MED-3619",
+              "MED-4548",
+              "MED-5127"
+            ],
+            "candidate_top10": [
+              "MED-3608",
+              "MED-3636",
+              "MED-3527",
+              "MED-3615",
+              "MED-859",
+              "MED-1834",
+              "MED-3621",
+              "MED-3619",
+              "MED-4548",
+              "MED-5127"
+            ]
+          },
+          {
+            "query_id": "PLAIN-1982",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-3654",
+              "MED-4132",
+              "MED-4178",
+              "MED-4447",
+              "MED-4583",
+              "MED-3230",
+              "MED-4523",
+              "MED-3770",
+              "MED-1178",
+              "MED-3085"
+            ],
+            "candidate_top10": [
+              "MED-3654",
+              "MED-4132",
+              "MED-4178",
+              "MED-4447",
+              "MED-4583",
+              "MED-3230",
+              "MED-4523",
+              "MED-3770",
+              "MED-1178",
+              "MED-3085"
+            ]
+          },
+          {
+            "query_id": "PLAIN-2101",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-2678",
+              "MED-5197",
+              "MED-2176",
+              "MED-1606",
+              "MED-4975",
+              "MED-4821",
+              "MED-1109",
+              "MED-2259",
+              "MED-4472",
+              "MED-5168"
+            ],
+            "candidate_top10": [
+              "MED-2678",
+              "MED-5197",
+              "MED-2176",
+              "MED-1606",
+              "MED-4975",
+              "MED-4821",
+              "MED-1109",
+              "MED-2259",
+              "MED-4472",
+              "MED-5168"
+            ]
+          },
+          {
+            "query_id": "PLAIN-2549",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-1890",
+              "MED-5124",
+              "MED-2973",
+              "MED-2976",
+              "MED-2977",
+              "MED-4892",
+              "MED-4429",
+              "MED-2475",
+              "MED-2738",
+              "MED-1884"
+            ],
+            "candidate_top10": [
+              "MED-1890",
+              "MED-5124",
+              "MED-2973",
+              "MED-2976",
+              "MED-4892",
+              "MED-2977",
+              "MED-4429",
+              "MED-2475",
+              "MED-2738",
+              "MED-1884"
+            ]
+          },
+          {
+            "query_id": "PLAIN-2799",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-2649",
+              "MED-1599",
+              "MED-1598",
+              "MED-1603",
+              "MED-4976",
+              "MED-2678",
+              "MED-5293",
+              "MED-2169",
+              "MED-2176",
+              "MED-4038"
+            ],
+            "candidate_top10": [
+              "MED-2649",
+              "MED-1599",
+              "MED-1598",
+              "MED-1603",
+              "MED-4976",
+              "MED-2678",
+              "MED-5293",
+              "MED-2169",
+              "MED-2176",
+              "MED-4038"
+            ]
+          },
+          {
+            "query_id": "PLAIN-3461",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-1621",
+              "MED-5250",
+              "MED-5259",
+              "MED-5258",
+              "MED-2160",
+              "MED-2155",
+              "MED-5244",
+              "MED-1622",
+              "MED-1628",
+              "MED-5249"
+            ],
+            "candidate_top10": [
+              "MED-1621",
+              "MED-5250",
+              "MED-5259",
+              "MED-5258",
+              "MED-2160",
+              "MED-5244",
+              "MED-2155",
+              "MED-1622",
+              "MED-1628",
+              "MED-5249"
+            ]
+          },
+          {
+            "query_id": "PLAIN-43",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-2774",
+              "MED-2771",
+              "MED-2772",
+              "MED-5192",
+              "MED-4752",
+              "MED-2136",
+              "MED-3789",
+              "MED-5359",
+              "MED-2769",
+              "MED-4898"
+            ],
+            "candidate_top10": [
+              "MED-2774",
+              "MED-2771",
+              "MED-2772",
+              "MED-5192",
+              "MED-4752",
+              "MED-2136",
+              "MED-3789",
+              "MED-5359",
+              "MED-2769",
+              "MED-4898"
+            ]
+          },
+          {
+            "query_id": "PLAIN-540",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-2298",
+              "MED-3113",
+              "MED-761",
+              "MED-4790",
+              "MED-1565",
+              "MED-3699",
+              "MED-2717",
+              "MED-4106",
+              "MED-3001",
+              "MED-1887"
+            ],
+            "candidate_top10": [
+              "MED-2298",
+              "MED-3113",
+              "MED-761",
+              "MED-4790",
+              "MED-1565",
+              "MED-3699",
+              "MED-2717",
+              "MED-4106",
+              "MED-3001",
+              "MED-1887"
+            ]
+          }
+        ]
+      },
+      "scifact/K100": {
+        "queries": 162,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "nfcorpus/K100": {
+        "queries": 323,
+        "full_ranking_changed": 24,
+        "top10_order_changed": 3,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": [
+          {
+            "query_id": "PLAIN-1408",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-5238",
+              "MED-956",
+              "MED-4937",
+              "MED-1774",
+              "MED-2407",
+              "MED-4943",
+              "MED-2396",
+              "MED-3590",
+              "MED-999",
+              "MED-2173"
+            ],
+            "candidate_top10": [
+              "MED-5238",
+              "MED-956",
+              "MED-4937",
+              "MED-1774",
+              "MED-2407",
+              "MED-4943",
+              "MED-2396",
+              "MED-3590",
+              "MED-999",
+              "MED-2173"
+            ]
+          },
+          {
+            "query_id": "PLAIN-142",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-3617",
+              "MED-3608",
+              "MED-3636",
+              "MED-3527",
+              "MED-3615",
+              "MED-859",
+              "MED-1834",
+              "MED-3621",
+              "MED-3619",
+              "MED-4548"
+            ],
+            "candidate_top10": [
+              "MED-3617",
+              "MED-3608",
+              "MED-3636",
+              "MED-3527",
+              "MED-3615",
+              "MED-859",
+              "MED-1834",
+              "MED-3621",
+              "MED-3619",
+              "MED-4548"
+            ]
+          },
+          {
+            "query_id": "PLAIN-152",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-3677",
+              "MED-3676",
+              "MED-3692",
+              "MED-3680",
+              "MED-4762",
+              "MED-3695",
+              "MED-3690",
+              "MED-3679",
+              "MED-3683",
+              "MED-3173"
+            ],
+            "candidate_top10": [
+              "MED-3677",
+              "MED-3676",
+              "MED-3692",
+              "MED-3680",
+              "MED-4762",
+              "MED-3695",
+              "MED-3690",
+              "MED-3679",
+              "MED-3683",
+              "MED-3173"
+            ]
+          },
+          {
+            "query_id": "PLAIN-1620",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-4513",
+              "MED-3785",
+              "MED-4511",
+              "MED-5128",
+              "MED-5133",
+              "MED-4607",
+              "MED-4380",
+              "MED-838",
+              "MED-5270",
+              "MED-4468"
+            ],
+            "candidate_top10": [
+              "MED-4513",
+              "MED-3785",
+              "MED-4511",
+              "MED-5128",
+              "MED-5133",
+              "MED-4607",
+              "MED-4380",
+              "MED-838",
+              "MED-5270",
+              "MED-4468"
+            ]
+          },
+          {
+            "query_id": "PLAIN-1740",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-4511",
+              "MED-3151",
+              "MED-1294",
+              "MED-1299",
+              "MED-1300",
+              "MED-2010",
+              "MED-4540",
+              "MED-4699",
+              "MED-2097",
+              "MED-2498"
+            ],
+            "candidate_top10": [
+              "MED-4511",
+              "MED-3151",
+              "MED-1294",
+              "MED-1299",
+              "MED-1300",
+              "MED-2010",
+              "MED-4540",
+              "MED-4699",
+              "MED-2097",
+              "MED-2498"
+            ]
+          },
+          {
+            "query_id": "PLAIN-1793",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-1067",
+              "MED-4006",
+              "MED-861",
+              "MED-1071",
+              "MED-1063",
+              "MED-3497",
+              "MED-4380",
+              "MED-838",
+              "MED-5270",
+              "MED-4628"
+            ],
+            "candidate_top10": [
+              "MED-1067",
+              "MED-4006",
+              "MED-861",
+              "MED-1071",
+              "MED-1063",
+              "MED-3497",
+              "MED-4380",
+              "MED-838",
+              "MED-5270",
+              "MED-4628"
+            ]
+          },
+          {
+            "query_id": "PLAIN-2374",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-4336",
+              "MED-3139",
+              "MED-1028",
+              "MED-2239",
+              "MED-1807",
+              "MED-1008",
+              "MED-5366",
+              "MED-1103",
+              "MED-2000",
+              "MED-1388"
+            ],
+            "candidate_top10": [
+              "MED-4336",
+              "MED-3139",
+              "MED-1028",
+              "MED-2239",
+              "MED-1807",
+              "MED-1008",
+              "MED-5366",
+              "MED-1103",
+              "MED-2000",
+              "MED-1388"
+            ]
+          },
+          {
+            "query_id": "PLAIN-2439",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-3480",
+              "MED-4363",
+              "MED-4127",
+              "MED-4635",
+              "MED-4036",
+              "MED-4136",
+              "MED-4114",
+              "MED-1055",
+              "MED-2010",
+              "MED-1121"
+            ],
+            "candidate_top10": [
+              "MED-3480",
+              "MED-4363",
+              "MED-4127",
+              "MED-4635",
+              "MED-4036",
+              "MED-4136",
+              "MED-4114",
+              "MED-1055",
+              "MED-2010",
+              "MED-1121"
+            ]
+          },
+          {
+            "query_id": "PLAIN-247",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-4030",
+              "MED-2439",
+              "MED-2824",
+              "MED-4255",
+              "MED-4613",
+              "MED-3553",
+              "MED-4831",
+              "MED-1606",
+              "MED-4349",
+              "MED-1386"
+            ],
+            "candidate_top10": [
+              "MED-4030",
+              "MED-2439",
+              "MED-2824",
+              "MED-4255",
+              "MED-4613",
+              "MED-3553",
+              "MED-4831",
+              "MED-1606",
+              "MED-4349",
+              "MED-1386"
+            ]
+          },
+          {
+            "query_id": "PLAIN-2549",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-1890",
+              "MED-5124",
+              "MED-2973",
+              "MED-2976",
+              "MED-2977",
+              "MED-4892",
+              "MED-4429",
+              "MED-2475",
+              "MED-2738",
+              "MED-1884"
+            ],
+            "candidate_top10": [
+              "MED-1890",
+              "MED-5124",
+              "MED-2973",
+              "MED-2976",
+              "MED-4892",
+              "MED-2977",
+              "MED-4429",
+              "MED-2475",
+              "MED-2738",
+              "MED-1884"
+            ]
+          },
+          {
+            "query_id": "PLAIN-2569",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-5237",
+              "MED-3548",
+              "MED-2702",
+              "MED-4222",
+              "MED-4695",
+              "MED-2762",
+              "MED-2246",
+              "MED-2067",
+              "MED-4928",
+              "MED-3699"
+            ],
+            "candidate_top10": [
+              "MED-5237",
+              "MED-3548",
+              "MED-2702",
+              "MED-4222",
+              "MED-4695",
+              "MED-2762",
+              "MED-2246",
+              "MED-2067",
+              "MED-4928",
+              "MED-3699"
+            ]
+          },
+          {
+            "query_id": "PLAIN-2619",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-2590",
+              "MED-4243",
+              "MED-2111",
+              "MED-1882",
+              "MED-1486",
+              "MED-4255",
+              "MED-4613",
+              "MED-1512",
+              "MED-1192",
+              "MED-2754"
+            ],
+            "candidate_top10": [
+              "MED-2590",
+              "MED-4243",
+              "MED-2111",
+              "MED-1882",
+              "MED-1486",
+              "MED-4255",
+              "MED-4613",
+              "MED-1512",
+              "MED-1192",
+              "MED-2754"
+            ]
+          },
+          {
+            "query_id": "PLAIN-2679",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-335",
+              "MED-3096",
+              "MED-334",
+              "MED-3090",
+              "MED-3092",
+              "MED-3085",
+              "MED-3095",
+              "MED-3088",
+              "MED-3086",
+              "MED-3091"
+            ],
+            "candidate_top10": [
+              "MED-335",
+              "MED-3096",
+              "MED-334",
+              "MED-3090",
+              "MED-3092",
+              "MED-3085",
+              "MED-3095",
+              "MED-3088",
+              "MED-3086",
+              "MED-3091"
+            ]
+          },
+          {
+            "query_id": "PLAIN-2799",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-2649",
+              "MED-1599",
+              "MED-1598",
+              "MED-1603",
+              "MED-4976",
+              "MED-2678",
+              "MED-5293",
+              "MED-2169",
+              "MED-5197",
+              "MED-2176"
+            ],
+            "candidate_top10": [
+              "MED-2649",
+              "MED-1599",
+              "MED-1598",
+              "MED-1603",
+              "MED-4976",
+              "MED-2678",
+              "MED-5293",
+              "MED-2169",
+              "MED-5197",
+              "MED-2176"
+            ]
+          },
+          {
+            "query_id": "PLAIN-3096",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-4686",
+              "MED-2323",
+              "MED-3555",
+              "MED-2010",
+              "MED-5010",
+              "MED-4620",
+              "MED-5231",
+              "MED-2327",
+              "MED-2435",
+              "MED-3199"
+            ],
+            "candidate_top10": [
+              "MED-4686",
+              "MED-2323",
+              "MED-3555",
+              "MED-2010",
+              "MED-4620",
+              "MED-5010",
+              "MED-5231",
+              "MED-2327",
+              "MED-2435",
+              "MED-3199"
+            ]
+          },
+          {
+            "query_id": "PLAIN-3130",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-4619",
+              "MED-4496",
+              "MED-2939",
+              "MED-1795",
+              "MED-4201",
+              "MED-1103",
+              "MED-3465",
+              "MED-4560",
+              "MED-1680",
+              "MED-4114"
+            ],
+            "candidate_top10": [
+              "MED-4619",
+              "MED-4496",
+              "MED-2939",
+              "MED-1795",
+              "MED-4201",
+              "MED-1103",
+              "MED-3465",
+              "MED-4560",
+              "MED-1680",
+              "MED-4114"
+            ]
+          },
+          {
+            "query_id": "PLAIN-3200",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-1762",
+              "MED-4747",
+              "MED-4750",
+              "MED-4954",
+              "MED-4145",
+              "MED-4749",
+              "MED-2168",
+              "MED-1593",
+              "MED-3954",
+              "MED-1595"
+            ],
+            "candidate_top10": [
+              "MED-1762",
+              "MED-4747",
+              "MED-4750",
+              "MED-4954",
+              "MED-4145",
+              "MED-4749",
+              "MED-2168",
+              "MED-1593",
+              "MED-3954",
+              "MED-1595"
+            ]
+          },
+          {
+            "query_id": "PLAIN-3321",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-2073",
+              "MED-868",
+              "MED-2922",
+              "MED-4543",
+              "MED-3139",
+              "MED-887",
+              "MED-3842",
+              "MED-903",
+              "MED-4536",
+              "MED-1880"
+            ],
+            "candidate_top10": [
+              "MED-2073",
+              "MED-868",
+              "MED-2922",
+              "MED-4543",
+              "MED-3139",
+              "MED-887",
+              "MED-3842",
+              "MED-903",
+              "MED-4536",
+              "MED-1880"
+            ]
+          },
+          {
+            "query_id": "PLAIN-3461",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-1621",
+              "MED-5250",
+              "MED-5259",
+              "MED-5258",
+              "MED-2160",
+              "MED-2155",
+              "MED-5244",
+              "MED-1622",
+              "MED-1628",
+              "MED-5249"
+            ],
+            "candidate_top10": [
+              "MED-1621",
+              "MED-5250",
+              "MED-5259",
+              "MED-5258",
+              "MED-2160",
+              "MED-5244",
+              "MED-2155",
+              "MED-1622",
+              "MED-1628",
+              "MED-5249"
+            ]
+          },
+          {
+            "query_id": "PLAIN-540",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-2298",
+              "MED-3113",
+              "MED-761",
+              "MED-4598",
+              "MED-4673",
+              "MED-4243",
+              "MED-4790",
+              "MED-1872",
+              "MED-3718",
+              "MED-1565"
+            ],
+            "candidate_top10": [
+              "MED-2298",
+              "MED-3113",
+              "MED-761",
+              "MED-4598",
+              "MED-4673",
+              "MED-4243",
+              "MED-4790",
+              "MED-1872",
+              "MED-3718",
+              "MED-1565"
+            ]
+          },
+          {
+            "query_id": "PLAIN-680",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-2169",
+              "MED-2171",
+              "MED-2176",
+              "MED-2172",
+              "MED-2165",
+              "MED-2168",
+              "MED-4858",
+              "MED-2178",
+              "MED-2185",
+              "MED-1287"
+            ],
+            "candidate_top10": [
+              "MED-2169",
+              "MED-2171",
+              "MED-2176",
+              "MED-2172",
+              "MED-2165",
+              "MED-2168",
+              "MED-4858",
+              "MED-2178",
+              "MED-2185",
+              "MED-1287"
+            ]
+          },
+          {
+            "query_id": "PLAIN-710",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-861",
+              "MED-2174",
+              "MED-3857",
+              "MED-5117",
+              "MED-4690",
+              "MED-3272",
+              "MED-3848",
+              "MED-1720",
+              "MED-3833",
+              "MED-3841"
+            ],
+            "candidate_top10": [
+              "MED-861",
+              "MED-2174",
+              "MED-3857",
+              "MED-5117",
+              "MED-4690",
+              "MED-3272",
+              "MED-3848",
+              "MED-1720",
+              "MED-3833",
+              "MED-3841"
+            ]
+          },
+          {
+            "query_id": "PLAIN-750",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-4295",
+              "MED-4289",
+              "MED-2595",
+              "MED-4284",
+              "MED-1393",
+              "MED-4301",
+              "MED-4288",
+              "MED-4705",
+              "MED-2593",
+              "MED-4286"
+            ],
+            "candidate_top10": [
+              "MED-4295",
+              "MED-4289",
+              "MED-2595",
+              "MED-4284",
+              "MED-1393",
+              "MED-4301",
+              "MED-4288",
+              "MED-4705",
+              "MED-2593",
+              "MED-4286"
+            ]
+          },
+          {
+            "query_id": "PLAIN-760",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-2774",
+              "MED-2653",
+              "MED-4899",
+              "MED-4752",
+              "MED-4751",
+              "MED-4173",
+              "MED-2058",
+              "MED-4071",
+              "MED-4169",
+              "MED-4399"
+            ],
+            "candidate_top10": [
+              "MED-2774",
+              "MED-2653",
+              "MED-4899",
+              "MED-4752",
+              "MED-4751",
+              "MED-4173",
+              "MED-2058",
+              "MED-4071",
+              "MED-4169",
+              "MED-4399"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "cuda_explicit_accuracy": {
+    "artifact_sha256": "08d972c623040db1606fbb02a69a142741141a74695a1df5768001f80e7d2512",
+    "cells": {
+      "scifact/K10": {
+        "queries": 162,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "nfcorpus/K10": {
+        "queries": 323,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "scifact/K50": {
+        "queries": 162,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "nfcorpus/K50": {
+        "queries": 323,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "scifact/K100": {
+        "queries": 162,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "nfcorpus/K100": {
+        "queries": 323,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      }
+    }
+  },
+  "cuda_stock_accuracy": {
+    "artifact_sha256": "656406c0660d564b7972e43f317c52629b105ef9e8b65963e582c16558d22147",
+    "cells": {
+      "scifact/K10": {
+        "queries": 162,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "nfcorpus/K10": {
+        "queries": 323,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "scifact/K50": {
+        "queries": 162,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "nfcorpus/K50": {
+        "queries": 323,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "scifact/K100": {
+        "queries": 162,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "nfcorpus/K100": {
+        "queries": 323,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      }
+    }
+  },
+  "cuda_triton_accuracy": {
+    "artifact_sha256": "a7a40eb8f3e380c2bd7b38d1d8552a2beb022d4340c0542bc91c6599a16f6fe2",
+    "cells": {
+      "scifact/K10": {
+        "queries": 162,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "nfcorpus/K10": {
+        "queries": 323,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "scifact/K50": {
+        "queries": 162,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "nfcorpus/K50": {
+        "queries": 323,
+        "full_ranking_changed": 11,
+        "top10_order_changed": 5,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": [
+          {
+            "query_id": "PLAIN-1287",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-3209",
+              "MED-3207",
+              "MED-398",
+              "MED-2083",
+              "MED-3202",
+              "MED-3206",
+              "MED-3201",
+              "MED-4585",
+              "MED-3204",
+              "MED-2668"
+            ],
+            "candidate_top10": [
+              "MED-3209",
+              "MED-398",
+              "MED-3207",
+              "MED-2083",
+              "MED-3202",
+              "MED-3206",
+              "MED-3201",
+              "MED-4585",
+              "MED-3204",
+              "MED-2668"
+            ]
+          },
+          {
+            "query_id": "PLAIN-1308",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-4058",
+              "MED-2385",
+              "MED-3023",
+              "MED-855",
+              "MED-3021",
+              "MED-2248",
+              "MED-1021",
+              "MED-1435",
+              "MED-2987",
+              "MED-4947"
+            ],
+            "candidate_top10": [
+              "MED-4058",
+              "MED-2385",
+              "MED-3023",
+              "MED-855",
+              "MED-3021",
+              "MED-2248",
+              "MED-1021",
+              "MED-1435",
+              "MED-2987",
+              "MED-4947"
+            ]
+          },
+          {
+            "query_id": "PLAIN-1408",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-5238",
+              "MED-956",
+              "MED-4937",
+              "MED-1774",
+              "MED-2407",
+              "MED-4943",
+              "MED-2396",
+              "MED-3590",
+              "MED-999",
+              "MED-2173"
+            ],
+            "candidate_top10": [
+              "MED-5238",
+              "MED-956",
+              "MED-4937",
+              "MED-1774",
+              "MED-2407",
+              "MED-4943",
+              "MED-2396",
+              "MED-3590",
+              "MED-999",
+              "MED-2173"
+            ]
+          },
+          {
+            "query_id": "PLAIN-1876",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-1250",
+              "MED-1869",
+              "MED-4258",
+              "MED-1249",
+              "MED-1807",
+              "MED-1873",
+              "MED-3931",
+              "MED-1874",
+              "MED-2432",
+              "MED-4353"
+            ],
+            "candidate_top10": [
+              "MED-1250",
+              "MED-1869",
+              "MED-4258",
+              "MED-1249",
+              "MED-1807",
+              "MED-1873",
+              "MED-3931",
+              "MED-1874",
+              "MED-2432",
+              "MED-4353"
+            ]
+          },
+          {
+            "query_id": "PLAIN-2060",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-4861",
+              "MED-2098",
+              "MED-2066",
+              "MED-3480",
+              "MED-5026",
+              "MED-5070",
+              "MED-3541",
+              "MED-4496",
+              "MED-5076",
+              "MED-2661"
+            ],
+            "candidate_top10": [
+              "MED-4861",
+              "MED-2098",
+              "MED-2066",
+              "MED-3480",
+              "MED-5026",
+              "MED-5070",
+              "MED-3541",
+              "MED-4496",
+              "MED-5076",
+              "MED-2661"
+            ]
+          },
+          {
+            "query_id": "PLAIN-2549",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-1890",
+              "MED-5124",
+              "MED-2973",
+              "MED-2976",
+              "MED-2977",
+              "MED-4892",
+              "MED-4429",
+              "MED-2475",
+              "MED-2738",
+              "MED-1884"
+            ],
+            "candidate_top10": [
+              "MED-1890",
+              "MED-5124",
+              "MED-2973",
+              "MED-2976",
+              "MED-4892",
+              "MED-2977",
+              "MED-4429",
+              "MED-2475",
+              "MED-2738",
+              "MED-1884"
+            ]
+          },
+          {
+            "query_id": "PLAIN-290",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-5256",
+              "MED-5241",
+              "MED-878",
+              "MED-5249",
+              "MED-2155",
+              "MED-5244",
+              "MED-1640",
+              "MED-1628",
+              "MED-5243",
+              "MED-5258"
+            ],
+            "candidate_top10": [
+              "MED-5256",
+              "MED-5241",
+              "MED-878",
+              "MED-5249",
+              "MED-5244",
+              "MED-2155",
+              "MED-1640",
+              "MED-1628",
+              "MED-5243",
+              "MED-5258"
+            ]
+          },
+          {
+            "query_id": "PLAIN-3114",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-1869",
+              "MED-1250",
+              "MED-4258",
+              "MED-1249",
+              "MED-1807",
+              "MED-1873",
+              "MED-1874",
+              "MED-2432",
+              "MED-3931",
+              "MED-4515"
+            ],
+            "candidate_top10": [
+              "MED-1869",
+              "MED-1250",
+              "MED-4258",
+              "MED-1249",
+              "MED-1807",
+              "MED-1873",
+              "MED-2432",
+              "MED-1874",
+              "MED-3931",
+              "MED-4515"
+            ]
+          },
+          {
+            "query_id": "PLAIN-43",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-2774",
+              "MED-2771",
+              "MED-2772",
+              "MED-5192",
+              "MED-4752",
+              "MED-2136",
+              "MED-3789",
+              "MED-5359",
+              "MED-2769",
+              "MED-4898"
+            ],
+            "candidate_top10": [
+              "MED-2774",
+              "MED-2771",
+              "MED-2772",
+              "MED-5192",
+              "MED-4752",
+              "MED-2136",
+              "MED-3789",
+              "MED-2769",
+              "MED-5359",
+              "MED-4898"
+            ]
+          },
+          {
+            "query_id": "PLAIN-540",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-2298",
+              "MED-3113",
+              "MED-761",
+              "MED-4790",
+              "MED-1565",
+              "MED-3699",
+              "MED-2717",
+              "MED-4106",
+              "MED-3001",
+              "MED-1887"
+            ],
+            "candidate_top10": [
+              "MED-2298",
+              "MED-3113",
+              "MED-761",
+              "MED-4790",
+              "MED-1565",
+              "MED-3699",
+              "MED-2717",
+              "MED-4106",
+              "MED-3001",
+              "MED-1887"
+            ]
+          },
+          {
+            "query_id": "PLAIN-55",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-2888",
+              "MED-2895",
+              "MED-4388",
+              "MED-2899",
+              "MED-2893",
+              "MED-2898",
+              "MED-2889",
+              "MED-1666",
+              "MED-2886",
+              "MED-2884"
+            ],
+            "candidate_top10": [
+              "MED-2888",
+              "MED-2895",
+              "MED-4388",
+              "MED-2899",
+              "MED-2893",
+              "MED-2898",
+              "MED-2889",
+              "MED-1666",
+              "MED-2886",
+              "MED-2884"
+            ]
+          }
+        ]
+      },
+      "scifact/K100": {
+        "queries": 162,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "nfcorpus/K100": {
+        "queries": 323,
+        "full_ranking_changed": 22,
+        "top10_order_changed": 4,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": [
+          {
+            "query_id": "PLAIN-1352",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-2891",
+              "MED-5084",
+              "MED-2830",
+              "MED-3918",
+              "MED-4535",
+              "MED-1687",
+              "MED-3802",
+              "MED-4864",
+              "MED-1520",
+              "MED-2926"
+            ],
+            "candidate_top10": [
+              "MED-2891",
+              "MED-5084",
+              "MED-2830",
+              "MED-3918",
+              "MED-4535",
+              "MED-1687",
+              "MED-3802",
+              "MED-4864",
+              "MED-1520",
+              "MED-2926"
+            ]
+          },
+          {
+            "query_id": "PLAIN-1408",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-5238",
+              "MED-956",
+              "MED-4937",
+              "MED-1774",
+              "MED-2407",
+              "MED-4943",
+              "MED-2396",
+              "MED-3590",
+              "MED-999",
+              "MED-2173"
+            ],
+            "candidate_top10": [
+              "MED-5238",
+              "MED-956",
+              "MED-4937",
+              "MED-1774",
+              "MED-2407",
+              "MED-4943",
+              "MED-2396",
+              "MED-3590",
+              "MED-999",
+              "MED-2173"
+            ]
+          },
+          {
+            "query_id": "PLAIN-142",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-3617",
+              "MED-3608",
+              "MED-3636",
+              "MED-3527",
+              "MED-3615",
+              "MED-859",
+              "MED-1834",
+              "MED-3621",
+              "MED-3619",
+              "MED-4548"
+            ],
+            "candidate_top10": [
+              "MED-3617",
+              "MED-3608",
+              "MED-3636",
+              "MED-3527",
+              "MED-3615",
+              "MED-859",
+              "MED-1834",
+              "MED-3621",
+              "MED-3619",
+              "MED-4548"
+            ]
+          },
+          {
+            "query_id": "PLAIN-152",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-3677",
+              "MED-3676",
+              "MED-3692",
+              "MED-3680",
+              "MED-4762",
+              "MED-3695",
+              "MED-3690",
+              "MED-3679",
+              "MED-3683",
+              "MED-3173"
+            ],
+            "candidate_top10": [
+              "MED-3677",
+              "MED-3676",
+              "MED-3692",
+              "MED-3680",
+              "MED-4762",
+              "MED-3695",
+              "MED-3690",
+              "MED-3679",
+              "MED-3683",
+              "MED-3173"
+            ]
+          },
+          {
+            "query_id": "PLAIN-1620",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-4513",
+              "MED-3785",
+              "MED-4511",
+              "MED-5128",
+              "MED-5133",
+              "MED-4607",
+              "MED-4380",
+              "MED-838",
+              "MED-5270",
+              "MED-4468"
+            ],
+            "candidate_top10": [
+              "MED-4513",
+              "MED-3785",
+              "MED-4511",
+              "MED-5128",
+              "MED-5133",
+              "MED-4607",
+              "MED-4380",
+              "MED-838",
+              "MED-5270",
+              "MED-4468"
+            ]
+          },
+          {
+            "query_id": "PLAIN-1740",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-4511",
+              "MED-3151",
+              "MED-1294",
+              "MED-1299",
+              "MED-1300",
+              "MED-2010",
+              "MED-4540",
+              "MED-4699",
+              "MED-2097",
+              "MED-2498"
+            ],
+            "candidate_top10": [
+              "MED-4511",
+              "MED-3151",
+              "MED-1294",
+              "MED-1299",
+              "MED-1300",
+              "MED-2010",
+              "MED-4540",
+              "MED-4699",
+              "MED-2097",
+              "MED-2498"
+            ]
+          },
+          {
+            "query_id": "PLAIN-2060",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-4861",
+              "MED-2098",
+              "MED-2066",
+              "MED-3480",
+              "MED-2075",
+              "MED-3245",
+              "MED-4040",
+              "MED-5026",
+              "MED-5070",
+              "MED-2581"
+            ],
+            "candidate_top10": [
+              "MED-4861",
+              "MED-2098",
+              "MED-2066",
+              "MED-3480",
+              "MED-2075",
+              "MED-3245",
+              "MED-4040",
+              "MED-5026",
+              "MED-5070",
+              "MED-2581"
+            ]
+          },
+          {
+            "query_id": "PLAIN-2300",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-2122",
+              "MED-3703",
+              "MED-2208",
+              "MED-3844",
+              "MED-3856",
+              "MED-5183",
+              "MED-1825",
+              "MED-4117",
+              "MED-2258",
+              "MED-4785"
+            ],
+            "candidate_top10": [
+              "MED-2122",
+              "MED-3703",
+              "MED-2208",
+              "MED-3844",
+              "MED-3856",
+              "MED-5183",
+              "MED-1825",
+              "MED-4117",
+              "MED-2258",
+              "MED-4785"
+            ]
+          },
+          {
+            "query_id": "PLAIN-2374",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-4336",
+              "MED-3139",
+              "MED-1028",
+              "MED-2239",
+              "MED-1807",
+              "MED-1008",
+              "MED-5366",
+              "MED-1103",
+              "MED-2000",
+              "MED-1388"
+            ],
+            "candidate_top10": [
+              "MED-4336",
+              "MED-3139",
+              "MED-1028",
+              "MED-2239",
+              "MED-1807",
+              "MED-1008",
+              "MED-5366",
+              "MED-1103",
+              "MED-2000",
+              "MED-1388"
+            ]
+          },
+          {
+            "query_id": "PLAIN-2439",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-3480",
+              "MED-4363",
+              "MED-4127",
+              "MED-4635",
+              "MED-4036",
+              "MED-4136",
+              "MED-4114",
+              "MED-1055",
+              "MED-2010",
+              "MED-1121"
+            ],
+            "candidate_top10": [
+              "MED-3480",
+              "MED-4363",
+              "MED-4127",
+              "MED-4635",
+              "MED-4036",
+              "MED-4136",
+              "MED-4114",
+              "MED-1055",
+              "MED-2010",
+              "MED-1121"
+            ]
+          },
+          {
+            "query_id": "PLAIN-2549",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-1890",
+              "MED-5124",
+              "MED-2973",
+              "MED-2976",
+              "MED-2977",
+              "MED-4892",
+              "MED-4429",
+              "MED-2475",
+              "MED-2738",
+              "MED-1884"
+            ],
+            "candidate_top10": [
+              "MED-1890",
+              "MED-5124",
+              "MED-2973",
+              "MED-2976",
+              "MED-4892",
+              "MED-2977",
+              "MED-4429",
+              "MED-2475",
+              "MED-2738",
+              "MED-1884"
+            ]
+          },
+          {
+            "query_id": "PLAIN-2569",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-5237",
+              "MED-3548",
+              "MED-2702",
+              "MED-4222",
+              "MED-4695",
+              "MED-2762",
+              "MED-2246",
+              "MED-2067",
+              "MED-4928",
+              "MED-3699"
+            ],
+            "candidate_top10": [
+              "MED-5237",
+              "MED-3548",
+              "MED-2702",
+              "MED-4222",
+              "MED-4695",
+              "MED-2762",
+              "MED-2246",
+              "MED-2067",
+              "MED-4928",
+              "MED-3699"
+            ]
+          },
+          {
+            "query_id": "PLAIN-2619",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-2590",
+              "MED-4243",
+              "MED-2111",
+              "MED-1882",
+              "MED-1486",
+              "MED-4255",
+              "MED-4613",
+              "MED-1512",
+              "MED-1192",
+              "MED-2754"
+            ],
+            "candidate_top10": [
+              "MED-2590",
+              "MED-4243",
+              "MED-2111",
+              "MED-1882",
+              "MED-1486",
+              "MED-4613",
+              "MED-4255",
+              "MED-1512",
+              "MED-1192",
+              "MED-2754"
+            ]
+          },
+          {
+            "query_id": "PLAIN-2709",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-1533",
+              "MED-3370",
+              "MED-1790",
+              "MED-5005",
+              "MED-3369",
+              "MED-3376",
+              "MED-2494",
+              "MED-3771",
+              "MED-1174",
+              "MED-4548"
+            ],
+            "candidate_top10": [
+              "MED-1533",
+              "MED-3370",
+              "MED-1790",
+              "MED-5005",
+              "MED-3369",
+              "MED-3376",
+              "MED-2494",
+              "MED-3771",
+              "MED-1174",
+              "MED-4548"
+            ]
+          },
+          {
+            "query_id": "PLAIN-3096",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-4686",
+              "MED-2323",
+              "MED-3555",
+              "MED-2010",
+              "MED-5010",
+              "MED-4620",
+              "MED-5231",
+              "MED-2327",
+              "MED-2435",
+              "MED-3199"
+            ],
+            "candidate_top10": [
+              "MED-4686",
+              "MED-2323",
+              "MED-3555",
+              "MED-2010",
+              "MED-4620",
+              "MED-5010",
+              "MED-5231",
+              "MED-2327",
+              "MED-2435",
+              "MED-3199"
+            ]
+          },
+          {
+            "query_id": "PLAIN-3321",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-2073",
+              "MED-868",
+              "MED-2922",
+              "MED-4543",
+              "MED-3139",
+              "MED-887",
+              "MED-3842",
+              "MED-903",
+              "MED-4536",
+              "MED-1880"
+            ],
+            "candidate_top10": [
+              "MED-2073",
+              "MED-868",
+              "MED-2922",
+              "MED-4543",
+              "MED-3139",
+              "MED-887",
+              "MED-3842",
+              "MED-903",
+              "MED-4536",
+              "MED-1880"
+            ]
+          },
+          {
+            "query_id": "PLAIN-3441",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-749",
+              "MED-2527",
+              "MED-4087",
+              "MED-2097",
+              "MED-3252",
+              "MED-4575",
+              "MED-2010",
+              "MED-3554",
+              "MED-4412",
+              "MED-5018"
+            ],
+            "candidate_top10": [
+              "MED-749",
+              "MED-2527",
+              "MED-4087",
+              "MED-2097",
+              "MED-3252",
+              "MED-4575",
+              "MED-2010",
+              "MED-3554",
+              "MED-4412",
+              "MED-5018"
+            ]
+          },
+          {
+            "query_id": "PLAIN-43",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-2774",
+              "MED-2771",
+              "MED-2772",
+              "MED-5192",
+              "MED-4752",
+              "MED-2136",
+              "MED-3789",
+              "MED-5359",
+              "MED-2769",
+              "MED-4898"
+            ],
+            "candidate_top10": [
+              "MED-2774",
+              "MED-2771",
+              "MED-2772",
+              "MED-5192",
+              "MED-4752",
+              "MED-2136",
+              "MED-3789",
+              "MED-2769",
+              "MED-5359",
+              "MED-4898"
+            ]
+          },
+          {
+            "query_id": "PLAIN-540",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-2298",
+              "MED-3113",
+              "MED-761",
+              "MED-4598",
+              "MED-4673",
+              "MED-4243",
+              "MED-4790",
+              "MED-1872",
+              "MED-3718",
+              "MED-1565"
+            ],
+            "candidate_top10": [
+              "MED-2298",
+              "MED-3113",
+              "MED-761",
+              "MED-4598",
+              "MED-4673",
+              "MED-4243",
+              "MED-4790",
+              "MED-1872",
+              "MED-3718",
+              "MED-1565"
+            ]
+          },
+          {
+            "query_id": "PLAIN-750",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-4295",
+              "MED-4289",
+              "MED-2595",
+              "MED-4284",
+              "MED-1393",
+              "MED-4301",
+              "MED-4288",
+              "MED-4705",
+              "MED-2593",
+              "MED-4286"
+            ],
+            "candidate_top10": [
+              "MED-4295",
+              "MED-4289",
+              "MED-2595",
+              "MED-4284",
+              "MED-1393",
+              "MED-4301",
+              "MED-4288",
+              "MED-4705",
+              "MED-2593",
+              "MED-4286"
+            ]
+          },
+          {
+            "query_id": "PLAIN-760",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-2774",
+              "MED-2653",
+              "MED-4899",
+              "MED-4752",
+              "MED-4751",
+              "MED-4173",
+              "MED-2058",
+              "MED-4071",
+              "MED-4169",
+              "MED-4399"
+            ],
+            "candidate_top10": [
+              "MED-2774",
+              "MED-2653",
+              "MED-4899",
+              "MED-4752",
+              "MED-4751",
+              "MED-4173",
+              "MED-2058",
+              "MED-4071",
+              "MED-4169",
+              "MED-4399"
+            ]
+          },
+          {
+            "query_id": "PLAIN-826",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-3497",
+              "MED-4049",
+              "MED-4073",
+              "MED-4068",
+              "MED-4458",
+              "MED-847",
+              "MED-2173",
+              "MED-4055",
+              "MED-2171",
+              "MED-4075"
+            ],
+            "candidate_top10": [
+              "MED-3497",
+              "MED-4049",
+              "MED-4073",
+              "MED-4068",
+              "MED-4458",
+              "MED-847",
+              "MED-2173",
+              "MED-4055",
+              "MED-2171",
+              "MED-4075"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "mps_compiled_accuracy": {
+    "artifact_sha256": "379997996f7bd8fedfe0f31ae57b7e94a0b74a2f3cad41c0c59f645b4df5931b",
+    "cells": {
+      "scifact/K10": {
+        "queries": 162,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "nfcorpus/K10": {
+        "queries": 323,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "scifact/K50": {
+        "queries": 162,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "nfcorpus/K50": {
+        "queries": 323,
+        "full_ranking_changed": 1,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": [
+          {
+            "query_id": "PLAIN-3130",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-4619",
+              "MED-2939",
+              "MED-1795",
+              "MED-4201",
+              "MED-4560",
+              "MED-2814",
+              "MED-940",
+              "MED-1387",
+              "MED-1378",
+              "MED-5235"
+            ],
+            "candidate_top10": [
+              "MED-4619",
+              "MED-2939",
+              "MED-1795",
+              "MED-4201",
+              "MED-4560",
+              "MED-2814",
+              "MED-940",
+              "MED-1387",
+              "MED-1378",
+              "MED-5235"
+            ]
+          }
+        ]
+      },
+      "scifact/K100": {
+        "queries": 162,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "nfcorpus/K100": {
+        "queries": 323,
+        "full_ranking_changed": 2,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": [
+          {
+            "query_id": "PLAIN-2719",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-3473",
+              "MED-2271",
+              "MED-3157",
+              "MED-2083",
+              "MED-3466",
+              "MED-3483",
+              "MED-3480",
+              "MED-3459",
+              "MED-3220",
+              "MED-3235"
+            ],
+            "candidate_top10": [
+              "MED-3473",
+              "MED-2271",
+              "MED-3157",
+              "MED-2083",
+              "MED-3466",
+              "MED-3483",
+              "MED-3480",
+              "MED-3459",
+              "MED-3220",
+              "MED-3235"
+            ]
+          },
+          {
+            "query_id": "PLAIN-3130",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-4619",
+              "MED-4496",
+              "MED-2939",
+              "MED-1795",
+              "MED-4201",
+              "MED-1103",
+              "MED-3465",
+              "MED-4560",
+              "MED-1680",
+              "MED-4114"
+            ],
+            "candidate_top10": [
+              "MED-4619",
+              "MED-4496",
+              "MED-2939",
+              "MED-1795",
+              "MED-4201",
+              "MED-1103",
+              "MED-3465",
+              "MED-4560",
+              "MED-1680",
+              "MED-4114"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "mps_metal_accuracy": {
+    "artifact_sha256": "f7cd68f595caf347394643664a8cdfafd786c15a262a68423cbef53165ef99e9",
+    "cells": {
+      "scifact/K10": {
+        "queries": 162,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "nfcorpus/K10": {
+        "queries": 323,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "scifact/K50": {
+        "queries": 162,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "nfcorpus/K50": {
+        "queries": 323,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "scifact/K100": {
+        "queries": 162,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "nfcorpus/K100": {
+        "queries": 323,
+        "full_ranking_changed": 2,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": [
+          {
+            "query_id": "PLAIN-1620",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-4513",
+              "MED-3785",
+              "MED-4511",
+              "MED-5128",
+              "MED-5133",
+              "MED-4607",
+              "MED-4380",
+              "MED-838",
+              "MED-5270",
+              "MED-4468"
+            ],
+            "candidate_top10": [
+              "MED-4513",
+              "MED-3785",
+              "MED-4511",
+              "MED-5128",
+              "MED-5133",
+              "MED-4607",
+              "MED-4380",
+              "MED-838",
+              "MED-5270",
+              "MED-4468"
+            ]
+          },
+          {
+            "query_id": "PLAIN-2719",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-3473",
+              "MED-2271",
+              "MED-3157",
+              "MED-2083",
+              "MED-3466",
+              "MED-3483",
+              "MED-3480",
+              "MED-3459",
+              "MED-3220",
+              "MED-3235"
+            ],
+            "candidate_top10": [
+              "MED-3473",
+              "MED-2271",
+              "MED-3157",
+              "MED-2083",
+              "MED-3466",
+              "MED-3483",
+              "MED-3480",
+              "MED-3459",
+              "MED-3220",
+              "MED-3235"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "mps_metal_compiled_accuracy": {
+    "artifact_sha256": "16af096478b355d01cb46ee92c38f254628957f7548d58eb3adaf32ddd6ed313",
+    "cells": {
+      "scifact/K10": {
+        "queries": 162,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "nfcorpus/K10": {
+        "queries": 323,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "scifact/K50": {
+        "queries": 162,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "nfcorpus/K50": {
+        "queries": 323,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "scifact/K100": {
+        "queries": 162,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "nfcorpus/K100": {
+        "queries": 323,
+        "full_ranking_changed": 2,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": [
+          {
+            "query_id": "PLAIN-1620",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-4513",
+              "MED-3785",
+              "MED-4511",
+              "MED-5128",
+              "MED-5133",
+              "MED-4607",
+              "MED-4380",
+              "MED-838",
+              "MED-5270",
+              "MED-4468"
+            ],
+            "candidate_top10": [
+              "MED-4513",
+              "MED-3785",
+              "MED-4511",
+              "MED-5128",
+              "MED-5133",
+              "MED-4607",
+              "MED-4380",
+              "MED-838",
+              "MED-5270",
+              "MED-4468"
+            ]
+          },
+          {
+            "query_id": "PLAIN-2719",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-3473",
+              "MED-2271",
+              "MED-3157",
+              "MED-2083",
+              "MED-3466",
+              "MED-3483",
+              "MED-3480",
+              "MED-3459",
+              "MED-3220",
+              "MED-3235"
+            ],
+            "candidate_top10": [
+              "MED-3473",
+              "MED-2271",
+              "MED-3157",
+              "MED-2083",
+              "MED-3466",
+              "MED-3483",
+              "MED-3480",
+              "MED-3459",
+              "MED-3220",
+              "MED-3235"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "mps_mlx_accuracy": {
+    "artifact_sha256": "d7e7d14c32734f9a841556dd08553c19d88d09aa1f9f783a9d1a2aff1e29f190",
+    "cells": {
+      "scifact/K10": {
+        "queries": 162,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "nfcorpus/K10": {
+        "queries": 323,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "scifact/K50": {
+        "queries": 162,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "nfcorpus/K50": {
+        "queries": 323,
+        "full_ranking_changed": 1,
+        "top10_order_changed": 1,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": [
+          {
+            "query_id": "PLAIN-2549",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-1890",
+              "MED-5124",
+              "MED-2973",
+              "MED-2976",
+              "MED-2977",
+              "MED-4892",
+              "MED-4429",
+              "MED-2475",
+              "MED-2738",
+              "MED-1884"
+            ],
+            "candidate_top10": [
+              "MED-1890",
+              "MED-5124",
+              "MED-2973",
+              "MED-2976",
+              "MED-4892",
+              "MED-2977",
+              "MED-4429",
+              "MED-2475",
+              "MED-2738",
+              "MED-1884"
+            ]
+          }
+        ]
+      },
+      "scifact/K100": {
+        "queries": 162,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "nfcorpus/K100": {
+        "queries": 323,
+        "full_ranking_changed": 6,
+        "top10_order_changed": 1,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": [
+          {
+            "query_id": "PLAIN-1793",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-1067",
+              "MED-4006",
+              "MED-861",
+              "MED-1071",
+              "MED-1063",
+              "MED-3497",
+              "MED-4380",
+              "MED-838",
+              "MED-5270",
+              "MED-4628"
+            ],
+            "candidate_top10": [
+              "MED-1067",
+              "MED-4006",
+              "MED-861",
+              "MED-1071",
+              "MED-1063",
+              "MED-3497",
+              "MED-4380",
+              "MED-838",
+              "MED-5270",
+              "MED-4628"
+            ]
+          },
+          {
+            "query_id": "PLAIN-2186",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-4366",
+              "MED-3487",
+              "MED-4930",
+              "MED-3467",
+              "MED-2261",
+              "MED-4373",
+              "MED-4251",
+              "MED-2762",
+              "MED-2702",
+              "MED-4647"
+            ],
+            "candidate_top10": [
+              "MED-4366",
+              "MED-3487",
+              "MED-4930",
+              "MED-3467",
+              "MED-2261",
+              "MED-4373",
+              "MED-4251",
+              "MED-2762",
+              "MED-2702",
+              "MED-4647"
+            ]
+          },
+          {
+            "query_id": "PLAIN-2439",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-3480",
+              "MED-4363",
+              "MED-4127",
+              "MED-4635",
+              "MED-4036",
+              "MED-4136",
+              "MED-4114",
+              "MED-1055",
+              "MED-2010",
+              "MED-1121"
+            ],
+            "candidate_top10": [
+              "MED-3480",
+              "MED-4363",
+              "MED-4127",
+              "MED-4635",
+              "MED-4036",
+              "MED-4136",
+              "MED-4114",
+              "MED-1055",
+              "MED-2010",
+              "MED-1121"
+            ]
+          },
+          {
+            "query_id": "PLAIN-2549",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-1890",
+              "MED-5124",
+              "MED-2973",
+              "MED-2976",
+              "MED-2977",
+              "MED-4892",
+              "MED-4429",
+              "MED-2475",
+              "MED-2738",
+              "MED-1884"
+            ],
+            "candidate_top10": [
+              "MED-1890",
+              "MED-5124",
+              "MED-2973",
+              "MED-2976",
+              "MED-4892",
+              "MED-2977",
+              "MED-4429",
+              "MED-2475",
+              "MED-2738",
+              "MED-1884"
+            ]
+          },
+          {
+            "query_id": "PLAIN-2719",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-3473",
+              "MED-2271",
+              "MED-3157",
+              "MED-2083",
+              "MED-3466",
+              "MED-3483",
+              "MED-3480",
+              "MED-3459",
+              "MED-3220",
+              "MED-3235"
+            ],
+            "candidate_top10": [
+              "MED-3473",
+              "MED-2271",
+              "MED-3157",
+              "MED-2083",
+              "MED-3466",
+              "MED-3483",
+              "MED-3480",
+              "MED-3459",
+              "MED-3220",
+              "MED-3235"
+            ]
+          },
+          {
+            "query_id": "PLAIN-3200",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-1762",
+              "MED-4747",
+              "MED-4750",
+              "MED-4954",
+              "MED-4145",
+              "MED-4749",
+              "MED-2168",
+              "MED-1593",
+              "MED-3954",
+              "MED-1595"
+            ],
+            "candidate_top10": [
+              "MED-1762",
+              "MED-4747",
+              "MED-4750",
+              "MED-4954",
+              "MED-4145",
+              "MED-4749",
+              "MED-2168",
+              "MED-1593",
+              "MED-3954",
+              "MED-1595"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "mps_mlx_compiled_accuracy": {
+    "artifact_sha256": "758abd1c1d65dac6e989013ab37c7c518396e05a6f5cb8696fad28bbbca2af44",
+    "cells": {
+      "scifact/K10": {
+        "queries": 162,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "nfcorpus/K10": {
+        "queries": 323,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "scifact/K50": {
+        "queries": 162,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "nfcorpus/K50": {
+        "queries": 323,
+        "full_ranking_changed": 1,
+        "top10_order_changed": 1,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": [
+          {
+            "query_id": "PLAIN-2549",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-1890",
+              "MED-5124",
+              "MED-2973",
+              "MED-2976",
+              "MED-2977",
+              "MED-4892",
+              "MED-4429",
+              "MED-2475",
+              "MED-2738",
+              "MED-1884"
+            ],
+            "candidate_top10": [
+              "MED-1890",
+              "MED-5124",
+              "MED-2973",
+              "MED-2976",
+              "MED-4892",
+              "MED-2977",
+              "MED-4429",
+              "MED-2475",
+              "MED-2738",
+              "MED-1884"
+            ]
+          }
+        ]
+      },
+      "scifact/K100": {
+        "queries": 162,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "nfcorpus/K100": {
+        "queries": 323,
+        "full_ranking_changed": 6,
+        "top10_order_changed": 1,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": [
+          {
+            "query_id": "PLAIN-1793",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-1067",
+              "MED-4006",
+              "MED-861",
+              "MED-1071",
+              "MED-1063",
+              "MED-3497",
+              "MED-4380",
+              "MED-838",
+              "MED-5270",
+              "MED-4628"
+            ],
+            "candidate_top10": [
+              "MED-1067",
+              "MED-4006",
+              "MED-861",
+              "MED-1071",
+              "MED-1063",
+              "MED-3497",
+              "MED-4380",
+              "MED-838",
+              "MED-5270",
+              "MED-4628"
+            ]
+          },
+          {
+            "query_id": "PLAIN-2186",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-4366",
+              "MED-3487",
+              "MED-4930",
+              "MED-3467",
+              "MED-2261",
+              "MED-4373",
+              "MED-4251",
+              "MED-2762",
+              "MED-2702",
+              "MED-4647"
+            ],
+            "candidate_top10": [
+              "MED-4366",
+              "MED-3487",
+              "MED-4930",
+              "MED-3467",
+              "MED-2261",
+              "MED-4373",
+              "MED-4251",
+              "MED-2762",
+              "MED-2702",
+              "MED-4647"
+            ]
+          },
+          {
+            "query_id": "PLAIN-2439",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-3480",
+              "MED-4363",
+              "MED-4127",
+              "MED-4635",
+              "MED-4036",
+              "MED-4136",
+              "MED-4114",
+              "MED-1055",
+              "MED-2010",
+              "MED-1121"
+            ],
+            "candidate_top10": [
+              "MED-3480",
+              "MED-4363",
+              "MED-4127",
+              "MED-4635",
+              "MED-4036",
+              "MED-4136",
+              "MED-4114",
+              "MED-1055",
+              "MED-2010",
+              "MED-1121"
+            ]
+          },
+          {
+            "query_id": "PLAIN-2549",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-1890",
+              "MED-5124",
+              "MED-2973",
+              "MED-2976",
+              "MED-2977",
+              "MED-4892",
+              "MED-4429",
+              "MED-2475",
+              "MED-2738",
+              "MED-1884"
+            ],
+            "candidate_top10": [
+              "MED-1890",
+              "MED-5124",
+              "MED-2973",
+              "MED-2976",
+              "MED-4892",
+              "MED-2977",
+              "MED-4429",
+              "MED-2475",
+              "MED-2738",
+              "MED-1884"
+            ]
+          },
+          {
+            "query_id": "PLAIN-2719",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-3473",
+              "MED-2271",
+              "MED-3157",
+              "MED-2083",
+              "MED-3466",
+              "MED-3483",
+              "MED-3480",
+              "MED-3459",
+              "MED-3220",
+              "MED-3235"
+            ],
+            "candidate_top10": [
+              "MED-3473",
+              "MED-2271",
+              "MED-3157",
+              "MED-2083",
+              "MED-3466",
+              "MED-3483",
+              "MED-3480",
+              "MED-3459",
+              "MED-3220",
+              "MED-3235"
+            ]
+          },
+          {
+            "query_id": "PLAIN-3200",
+            "removed": [],
+            "added": [],
+            "reference_top10": [
+              "MED-1762",
+              "MED-4747",
+              "MED-4750",
+              "MED-4954",
+              "MED-4145",
+              "MED-4749",
+              "MED-2168",
+              "MED-1593",
+              "MED-3954",
+              "MED-1595"
+            ],
+            "candidate_top10": [
+              "MED-1762",
+              "MED-4747",
+              "MED-4750",
+              "MED-4954",
+              "MED-4145",
+              "MED-4749",
+              "MED-2168",
+              "MED-1593",
+              "MED-3954",
+              "MED-1595"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "mps_stock_accuracy": {
+    "artifact_sha256": "36d08e50cb10699172c06db8959bb7c336dc5d926e09aebdfc85beb008c0e960",
+    "cells": {
+      "scifact/K10": {
+        "queries": 162,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "nfcorpus/K10": {
+        "queries": 323,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "scifact/K50": {
+        "queries": 162,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "nfcorpus/K50": {
+        "queries": 323,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "scifact/K100": {
+        "queries": 162,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      },
+      "nfcorpus/K100": {
+        "queries": 323,
+        "full_ranking_changed": 0,
+        "top10_order_changed": 0,
+        "top10_removed_items": 0,
+        "top10_added_items": 0,
+        "changed_queries": []
+      }
+    }
+  }
+}

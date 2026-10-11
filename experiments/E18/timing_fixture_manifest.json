@@ -1,0 +1,39 @@
+{
+  "plan_sha256": "2b54eeeed727e77e89e3f4e589ff4bb78badee59786d3a3c6a44810db73f1df0",
+  "queries": 16,
+  "datasets": {
+    "scifact": {
+      "queries": 8,
+      "pairs": 800,
+      "untruncated_length_percentiles": [
+        113.0,
+        383.0,
+        641.1499999999999,
+        869.1599999999999,
+        1975.0
+      ],
+      "fraction_over_cap": {
+        "128": 0.99875,
+        "256": 0.87,
+        "512": 0.16125
+      }
+    },
+    "nfcorpus": {
+      "queries": 8,
+      "pairs": 800,
+      "untruncated_length_percentiles": [
+        39.0,
+        358.5,
+        557.2499999999998,
+        686.2299999999998,
+        2072.0
+      ],
+      "fraction_over_cap": {
+        "128": 0.97375,
+        "256": 0.785,
+        "512": 0.085
+      }
+    }
+  },
+  "scope": "Actual reduced timing fixture token lengths; the original data manifest retains all 64 design fixtures"
+}

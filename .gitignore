@@ -45,3 +45,6 @@ experiments/E15/*_rankings.jsonl.gz.tmp
 
 # E18 immutable pretrained weights and tokenizer; hashes committed separately.
 artifacts/e18_minilm_l6/
+
+# Retained E18 retry responses stay local; manifest records their hashes.
+experiments/E18/raw/attempts/**/*.jsonl.gz

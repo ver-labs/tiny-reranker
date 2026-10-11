@@ -1,0 +1,61 @@
+{
+  "reason": "Rust stock startup failed before measured requests because file-launched worker exposed E18 profile.py as stdlib profile. Worker bootstrap fixed. Retain and exclude the entire first service cycle, then repeat all four paths in frozen order to preserve pairing/order. No accuracy or direct timing data changed.",
+  "files": [
+    {
+      "original": "raw/http_s0_python_stock.json",
+      "retained": "raw/attempts/http_cycle0_before_bootstrap_fix/http_s0_python_stock.json",
+      "sha256": "60821bed43ff2e5dadfa277738fcfde66dfbc8dfe1a1345b77a1dbe53bd99326"
+    },
+    {
+      "original": "raw/http_s0_python_stock_responses.jsonl.gz",
+      "retained": "raw/attempts/http_cycle0_before_bootstrap_fix/http_s0_python_stock_responses.jsonl.gz",
+      "sha256": "b6f499105b14063a765749515a1e66d78b891c290f75f05f63cd340c42c700ed"
+    },
+    {
+      "original": "http_s0_python_stock_server.log",
+      "retained": "raw/attempts/http_cycle0_before_bootstrap_fix/http_s0_python_stock_server.log",
+      "sha256": "8678bf2ab8cb59639a0b34818518b1cd4ff23046dadf34474b4ff01ab0477574"
+    },
+    {
+      "original": "raw/http_s0_rust_stock.json",
+      "retained": "raw/attempts/http_cycle0_before_bootstrap_fix/http_s0_rust_stock.json",
+      "sha256": "e7215e522afed9de2534bbd6f7efe4a3d821c955ee243d356579b1c7ead71398"
+    },
+    {
+      "original": "http_s0_rust_stock_server.log",
+      "retained": "raw/attempts/http_cycle0_before_bootstrap_fix/http_s0_rust_stock_server.log",
+      "sha256": "2913c8d2c672c834222d8016589f7e8129a2e1eaba0d7b553e400ce23d7d9118"
+    },
+    {
+      "original": "raw/http_s0_python_mlx.json",
+      "retained": "raw/attempts/http_cycle0_before_bootstrap_fix/http_s0_python_mlx.json",
+      "sha256": "39868f43e1bd6ceb7759506b98863fca7b820d45b44913227135488993618f8c"
+    },
+    {
+      "original": "raw/http_s0_python_mlx_responses.jsonl.gz",
+      "retained": "raw/attempts/http_cycle0_before_bootstrap_fix/http_s0_python_mlx_responses.jsonl.gz",
+      "sha256": "b2f9bbcef9f8f313590f839cfaf9de343e4ef2170b2845e936ad2bdcbf222dcc"
+    },
+    {
+      "original": "http_s0_python_mlx_server.log",
+      "retained": "raw/attempts/http_cycle0_before_bootstrap_fix/http_s0_python_mlx_server.log",
+      "sha256": "8bdb0c369d8d96ce6a7ffc9ed87993ef7c0b2a27ced52e102af7ce9bdc91e709"
+    },
+    {
+      "original": "raw/http_s0_rust_mlx.json",
+      "retained": "raw/attempts/http_cycle0_before_bootstrap_fix/http_s0_rust_mlx.json",
+      "sha256": "3d346db31e7cba42a8c856b9614be71790b95daafff16bbb57cdf43c8f1311db"
+    },
+    {
+      "original": "raw/http_s0_rust_mlx_responses.jsonl.gz",
+      "retained": "raw/attempts/http_cycle0_before_bootstrap_fix/http_s0_rust_mlx_responses.jsonl.gz",
+      "sha256": "938a0133970a316a4de606960a625e86f49204517ee3d04efe70bb2e919405ca"
+    },
+    {
+      "original": "http_s0_rust_mlx_server.log",
+      "retained": "raw/attempts/http_cycle0_before_bootstrap_fix/http_s0_rust_mlx_server.log",
+      "sha256": "378a93ebb2a270921aeea21a4475e3eaf78c5f9513b9d0039174aacc06237ffd"
+    }
+  ],
+  "plan_sha256": "2b54eeeed727e77e89e3f4e589ff4bb78badee59786d3a3c6a44810db73f1df0"
+}

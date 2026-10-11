@@ -1770,3 +1770,32 @@ The fixed plan, compact raw repetitions, accuracy distributions, independent
 verification and checksums are in that directory. Full score/response audits
 remain local outside Git. These are short closed-loop waves on one unisolated
 machine; the model's poor retrieval quality is unchanged.
+
+
+### E18 — pretrained MiniLM inference study (completed 2026-10-11)
+
+A separate pretrained `ms-marco-MiniLM-L6-v2` study uses 22.7M parameters and a
+512-token cap; it does not replace the original scratch checkpoint or E17.
+All 11 Apple/NVIDIA full accuracy audits passed the predeclared numerical and
+application gates. Direct timing uses 18 Apple / 15 NVIDIA paired repetitions
+across six / five process cycles. All 12,288 accepted loopback HTTP responses
+passed score/ranking checks: 9,216 primary and 3,072 optimized follow-up requests.
+
+Compiled PyTorch improves Apple matched warm direct scoring by a paired 13.7%
+[8.1%, 19.8%], but has no supported ≥5% HTTP gain. NVIDIA compiled stock leads
+warm scoring by 3.3%; custom CUDA/Triton are slower than compiled stock.
+Metal speeds the isolated operation without establishing a whole-model gain.
+Rust shows small exploratory PyTorch gains in six of nine cells; none clears
+the practical 5% criterion, and MLX coordinator differences are mostly
+inconclusive. Higher concurrency mainly adds queue wait with one worker and
+no cross-request batching. These are short closed-loop waves on unisolated
+hardware, not production tail-latency or cross-hardware language claims.
+
+See [E18 report and reproduction](experiments/E18/REPORT.md),
+[complete measured tables](experiments/E18/RESULTS.md),
+[HTTP curves with variation](experiments/E18/plots/http_workloads.png), and
+[Apple paired intervals](experiments/E18/plots/mps_primary_ratios.png).
+Raw observations, frozen provenance, reserve checks and independent
+verification are saved in E18; large auditable scores/responses remain local
+with committed checksums. A failed Rust startup and its first service cycle
+were retained, corrected and repeated in matched order.

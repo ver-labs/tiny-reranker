@@ -1,0 +1,16 @@
+{
+  "baseline": "stock",
+  "paths": [
+    "stock",
+    "compiled"
+  ],
+  "sessions": 8,
+  "repetitions": 2,
+  "k": 100,
+  "concurrency": [
+    1,
+    4,
+    8
+  ],
+  "reason": "New matched baseline worker in every optimization session; balanced order; no comparison to earlier baseline wave"
+}

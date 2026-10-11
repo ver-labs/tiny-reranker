@@ -1,0 +1,86 @@
+{
+  "status": "COMPLETE",
+  "device": "mps",
+  "path": "mlx_compiled",
+  "queries": 421,
+  "pairs": 42100,
+  "seconds": 580.8012057500891,
+  "plan_sha256": "2b54eeeed727e77e89e3f4e589ff4bb78badee59786d3a3c6a44810db73f1df0",
+  "artifact": "scores/mps_mlx_compiled_reserve.jsonl.gz",
+  "artifact_sha256": "89358ffd1d72f80ed801e80c8458180eaa851d345a209de8d401027c2b8a03c8",
+  "interpretation": "One confirmation pass; file writes and ranking included in wall time; not a repeated direct performance endpoint",
+  "accuracy": {
+    "strict_numerical_pass": true,
+    "application_pass": true,
+    "absolute_error": {
+      "min": 0.0,
+      "p25": 9.5367431640625e-07,
+      "median": 1.9073486328125e-06,
+      "p75": 2.86102294921875e-06,
+      "p95": 6.4373016357421875e-06,
+      "p99": 8.643269538879516e-06,
+      "max": 1.7404556274414062e-05
+    },
+    "relative_error_floor_1e-3": {
+      "min": 0.0,
+      "p25": 8.583762641302344e-08,
+      "median": 1.8799141841160294e-07,
+      "p75": 4.777883961520099e-07,
+      "p95": 1.976741303942372e-06,
+      "p99": 8.282137943490441e-06,
+      "max": 0.0015577328482605872
+    },
+    "cells": {
+      "scifact/K100": {
+        "queries": 130,
+        "full_ranking_changed": 0,
+        "top1_changed": 0,
+        "top10_membership_changed": 0,
+        "top10_order_changed": 0,
+        "ndcg_delta": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "units": 130
+        },
+        "mrr_delta": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "units": 130
+        },
+        "application_pass": true
+      },
+      "nfcorpus/K100": {
+        "queries": 291,
+        "full_ranking_changed": 5,
+        "top1_changed": 0,
+        "top10_membership_changed": 0,
+        "top10_order_changed": 0,
+        "ndcg_delta": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "units": 291
+        },
+        "mrr_delta": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "units": 291
+        },
+        "application_pass": true
+      }
+    },
+    "per_query_artifact": "scores/mps_mlx_compiled_reserve_deltas.json.gz",
+    "per_query_artifact_sha256": "63c88f9e6e4535ecb8caf87d788515d1079efa9a524215b657968cc739c2836f"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "apple": "M5 complete and independently verified: six full audits, 36 direct sessions, 32 primary and 32 optimized HTTP services, six operation sessions, profiling/context, three 421-query confirmation paths, startup pair and layout checks",
+  "nvidia": "L40S study complete: five full accuracy audits, 25 direct path sessions, six operation sessions, profiling, context, 421-query confirmation, fresh software-cache startup and layout checks verified",
+  "ssh": "Authenticated control master; no credentials stored",
+  "compiler": "Old NVHPC module absent; project-local official NVIDIA CUDA 12.6.85 archives verified before build",
+  "failed_setup_jobs": [
+    172873,
+    172875,
+    172876
+  ],
+  "successful_preflight_jobs": [
+    172874,
+    172879
+  ],
+  "headline_job": 172880,
+  "poststudy_job": 172882,
+  "layout_job": 172886,
+  "startup_job": 172885,
+  "measurement_dates": "2026-10-10\u201311"
+}
