@@ -8,7 +8,7 @@ import shutil
 from .common import HERE,rows,save,sha,ranked,environment,verify_plan
 from .inference import Inference
 from .statistics import accuracy_gate
-from experiments.E15.metrics import metrics
+from .metrics import metrics
 
 
 def read(path):

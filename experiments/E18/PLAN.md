@@ -251,7 +251,7 @@ Article framing: **“What Actually Speeds Up a Pretrained Reranker? Experiments
 - [MiniLM-L6-v2 model card](https://huggingface.co/cross-encoder/ms-marco-MiniLM-L6-v2) and [configuration](https://huggingface.co/cross-encoder/ms-marco-MiniLM-L6-v2/raw/main/config.json): model identity and interface; resolve immutable revisions at execution.
 - [PyTorch compilation documentation](https://docs.pytorch.org/docs/stable/generated/torch.compile.html): inspect documentation matching the pinned environment before implementing compiler settings.
 - [MLX custom Metal kernels](https://ml-explore.github.io/mlx/build/html/dev/custom_metal_kernels.html): API reference, not a guarantee of speedup or model compatibility.
-- [E17 Apple report](../E17/REPORT.md), [NVIDIA report](../E17/NVIDIA_REPORT.md), [E17 frozen plan](../E17/plan.json): methodological lessons and reusable infrastructure, not E18 results.
+- [E17 Apple report](https://github.com/ver-labs/tiny-reranker/blob/archive/pre-inference-cleanup-2026-10-11/experiments/E17/REPORT.md), [NVIDIA report](https://github.com/ver-labs/tiny-reranker/blob/archive/pre-inference-cleanup-2026-10-11/experiments/E17/NVIDIA_REPORT.md), [E17 frozen plan](provenance/e17_plan.json): methodological lessons and reusable infrastructure, not E18 results.
 
 References checked when preparing this plan. Execution must record actual installed versions and downloaded revisions rather than assuming these moving documentation URLs are immutable.
 

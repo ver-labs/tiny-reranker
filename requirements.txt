@@ -1,13 +1,12 @@
 torch==2.14.1
 transformers==5.18.0
-sentence-transformers==6.1.0
-datasets==5.0.1
 numpy==2.5.3
+safetensors==0.8.0
+pydantic==2.13.5
 pytest==9.1.1
-
-mlx==0.32.3
+pytrec_eval-terrier==0.5.10
+mlx==0.32.3; sys_platform == "darwin"
 fastapi==0.142.4
 uvicorn==0.54.0
 httpx==0.28.1
 matplotlib==3.11.2
-plotly==7.1.0

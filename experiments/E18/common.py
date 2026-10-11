@@ -31,8 +31,8 @@ def save(path, value):
 
 
 def rows():
-    old = json.loads((ROOT/'experiments/E17/plan.json').read_text())
-    assert sha(DATA) == old['input_sha256']['data/e16/development.jsonl']
+    manifest = json.loads((HERE/'data_manifest.json').read_text())
+    assert sha(DATA) == manifest['candidate_sha256']
     data = [json.loads(line) for line in DATA.open()]
     assert Counter(r['dataset'] for r in data) == {'scifact':162, 'nfcorpus':323}
     assert len({(r['dataset'], r['query_id']) for r in data}) == 485

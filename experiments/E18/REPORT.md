@@ -69,6 +69,8 @@ The development retrieval metrics describe this pretrained model on these fixed 
 
 ## Reproduction and evidence
 
+The inference-focused repository cleanup moved ranking metrics and request validation into E18 and archived historical training code. [Maintenance provenance](cleanup_provenance.json) records the changed source hashes; the frozen measured-source manifests remain intact. The protocol, weights, observations, and reported results were not changed. Earlier source is available at the [`archive/pre-inference-cleanup-2026-10-11`](https://github.com/ver-labs/tiny-reranker/tree/archive/pre-inference-cleanup-2026-10-11) tag.
+
 From the child repository, after installing the pinned environment and verifying local assets:
 
 ```sh

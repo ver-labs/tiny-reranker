@@ -9,7 +9,7 @@ from .common import ROOT,HERE,ASSETS,DATA,rows,fixtures,sha,save
 
 def main():
     data = rows()
-    old = json.loads((ROOT/'experiments/E17/plan.json').read_text())
+    old = json.loads((HERE/'provenance/e17_plan.json').read_text())
     for relative,digest in old['dataset_source_sha256'].items():
         assert sha(ROOT/relative)==digest, relative
     for dataset in ('scifact','nfcorpus'):
@@ -46,8 +46,8 @@ def main():
     save(HERE/'data_manifest.json', {'status':'verified','candidate_sha256':sha(DATA),
          'development_queries':485,'top100_pairs':48500,'datasets':{'scifact':162,'nfcorpus':323},
          'source_sha256':old['dataset_source_sha256'],
-         'preparation_provenance_sha256':sha(ROOT/'experiments/E16/data_plan.json'),
-         'E17_input_audit_sha256':sha(ROOT/'experiments/E17/input_verification.json'),
+         'preparation_provenance_sha256':sha(HERE/'provenance/e16_data_plan.json'),
+         'E17_input_audit_sha256':sha(HERE/'provenance/e17_input_verification.json'),
          'query_candidate_text_full_qrels':'Every development record verified against source corpora/qrels',
          'selection':'Lowest SHA256(1801:dataset:query_id), 32 per dataset before timings',
          'timing_query_ids':[[r['dataset'],r['query_id']] for r in selected],

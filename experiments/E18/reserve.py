@@ -7,7 +7,7 @@ from .common import HERE,fixtures,ranked,save,sha,verify_plan
 from .inference import Inference
 from .statistics import accuracy_gate
 from .accuracy import read
-from experiments.E15.metrics import metrics
+from .metrics import metrics
 
 
 def main():

@@ -1,0 +1,52 @@
+{
+  "historical_tag": "archive/pre-inference-cleanup-2026-10-11",
+  "measured_results": "Unchanged; no benchmark recollection",
+  "changes": "Relocate identical metric implementation and request schema into E18; remove training dependencies; preserve data and frozen protocol hashes",
+  "changed_sources": [
+    {
+      "path": "experiments/E18/worker.py",
+      "measured_source_sha256": "1fefc947543273b0c5b5e9e3f5c0e16ddd35e2d86e028b2f2defd82e955ca7fa",
+      "maintenance_source_sha256": "3b9e79f41f1837cd3dbc045383565e8b1aaab2c9535cd7b873f870fb5dcb45e6"
+    },
+    {
+      "path": "experiments/E18/python_server.py",
+      "measured_source_sha256": "e2d82a74ec858066a68056641fe47e574a2aad5b5de56f7cb6b8aab1eb40e1f2",
+      "maintenance_source_sha256": "fc5e9c01b41cae8e3411fc3bf1097a5305cb0e53250fa0e783cdb859f91701d4"
+    },
+    {
+      "path": "experiments/E18/reserve.py",
+      "measured_source_sha256": "ada62657f627a8fe7c8aba0ee2763d0b872ea80896694d56b9b4597cb4636aa8",
+      "maintenance_source_sha256": "a69eceb55955bf17ea5e58373654f1ae2db37c7c6a21b13ca50218bcf8c5ef30"
+    },
+    {
+      "path": "experiments/E18/common.py",
+      "measured_source_sha256": "4442d7f572ac48b83fa7cca272080b34d25bccb11b9425985ddfa0d3fa06c362",
+      "maintenance_source_sha256": "bc890173943bfdc86b684649809bc6c43ea7773f746964528ba41f42d25cedf7"
+    },
+    {
+      "path": "experiments/E18/statistics.py",
+      "measured_source_sha256": "6b07c7f5ed26d530975e8900a7802a8b7effd3806bcb06e2ef0679fe54e49525",
+      "maintenance_source_sha256": "9fcead1061db54fa174793322a9282092ab16b370bf82f43806fb38af73da765"
+    },
+    {
+      "path": "experiments/E18/verify.py",
+      "measured_source_sha256": "05c37d191855c721e6268dcc3edc3027270ffa060b5ed4a884442eb82dc5b63f",
+      "maintenance_source_sha256": "0953651c8ca2009caa221e682f2ad6dddc4b4e6eae9984a1cc6414425b43c398"
+    },
+    {
+      "path": "experiments/E18/accuracy.py",
+      "measured_source_sha256": "0e2f936d75d85d7cc4daa7d983043b1c4f8e5bfb35dc09e899efec024394f0c9",
+      "maintenance_source_sha256": "d04105c22f7c39e0cfb6a448da622b6f527ac6101af08eedb8bf88569fab90ae"
+    },
+    {
+      "path": "experiments/E18/prepare.py",
+      "measured_source_sha256": "431981965e3d4531ea5eb5cf2a22423253256dca6186d086c6ba1dee0a6c7172",
+      "maintenance_source_sha256": "6d39f7aabff65d49dc1e27a116594e589e39dbb19c6164c8cf69337ffd51d708"
+    },
+    {
+      "path": "experiments/E18/context_check.py",
+      "measured_source_sha256": "ef94bd3d10ca77904ea9f79845dad59637add20f924ff64eb518e96380ec5ad4",
+      "maintenance_source_sha256": "f9d0c5445ba35dbfb84c5d0687609ba2d414db9c308bb7c091761198a6ee1716"
+    }
+  ]
+}

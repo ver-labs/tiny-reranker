@@ -41,7 +41,7 @@ def distribution(values):
 
 
 def accuracy_gate(reference,candidate):
-    from experiments.E15.metrics import metrics
+    from .metrics import metrics
     from .common import ranked
     if len(reference)!=len(candidate):raise ValueError('Record count mismatch')
     errors=[];relative=[];strict=True;cells={}

@@ -22,7 +22,7 @@ def main():
         from .common import verify_plan,rows,ranked
         from .inference import Inference
         from .direct_benchmark import selected
-        from experiments.S1.serve import Request
+        from .schema import Request
         plan=verify_plan()
         path=os.environ.get('E18_INFERENCE_PATH','stock' if a.backend=='pytorch' else 'mlx')
         if (path in ('mlx','mlx_compiled','metal','metal_compiled')) != (a.backend=='mlx'):

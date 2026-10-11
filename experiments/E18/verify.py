@@ -7,7 +7,7 @@ import random
 from collections import Counter
 import numpy as np
 from .common import HERE,ROOT,rows,sha,save,verify_plan,fixtures
-from experiments.E15.metrics import assert_trec_parity
+from .metrics import assert_trec_parity
 
 
 def metric(ids,qrels):

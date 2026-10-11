@@ -1,4 +1,0 @@
-# Large per-query and response audits stay local, checksummed by checksums.json.
-*_scores.jsonl.gz
-http_s[0-3]_*.json
-*_server.log

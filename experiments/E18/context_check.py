@@ -7,7 +7,7 @@ from .direct_benchmark import selected
 from .accuracy import read
 from .inference import Inference
 from .statistics import accuracy_gate,interval
-from experiments.E15.metrics import metrics
+from .metrics import metrics
 
 
 def main():

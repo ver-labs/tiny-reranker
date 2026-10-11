@@ -1,50 +1,17 @@
-.venv/
-.venv-triton-apple/
+# Local environments and build products
+.venv*/
+.cuda-env/
 __pycache__/
 .pytest_cache/
-checkpoints/*.pt
-checkpoints/*.tmp
-dump/checkpoints/*.pt
-data/processed/
-artifacts/*/model.pt
-experiments/E1/*/initial.pt
-experiments/E1/*/epoch1.pt
-experiments/E1/*/head_only.pt
-experiments/E2/workers_*.pt
-experiments/E3/*_padding.pt
-experiments/E5/*.pt
-experiments/E6/*.pt
-experiments/E8/*.pt
+.DS_Store
+*.pyc
 
-experiments/E9/*.safetensors
-experiments/E9/*_server.log
+# Preserved historical training work; excluded from the published repository.
+.local-archive/
 
-experiments/P1/*.pt
-experiments/P1/cpu_trace.json
+# Model assets and dataset inputs are downloaded/verified separately.
+artifacts/
+data/
 
-runs/full_train*/
-experiments/S1/*.safetensors
-experiments/S1/*_server.log
-rust-server/target/
-experiments/E12/*_server.log
-experiments/E12/*_rankings.jsonl
-experiments/E12/*_rankings.jsonl.tmp
-experiments/E11/*.gputrace/
-experiments/E11/*.prof
-experiments/E11/*_rankings.jsonl
-experiments/E11/*_rankings.jsonl.tmp
-experiments/E14/*.so
-experiments/E14/full_test_scores.jsonl.gz
-experiments/E14/full_test_scores.jsonl.gz.tmp
-.venv-evaluation/
-data/beir/
-artifacts/e15_tinybert/
-artifacts/e15_minilm/
-experiments/E15/*_rankings.jsonl.gz
-experiments/E15/*_rankings.jsonl.gz.tmp
-
-# E18 immutable pretrained weights and tokenizer; hashes committed separately.
-artifacts/e18_minilm_l6/
-
-# Retained E18 retry responses stay local; manifest records their hashes.
+# E18 retry response bodies stay local; committed manifests retain their hashes.
 experiments/E18/raw/attempts/**/*.jsonl.gz

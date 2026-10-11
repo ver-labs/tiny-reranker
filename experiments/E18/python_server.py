@@ -10,7 +10,7 @@ import time
 
 from fastapi import FastAPI, Request as HTTPRequest
 from fastapi.responses import JSONResponse
-from experiments.S1.serve import Request
+from .schema import Request
 from .common import ROOT
 from .worker import MAX_FRAME
 

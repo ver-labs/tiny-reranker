@@ -1,0 +1,59 @@
+{
+  "seed": 42,
+  "training_start": "preserved epoch 3",
+  "candidate_top_k": 100,
+  "training_policy": "Up to four known positives and four top-BM25 unjudged candidates per query; BCE labels 1/0. Unjudged negatives are weak labels, not established irrelevance.",
+  "development_policy": "Complete top-100 retrieval, no positive injection; all positive qrels retained. SciFact deterministic hash-group 20% of official train; NFCorpus official dev.",
+  "test_policy": "Test normalized query hashes used only for overlap exclusion; no test scores, rankings or evaluation.",
+  "old_train_overlap_policy": "Exclude original MS MARCO training query hashes from development.",
+  "datasets": {
+    "scifact": {
+      "training_queries": 645,
+      "training_pairs": 1470,
+      "development_queries": 162,
+      "development_pairs": 16200,
+      "dev_queries_without_retrieved_positive": 10,
+      "bm25_development_metrics": {
+        "ndcg_at_10": 0.678641927176393,
+        "mrr_at_10": 0.640970997452479,
+        "recall_at_10": 0.8101851851851852,
+        "recall_at_100": 0.9341563786008231
+      },
+      "excluded_train_queries": 164
+    },
+    "nfcorpus": {
+      "training_queries": 2582,
+      "training_pairs": 18740,
+      "development_queries": 323,
+      "development_pairs": 32300,
+      "dev_queries_without_retrieved_positive": 86,
+      "bm25_development_metrics": {
+        "ndcg_at_10": 0.2673048612713541,
+        "mrr_at_10": 0.4671838911002997,
+        "recall_at_10": 0.10980248769646499,
+        "recall_at_100": 0.203213752702743
+      },
+      "excluded_train_queries": 8
+    }
+  },
+  "source_sha256": {
+    "data/beir/scifact/corpus.jsonl": "dec31c8182f3d744c7d2c09423756fd1d17cbef75808db13ba01cc0aab4d1ac6",
+    "data/beir/scifact/queries.jsonl": "8ff84a7c903f722981cd8d595c022660140c51867b27608a6d4910db86080313",
+    "data/beir/scifact/qrels/train.tsv": "a53f2114831916c096b6c37d9e54da68cef4efdcdbd5ed46533601af972acf1d",
+    "data/beir/scifact/qrels/test.tsv": "0864bb985e0ca2367ba217977e72004d549054b2b06666ed9d4825ac7c21284c",
+    "data/beir/nfcorpus/corpus.jsonl": "10cc83ef1826b1425e6a87090b5140b39b27755d5a27e48215a88611c899991f",
+    "data/beir/nfcorpus/queries.jsonl": "d024e6621b84925d485ae473d316a0c3af31c62c8068a59fb29d22f7613aef2a",
+    "data/beir/nfcorpus/qrels/train.tsv": "6336b80f9bffc4f063f3aa450047ad35c0b7c534efe4a6ba35e16dbace047f6a",
+    "data/beir/nfcorpus/qrels/dev.tsv": "b1d38b5e8f78c4a5820bce2b7ec2db54911d7690dc601e76811846b211180bd8",
+    "data/beir/nfcorpus/qrels/test.tsv": "f8fba6ef3d4dd9c3a242a8ba4ae38276fc3622fce7dcbae764766d564542fd2a",
+    "data/processed/clean_pairs.jsonl": "88383010f0f3dc755bbe975c2616ec6d7eee5e5e38285e6f9f6f949145f579a7",
+    "data/processed/conflicting_pairs.jsonl": "dc89badc810a257f25dd90b2808a59ec13a92f4c6af2d76d4fef93604eee23c6"
+  },
+  "code_sha256": "8227883bec815a809f4a62860b85867b72790b4186118546104c86711f1fda69",
+  "files": {
+    "train.jsonl": "e4763a8a3ccbf10ffea9f51ad97cc2631b0471c60358bb1c4c2411b43a2e701e",
+    "development.jsonl": "783da2ac5cb69147b25b5fcf7b24318e4a6e0250c72c80182cc0eb9fd4706f77"
+  },
+  "split_guards_verified": true,
+  "original_checkpoint_sha256": "2ea2608a9ec98083b89606d13bed1d7c6e7a90dc6160bbe44732166137538d52"
+}

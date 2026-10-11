@@ -2,6 +2,36 @@
 
 Run from the tiny-reranker root. This is the user-authorized smaller first study in `plan.json`, not the original 147,456-request protocol. Assets require about 100 MB; results and compiler caches add space.
 
+## Required local inputs
+
+Use Python 3.12 and Rust/Cargo. Install `requirements.txt` for the Apple
+workflow; the recorded complete environments are `apple_requirements.txt`
+and `nvidia_requirements.txt` in this directory.
+
+The historical training pipeline is archived under
+[`archive/pre-inference-cleanup-2026-10-11`](https://github.com/ver-labs/tiny-reranker/tree/archive/pre-inference-cleanup-2026-10-11).
+E18 now owns its ranking metrics and request schema; no training modules are
+needed at runtime. Original data-preparation manifests are retained unchanged
+in `provenance/`.
+
+The candidate fixture `data/e16/development.jsonl` and original SciFact/NFCorpus
+corpora/qrels under `data/beir/` must already be available with the hashes in
+`data_manifest.json`. They are not included in a Git clone, and `prepare`
+verifies these inputs rather than downloading or regenerating them. Full
+saved-evidence verification also needs the separately retained score audits
+and HTTP response bodies listed in `checksums.json`; these large files are
+excluded from Git. Do not substitute newly retrieved candidates and present
+them as the original study.
+
+For the focused test suite:
+
+```bash
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt
+cargo build --release --manifest-path experiments/E18/rust-server/Cargo.toml
+.venv/bin/python -m pytest tests -q
+```
+
 ```bash
 .venv/bin/python -m experiments.E18.download_model
 .venv/bin/python -m experiments.E18.prepare

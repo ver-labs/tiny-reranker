@@ -30,5 +30,18 @@ NVIDIA HTTP was not measured.
 
 - [E18 benchmark code and protocol](experiments/E18/)
 - [Article source](experiments/E18/ARTICLE_DRAFT.md) and [images](experiments/E18/medium/upload_images/)
-- [Earlier experiments and training history](EXPERIMENT_LOG.md)
+- [Earlier experiments and training history](https://github.com/ver-labs/tiny-reranker/tree/archive/pre-inference-cleanup-2026-10-11) — archived before the inference-focused cleanup.
 - [Experimental scratch model on Hugging Face](https://huggingface.co/ndileep/tiny-reranker-4.7m-experimental) — an educational 4.7M model with weak realistic retrieval quality; distinct from the pretrained model above.
+
+## Repository layout
+
+- `experiments/E18/`: inference implementations, kernels, benchmark runners,
+  frozen protocol, measured results, and article assets.
+- `experiments/E18/provenance/`: original data-preparation manifests retained
+  byte-for-byte; earlier training code is archived in Git history.
+- `tests/`: E18 accuracy-contract, ranking-metric, and Python/Rust service tests.
+
+Model weights, datasets, score audits, compiler caches, and local training
+archives are excluded from Git. The benchmark input retains its original
+`data/e16/development.jsonl` path so the frozen protocol and hashes stay valid.
+See [setup and reproduction requirements](experiments/E18/COMMANDS.md).
