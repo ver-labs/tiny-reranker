@@ -28,13 +28,23 @@ def main():
         for path,d in cell['distribution'].items():
             v=d['pairs_per_second'];r=cell['comparisons'].get('stock/'+path,{})
             lines.append(f"| {device} | {path} | {d['accuracy']} | {v['median']:.1f} [{v['p25']:.1f}, {v['p75']:.1f}] | {d['sessions']} / {d['repetitions']} | {'Baseline' if path=='stock' else ratio(r)} |")
-    lines+=['','## Local loopback HTTP','', '| K | C | Coordinator/worker | P50 / P95 / P99 ms (median across repetitions) | req/s [IQR] | pairs/s | Successful requests / failures | Python / Rust time ratio [95% CI] |','|---|---|---|---|---|---|---|---|']
+    lines+=['','## Local loopback HTTP','', '| K | C | Coordinator/worker | P50 / P95 / P99 ms (median across repetitions) | req/s [IQR] | pairs/s | Successful / failed / timed-out requests | Python / Rust time ratio [95% CI] |','|---|---|---|---|---|---|---|---|']
     for key,cell in sorted(summary['http'].items(),key=lambda e:tuple(int(x[1:]) for x in e[0].split('/'))):
         k,c=(int(x[1:]) for x in key.split('/'))
         for path,d in sorted(cell['distribution'].items()):
             v=d['requests_per_second'];backend=path.split('/')[1];r=cell['comparisons'].get('python/'+backend+'/rust/'+backend,{})
-            lines.append(f"| {k} | {c} | {path} | {latency(d)} | {v['median']:.3f} [{v['p25']:.3f}, {v['p75']:.3f}] | {d['pairs_per_second']['median']:.1f} | {d['requests']} / {d['failures']} | {ratio(r) if path.startswith('rust') else '—'} |")
+            lines.append(f"| {k} | {c} | {path} | {latency(d)} | {v['median']:.3f} [{v['p25']:.3f}, {v['p75']:.3f}] | {d['pairs_per_second']['median']:.1f} | {d['requests']} / {d['failures']} / {d['timeouts']} | {ratio(r) if path.startswith('rust') else '—'} |")
     lines+=['','The 16-request repetition gives only two waves at C8. P99 is a near-maximum of a short wave, not a production tail-latency estimate. The load is fixed-concurrency closed-loop; it does not test open-loop overload. Rust coordinates a shared Python inference worker.']
+    lines+=['','## HTTP queue and processing times','',
+      'Each entry is the median across repetitions of that repetition’s request percentile. Queue and processing timers are server-side; request latency above is client-observed.','',
+      '| K / C | Coordinator/worker | Queue P50 / P95 / P99 ms | Processing P50 / P95 / P99 ms |',
+      '|---|---|---|---|']
+    for key,cell in sorted(summary['http'].items(),key=lambda e:tuple(int(x[1:]) for x in e[0].split('/'))):
+        for path,d in sorted(cell['distribution'].items()):
+            values=[]
+            for field in ('queue_ms','processing_ms'):
+                values.append(' / '.join('—' if d[field][f'p{p}']['median'] is None else f"{d[field][f'p{p}']['median']:.1f}" for p in (50,95,99)))
+            lines.append(f"| {key} | {path} | {values[0]} | {values[1]} |")
     if summary.get('service_setup'):
         lines+=['','## Service setup and process memory','',
           'Readiness includes model loading and all HTTP shape warm-up. RSS values are after-run snapshots, not peak memory; shared pages may be counted twice.','',
