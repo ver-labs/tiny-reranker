@@ -61,6 +61,13 @@ def main():
     manifest=json.loads((HERE/'data_manifest.json').read_text())
     for relative,digest in manifest['source_sha256'].items():assert sha(ROOT/relative)==digest
     result['source_inputs']='VERIFIED candidate file, assets, frozen manifests and source corpora/qrels'
+    result['retained_attempts']={}
+    for attempt in (HERE/'raw/attempts').glob('*/manifest.json'):
+        archived=json.loads(attempt.read_text())
+        assert archived['plan_sha256']==sha(HERE/'plan.json')
+        for entry in archived['files']:
+            assert sha(HERE/entry['retained'])==entry['sha256']
+        result['retained_attempts'][str(attempt.relative_to(HERE))]={'status':'VERIFIED','files':len(archived['files'])}
     for p in list(HERE.glob('*_accuracy.json'))+list(HERE.glob('*_reserve.json')):
         report=json.loads(p.read_text());target=report.get('accuracy',report)
         if 'per_query_artifact' in target:
