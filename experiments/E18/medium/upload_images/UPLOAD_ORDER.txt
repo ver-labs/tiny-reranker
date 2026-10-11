@@ -1,0 +1,23 @@
+Upload these images in article order. Replace each placeholder with its matching image.
+
+01_table_01.png — Table 1
+02_table_02.png — Table 2
+03_table_03.png — Table 3
+04_table_04.png — Table 4
+05_table_05.png — Table 5
+06_table_06.png — Table 6
+07_operations.png — Isolated operation measurements and variation
+08_table_07.png — Table 7
+09_table_08.png — Table 8
+10_table_09.png — Table 9
+11_mps_batching.png — Apple batch-size sweep
+12_cuda_batching.png — NVIDIA batch-size sweep
+13_table_10.png — Table 10
+14_table_11.png — Table 11
+15_table_12.png — Table 12
+16_table_13.png — Table 13
+17_http_workloads.png — Apple HTTP workloads across document count and concurrency
+18_table_14.png — Table 14
+19_optimized_http.png — Matched compiled-backend HTTP follow-ups
+20_table_15.png — Table 15
+21_table_16.png — Table 16
