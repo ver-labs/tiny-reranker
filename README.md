@@ -1,5 +1,47 @@
 # tiny-reranker
 
+## Reranker performance study
+
+This repository contains training experiments for a small scratch reranker and
+a separate inference study using the pretrained
+[`cross-encoder/ms-marco-MiniLM-L6-v2`](https://huggingface.co/cross-encoder/ms-marco-MiniLM-L6-v2).
+The pretrained study keeps the model weights fixed and compares frameworks,
+compilation, custom Metal/CUDA/Triton kernels, batching, and Python/Rust serving
+on Apple M5 and NVIDIA L40S.
+
+**Article:** [13 Performance Experiments on One Reranker: The Limits of Faster GPU Code](https://medium.com/@nandanadileep29/13-performance-experiments-on-one-reranker-the-limits-of-faster-gpu-code-94670171711f)
+([repository version](experiments/E18/ARTICLE_DRAFT.md)). The Medium link may
+require sign-in while the story remains a draft.
+
+Start with the [E18 report and reproduction instructions](experiments/E18/REPORT.md),
+[full result tables](experiments/E18/RESULTS.md), and
+[frozen benchmark protocol](experiments/E18/plan.json).
+The article's 13 experiment sections group comparisons within E18-small-v1;
+they are not 13 independently preregistered studies.
+
+| Primary warm direct scoring | Stock pairs/sec | Compiled pairs/sec | Paired improvement, exploratory 95% interval |
+|---|---:|---:|---:|
+| Apple M5, PyTorch | 87.4 | 102.1 | 13.7% [8.1%, 19.8%] |
+| Apple M5, MLX | 40.7 | 48.9 | 25.3% [13.9%, 37.9%] |
+| NVIDIA L40S, PyTorch | 712.4 | 736.8 | 3.3% [3.2%, 3.4%] |
+
+Primary comparisons use FP32, 100 documents per query, pair batches of 16,
+and a 512-token cap. Paired gains are calculated within repetitions, rather
+than by dividing separate throughput medians. All 11 implementation audits
+passed the numerical and application accuracy gates, and all 12,288 accepted
+Apple loopback HTTP responses passed score/ranking validation.
+
+Custom Metal improved the isolated operation without establishing a model
+scoring gain. Custom CUDA/Triton did not beat compiled stock PyTorch. Rust
+showed no practical throughput advantage under the predefined 5% criterion.
+Compiled PyTorch's Apple direct-scoring gain did not produce a practical HTTP
+gain; compiled MLX improved its own HTTP baseline. These conclusions apply to
+the measured workload. NVIDIA HTTP, mixed precision, and open-loop overload
+remain unmeasured.
+
+See the [article images and upload guide](experiments/E18/medium/README.md)
+for the 16 tables and five plots used in the article.
+
 ## Experimental model release
 
 The original full-training epoch-3 weights are published as
