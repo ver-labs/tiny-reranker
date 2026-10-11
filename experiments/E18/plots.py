@@ -69,7 +69,7 @@ def main():
             fig,ax=plt.subplots(figsize=(9,max(3,len(entries)*.45)))
             for y,(name,r) in enumerate(entries):
                 ax.errorbar(r['ratio'],y,xerr=[[r['ratio']-r['ci95'][0]],[r['ci95'][1]-r['ratio']]],fmt='o',capsize=4,color='#20639b')
-            ax.set_yticks(range(len(entries)),[f'{name} (baseline / candidate time)' for name,r in entries]);ax.axvline(1,color='#555',linestyle='--');ax.axvline(1.05,color='#ba6332',linestyle=':');ax.set_xlabel('Paired throughput ratio; unadjusted session-bootstrap 95% interval');ax.set_title(f'{device.upper()} primary direct endpoint · K100 / B16 / L≤512\nAccuracy-failing paths are diagnostic only; status in tables');ax.grid(axis='x',alpha=.2);fig.tight_layout();fig.savefig(out/f'{device}_primary_ratios.png',dpi=160);plt.close(fig)
+            ax.set_yticks(range(len(entries)),[name for name,r in entries]);ax.axvline(1,color='#555',linestyle='--');ax.axvline(1.05,color='#ba6332',linestyle=':');ax.set_xlabel('Paired throughput ratio; unadjusted session-bootstrap 95% interval');fig.suptitle(f'{device.upper()} primary direct endpoint · K100 / B16 / L≤512\nUnadjusted 95% session intervals; accuracy status in tables',fontsize=11);ax.grid(axis='x',alpha=.2);fig.tight_layout(rect=(0,0,1,.85));fig.savefig(out/f'{device}_primary_ratios.png',dpi=160);plt.close(fig)
     if summary['operation']:
         fig,axes=plt.subplots(1,2,figsize=(11,4.5))
         for col,device in enumerate(('mps','cuda')):
